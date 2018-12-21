@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can enable the users for your Web application to authenticate using client certificates. This corresponds to the CERT and BASICCERT authentication methods supported in Java EE."/>
+<meta name="description" content="You can enable the users for your Web application to authenticate using client certificates. This corresponds to the CERT and BASICCERT authentication methods supported in Java EE."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Enabling Client Certificate Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0d7cf63b75a94f869895186a2d38db41">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Enabling Client Certificate Authentication</h1>
+
+	<p class="shortdesc">You can enable the users for your Web application to authenticate using client
+		certificates. This corresponds to the CERT and BASICCERT authentication methods supported in
+		Java EE. </p>
+
+	
+	
+	
+
+	<div class="related-links"> 
+</div>
+<div class="topic task nested1" id="task_ds5_pmt_wn">
+		<h2 class="title topictitle2">Overview</h2>
+
+		<div class="body taskbody">
+			<div class="section prereq p"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Prerequisites</h3></div>
+				<p class="p">(For the mapping modes requiring certificate authorities) You have a keystore
+					defined. See <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</p>
+
+			</div>
+
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">Using information in the client certificate, <span class="ph pname">SAP Cloud Platform</span> will map the certificate
+					to a user name using the mapping mode you specify.</p>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_cm1_nmm_rv">
+		<h2 class="title topictitle2">1. Configure Reverse Proxy to Request a Client Certificate</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">By default, <span class="ph pname">SAP Cloud Platform</span> supports SSL communication for Web
+					applications through a reverse proxy that does not request a client certificate.
+					To enable client certificate authentication, you need to configure the reverse
+					proxy to request a client certificate.</p>
+
+				<p class="p">Add <span class="keyword parmname">cert.hana.ondemand.com</span> as a platform domain. See <a class="xref" href="a32d4cd65be344439d9ed752f182e609.html#loioa32d4cd65be344439d9ed752f182e609" title="Using platform domains, you can configure the application network availability or authentication policy. You can achieve that by configuring the appropriate platform domain which will change the URL on which your application will be accessible.">Platform Domains</a>.</p>
+
+				<p class="p">For more information about the trusted certificate authorities (CAs) for <span class="ph pname">SAP Cloud Platform</span>, see <a class="xref" href="fe957070f9f7447cb886eb65e6a0543e.html" title="To enable client certificate authentication in your application, users need to present client certificates issued by some of the certificate authorities (CAs) listed below.">Trusted Certificate Authorities for Client Certificate Authentication</a>.</p>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="topic concept nested1" id="concept_xv5_md4_rv">
+		<h2 class="title topictitle2">2. Protect Application Resources</h2>
+
+		<div class="body conbody">
+			<p class="p">In your Web application, use declarative or programmatic authentication to protect
+				application resources. </p>
+
+			<div class="p">Use one of the following two methods for client certificate authentication: <ul class="ul" id="concept_xv5_md4_rv__ul_hdj_bf4_rv">
+					<li class="li"><span class="keyword parmname">CERT</span> - Users can authenticate only with client certificate.</li>
+
+					<li class="li">
+						<span class="keyword parmname">BASICCERT</span> - Users can authenticate either with client
+						certificate or with user name and password. </li>
+
+				</ul>
+</div>
+
+			<p class="p">If you use the declarative approach, you need to specify the authentication method in
+				the application web.xml file. See <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe36c712efa844e8199a9c4bd681cb4e0">Declarative Authentication</a>.</p>
+
+			<p class="p">If you use the programmatic approach, specify the authentication method as a
+				parameter for the login context creation. For more information, see <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loio778d8987e7714376977c190f6df379ad">Programmatic Authentication</a>.</p>
+
+		</div>
+
+	</div>
+
+	<div class="topic concept nested1" id="concept_rj3_3g4_rv">
+		<h2 class="title topictitle2">3. Define User Mapping</h2>
+
+		<div class="body conbody">
+			<p class="p">The user mapping defines how the user name is derived from the received client
+				certificate. You configure user mapping using Java system properties. </p>
+
+			<p class="p">Use the following system properties to define user mapping: </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="concept_rj3_3g4_rv__table_tjb_4g4_rv" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: System Properties for User Mappings</span></caption>
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d577685e174">System Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d577685e177">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d577685e174 "><span class="keyword parmname">com.sap.cloud.crypto.clientcert.mapping_mode</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d577685e177 ">(Mandatory) Defines how the received client certificate is
+								interpreted.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d577685e174 "><span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d577685e177 ">Defines the name of the keystore used during the user mapping
+								process, and it is mandatory for the mapping modes that use the keystore.<div class="p">
+									<div class="note note"><span class="notetitle">Note</span> Use a keystore that is available in the Keystore Service.
+										See <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</div>
+
+								</div>
+<div class="p">
+									<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">Use the keystore name <span class="ph emphasis emphasis">without</span> the
+											keystore file extension (jks for example).</p>
+
+									</div>
+
+								</div>
+<div class="p">
+									<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">Depending on the value of the
+												<span class="keyword parmname">com.sap.cloud.crypto.clientcert.mapping_mode</span>
+											property,using the
+												<span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span>
+											property may be mandatory.</p>
+
+									</div>
+
+								</div>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p">For more information how to set the value of the system property, see <a class="xref" href="b82d3929218a42558146c58d2f68121e.html" title="Using SAP Cloud Platform console client, you can configure the JRE by specifying custom VM arguments.">Configuring VM Arguments</a>.</p>
+
+			<div class="p">For more information about the particular values you need to set, see the table
+					below.
+<div class="table-wrapper tablenoborder"><table summary="" id="concept_rj3_3g4_rv__table_dvy_sg4_rv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d577685e272">
+									<p class="p">Mapping Mode</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="25%" id="d577685e278">
+									<p class="p">Description</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="25%" id="d577685e284">
+									<p class="p">How to Set</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="25%" id="d577685e290">
+									<p class="p">Example</p>
+
+								</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d577685e272 ">
+									<p class="p">CN</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e278 ">
+									<p class="p">The user name equals the common name (CN) of the
+										certificate’s subject.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e284 ">
+									<p class="p">Set the <span class="keyword parmname">com.sap.cloud.crypto.clientcert.mapping_mode</span> property with
+										value CN.</p>
+
+									<p class="p">In addition, if you want to accept certificates from trusted certificate authorities
+										(CAs) only, set the
+											<span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span>
+										with a value the keystore name containing the trusted
+										issuers.</p>
+
+									<div class="p">
+										<div class="note note"><span class="notetitle">Note</span> The client certificate is not accepted if its issuer
+											is not in the keystore or is not in a chain trusted by
+											this keystore, and then the authentication fails. For
+											more information about the Keystore Service, see <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</div>
+
+									</div>
+
+									<p class="p">If you want to accept certificates from any issuer, skip
+										setting the
+											<span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span>
+										property. </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e290 ">
+									<p class="p">A client certificate with
+											<span class="keyword">cn=myuser,ou=security</span> as a subject is
+										mapped to a <span class="keyword">myuser</span> user name.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d577685e272 ">
+									<p class="p">CN@issuer</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e278 ">
+									<p class="p">For this mapping mode, the user name is defined as
+											<span class="keyword">&lt;CN of the certificate’s
+											subject&gt;@&lt;keystore alias of the certificate’s
+											issuer&gt;</span>. Use this mapping mode when you
+										have certificates with identical CNs.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e284 ">
+									<p class="p">To use this mapping mode, you have to set the following
+										system properties:</p>
+
+									<ul class="ul" id="concept_rj3_3g4_rv__ul_tkm_ck4_rv">
+										<li class="li"><span class="keyword parmname">com.sap.cloud.crypto.clientcert.mapping_mode</span>
+											with a value <span class="keyword">CN@Issuer</span></li>
+
+										<li class="li"><span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span>
+											with a value the keystore name containing the trusted
+												issuers<p class="p">The issuer is trusted if it is in the
+												keystore or is part of a trusted certificate chain.
+												A certificate chain is trusted if at least one of
+												its issuers exists in the keystore.</p>
+</li>
+
+									</ul>
+
+									<div class="p">
+										<div class="note note"><span class="notetitle">Note</span> The client certificate is not accepted if its issuer
+											is not in the keystore or is not in a chain trusted by
+											this keystore, and then the authentication fails. For
+											more information about setting the Keystore Service, see
+												<a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</div>
+
+									</div>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e290 ">
+									<p class="p">A client certificate with <span class="keyword">CN=john, C=DE, O=SAP,
+											OU=Development</span> as a subject and
+											<span class="keyword">CN=SSO CA, O=SAP</span> as an issuer is
+										received. The specified keystore with trusted issuers
+										contains the same issuer, <span class="keyword">CN=SSO CA,
+											O=SAP</span>, that has an <span class="keyword">sso_ca</span>
+										alias. Then the user name is defined as
+											<span class="keyword">john@sso_ca</span>.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d577685e272 ">
+									<p class="p">wholeCert</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e278 ">
+									<p class="p">For this mapping mode, the whole client certificate is
+										compared with each entry in the specified keystore, and then
+										the user name is defined as the alias of the matching
+										entry.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e284 ">
+									<p class="p">To use this mapping mode, you have to set the following
+										system properties:</p>
+
+									<ul class="ul" id="concept_rj3_3g4_rv__ul_gn2_r35_wn">
+										<li class="li"><span class="keyword parmname">com.sap.cloud.crypto.clientcert.mapping_mode</span>
+											with a value <span class="keyword">wholeCert</span></li>
+
+										<li class="li"><span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span>
+											with a value the keystore name containing the respective
+											user certificates</li>
+
+									</ul>
+
+									<div class="p">
+										<div class="note note"><span class="notetitle">Note</span> The client certificate is not accepted if no exact
+											match is found in the specified keystore, and then the
+											authentication fails. For more information about the
+											Keystore Service, see <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</div>
+
+									</div>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e290 ">
+									<p class="p">The following client certificate is received: </p>
+
+									<p class="p"><span class="keyword parmname">Subject:</span>
+										<span class="keyword">CN=john.miller, C=DE, O=SAP,
+											OU=Development</span></p>
+
+									<p class="p"><span class="keyword parmname">Validity Start Date:</span>
+										<span class="keyword">March 19 09:04:32 2013 GMT</span></p>
+
+									<p class="p"><span class="keyword parmname">Validity End Date:</span>
+										<span class="keyword">March 19 09:04:32 2018 GMT</span></p>
+
+									<p class="p">…</p>
+
+									<p class="p">The specified keystore contains the same certificate with an
+										alias <span class="keyword">john</span>. Then the user name is defined
+										as <span class="keyword">john</span>.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d577685e272 ">
+									<p class="p">subjectAndIssuer</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e278 ">
+									<p class="p">For this mapping mode, only the subject and issuer fields of
+										the received client certificate are compared with the ones
+										of each keystore entry, and then the user name is defined as
+										the alias of the matching entry.</p>
+
+									<p class="p">Use this mapping mode when you want authentication by
+										validating only the certificate’s subject and issuer.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e284 ">
+									<p class="p">To use this mapping mode, you have to set the following
+										system properties:</p>
+
+									<ul class="ul" id="concept_rj3_3g4_rv__ul_g3t_2j4_rv">
+										<li class="li"><span class="keyword parmname">com.sap.cloud.crypto.clientcert.mapping_mode</span>
+											with a value <span class="keyword">subjectAndIssuer</span></li>
+
+										<li class="li"><span class="keyword parmname">com.sap.cloud.crypto.clientcert.keystore_name</span>
+											with a value the keystore name containing the respective
+											user certificates</li>
+
+									</ul>
+
+									<div class="p">
+										<div class="note note"><span class="notetitle">Note</span> The client certificate is not accepted if an entry
+											with the same subject and issuer is missing in the
+											specified keystore, and then the authentication fails.
+											For more information about the Keystore Service, see
+												<a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</div>
+
+									</div>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d577685e290 ">
+									<p class="p">A certificate with <span class="keyword">CN=john.miller, C=DE, O=SAP,
+											OU=Development</span> as a subject and
+											<span class="keyword">CN=SSO CA, O=SAP</span> as an issuer is
+										received. The specified keystore contains a certificate with
+										alias <span class="keyword">john</span> that has the same subject and
+										issuer fields. Then the user name is defined as
+											<span class="keyword">john</span>.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

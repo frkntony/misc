@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Before you delete an SAP Cloud Platform account in which an SAP ASE database is deployed, you can export the data from that database."/>
+<meta name="description" content="Before you delete an SAP Cloud Platform account in which an SAP ASE database is deployed, you can export the data from that database."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Exporting Data from an SAP ASE Database</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiobd78f51d3988488085ff0d671e1c6577">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Exporting Data from an SAP ASE Database</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Before you delete an <span class="ph pname">SAP Cloud Platform</span> account in which an
+		SAP ASE database is deployed, you can export the data from that database. </p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">To open a tunnel to the SAP ASE database, follow the steps described in <a class="xref" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Connect to your database using the Eclipse Data Tools Platform (DTP) as described in <a class="xref" href="107ffdb907334d97be99fdcb7aad8961.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP ASE Database</a>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">Instead of Eclipse DTP, you can also use any other JDBC client that offers  export or
+							extraction functionality.</p>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In Eclipse, select all tables that contain data you would like to export in the
+						<span class="ph uicontrol">Data Source Explorer</span> view and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Data</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Export on each table</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> from the context menu. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the location of the file and choose a file format for the data export by selecting
+						<span class="ph uicontrol">.csv</span> or <span class="ph uicontrol">.data</span> from the
+					dropdown list. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="419dc3d380e74f1abb06ba44d61e71ae.html" title="You can delete the currently selected account.">Deleting Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

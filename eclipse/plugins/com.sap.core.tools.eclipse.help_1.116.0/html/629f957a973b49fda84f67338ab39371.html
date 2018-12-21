@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>User Logon Properties</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio629f957a973b49fda84f67338ab39371">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">User Logon Properties</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loio629f957a973b49fda84f67338ab39371__section_N1001A_N10011_N10001">
+			<p class="p">This group of JCo properties covers different types of user credentials, as well as the ABAP
+				system client and the logon language. The currently supported logon mechanism uses
+				user/password as the credentials. </p>
+
+			<p class="p"/>
+
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio629f957a973b49fda84f67338ab39371__table_nmx_45x_1k" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d4260884e40">Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d4260884e43">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4260884e40 "><span class="keyword parmname">jco.client.client</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d4260884e43 "> Represents the client to be used in the ABAP system. Valid format is a three-digit
+								number. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4260884e40 "><span class="keyword parmname">jco.client.lang</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d4260884e43 ">Optional property. Represents the logon language. If the property is not provided, the
+								user's or system's default language is used. Valid values are
+								two-character ISO language codes or one-character SAP language
+								codes. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4260884e40 "><span class="keyword parmname">jco.client.user</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d4260884e43 ">Represents the user to be used for logging on to the ABAP system. When working with
+								the <span class="ph uicontrol">Destinations</span> editor in the cockpit, enter
+								the value of this property in the <span class="ph uicontrol">User</span> field. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4260884e40 "><span class="keyword parmname">jco.client.passwd</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d4260884e43 ">Represents the password of the user that shall be used. Note that passwords in systems
+								of SAP NetWeaver releases lower than 7.0 are case-insensitive and
+								can be only eight characters long. For releases 7.0 and higher,
+								passwords are case-sensitive with a maximum length of 40.<div class="note note"><span class="notetitle">Note</span> When
+									working with the <span class="ph uicontrol">Destinations</span> editor in
+									the cockpit, enter this password in the
+										<span class="ph uicontrol">Password</span> field. Do not enter it as
+									additional property.</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4260884e40 "><span class="keyword parmname">jco.destination.auth_type</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d4260884e43 ">Optional property. <ul class="ul" id="loio629f957a973b49fda84f67338ab39371__ul_pvn_y5v_5n">
+									<li class="li">If the property is not provided, its default value,
+											<kbd class="ph userinput">CONFIGURED_USER</kbd>, is used, which
+										means that user/password or other credentials are directly
+										specified.</li>
+
+									<li class="li">To make use of the principal propagation so that the
+										identity logged on in the cloud application is also logged
+										on in an on-premise system, this property's value needs to
+										be set to <kbd class="ph userinput">PrincipalPropagation</kbd>. In
+										this case, <span class="keyword parmname">jco.client.user</span> and
+											<span class="keyword parmname">jco.client.passwd</span> may not be
+										provided in the configuration.</li>
+
+								</ul>
+<div class="note note"><span class="notetitle">Note</span> In the case of
+										<kbd class="ph userinput">PrincipalPropagation</kbd> value, you
+									should better configure the
+										<span class="keyword parmname">jco.destination.repository.user</span> and
+										<span class="keyword parmname">jco.destination.repository.passwd</span>
+									properties, since there are special permissions needed (for
+									metadata lookup in the back end) that not all business
+									application users might have.</div>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

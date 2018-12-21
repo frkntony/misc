@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Release and Maintenance Strategy</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7c3b53187cc14eac9517aafec30c38df">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Release and Maintenance Strategy</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">As for all components of <span class="ph pname">SAP Cloud Platform</span>, new releases of
+			the <span class="ph pname">Cloud connector</span> are
+			available on the <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">Cloud Tools</a> page. As <span class="ph pname">SAP Cloud Platform</span> releases in a
+			bi-weekly cycle, new releases of the <span class="ph pname">Cloud connector</span> could occur
+			every other week, although the actual releases will be more seldom (new releases are
+			shipped when new features or important bug fixes shall be delivered).</p>
+
+		<p class="p"><span class="ph pname">Cloud connector</span> versions follow
+			the <span class="keyword parmname">&lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;</span> versioning schema.
+			Within a major version, the <span class="ph pname">Cloud connector</span> will stay
+			fully compatible. Within a minor version, the <span class="ph pname">Cloud connector</span> will stay
+			with the same feature set, and higher minor versions usually support additional features
+			compared to lower minor versions. Micro versions are increased to release patches of a
+				<span class="keyword parmname">&lt;master&gt;.&lt;minor&gt;</span> version in order to deliver bug
+			fixes. </p>
+
+		<p class="p">For each supported major version of the <span class="ph pname">Cloud connector</span>, only one
+				<span class="keyword parmname">&lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;</span> version will be
+			provided and supported on the Cloud Tools page. This means that users have to upgrade
+			their existing <span class="ph pname">Cloud connector</span>s in order
+			to get a patch for a bug or to make use of new features. </p>
+
+		<p class="p">New versions of the <span class="ph pname">Cloud connector</span> are
+			announced in the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833">Release Notes<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> of <span class="ph pname">SAP Cloud Platform</span>. We recommend
+			that <span class="ph pname">Cloud connector</span>
+			administrators check regularly the release notes for <span class="ph pname">Cloud connector</span> updates.
+			New versions of the <span class="ph pname">Cloud connector</span> can be
+			applied by using the <span class="ph pname">Cloud connector</span> upgrade
+			capabilities. For more information, see <a class="xref" href="7a7cc373019b4b6eaab39b5ab7082b09.html">Upgrading the Cloud Connector</a>.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> We recommend that you apply an upgrade first in the <span class="ph pname">Cloud connector</span> test
+			landscape to validate that the running applications are working, and then continue with
+			the productive landscape. </div>
+
+		<p class="p">When updates are applied on the cloud, operations continuity of existing <span class="ph pname">Cloud connector</span>s and its
+			connections are assured by the platform, i.e. users do not have to perform manual
+			actions in the <span class="ph pname">Cloud connector</span> when the
+			cloud side gets updated. </p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

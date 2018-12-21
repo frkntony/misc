@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Placeholders are strings that are resolved depending on the scope in which they are used. They have the syntax ${&lt;name&gt;}."/>
+<meta name="description" content="Placeholders are strings that are resolved depending on the scope in which they are used. They have the syntax ${&lt;name&gt;}."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>MTA Placeholders Usage</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod2be03c69ddd4cffb74f7e4765305d47">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">MTA Placeholders Usage</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Placeholders are strings that are resolved depending on the scope in which they are
+		used. They have the syntax <span class="keyword parmname">${&lt;name&gt;}</span>.</p>
+
+		<p class="p">A certain set of placeholders that can be resolved are supported, otherwise they are processed
+			incorrectly and might cause errors. The supported placeholders are: </p>
+
+		<ul class="ul" id="loiod2be03c69ddd4cffb74f7e4765305d47__ul_jnc_jsj_gz">
+			<li class="li"><span class="keyword parmname">${default-url}</span> - used to resolve a default URL of a Java application
+				when it is successfully deployed and started. <div class="note note"><span class="notetitle">Note</span> Тhis placeholder can be part
+					only of the property <span class="keyword parmname">application-url</span>, which serves as a
+						<span class="keyword parmname">provided</span> dependency of
+						<span class="keyword parmname">com.sap.java</span> module type.</div>
+<div class="note sap-example example"><span class="exampletitle">Example</span> 
+					<p class="p">The following example shows the usage of the
+							<span class="keyword parmname">${default-url}</span> placeholder. The modeled java-module
+						provides the <span class="keyword parmname">application-url</span> dependency, which can be
+						consumed by every HTTP destination in the MTA:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">modules:
+  - name: java-module
+    type: com.sap.java
+    provides:
+      - name: java-module
+        properties:
+          application-url: ${default-url}
+    parameters:
+      name: myapp
+      ...</pre></div>
+
+					<p class="p"><span class="ph emphasis emphasis">Result</span>: if the current account is named
+							<span class="keyword parmname">myaccount</span> and the landscape is
+							<span class="keyword parmname">us1.hana.ondemand.com</span>, the
+							<span class="keyword parmname">application-url</span> can be
+							<span class="keyword parmname">http://myappmyaccount.us1.hana.ondemand.com/myapp</span>.</p>
+
+				</div>
+</li>
+
+			<li class="li"><span class="keyword parmname">${landscape-url}</span> - used to resolve a current landscape URL
+				where the deployment is running. </li>
+
+			<li class="li"><span class="keyword parmname">${account-name}</span> - used to resolve a current account name where
+				the deployment is running.</li>
+
+			
+		</ul>
+
+		<div class="note note"><span class="notetitle">Note</span> The placeholders <span class="keyword parmname">${landscape-url}</span> and
+				<span class="keyword parmname">${account-name}</span> can be used only in the property
+				<span class="keyword parmname">url</span> for a destination and property
+				<span class="keyword parmname">application-url</span> that serves as a <span class="keyword parmname">provided</span>
+			dependency of the module type <span class="keyword parmname">com.sap.java</span>.</div>
+
+		<div class="note sap-example example"><span class="exampletitle">Example</span> 
+			<p class="p">The following example shows the usage of <span class="keyword parmname">${landscape-url}</span> and
+					<span class="keyword parmname">${account-name}</span> placeholders. Two HTTP destinations are
+				modeled, where the first is account-level and the second is application-level: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">modules:
+  - name: abc-destination
+    type: com.sap.hcp.destination
+    parameters:
+      name: ExampleApplicationBackend
+      type: HTTP
+      url: http://myapp.${landscape-url}/${account-name}
+      ...
+  - name: abc-java
+    type: com.sap.java
+    parameters:
+      destinations:
+        - name: ExampleWebsite
+          type: HTTP
+          url: http://myapp.${landscape-url}/${account-name}
+          ....</pre></div>
+
+			<p class="p"><span class="ph emphasis emphasis">Result</span>: if the account is named <span class="keyword parmname">myaccount</span> and the
+				landscape is <span class="keyword parmname">us1.hana.ondemand.com</span>, both destinations have a
+					<span class="keyword parmname">URL</span> that equals to
+					<span class="keyword parmname">http://myapp.us1.hana.ondemand.com/myaccount</span>.</p>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d0750b6261334d2697433693d67ae769.html" title="References are used in conjunction with required dependencies to refer properties provided by a linked provided dependency.">MTA References Usage</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

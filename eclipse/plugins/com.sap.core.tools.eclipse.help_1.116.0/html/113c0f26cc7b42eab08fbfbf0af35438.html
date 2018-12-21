@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform Tools provide options for advanced server and application configurations from the Eclipse IDE, as well as direct reference to the cockpit UI."/>
+<meta name="description" content="SAP Cloud Platform Tools provide options for advanced server and application configurations from the Eclipse IDE, as well as direct reference to the cockpit UI."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Advanced Application Configurations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio113c0f26cc7b42eab08fbfbf0af35438">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Advanced Application Configurations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> Tools provide options for advanced server and application
+		configurations from the Eclipse IDE, as well as direct reference to the cockpit
+		UI.</p>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have developed or imported a Java Web application in the Eclipse IDE. For more,
+				information, see <a class="xref" href="ac36e1fc0f634c0caa99916b3bd6b446.html">Developing Java Applications</a> or <a class="xref" href="e8001e24bb571014946684289214ba84.html" title="To get a sample application up and running, import it as an Eclipse project into your Eclipse IDE and then deploy it on the local runtime and SAP Cloud Platform.">Importing Samples as Eclipse Projects</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Referring the Cockpit from the Eclipse IDE</div><div type="Referring the Cockpit from the Eclipse IDE">
+			
+			<ol class="ol" id="loio113c0f26cc7b42eab08fbfbf0af35438__ol_k41_2zw_np">
+				<li class="li">In the <span class="ph uicontrol">Servers</span> view, double-click on the cloud
+					server.</li>
+
+				<li class="li">Open the <span class="ph uicontrol">Overview</span> tab.</li>
+
+				<li class="li">In panel <span class="ph uicontrol">Application Information</span>, click the link <span class="keyword cmdname">Show in
+						Cockpit</span>. The internal Web browser opens the cockpit in a new
+					browser tab.</li>
+
+				<li class="li">The <span class="ph uicontrol">Application URLs</span> panel provides information about
+					your deployed applications.<ul class="ul" id="loio113c0f26cc7b42eab08fbfbf0af35438__ul_nrz_kzw_np">
+						<li class="li">If the cloud server status is different from
+								<span class="keyword parmname">Started</span>, a message tells you that the deployed
+							applications cannot be displayed. You have a UI option to directly start
+							the server.</li>
+
+						<li class="li">If the cloud server is started but no applications are deployed in this
+							account, a relevant message is displayed.</li>
+
+						<li class="li">If the cloud server is started and there are deployed applications, the panel lists their
+							URLs. When you click a URL, the relevant application is opened in a new
+							browser tab by the internal Web browser. </li>
+
+					</ul>
+</li>
+
+			</ol>
+
+			<p class="p"><span class="ph emphasis emphasis">Alternatives</span></p>
+
+			<p class="p">There are alternative ways to open the cockpit (1) and the application URLs (2).</p>
+
+			<ol class="ol" id="loio113c0f26cc7b42eab08fbfbf0af35438__ol_fky_4n5_rp">
+				<li class="li">In the <span class="ph uicontrol">Servers</span> view, open the context menu and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Show In</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Cockpit</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">In the <span class="ph uicontrol">Servers</span> view, expand the cloud server node and,
+					from the context menu of the relevant application, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Application URL</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Open</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. It will be opened in a new browser tab. </li>
+
+			</ol>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> 
+				<ul class="ul" id="loio113c0f26cc7b42eab08fbfbf0af35438__ul_njp_vn5_rp">
+					<li class="li">If the application is published on the cloud server, besides the
+							<span class="ph uicontrol">Open</span> option you can also choose <span class="ph uicontrol">Copy
+							to Clipboard</span>, which only copies the application URL.</li>
+
+					<li class="li">If the application has not been published but only added to the server,
+							<span class="ph uicontrol">Copy to Clipboard</span> will be disabled. The
+							<span class="ph uicontrol">Open</span> option though will display a dialog which
+						allows you to publish and then open the application in a browser.</li>
+
+					<li class="li">If the cloud server is not in <span class="keyword parmname">Started</span> status, both
+							<span class="ph uicontrol">Application URL</span> options will be disabled.</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configuring the Server Runtime</div><div type="Configuring the Server Runtime">
+			
+			<p class="p">After you have deployed your application, you can check and also change the server
+				runtime. Proceed as follows:</p>
+
+			<ol class="ol" id="loio113c0f26cc7b42eab08fbfbf0af35438__ol_qrm_klh_34">
+				<li class="li">In the <span class="ph uicontrol">Servers</span> view, double-click on the cloud
+					server.</li>
+
+				<li class="li">Open the <span class="ph uicontrol">Overview</span> tab.</li>
+
+				<li class="li">In panel <span class="ph uicontrol">Application Information</span>, , the following fields are
+						displayed:<ul class="ul" id="loio113c0f26cc7b42eab08fbfbf0af35438__ul_gdv_4lh_34">
+						<li class="li"><span class="ph uicontrol">Runtime</span> (<kbd class="ph userinput">Java Web</kbd>, <kbd class="ph userinput">Java Web
+								Tomcat 7</kbd>, <kbd class="ph userinput">Java Web Tomcat 8</kbd>,
+								<kbd class="ph userinput">Java EE 6 Web Profile</kbd>) - the new runtime of
+							the cloud server to which you can switch, if relevant. The default is
+								<kbd class="ph userinput">Automatic</kbd>, which is the target runtime of the
+							Web application during creation and deployment.</li>
+
+						<li class="li"><span class="ph uicontrol">Runtime in use</span> (<kbd class="ph userinput">Java Web</kbd>, <kbd class="ph userinput">Java
+								Web Tomcat 7</kbd>, <kbd class="ph userinput">Java Web Tomcat 8</kbd>,
+								<kbd class="ph userinput">Java EE 6 Web Profile</kbd>) - the runtime of the
+							cloud server set during server creation, depending on the landscape
+							host. If you change it via the <span class="ph uicontrol">Runtime</span> option,
+							then <span class="ph uicontrol">Runtime in use</span> will show the new value. </li>
+
+						<li class="li"><span class="ph uicontrol">Account name</span> – the account from which you have
+							deployed your application.</li>
+
+						<li class="li"><span class="ph uicontrol">Application name</span> – the name of the deployed
+							application.</li>
+
+					</ul>
+<div class="note note"><span class="notetitle">Note</span> When you change the <span class="ph uicontrol">Runtime</span> value so that it
+						differs from the one in <span class="ph uicontrol">Runtime in use</span>, after saving
+						your change, a link appears prompting you to republish the
+					server.</div>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Advanced Application Parameters</div><div type="Advanced Application Parameters">
+			
+			<p class="p">From the server editor, you can configure additional application parameters, such as
+				compute unit size, JVM arguments, and others.</p>
+
+			<ol class="ol" id="loio113c0f26cc7b42eab08fbfbf0af35438__ol_jzn_lz5_wq">
+				<li class="li">In the <span class="ph uicontrol">Servers</span> view, double-click on the cloud
+					server.</li>
+
+				<li class="li">Open the <span class="ph uicontrol">Advanced</span> tab, the following panels are displayed: <p class="p">The
+						used Java version field is read-only. The JVM version can be changed by
+						modifying the supported Java version within the project facets properties.
+						</p>
+<ul class="ul" id="loio113c0f26cc7b42eab08fbfbf0af35438__ul_rlw_kcd_xq">
+						<li class="li"><span class="ph uicontrol">Size and Processes</span> – you can change the compute
+							unit size and modify the number of processes.</li>
+
+						<li class="li"><span class="ph uicontrol">JVM</span> – the field showing currently used Java
+							version is read-only. The JVM version can be changed by modifying the
+							supported Java version within the project facets properties.</li>
+
+						<li class="li"><span class="ph uicontrol">Tomcat Connector Attributes</span> – you can modify
+							Tomcat connection parameters and the URI encoding type, as well as
+							enable/disable the response compression.</li>
+
+						<li class="li"><span class="ph uicontrol">Environment variables</span> - you can add, select, edit
+							and remove environment variables.</li>
+
+					</ul>
+</li>
+
+				<li class="li">When ready, save your changes.<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> If you make your configurations on a started server, the changes will
+							take effect after server restart. You can use the link <span class="keyword cmdname">Restart
+								to apply changes</span>.</div>
+
+					</div>
+</li>
+
+			</ol>
+
+			<p class="p"/>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="7613c8c7711e1014839a8273b0e91070.html">Runtime for Java</a></div>
+<div><a class="link" href="ee71c1a4aea84558accb2524785b21bc.html" title="You can choose the Java Runtime Environment (JRE) version used for an application.">Choosing JRE Version</a></div>
+<div><a class="link" href="b82d3929218a42558146c58d2f68121e.html" title="Using SAP Cloud Platform console client, you can configure the JRE by specifying custom VM arguments.">Configuring VM Arguments</a></div>
+<div><a class="link" href="97136a5f7cf745fa9511348de941f8d2.html">Setting the Cloud Environment Variables Using Eclipse IDE</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

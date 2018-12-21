@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Build-Jdk: 1.7.0_13
+Created-By: Apache Maven 3.0.4
+
+Name: META-INF/maven/com.sap.core.tools.eclipse.logging/com.sap.core.t
+ ools.eclipse.logging.feature/pom.xml
+SHA-256-Digest: dGZxUX6BUKb3GMJNp2KlfK4ugBx9HoT+3Eg6kIPYXIU=
+
+Name: feature.xml
+SHA-256-Digest: D1dqaphO/FG8m/wlVSqUjU1Orq83zpRYXE9MIZdjDg4=
+
+Name: feature.properties
+SHA-256-Digest: SbF2jdErF3583P6KSL+n7BXKmN2jWBXCP0224eyXW8Q=
+
+Name: META-INF/maven/com.sap.core.tools.eclipse.logging/com.sap.core.t
+ ools.eclipse.logging.feature/pom.properties
+SHA-256-Digest: MHgSY8u2RP/U6SetBaHuTfro8dYuyadwMjdHrP8au+s=
+

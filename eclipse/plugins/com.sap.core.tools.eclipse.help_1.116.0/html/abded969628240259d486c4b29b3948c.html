@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The cockpit allows you to deploy Java applications as WAR files and supports a number of deployment options for configuring the application."/>
+<meta name="description" content="The cockpit allows you to deploy Java applications as WAR files and supports a number of deployment options for configuring the application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Deploying on the Cloud with the Cockpit</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioabded969628240259d486c4b29b3948c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Deploying on the Cloud with the Cockpit</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">The cockpit allows you to deploy Java applications as WAR files and supports a number of
+		deployment options for configuring the application.</p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and select an account.  </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Java Applications</span> in the navigation area.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose  <span class="ph uicontrol">Deploy Application</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the WAR file that you want to deploy, for example, in directory
+						<span class="ph filepath">&lt;SDK_location&gt;/samples/</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd"> Use the application name that the cockpit proposes to you. It is the same name
+					as for the WAR file. Alternatively, enter an application name. Note that
+					application names must start with a letter, can contain lowercase letters and
+					numbers only, and must not exceed 30 characters.</span>
+				<div class="itemgroup info">You can also assign a display name and a description to a Java
+					application.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optionally specify additional parameters to configure the application. If
+					omitted, default values will be assigned.</span>
+				<div class="itemgroup info">For more information about the deploy parameters, see the <a class="xref" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a> command
+					documentation.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Deploy</span> to deploy the WAR file to the cloud
+					platform.</span>
+				<div class="itemgroup stepresult">The <span class="ph uicontrol">Deploy Application</span> dialog box remains on the
+					screen while the deployment is in progress. When the deployment is over, a
+					confirmation appears that the application has been successfully deployed. Note
+					that at this stage the application is not yet up and running.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the dialog box, choose one of the following options:</span>
+				<ul class="ul choices" id="loioabded969628240259d486c4b29b3948c__choices_q1y_qk3_cp">
+					<li class="li choice"><span class="ph uicontrol">Start</span>: Start the application to activate its URL
+						and make the application available to your end users. </li>
+
+					<li class="li choice"><span class="ph uicontrol">Close</span>: Simply close the dialog box if you do not
+						want to start the application immediately.</li>
+
+				</ul>
+
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div><p class="p">Your newly deployed application appears in the list of Java applications.</p>
+
+				<p class="p"><span class="ph emphasis emphasis">Updating a deployed application</span></p>
+
+				<p class="p">You can update or redeploy the application whenever required. To do this, choose <span class="ph uicontrol">Update application</span> to open
+					the same dialog box as in update mode. You can update the application with a new WAR file or change the configuration
+					parameters.</p>
+
+				<p class="p">To change the name of a deployed application, deploy a new application under the desired name, and delete the application whose
+					name you want to change. </p>
+
+			</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="9b232700022f4055a817485e3cac7447.html" title="You can view details about your currently selected Java application. By adding a suitable display name and a description, you can identify the application more easily.">Defining Application Details (Java Apps)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Detailed Method Description</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio1668071e54e44b6fb9ac257dd90fc16d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Detailed Method Description</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">The following methods for modifying ACLs (Access Control Lists) in the CMIS client library are
+			available:</p>
+
+		<ul class="ul" id="loio1668071e54e44b6fb9ac257dd90fc16d__ul_nzn_bbb_qn">
+			<li class="li"><samp class="ph codeph">applyAcl(List&lt;Ace&gt; addAcl</samp>, <samp class="ph codeph">List&lt;Ace&gt;
+					removeAcl</samp>, <samp class="ph codeph">AclPropagation propagation)</samp><p class="p">First removes
+					the ACEs (Access Control Entries) in
+						<span class="ph sap-technical-name sap-technical-name">removeAcl</span> from the current ACL and
+					adds the ACEs from <span class="ph sap-technical-name sap-technical-name">addAcl</span>
+					afterward.</p>
+</li>
+
+			<li class="li"><samp class="ph codeph">setAcl(List<var class="keyword varname">&lt;Ace&gt;</var> acl)</samp><p class="p">Sets the ACL on the
+					specified one.</p>
+</li>
+
+			<li class="li"><samp class="ph codeph">addAcl( List<var class="keyword varname">&lt;Ace&gt;</var> acl, AclPropagation propagation
+					)</samp><p class="p">Same as applyAcl with <samp class="ph codeph">addAcl = acl</samp> and
+						<samp class="ph codeph">removeAcl = null</samp></p>
+</li>
+
+			<li class="li"><samp class="ph codeph">remove(List<var class="keyword varname">&lt;Ace&gt;</var> acl, AclPropagation
+					propagation)</samp><p class="p">Same as
+						<span class="ph sap-technical-name sap-technical-name">applyAcl</span> with <samp class="ph codeph">addAcl =
+						null</samp> and <samp class="ph codeph">removeAcl = acl</samp></p>
+</li>
+
+		</ul>
+
+		<p class="p">To modify the ACL of the current object only, set the <span class="keyword parmname">propagation</span>
+			parameter  to <span class="ph sap-technical-name sap-technical-name">OBJECTONLY</span>. To modify the ACL of
+			the current object as well as of the ACLs of all of the object's descendants, set the
+				<span class="keyword parmname">propagation</span> parameter to
+				<span class="ph sap-technical-name sap-technical-name">PROPAGATE</span>. You can apply
+				<span class="ph sap-technical-name sap-technical-name">PROPAGATE</span> only to folders. It works as
+			follows: The ACEs that are added and removed at the root folder of the operation are
+			computed and then <span class="ph sap-technical-name sap-technical-name">applyAcl</span> is called with these
+			ACE sets for each descendant.</p>
+
+		<p class="p">For one principal at most one ACE is stored in an object ACL. Assigning a more powerful
+			permission to a principal replaces the inferior permission with the more powerful one.
+				<span class="ph sap-technical-name sap-technical-name">cmis:all</span> is, for example, more powerful
+			than <span class="ph sap-technical-name sap-technical-name">sap:delete</span>. If, for example, the current
+			permission for a principal is <span class="ph sap-technical-name sap-technical-name">cmis:read</span> and the
+			permission <span class="ph sap-technical-name sap-technical-name">cmis:write</span> is added this results in
+			an ACL with one ACE for the principal containing the permission
+				<span class="ph sap-technical-name sap-technical-name">cmis:write</span>. Adding an inferior permission
+			has no effect.</p>
+
+		<p class="p">Removing a permission for a principal from an object results in no ACE entry for the
+			principal in that ACL. This is independent of the current settings in the ACL with
+			respect to this principal.</p>
+
+		<p class="p">In methods with parameters for adding and removing ACEs, first the specified ACEs are removed
+			and then the new ones are added.</p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

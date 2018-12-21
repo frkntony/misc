@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>JMX Checks Commands</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio76130cbc711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">JMX Checks Commands</h1>
+<div class="body conbody"><div class="section" id="loio76130cbc711e1014839a8273b0e91070__section_205E056B9AD9480A8A9B72A624F3723B">
+			<p class="p">This document contains the SAP Cloud Platform console client commands related to JMX
+				checks and their parameters</p>
+
+		</div>
+<div class="section" id="loio76130cbc711e1014839a8273b0e91070__section_571A39647E8241D587615D161CF1EC5E"><div class="section_title">Creating a JMX Check</div><div type="Creating a JMX Check"><span class="keyword cmdname">create-jmx-check</span>
+<div class="tablenoborder"><table summary="" id="loio76130cbc711e1014839a8273b0e91070__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1781988e29">Required</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e29 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e29 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e29 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e29 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e29 "><span class="keyword parmname">-n</span>, <span class="keyword parmname">--name</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e29 ">Name of the JMX check<p class="p">The name must be up to 99 characters long
+									and must not contain the following symbols: ` ~ ! $ % ^ &amp; *
+									| ' " &lt; &gt; ? , ( ) =</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e29 "><span class="keyword parmname">-O</span>,
+								<span class="keyword parmname">--object-name</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e29 ">Object name of the MBean that you want to call<p class="p">If it contains quotation marks, they
+									should be escaped with ‘\’.</p>
+<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e29 "><span class="keyword parmname">-A</span>, <span class="keyword parmname">--attribute</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e29 ">Name of the attribute<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio76130cbc711e1014839a8273b0e91070__table_uws_n1l_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1781988e107">Optional</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-K</span>, <span class="keyword parmname">--key</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Attribute key<p class="p">It is needed only if the attribute is a composite data
+										structure.</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-o</span>, <span class="keyword parmname">--operation</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Operation that has to be called on the MBean after checking the attribute value.<p class="p">It
+									is useful for resetting statistical
+										counters.</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-U</span>, <span class="keyword parmname">--unit</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Unit of measurement<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-W</span>, <span class="keyword parmname">--warning</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Warning threshold<p class="p">The threshold can be a regular expression in
+									case of string values or compliant with the official nagios
+									threshold/ranges format. For more information about the format
+									in case it is a number, see the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://nagiosplug.sourceforge.net/developer-guidelines.html#THRESHOLDFORMAT" target="_blank">official nagios
+								documentation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-C </span>, <span class="keyword parmname">--critical</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Critical threshold<p class="p">The threshold can be a regular expression in
+									case of string values or compliant with the official nagios
+									threshold/ranges format</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e107 "><span class="keyword parmname">-w</span>, <span class="keyword parmname">--overwrite</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e107 ">Overwrites an existing check<p class="p"><span class="keyword cmdname">Default</span>: false
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p">Example:</p>
+<p class="p"><kbd class="ph userinput">neo create-jmx-check -a myaccount -b demo -u
+					s1234567 -n "JVM Heap Memory Used" -O java.lang:type=Memory -A HeapMemoryUsage
+					-K used -U B --host hana.ondemand.com</kbd></p>
+</div></div>
+<div class="section" id="loio76130cbc711e1014839a8273b0e91070__section_BD8FB491484E4E7787C4A11CEFB0E97C"><div class="section_title">Deleting a JMX Check</div><div type="Deleting a JMX Check"><span class="keyword cmdname">delete-jmx-check</span><p class="p">It deletes the specified JMX
+				check or all JMX checks. </p>
+
+<div class="tablenoborder"><table summary="" id="loio76130cbc711e1014839a8273b0e91070__table_ikh_wvn_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1781988e254">Required</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e254 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e254 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e254 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e254 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e254 "><span class="keyword parmname">-n</span>, <span class="keyword parmname">--name</span> or
+									<span class="keyword parmname">-A</span>,  all</td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e254 ">Name of the JMX check to be deleted or all JMX checks configured
+								for the given account and application are
+										deleted.<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio76130cbc711e1014839a8273b0e91070__table_itj_xvn_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1781988e306">Optional</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e306 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e306 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e306 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e306 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p">Example:</p>
+<p class="p"><kbd class="ph userinput">neo delete-jmx-check -a myaccount -b demo -u
+					s1234567 -n "JVM Heap Memory Used" --host
+			hana.ondemand.com</kbd></p>
+</div></div>
+<div class="section" id="loio76130cbc711e1014839a8273b0e91070__section_44F01A3C16CC4755A92BC7DDABFD28A0"><div class="section_title">Listing JMX Checks</div><div type="Listing JMX Checks"><span class="keyword cmdname">list-jmx-checks</span>
+<div class="tablenoborder"><table summary="" id="loio76130cbc711e1014839a8273b0e91070__table_gpz_kxn_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1781988e365">Required</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e365 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e365 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e365 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e365 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio76130cbc711e1014839a8273b0e91070__table_yj2_4xn_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1781988e400">Optional</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e400 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e400 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e400 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e400 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1781988e400 "><span class="keyword parmname">-R</span>,
+								<span class="keyword parmname">--recursively</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1781988e400 ">Lists JMX checks recursively, starting from the specified level. For example, if only
+								'account' is passed as an argument, it starts from the account level
+								and then lists all checks configured on application
+										level.<p class="p"><span class="keyword cmdname">Default</span>: false
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p">Example:</p>
+<p class="p"><kbd class="ph userinput">neo list-jmx-checks -a myaccount -b demo -u
+					s1234567 -R --host hana.ondemand.com</kbd></p>
+<div class="p">Sample output:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"> 
+SAP Cloud Platform Console Client
+
+
+Password for your user:
+
+
+Running list-jmx-check with the following parameters:
+
+	account    : myaccount
+	host       : https://hana.ondemand.com
+	recursively: true
+	user       : s1234567
+
+
+Account-level JMX checks
+
+    account         : myaccount
+    check-name      : JVM Heap Memory Used
+    object-name     : java.lang:type=Memory
+    critical        : 60
+    attribute       : HeapMemoryUsage
+    attribute key   : used
+    warning         : 700000000
+    critical        : 900000000 
+    unit            : B
+
+
+Application JMX checks
+			
+      application       : demo
+      check-name        : JVM Heap Memory Used
+      object-name       : java.lang:type=Memory
+      attribute         : HeapMemoryUsage
+      attribute key     : used
+      warning           : 600000000
+      critical          : 850000000
+      unit              : B
+
+</pre></div>
+
+			</div>
+</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+		<div id="custom-footerSpacer">__________________________________________________ </div>
+		<a class="copyright" target="_blank" href="copyright.html">Copyright</a>
+		|
+		<a class="disclaimer" target="_blank" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+	</div>
+</body>
+</html>

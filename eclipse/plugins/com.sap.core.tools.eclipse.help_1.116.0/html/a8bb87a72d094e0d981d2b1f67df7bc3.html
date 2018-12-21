@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Principal Propagation to an ABAP System for HTTPS</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa8bb87a72d094e0d981d2b1f67df7bc3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Principal Propagation to an ABAP System for HTTPS</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">In this page, the abstract description for principal propagation configuration is mapped to a
+				concrete step-by-step instruction for an ABAP application server configuration of
+				the use case. </p>
+
+			<p class="p">Exemplary data for the scenario:</p>
+
+			<ul class="ul" id="loioa8bb87a72d094e0d981d2b1f67df7bc3__ul_pdv_hl3_zm">
+				<li class="li">System certificate was issued by: <kbd class="ph userinput">CN=MyCompany CA</kbd>, <kbd class="ph userinput">O=Trust
+						Community</kbd>, <kbd class="ph userinput">C=DE</kbd></li>
+
+				<li class="li">It has  subject: <kbd class="ph userinput">CN=SCC</kbd>, <kbd class="ph userinput">OU=HCP Scenarios</kbd>,
+						<kbd class="ph userinput">O=Trust Community</kbd>, <kbd class="ph userinput">C=DE</kbd>.</li>
+
+				<li class="li">An example for a short-living certificate has the subject
+						<kbd class="ph userinput">CN=P1234567890</kbd>, where <span class="keyword cmdname">P1234567890</span>
+					is the platform user</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">1. Configuring ABAP Systems to Trust Cloud Connector's System Certificate</div><div type="1. Configuring ABAP Systems to Trust Cloud Connector's System Certificate">
+			
+			<p class="p">You have the following two parts:</p>
+
+			<p class="p"><span class="ph emphasis emphasis">The ABAP system trusts the <span class="ph pname">Cloud connector</span>'s
+					system certificate:</span></p>
+
+			<ol class="ol" id="loioa8bb87a72d094e0d981d2b1f67df7bc3__ol_hrb_nl3_zm">
+				<li class="li">Open the <span class="ph uicontrol">Trust Manager</span> (transaction code:
+					<span class="keyword cmdname">STRUST</span>).</li>
+
+				<li class="li">Double-click on the <span class="ph uicontrol">SSL-Server Standard</span> folder in the
+					menu tree on the left.</li>
+
+				<li class="li">In the displayed screen, click on the <span class="ph uicontrol">Import certificate</span>
+					button.</li>
+
+				<li class="li">In the dialog window, choose the certificate file representing the public key of
+					the issuer of the system certificate, for example, in DER format. Typically,
+					this is a CA certificate. In case you decide to use a self-signed system
+					certificate, it is the system certificate itself.</li>
+
+				<li class="li">Afterwards, the details of this certificate are shown in the section above. Mapped to the
+					exemplary certificate, you would see C<kbd class="ph userinput">N=MyCompany CA</kbd>,
+						<kbd class="ph userinput">O=Trust Community</kbd>, <kbd class="ph userinput">C=DE</kbd> as
+					subject.</li>
+
+				<li class="li">If you are sure you are importing the correct certificate, you can integrate the
+					certificate into the certificate list by choosing  the <span class="ph uicontrol">Add to
+						Certificate List</span> button.</li>
+
+				<li class="li">In the end, the CA certificate (<kbd class="ph userinput">CN=MyCompany CA</kbd>, <kbd class="ph userinput">O=Trust
+						Community</kbd>, <kbd class="ph userinput">C=DE</kbd>) is part of the
+					certificate list.</li>
+
+			</ol>
+
+			<p class="p"/>
+
+			<p class="p"><span class="ph emphasis emphasis">The ICM trusts the system certificate for principal propagation:</span></p>
+
+			<ol class="ol" id="loioa8bb87a72d094e0d981d2b1f67df7bc3__ol_ywl_rl3_zm">
+				<li class="li">Open the <span class="ph uicontrol">Profile Editor</span> (transaction code:
+					<span class="keyword cmdname">RZ10</span>).</li>
+
+				<li class="li">Select the profile you like to edit, for example, the DEFAULT profile. </li>
+
+				<li class="li">Select the radio button for <span class="ph uicontrol">Extended maintenance</span> and
+					choose the <span class="ph uicontrol">Change</span> button.</li>
+
+				<li class="li">Create the following two parameters:<ul class="ul" id="loioa8bb87a72d094e0d981d2b1f67df7bc3__ul_ilp_tl3_zm">
+						<li class="li"><span class="keyword cmdname">icm/HTTPS/trust_client_with_issuer</span>: this is the issuer of the system
+							certificate (exemplary data: <kbd class="ph userinput">CN=MyCompany CA</kbd>,
+								<kbd class="ph userinput">O=Trust Community</kbd>,
+								<kbd class="ph userinput">C=DE</kbd>)</li>
+
+						<li class="li"><span class="keyword cmdname">icm/HTTPS/trust_client_with_subject</span>: this is the subject of the system
+							certificate (exemplary data: <kbd class="ph userinput">CN=SCC</kbd>,
+								<kbd class="ph userinput">OU=HCP Scenarios</kbd>, <kbd class="ph userinput">O=Trust
+								Community</kbd>, <kbd class="ph userinput">C=DE</kbd>)</li>
+
+					</ul>
+<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">In case you have applied SAP Note <a href="http://help.sap.com/disclaimer?site=https://launchpad.support.sap.com/#/notes/2052899" target="_blank">2052899 <img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> to your system, you can
+							alternatively provide an additional parameter for
+								<span class="keyword parmname">icm/trusted_reverse_proxy_&lt;x&gt;</span>
+						</p>
+
+						<p class="p">For example: <kbd class="ph userinput">icm/trusted_reverse_proxy_2</kbd> =
+							SUBJECT="CN=SCC, OU=HCP Scenarios, O=Trust Community, C=DE",
+							ISSUER="CN=MyCompany CA, O=Trust Community, C=DE"</p>
+
+					</div>
+</li>
+
+				<li class="li">Save the profile.</li>
+
+				<li class="li">Open the <span class="ph uicontrol">ICM Monitor</span> (transaction code: <span class="keyword cmdname">SMICM</span>) and
+					restart the ICM. To do so, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Administration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">ICM</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Exit Hard</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Global</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Verify that the two profile parameters have been taken over by ICM as desired. To do so,
+					choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Goto</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Parameters</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Display </span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+			</ol>
+
+			<div class="note note"><span class="notetitle">Note</span> In case you have a Web dispatcher installed in front of the ABAP system, trust needs to be
+				added in its configuration files with the same parameters as for the ICM. In
+				addition, the system certificate of the <span class="ph pname">Cloud connector</span> needs
+				to be added to the trust list of the Web dispatcher Server PSE.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">2. Mapping Short-Living Certificates to Corresponding Users</div><div type="2. Mapping Short-Living Certificates to Corresponding Users">
+			
+			<p class="p">You can do this manually in the system as described below or make use of an Identity
+				Management Solution for a more comfortable approach. For example, for large numbers
+				of users the rule-based certificate mapping is a good way to save time and effort.
+				For more information, see <a class="xref" href="4f8540f4c01f447992ef2f3dff8ab4dd.html">Rule-based Mapping of Certificates</a>.</p>
+
+			<ol class="ol" id="loioa8bb87a72d094e0d981d2b1f67df7bc3__ol_sqg_zl3_zm">
+				<li class="li">Open <span class="ph uicontrol">Assignment of External ID to Users</span> (transaction code:
+						<span class="keyword cmdname">EXTID_DN</span>).</li>
+
+				<li class="li">Switch to edit mode.</li>
+
+				<li class="li">Create a new entry. Specify the subject of the certificate as <span class="keyword cmdname">External
+					ID</span>. Mapped to the exemplary data, this is
+						<kbd class="ph userinput">CN=P1234567890</kbd>. In the <span class="ph uicontrol">User</span>
+					field, provide the appropriate ABAP user, for example
+						<kbd class="ph userinput">JOHNSMITH</kbd>.</li>
+
+				<li class="li">Activate the mapping by checking <span class="ph uicontrol">Activate</span>.</li>
+
+				<li class="li">Save the mapping.</li>
+
+				<li class="li">Repeat the previous steps for all users that shall be supported for the scenario.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">3. Providing Logon Data</div><div type="3. Providing Logon Data">
+			
+			<p class="p">Optional procedure. Execute these steps in case your scenario requires basic
+				authentication support for some of the ICF services.</p>
+
+			<ol class="ol" id="loioa8bb87a72d094e0d981d2b1f67df7bc3__ol_f5r_bm3_zm">
+				<li class="li">Go to <span class="ph uicontrol">Maintain Services</span> (transaction code:
+					<span class="keyword cmdname">SICF</span>).</li>
+
+				<li class="li">Enter a <span class="ph uicontrol">Service Name</span>.</li>
+
+				<li class="li">Double click on the service and go to the <span class="ph uicontrol">Logon Data</span>
+					tab.</li>
+
+				<li class="li">Switch to <span class="ph uicontrol">Alternative Logon Procedure</span> and make sure that
+						<span class="ph uicontrol">Basic Authentication Logon Procedure</span> is
+						before<span class="ph uicontrol"> Logon Through SSL Certificate</span>.</li>
+
+			</ol>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="4f8540f4c01f447992ef2f3dff8ab4dd.html">Rule-based Mapping of Certificates</a></div>
+<div><a class="link" href="58803a25e5894d759e0df1c5513b41ed.html">Configuring Subject Pattern for Principal Propagation</a></div>
+<div><a class="link" href="a4ee70f0274248f8bbc7594179ef948d.html">Setting Up Trust</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

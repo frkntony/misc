@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Destinations from the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe51558bbbb571014bfc89325eaf075c0">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Configuring Destinations from the Console Client</h1>
+<div class="body conbody"><div class="section" id="loioe51558bbbb571014bfc89325eaf075c0__section_78B5C27B41534BB9AA575F97C786F60E"> 
+		<p class="p">As an application operator, you can configure your application using <span class="ph pname">SAP Cloud Platform</span> console
+				client. You can configure <span class="keyword parmname">HTTP</span>, <span class="keyword parmname">Mail</span> or
+					<span class="keyword parmname">RFC</span> destinations using a standard properties file. </p>
+ 
+		<p class="p">The tasks listed below demonstrate how to upload, download, and delete connectivity
+				destinations. You can perform these operations for destinations related to your own
+				account, a provider account, your own application or an application provided by
+				another account. </p>
+ 
+		<p class="p">To use an application from another account, you must be subscribed to this application through
+				your account. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> Destination files must be encoded in <span class="ph emphasis emphasis">ISO 8859-1</span> character
+				encoding.</div>
+ 
+	 </div>
+
+		<div class="section" id="loioe51558bbbb571014bfc89325eaf075c0__section_0E9FC51F6E9B4C838C0EBD2DB4D75928"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loioe51558bbbb571014bfc89325eaf075c0__ul_ghs_vrx_1k">
+				<li class="li">
+					<p class="p">You have downloaded and set up the console client. For more information, see
+							<a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">For specific information about all connectivity restrictions, see <a class="xref" href="e54cc8fbbb571014beb5caaf6aa31280.html">SAP Cloud Platform Connectivity</a> → section
+						"Restrictions".</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+<div class="section" id="loioe51558bbbb571014bfc89325eaf075c0__section_9D313633851249068188652502BE8AE0"><div class="section_title">HTTP Destination Properties Files</div><div type="HTTP Destination Properties Files"> 
+		 
+		<ul class="ul"><li class="li">
+					<span class="keyword parmname">Name</span> - the name of the destination.</li>
+<li class="li">
+					<span class="keyword parmname">URL</span> - the URL of the remote system or service. </li>
+<li class="li">
+					<span class="keyword parmname">Authentication</span> - the type of authentication against the
+					remote system or service. </li>
+</ul>
+ 
+		<p class="p">
+		</p>
+ 
+		<p class="p">The number of mandatory property keys varies depending of the authentication type you choose.
+				For more information about HTTP destination properties files, <a class="xref" href="b068356dd7c34cf7ad6b6023deeb317d.html">HTTP Destinations</a>. </p>
+
+			<p class="p"/>
+
+			<p class="p">Key stores and trust stores must be stored in JKS files with a standard
+					<span class="ph uicontrol">.jks</span> extension. </p>
+
+			<p class="p">If mandatory fields are missing or data is specified incorrectly, you will be prompted
+				accordingly by the console client. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe51558bbbb571014bfc89325eaf075c0__section_3A0181EBB4094C0C959765990C4F1ADC"><div class="section_title">Mail Destination Properties Files</div><div type="Mail Destination Properties Files"> 
+		 
+		<ul class="ul"><li class="li"><span class="keyword parmname">Name</span> - the name of the destination.</li>
+<li class="li"><span class="keyword parmname">Type</span> - must be "MAIL" for mail destinations. </li>
+<li class="li"><span class="keyword parmname">mail.*</span> - <span class="keyword apiname">javax.mail</span> properties for configuring the mail
+					session. </li>
+</ul>
+
+			<p class="p"/>
+ 
+		<p class="p">For more information about mail destination properties files, see <a class="xref" href="a191df7fa8f84be18578b3da3dd10654.html" title="A mail destination is used to specify the mail server settings for sending or fetching e-mail, such as the e-mail provider, e-mail account, and protocol configuration.">Mail Destinations</a>. </p>
+ 
+		<p class="p">If mandatory fields are missing or data is specified incorrectly, you will be prompted
+				accordingly by the console client. </p>
+ 
+	 </div></div>
+
+		<div class="section" id="loioe51558bbbb571014bfc89325eaf075c0__section_N100E6_N10013_N10001"><div class="section_title">RFC Destination Properties Files</div><div type="RFC Destination Properties Files">
+			
+			<ul class="ul" id="loioe51558bbbb571014bfc89325eaf075c0__ul_unj_m4n_gk">
+				<li class="li">
+					<span class="keyword parmname">Name</span> - the name of the destination.</li>
+
+				<li class="li">
+					<span class="keyword parmname">Type</span> - must be "RFC" for RFC destinations. </li>
+
+				<li class="li">
+					<span class="keyword parmname">jco.client*</span> -  JCo properties for configuring an RFC
+					connection. </li>
+
+				<li class="li"><span class="keyword parmname">jco.destination*</span> - JCo properties for configuring the
+					behavior of a JCo destination. </li>
+
+			</ul>
+
+			<p class="p">
+			</p>
+
+			<p class="p">All properties except <span class="keyword parmname">Name</span> and <span class="keyword parmname">Type</span> must
+				start with "<kbd class="ph userinput">jco.client.</kbd>" or
+					"<kbd class="ph userinput">jco.destination</kbd>". For more information about RFC
+				destination properties files, see <a class="xref" href="e184daba118b46679c6968567bacc98e.html">RFC Destinations</a>. </p>
+
+			<p class="p">If mandatory fields are missing or data is specified incorrectly, you will be prompted
+				accordingly by the console client.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tasks</div><div type="Tasks">
+			
+			<ul class="ul" id="loioe51558bbbb571014bfc89325eaf075c0__ul_ar1_qv1_pn">
+				<li class="li"><a class="xref" href="7bd8fcd7e74c467c811144505e0280fb.html">Uploading Destinations</a></li>
+
+				<li class="li"><a class="xref" href="f02a359183c74429a9d82b23feb15243.html">Downloading Destinations</a></li>
+
+				<li class="li"><a class="xref" href="1d58171167a04aeca12656fdf982193a.html">Deleting Destinations</a></li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tutorials with Destinations</div><div type="Tutorials with Destinations">
+			
+			<ul class="ul" id="loioe51558bbbb571014bfc89325eaf075c0__ul_bnr_dv1_pn">
+				<li class="li"><a class="xref" href="e70a574cbb57101494a781920e3c9d64.html" title="This step-by-step tutorial shows how you can send an e-mail from a simple Web application using an e-mail provider that is accessible on the Internet. As an example, it uses Gmail.">Tutorial: Sending E-Mails</a></li>
+
+				<li class="li"><a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html">Consuming Internet Services (Java Web or Java EE 6 Web Profile)</a></li>
+
+				<li class="li"><a class="xref" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a></li>
+
+				<li class="li"><a class="xref" href="0a238b915b3a48adb950e5807654226c.html">Tutorial: Invoking ABAP Function Modules in On-Premise ABAP Systems</a></li>
+
+			</ul>
+
+			<p class="p"/>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="cf2a1e3b966b42f09f907d92eb6a7bea.html">Examples (Console)</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

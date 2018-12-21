@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>MyFolderTypeDefinition Class</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio425b93ebd192422da3a438a5fafda706">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">MyFolderTypeDefinition Class</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"/>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+import java.util.Map;
+
+import org.apache.chemistry.opencmis.commons.definitions.FolderTypeDefinition;
+import org.apache.chemistry.opencmis.commons.definitions.PropertyDefinition;
+import org.apache.chemistry.opencmis.commons.enums.BaseTypeId;
+
+public class MyFolderTypeDefinition extends MyTypeDefinition implements FolderTypeDefinition {
+
+  public MyFolderTypeDefinition(String idAndQueryName, String description, 
+    String displayName, String localName, String localNamespace, 
+    String parentTypeId, Boolean isCreatable,
+    Boolean includedInSupertypeQuery, Boolean queryable,
+    Map&lt;String, PropertyDefinition&lt;?&gt;&gt; propertyDefinitions) {
+
+    super(idAndQueryName, description, displayName, localName, localNamespace, 
+      parentTypeId, isCreatable, includedInSupertypeQuery, queryable, 
+      propertyDefinitions);
+  }
+
+  @Override
+  public BaseTypeId getBaseTypeId() {
+    return BaseTypeId.CMIS_FOLDER;
+  }
+
+}
+
+
+</pre></div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

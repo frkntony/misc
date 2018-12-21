@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.sqlscript.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.sqlscript.debugger.core"
+         download-size="232"
+         install-size="467"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sqlscript.debugger.ui"
+         download-size="102"
+         install-size="195"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sqlscript.reference.help"
+         download-size="2812"
+         install-size="5764"
+         version="1.6.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.editor"
+         download-size="123"
+         install-size="254"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sql.editor"
+         download-size="104"
+         install-size="207"
+         version="2.3.39"
+         unpack="false"/>
+
+
+   <plugin
+         id="com.sap.ndb.studio.sqlscript.procedure"
+         download-size="99"
+         install-size="206"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sqlscript.procedure.template"
+         download-size="128"
+         install-size="256"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sqlscript.function"
+         download-size="29"
+         install-size="40"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You upload the ZIP files containing the extension application resource files on SAP Cloud Platform using the SAP Cloud Platform console client."/>
+<meta name="description" content="You upload the ZIP files containing the extension application resource files on SAP Cloud Platform using the SAP Cloud Platform console client."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Upload the Resource Files on SAP Cloud Platform</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod2752074bd4f40bc89241712449bb092">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Upload the Resource Files on SAP Cloud Platform</h1>
+<div class="body taskbody"><p class="shortdesc">You upload the ZIP files containing the extension application resource files on SAP HANA
+		Cloud Platform using the SAP Cloud Platform console client.</p>
+<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  SAP Cloud Platform extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			<ul class="ul" id="loiod2752074bd4f40bc89241712449bb092__ul_kxh_d4z_cq"><li class="li">You have the ZIP file containing the extension application resource file on your local
+					drive.</li>
+<li class="li">
+					<p class="p">You have downloaded and configured SAP Cloud Platform console client.
+						For more information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+</ul>
+
+		</div>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Using the <span class="ph filepath">upload-resource</span> console client command, you upload ZIP files
+				containing the extension application resource files, such as the SAP SuccessFactors HCM
+				Suite role definitions and the Employee Central home page tile definitions, into the
+				SAP Cloud Platform system repository of your extension account. You can share
+				the the uploaded resources between the extension applications deployed in this
+				account.</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loiod2752074bd4f40bc89241712449bb092__steps_qmh_1mz_cq"><li class="li step stepexpand"><span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span></li>
+<li class="li step stepexpand"><span class="ph cmd">To upload the ZIP file containing the resource files, execute the following command:</span><div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-resource --name &lt;resource_name&gt; --location &lt;path_to_resource&gt; --account &lt;account_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt;</pre></div>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Enter your password if requested.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Press ENTER and the upload of the file will start.</span><div class="itemgroup stepresult">If the ZIP file contains resources that already exist in the repository, the system
+					notifies you and asks you whether to overwrite them. If the upload fails, check
+					if you have defined the parameters correctly.</div></li>
+</ol>
+<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have uploaded the ZIP file containing the resources required for your extension
+			application into the SAP Cloud Platform system repository for your extension
+			account.</div></div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="4af7ba3187194b8d8cc0bc0f846664fe.html" title="This command uploads a solution resource file into the SAP Cloud Platform system resource repository for a specified extension account.">upload-resource (Beta)</a></div>
+<div><a class="link" href="09aca8e342c74b07b7f044da08c38e6d.html" title="Deletes a solution resource file from the system repository of a specified extension account.">delete-resource (Beta)</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

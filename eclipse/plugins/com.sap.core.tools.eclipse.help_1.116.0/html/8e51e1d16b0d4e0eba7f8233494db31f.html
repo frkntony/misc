@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>МТА Extension Descriptors (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8e51e1d16b0d4e0eba7f8233494db31f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">МТА Extension Descriptors (Beta)</h1>
+
+	<div class="body conbody">
+		<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for all <span class="ph pname">SAP Cloud Platform</span>
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+		<div class="note note"><span class="notetitle">Note</span> Using an extension descriptor is optional.</div>
+
+		<p class="p">The purpose of an extension descriptor is to provide additional configuration information
+			required when deploying a specific multi-target application (MTA) to a concrete target
+			platform. It can extend the <span class="ph sap-technical-name sap-technical-name">mtad.yaml</span>
+			deployment descriptor contained in the MTA, or another extension descriptor. You can
+			provide it during the initial deployment of its dedicated MTA, or afterwards at some
+			point in time. Note that it always has to declare which descriptor it is extending.</p>
+
+		<p class="p">The file extension used for extension descriptors is
+				<span class="ph sap-technical-name sap-technical-name">mtaext</span>.</p>
+
+		<p class="p">It is useful in the following collaborative development scenarios:</p>
+
+		<ul class="ul" id="loio8e51e1d16b0d4e0eba7f8233494db31f__ul_uvw_jww_yw">
+			<li class="li">The extension descriptor can contain information that is purposefully not included in the
+					<span class="ph sap-technical-name sap-technical-name">mtad.yaml</span>. As an MTA archive and its
+				deployment descriptor should not be changed after packaging and vendor signing, the
+				extension descriptor could be used to provide deployment configurations for the
+				actual MTA deployment.<div class="note note"><span class="notetitle">Note</span> 
+					<ul class="ul" id="loio8e51e1d16b0d4e0eba7f8233494db31f__ul_o3c_d4v_4y">
+						<li class="li">Security data, such as passwords, must not be added to the MTA
+							deployment descriptor. </li>
+
+						<li class="li">To ensure secure handling of sensitive parameters and passwords
+							contained in the extension descriptor, we recommend you specify them as
+							Base64-encoded strings using the
+								<span class="ph sap-technical-name sap-technical-name">!!binary</span>  tag.</li>
+
+					</ul>
+
+				</div>
+</li>
+
+			<li class="li">As it can also derive from a third party, several extension descriptors can be used to
+				provide properties to a certain MTA archive, thus not interfering with the main
+				content.</li>
+
+		</ul>
+
+		<p class="p">An extension descriptor has to adhere to a structure identical to the
+				<span class="ph sap-technical-name sap-technical-name">mtad.yaml</span>, and it can contain the following
+			sections:</p>
+
+		<ul class="ul" id="loio8e51e1d16b0d4e0eba7f8233494db31f__ul_w55_4w4_pt">
+			<li class="li">(Mandatory) Global - contains the schema version used to comprise the particular extension
+				descriptor, own ID of the extension descriptor, an
+					<span class="ph sap-technical-name sap-technical-name">extends</span> element containing the ID of
+				the MTA archive that is being extended.<ul class="ul" id="loio8e51e1d16b0d4e0eba7f8233494db31f__ul_sxp_qbd_bx">
+					<li class="li">(Optional) <span class="ph sap-technical-name sap-technical-name">parameters</span> section - it
+						can contain a title, description and a logo. The logo has to be a
+						Base64-encoded image in <span class="ph sap-technical-name sap-technical-name">jpeg</span>,
+							<span class="ph sap-technical-name sap-technical-name">gif</span>, or
+							<span class="ph sap-technical-name sap-technical-name">png</span> file format, with size no
+						larger than 100 kb.</li>
+
+				</ul>
+</li>
+
+			<li class="li">
+				<p class="p">(Optional) <span class="ph sap-technical-name sap-technical-name">modules</span> - a list of the application
+					modules contained in the MTA deployment archive</p>
+
+			</li>
+
+			<li class="li">
+				<p class="p">(Optional) <span class="ph sap-technical-name sap-technical-name">resources</span> - a list of the resources that
+					the modules require</p>
+
+			</li>
+
+		</ul>
+
+		<div class="note note"><span class="notetitle">Note</span> Only sections originally contained in the <span class="ph sap-technical-name sap-technical-name">mtad.yaml</span>
+			may be added. Original MTA data cannot be overwritten or deleted by using an extension,
+			that is, you cannot add new modules, resources, or dependencies.</div>
+
+		<p class="p">The following cases for extending an MTA are allowed:</p>
+
+		<ul class="ul" id="loio8e51e1d16b0d4e0eba7f8233494db31f__ul_jdt_wcw_1x">
+			<li class="li">adding a property or parameter elements by using the parameter name</li>
+
+			<li class="li">specifying a value of an existing property or parameter that originally does not have a
+				value</li>
+
+		</ul>
+
+		<div class="section"><div class="section_title">Sample content of an extension descriptor file</div><div type="Sample content of an extension descriptor file">
+			
+			<p class="p">The following is a sample extension descriptor:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">_schema-version: '2.1'
+ID: com.sap.hana.cloud.samples.benefits.config
+extends: com.sap.hana.cloud.samples.benefits
+
+parameters:
+  title: SAP Employee Benefits Management Sample Application
+  description: This is a sample extension application for SuccessFactors Employee Central. 
+
+modules:
+  - name: benefits-app
+    parameters:
+      test: test
+resources:
+  - name: example-database
+    type: com.sap.hcp.persistence
+    parameters:
+      id: databaseid
+       user-id:
+       password: 
+</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html" target="_blank" alt="http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html" title="http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html">The Multi-Target Application Model<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

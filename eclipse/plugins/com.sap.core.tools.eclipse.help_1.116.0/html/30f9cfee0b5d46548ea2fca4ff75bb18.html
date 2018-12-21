@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can access and analyze application logs in your Cloud Foundry environment."/>
+<meta name="description" content="You can access and analyze application logs in your Cloud Foundry environment."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing and Analyzing Application Logs</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio30f9cfee0b5d46548ea2fca4ff75bb18">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accessing and Analyzing Application Logs </h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can access and analyze application logs in your Cloud Foundry environment. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have generated some logs. For more information, see <a class="xref" href="d39c8a44992c4dbd86667b03ca5ab69a.html" title="Use this procedure to produce application logs and forward them to the Elasticsearch, Logstash, Kibana (ELK) stack for further processing.">Producing Logs</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> uses the open source data visualization platform Kibana to
+				visualize the application log data coming from cloud foundry applications. For more
+				information about Kibana, see the Kibana product documentation at
+					<span class="ph filepath">https://www.elastic.co</span>.</p>
+
+			<p class="p">You can access and analyze your application logs produced in the last few days. The
+				exact timeframe depends on the overall log volume which is produced in the
+				system.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Even without any specific application logs, you can analyze your applications
+					based on the automatically issued logs from the Cloud Foundry router.</p>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p">
+				<span class="ph cmd">To view the logs of your application, open 
+					, and sign in using your
+					credentials.</span>
+			</div>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>
+			<div class="p">Kibana displays a set of pre-built dashboards that help you analyze your application, as follows:<ul class="ul" id="loio30f9cfee0b5d46548ea2fca4ff75bb18__ul_ubg_sqt_q5">
+					<li class="li">
+						<p class="p">Use the <span class="ph uicontrol">Overview</span> dashboard (default) to understand the evolution of logs and basic KPIs regarding
+							failures, response time, and response size.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"> Use the <span class="ph uicontrol">Usage</span> dashboard to investigate the actual requests, their URLs, user and component
+							information.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Use the <span class="ph uicontrol">Performance and Quality</span> dashboard to investigate failures and response times.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Use the <span class="ph uicontrol">Network and Load</span> dashboard to investigate network traffic and payloads.</p>
+
+					</li>
+
+					<li class="li">Use the <span class="ph uicontrol">Requests and Logs</span> dashboard to analyze the overall set of logs, and requests as well as their
+						involved components.</li>
+
+					<li class="li">Use the <span class="ph uicontrol">Statistics</span> dashboard to see how many logs where shipped for each of your components as well as
+						how many logs were dropped by the pipeline due to quota limitations. </li>
+
+				</ul>
+</div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Multitenancy at UI level such as restricting which UI content (dashboards,
+					visualizations and saved searches) is accessible to a group of users is not yet
+					part of our application logging offering. Therefore:</p>
+
+				<ul class="ul" id="loio30f9cfee0b5d46548ea2fca4ff75bb18__ul_ncr_hf2_cv">
+					<li class="li">
+						<p class="p">All UI content is available to all users.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Pre-built content (dashboards, in particular) is specified as read-only
+							and cannot be changed.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Custom content can be created only within the <span class="ph uicontrol">ZZ</span>
+							namespace. For example, when saving a new dashboard, you must start its
+							name with <kbd class="ph userinput">ZZ</kbd>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Custom content may be overwritten or chaged by any user or after a
+							release update. To back up your custom dashboards, go to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Settings</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Objects</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, select the dashboards you want to export and save the
+							JSON backup file to a location of your choice</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">You can now navigate across the dashboards, and set and pin filters in order to
+				flexibly explore what you are interested in. For example, you can focus your search
+				on a specific application, with specific response codes producing unexpected high
+				response times.</p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating and Deleting Destinations on the Cloud</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio94dddf7d9e56401ba1719b7e836d8ee9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating and Deleting Destinations on the Cloud</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The procedure below demonstrates how you can create and configure connectivity destinations
+					(<span class="keyword parmname">HTTP</span>, <span class="keyword parmname">Mail</span> or
+					<span class="keyword parmname">RFC</span>) on <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the context menu of the <span class="ph uicontrol">Servers</span> view, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">SAP Cloud Platform</span> as the type of server you want to create,
+					choose <span class="ph uicontrol">Next</span>, and then <span class="ph uicontrol">Finish</span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">A new server <var class="keyword varname">&lt;application&gt;.&lt;account&gt; [Stopped]&gt;</var>
+					appears on the <span class="ph uicontrol">Servers</span> view. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Double-click the added server to open the server editor. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to the <span class="ph uicontrol">Connectivity</span> tab view. </span>
+				<ol type="a" class="ol substeps" id="loio94dddf7d9e56401ba1719b7e836d8ee9__substeps_s1y_vqn_gl">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">All Destinations</span> section, choose the
+								<img class="image" id="loio94dddf7d9e56401ba1719b7e836d8ee9__image_b5d_wqn_gl" height="15" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" width="13"/> button to
+							create a new destination. </span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">From the dialog window, enter a name for your destination, select its type and the choose
+								<span class="ph uicontrol">OK</span>. </span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">URL</span> field, enter the URL of the target
+							service to which the destination should refer. </span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">Authentication</span> dropdown box, choose the
+							authentication type required by the target service to authenticate the
+							calls. </span>
+						<div class="itemgroup stepresult">
+							<ul class="ul" id="loio94dddf7d9e56401ba1719b7e836d8ee9__ul_ydb_wwz_cn">
+								<li class="li">If the target service does not require authentication, choose
+										<span class="ph uicontrol">NoAuthentication</span>.</li>
+
+								<li class="li">If the target service requires basic authentication, choose
+										<span class="ph uicontrol">BasicAuthentication</span>. You need to
+									enter a user name and a password.</li>
+
+								<li class="li">
+									<p class="p">If the target service requires a client certificate authentication, choose
+											<span class="ph uicontrol">ClientCertificateAuthentication</span>.
+										See <a class="xref" href="5f87212835e04747a570656b682be604.html">Using Destination Certificates (IDE)</a>.</p>
+
+								</li>
+
+								<li class="li">If the target service requires your cloud user authentication, choose
+										<span class="ph uicontrol">PrincipalPropagation</span>. You also need
+									to select <span class="ph uicontrol">Proxy Type:</span>
+									<kbd class="ph userinput">OnPremise</kbd> and should enter the additional
+									property <span class="ph uicontrol">CloudConnectorVersion</span> with value
+										<kbd class="ph userinput">2</kbd>.</li>
+
+							</ul>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">Proxy Type</span> dropdown box, choose the
+							required type of proxy connection. </span>
+						<div class="itemgroup stepresult">
+							<div class="note note"><span class="notetitle">Note</span> This dropdown box allows you to choose the type of your proxy and is only available
+								when deploying on <span class="ph pname">SAP Cloud Platform</span>. The default value is <span class="ph uicontrol">Internet</span>. In this
+								case, the destination uses the HTTP proxy for the outbound
+								communication with the Internet. For consumption of an on-premise
+								target service, choose the <span class="ph uicontrol">OnPremise</span> option
+								so that the proxy to the SSL tunnel is chosen and the tunnel is
+								established to the connected <span class="ph pname">Cloud connector</span>. </div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Optional: In the <span class="ph uicontrol">Properties</span> or
+								<span class="ph uicontrol">Additional Properties</span> section, choose the
+								<img class="image" id="loio94dddf7d9e56401ba1719b7e836d8ee9__image_psr_prn_gl" height="15" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" width="13"/> button to
+							specify additional destination properties. </span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Save the editor. This saves the specified destination configuration in <span class="ph pname">SAP Cloud Platform</span>. </span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">When new destinations are created, the changes take effect immediately. </span>
+				<div class="itemgroup stepresult">
+					<div class="note note"><span class="notetitle">Note</span> Bear in mind that changes are currently cached with a cache expiration of
+						up to 4 minutes, so if you modify a destination configuration the changes
+						might not take effect immediately. However, if the relevant Web application
+						is restarted on the cloud, the destination changes will take effect
+						immediately. </div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To delete a destination, choose the <img class="image" id="loio94dddf7d9e56401ba1719b7e836d8ee9__image_swq_tqn_gl" height="17" src="loioafd3c269bb571014a0f9fe933117ad7d_LowRes.png" width="18"/> button. </span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="437d130e98664f4690436e176ab62189.html">Examples (IDE)</a></div>
+<div><a class="link" href="e4f1d97cbb571014a247d10f9f9a685d.html">Destinations</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Streaming projects running on the SAP Cloud Platform can use adapters to connect to the local SAP HANA database."/>
+<meta name="description" content="Streaming projects running on the SAP Cloud Platform can use adapters to connect to the local SAP HANA database."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Adapters</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio30b4e51270fb446eadea0de8f172f157">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Adapters</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Streaming projects running on the <span class="ph pname">SAP Cloud Platform</span> can use adapters to connect to
+		the local SAP HANA database.</p>
+
+		<div class="section">
+			<p class="p">You can use the following adapters with the <span class="ph pname">streaming analytics</span> on the
+					<span class="ph pname">SAP Cloud Platform</span>:</p>
+
+			<ul class="ul" id="loio30b4e51270fb446eadea0de8f172f157__ul_b51_s1l_w5">
+				<li class="li">SAP HANA Output adapter: use this adapter to direct the output from any stream
+					or window into an SAP HANA table.</li>
+
+				<li class="li">Database Input adapter: use this adapter to pull data from the SAP HANA database
+					into a streaming project.</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> These adapters must be associated with the default SAP HANA data service; they
+				cannot be used to connect to other databases.</div>
+
+			<p class="p"> You can also use any toolkit adapter in <span class="keyword">unmanaged mode</span> to connect from an
+				on-premise environment to <span class="ph pname">streaming analytics</span> on the
+					<span class="ph pname">SAP Cloud Platform</span>.
+				Toolkit adapters are various preconfigured and ready-to-use adapters that have been
+				created using the adapter toolkit, which comes in the the smart data streaming
+				client package. </p>
+
+			<p class="p">All toolkit adapters use the Web Services Provider to connect to <span class="ph pname">streaming analytics</span> on the
+					<span class="ph pname">SAP Cloud Platform</span>. See
+					<a class="xref" href="94ae174f4c8141988907624789e79d0b.html" title="Streaming analytics provides two methods for connecting to the SAP Cloud Platform: the Streaming Web Service, and the Web Services Provider. Each of these methods is responsible for different tasks.">Streaming Analytics Connectivity</a>.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Streaming Lite</div><div type="Streaming Lite">
+			
+			<p class="p">Streaming lite projects use a specialized adapter: the Streaming Web Output adapter. You can
+				use this adapter to connect from a streaming lite project to <span class="ph pname">streaming analytics</span> on the
+					<span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<p class="p">The Streaming Web Output adapter uses the Streaming Web Service to connect to the <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="94ae174f4c8141988907624789e79d0b.html" title="Streaming analytics provides two methods for connecting to the SAP Cloud Platform: the Streaming Web Service, and the Web Services Provider. Each of these methods is responsible for different tasks.">Streaming Analytics Connectivity</a>.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+</div>
+
+<div class="linklist linklist">
+<div><div><a class="link" href="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e783f39b6f0f1014a539eda16bab79d9.html" target="_blank" alt="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e783f39b6f0f1014a539eda16bab79d9.html" title="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e783f39b6f0f1014a539eda16bab79d9.html">Streaming Data to SAP HANA </a></div>
+</div>
+<div><div><a class="link" href="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e77e8e116f0f1014ac0b82cc78e0380f.html" target="_blank" alt="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e77e8e116f0f1014ac0b82cc78e0380f.html" title="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e77e8e116f0f1014ac0b82cc78e0380f.html">Database Adapter</a></div>
+</div>
+<div><div><a class="link" href="https://help.sap.com/viewer/b5a4b8b1574f48a383f7a1e42e63d4d9/1.0.12/en-US/e789c0336f0f10148c68b73584c3c391.html" target="_blank" alt="https://help.sap.com/viewer/b5a4b8b1574f48a383f7a1e42e63d4d9/1.0.12/en-US/e789c0336f0f10148c68b73584c3c391.html" title="https://help.sap.com/viewer/b5a4b8b1574f48a383f7a1e42e63d4d9/1.0.12/en-US/e789c0336f0f10148c68b73584c3c391.html">Preconfigured Adapters Included with the Adapter Toolkit</a></div>
+</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

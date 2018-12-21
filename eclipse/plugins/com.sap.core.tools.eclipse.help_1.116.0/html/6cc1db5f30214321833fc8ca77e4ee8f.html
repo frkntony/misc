@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them."/>
+<meta name="description" content="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Administering Databases</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6cc1db5f30214321833fc8ca77e4ee8f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Administering Databases</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can create databases, bind them to applications running on <span class="ph pname">SAP Cloud Platform</span>, and delete
+		them.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> This section explains working with SAP HANA multitenant database containers (MDC - also
+			called tenant databases), and SAP ASE databases.<p class="p">For more information about working
+				with
+				SAP
+				HANA
+				database
+				systems (using schemas instead of tenant databases), see <a class="xref" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a> and <a class="xref" href="48be066aea98444188544d68714bbf3b.html" title="With SAP Cloud Platform, you can use the SAP HANA development tools to create comprehensive analytical models and build applications with SAP HANA's programmatic interfaces and integrated development environment.">SAP HANA: Development</a>.</p>
+</div>
+
+		<div class="section"><div class="section_title">Create</div><div type="Create">
+			
+			<p class="p">You can create databases on database management systems in your account and assign
+				properties like database size. The database is independent of any single application
+				and has to be explicitly bound.</p>
+
+			<p class="p">You can use a freely definable database ID. What elements you are allowed to use
+				depends on the database type that you create. A database ID must only occur once
+				throughout the databases in an account. Remember that the physical database name is
+				not the same as the database ID.</p>
+
+			<p class="p">You can create databases using the cockpit and the console client. In the cockpit,
+				you can create databases at the account, the application, and the database system
+				level.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Bind</div><div type="Bind">
+			
+			<p class="p">Bindings are identified by a data source name, which must only occur once in any one
+				application. You can bind databases to applications based on an explicitly named
+				data source or using the default data source. The main differences are as follows: </p>
+
+			<ul class="ul" id="loio6cc1db5f30214321833fc8ca77e4ee8f__ul_opm_jxr_tk">
+				<li class="li">Explicitly named data source<p class="p">When you bind the database to an application, you
+						specify a data source name. This establishes a named binding between the
+						database and application, and allows the database to be addressed by the
+						application. The data source name is equivalent to the name used for the
+						JNDI lookup. </p>
+<p class="p">Named bindings allow an application to be bound to more
+						than one database and, in turn, to use more than one database at the same
+						time. The databases can be distinguished by the binding names.</p>
+</li>
+
+				<li class="li">Default data source<div class="p">The database is bound to the application without an
+						explicitly specified data source name, and is consequently associated with
+						the default data source. The following applies:<ul class="ul" id="loio6cc1db5f30214321833fc8ca77e4ee8f__ul_m2l_qk5_3r">
+							<li class="li">The database can be addressed by the application by any name.</li>
+
+							<li class="li">The default data source is a convenient option for applications that
+								require only one database. An application bound to the default data
+								source cannot be bound to any additional databases.</li>
+
+						</ul>
+</div>
+</li>
+
+			</ul>
+
+			<p class="p">You can share a database between applications by binding the same database to more
+				than one application. Remember the following when binding databases to
+				applications:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio6cc1db5f30214321833fc8ca77e4ee8f__ul_unp_txr_tk">
+					<li class="li">An application’s bindings are based on either named data sources or the
+						default data source. An application cannot use a combination of the two
+						types of bindings. </li>
+
+					<li class="li">When named data sources are used, binding names must only occur once in any
+						one application.</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">When you bind the database to an application, you specify a custom logon, which
+				consists of a database user name and a password, that is then used by the
+				application to access the database.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Delete</div><div type="Delete">
+			
+			<p class="p">You should drop a database if it is no longer required, or if you want to redeploy an
+				application from scratch cleaning old data.</p>
+
+			<p class="p">Before deleting a database, you should explicitly remove any bindings that still
+				exist between the database and an application. You can also remove all bindings by
+				enforcing deletion of the database by executing the corresponding console client
+				command. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Restart</div><div type="Restart">
+			
+			
+			<p class="p">If your databases are not working properly, you can try to solve the issues by
+				restarting either the whole SAP HANA database system, or a single tenant
+				database.</p>
+
+			
+			
+			<p class="p">To restart a single tenant database instead of the whole database system, use the
+					<a class="xref" href="c76fc39276dd47dc8d9c6d8bbfc6834a.html" title="This command stops the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">stop-db-hana</a> and <a class="xref" href="bf6020d733d84a19bbae2ae018783ced.html" title="This command starts the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">start-db-hana</a> commands or the cockpit.</p>
+
+			
+			<p class="p">For more information about restarting a SAP HANA database system, see <a class="xref" href="10a8b11bdd9c4a84a26e00ec98b54e97.html" title="If your databases are not working properly, you can try to solve the issues by restarting the corresponding SAP HANA or SAP ASE database system. The restart is done for the whole database system.">Restarting Database Systems</a>.</p>
+
+			
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a></div>
+<div><a class="link" href="a4b1a6abc13f45d58c9a156b81487d8a.html" title="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit.">Creating an SAP HANA Database from the Cockpit</a></div>
+<div><a class="link" href="ee6ae2938cf54c46bd8996745dbc033c.html" title="This step-by-step tutorial shows how you create a database in an SAP HANA database system with multitenant database container support enabled, using SAP Cloud Platform Console Client commands.">Creating an SAP HANA Database Using Console Client</a></div>
+<div><a class="link" href="216cef2158cc419fade9a8247d5008fa.html" title="Bind databases to your applications running on SAP Cloud Platform.">Binding Databases</a></div>
+<div><a class="link" href="369214b650b941b9b4bc48fdc6ec8097.html" title="The persistence service provides a set of console client commands for managing databases. These allow you to create databases with specific properties, bind and unbind databases, delete databases, and display information about databases.">Database Commands</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

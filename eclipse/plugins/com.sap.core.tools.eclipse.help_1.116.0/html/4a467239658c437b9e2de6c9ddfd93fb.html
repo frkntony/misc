@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This is an optional procedure that you can perform to configure the options for the authentication methods you defined for your application."/>
+<meta name="description" content="This is an optional procedure that you can perform to configure the options for the authentication methods you defined for your application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Authentication for Your Application</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4a467239658c437b9e2de6c9ddfd93fb">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Authentication for Your Application</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">This is an optional procedure that you can perform to configure the options for the
+		authentication methods you defined for your application.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio4a467239658c437b9e2de6c9ddfd93fb__ul_dyr_v1h_54">
+				<li class="li">You have an application with authentication defined in its <samp class="ph codeph">web.xml</samp> or
+					source code. See <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a> .</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The following table describes the available authentication options. For each authentication
+				method, you can select a custom combination of options. You may need to select more
+				than one option if you want to enable more than one way for users to authenticate
+				for this application.</p>
+
+			<p class="p">If you select more than one option, <span class="ph pname">SAP Cloud Platform</span> will delegate
+				authentication to the relevant login modules consecutively in a stack. When a login
+				module succeeds to authenticate the user, authentication ends with success. If no
+				login module succeeds, authentication fails.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio4a467239658c437b9e2de6c9ddfd93fb__table_vpt_4yf_w4" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: Authentication Options</span></caption>
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d3395329e61">Authentication Options</th>
+
+							<th class="entry" valign="top" width="50%" id="d3395329e64">Descrption</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3395329e61 ">Trusted SAML 2.0 identity provider</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3395329e64 ">Authentication is implemented over the Security Assertion Markup Language (SAML) 2.0
+								protocol, and delegated to SAP ID service or custom identity
+								provider (IdP). The credentials users need to present depend on the
+								IdP settings. See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3395329e61 ">User name and password</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3395329e64 ">HTTP BASIC authentication with user name and password. The user name and password are
+								validated either by SAP ID service (default) or by an on-premise SAP
+								NetWeaver AS Java. See <a class="xref" href="71fdf1c0aaf141d18dd5ae2b41c86da3.html">Using an SAP System as an On-Premise User Store</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3395329e61 ">Client certificate</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3395329e64 ">Users authenticate with a client certificate installed in an on-premise SAP NetWeaver
+								Application Server for Java system. See <a class="xref" href="0d7cf63b75a94f869895186a2d38db41.html" title="You can enable the users for your Web application to authenticate using client certificates. This corresponds to the CERT and BASICCERT authentication methods supported in Java EE.">Enabling Client Certificate Authentication</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3395329e61 ">Application-to-Application SSO</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3395329e64 ">Used for AppToAppSSO destinations. See <a class="xref" href="e022a5eebaec4dbbabef7f5d60e13dd4.html">Application-to-Application SSO Authentication</a>.<div class="note note"><span class="notetitle">Note</span> When you
+									select <span class="ph uicontrol">Trusted SAML 2.0 identity
+									provider</span>, <span class="ph uicontrol">Application-to-Application
+										SSO</span> becomes enabled
+								automatically.</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d3395329e61 ">OAuth 2.0 token</td>
+
+							<td class="entry" valign="top" width="50%" headers="d3395329e64 ">Authentication is implemented over the OAuth 2.0 protocol. Users
+								need to present an OAuth access token as credential. See <a class="xref" href="b7b589334d444293a2a91e0ef4234136.html" title="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform.">Protecting Applications with OAuth 2.0</a>. </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+				<div class="itemgroup info">
+					<p class="p">Make sure that you have selected the relevant global account to be able to
+						select the right account.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Click the application you want to configure.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the <span class="ph uicontrol">Authentication Configuration</span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To configure the default settings, choose <span class="ph uicontrol">Custom</span>, and then choose
+						<span class="ph uicontrol">Edit</span>. </span>
+				<div class="itemgroup info">You can configure existing authentication methods or create new ones. If you need to
+					restore the default state of all default methods, choose the
+						<span class="ph uicontrol">Restore</span> button for the entire panel. If you need to
+					restore the default state of a particular method, choose the
+						<span class="ph uicontrol">Restore</span> button for that method (not available for
+					custom methods you defined).</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the changes to the authentication configuration.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Restart the application so the changes can take effect.</span>
+			</li>
+</ol>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>You have a Web application that users access using a Web browser. You want users to
+			log in using a SAML identity provider. Hence, you define the FORM authentication method
+			in the <samp class="ph codeph">web.xml</samp> of the application. However, later you decide to provide
+			mobile access to your application using the OAuth protocol (SAML is not optimized for
+			mobile access). You do this by adding the <span class="ph uicontrol">OAuth 2.0 token</span> option
+			for the FORM method for your application. In this way, desktop users will continue to
+			log in using a SAML identity provider, and mobile users will use an OAuth 2.0 access
+			token.</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javaee/6/tutorial/doc/gkbaa.html#gkbsa" target="_blank" alt="http://docs.oracle.com/javaee/6/tutorial/doc/gkbaa.html#gkbsa" title="http://docs.oracle.com/javaee/6/tutorial/doc/gkbaa.html#gkbsa">Specifying Authentication Mechanisms (general information)<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

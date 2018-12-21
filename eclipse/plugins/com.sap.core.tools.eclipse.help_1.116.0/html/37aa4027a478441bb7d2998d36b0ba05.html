@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Documents and Folders (HANA XS)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio37aa4027a478441bb7d2998d36b0ba05">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Documents and Folders (HANA XS)</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">Probably the most common use case is to create documents and folders in a repository.
+			Every repository in CMIS has a root folder. Once you have received a
+				<span class="ph sap-technical-name sap-technical-name">Session</span>, you can create the root folder
+			using the following syntax:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+// get the root folder of the repository 
+session.getRootFolder().then(function(rootFolder) {
+
+});
+</pre></div>
+<p class="p">Once you have a root folder, you can create other folders or documents. In the CMIS domain
+			model, all CMIS objects are typed. Therefore, you have to provide type information for
+			each object you create. The types carry the metadata for an object. The metadata is
+			passed in a dictionary. Some properties are mandatory, others are optional. You have to
+			provide at least an object type and a name. For properties defined in the standard, CMIS
+			library has predefined constants in the <span class="keyword cmdname">PropertyIds</span> namespace.</p>
+<p class="p">To create a document in the root folder, enter the following syntax:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+session.getRootFolder().then(function(rootFolder) {
+	return rootFolder.createFolder({
+		"cmis:objectTypeId" : "cmis:folder",
+		"cmis:name" : "MyFirstFolder"
+	});
+}).then(function(newFolder) {
+	var folderId = newFolder.getId();
+});
+
+</pre></div>
+<p class="p">To create a document with content, provide a dictionary of properties. In addition, add
+			an object that carries an <span class="ph sap-technical-name sap-technical-name">ArrayBuffer</span> object
+			plus some additional information for the content, like
+				<span class="ph sap-technical-name sap-technical-name">Content-Type</span> and file name.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+var content = .... // ArrayBuffer
+
+session.getRootFolder().then(function(rootFolder) {
+	return rootFolder.createDocument({
+		"cmis:objectTypeId" : "cmis:document",
+		"cmis:name" : "HelloWorld.txt",
+	}, {
+		filename : "HelloWorld.txt",
+		mimeType : "text/plain",
+		stream : content
+	}, "none");
+}).then(function(newDocument) {
+	var documentId = newDocument.getId();
+});
+
+</pre></div>
+<div class="section"><div class="section_title">Getting Children</div><div type="Getting Children">
+			
+			<p class="p">To get the children of a folder, you can use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+session.getRootFolder().then(function(rootFolder) {
+	return rootFolder.getChildren().each(function(child) {
+		var message = "Name: " + child.getName();
+		
+		if (child.isFolder()) {
+			message += ", type: Folder, createdBy: " + child.getCreatedBy();
+		} else if (child.isDocument()) {
+			message += ", type: Document, createdBy: " + child.getCreatedBy();
+			message += " filesize: " + child.getContentStreamLength() + " bytes";
+		}
+		
+		$.trace.info(message);
+	});
+});
+
+</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Retrieving a Document</div><div type="Retrieving a Document">
+			
+			<p class="p">To retrieve a document, you can use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+session.getObject(id).then(function(document) {
+	var name = document.getName();
+});
+</pre></div>
+
+			<p class="p">To get the content, use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+session.getObject(id).then(function(document) {
+	return document.getContentStream();
+}).then(function(contentStream) {
+	var mimeType = contentStream.mimeType;
+	var length = contentStream.length;
+	var buffer = contentStream.stream; // ArrayBuffer
+});
+
+</pre></div>
+
+			<p class="p">Or use this short version:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+session.getContentStream(id).then(function(contentStream) {
+	var mimeType = contentStream.mimeType;
+	var length = contentStream.length;
+	var buffer = contentStream.stream; // ArrayBuffer
+});
+</pre></div>
+
+			<p class="p">You can also retrieve a document using its path with the
+					<span class="keyword cmdname">getObjectByPath()</span> method.</p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> We recommend that you retrieve objects by ID and not by path. IDs are kept
+				stable even if the object is moved. Retrieving objects by ID is also faster than
+				retrieving objects by path.</div>
+
+		</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

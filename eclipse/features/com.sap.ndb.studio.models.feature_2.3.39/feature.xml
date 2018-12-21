@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.models.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.ndb.studio.model.base"
+         download-size="147"
+         install-size="345"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.repository.model.resource"
+         download-size="128"
+         install-size="296"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.base"
+         download-size="142"
+         install-size="278"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sql.model"
+         download-size="911"
+         install-size="2155"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.unicode"
+         download-size="16"
+         install-size="25"
+         version="2.3.39"
+         unpack="false"/>
+         
+   <plugin
+         id="com.sap.ndb.studio.common"
+         download-size="121"
+         install-size="225"
+         version="2.3.39"
+         unpack="false"/>
+                  
+</feature>

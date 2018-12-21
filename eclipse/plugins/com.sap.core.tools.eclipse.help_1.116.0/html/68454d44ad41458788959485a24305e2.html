@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can create, access and analyze application logs in your Cloud Foundry environment."/>
+<meta name="description" content="You can create, access and analyze application logs in your Cloud Foundry environment."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Application Logging</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio68454d44ad41458788959485a24305e2">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Application Logging</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can create, access and analyze application logs in your Cloud Foundry environment. </p>
+
+		<p class="p"><span class="ph pname">SAP Cloud Platform</span> uses the open source logging platform Elasticsearch, Logstash, Kibana
+			(ELK) to store, parse and visualize the application log data coming from cloud foundry
+			applications. For more information about ELK, see the ELK product documentation at
+				<span class="ph filepath">https://www.elastic.co</span>.</p>
+
+		<p class="p">You can have both application logs that originate from the Cloud Foundry router (you get
+			such logs by default) and logs explicitly issued by the application itself. You can
+			generate logs by creating requests to your application.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The underlying Cloud Foundry environment does not provide a reliable logging
+				pipeline, that is, it may happen that logs are dropped, for example in case of too
+				many logs being issued in parallel.</p>
+
+		</div>
+
+		<div class="p">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio68454d44ad41458788959485a24305e2__table_bsh_bzl_rq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d4462742e47">To learn about</th>
+
+							<th class="entry" valign="top" width="50%" id="d4462742e50">See</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4462742e47 ">How to produce logs</td>
+
+							<td class="entry" valign="top" width="50%" headers="d4462742e50 "><a class="xref" href="d39c8a44992c4dbd86667b03ca5ab69a.html" title="Use this procedure to produce application logs and forward them to the Elasticsearch, Logstash, Kibana (ELK) stack for further processing.">Producing Logs</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4462742e47 ">How to access and analyze application logs</td>
+
+							<td class="entry" valign="top" width="50%" headers="d4462742e50 "><a class="xref" href="30f9cfee0b5d46548ea2fca4ff75bb18.html" title="You can access and analyze application logs in your Cloud Foundry environment.">Accessing and Analyzing Application Logs</a></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

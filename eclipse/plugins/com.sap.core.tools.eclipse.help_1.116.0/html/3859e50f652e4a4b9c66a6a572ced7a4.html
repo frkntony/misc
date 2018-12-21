@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Named Cloud Connector Administrator Users</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3859e50f652e4a4b9c66a6a572ced7a4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Named <span class="ph pname">Cloud Connector</span> Administrator
+		Users</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">We recommend that you configure LDAP-based user management for the <span class="ph pname">Cloud connector</span>
+			Administration UI so that only named administrator users can log on to the
+			administration UI. This is important to guarantee traceability of the <span class="ph pname">Cloud connector</span>
+			configuration changes via the <span class="ph pname">Cloud connector</span> audit log.
+			With the default and built-in <kbd class="ph userinput">Administrator</kbd> user, it is not
+			possible to identify the physical person who has done a possibly security-sensitive
+			configuration change in the <span class="ph pname">Cloud connector</span>.</p>
+
+		<p class="p">If you have an LDAP server in your landscape, you can configure the <span class="ph pname">Cloud connector</span> to
+			authenticate <span class="ph pname">Cloud connector</span>
+			administrator users against the LDAP server. Valid administrator users must belong to
+			the user group named <kbd class="ph userinput">admin</kbd> or <kbd class="ph userinput">sccadmin</kbd>.
+			Documentation on how to configure an LDAP server can be found here: <a class="xref" href="120ceecfd84145a181ac160d588a7a3d.html" title="You can use LDAP (Lightweight Directory Access Protocol) to configure Cloud connector authentication.">Using LDAP for Authentication</a>
+		</p>
+
+		<p class="p">Once an LDAP has been configured for the authentication of the <span class="ph pname">Cloud connector</span>, the
+			default <kbd class="ph userinput">Administrator</kbd> user will be inactive and cannot be used
+			anymore for logging on to the <span class="ph pname">Cloud connector</span>. </p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

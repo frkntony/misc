@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Authenticating Users for On-Premise Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob643fbecb14e4c89ab3c03b21200cb08">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Authenticating Users for On-Premise Systems</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">Currently, the <span class="ph pname">Cloud connector</span>
+			supports basic authentication and principal propagation as user authentication types
+			towards internal systems. The destination configuration of the used cloud application
+			defines which of these types is used for the actual communication to an on-premise
+			system through the <span class="ph pname">Cloud connector</span>. For more
+			information, see: <a class="xref" href="e4f1d97cbb571014a247d10f9f9a685d.html">Destinations</a></p>
+
+		<p class="p">In case basic authentication is used, the on-premise system must be configured to accept basic
+			authentication and to provide one or multiple service users. There are no additional
+			steps which are needed in the <span class="ph pname">Cloud connector</span> for this
+			authentication type.</p>
+
+		<p class="p">In case principal propagation is used, the <span class="ph pname">Cloud connector</span>
+			administrator has to explicitly configure trust to those cloud entities from which user
+			tokens are accepted as valid. This can be done in the <span class="ph uicontrol">Trust</span> view
+			of the <span class="ph pname">Cloud connector</span>
+			and is described in more detail here: <a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html">Setting Up Trust</a></p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Best practices for writng a SAPUI5 control in the Eclipse infrastructure"/>
+<meta name="description" content="Best practices for writng a SAPUI5 control in the Eclipse infrastructure"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css?x=47465873053987173"/>
+<title>Writing a Control in the Eclipse Infrastructure (internal)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"> </script>
+</head>
+<body class="" id="loio2482baa33e394879aa0a828ef5319c15">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Writing a Control in the Eclipse Infrastructure (internal)</h1>
+<div class="body taskbody"><p class="shortdesc">Best practices for writng a  SAPUI5 control in the Eclipse infrastructure</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">At development time, SAPUI5 controls consist of four parts:</p>
+
+			<ul class="ul" id="loio2482baa33e394879aa0a828ef5319c15__ul_mwp_fq5_dp"><li class="li">
+					<p class="p">Control API defining the properties, events, methods, as well as the
+						associations and aggregations of a control</p>
+
+				</li>
+<li class="li">
+					<p class="p">Control renderer for creating the HTML string that defines the structure of
+						the control</p>
+
+				</li>
+<li class="li">
+					<p class="p">Control behavior which is the JavaScript code taking care of the control
+						interactivity, reacting on user events, firing control events, and handling
+						method calls and property changes</p>
+
+				</li>
+<li class="li">
+					<p class="p">Control sytle defining the visuals of the control; usually, a control has
+						different visual designs, bundled as themes</p>
+
+				</li>
+</ul>
+
+			<p class="p">Elements are similar to controls, but are more leightweight. They are defined in the
+					<samp class="ph codeph">sap.ui.core.Element</samp> class. As they are not supposed to be used
+				stand-alone in a page, they usually do <span class="ph emphasis emphasis">not</span> have a renderer.
+				Elements are usually aggregated by controls which use them as a sort of structured
+				data container with API and also do the rendering of the elements.</p>
+
+			<p class="p">The following process describes the required steps for writing a SAPUI5 control from
+				scratch in an Eclipse infrastructure. It does not provide a detailed step-by-step
+				procedure.</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand"><span class="ph cmd">Creating the control files</span><div class="itemgroup info">
+					<p class="p">The <span class="ph uicontrol">New Control</span> wizard generates the following files
+						(X stands for the control name):</p>
+
+					<ul class="ul" id="loio2482baa33e394879aa0a828ef5319c15__ul_gbh_xc1_2p"><li class="li">
+							<p class="p"><samp class="ph codeph">X.control</samp> - Control API definition: Bases on an XML
+								file, which can also be edited directly in case of problems with the
+								form-based editor. From this file, the JavaScript is generated, for
+								example, the control constructor, the inheritance, as well as the
+								getters and setters for the control properties. The methods declared
+								in the API are <span class="ph emphasis emphasis">not</span> generated, but have to be
+								implemented from scratch in the behavior JS file
+									(<samp class="ph codeph">X.js</samp>). By being XML-based, the file can be
+								easily used to generate the control API also in other languages like
+								Java or APAB.</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">XRenderer.js</samp> - JavaScript control renderer: Provides
+								the static <samp class="ph codeph">render(oRenderManager, oControl)</samp> method.
+								This method reads the control instance data and writes the according
+								HTML to the <samp class="ph codeph">RenderManager</samp>.</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">X.js</samp> - Defines the control "behavior"</p>
+
+						</li>
+<li class="li">
+							<p class="p"><samp class="ph codeph">X.css</samp> - Style definition for the control. There is
+								one CSS file per visual design in
+									<samp class="ph codeph">themes/&lt;themename&gt;/X.css</samp> and, similar to the
+								CRM HTML UI, there is also a special theme named "base" which
+								contains the CSS that is more or less independent from the visual
+								appearance and rather required to make the control work properly.
+								This CSS is always loaded before the theme-specific CSS.</p>
+
+						</li>
+</ul>
+
+					<p class="p">When you use the <span class="ph uicontrol">New Control</span> wizard, these files are
+						created automatically and already contain template content that represents a
+						simple control that works and that you can use as starting point for your
+						control.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Creating a test page</span><div class="itemgroup info">
+					<p class="p">Create the <samp class="ph codeph">X.html</samp> file in the library project under
+							<samp class="ph codeph">src/test/uilib/&lt;libraryname&gt;</samp>. You use this page for
+						testing your code during development of your control. It does
+							<span class="ph emphasis emphasis">not</span> use a test framework. It is a rather simple
+						application page that focuses on your control. Also, because of its
+						location, this page automatically appears in the SAPUI5 test suite. The test
+						suite is available, for example, when you deploy the
+							<samp class="ph codeph">uilib-sample</samp> application. It is then located at
+							<samp class="ph codeph">http://&lt;server&gt;:&lt;port&gt;/uilib-sample</samp>.</p>
+
+					<p class="p">To access the page without using the test suite, open the following page in
+						your browser:
+							<samp class="ph codeph">http://localhost:8080/uilib-sample/test-resources/sap/ui/commons/X.html</samp>.
+						Make sure that you use the correct server, port, and library name.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Defining the control API</span><div class="itemgroup info">
+					<p class="p">This step and the following two steps (implementing the control renderer and
+						implementing the control behavior) are usually done iteratively to increment
+						the control functionality.</p>
+
+					<p class="p">
+						
+					</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Implementing the control renderer</span><div class="itemgroup info">
+					<p class="p">For information about implementing a control renderer, see <a class="xref" href="91f393916f4d1014b6dd926db0e91070.html">Writing a Control Renderer</a>.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Implementing the control behavior</span><div class="itemgroup info">
+					<p class="p">For the most common event types, it is sufficient to create an
+							<samp class="ph codeph">on&lt;eventName&gt;</samp> method that is called when the event
+						occurs. For more exotic events, you need an explicit event registration. For
+						more information, see <a class="xref" href="91f1b3856f4d1014b6dd926db0e91070.html">Browser Events</a>.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Defining the control style</span><div class="itemgroup info">
+					<p class="p">Initially, you pick one visual design and do all the CSS within the base
+						theme, that is, in the themes/base/X.css file which is picked up
+						automatically by the build. Only later you identify basic CSS parts that
+						remain there and theme-specific CSS parts that you move to the respective
+						theme and you also define CSS for other themes.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Creating a QUnit test page</span><div class="itemgroup info">
+					<p class="p">QUnit is the preferred unit testing framework for SAPUI5. It has two advantages compared to
+						jsUnit: The possibility to perform async tests and a direct test execution
+						without deploying a test framework. For more information, see <a class="xref" href="708002929ea548fd9433954a9275eb5f.html">QUnit Testing
+							Fundamentals</a>.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Creating QTP tests</span><div class="itemgroup info">
+					<p class="p">Whereas unit tests only test local aspects, QTP tests are also executed
+						automatically, but cover more the aspects of using the control within a
+						browser page/scenario with user interaction and also test the visual
+						appearance. As specific knowledge is required, we recommend that these tests
+						are written by QM representatives.</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Creating the themes</span><div class="itemgroup info">
+					<p class="p">Depending on the control's stakeholders, the list of themes that need to be
+						implemented can differ.</p>
+
+					<p class="p">
+						
+					</p>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Making the control accessible</span><div class="itemgroup info">
+					<p class="p">For information about keyboard navigation and screen readers/Aria, see the
+						Spec.</p>
+
+				</div></li>
+</ol>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f0a22d6f4d1014b6dd926db0e91070.html">Working with Controls in SAPUI5</a></div>
+</div>
+</div></div></div>
+</body>
+</html>

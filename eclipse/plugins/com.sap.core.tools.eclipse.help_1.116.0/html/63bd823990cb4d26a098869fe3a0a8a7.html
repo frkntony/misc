@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using the Audit Log</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio63bd823990cb4d26a098869fe3a0a8a7">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using the Audit Log</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">Audit logging is a critical element of an organization’s risk management strategy. The audit
+			log data of the <span class="ph pname">Cloud connector</span> can be used
+			to alert <span class="ph pname">Cloud connector</span>
+			administrators to unusual or suspicious network and system behavior. Additionally, the
+			audit log data can provide auditors with information required to validate security
+			policy enforcement and proper segregation of duties. IT staff can use the audit log data
+			for root-cause analysis following a security incident.</p>
+
+		<p class="p">The <span class="ph pname">Cloud connector</span> provides an
+			auditor tool to view and manage audit log information of the complete record of access
+			between cloud and <span class="ph pname">Cloud connector</span>, as well as
+			of configuration changes done in the <span class="ph pname">Cloud connector</span>. The
+			written audit log files are digitally signed by the <span class="ph pname">Cloud connector</span> so that
+			their integrity can be checked. Learn more about the auditor tool in: <a class="xref" href="2264c7002f844fe4833186a1d168de66.html">Audit Logging in the Cloud Connector</a></p>
+
+		<div class="p">
+			<div class="note note"><span class="notetitle">Note</span> 
+				<div class="p">We recommend that you switch on audit logging of the <span class="ph pname">Cloud connector</span>
+					permanently in productive scenarios. <ul class="ul" id="loio63bd823990cb4d26a098869fe3a0a8a7__ul_sbc_1gk_sn">
+						<li class="li">Normally, you should better set it to <kbd class="ph userinput">Security</kbd>
+							(the default configuration value).</li>
+
+						<li class="li">In case of legal requirements or company policies, we recommend that you
+							set it to <kbd class="ph userinput">All</kbd>. In this way, the audit log files
+							can be used to detect attacks of, for example, a malicious cloud
+							application that tries to access on-premise services without permission,
+							or in a forensic analysis of a security incident.</li>
+
+					</ul>
+</div>
+
+			</div>
+
+		</div>
+
+		<p class="p">It is further recommended to copy the audit log files of the <span class="ph pname">Cloud connector</span> regularly
+			to an external persistent storage according to your local regulations. The audit log
+			files can be found in the <span class="ph pname">Cloud connector</span> root
+			directory under the following location:
+				<span class="ph filepath">/log/audit/&lt;account-name&gt;/audit-log_&lt;timestamp&gt;.csv</span>.</p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

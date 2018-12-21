@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Documents and Folders (Java)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio5f18cdfa0a3b4c6eaa03bec7729afb94">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Documents and Folders (Java)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">Probably the most common use case is to create documents and folders in a repository. Every
+			repository in CMIS has a root folder. Once you have received a
+				<span class="ph sap-technical-name sap-technical-name">Session</span>, you can create the root folder
+			using the following syntax:</p>
+
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// get the root folder of the repository 
+Folder root = openCmisSession.getRootFolder();</pre></div>
+
+		<p class="p">Once you have a root folder, you can create other folders or documents. In the CMIS domain
+			model, all CMIS objects are typed. Therefore, you have to provide type information for
+			each object you create. The types carry the metadata for an object. The metadata is
+			passed in a property <span class="ph sap-technical-name sap-technical-name">map</span>. Some properties are
+			mandatory, others are optional. You have to provide at least an object type and a name.
+			For properties defined in the standard, OpenCMIS has predefined constants in the
+				<span class="keyword cmdname">PropertyIds</span> class.</p>
+
+		<div class="p">To create a document in the root folder, enter the following
+			syntax:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Map&lt;String, String&gt; newFolderProps = new HashMap&lt;String, String&gt;(); 
+newFolderProps.put(PropertyIds.OBJECT_TYPE_ID, "cmis:folder"); 
+newFolderProps.put(PropertyIds.NAME, "MyFirstFolder");
+root.createFolder(newFolderProps);</pre></div>
+To
+			create a document with content, provide a map of properties. In addition, create a
+				<span class="ph sap-technical-name sap-technical-name">ContentStream</span> object carrying a Java
+				<span class="ph sap-technical-name sap-technical-name">InputStream</span> plus some additional
+			information for the content, like <span class="ph sap-technical-name sap-technical-name">Content-Type</span>
+			and file name.</div>
+
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Map&lt;String, String&gt; properties = new HashMap&lt;String, String&gt;();
+properties.put(PropertyIds.OBJECT_TYPE_ID, "cmis:document");
+properties.put(PropertyIds.NAME, "HelloWorld.txt");
+
+byte[] helloContent = "Hello World!".getBytes( "UTF-8");
+InputStream stream = new ByteArrayInputStream(helloContent);
+
+ObjectFactory factory = openCmisSession.getObjectFactory();
+ContentStream contentStream = factory.createContentStream("HelloWorld.txt", 
+	helloContent. length, "text/plain; charset=UTF-8", stream);</pre></div>
+
+		<p class="p">To create the document, enter the following syntax:</p>
+
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Document myDocument = root.createDocument(properties, contentStream, VersioningState.NONE);</pre></div>
+
+		<p class="p">Get the ID for later retrieval of the document:</p>
+
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+String id = myDocument.getId();</pre></div>
+
+		<div class="section"><div class="section_title">Getting Children</div><div type="Getting Children">
+			
+			<p class="p">To get the children of a folder, you can use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Folder root = openCmisSession.getRootFolder();
+ItemIterable&lt;CmisObject&gt; children = root.getChildren();
+for (CmisObject o : children) {
+	System.out.print("Name: " + o.getName());
+	if (o instanceof Folder) {
+		System.out.println(", type: Folder, createdBy: " + o.getCreatedBy());
+	} 
+	else {
+		Document doc = (Document) o;
+		System.out.println.println(", type: Document, createdBy: " + o.getCreatedBy() + 
+			" filesize: "+ doc.getContentStreamLength() + " bytes");
+	}
+}
+</pre></div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Retrieving a Document</div><div type="Retrieving a Document">
+			
+			<p class="p">To retrieve a document, you can use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Document document = (Document) openCmisSession.getObject(id);
+Property&lt;String&gt; p = document.getProperty(PropertyIds.NAME);
+System.out.println("Name: " + p.getValue());
+// or use System.out.println("Name: " + document.getName());
+</pre></div>
+
+			<p class="p">To get the content, use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">InputStream stream = document.getContentStream().getStream();</pre></div>
+
+			<p class="p">You can also retrieve a document using its path with the <span class="keyword cmdname">getObjectByPath()</span>
+				method.</p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> We recommend that you retrieve objects by ID and not by path. IDs are kept
+				stable even if the object is moved. Retrieving objects by IDs is also faster than
+				retrieving objects by paths.</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

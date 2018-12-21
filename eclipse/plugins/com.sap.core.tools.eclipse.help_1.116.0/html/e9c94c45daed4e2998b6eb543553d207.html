@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Create Rules</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loioe9c94c45daed4e2998b6eb543553d207">
+	<h1 class="title topictitle1">Create Rules</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To create rules, you have to perform the following activities:</p>
+
+			<div class="p">
+				<ul class="ul" id="loioe9c94c45daed4e2998b6eb543553d207__ul_tbc_w1v_3r">
+					<li class="li">
+						<p class="p"><a class="xref" href="e9c94c45daed4e2998b6eb543553d207.html#loioc5e66a1d841f4e18831bff085016f8b8">Give Experience Points</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e9c94c45daed4e2998b6eb543553d207.html#loio903a8922f6c045b88538661bcc714aee">Give Experience Points for a Critical Mission</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e9c94c45daed4e2998b6eb543553d207.html#loio9f533a5486a44feba1404340c46aa77b">Give Critical Ticket Points</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e9c94c45daed4e2998b6eb543553d207.html#loioeac2e6240221498381494b89b2c6caa3">Assign Troubleshooting Mission</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e9c94c45daed4e2998b6eb543553d207.html#loiof3d67d752cc749a38bb802ad17324b35">Complete Troubleshooting Mission</a></p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+
+<div class="topic task nested1" lang="en-US" id="loioc5e66a1d841f4e18831bff085016f8b8">
+	<h2 class="title topictitle2">Give Experience Points</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Go to <span class="ph uicontrol">Game Design</span> in the navigation menu and select
+						<span class="ph uicontrol">Rules</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to <span class="ph uicontrol">All Rules</span> in the sub navigation.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Add</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Name: “GiveXP”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Description: “Give Experience Points for processed ticket.”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the trigger: </span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='solvedProblem', $playerid:playerid) from entry-point eventstream</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the consequence: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPI.givePoints($playerid, 'Experience Points', 1, 'Ticket processed');
+update(engine.getPlayerById($playerid)); </pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Save</span>. The <span class="ph uicontrol">Activate on Engine Update</span>
+					checkbox must be checked.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio903a8922f6c045b88538661bcc714aee">
+	<h2 class="title topictitle2">Give Experience Points for a Critical Mission</h2>
+
+	<div class="body taskbody">
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Add</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Name: “GiveXPCritical”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Description: “Give additional Experience Points for critical
+					ticket.”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the trigger: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='solvedProblem', data['relevance']=='critical', $playerid:playerid) from entry-point eventstream</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the result:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPI.givePoints($playerid, 'Experience Points', 2, 'Critical ticket processed');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Save</span>. The <span class="ph uicontrol">Activate on Engine Update</span>
+					checkbox must be checked.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio9f533a5486a44feba1404340c46aa77b">
+	<h2 class="title topictitle2">Give Critical Ticket Points</h2>
+
+	<div class="body taskbody">
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Add</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Name: “GiveCT”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Description: “Give Critical Ticket Points for processed ticket.”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the trigger:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='solvedProblem', $playerid:playerid) from entry-point eventstream</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the consequence:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPI.givePoints($playerid, 'Critical Tickets', 1, 'Critical ticket processed');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Save</span>. The <span class="ph uicontrol">Activate on Engine Update</span>
+					checkbox must be checked.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loioeac2e6240221498381494b89b2c6caa3">
+	<h2 class="title topictitle2">Assign Troubleshooting Mission</h2>
+
+	<div class="body taskbody">
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Add</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Name: “AssignMissionTS”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Description: “Assign Troubleshooting mission.”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the trigger:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$p : Player($playerid : uid) 
+$event : EventObject(type=='initPlayerForApp', $playerid==playerid) from entry-point eventstream 
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the consequence:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPI.addMissionToPlayer($playerid, 'Troubleshooting');  
+update($p); 
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Save</span>. The <span class="ph uicontrol">Activate on Engine Update</span>
+					checkbox must be checked.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loiof3d67d752cc749a38bb802ad17324b35">
+	<h2 class="title topictitle2">Complete Troubleshooting Mission</h2>
+
+	<div class="body taskbody">
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Add</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Name: “CompleteMissionTS”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter Description: “Complete Troubleshooting Mission.”</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the trigger:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$p : Player($playerid : uid);
+eval(queryAPI.hasPlayerMission($playerid, 'Troubleshooting') == true)
+eval(queryAPI.getPointsForPlayer($playerid, 'Critical Tickets').getAmount() &gt;= 5)
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following text for the consequence:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPI.completeMission($playerid, 'Troubleshooting');
+updateAPI.addBadgeToPlayer($playerid, 'Troubleshooting Champion', 'You solved 5 critical tickets!'); 
+update($p); 
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Save</span>. The <span class="ph uicontrol">Activate on Engine Update</span>
+					checkbox must be checked.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic concept nested1" lang="en-US" id="loiofecc7f5a9bfe487bb70e0de2da60f985">
+	<h2 class="title topictitle2">Result</h2>
+
+	<div class="body conbody">
+		<div class="section">
+			<p class="p">You should now see the created rules in the list for Rules.</p>
+
+			<p class="p"><img class="image" id="loiofecc7f5a9bfe487bb70e0de2da60f985__image_mxr_c54_3r" width="1400px" src="loio793ffa6231484187b03df0c3d5cb19c4_HiRes.png"/></p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Deploy and Activate Rules</div><div type="Deploy and Activate Rules">
+			
+			<p class="p">7. Press Apply Changes.</p>
+
+			<p class="p">8. Confirm the dialog.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Results</div><div type="Results">
+			
+			<p class="p">All rules are shown as active without any issue warnings. </p>
+
+		</div></div>
+
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

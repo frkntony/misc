@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can bind productive SAP HANA and SAP ASE databases to applications in other accounts."/>
+<meta name="description" content="You can bind productive SAP HANA and SAP ASE databases to applications in other accounts."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing Databases Across Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioaa507b7607024607ad9cf6b56430ac3c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Accessing Databases Across Accounts</h1>
+<div class="body conbody"><p class="shortdesc">You can bind productive SAP HANA and SAP ASE databases to applications in other
+		accounts.</p>
+<p class="p">Databases can be used by applications in the same account. You can give applications in other
+			accounts (consumer account) controlled access to productive SAP HANA databases and SAP
+			ASE databases in your account.</p>
+<p class="p">The table below lists the commands used for binding and specifies the database (or database
+			system, as applicable):</p>
+
+<div class="tablenoborder"><table summary="" id="loioaa507b7607024607ad9cf6b56430ac3c__table_mhx_n4m_mq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+<thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" width="50%" id="d6810883e22">Command</th>
+<th class="entry" valign="top" width="50%" id="d6810883e24">Database</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="50%" headers="d6810883e22 ">
+							<p class="p"><samp class="ph codeph">bind-hana-dbms</samp></p>
+
+						</td>
+<td class="entry" valign="top" width="50%" headers="d6810883e24 ">
+							<p class="p">Productive SAP HANA database system</p>
+
+						</td>
+</tr>
+<tr class="row"><td class="entry" rowspan="2" valign="top" width="50%" headers="d6810883e22 ">
+							<p class="p"><samp class="ph codeph">bind-db</samp></p>
+
+						</td>
+<td class="entry" valign="top" width="50%" headers="d6810883e24 ">
+							<p class="p">SAP HANA database with multitenant database container (MDC) support
+								enabled (tenant database)</p>
+
+						</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="50%" headers="d6810883e24 ">
+							<p class="p">SAP Adaptive Server Enterprise (SAP ASE) database</p>
+
+						</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note restriction"><span class="restrictiontitle">Restriction</span> Binding an application to a database in another account works only
+			using the SAP Cloud Platform console client, not with the cockpit.</div>
+<p class="p">When an external application, that is, an application that does not belong to your
+			account, requests access to one or more of your databases, you can give access
+			permission to that application by generating an access token. The other account might be
+			one of your own accounts or a third-party account. The token uniquely identifies the
+			access permission based on the following:</p>
+<div class="p">
+			<ul class="ul" id="loioaa507b7607024607ad9cf6b56430ac3c__ul_x3d_cbt_tm"><li class="li">Account giving the access permission</li>
+<li class="li">Database ID</li>
+<li class="li">Consumer account and application</li>
+</ul>
+
+		</div>
+<p class="p">The access token is used by the consumer account to bind the database to the application in its
+			own account. You can use this token as long as application bindings exist or until the
+			permission is revoked. An unbind operation does not require an access token. You use the
+			access token parameter for the bind command instead of the database ID parameter.</p>
+<p class="p">The following applies for an access token:</p>
+<div class="p">
+			<ul class="ul" id="loioaa507b7607024607ad9cf6b56430ac3c__ul_sjs_gbt_tm"><li class="li">Always applies to one database and one application and is not transferrable</li>
+<li class="li">Has an unlimited validity period</li>
+<li class="li">Can be revoked whenever you wish, irrespective of whether the target application
+					has already been bound to the database</li>
+</ul>
+
+		</div>
+<div class="note restriction"><span class="restrictiontitle">Restriction</span> This functionality is not available for SAP MaxDB.</div>
+<p class="p">To give access permission, create a database user and a password and provide it together
+			with the access token to the consumer account member.</p>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="470750b4042f4b47b133637c0c522a1c.html" title="As an account member with the administrator or developer role, you can give applications in other accounts controlled access to productive SAP HANA and SAP ASE databases databases in your account.">Providing Access to Databases for Other Accounts</a></div>
+<div><a class="link" href="affa7822cef0400698c05d4f12f2e71f.html" title="This command binds a Java application to a productive SAP HANA database via a data source.">bind-hana-dbms</a></div>
+<div><a class="link" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

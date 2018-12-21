@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="While working with the Git service, you might encounter these common problems and error messages. Note that the actual error messages and their presentation depend on the Git client you are using for communication with the Git service."/>
+<meta name="description" content="While working with the Git service, you might encounter these common problems and error messages. Note that the actual error messages and their presentation depend on the Git client you are using for communication with the Git service."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Troubleshooting</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiofcc9b157ea9644aa9d292e65fd3108f8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Troubleshooting</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">While working with the Git service, you might encounter these common problems and error messages. Note that the actual error messages and
+		their presentation depend on the Git client you are using for communication with the Git service.</p>
+
+		<div class="section"><div class="section_title">General Issues</div><div type="General Issues">
+			
+			<div class="p">
+				<ul class="ul" id="loiofcc9b157ea9644aa9d292e65fd3108f8__ul_tlf_1cr_g5">
+					<li class="li">
+						<p class="p">Cloning a repository fails with <samp class="ph systemoutput">Git repository not found</samp>.</p>
+
+						<p class="p">Ensure that you have the correct URL of the repository. Copy the URL from the <span class="ph uicontrol">Source Location</span> section of the
+							repository's details page in the <span class="ph pname">SAP Cloud Platform</span> cockpit.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Pushes of changes to a remote branch are rejected with a message similar to this one: <samp class="ph systemoutput">HEAD -&gt; master
+								(non-fast-forward)</samp>.</p>
+
+						<p class="p">The update failed because the commit you tried to push is not a successor of the tip of the remote branch. Fetch the latest changes from the
+							remote branch and either rebase your local changes to the tip of the remote branch or merge the two branches. Then push
+							again.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Remote operation fails with <samp class="ph systemoutput">cannot open git-receive-pack</samp> or <samp class="ph systemoutput">cannot open
+								git-upload-pack</samp>.</p>
+
+						<p class="p">These error messages usually indicate a communication issue with the Git service, for example due to downtime or an issue with your network
+							connection to the Git service. If you are behind a proxy, configure your Git client appropriately. If the problem
+							persists, contact SAP Support for help.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Issues Related to Access and Permissions</div><div type="Issues Related to Access and Permissions">
+			
+			<div class="p">
+				<ul class="ul" id="loiofcc9b157ea9644aa9d292e65fd3108f8__ul_usg_1cr_g5">
+					<li class="li">
+						<p class="p">All remote operations on a repository fail with <samp class="ph systemoutput">Authentication failed for ...</samp>.</p>
+
+						<p class="p">Make sure that you enter your correct SAP ID credentials. Check that you can log on to the <span class="ph pname">SAP Cloud Platform</span>, for example to the cockpit. If that fails as well,
+							your account may have been locked temporarily due to too many failed logon attempts. If the problem persists, contact SAP
+							Support for help.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">A remote operation on a repository fails with <samp class="ph systemoutput">Git access forbidden</samp>.</p>
+
+						<p class="p">You don't have permission to access the repository at all or to perform the requested Git operation. Ensure that you are member of the
+							account that owns the repository. For read access (<span class="keyword cmdname">clone</span>, <span class="keyword cmdname">fetch</span>,
+								<span class="keyword cmdname">pull</span>), you must have the role Administrator, Developer, or Support User. For write access
+								(<span class="keyword cmdname">push</span>, <span class="keyword cmdname">push</span> tags), you must have the Administrator or Developer role. For more
+							information about required roles for certain Git operations, see <a class="xref" href="e926e66e58c143dfb9fa4d130d73c43b.html" title="Access to the Git service is protected by SAP Cloud Platform roles and granted only to members of an account.">Security</a>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Pushes of changes fail with a message similar to this one: <samp class="ph systemoutput">You are not allowed to perform this operation. To push into this
+								reference you need 'Push' rights. ... HEAD -&gt; master (prohibited by Gerrit)</samp>.</p>
+
+						<p class="p">You don't have the account member role Developer or Administrator or the repository is currently locked for write operations. Check your
+							roles in the <span class="ph pname">SAP Cloud Platform</span> cockpit or ask an account
+							administrator to assign the necessary roles. Check the state of the repository in the cockpit and unlock it to enable
+							write operations.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Pushes of changes fail with <samp class="ph systemoutput">You are not committer ...</samp>.</p>
+
+						<p class="p">The Git service verifies that the e-mail address of the committer associated with a commit matches the e-mail address you registered with the
+							SAP ID service.</p>
+
+						<p class="p">Users with the account member role Developer are not allowed to submit changes in the name of other users (forge committer identity). This
+							error might indicate that your Git client is not properly configured to use the e-mail address registered with the SAP ID
+							service. To check your client configuration, use the <span class="keyword cmdname">git config</span> command:</p>
+
+						<p class="p"><samp class="ph systemoutput">$ git config -l ... user.name=John Doe user.email=john.doe@example.com ...</samp></p>
+
+						<p class="p">To submit changes in the name of another user, for example when transferring changes between different repositories, you must have the
+							account member role Administrator.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Deleting a tag or remote branch fails.</p>
+
+						<p class="p">Users with the account member role Developer are not allowed to delete or move tags or to delete remote branches. You must have the account
+							member role Administrator to do this.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Issues Related to Violation of Restrictions</div><div type="Issues Related to Violation of Restrictions">
+			
+			<div class="p">
+				<ul class="ul" id="loiofcc9b157ea9644aa9d292e65fd3108f8__ul_bbz_zbr_g5">
+					<li class="li">
+						<p class="p">Pushes of changes fail with <samp class="ph systemoutput">Pack exceeds the limit of ..., rejecting the pack</samp>.</p>
+
+						<p class="p">This error message indicates that the maximum size of your Git repository would be exceeded by accepting this change. The Git service imposes
+							a hard limit of 500 MB as the maximum size of repositories to ensure the best possible performance and health of the
+							service. You can see this limit in the <span class="ph pname">SAP Cloud Platform</span> cockpit
+							as well as your current repository size.</p>
+
+						<p class="p">Run a garbage collection in the <span class="ph pname">SAP Cloud Platform</span> cockpit to clean up unnecessary
+							objects and compact the repository content. If this does not significantly reduce the size of the repository, this usually
+							indicates that the repository contains build artifacts or some other binary data that cannot be compressed efficiently and
+							not just source code. Remove such files from the history of the repository and consider storing them outside the Git
+							service.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Pushes of changes fail with <samp class="ph systemoutput">Object too large (... bytes), rejecting the pack. Max object size limit is ...
+							bytes</samp>.</p>
+
+						<p class="p">This error message indicates that the commit you are trying to push contains files that are too large to be stored by the Git service. The
+							Git service imposes a hard limit of 20 MB as the maximum size of individual files in a repository to ensure the best
+							possible performance and health of the service. Remove the   file or files that are too big from the commit and push
+							again.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e926e66e58c143dfb9fa4d130d73c43b.html" title="Access to the Git service is protected by SAP Cloud Platform roles and granted only to members of an account.">Security</a></div>
+<div><a class="link" href="491ba6af57f14b06ac61472409879002.html" title="In the SAP Cloud Platform cockpit, you can trigger a garbage collection for a repository to clean up unnecessary objects and compact the repository content aggressively.">Cleaning a Repository</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

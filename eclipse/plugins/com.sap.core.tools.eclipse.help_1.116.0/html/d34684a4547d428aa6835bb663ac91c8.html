@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Eval Statement</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod34684a4547d428aa6835bb663ac91c8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Eval Statement</h1>
+
+	<div class="body conbody">
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">Eval statements are used to define constraints with data that is not available in the
+				working memory, such as status of player achievements. Multiple constraints can be
+				defined in one rule with the combination of multiple logical operators. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> The code within eval statements must follow the Java syntax, just like in the case of the
+				consequences ("then") part. They are not based on the Drools Rule Language like the
+				rest of the trigger part.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> It is recommended to avoid using an eval statement since it is an expensive operation. Use
+				it as late as possible within your trigger part.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Procedure</div><div type="Procedure">
+			
+			<p class="p">Declaration of an eval statement:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">eval(&lt;EXPRESSION&gt;&lt;OPERATOR&gt;&lt;VALUE&gt;)</pre></div>
+
+			</div>
+
+			<div class="p">
+				<ul class="ul" id="loiod34684a4547d428aa6835bb663ac91c8__ul_q3g_gvt_4t">
+					<li class="li">
+						<p class="p">Expression: It is recommended to only use methods of the Query API in
+							eval conditions. The use of the Query API allows you to evaluate
+							available player details and achievements using Java statements.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Operator: All logical operators supported by Java are supported. </p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<div class="p">Examples for eval statements:<ul class="ul" id="loiod34684a4547d428aa6835bb663ac91c8__ul_gkj_mvt_4t">
+					<li class="li">
+						<p class="p">Declaration of an eval statement where the mission “Troubleshooting” is assigned to the
+							player.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">eval(queryAPIv1.hasPlayerMission($playerid, 'Troubleshooting') == true</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of an eval statement where the “Experience Points” of the player are larger or
+							equal to 10.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">eval(queryAPIv1. getScoreForPlayer($playerid, 'Experience Points ', null, null).getAmount() &gt;= 10)</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of an eval statement where the player does not have the badge “Sporting Ace”
+							assigned.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">eval(queryAPIv1.hasPlayerBadge($playerid, 'Sporting Ace') == false)</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+
+			<div class="note note"><span class="notetitle">Note</span> The use of an invalid expressions may lead to an error during rule execution. Make sure
+				that referenced point categories or missions exist and the spelling is
+				correct.</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

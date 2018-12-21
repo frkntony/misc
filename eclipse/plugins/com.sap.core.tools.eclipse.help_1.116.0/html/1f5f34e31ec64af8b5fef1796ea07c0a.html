@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Protecting from Cross-Site Request Forgery</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio1f5f34e31ec64af8b5fef1796ea07c0a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Protecting from Cross-Site Request Forgery</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section"><div class="section_title">What is Cross-Site Request Forgery (CSRF)</div><div type="What is Cross-Site Request Forgery (CSRF)"><p class="p">Cross-site request forgery
+				(CSRF or XSRF) is also known as one-click attack or session riding. The key step of
+				the attack is that a malicious user tricks the victim’s browser into executing an
+				HTTP request on behalf of the valid user. As a result, a security sensitive action
+				is performed on the server side. If the victim has already logged in the attacked
+				site, the browser has valid session cookies and sends them automatically with
+				subsequent requests. The server trusts these requests based on the valid cookies
+				sent by the browser and confirms that the action has been initiated by the victim.
+				</p>
+<p class="p">The predictability of the HTTP request is a prerequisite for the attacker to
+				be able to insert a request in advance in order to make the browser execute it.
+				Therefore, the common prevention to this attack is to embed a secret unpredictable
+				token into the request, unique for each session or request. </p>
+<p class="p">The diagram that
+				follows illustrates the CSRF process.</p>
+<img class="image" id="loio1f5f34e31ec64af8b5fef1796ea07c0a__image_rb4_mww_sn" src="loio1a5c977493a243a88d6ec0a3baea8d4e_LowRes.png"/></div></div>
+
+		<div class="section"><div class="section_title">How to Protect from CSRF</div><div type="How to Protect from CSRF">
+			
+			<div class="p"><span class="ph pname">SAP Cloud Platform</span> provides two CSRF protection approaches:
+<div class="table-wrapper tablenoborder"><table summary="" id="loio1f5f34e31ec64af8b5fef1796ea07c0a__table_qkg_yvw_sn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="1" id="d1345530e51">CSRF Protection Mechanism</th>
+
+								<th class="entry" valign="top" width="25%" id="d1345530e54">Description</th>
+
+								<th class="entry" valign="top" width="1" id="d1345530e57">When to Use</th>
+
+								<th class="entry" valign="top" width="25%" id="d1345530e60">How to Use</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="1" headers="d1345530e51 ">URL encoding approach</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1345530e54 ">Based on the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#CSRF_Prevention_Filter" target="_blank" alt="http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#CSRF_Prevention_Filter" title="http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#CSRF_Prevention_Filter">CSRF Prevention Filter<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> provided by
+									Apache Tomcat 7. The prevention mechanism is based on a token (a
+									nonce value) generated on each request and stored in the
+									session. The token is used to encode all URLs on the entry point
+									sites. Upon request to a protected URL, the existence and value
+									of the token is checked. The request is allowed to proceed only
+									if the nonce from the token equals the one stored in the
+									session. The prevention mechanism is applied for all URLs mapped
+									to the filter except for specially defined entry points.</td>
+
+								<td class="entry" valign="top" width="1" headers="d1345530e57 ">This is the most common CSRF protection. Use it for
+									protecting resources that are supposed to be accessed via some
+									sort of navigation. For example, if there is a reference to them
+									in an entry point page (included in links/post forms, and so
+									on). </td>
+
+								<td class="entry" valign="top" width="25%" headers="d1345530e60 ">
+									<p class="p">See <a class="xref" href="e5be9994bb571014b575a785961062db.html">Using the Apache Tomcat CSRF Prevention Filter</a></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="1" headers="d1345530e51 ">Custom header approach</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1345530e54 ">Based on a secret token (a nonce value) generated on server
+									side and stored in the session, but unlike the first approach,
+									here the token is transported as a custom header of the HTTP
+									requests.</td>
+
+								<td class="entry" valign="top" width="1" headers="d1345530e57 ">Use it when URL encoding is not suitable. For example, when
+									protecting resources that are requested only as REST APIs (one
+									time requests that should be served independently from previous
+									requests and are not included in links and HTML forms). The same
+									approach is implemented in other SAP web application servers
+									like AS ABAP and HANA XS, and is supported by SAP UI5. Common
+									scenarios that can benefit from this approach are those using
+									ODATA services, REST, AJAX, etc. </td>
+
+								<td class="entry" valign="top" width="25%" headers="d1345530e60 ">
+									<p class="p">See <a class="xref" href="3756f3fc7b4342d39db1bbe57d1b2d57.html">Using Custom Header Protection</a></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="1" headers="d1345530e51 ">Custom CSRF filtering implementation</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1345530e54 ">
+									<p class="p">If you cannot use URL encoding or custom header protection,
+										you can implement your custom CSRF filtering</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="1" headers="d1345530e57 ">
+									<p class="p">Use it when implementing single logout (SLO) for <span class="ph pname">SAP Cloud Platform</span> applications. Due to redirects to the SAML
+										2.0 identity provider, you cannot use the out-of-the-box
+										approaches listed here (custom header protection or URL
+										encoding.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1345530e60 ">
+									<p class="p"><a class="xref" href="2eebf764c3e34900b92a6ba3e4654ccd.html" title="This topic describes how to enable users to log out from your applications.">Enabling Logout</a></p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> These approaches cannot be applied together to protect one and the same web
+					resource.</div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

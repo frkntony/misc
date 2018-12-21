@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform."/>
+<meta name="description" content="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Overview of Database Systems and Databases</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio920f2440fad245da93604c2623f0426a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Overview of Database Systems and Databases</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> account
+		administrators can create databases on database management systems in their account.
+		Developers can bind databases to applications running on <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+		<p class="p">A database is associated with a particular account and is available to applications in
+			this account. You can create databases, bind them to applications, and delete them using
+			the console client or the cockpit. You can bind the same database to multiple
+			applications, and the same application to multiple databases. </p>
+
+		<p class="p">You can work with different database systems on <span class="ph pname">SAP Cloud Platform</span>, each of which
+			has different capabilities and may be suited better in a trial or a productive scenario.
+			Read the following explanation and choose the one that fits your scenario best.</p>
+
+		<div class="section"><div class="section_title">Terminology</div><div type="Terminology">
+			
+			<p class="p">We use the term <span class="q">“database”</span> to refer commonly to all database types and systems currently
+				in use with <span class="ph pname">SAP Cloud Platform</span>. Note that more specific names
+				might be used to refer to databases in the context of the corresponding technology.
+					<span class="ph pname">SAP Adaptive Server
+                            Enterprise</span>(<span class="ph pname">SAP ASE</span>) speaks of user
+				databases for example. SAP HANA speaks of multitenant database containers (MDC),
+				also called tenant databases.</p>
+
+			<p class="p">A database management system (DBMS) is a computer system that enables administrators,
+				developers, and applications to interact with one or more databases and provides
+				access to the data contained in the database. It runs on a hardware host (or several
+				hosts for distributed database systems) and has a version. Examples for DBMSs are
+				SAP HANA and SAP ASE.</p>
+
+			<p class="p">A database is an organized collection of the data that can be backed up and restored
+				separately. The database is the technical unit that contains the data where DBMS is
+				a service that enables users to define, create, query, update, and administer the
+				data. Therefore, the term <span class="q">“database”</span> is not equivalent with the term
+					<span class="q">“database system”</span> even if the term <span class="q">“database”</span> is often used to refer
+				to both a database and the DBMS used to access and manage it.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Database System: SAP HANA</div><div type="Database System: SAP HANA">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio920f2440fad245da93604c2623f0426a__table_nnr_sg1_p5" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="75%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d6757317e83">
+								<p class="p">Use Case</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="75%" id="d6757317e89">
+								<p class="p">Description</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="25%" id="d6757317e101" headers="d6757317e83 ">
+								<p class="p">You want to use an SAP HANA database on a productive landscape.</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="75%" headers="d6757317e101 d6757317e89 ">
+								<p class="p">You can use an SAP HANA database in productive mode.</p>
+
+								<p class="p">The productive SAP HANA database provides you with a database
+									reserved
+									for your exclusive use, enabling you to develop with SAP HANA as
+									with an on-premise system. You have full control of user
+									management and can use a range of tools.</p>
+
+								<p class="p">For more information, see <a class="xref" href="c6f5764433354640a1e44b893399eaee.html" title="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment.">Using a Productive SAP HANA Database System</a>.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="25%" id="d6757317e131" headers="d6757317e83 ">
+								<p class="p">You want to use an SAP HANA database on the trial landscape.</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="75%" headers="d6757317e131 d6757317e89 ">
+								<p class="p">You can try out working with an SAP HANA database on the trial landscape.</p>
+
+								<p class="p">The trial SAP HANA database provides you with a single database schema or repository
+									package on a shared HANA database, enabling you to work with SAP
+									HANA in a managed environment. Your SAP HANA packages or schemas
+									(and therefore your data) might be distributed across different
+									databases. Restrictions apply to ensure user and data isolation.
+									Developers have limited access rights. You use predefined
+									scripts to grant additional rights and privileges.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Database System: SAP ASE</div><div type="Database System: SAP ASE">
+			
+			<p class="p"> You can create SAP ASE databases on database management systems in your account and
+				bind databases to applications running in the cloud.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Database System: SAP HANA with multitenant database container support enabled (beta)</div><div type="Database System: SAP HANA with multitenant database container support enabled (beta)">
+			
+			<p class="p">You receive a database
+				reserved
+				for you that resides in a multiple-container
+				system (MDC,
+				tenant database). Hosting of multiple SAP HANA databases on a
+				single SAP HANA
+				database
+				system is possible when the support for multitenant database
+				container is enabled for the SAP HANA databases (currently a beta feature). All
+				tenant databases in the same system share the same system resources (memory and CPU
+				cores) but each tenant database is fully isolated with its own database users,
+				catalog, repository, persistence (data files and log files) and services.</p>
+
+			<div class="note restriction"><span class="restrictiontitle">Restriction</span> 
+				<p class="p">To be able to use this functionality, please order an SAP HANA database system
+					enabled for SAP HANA multitenant database containers. It is not possible to
+					enable SAP HANA multitenant database containers for existing SAP HANA database
+					systems.</p>
+
+				<p class="p">Please contact SAP for details at the SAP Support Portal as described at <a class="xref" href="5dd739823b824b539eee47b7860a00be.html" title="If you have questions or encounter an issue while working with SAP Cloud Platform, you can address them as described below.">Get Support</a>.</p>
+
+			</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio920f2440fad245da93604c2623f0426a__table_c43_pb1_p5" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="75%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d6757317e200">
+								<p class="p">Use Case</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="75%" id="d6757317e206">
+								<p class="p">Description</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="25%" id="d6757317e218" headers="d6757317e200 ">
+								<p class="p">You want to use an SAP HANA tenant database on a productive landscape.</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="75%" headers="d6757317e218 d6757317e206 ">
+								<p class="p">You can use a tenant database reserved for you in productive
+									mode. However, some restrictions apply.</p>
+
+								<div class="note caution" id="loio920f2440fad245da93604c2623f0426a__beta_cust_or_partner_accnts"><span class="cautiontitle">Caution</span> 
+                        <p class="p">You should not use <span class="ph pname">SAP Cloud Platform</span> beta features in productive accounts, as any productive use of the beta
+                                functionality is at the customer's own risk, and SAP shall not be liable for errors or damages caused by the use of
+                                beta features.</p>
+
+                </div>
+
+								<div class="note restriction"><span class="restrictiontitle">Restriction</span> 
+									<p class="p"><span class="ph emphasis emphasis">Backup</span></p>
+
+									<ul class="ul" id="loio920f2440fad245da93604c2623f0426a__ul_jfm_cc1_p5">
+										<li class="li">When you delete tenant databases, data and log backups
+											are also deleted so that the database cannot be
+											recovered.</li>
+
+										<li class="li">When you stop a tenant database for several days, it may
+											not be possible to recover the database. It is important
+											to keep databases running without longer downtimes.</li>
+
+									</ul>
+
+									<p class="p"><span class="ph emphasis emphasis">Monitoring</span></p>
+
+									<ul class="ul" id="loio920f2440fad245da93604c2623f0426a__ul_kfm_cc1_p5">
+										<li class="li">The availability of SAP HANA databases enabled for
+											multitenant database container support is not monitored
+											and no alerts are sent when a database is not
+											available.</li>
+
+										<li class="li">The registration of availability checks for HANA native
+											applications is not supported yet.</li>
+
+										
+									</ul>
+
+									<p class="p"><span class="ph emphasis emphasis">Memory Management</span></p>
+
+									<ul class="ul" id="loio920f2440fad245da93604c2623f0426a__ul_scx_tfc_5v">
+										<li class="li">Memory allocation limits must be set manually per tenant
+											database using HANA tools like HANA studio or HANA Web
+											IDE. The sum of the specified allocation limits must not
+											exceed the memory available for tenant databases. There
+											is no overview available on database system level
+											regarding actual memory consumption and specified memory
+											limits.</li>
+
+										<li class="li">If the specified memory limit for a certain tenant
+											database is exceeded, the connection to the tenant
+											database may not be possible anymore until the tenant
+											database is restarted or the limit is increased by <span class="ph pname">SAP Cloud Platform</span>
+											operators.</li>
+
+										<li class="li">Be aware that setting tight memory limits for tenant
+											databases may lead to failing backups and a recovery may
+											not always be possible.</li>
+
+									</ul>
+
+									<p class="p"><span class="ph emphasis emphasis">Connectivity</span></p>
+
+									<ul class="ul" id="loio920f2440fad245da93604c2623f0426a__ul_qlf_vvp_5v">
+										<li class="li">Certificate-based authentication is not supported when
+											accessing services provided by <span class="ph pname">SAP Cloud Platform</span>,
+											for example, the Document service.</li>
+
+									</ul>
+
+								</div>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="25%" id="d6757317e304" headers="d6757317e200 ">
+								<p class="p">You want to use an SAP HANA tenant database on the trial landscape.</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="75%" headers="d6757317e304 d6757317e206 ">
+								<p class="p">You can try out working with a tenant database on the trial
+									landscape.</p>
+
+								<p class="p">The trial tenant database offers you the same user experience as
+									the productive tenant database. You create a trial tenant
+									database in the same way with the only difference that you
+									select the database system <span class="ph uicontrol">HANA MDC
+										(&lt;trial&gt;)</span>.</p>
+
+								<p class="p">Some restrictions apply when using a trial tenant database:</p>
+
+								<div class="note restriction"><span class="restrictiontitle">Restriction</span> 
+									<ul class="ul" id="loio920f2440fad245da93604c2623f0426a__ul_cqx_ksz_45">
+										<li class="li">You can create your own trial database on a shared HANA
+											MDC system. The persistence service determines to which
+											database system the tenant is assigned.</li>
+
+										<li class="li">You can create only one trial tenant database in the
+											account.</li>
+
+										<li class="li">Trial databases are configured using fixed quota for RAM and CPU.</li>
+
+										<li class="li">You can use the trial tenant database for 12 hours. It will be shut down automatically
+											after this period to free resources.</li>
+
+										<li class="li">If you do not use the tenant database for 7 days, it will be deleted automatically to
+											free the consumed disk space.</li>
+
+										<li class="li">Backup is not enabled and no recovery is possible.</li>
+
+										<li class="li">There are some other restrictions which HANA features
+											can be used in the trial scenario and which not.</li>
+
+									</ul>
+
+								</div>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="26805cc32a864b2d85af6d987a86a7b3.html" title="You can manage the database systems available in your account on SAP Cloud Platform.">Administering Database Systems</a></div>
+<div><a class="link" href="0c538ec4fba94303b3a24b48ecee69f3.html" title="The persistence service provides a set of console client commands for managing database systems. For example, you can list database systems available for an account or restart a whole SAP HANA database system.">Database System Commands</a></div>
+<div><a class="link" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></div>
+<div><a class="link" href="369214b650b941b9b4bc48fdc6ec8097.html" title="The persistence service provides a set of console client commands for managing databases. These allow you to create databases with specific properties, bind and unbind databases, delete databases, and display information about databases.">Database Commands</a></div>
+<div><a class="link" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a></div>
+<div><a class="link" href="48be066aea98444188544d68714bbf3b.html" title="With SAP Cloud Platform, you can use the SAP HANA development tools to create comprehensive analytical models and build applications with SAP HANA's programmatic interfaces and integrated development environment.">SAP HANA: Development</a></div>
+<div><a class="link" href="46af2934d19343ca8250ce288d27ea41.html" title="Use the cockpit to create an SAP HANA database enabled for multitenant database container support (beta) on an SAP HANA database management system in your account.">Creating SAP HANA MDC Databases</a></div>
+<div><a class="link" href="d9532969173d4d9bad67ed033d5c0969.html" title="Use the cockpit to create an SAP ASE database on an SAP ASE database management system in your account and assign properties like database size.">Creating SAP ASE Databases</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing MobiLink Server Logs</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc05a3ae1b5bd4204bc482ce8496db66c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accessing MobiLink Server Logs</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You can access the MobiLink server logs both in the cockpit and the console client.</p>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="concept_alj_ytw_3r">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Accessing Logs in the Cockpit</div><div type="Accessing Logs in the Cockpit">
+				
+				<ol class="ol" id="concept_alj_ytw_3r__ol_n35_15w_3r">
+					<li class="li">Open the cockpit. </li>
+
+					<li class="li">In the left navigation, choose <span class="ph uicontrol">Java Applications</span>. For the time
+						being, your MobiLink server appears as a Java application. </li>
+
+					<li class="li">Find the MobiLink server name which you have specified during MobiLink provisioning and
+						choose it. </li>
+
+					<li class="li">In the <span class="ph uicontrol">Most Recent Logging</span> section, click the <img class="image" id="concept_alj_ytw_3r__image_xvp_p5w_3r" src="loiofb070407553448eab9f18f7f98b1d3df_HiRes.png"/>
+						icon to view the logs, or the <img class="image" id="concept_alj_ytw_3r__image_gbh_55w_3r" src="loioa434cc10400049099dec20915c678db7_HiRes.png"/>
+						icon to download them.</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Accessing Logs in the Console Client</div><div type="Accessing Logs in the Console Client">
+				
+				<ol class="ol" id="concept_alj_ytw_3r__ol_jwn_15w_3r">
+					<li class="li">Open the console client, navigating to the
+							<span class="ph filepath">&lt;SDK_installation&gt;/tools</span> directory. </li>
+
+					<li class="li">To list all available logs of the MobiLink runtime, execute the
+							<span class="keyword cmdname">list-logs</span> command below (exemplary data is given):
+								<p class="p"><span class="ph emphasis emphasis">Example</span>:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-logs --account myaccount --application mymobilinkserver --user p1234567890 --host hana.ondemand.com</pre></div>
+</li>
+
+					<li class="li">To download the log file of the MobiLink server, execute the <span class="keyword cmdname">get-log</span>
+						command below (exemplary data is given):
+							<p class="p"><span class="ph emphasis emphasis">Example</span>:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo get-log --account myaccount --application mymobilinkserver --user p1234567890 --host hana.ondemand.com --directory C:\MyMobiLink\log --file mobilink_runtime_2015-03-10.log</pre></div>
+</li>
+
+				</ol>
+
+			</div></div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="5244437599194207a984d5730c3b41d2.html" title="This page helps you to achieve end-to-end traceability of all synchronizations done via the Remote Data Sync service of SAP Cloud Platform. This way, you can track who made what changes during work on the SAP HANA target database in the cloud.">Audit Logging of MobiLink Synchronizations</a></div>
+<div><a class="link" href="1f6a77c98a1e45118021d57996cfb9df.html" title="This command lists all log files of your application sorted by date in a table format, starting with the latest modified.">list-logs</a></div>
+<div><a class="link" href="d35f392ff9504c8793df5feee18054ca.html" title="This command downloads a particular log file.">get-log</a></div>
+</div>
+</div>
+	</div>
+
+	
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

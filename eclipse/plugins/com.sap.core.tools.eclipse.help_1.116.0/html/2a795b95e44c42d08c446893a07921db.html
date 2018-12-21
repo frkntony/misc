@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Database instances in the cloud are protected by a firewall, in other words, they are not directly accessible. Access to remote database instances is therefore only possible through a database tunnel, which provides a secure connection from your local machine and bypasses the firewall."/>
+<meta name="description" content="Database instances in the cloud are protected by a firewall, in other words, they are not directly accessible. Access to remote database instances is therefore only possible through a database tunnel, which provides a secure connection from your local machine and bypasses the firewall."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing Databases Remotely</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2a795b95e44c42d08c446893a07921db">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accessing
+		Databases Remotely</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Database instances in the cloud are protected by a firewall, in other words, they are
+		not directly accessible. Access to remote database instances is therefore only possible
+		through a database tunnel, which provides a secure connection from your local machine and
+		bypasses the firewall. </p>
+
+		<div class="section">
+			<p class="p">A database tunnel allows you to use database tools, such as the SAP HANA studio or
+				Eclipse Data Tools Platform, to connect to the remote database instance. It provides
+				you with direct access to a schema and allows you to manipulate it at database
+				level.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">SAP HANA Database</div><div type="SAP HANA Database">
+			
+			<p class="p">The SAP HANA studio provides the most convenient option for connecting to the remote
+				database, since it automatically opens the database tunnel for you and closes it
+				when you disconnect. It is therefore the recommended tool to use. Bear in mind that
+				if you choose to use another tool you will have to explicitly open the database
+				tunnel yourself. </p>
+
+			<p class="p">To connect to the remote database using the SAP HANA studio (Eclipse with appropriate
+				plugins), proceed as described in: </p>
+
+			<p class="p"><a class="xref" href="c597f8231b4e463da0dcc3095ea139b7.html" title="Follow the procedure below to make a direct connection to a shared SAP HANA schema via the Eclipse IDE, using SAP HANA Tools.">Connecting to SAP HANA Schemas via the Eclipse IDE</a></p>
+
+			<p class="p">In the wizard, select the <span class="ph uicontrol">Trial instances</span> radio button and
+				then select your database schema from the dropdown box.</p>
+
+			<p class="p">For continuous integration and test automation, you can open a database tunnel using
+				scripting or as part of a Maven build. See <a class="xref" href="49626c9474584bbfa4a936975b851326.html" title="For the purposes of continuous delivery and automated tests, the open-db-tunnel command supports a background mode, which allows a database tunnel to be opened by automated scripts or as part of a Maven build.">Automating the Use of Database Tunnels</a>. </p>
+
+		</div></div>
+
+		
+		<div class="section"><div class="section_title">SAP ASE Database</div><div type="SAP ASE Database">
+			
+			<p class="p">If you are working with SAP ASE databases, you need to explicitly open a database
+				tunnel:</p>
+
+			<div class="p">
+				<ol class="ol" id="loio2a795b95e44c42d08c446893a07921db__ol_crp_qp3_xs">
+					<li class="li">To open a database tunnel, see <a class="xref" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a>.</li>
+
+					<li class="li">To connect to the remote database using the Eclipse Data Tools Platform
+						(DTP), see <a class="xref" href="107ffdb907334d97be99fdcb7aad8961.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP ASE Database</a>.</li>
+
+				</ol>
+
+			</div>
+
+		</div></div>
+
+		
+		<div class="section"><div class="section_title">SAP MaxDB</div><div type="SAP MaxDB">
+			
+			<p class="p">If you are working with SAP MaxDB, you need to explicitly open a database tunnel:</p>
+
+			<div class="p">
+				<ol class="ol" id="loio2a795b95e44c42d08c446893a07921db__ol_t5h_qm3_s4">
+					<li class="li">To open a database tunnel, see <a class="xref" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a>.</li>
+
+					<li class="li">To connect to the remote database using the Eclipse Data Tools Platform
+						(DTP), see <a class="xref" href="4bb0e3ed9f1d4683beec800a230d9dda.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP MaxDB database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP MaxDB Database</a>.</li>
+
+				</ol>
+
+			</div>
+
+			<div class="p">
+				<div class="note restriction"><span class="restrictiontitle">Restriction</span> For SAP MaxDB, the functionality described in this section
+					is available as a beta version and can be used on the trial landscape
+					only.</div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></div>
+<div><a class="link" href="49626c9474584bbfa4a936975b851326.html" title="For the purposes of continuous delivery and automated tests, the open-db-tunnel command supports a background mode, which allows a database tunnel to be opened by automated scripts or as part of a Maven build.">Automating the Use of Database Tunnels</a></div>
+<div><a class="link" href="4bb0e3ed9f1d4683beec800a230d9dda.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP MaxDB database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP MaxDB Database</a></div>
+<div><a class="link" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

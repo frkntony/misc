@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This step-by-step tutorial shows how you create a database in an SAP HANA database system with multitenant database container support enabled, using SAP Cloud Platform Console Client commands."/>
+<meta name="description" content="This step-by-step tutorial shows how you create a database in an SAP HANA database system with multitenant database container support enabled, using SAP Cloud Platform Console Client commands."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating an SAP HANA Database Using Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioee6ae2938cf54c46bd8996745dbc033c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating an SAP HANA Database Using Console Client</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This step-by-step tutorial shows how you create a database in an SAP HANA database
+		system with multitenant database container support enabled, using <span class="ph pname">SAP Cloud Platform</span>
+		Console Client commands.</p>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">In the console client command line, you execute the command to create a database.
+				Once the database is available, you use the console client command to create a
+				binding between the database and an existing Java application. You use the commands
+				to deploy the Java application and run it. You can view the application in the
+				browser, enter first names and last names in the table, and check in SAP HANA Client
+				that the names you entered are available in the database.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">To be able to use this functionality, please order an SAP HANA database system
+					enabled for SAP HANA multitenant database containers.</p>
+
+				<p class="p">Please contact SAP for details at the SAP Support Portal as described at <a class="xref" href="5dd739823b824b539eee47b7860a00be.html" title="If you have questions or encounter an issue while working with SAP Cloud Platform, you can address them as described below.">Get Support</a>.</p>
+
+			</div>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> 
+                        <p class="p">You should not use <span class="ph pname">SAP Cloud Platform</span> beta features in productive accounts, as any productive use of the beta
+                                functionality is at the customer's own risk, and SAP shall not be liable for errors or damages caused by the use of
+                                beta features.</p>
+
+                </div>
+
+			<p class="p">Go through the relevant steps:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioee6ae2938cf54c46bd8996745dbc033c__table_c5n_bth_ln" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d12572417e71">Steps</th>
+
+							<th class="entry" valign="top" width="50%" id="d12572417e74">Tools</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d12572417e71 "><a class="xref" href="ee6ae2938cf54c46bd8996745dbc033c.html#loioee6ae2938cf54c46bd8996745dbc033c__section_prerequisites">Prerequisites</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d12572417e74 "> </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d12572417e71 "><a class="xref" href="ee6ae2938cf54c46bd8996745dbc033c.html#loioee6ae2938cf54c46bd8996745dbc033c__section_create_db_consoleclient">1. Create a Database Using Database System mdc1</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d12572417e74 ">
+								<p class="p">Console client, SDK</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d12572417e71 "><a class="xref" href="ee6ae2938cf54c46bd8996745dbc033c.html#loioee6ae2938cf54c46bd8996745dbc033c__section_deploy_db">2. Deploy Java Application (Person Sample) into Account</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d12572417e74 ">
+								<p class="p">Maven</p>
+
+								<p class="p">Console client, SDK</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d12572417e71 "><a class="xref" href="ee6ae2938cf54c46bd8996745dbc033c.html#loioee6ae2938cf54c46bd8996745dbc033c__section_dbuser">3. Create a Database User and Assign a Role</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d12572417e74 ">
+								<p class="p">Console client, SDK</p>
+
+								<p class="p">Database tunnel</p>
+
+								<p class="p">SAP HANA Client</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d12572417e71 "><a class="xref" href="ee6ae2938cf54c46bd8996745dbc033c.html#loioee6ae2938cf54c46bd8996745dbc033c__section_bind_db">4. Bind Java Application to the Database</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d12572417e74 ">
+								<p class="p">Console client, SDK</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d12572417e71 "><a class="xref" href="ee6ae2938cf54c46bd8996745dbc033c.html#loioee6ae2938cf54c46bd8996745dbc033c__section_run_app">5. Start Java Application and Add Person Data with Servlet</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d12572417e74 ">
+								<p class="p">Console client, SDK</p>
+
+								<p class="p">Browser</p>
+
+								<p class="p">SAP HANA Client</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loioee6ae2938cf54c46bd8996745dbc033c__section_prerequisites"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loioee6ae2938cf54c46bd8996745dbc033c__ul_q4p_hrx_qr">
+				<li class="li">
+					<div class="p">You have downloaded and set up your SDK and SAP HANA client. For more information, see
+							<a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a>.<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">The tutorial is based on the SDK for Java Web.</p>
+
+						</div>
+</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have installed an SAP HANA
+						database
+						system
+						enabled
+						for multitenant database container
+						support.
+						This system is assigned to an account.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have a user with the administrator role for the account.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have installed Maven.</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loioee6ae2938cf54c46bd8996745dbc033c__section_create_db_consoleclient"><div class="section_title">1. Create a Database Using Database System mdc1</div><div type="1. Create a Database Using Database System mdc1"><p class="p">Open a command window and
+				navigate to the <span class="ph filepath">&lt;SDK&gt;/tools</span>
+					folder.</p>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Optional: Check That Database System Is
+					Available</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo list-dbms -a multidb -h hana.ondemand.com -u myuser</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Password for your user:
+Dedicated:
+DB System  DB Type    DB Version
+  mdc1       HANAMDC    1.00.93.00.1424770727
+  mdc2       HANAMDC    1.00.93.00.1424770727</pre></div>
+
+				</div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Create
+					Database</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo create-db-hana -a multidb -h hana.ondemand.com --dbsystem mdc1
+-u myuser -i mydb</pre></div>
+<div class="note note"><span class="notetitle">Note</span> To
+					create a tenant database on a trial landscape, use
+						<span class="ph uicontrol">-trial-</span> instead of the ID of a SAP HANA tenant
+					database.</div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Password for your user:
+Password for HANA database SYSTEM user:
+Repeat password for HANA database SYSTEM user:
+
+Request to create HANA tenant database 'mydb' as part of HANA system 'mdc1' is accepted.
+The request should be processed within next 10-20 minutes. To check the status of this 
+request you may use display-db-info command.</pre></div>
+
+				</div>
+<p class="p">To access the SAP HANA database, provide the SYSTEM user
+					password.</p>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Optional: Check Status of
+					Database Is
+					STARTED</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo display-db-info -a multidb -h hana.ondemand.com -u myuser -i mydb</pre></div>
+<p class="p">If
+					the console client reponse is that the status is CREATING, repeat the command
+					until the status is STARTED.</p>
+</div></div></div>
+
+		<div class="section" id="loioee6ae2938cf54c46bd8996745dbc033c__section_deploy_db"><div class="section_title">2. Deploy Java Application (Person Sample) into Account</div><div type="2. Deploy Java Application (Person Sample) into Account"><div class="sectiondiv"><span class="ph emphasis emphasis">Build Java Application from SDK
+					Sample</span><ol class="ol" id="loioee6ae2938cf54c46bd8996745dbc033c__ol_k3g_grq_qr">
+					<li class="li">
+						<p class="p">Open the command window and navigate to the
+								<span class="ph filepath">&lt;SDK&gt;/samples/persistence-with-jdbc</span>
+							folder. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">To build the war file that you want to deploy with Maven, execute the
+								<span class="keyword cmdname">mvn clean install</span> command. </p>
+
+						<p class="p">The generated <span class="ph filepath">persistence-with-jdbc.war</span> file is
+							available in the target folder. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Move the <span class="ph filepath">persistence-with-jdbc.war</span> file to the
+							&lt;SDK&gt;/tools folder.</p>
+
+					</li>
+
+				</ol>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Deploy the Java Application</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo deploy -h hana.ondemand.com -a multidb -b mytestapp -u myuser -s persistence-with-jdbc.war</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Requesting deployment for:
+   application           : mytestapp
+   account               : multidb
+   source                : persistence-with-jdbc.war
+   host                  : https://hana.ondemand.com
+   elasticity data       : [1 .. 1]
+   SDK version           : 1.75.11
+   user                  : myuser
+
+Password for your user:
+
+Deployment started...
+Uploading started......100%
+Uploaded 49.1 KB in 7.0 s Speed: 6 KB/s
+Processing started...
+Processing completed in 0.0 s
+
+Deployment finished successfully
+Warning: No compute unit size was specified for the application so size was set automatically to 'lite'.</pre></div>
+
+				</div>
+</div></div></div>
+
+		<div class="section" id="loioee6ae2938cf54c46bd8996745dbc033c__section_dbuser"><div class="section_title">3. Create a Database User and Assign a Role</div><div type="3. Create a Database User and Assign a Role"><div class="sectiondiv"><span class="ph emphasis emphasis">Opening a Database Tunnel</span><p class="p">You need the
+					tunnel to connect to your database. You can use the connection details you
+					obtain from the tunnel response to connect to database clients, for example,
+					Eclipse Data Tools Platform (DTP).</p>
+<div class="note note"><span class="notetitle">Note</span> The database tunnel must remain open
+					while you work on the remote database instance. Only close the tunnel once you
+					have completed the session.</div>
+<p class="p">Open the command window and navigate to the
+						<span class="ph filepath">&lt;SDK&gt;/tools</span> folder.</p>
+<div class="note tip"><span class="tiptitle">Tip</span> 
+					<p class="p">Only use this command window for the tunnel command.</p>
+
+				</div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo open-db-tunnel -a multidb -h hana.ondemand.com -i mydb -u myuser</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Password for your user:
+
+Opening tunnel...
+Tunnel opened.
+
+Use these properties to connect to your schema:
+  Host name        : localhost
+  Database type    : HANAMDC
+  JDBC Url         : jdbc:sap://localhost:30015/
+  Instance number  : 00
+
+Use any valid database user for the tunnel.
+This tunnel will close automatically in 24 hours or when you close the shell.
+Press ENTER to close the tunnel now.</pre></div>
+
+				</div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Create Database User with
+					SAP HANA Client</span><p class="p">You create a database user with SAP HANA
+					client.</p>
+<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">You can also create a database user with SAP HANA studio in Eclipse IDE. For
+						more information, see <a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html" title="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit.">Creating an SAP HANA Database from the Cockpit</a>.</p>
+
+				</div>
+<p class="p">Open a new command window and navigate to the
+						<span class="ph filepath">&lt;SAP&gt;/hdbclient</span> folder. Start the client to work
+					in interactive mode.</p>
+<samp class="ph systemoutput">\hdbclient&gt;hdbsql</samp><div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Welcome to the SAP HANA Database interactive terminal.
+
+Type:  \h for help with commands
+       \q to quit</pre></div>
+
+				</div>
+<p class="p">Connect to the database using the
+						<span class="ph emphasis emphasis">connect</span> command. Use the connection details you
+					obtained from the tunnel response.</p>
+<samp class="ph systemoutput">hdbsql=&gt; \c -n
+					localhost:30015 -u system</samp><div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Password:
+Connected to localhost:30015</pre></div>
+
+				</div>
+<p class="p">You create the database user.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">hdbsql NEO_MULTID...=&gt; create user mydbuser password mypassword</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">0 rows affected (overall time 286,192 msec; server time 11,370 msec)</pre></div>
+
+				</div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Assign the Role to the
+					Database User</span><p class="p">You assign the
+						<span class="ph sap-technical-name sap-technical-name">content_admin</span> to the database
+					user.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">
+hdbsql NEO_MULTID...=&gt; grant content_admin to mydbuser with admin option</pre></div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Log
+					on to Database with New Database User and Change Password </span><p class="p">If the
+					database has a password policy that requires users to change their password
+					after the initial logon, you need to provide a new password, otherwise you
+					cannot work with the servlet.</p>
+<p class="p">Use the quit command to log off from the
+					hdbsql
+					client.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">hdbsql NEO_MULTID...=&gt; \q</pre></div>
+<p class="p">In
+					the command window, restart the hdbsql client.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">\hdbclient&gt;hdbsql</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Welcome to the SAP HANA Database interactive terminal.
+
+Type:  \h for help with commands
+       \q to quit</pre></div>
+
+				</div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">hdbsql=&gt; \c  -n localhost:30015 -u mydbuser</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Password:
+You have to change your password.
+Enter new Password:
+Confirm new Password:
+Connected to localhost:30015</pre></div>
+
+				</div>
+</div></div></div>
+
+		<div class="section" id="loioee6ae2938cf54c46bd8996745dbc033c__section_bind_db"><div class="section_title">4. Bind Java Application to the Database</div><div type="4. Bind Java Application to the Database">
+			
+			<p class="p">Go to the command window you used to create the database.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo bind-db -h hana.ondemand.com -a multidb -b mytestapp -i mydb 
+--db-user mydbuser -u myuser</pre></div>
+
+			<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Password for your user:
+Password for your database user:
+
+Database 'mydb' bound to the default data source of the account 'multidb', application 'mytestapp' using database user 'mydbuser'
+</pre></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loioee6ae2938cf54c46bd8996745dbc033c__section_run_app"><div class="section_title">5. Start Java Application and Add Person Data with Servlet</div><div type="5. Start Java Application and Add Person Data with Servlet"><div class="sectiondiv"><span class="ph emphasis emphasis">Start Java Application 'mytestapp'</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo start -h hana.ondemand.com -a multidb -b mytestapp -u myuser</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Requesting start for:
+   application           : mytestapp
+   account               : multidb
+   host                  : https://hana.ondemand.com
+   synchronous           : false
+   SDK version           : 1.75.11
+   user                  : myuser
+
+Password for your user:
+
+Start request performed successfully.
+
+Triggered start of application process.
+Status: STARTING</pre></div>
+
+				</div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Optional: Check That Java
+					Application Is Started</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">\tools&gt;neo start -h hana.ondemand.com -a multidb -b mytestapp -u myuser</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"><span class="ph pname">SAP Cloud Platform</span> Console Client
+
+Requesting status for:
+   application: mytestapp
+   account    : multidb
+   host       : https://hana.ondemand.com
+   SDK version: 1.75.11
+   user       : myuser
+
+Password for your user:
+Status: STARTED
+
+URL: https://mytestappmultidb.hana.ondemand.com
+
+Access points:
+  https://mytestappmultidb.hana.ondemand.com
+
+Runtime: Java Web, 1.76 (valid until 16-Jul-2016)
+
+Application processes:
+  ID          State       Last Change              Runtime
+  15a9cb6     STARTED     17-Apr-2015 15:06:35     hana-java-web 1.76.7.1</pre></div>
+
+				</div>
+</div><div class="sectiondiv"><span class="ph emphasis emphasis">Add Person
+					Data</span><p class="p">Copy the URL from the status command into the address field of
+					your browser and add <span class="ph filepath">/persistence-with-jdbc/</span>. Start the
+					servlet in the browser and add person data.</p>
+<img class="image" id="loioee6ae2938cf54c46bd8996745dbc033c__image_yh4_rp4_wr" src="loio53ac21a3e0274488a3b6a2bcb6e77816_LowRes.png"/></div><div class="sectiondiv"><span class="ph emphasis emphasis">Verify Person Data Exists in
+					Database</span><p class="p">Go to the hdbsql command window.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">hdbsql=&gt; select * from t_persons
+ID,FIRSTNAME,LASTNAME
+"a505a56c-aa04-4b91-b636-7b97b4185125","Michael","Adams"
+"b3b0af0b-caaa-4383-892a-313e2b611ed8","Donna","Moore"</pre></div>
+<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">2 rows selected (overall time 291,603 msec; server time 156 usec)</pre></div>
+
+				</div>
+</div></div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="1ea177113f694bfab1529214d307edda.html" title="This command lists the dedicated and shared database management systems available for the specified account with the following details: database system (for dedicated databases), database type, and database version.">list-dbms</a></div>
+<div><a class="link" href="f64390e250cc4dcf8d9046192957d26a.html" title="This command creates a SAP HANA database with the specified ID and settings, on a SAP HANA database system enabled for multitenant database containers.">create-db-hana</a></div>
+<div><a class="link" href="064d3013cf584a3b8be59d396e027929.html" title="This command displays detailed information about the selected database. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-db-info</a></div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="030863cd5d0d4dd3b742957970f8eec9.html" title="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters.">Deploying on the Cloud with the Console Client</a></div>
+<div><a class="link" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></div>
+<div><a class="link" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></div>
+<div><a class="link" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></div>
+<div><a class="link" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a></div>
+<div><a class="link" href="920f2440fad245da93604c2623f0426a.html" title="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform.">Overview of Database Systems and Databases</a></div>
+<div><a class="link" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></div>
+<div><a class="link" href="a4b1a6abc13f45d58c9a156b81487d8a.html" title="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit.">Creating an SAP HANA Database from the Cockpit</a></div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/c5/938573bb571014a4abd04d9059e2bd/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/c5/938573bb571014a4abd04d9059e2bd/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/c5/938573bb571014a4abd04d9059e2bd/frameset.htm">SAP HANA Client Installation and Update Guide</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

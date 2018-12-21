@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Database Users with Multiple Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioabcf786a4ec148068fb3c85fb78792d3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Database Users with Multiple Schemas</h1>
+
+	<div class="body conbody">
+		<p class="p">The database user you specify when you create the binding determines which schema an
+			application is able to access. Typically the application uses the database user’s
+			default schema, but since a database user may have access to more than one schema, it
+			could potentially also use any of these non-default schemas. </p>
+
+		<div class="section"><div class="section_title">Default Schemas</div><div type="Default Schemas">
+			
+			<p class="p">The default schema is the schema whose name is identical to that of the database
+				user. It is created automatically when a database user is created. </p>
+
+			<p class="p">We recommend working with a database user’s default schema. If you require multiple
+				schemas, simply create separate appropriately named database users and then bind
+				each of their default schemas to the application using named data sources. If you
+				choose to use non-default schemas, be aware that this is more error prone and
+				requires greater care with the application code. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Non-default Schemas</div><div type="Non-default Schemas">
+			
+			<p class="p">An application can access a non-default schema in its program code by adding the
+				schema name as a prefix to the table name as follows: <samp class="ph codeph">&lt;schema
+					name&gt;.&lt;table name&gt;</samp>
+			</p>
+
+			<p class="p">When programming with JPA, you add the schema prefix to the table annotation in the
+				JPA entity class.</p>
+
+			<div class="note sap-example example"><span class="exampletitle">Example</span> Table T_PERSON in the schema
+				COMPANYDATA:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Entity
+@Table(name = "COMPANYDATA.T_PERSON")</pre></div>
+</div>
+
+			<div class="p">For JDBC, all occurrences of the table names in SQL statements require the schema prefix.
+					<div class="note sap-example example"><span class="exampletitle">Example</span> Table T_PERSONS in the schema COMPANYDATA:
+<div class="table-wrapper tablenoborder"><table summary="" id="loioabcf786a4ec148068fb3c85fb78792d3__table_qlk_11p_bp" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="23.041474654377883%"/><col width="76.95852534562212%"/></colgroup>
+
+							
+							
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="23.04147465437788%">INSERT</td>
+
+									<td class="entry" valign="top" width="76.95852534562212%">"INSERT INTO COMPANYDATA.T_PERSONS (ID, FIRSTNAME,
+										LASTNAME) VALUES (?, ?, ?)"</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="23.04147465437788%">SELECT</td>
+
+									<td class="entry" valign="top" width="76.95852534562212%">"SELECT ID, FIRSTNAME, LASTNAME FROM
+										COMPANYDATA.T_PERSONS"</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="23.04147465437788%">CREATE</td>
+
+									<td class="entry" valign="top" width="76.95852534562212%">"CREATE TABLE COMPANYDATA.T_PERSONS (ID VARCHAR(255) PRIMARY KEY NOT NULL, FIRSTNAME
+										VARCHAR (255), LASTNAME VARCHAR (255))"</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+</div>
+</div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">When you retrieve database metadata in order to check whether a table already
+					exists, bear in mind that you might also need to specify the schema parameter,
+					in particular, if you have multiple schemas containing tables with identical
+					names:</p>
+
+				<div class="p">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">DatabaseMetaData meta = conn.getMetaData();
+ResultSet rs = meta.getTables(null, &lt;schema-name&gt;, &lt;table-name&gt;, null);</pre></div>
+
+				</div>
+
+				<div class="p">
+					<div class="note sap-example example"><span class="exampletitle">Example</span> 
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">DatabaseMetaData meta = conn.getMetaData();
+ResultSet rs = meta.getTables(null, "COMPANYDATA", "T_PERSONS", null);</pre></div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

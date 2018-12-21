@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You have different options to test your applications locally."/>
+<meta name="description" content="You have different options to test your applications locally."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Testing SAPUI5 Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio57da09a600a74315ba1e27687bacad17">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Testing <span class="ph"><span class="ph pname">SAPUI5</span></span> Applications</h1>
+<div class="body conbody"><p class="shortdesc">You have different options to test your applications locally.</p>
+<div class="section">
+			<p class="p">Depending on the environment your application is running on, you can use different
+				options to deploy and run your <span class="ph"><span class="ph pname">SAPUI5</span></span> applications.
+				But you can always test locally in your Eclipse.</p>
+
+			<p class="p">Before deploying a <span class="ph"><span class="ph pname">SAPUI5</span></span> application that has been created by using the Eclipse <span class="ph"><span class="ph pname">SAPUI5</span></span> application
+				development tool on a Java server, ensure to adopt the <samp class="ph codeph">web.xml</samp> file
+				in the <samp class="ph codeph">&lt;WebContent folder name&gt;/WEB-INF</samp> folder of the <span class="ph"><span class="ph pname">SAPUI5</span></span> application by
+				removing the mapping to the test resources. Test resources should only be used
+				during testing. Remove or comment the following lines:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">   
+&lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;ResourceServlet&lt;/servlet-name&gt;
+      &lt;url-pattern&gt;/test-resources/*&lt;/url-pattern&gt;
+   &lt;/servlet-mapping&gt;
+</pre></div>
+
+		</div>
+<div class="section"><div class="section_title">Testing in Eclipse</div><div type="Testing in Eclipse">
+			
+			<p class="p">After having created your <span class="ph"><span class="ph pname">SAPUI5</span></span> application using the <span class="ph"><span class="ph pname">SAPUI5</span></span> application development
+				tools, you can test it using the <span class="ph"><span class="ph pname">SAPUI5</span></span> application preview. From there you also can
+				open your application in an external browser. Another option is to configure a Java
+				web server and run your application there. </p>
+
+			<p class="p">If your application has to access resources on a back-end system (OData), you must
+				enable the back-end access for local testing.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Testing on a Java web server</div><div type="Testing on a Java web server">
+			
+			<p class="p">With or without Eclipse, you always can set up a Java web server, such as Apache
+				tomcat, to run your <span class="ph"><span class="ph pname">SAPUI5</span></span> applications.</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

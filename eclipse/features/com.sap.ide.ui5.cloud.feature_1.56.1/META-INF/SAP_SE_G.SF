@@ -1,0 +1,20 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: eAZr2JjTv4sE4IahAd7PzE4IRMGmj
+ zXGDuuWSBvv/ZI=
+SHA-256-Digest-Manifest: XxZ3wqOYnEyPQcR5B+t6bgUjgZl1wnnZERaDdhuH1SQ=
+Created-By: 1.8.0_121 (Oracle Corporation)
+
+Name: META-INF/maven/com.sap.ide.ui5/com.sap.ide.ui5.cloud.feature/pom
+ .properties
+SHA-256-Digest: CHldbrlqh3/kNfVA3SQ6rGNAbGpo5SKN/pTJIG88Bz8=
+
+Name: feature.xml
+SHA-256-Digest: V8C4opaxhRsblemGjLupMBN9chmx4afKHoQ4h4sKzDA=
+
+Name: feature.properties
+SHA-256-Digest: ba2cI046zXU9+4pjURcOd3SJAJPAq5ujNxjUTpb/DXI=
+
+Name: META-INF/maven/com.sap.ide.ui5/com.sap.ide.ui5.cloud.feature/pom
+ .xml
+SHA-256-Digest: BvU602OEfHUZ84WrEgmQxv6IVX1bqthXPpQRoAwTzDE=
+

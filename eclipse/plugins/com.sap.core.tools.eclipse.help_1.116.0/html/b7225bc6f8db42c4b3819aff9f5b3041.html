@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The cockpit provides dedicated log viewers for showing default trace and HTTP access logs."/>
+<meta name="description" content="The cockpit provides dedicated log viewers for showing default trace and HTTP access logs."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Log Viewers</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob7225bc6f8db42c4b3819aff9f5b3041">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Log Viewers</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The cockpit provides dedicated log viewers for showing default trace and HTTP access
+		logs. </p>
+
+		<div class="section">
+			<p class="p">The log viewer comprises a header section with filter and search options and a content area
+				with a table that enables you to filter and sort the data for some of the
+				columns.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Header Section</div><div type="Header Section">
+			
+			<p class="p">You can filter log entries based on the values of certain log fields:</p>
+
+			<div class="p">
+				<ul class="ul" id="loiob7225bc6f8db42c4b3819aff9f5b3041__ul_stm_n3x_2n">
+					<li class="li">Default trace<ul class="ul" id="loiob7225bc6f8db42c4b3819aff9f5b3041__ul_vd3_tt4_pw">
+							<li class="li">
+								<p class="p">Levels dropdown</p>
+
+								<p class="p">Filters the log entries contained in the table according to log
+									level.</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">Search text field</p>
+
+								<p class="p">Filters by <span class="ph uicontrol">Logger</span>,
+										<span class="ph uicontrol">Tenant</span>, and
+										<span class="ph uicontrol">Text</span> columns</p>
+
+							</li>
+
+						</ul>
+</li>
+
+					<li class="li">HTTP access log<ul class="ul" id="loiob7225bc6f8db42c4b3819aff9f5b3041__ul_vcw_r3x_2n">
+							<li class="li">
+								<p class="p">Method dropdown:</p>
+
+								<p class="p">Filters the log entries based on the HTTP method (OPTIONS, GET,
+									HEAD, POST, PUT, DELETE, TRACE).</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">Status dropdown</p>
+
+								<p class="p">Filters the log entries based on the HTTP status code: 1xx
+									informational, 2xx success, 3xx redirection, 4xx client error,
+									5xx server error.</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">Search text field</p>
+
+								<p class="p">Filters by <span class="ph uicontrol">Client</span>,
+										<span class="ph uicontrol">User</span>, <span class="ph uicontrol">Method</span>,
+										<span class="ph uicontrol">Resource</span>,
+										<span class="ph uicontrol">Status</span>, <span class="ph uicontrol">Size</span>,
+									and <span class="ph uicontrol">Duration</span> columns.</p>
+
+							</li>
+
+						</ul>
+<p class="p">The log entries are, by default, not filtered (all log entries are
+							selected). For some of the columns in the table, you can filter the data
+							by selecting the column header and entering the filter value in the text
+							field.</p>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Log Traffic</div><div type="Log Traffic">
+			
+			<p class="p">This section provides a log traffic overview and a slider for adjusting the time range:</p>
+
+			<div class="p">
+				<ul class="ul" id="loiob7225bc6f8db42c4b3819aff9f5b3041__ul_yr4_bhh_gn">
+					<li class="li">Log traffic<p class="p">The log volume over the selected period is represented graphically, allowing
+							you to identify time intervals with high levels of activity. You can
+							specify the time range after you choose <span class="ph uicontrol">Show Time
+								Filter</span>.</p>
+</li>
+
+					<li class="li">Time range slider<p class="p">By default, the log table shows all log entries contained in the file,
+							from the oldest to the newest. The time range slider allows you to
+							change the selected time range and therefore the selection of log
+							entries shown in the table by dragging the slider from both the left and
+							right.</p>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Default Trace Logs</div><div type="Default Trace Logs">
+			
+			<p class="p">Default trace logs have the following format:</p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob7225bc6f8db42c4b3819aff9f5b3041__table_gjn_lkx_2n" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="27.3224043715847%"/><col width="72.6775956284153%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="27.322404371584696%" id="d8715685e175">Field</th>
+
+								<th class="entry" valign="top" width="72.6775956284153%" id="d8715685e178">Description</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e175 ">Time</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e178 ">Date and time when the log entry was written</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e175 ">Level</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e178 ">Log level of the log entry</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e175 ">Logger</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e178 ">Logger name</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e175 ">Tenant</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e178 ">Tenant alias, if the application was accessed through a subscription</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e175 ">Text</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e178 ">Log message text</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">HTTP Access Logs</div><div type="HTTP Access Logs">
+			
+			<p class="p">HTTP access logs have the following format:</p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob7225bc6f8db42c4b3819aff9f5b3041__table_mcd_pkx_2n" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="27.3224043715847%"/><col width="72.6775956284153%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="27.322404371584696%" id="d8715685e257">Field</th>
+
+								<th class="entry" valign="top" width="72.6775956284153%" id="d8715685e260">Description</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Time</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">Date and time when the log entry was written</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Client</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">IP address from which the request originated</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">User</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">User that triggered the request, if available</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Method</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">HTTP method</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Resource</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">REST resource path</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Status</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">HTTP status code</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Size</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">Size of the content returned by the response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="27.322404371584696%" headers="d8715685e257 ">Duration</td>
+
+								<td class="entry" valign="top" width="72.6775956284153%" headers="d8715685e260 ">Response time in milliseconds </td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html" target="_blank" alt="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP Method Definitions<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" alt="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP Status Code Definitions<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

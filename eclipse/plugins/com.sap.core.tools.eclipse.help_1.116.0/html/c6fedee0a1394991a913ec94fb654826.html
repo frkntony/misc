@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Lists JMX checks."/>
+<meta name="description" content="Lists JMX checks."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>list-jmx-checks</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc6fedee0a1394991a913ec94fb654826">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">list-jmx-checks</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Lists JMX checks.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-jmx-checks -a &lt;account_name&gt; -u &lt;e-mail_or_user&gt;</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc6fedee0a1394991a913ec94fb654826__table_gpz_kxn_rl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d9290073e39">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9290073e39 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9290073e39 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9290073e39 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9290073e39 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc6fedee0a1394991a913ec94fb654826__table_yj2_4xn_rl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d9290073e95">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9290073e95 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9290073e95 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">If the parameter is not used, all JMX checks used for this
+										account will be listed.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9290073e95 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9290073e95 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">If the parameter is not used, the default host is
+											<samp class="ph codeph">hana.ondemand.com</samp>.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9290073e95 "><span class="keyword parmname">-R</span>,
+								<span class="keyword parmname">--recursively</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9290073e95 ">Lists JMX checks recursively, starting from the specified level.
+								For example, if only 'account' is passed as an argument, it starts
+								from the account level and then lists all checks configured on
+								application level.<p class="p"><span class="keyword cmdname">Default</span>: false
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: boolean</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-jmx-checks -a myaccount -b demo -u p1234567 -R -h hana.ondemand.com</pre></div>
+
+			</div>
+
+			<div class="p">Sample output:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode"> 
+<span class="ph pname">SAP Cloud Platform</span> Console Client
+
+
+Password for your user:
+
+
+Running list-jmx-check with the following parameters:
+
+	account    : myaccount
+	host       : https://hana.ondemand.com
+	recursively: true
+	user       : p1234567
+
+
+Account-level JMX checks
+
+    account         : myaccount
+    check-name      : JVM Heap Memory Used
+    object-name     : java.lang:type=Memory
+    critical        : 60
+    attribute       : HeapMemoryUsage
+    attribute key   : used
+    warning         : 700000000
+    critical        : 900000000 
+    unit            : B
+
+
+Application JMX checks
+			
+      application       : demo
+      check-name        : JVM Heap Memory Used
+      object-name       : java.lang:type=Memory
+      attribute         : HeapMemoryUsage
+      attribute key     : used
+      warning           : 600000000
+      critical          : 850000000
+      unit              : B
+
+</pre></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+<div><a class="link" href="7613a394711e1014839a8273b0e91070.html" title="To monitor whether your deployed application is up and running, you can register an availability check and JMX checks for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. You can also generate a report of metrics that shows performance statistics of the CPU, DB, and response times.">Monitoring Java Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

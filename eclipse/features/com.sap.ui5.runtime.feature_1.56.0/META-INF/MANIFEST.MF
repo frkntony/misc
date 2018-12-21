@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Build-Jdk: 1.6.0_51
+Created-By: Apache Maven
+
+Name: feature_zh_CN.properties
+SHA-256-Digest: Nz7yS2LbX6Ubr62cW7UJ13vAco4srr1yoNJTb2BfbrU=
+
+Name: feature_ja.properties
+SHA-256-Digest: tX5pMtzSm/M+sqzizPYPaxZM1p0uGuyfxtIWibXkCkU=
+
+Name: feature_de.properties
+SHA-256-Digest: vedfvhVCF3sPFJjFqOOtDB5iFPDxa1NUYQfJRQPYzEM=
+
+Name: META-INF/maven/com.sap.ui5/com.sap.ui5.runtime.feature/pom.xml
+SHA-256-Digest: iHh+9asP8RGtKDyaAfyPNRXfABwUO2HVLHMjM2IeNa0=
+
+Name: feature_en.properties
+SHA-256-Digest: EWKyEXMuGG5fESSGQc0D2pMm3ehCOOZbQQbly68rddA=
+
+Name: META-INF/maven/com.sap.ui5/com.sap.ui5.runtime.feature/pom.prope
+ rties
+SHA-256-Digest: JCBPkB7zg+xSVSr7LRbD+PDuDv69VnG2Gq9P0Zqu5yA=
+
+Name: feature.xml
+SHA-256-Digest: AH+FBqwRRUP7Sp4P1W4C8ahonPuoAZ17mJz6ExNvAW8=
+
+Name: feature_fr.properties
+SHA-256-Digest: s8G7ckAnUGmGyafEbpQBiz2SxPKP6wMB7PgbhEHTVwM=
+
+Name: feature.properties
+SHA-256-Digest: OoqGn/qX9c+l+U+OHy3e1/hRObOzuwjnPMNJZwSwxaI=
+

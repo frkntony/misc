@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Security Testing Locally</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiofe47e02fd9514ab889c37250ed771c0c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Security Testing Locally</h1>
+
+	
+	
+		<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section">
+			<p class="p">When you add user authentication to your application, you can test it first on the
+				local server before uploading it to <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> On the local server, authentication is handled locally, that is, not by the SAP ID
+				service. When you try to access a protected resource on the local server, you will
+				see a local login page (not SAP ID service's or another identity provider's login
+				page). User access is then either granted or denied based on a local JSON <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.json.org/" target="_blank" alt="http://www.json.org/" title="http://www.json.org/">(JavaScript Object
+					Notation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>) file
+					(<span class="ph uicontrol">&lt;local_server_dir&gt;/config_master/com.sap.security.um.provider.neo.local/neousers.json</span>),
+				which defines the local set of user accounts, along with their roles and attributes.
+				This is just for testing purposes. When you deploy to the cloud, user authentication
+				is still handled by the SAP ID service. </div>
+
+			<p class="p">Using  <span class="ph pname">SAP Cloud Platform</span> Tools (Eclipse Tools), you can
+				easily manage local users. You can use the visual editor for configuring the users,
+				or edit the JSON file directly. </p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Opening the Editor</div><div type="Opening the Editor">
+			
+			<ol class="ol" id="loiofe47e02fd9514ab889c37250ed771c0c__ol_uns_k1m_5k">
+				<li class="li">In the Eclipse IDE, open the <span class="ph uicontrol">Servers</span> view. </li>
+
+				<li class="li">Select the local server and double-click it. The local server editor opens.  </li>
+
+				<li class="li">Open the <span class="ph uicontrol">Users</span> tab page. <p class="p"><img class="image" id="loiofe47e02fd9514ab889c37250ed771c0c__image_mxq_ccz_xr" src="loiob1d5d123bb5710148ec0f64c6570b5bb_LowRes.png"/></p>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Creating and Managing Users</div><div type="Creating and Managing Users">
+			
+			<ol class="ol" id="loiofe47e02fd9514ab889c37250ed771c0c__ol_vns_k1m_5k">
+				<li class="li">In the <span class="ph uicontrol">All Users</span> pane, choose button <img class="image" id="loiofe47e02fd9514ab889c37250ed771c0c__image_zrs_k1m_5k" height="15" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" width="13"/> to add a new user. </li>
+
+				<li class="li">Specify the user ID and password, and optionally, email, first name and last
+					name. </li>
+
+				<li class="li">Choose <span class="ph uicontrol">OK</span>. </li>
+
+				<li class="li">Save the changes in the editor. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Managing User Attributes</div><div type="Managing User Attributes">
+			
+			<p class="p">User attributes provide additional information about a user account. Applications can
+				use attributes to distinguish between users or customization according to users. To
+				add a new attribute, proceed as follows:</p>
+
+			<ol class="ol" id="loiofe47e02fd9514ab889c37250ed771c0c__ol_ews_k1m_5k">
+				<li class="li">In the <span class="ph uicontrol">Attributes</span> pane, choose button <img class="image" id="loiofe47e02fd9514ab889c37250ed771c0c__image_z1t_k1m_5k" height="15" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" width="13"/> to add a new attribute. </li>
+
+				<li class="li">Specify the name-value pair, and choose <span class="ph uicontrol">OK.</span>
+				</li>
+
+				<li class="li">Save the changes in the editor. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Managing User Roles</div><div type="Managing User Roles">
+			
+			<p class="p"> Roles are used by applications to define access rights. By default, each user is
+				assigned the <span class="ph uicontrol">User.Everyone</span> role. It is read-only, which means
+				you cannot remove it. To add a new role, proceed as follows: </p>
+
+			<ol class="ol" id="loiofe47e02fd9514ab889c37250ed771c0c__ol_uft_k1m_5k">
+				<li class="li">In the <span class="ph uicontrol">Roles</span> pane, choose button <img class="image" id="loiofe47e02fd9514ab889c37250ed771c0c__image_zjt_k1m_5k" height="15" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" width="13"/> to add a new role. </li>
+
+				<li class="li">Specify the role name and choose <span class="ph uicontrol">OK.</span>
+				</li>
+
+				<li class="li">Save the changes in the editor. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Importing Users and Roles</div><div type="Importing Users and Roles">
+			
+			<ol class="ol" id="loiofe47e02fd9514ab889c37250ed771c0c__ol_vjt_mxy_xr">
+				<li class="li">Choose button <img class="image" id="loiofe47e02fd9514ab889c37250ed771c0c__image_ud3_wxy_xr" src="loio6c1dbf020de54f2bbd23cbba04ef5f8b_HiRes.png"/> (<span class="ph uicontrol">Import users and
+					roles</span>).</li>
+
+				<li class="li">Browse to a valid JSON file and choose <span class="ph uicontrol">OK</span>.</li>
+
+				<li class="li">The JSON file is imported within the <span class="ph uicontrol">Users</span> editor.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Exporting Users and Roles</div><div type="Exporting Users and Roles">
+			
+			<ol class="ol" id="loiofe47e02fd9514ab889c37250ed771c0c__ol_xv4_dyy_xr">
+				<li class="li">From the list of JSON files, select the user you want to export.</li>
+
+				<li class="li">Choose button <img class="image" id="loiofe47e02fd9514ab889c37250ed771c0c__image_evp_hyy_xr" src="loiof112b9bb79ec4233ae278c5813916caa_HiRes.png"/> (<span class="ph uicontrol">Export all users and roles</span>). </li>
+
+				<li class="li">Browse to the directory you want to export your JSON file.<div class="note tip"><span class="tiptitle">Tip</span> 
+						<p class="p">The default name of the exported file is
+								<span class="ph filepath">localusers.json</span>. You can rename it to something
+							more meaningful to you.</p>
+
+					</div>
+</li>
+
+			</ol>
+
+		</div></div>
+
+			<div class="section" id="loiofe47e02fd9514ab889c37250ed771c0c__section_75EAEAD90999455AB2937E120B583BA8"><div class="section_title">Local Testing with the Console Client</div><div type="Local Testing with the Console Client">
+			
+				<p class="p">If you prefer using the console client instead of the Eclipse IDE, you have to find and edit
+				manually the JSON file configuring local test users. It is located at
+					<span class="ph uicontrol">&lt;local_server_dir&gt;/config_master/com.sap.security.um.provider.neo.local/neousers.json</span>.</p>
+
+				<p class="p"> The following example shows a sample configuration of a JSON file with two users, along with
+				their attributes and roles: </p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+    "Users": [
+        {
+            "UID": "P000001",
+            "Password": "{SSHA}OA5IKcTJplwLLaXCjmbcV+d3LQVKey+bEXU\u003d",
+            "Roles": [
+                "Employee",
+                "Manager"
+            ],
+            "Attributes": [
+                {
+                    "attributeName": "firstname",
+                    "attributeValue": "John"
+                },
+                {
+                    "attributeName": "lastname",
+                    "attributeValue": "Doe"
+                },
+                {
+                    "attributeName": "email",
+                    "attributeValue": "john.doe@yourcompany.com"
+                }
+            ]
+        },
+        {
+            "UID": "P000002",
+            "Password": "{SSHA}OA5IKcTJplwLLaXCjmbcV+d3LQVKey+bEXU\u003d",
+            "Roles": [
+               "SomeRole"
+            ],
+            "Attributes": [
+                {
+                    "attributeName": "firstname",
+                    "attributeValue": "Boris"
+                },
+                {
+                    "attributeName": "lastname",
+                    "attributeValue": "Boykov"
+                },
+                {
+                    "attributeName": "email",
+                    "attributeValue": "b.boykov@anothercompany.com"
+                }
+            ]
+        }
+    ]
+}</pre></div>
+
+			</div></div>
+
+		<div class="section"><div class="section_title">Troubleshooting</div><div type="Troubleshooting">
+			
+			<div class="p">When stopping your local server, you might see the following error logs:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">#ERROR#org.apache.catalina.core.ContainerBase##anonymous#System Bundle Shutdown###ContainerBase.removeChild: stop: 
+org.apache.catalina.LifecycleException: Failed to stop component 
+[StandardEngine[Catalina].StandardHost[localhost].StandardContext[/idelogin]]</pre></div>
+
+			</div>
+
+			<p class="p">This error causes <span class="ph uicontrol">no</span> harm and you don't need to take any
+				measures. </p>
+
+		</div></div>
+
+        <div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+            
+			<ul class="ul" id="loiofe47e02fd9514ab889c37250ed771c0c__ul_mk4_t5y_xr">
+				<li class="li">
+					<p class="p">After testing, you can proceed with deploying the application to <span class="ph pname">SAP Cloud Platform</span>. For more information, see <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">After deploying on the cloud, you may need to perform configuration steps
+						using the cockpit. For more information, see <a class="xref" href="baadd420b3a94e518cadcbe0ff7eba54.html">Security Configuration</a>.</p>
+
+				</li>
+
+			</ul>
+
+        </div></div>
+
+		</div>
+
+	
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

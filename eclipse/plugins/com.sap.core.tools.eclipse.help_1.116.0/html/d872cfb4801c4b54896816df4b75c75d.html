@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>HTTP Proxy for On-Premise Connectivity</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod872cfb4801c4b54896816df4b75c75d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">HTTP Proxy for On-Premise Connectivity</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">The <span class="ph pname">connectivity
+                            service</span>
+				provides a standard HTTP Proxy for on-premise connectivity to be accessible by any
+				application. Proxy host and port are available as the environment variables
+					<span class="keyword parmname">HC_OP_HTTP_PROXY_HOST</span> and
+					<span class="keyword parmname">HC_OP_HTTP_PROXY_PORT</span>.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<ul class="ul" id="loiod872cfb4801c4b54896816df4b75c75d__ul_uyn_245_tn">
+					<li class="li">The HTTP Proxy provides a more flexible way to use on-premise connectivity
+						via standard HTTP clients. It is not suitable for other protocols, such as
+							<span class="keyword parmname">RFC</span> or <span class="keyword parmname">Mail</span>. HTTPS requests
+						will not work as well.</li>
+
+					<li class="li">The previous alternative, that is, using on-premise connectivity via
+						existing HTTP Destination API, is still supported. For more information, see
+							<a class="xref" href="c9bb25f2c35e4fddb8c86382cb87ce7a.html">DestinationFactory API</a>.</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Multitenancy Support</div><div type="Multitenancy Support">
+			
+			<p class="p">By default, all applications are started in multitenant mode. Such applications are
+				responsible to propagate consumer accounts to the HTTP Proxy, using header
+					<kbd class="ph userinput">SAP-Connectivity-ConsumerAccount</kbd>. This header is
+				mandatory during the first request of each HTTP connection. HTTP connections are
+				associated with one consumer account and cannot be used with another account.. If
+				the <kbd class="ph userinput">SAP-Connectivity-ConsumerAccount</kbd> header is sent after the
+				first request, and its value is different than the value in the first request, the
+				Proxy will return HTTP response code <span class="keyword parmname">400</span>. </p>
+
+			<p class="p">Starting with SAP HANA <span class="ph pname">Cloud connector</span> 2.9.0,
+				it is possible to connect multiple cloud connectors to an account as long as their
+				location ID is different. Using the header
+					<span class="keyword parmname">SAP-Connectivity-SCC-Location_ID</span> it is possible to specify
+				the <span class="ph pname">Cloud connector</span>
+				over which the connection shall be opened. If this header is not specified, the
+				connection will be opened to the <span class="ph pname">Cloud connector</span> that is
+				connected without any location ID, which is also the case for all <span class="ph pname">Cloud connector</span>
+				versions prior to 2.9.0.</p>
+
+			<p class="p">If an application VM is started for one consumer account, this account is known by
+				the HTTP Proxy and the application may not send the
+					<kbd class="ph userinput">SAP-Connectivity-ConsumerAccount</kbd> header.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Using the Proxy on Multi-Tenant VMs</div><div type="Using the Proxy on Multi-Tenant VMs">
+			
+			<p class="p">On multitenant VMs, applications are responsible to propagate consumer account via
+					<kbd class="ph userinput">SAP-Connectivity-ConsumerAccount</kbd> header. The following
+				example shows how this can be performed.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// TenantContex instance injection. It is used to get the consumer account name.
+@Resource
+public TenantContext  tenantContext;
+...
+ 
+String proxyHost = System.getenv("HC_OP_HTTP_PROXY_HOST");
+int proxyPort = Integer.parseInt(System.getenv("HC_OP_HTTP_PROXY_PORT"));
+ 
+// set up the on-premise HTTP Proxy
+HttpClient httpClient = new DefaultHttpClient();
+httpClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, new HttpHost(proxyHost, proxyPort));
+ 
+// insert the necessary headers in the request
+HttpGet request = new HttpGet("http://virtualhost:1234");
+request.addHeader("SAP-Connectivity-ConsumerAccount", tenantContext.getTenant().getAccount().getId());
+ 
+// execute the request
+HttpResponse response = httpClient.execute(request);</pre></div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Using the Proxy on Single-Tenant VMs</div><div type="Using the Proxy on Single-Tenant VMs">
+			
+			<p class="p">On single-tenant VMs, the consumer account is known and account propagation via header is not
+				needed. The following example demonstrates this case.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+String proxyHost = System.getenv("HC_OP_HTTP_PROXY_HOST");
+int proxyPort = Integer.parseInt(System.getenv("HC_OP_HTTP_PROXY_PORT"));
+ 
+// create HTTP client and insert the necessary headers in the request
+HttpClient httpClient = new DefaultHttpClient();
+httpClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, new HttpHost(proxyHost, proxyPort));
+HttpGet request = new HttpGet("http://virtualhost:1234");
+ 
+// execute the request
+HttpResponse response = httpClient.execute(request);</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e69bc863bb571014b358e2947e36d475.html">Connectivity and Destination APIs</a></div>
+<div><a class="link" href="622f1bf248634206bb35afdb5106dba4.html">Principal Propagation Using HTTP Proxy</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

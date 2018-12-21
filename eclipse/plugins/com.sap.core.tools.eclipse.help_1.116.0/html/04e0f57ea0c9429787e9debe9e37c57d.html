@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="For the SAP Cloud Platform Document service, you can create new object types or you can remove those new object types again in accordance with the CMIS standard."/>
+<meta name="description" content="For the SAP Cloud Platform Document service, you can create new object types or you can remove those new object types again in accordance with the CMIS standard."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Type Mutability</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio04e0f57ea0c9429787e9debe9e37c57d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Type Mutability</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">For the <span class="ph pname">SAP Cloud Platform
+                                Document service</span>, you can create new object types or you
+		can remove those new object types again in accordance with the CMIS standard.</p>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context"><p class="p">In CMIS, every object, for example a document or a folder, has
+				an object type. The object type defines the basic settings of an object of that
+				type. For example, the <span class="ph sap-technical-name sap-technical-name">cmis:document</span> object
+				type defines that objects of that type are searchable.</p>
+<p class="p">Furthermore, the object
+				type defines the properties that can be set for an object of that type, for example,
+				an object of type <span class="ph sap-technical-name sap-technical-name">cmis:document</span> has a
+				mandatory <span class="ph sap-technical-name sap-technical-name">cmis:name</span> property that must be a
+				string. Therefore, every object of type
+					<span class="ph sap-technical-name sap-technical-name">cmis:document</span> needs a name. Otherwise,
+				the object is not valid and the repository rejects it.</p>
+<p class="p">In CMIS, types are
+				organized hierarchically. The most important (predefined) base types are:</p>
+<ul class="ul" id="loio04e0f57ea0c9429787e9debe9e37c57d__ul_hwl_myn_zl">
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">cmis:document</span> for all file-like
+					objects</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">cmis:folder</span> for folder-like
+					objects</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">cmis:secondary</span> for secondary types</li>
+
+			</ul>
+CMIS allows you to define additional types provided that each type is a descendant
+			of one of the predefined base types. In this type hierarchy, a type inherits all
+			property definitions of its parent type. CMIS 1.1 allows type hierarchy modifications
+			(see the OASIS page) by providing methods for the creation, the modification, and the
+			removal of object types. Currently, the document service only supports the creation and
+			removal of types. This allows a developer to define new types as subtypes of existing
+			types. The new types might possess other properties in addition to all of the
+			automatically inherited property definitions of the parent type. Creating objects of
+			that type allows you to assign values for these new properties to the object. Remember
+			to also set the values for the inherited properties as appropriate.<p class="p">The following
+				example shows how to create a new document type that possesses one additional
+				property for storing the summary of a document. The developer must implement the
+					<span class="ph sap-technical-name sap-technical-name">MyDocumentTypeDefinition</span> and
+					<span class="ph sap-technical-name sap-technical-name">MyStringPropertyDefinition</span> classes.
+				Example implementations for these classes as well as for the interfaces
+					(<span class="ph sap-technical-name sap-technical-name">FolderTypeDefinition</span>,
+					<span class="ph sap-technical-name sap-technical-name">SecondaryTypeDefinition</span>,
+					<span class="ph sap-technical-name sap-technical-name">PropertyBooleanDefinition</span>,
+					<span class="ph sap-technical-name sap-technical-name">PropertyDecimalDefinition</span>, and so on)
+				are described in the following topics.</p>
+<div class="note sap-example example"><span class="exampletitle">Example</span> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+import java.util.HashMap;
+import java.util.Map;
+import org.apache.chemistry.opencmis.client.api.ObjectType;
+import org.apache.chemistry.opencmis.client.api.Session;
+import org.apache.chemistry.opencmis.commons.definitions.PropertyDefinition;
+import org.apache.chemistry.opencmis.commons.enums.BaseTypeId;
+import org.apache.chemistry.opencmis.commons.enums.Cardinality;
+import org.apache.chemistry.opencmis.commons.enums.ContentStreamAllowed;
+import org.apache.chemistry.opencmis.commons.enums.Updatability;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisObjectNotFoundException;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisRuntimeException;
+
+// specify type attributes
+String idAndQueryName = "test:docWithSummary";
+String description = "Doc with Summary";
+String displayName = "Document with Summary";
+String localName = "some local name";
+String localNamespace = "some local name space";
+String parentTypeId = BaseTypeId.CMIS_DOCUMENT.value();
+Boolean isCreatable = true;
+Boolean includedInSupertypeQuery = true;
+Boolean queryable = true;
+ContentStreamAllowed contentStreamAllowed = ContentStreamAllowed.ALLOWED;
+Boolean versionable = false;
+
+// specify property definitions
+Map&lt;String, PropertyDefinition&lt;?&gt;&gt; propertyDefinitions 
+  = new HashMap&lt;String, PropertyDefinition&lt;?&gt;&gt;();
+
+MyStringPropertyDefinition summaryPropertyDefinitions 
+  = createSummaryPropertyDefinitions();
+propertyDefinitions.put(summaryPropertyDefinitions.getId(),
+summaryPropertyDefinitions);
+
+// build object type
+MyDocumentTypeDefinition docTypeDefinition 
+  = new MyDocumentTypeDefinition(idAndQueryName, description, displayName, 
+    localName, localNamespace, parentTypeId, isCreatable,
+    includedInSupertypeQuery, queryable, contentStreamAllowed, 
+    versionable, propertyDefinitions);
+
+// add type to repository
+ecmSession.createType(docTypeDefinition);
+
+
+// create document of new type
+ecmSession.clear();
+Map&lt;String, String&gt; newDocProps = new HashMap&lt;String, String&gt;();
+newDocProps.put(PropertyIds.OBJECT_TYPE_ID, docTypeDefinition.getId());
+newDocProps.put(PropertyIds.NAME, "testDocWithNewType");
+newDocProps.put("test:summary", "This is a document with a summary property");
+    
+Folder root = ecmSession.getRootFolder();
+root.createDocument(newDocProps, null, null);
+
+
+
+
+private static MyStringPropertyDefinition createSummaryPropertyDefinitions() {
+  String idAndQueryName = "test:summary";
+  Cardinality cardinality = Cardinality.SINGLE;
+  String description = "this is a summary";
+  String displayName = "Summary";
+  String localName = "some local name";
+  String localNameSpace = "some local name space";
+    
+  Updatability updatability = Updatability.READWRITE;
+  Boolean orderable = false;
+  Boolean queryable = false;
+
+  MyStringPropertyDefinition summaryPropDef 
+    = new  MyStringPropertyDefinition(idAndQueryName,
+      cardinality, description, displayName, localName, localNameSpace, 
+      updatability, orderable, queryable);
+
+  return summaryPropDef;
+}
+</pre></div>
+
+			</div>
+</div></div>
+
+		<div class="section"><div class="section_title">Restrictions for Creating New Object Types</div><div type="Restrictions for Creating New Object Types">
+			
+			<ul class="ul" id="loio04e0f57ea0c9429787e9debe9e37c57d__ul_hch_wc4_zl">
+				<li class="li">You can only create types with a
+						<span class="ph sap-technical-name sap-technical-name">cmis:document</span>,
+						<span class="ph sap-technical-name sap-technical-name">cmis:folder</span>, or
+						<span class="ph sap-technical-name sap-technical-name">cmis:secondary</span> base type.</li>
+
+				<li class="li">The ID and the query name must be identical and meet the following rules:<ul class="ul" id="loio04e0f57ea0c9429787e9debe9e37c57d__ul_zb5_dd4_zl">
+						<li class="li">They must match the regular Java expression
+								"<span class="ph sap-technical-name sap-technical-name">[a-zA-Z][a-zA-Z0-9_:]*</span>".</li>
+
+						<li class="li">Their names must not start with
+								<span class="ph sap-technical-name sap-technical-name">cmis:</span>,
+								<span class="ph sap-technical-name sap-technical-name">sap</span>, or
+								<span class="ph sap-technical-name sap-technical-name">s:</span> in any combination of
+							uppercase and lowercase letters, for example,
+								<span class="ph sap-technical-name sap-technical-name">cMis:</span> is also not
+							allowed.</li>
+
+					</ul>
+</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Restrictions for Property Definitions of New Object Types</div><div type="Restrictions for Property Definitions of New Object Types">
+			
+			<ul class="ul" id="loio04e0f57ea0c9429787e9debe9e37c57d__ul_xnd_td4_zl">
+				<li class="li">The ID and the query name must be identical and meet the following rules:<ul class="ul" id="loio04e0f57ea0c9429787e9debe9e37c57d__ul_tsw_xd4_zl">
+						<li class="li">They must match the regular Java expression
+								"<span class="ph sap-technical-name sap-technical-name">[a-zA-Z][a-zA-Z0-9_:]*</span>".</li>
+
+						<li class="li">Their names must not start with
+								<span class="ph sap-technical-name sap-technical-name">cmis:</span>,
+								<span class="ph sap-technical-name sap-technical-name">sap</span>, or
+								<span class="ph sap-technical-name sap-technical-name">s:</span> in any combination of
+							uppercase and lowercase letters, for example,
+								<span class="ph sap-technical-name sap-technical-name">cMis:</span> is also not
+							allowed.</li>
+
+					</ul>
+</li>
+
+				<li class="li">If the base type of the new object type is
+						<span class="ph sap-technical-name sap-technical-name">cmis:secondary</span>, no other type
+					definition may already contain a property definition with the same ID or query
+					name.</li>
+
+				<li class="li">If the base type of the new object type is not
+						<span class="ph sap-technical-name sap-technical-name">cmis:secondary</span> and another type
+					definition already contains a property definition with the same ID or query
+					name, this property definition must be identical to the one of the new
+					type.</li>
+
+				<li class="li">You cannot specify default values or choices.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Deleting New Object Types</div><div type="Deleting New Object Types">
+			
+			<p class="p">To delete a new object type, you can use the following code snippet:
+					<samp class="ph codeph">ecmSession.deleteType(typeId);</samp></p>
+
+			<p class="p">You can only delete an object type if it is no longer used by any documents or folders in the
+				repository.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Updating Object Types</div><div type="Updating Object Types">
+			
+			<p class="p">Updating an object type is not supported.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html" target="_blank" alt="http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html" title="http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html">OASIS page<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

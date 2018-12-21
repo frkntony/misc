@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Using the application descriptor file you can configure the behavior of your HTML5 application."/>
+<meta name="description" content="Using the application descriptor file you can configure the behavior of your HTML5 application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Application Descriptor File</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioaed1ffa3f3e741b3a4573c9e475aa2a4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Application Descriptor File</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Using the application descriptor file you can configure the behavior of your HTML5
+		application.</p>
+
+		<p class="p">This descriptor file is named <span class="ph filepath">neo-app.json</span>. The file must be created in
+            the root folder of the HTML5 application repository and must have a valid JSON
+            format.</p>
+
+		<p class="p">With the descriptor file you can set the options listed under <cite class="cite">Related Links</cite>.</p>
+
+		<p class="p">The application descriptor file must follow the following format. All settings are
+			optional.</p>
+
+        <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+{
+    "authenticationMethod": "saml"|"none",
+    "welcomeFile": "&lt;path to welcome file&gt;",
+    "logoutPage": "&lt;path to logout page&gt;",
+    "sendWelcomeFileRedirect": true|false,
+    "routes": [
+        {
+            "path": "&lt;application path to be mapped&gt;",
+            "target": {
+                "type": "destination | service | application",
+                "name": "&lt;name of the destination&gt; | &lt;name of the service&gt; | &lt;name of the application or subscription&gt;",
+                "entryPath": "&lt;path prepended to the request path&gt;",
+                "version": "&lt;version to be referenced. Default is active version.&gt;"
+            },
+            "description": "&lt;description&gt;"
+        }
+    ],
+    "securityConstraints": [
+        {
+            "permission": "&lt;permission name&gt;",
+            "description": "&lt;permission description&gt;",
+            "protectedPaths": [
+                "&lt;path to be secured&gt;",
+                 ...
+            ],
+            "excludedPaths": [
+                "&lt;path to be excluded&gt;",
+                 ...
+            ]
+        }
+    ],
+    "cacheControl": [
+        {
+            "path": "&lt;optional path of resources to be cached&gt;",
+            "directive": "none | public | private",
+            "maxAge": &lt;lifetime in seconds&gt;
+        }
+    ],
+    "headerWhiteList": [
+        "&lt;header1&gt;",
+        "&lt;header2&gt;",
+         ...
+    ]
+}</pre></div>
+
+        <p class="p">All paths in the <span class="ph filepath">neo-app.json</span> must be specified as plain paths, that
+            is, paths with blanks or other special characters must include these characters
+            literally. These special characters must be URI-encoded in HTTP requests.</p>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="de16793b391a4bcfae6096f34433de76.html" title="Authentication is the process of establishing and verifying the identity of a user as a prerequisite for accessing an application.">Information about: authenticationMethod</a></div>
+<div><a class="link" href="4e9d92ea8da0400fb40849d4b7bfc560.html" title="You can either display the default Welcome file or specify a different file as Welcome file.">Information about: welcomeFile and sendWelcomeFileRedirect</a></div>
+<div><a class="link" href="d6c8347494ce4b48864dfabb42d0d207.html" title="To connect your application to a REST service, configure routing to an HTTP destination in the application descriptor file.">Information about: routes with target type destination</a></div>
+<div><a class="link" href="d18a9b0739264a4dbd0acbbc0232d614.html" title="To access SAPUI5 resources in your HTML5 application, configure the SAPUI5 service routing in the application descriptor file.">Information about: routes to include SAPUI5 resources</a></div>
+<div><a class="link" href="1de599bf722446849d2b2e10132df42a.html" title="The user API service provides an API to query the details of the user that is currently logged on to the HTML5 application.">Information about: routes to access the user API</a></div>
+<div><a class="link" href="a139548b21954e319a2a351e993bac40.html" title="To enforce authorization for an HTML5 application, permissions can be added to application paths.">Information about: securityConstraints</a></div>
+<div><a class="link" href="1814d3603acd4ab18102a3b4984687b4.html" title="To improve the performance of your application you can control the Cache-Control headers, which are returned together with the static resource of your application.">Information about: cacheControl</a></div>
+<div><a class="link" href="df89d9cd06a84905a3a4747f102c5b2c.html" title="For security reasons not all HTTP headers are forwarded from the application to a backend or from the backend to the application.">Information about: headerWhiteList</a></div>
+<div><a class="link" href="152cb759db2842db9851d404167d40bc.html" title="To access resources from another HTML5 application or a subscription to an HTML5 application, you can map an application path to the corresponding application or subscription.">Accessing Application Resources</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

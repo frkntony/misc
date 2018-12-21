@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can revoke the permission to access a productive SAP HANA and SAP ASE database in your account for applications in other accounts."/>
+<meta name="description" content="You can revoke the permission to access a productive SAP HANA and SAP ASE database in your account for applications in other accounts."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Revoking Database Access Permissions for Applications in Other Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6e94fa2412ae42d2925edf8f940206aa">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Revoking Database Access Permissions for Applications in Other Accounts</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can revoke the permission to access a productive SAP HANA and SAP ASE database in
+		your account for applications in other accounts.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul">
+				<li class="li">You have given an application in another account permission to use a database in your
+					account. See <a class="xref" href="470750b4042f4b47b133637c0c522a1c.html" title="You can give a Java application in another account permission to access a productive SAP HANA and SAP ASE database in your account.">Giving Applications in Other Accounts Permission to Access a Database</a>.</li>
+
+				<li class="li">You have the administrator role in that account.</li>
+
+				<li class="li">You have set up the console client. See <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a> and <a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> You can revoke the permission to use a database in your account for applications in other
+				accounts at any time, irrespective of whether the applications have already been
+				bound to the database. </div>
+
+			<p class="p">The following example data is used in the procedure below:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio6e94fa2412ae42d2925edf8f940206aa__ul_n5g_ccp_qm">
+					<li class="li">Account (database owner): <kbd class="ph userinput">owner</kbd></li>
+
+					<li class="li">Host: <kbd class="ph userinput">hana.ondemand.com</kbd></li>
+
+					<li class="li">Database: <kbd class="ph userinput">database1</kbd></li>
+
+					<li class="li">Account (receiving the permission): <kbd class="ph userinput">salescorp</kbd></li>
+
+					<li class="li">Application (receiving the permission): <kbd class="ph userinput">salesapp</kbd></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio6e94fa2412ae42d2925edf8f940206aa__steps_ums_xwm_rq"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder and enter the
+					following command to list all permissions for the specified database:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-schema-access-grants --account owner --host hana.ondemand.com --user myuser --id database1</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">Example output:</p>
+
+					
+<div class="table-wrapper tablenoborder"><table summary="" id="loio6e94fa2412ae42d2925edf8f940206aa__table_omw_22p_qm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="40.99868593955322%"/><col width="16.95137976346912%"/><col width="28.909329829172144%"/><col width="13.140604467805518%"/></colgroup>
+
+							
+							
+							
+							
+							<thead class="thead" align="left">
+								<tr class="row">
+									<th class="entry" valign="top" width="40.99868593955322%" id="d4616867e132">Access Token</th>
+
+									<th class="entry" valign="top" width="16.951379763469117%" id="d4616867e135"> </th>
+
+									<th class="entry" valign="top" width="28.909329829172144%" id="d4616867e137">Provided To</th>
+
+									<th class="entry" valign="top" width="13.14060446780552%" id="d4616867e140">Bound</th>
+
+								</tr>
+
+							</thead>
+
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="40.99868593955322%" headers="d4616867e132 ">vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z</td>
+
+									<td class="entry" valign="top" width="16.951379763469117%" headers="d4616867e135 ">database1</td>
+
+									<td class="entry" valign="top" width="28.909329829172144%" headers="d4616867e137 ">salescorp:salesapp</td>
+
+									<td class="entry" valign="top" width="13.14060446780552%" headers="d4616867e140 ">yes</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To revoke the permission, enter the following command and copy across the
+					access token obtained in the previous step:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo revoke-schema-access --account owner --host hana.ondemand.com --user myuser --access-token vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z</pre></div>
+
+				</div>
+				<div class="itemgroup info">
+					<div class="note caution"><span class="cautiontitle">Caution</span> We strongly recommend also deleting the database user and password you
+						provided to the other account requesting the access to your database.</div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">If the access token has already been used to bind the database, revoking the access
+						permission will also unbind the database. If the application is running, it
+						will continue to use the database until it is restarted. </p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optional: Check that the access token has been revoked by listing all permissions again as
+					described in step 1 or using the <span class="keyword cmdname">display-schema-info</span>
+					command.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="371711d0c46347429a6aa69147e892fc.html" title="This command lists all current schema access grants for a specified account.">list-schema-access-grants</a></div>
+<div><a class="link" href="a92c08adc7b54370a309c140fa174d54.html" title="This command revokes the schema access granted to an application in another account.">revoke-schema-access</a></div>
+<div><a class="link" href="0a8638de7a2f4f1e8c8610df6e349e86.html" title="This command displays detailed information about the selected schema. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-schema-info</a></div>
+<div><a class="link" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a></div>
+<div><a class="link" href="470750b4042f4b47b133637c0c522a1c.html" title="You can give a Java application in another account permission to access a productive SAP HANA and SAP ASE database in your account.">Giving Applications in Other Accounts Permission to Access a Database</a></div>
+<div><a class="link" href="667d7a43e38843988516e46923129b32.html" title="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted.">Binding Applications to Databases in Other Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

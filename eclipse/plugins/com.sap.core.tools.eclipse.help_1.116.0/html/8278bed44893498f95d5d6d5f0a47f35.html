@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Pooling Configuration</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8278bed44893498f95d5d6d5f0a47f35">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Pooling Configuration</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loio8278bed44893498f95d5d6d5f0a47f35__section_N1001A_N10011_N10001"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">This group of JCo properties covers different settings for the behavior of the destination's
+				connection pool.  All properties are optional.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio8278bed44893498f95d5d6d5f0a47f35__table_uzf_z1y_1k" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="57.08154506437768%"/><col width="42.918454935622314%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="57.08154506437768%" id="d6030696e39">Property</th>
+
+							<th class="entry" valign="top" width="42.91845493562232%" id="d6030696e42">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="57.08154506437768%" headers="d6030696e39 "><span class="keyword parmname">jco.destination.pool_capacity</span></td>
+
+							<td class="entry" valign="top" width="42.91845493562232%" headers="d6030696e42 ">Represents the maximum number of idle connections kept open by
+								the destination. A value of <kbd class="ph userinput">0</kbd> has the effect
+								of no connection pooling, that is, connections will be closed after
+								each request. The default value is <kbd class="ph userinput">1</kbd>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="57.08154506437768%" headers="d6030696e39 "><span class="keyword parmname">jco.destination.peak_limit</span></td>
+
+							<td class="entry" valign="top" width="42.91845493562232%" headers="d6030696e42 ">Represents the maximum number of active connections that can
+								simultaneously be created for a destination. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="57.08154506437768%" headers="d6030696e39 "><span class="keyword parmname">jco.destination.max_get_client_time</span></td>
+
+							<td class="entry" valign="top" width="42.91845493562232%" headers="d6030696e42 ">Represents the maximum time in milliseconds to wait for a free
+								connection in case the maximum number of active connections is
+								already allocated by applications. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="57.08154506437768%" headers="d6030696e39 "><span class="keyword parmname">jco.destination.expiration_time</span></td>
+
+							<td class="entry" valign="top" width="42.91845493562232%" headers="d6030696e42 ">Represents the time in milliseconds after which idle connections
+								that are available in the pool can be closed. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="57.08154506437768%" headers="d6030696e39 "><span class="keyword parmname">jco.destination.expiration_check_period</span></td>
+
+							<td class="entry" valign="top" width="42.91845493562232%" headers="d6030696e42 ">Represents the interval in milliseconds within which the timeout
+								checker thread checks the idle connections in the pool for
+								expiration. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="57.08154506437768%" headers="d6030696e39 "><span class="keyword parmname">jco.destination.pool_check_connection</span></td>
+
+							<td class="entry" valign="top" width="42.91845493562232%" headers="d6030696e42 ">When setting this value to <kbd class="ph userinput">1</kbd>, a pooled
+								connection will be checked for corruption before being used for the
+								next function module execution. Thus, it is possible to recognize
+								corrupted connections and avoid exceptions passed to applications
+								when connectivity is working in principle (default value is
+									<kbd class="ph userinput">0</kbd>).<div class="note note"><span class="notetitle">Note</span> Turning on this check has
+									performance impact for stateless communication. This is due to
+									an additional low-level ping to the server, which takes a
+									certain amount of time for non-corrupted connections depending
+									on latency.</div>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio8278bed44893498f95d5d6d5f0a47f35__section_N100A0_N10011_N10001"><div class="section_title">Pooling Details</div><div type="Pooling Details">
+			
+			<p class="p"/>
+
+			<ul class="ul" id="loio8278bed44893498f95d5d6d5f0a47f35__ul_ccm_hby_1k">
+				<li class="li">Each destination is associated with a connection factory and, if the pooling
+					feature is used, with a connection pool.</li>
+
+				<li class="li">Initially, the destination's connection pool is empty, and the JCo runtime does not
+					preallocate any connection. The first connection will be created when the first
+					function module invocation is performed. The <span class="keyword parmname">peak_limit</span>
+					property describes how many connections can be created simultaneously, if
+					applications allocate connections in different sessions at the same time. A
+					connection is allocated either when a stateless function call is executed, or
+					when a connection for a stateful call sequence is reserved within a session. </li>
+
+				<li class="li">After the <var class="keyword varname">&lt;peak_limit&gt;</var> number of connections has been allocated (in
+						<var class="keyword varname">&lt;peak_limit&gt;</var> number of sessions), the next session
+					will wait for at most <var class="keyword varname">&lt;max_get_client_time&gt;</var>
+					milliseconds until a different session releases a connection (either finishes a
+					stateless call or ends a stateful call sequence). In case the waiting session
+					does not get any connection during the
+						<var class="keyword varname">&lt;max_get_client_time&gt;</var> period, the function request
+					will be aborted with <span class="ph uicontrol">JCoException</span> with the key
+						<kbd class="ph userinput">JCO_ERROR_RESOURCE</kbd>.</li>
+
+				<li class="li">Connections that are no longer used by applications are returned to the destination pool.
+					There are at most <var class="keyword varname">&lt;pool_capacity&gt;</var> number of connections
+					kept open by the pool. Further connections
+						(<var class="keyword varname">&lt;peak_limit&gt;</var> -
+						<var class="keyword varname">&lt;pool_capacity&gt;</var>) will be closed immediately after
+					usage. The pooled connections (open connections in the pool) are marked as
+					expired if they are not used again during
+						<var class="keyword varname">&lt;expiration_time&gt;</var> milliseconds. All expired
+					connections will be closed by a timeout checker thread which executes the check
+					every <var class="keyword varname">&lt;expiration_check_period&gt;</var> milliseconds.</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

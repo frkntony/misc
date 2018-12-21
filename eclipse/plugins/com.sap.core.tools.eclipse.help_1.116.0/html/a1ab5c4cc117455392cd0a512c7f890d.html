@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform."/>
+<meta name="description" content="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Account Member Roles</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa1ab5c4cc117455392cd0a512c7f890d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Account Member Roles</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> delivers predefined roles supporting the typical tasks performed
+		by users when interacting with the platform.</p>
+
+		<div class="section"><div class="section_title">Roles</div><div type="Roles">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa1ab5c4cc117455392cd0a512c7f890d__table_t1x_gv1_zn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="28.57142857142857%" id="d7558419e44">Role</th>
+
+								<th class="entry" valign="top" width="71.42857142857143%" id="d7558419e47">Description</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7558419e44 ">Administrator</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7558419e47 ">Enables
+									you to manage account members, create new accounts using the
+									self-service option, and move quota between accounts
+									(prerequisite: you are an administrator in each account).<p class="p">You
+										can also manage subscriptions, trust, authorizations, and
+										OAuth settings, and restart SAP HANA services on HANA
+										databases.</p>
+<div class="p">In
+										addition, you have all permissions granted by the developer
+										role, except the debug permission.<div class="note note"><span class="notetitle">Note</span> This role also
+											grants permissions to view the
+												<span class="ph uicontrol">Connectivity</span> tab in the <span class="ph pname">SAP Cloud Platform</span> cockpit.</div>
+</div>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7558419e44 ">
+									<p class="p">Cloud Connector Admin</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7558419e47 ">
+									<div class="p">Enables
+										to open secure tunnels via Cloud Connector from on-premise
+										networks to your cloud accounts.<div class="note note"><span class="notetitle">Note</span> This role also grants
+											permissions to view the
+												<span class="ph uicontrol">Connectivity</span> tab in the <span class="ph pname">SAP Cloud Platform</span> cockpit.</div>
+</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7558419e44 ">Developer</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7558419e47 ">Supports typical development tasks, such as deploying, starting, stopping, and
+									debugging applications. You can also change loggers and perform
+									monitoring tasks, such as creating availability checks for your
+									applications and executing MBean operations.<div class="p">
+										<div class="note note"><span class="notetitle">Note</span> This role is assigned to a newly created user by
+											default.</div>
+
+									</div>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7558419e44 ">Support User</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7558419e47 ">Designed for technical support engineers, this role
+									enables
+									you to read almost all data related to an account, including its
+									metadata, configuration settings, and log files. Note that to be
+									able to read database content, a database administrator must
+									assign the appropriate database permissions to you.</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7558419e44 ">Application User Admin</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7558419e47 ">The account administrator assigns an account member the Application User Admin role.
+									This role
+									enables
+									you to manage user permissions on application level to access
+									Java, HTML5 applications, and subscriptions. You can control
+									permissions directly by assigning users to specific application
+									roles or indirectly by assigning users to groups, which you then
+									assign to application roles. You can also unassign users from
+									the roles or groups.<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">The Application User Admin role does not
+											enable
+											you to manage account roles and to perform actions on
+											account level (for example, stopping or deleting
+											applications).</p>
+
+									</div>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937c3cef72bb101490cf767db0e91070.html" title="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform.">Managing Members</a></div>
+<div><a class="link" href="a55b836f126b461a9999b56f3cd867d5.html" title="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team.">Guidelines for Creating Database Users</a></div>
+<div><a class="link" href="24af1f57105545a69bb4201ec23b151b.html" title="The SAP Cloud Platform Git service stores the sources of an HTML5 application in a Git repository.">Working with Git</a></div>
+<div><a class="link" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a></div>
+<div><a class="link" href="d128e6796cf94bb187d4bbf69419e2f5.html" title="Resources of an HTML5 application can be protected by permissions. The application developer defines the permissions in the application descriptor file.">Managing Roles and Permissions</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

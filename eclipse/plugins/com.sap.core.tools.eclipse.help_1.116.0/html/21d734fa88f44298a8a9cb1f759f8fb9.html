@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This topic shows how you can configure a JMX check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly."/>
+<meta name="description" content="This topic shows how you can configure a JMX check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring a JMX Check to Monitor Your Application</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio21d734fa88f44298a8a9cb1f759f8fb9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring a JMX Check to Monitor Your Application</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">This topic shows how you can configure a JMX check for your application and subscribe
+		recipients to receive alert e-mail notifications when your application is down or responds
+		slowly.</p>
+
+		<div class="section prereq p" id="loio21d734fa88f44298a8a9cb1f759f8fb9__prereq_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio21d734fa88f44298a8a9cb1f759f8fb9__ul_dpr_tzs_rk">
+				<li class="li">You have deployed and started an application on the platform.</li>
+
+				<li class="li">You have set up the console client. <p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+</li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio21d734fa88f44298a8a9cb1f759f8fb9__steps_kzr_thn_sk"><li class="li step stepexpand" id="loio21d734fa88f44298a8a9cb1f759f8fb9__step_N10024_N10021_N10012_N10001">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing
+						<span class="ph filepath">neo.bat/sh (&lt;SDK installation
+					folder&gt;/tools)</span>.</span>
+			</li>
+<li class="li step stepexpand" id="loio21d734fa88f44298a8a9cb1f759f8fb9__step_N10031_N10021_N10012_N10001">
+				<span class="ph cmd">Create the JMX check.</span>
+				<div class="itemgroup info">
+					<p class="p">Execute:</p>
+
+					<p class="p"><kbd class="ph userinput">neo create-jmx-check -a myaccount -b myapp -u myuser -O myMBeanObjectName -A
+							myMBeanAttribute -n myCheckName -C myCriticalThreshold -W
+							myWarningThreshold -U unit --host hana.ondemand.com</kbd></p>
+
+					<ul class="ul" id="loio21d734fa88f44298a8a9cb1f759f8fb9__ul_zpr_ndt_rk">
+						<li class="li">Replace <span class="ph emphasis emphasis">"myapp"</span>, <span class="ph emphasis emphasis">"myaccount"</span>
+							and <span class="ph emphasis emphasis">"myuser"</span> with the names of your account,
+							application, and user respectively.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"myMBeanObjectName"</span> and
+								<span class="ph emphasis emphasis">"myMBeanAttributeName"</span> with the attribute and
+							object name of the MBean that you want to monitor. You can use existing
+							standard MBean from the runtime (for example, standard JDK MBean like
+							Catalina:type=ThreadPool,name=\"http-bio-8041\" and attribute like
+								<span class="ph emphasis emphasis">currentThreadsBusy</span>) or your own MBean which
+							should be part of your application and your application should register
+							it in the MBean server. For more information about the attribute
+							command, see "JMX Checks Commands" document in the Related Links section
+							below.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"myCheckName"</span> with the name you want to see
+							the check with in the cockpit.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"myWarningThreshold"</span> and
+								<span class="ph emphasis emphasis">"myCriticalThreshold"</span> with a suitable threshold
+							for the attribute you want to check. If the actual value is above the
+							threshold, is out of the threshold range in case you use a range, or is
+							a different string in case your metric has a string value, you will
+							receive a warning, respectively critical, notification. For more details
+							how to set a threshold, see "JMX Check Commands" document.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"unit"</span> with the unit you want to be
+							displayed next to the value of your MBean attribute, for example MBs or
+							ms.</li>
+
+						<li class="li">Use the respective landscape host for your account type. For more information, see Related
+							Links section below.</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loio21d734fa88f44298a8a9cb1f759f8fb9__step_N10042_N10021_N10012_N10001">
+				<span class="ph cmd">Subscribe recipients to notification alerts. </span>
+				<div class="itemgroup info">
+					<p class="p">Execute:</p>
+
+					<p class="p"><kbd class="ph userinput">neo set-alert-recipients -a myaccount -b myapp -u myuser -e
+							alert_recipients@example.com --host hana.ondemand.com</kbd></p>
+
+					<ul class="ul" id="loio21d734fa88f44298a8a9cb1f759f8fb9__ul_trl_5mt_rk">
+						<li class="li">Replace <span class="ph emphasis emphasis">"myapp"</span>, <span class="ph emphasis emphasis">"myaccount"</span>
+							and <span class="ph emphasis emphasis">"myuser"</span> with the names of your account,
+							application, and user respectively.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"alert-recipients@example.com"</span> with the email addresses that
+							you want to receive alerts. Separate email addresses with commas. We
+							recommend that you use distribution lists rather than personal email
+							addresses. Keep in mind that you will remain responsible for handling of
+							personal email addresses with respect to data privacy regulations
+							applicable.</li>
+
+						<li class="li">Use the respective landscape host for your account type.</li>
+
+					</ul>
+
+					<div class="note note"><span class="notetitle">Note</span> Setting an alert recipient for an application will trigger sending all alerts for this
+						application to the configured emails. Once the recipients are subscribed,
+						you do not need to subscribe them again after every new check you configure.
+						You can also set the recipients on account level if you skip the
+							<span class="keyword parmname">-b</span> parameter, so that they receive alerts for all
+						applications and for all the metrics you are monitoring.</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+<div><a class="link" href="173dd2ca9c834df8bb79fa46c3ae8c00.html">Availability Checks</a></div>
+</div>
+
+<div class="linklist linklist">JMX Checks Commands<br/>
+
+<div><a class="link" href="c6fedee0a1394991a913ec94fb654826.html" title="Lists JMX checks.">list-jmx-checks</a></div>
+<div><a class="link" href="298a207f33c4484b9894b7c4e2900566.html" title="Creates a JMX check.">create-jmx-check</a></div>
+<div><a class="link" href="75a0058e5c304243be91e4d2b7b04611.html" title="Deletes the specified JMX check or all JMX checks.">delete-jmx-check</a></div></div>
+
+<div class="linklist linklist">Alert Recipients Commands<br/>
+
+<div><a class="link" href="f326f9df2f5246bbb1878b01cfdbc0ba.html" title="Lists alert recipients.">list-alert-recipients</a></div>
+<div><a class="link" href="6dae74f3792446b7be65f5d8187c2425.html" title="Sets alert recipients.">set-alert-recipients</a></div>
+<div><a class="link" href="0f2b2cda9d844939bad3cbda32c167d8.html" title="Clears alert recipients.">clear-alert-recipients</a></div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

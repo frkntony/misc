@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Mobile apps are often composed of several pages and the user can drill-down to detail pages and go back up again. This is often visualized by horizontal slide animations. SAPUI5 supports this pattern by providing the sap.m.App and sap.m.NavContainer controls, which handle the navigation between the pages."/>
+<meta name="description" content="Mobile apps are often composed of several pages and the user can drill-down to detail pages and go back up again. This is often visualized by horizontal slide animations. SAPUI5 supports this pattern by providing the sap.m.App and sap.m.NavContainer controls, which handle the navigation between the pages."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Handling Navigation and Lifecycle Events</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa4afb138acf64a61a038aa5b91a4f082">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Handling Navigation and Lifecycle Events</h1>
+<div class="body conbody"><p class="shortdesc">Mobile apps are often composed of several pages and the user can drill-down to detail
+		pages and go back up again. This is often visualized by horizontal slide animations. <span class="ph"><span class="ph pname">SAPUI5</span></span>
+		supports this pattern by providing the <span class="keyword apiname">sap.m.App</span> and
+			<span class="keyword apiname">sap.m.NavContainer</span> controls, which handle the navigation between the
+		pages.</p>
+<p class="p"><samp class="ph codeph">sap.m.App</samp> inherits the navigation capabilities from the
+				<samp class="ph codeph">sap.m.NavContainer</samp> control. Thus, both controls are equal with
+			regard to navigation and navigation events. The following sections refer to the
+				<samp class="ph codeph">sap.m.NavContainer</samp>, but the same also applies to the
+				<samp class="ph codeph">sap.m.App</samp> control.</p>
+<p class="p">A mobile application can control the navigation flow centrally and directly trigger the
+			initialization or refresh of the pages. To support modularization of the app, however,
+			it may also be beneficial to control the navigation flow non-centrally. In this case,
+			code which constructs a page is also the code that handles, for example, the data load
+			in this page.</p>
+<p class="p">To support this, <span class="ph"><span class="ph pname">SAPUI5</span></span> provides two types of events: </p>
+<ul class="ul" id="loioa4afb138acf64a61a038aa5b91a4f082__ul_bhf_p3c_2j"><li class="li">
+				<p class="p">Events fired by the App or by the NavContainer whenever it navigates. </p>
+
+			</li>
+<li class="li">
+				<p class="p">Events fired <span class="ph emphasis emphasis">on</span> the pages when they get shown or hidden by navigation. </p>
+
+			</li>
+</ul>
+<div class="section"><div class="section_title">API References</div><div type="API References">
+			
+			<ul class="ul" id="loioa4afb138acf64a61a038aa5b91a4f082__ul_tdv_1zv_xl"><li class="li">
+					<p class="p"><span class="ph"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/sap.m.App.html" target="_blank" alt="https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/sap.m.App.html" title="https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/sap.m.App.html">sap.m.App<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></span></p>
+
+				</li>
+<li class="li">
+					<p class="p"><span class="ph"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/sap.m.NavContainer.html" target="_blank" alt="https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/sap.m.NavContainer.html" title="https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/sap.m.NavContainer.html">sap.m.NavContainer<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></span></p>
+
+				</li>
+</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

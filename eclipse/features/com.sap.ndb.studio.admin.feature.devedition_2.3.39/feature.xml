@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.admin.feature.devedition"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <includes
+         id="com.sap.ndb.studio.admin.feature"
+         version="2.3.39" />
+
+</feature>

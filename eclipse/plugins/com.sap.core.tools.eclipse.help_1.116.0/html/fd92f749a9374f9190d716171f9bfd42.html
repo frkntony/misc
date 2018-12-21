@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="As an implementation partner, you install and configure the extension applications that you want to make available for customers."/>
+<meta name="description" content="As an implementation partner, you install and configure the extension applications that you want to make available for customers."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Installing and Configuring Extension Applications (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiofd92f749a9374f9190d716171f9bfd42">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Installing and Configuring Extension Applications (Beta)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">As an implementation partner, you install and configure the extension applications that
+		you want to make available for customers.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+		<p class="p">You deploy your extension application, configure its connectivity to the SuccessFactors
+			system and map the roles defined in your extension application to the roles in the
+			corresponding SuccessFactors system.</p>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loiofd92f749a9374f9190d716171f9bfd42__ul_ewy_wgz_cq">
+				<li class="li">You have an <span class="ph pname">SAP Cloud Platform</span> extension account and the corresponding SuccessFactors
+					customer instance connected to it. Your account has been onboarded with the <span class="ph pname">SAP Cloud Platform</span> Extension Package for SuccessFactors. For more information,
+					see the <cite class="cite">Configuring Extension Package for SuccessFactors
+						Automatically</cite> section in the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://websmp205.sap-ag.de/%7Esapidb/012002523100013621492014E" target="_blank" alt="https://websmp205.sap-ag.de/%7Esapidb/012002523100013621492014E" title="https://websmp205.sap-ag.de/%7Esapidb/012002523100013621492014E"><span class="ph pname">SAP Cloud Platform</span>, Extension Package for
+						SuccessFactors Implementation Guide<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></li>
+
+				<li class="li">You have the quota purchased for the corresponding global account assigned to the <span class="ph pname">SAP Cloud Platform</span> extension account. See <a class="xref" href="c4c25cc63ac845779f76202360f98694.html" title="You can manage accounts and assign the quota available for a global account to the accounts associated with this global account.">Managing Accounts and Quota</a>.</li>
+
+				<li class="li">You are an administrator of the <span class="ph pname">SAP Cloud Platform</span> extension account.</li>
+
+				<li class="li">You have a SuccessFactors administrator user with one of the following
+					permission sets assigned to it:<div class="p">
+						<ul class="ul" id="loiofd92f749a9374f9190d716171f9bfd42__ul_ovk_nh3_z4">
+							<li class="li"><span class="ph uicontrol">General Admin</span> and <span class="ph uicontrol">System
+									Admin</span> permissions<p class="p">or</p>
+</li>
+
+							<li class="li"><span class="ph uicontrol">Company System and Logo Settings</span>
+								permissions</li>
+
+						</ul>
+
+					</div>
+</li>
+
+				<li class="li">You have the role-based permissions enabled for the SuccessFactors customer
+					instance.</li>
+
+				<li class="li">When creating the extension application, you have defined the required roles in
+					the <span class="ph filepath">web.xml</span> file of the application.</li>
+
+				<li class="li">In the SuccessFactors system, you have created or imported roles with the same
+					names as those defined in the application <span class="ph filepath">web.xml</span>.</li>
+
+				<li class="li">You have the required permissions grouped into SuccessFactors role definitions.</li>
+
+				<li class="li">You have the WAR file of your application.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Process Flow</div><div type="Process Flow">
+			
+			<p class="p">You deploy your extension application in your <span class="ph pname">SAP Cloud Platform</span> extension account and
+				create the resource file with role definitions. You also need to configure the
+				application connectivity to SuccessFactors and to enable the use of the HCM Suite
+				OData API. To ensure that only approved applications are using the SuccessFactors
+				IdP for authentication, you need to register the extension application as an
+				authorized assertion consumer service in SuccessFactors. Then you you register the
+				extension application home page tiles and import the extension application roles in
+				the SuccessFactors customer instance connected to the extension account. </p>
+
+			<p class="p">To finalize the configuration on <span class="ph pname">SAP Cloud Platform</span> side, you change the default
+				role provider to the SuccessFactors one. To finalize the configuration on
+				SuccessFactors side, you assign user groups to the permission roles defined for your
+				extension application.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiofd92f749a9374f9190d716171f9bfd42__table_mmp_h3q_nv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d13394408e154">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="50%" id="d13394408e160">
+								<p class="p">Description</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">1. <a class="xref" href="905c246002d546ea9b1b3ca2639cfa20.html" title="You deploy the extension application in your extension account on SAP Cloud Platform so that you can run it and integrate it in SAP SuccessFactors.">Deploy the Extension Application on the Cloud</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Deploy the extension application in your extension account on <span class="ph pname">SAP Cloud Platform</span>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">2. <a class="xref" href="93d5ce5346424596ac8dbe43b98a49ec.html" title="You create the resource file containing theSAP SuccessFactors HCM role definitions.">Create the Resource File with Role Definitions</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Create the reosource file containing the SuccessFactors HCM role definitions.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">3. <a class="xref" href="47c4bfff70e94491a82353ddc66eb9a1.html" title="Register the extension application as an authorized assertion consumer service to configure its access to the SAP SuccessFactors system through the SAP SuccessFactors identity provider (IdP).">Register the Extension Application as an Authorized Assertion Consumer Service</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Register the extension application as an authorized assertion
+								consumer service.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">4. <a class="xref" href="ebb281b1246d4ca18a363682eff3475d.html" title="Use this procedure to configure the connectivity between your Java extension application and the SuccessFactors system associated with your SAP Cloud Platform extension account.">Configure the Extension Applications's Connectivity to SAP SuccessFactors</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Configure the connectivity between your Java extension
+								application and the SuccessFactors system associated with your <span class="ph pname">SAP Cloud Platform</span> extension account.<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">This task is relevant  for Java extension applications
+										only.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">5. <a class="xref" href="6648ccfa8a654454b3f43631817c69ef.html" title="You register a home page tile for the extension application in the extended SAP SuccessFactors system so that you can access the application directly from the SAP SuccessFactors Employee Central (EC) home page.">Register a Home Page Tile for the Extension Application</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Register a home page tile for the extension application in the
+								extended SuccessFactors system</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">6. <a class="xref" href="f0ed89f98d894f9591d9bad20c68cf5f.html" title="To complete the authorization configuration of your extension application, you import the application-specific roles into to the SAP SuccessFactors company instance connected to your extension account.">Import the Extension Application Roles in the SAP SuccessFactors System</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Import the application-specific roles from the <span class="ph pname">SAP Cloud Platform</span> system repository into to the SuccessFactors customer
+								instance connected to your extension account.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">7. <a class="xref" href="d838fff69c8e4c1ab7e84ed2794f2b1e.html" title="To complete the authorization configuration for your extension application, you assign the extension application roles you have imported in the SAP SuccessFactors systems to the user to whom you want to grant access to your application.">Assign the Extension Application Roles to Users</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Assign the extension application roles you have imported in the
+								SuccessFactors systems to the user to whom you want to grant access
+								to your application.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">8. <a class="xref" href="560ef55d1177458bb3e64bb4d6510dd7.html" title="If you have SAP Cloud Platform extension package for SAP SuccessFactors configured for your account, you can change the default SAP Cloud Platform role provider of your Java application to the SAP SuccessFactors role provider.">Enable SAP SuccessFactors Role Provider</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Change the default <span class="ph pname">SAP Cloud Platform</span> role provider of your
+								Java application to the SuccessFactors role provider.<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">This task is relevant  for Java extension applications
+										only.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13394408e154 ">9. <a class="xref" href="00f238b092cb4402b00adfd10209f37d.html" title="To test the role assignments you first start the deployed extension application to make it available for requests, and then try to access it with the users with different level of granted access to the application.">Test the Role Assignments</a></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13394408e160 ">Try to access the application with the users with different level
+								of granted access to test the role assignements.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

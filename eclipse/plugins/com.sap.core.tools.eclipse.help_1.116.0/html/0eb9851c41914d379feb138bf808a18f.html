@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating the Java VM Used by the Cloud Connector</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0eb9851c41914d379feb138bf808a18f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Updating the Java VM Used by the <span class="ph pname">Cloud Connector</span>
+	</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p">Sometimes it becomes necessary to update the Java VM used by the  <span class="ph pname">Cloud connector</span>, e.g.
+			because of expired SSL certificates contained in the JVM, bug fixes etc. If you make a
+			replacement in the same directory, simply shutdown the <span class="ph pname">Cloud connector</span> before
+			upgrading the JVM and start it again afterwards and you are done. </p>
+
+		<p class="p">If you change the installation directory of the JVM, this section describes a safe way to
+			make the  <span class="ph pname">Cloud connector</span> use it. Make sure the JVM has been installed successfully. Then execute the following
+			steps, depending on the operating system: </p>
+
+		<p class="p"/>
+
+		<div class="section collapsible"><div class="section_title">On Windows</div><div type="On Windows">
+			
+			<div class="p">
+				<ul class="ul" id="loio0eb9851c41914d379feb138bf808a18f__ul_hsf_pxd_5y">
+					<li class="li">Make sure that the current user has administrative privileges. </li>
+
+					<li class="li">Shutdown the  <span class="ph pname">Cloud connector</span>
+						(e.g. by stopping the corresponding Windows Service or double-clicking the
+							<span class="ph uicontrol">Stop SAP Cloud Connector</span> shortcut). </li>
+
+					<li class="li">Open the <em class="ph i">Registry Editor</em> (regedit32) and locate the following
+						registry entry: <span class="ph filepath">HKEY_LOCAL_MACHINE\SOFTWARE\SAP\SAP HANA Cloud
+							Connector 2.0</span>
+					</li>
+
+					<li class="li">Change the value <span class="keyword parmname">JavaHome</span> to reflect the installation
+						directory of the new Java VM. <div class="note note"><span class="notetitle">Note</span> The <em class="ph i">bin</em> subdirectory must not be
+							part of the <span class="keyword parmname">JavaHome</span> value.</div>
+If that value
+						does not yet exist, you may create it here with a type of "String Value"
+						(REG_SZ), and then specify the full path of the Java installation directory,
+						for example: <span class="ph filepath">C:\sapjvm_7</span>. </li>
+
+					<li class="li">Close the Registry Editor and start the <span class="ph pname">Cloud connector</span>
+						again. </li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">On Linux</div><div type="On Linux">
+			
+			<div class="p">
+				<ul class="ul">
+					<li class="li">Open a shell as root user. </li>
+
+					<li class="li">In that shell, set the environment variable JAVA_HOME, pointing to the installation
+						directory of the new Java VM, for example in tcsh: setenv
+							<span class="ph filepath">JAVA_HOME /opt/sap/sapjvm_7_42</span>. </li>
+
+					<li class="li">Execute the command <em class="ph i">service scc_daemon stop</em>
+					</li>
+
+					<li class="li">Execute the command <em class="ph i">/opt/sap/scc/daemon.sh uninstall</em>
+					</li>
+
+					<li class="li">Execute the command <em class="ph i">/opt/sap/scc/daemon.sh install</em>
+					</li>
+
+					<li class="li">Execute the command <em class="ph i">service scc_daemon start </em></li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">On Both Operating Systems</div><div type="On Both Operating Systems">
+			
+			<p class="p">After you executed the above steps, the  <span class="ph pname">Cloud connector</span> should
+				be running again and should have picked up the new Java version during startup. You
+				can verify this by logging in to the <span class="ph pname">Cloud connector</span> with
+				your favorite browser, opening the <span class="ph uicontrol">About</span> dialogue and
+				checking that the field <var class="keyword varname field">&lt;Java Details&gt;</var> shows the version number and
+				build date of the new Java VM. After you verified that the new JVM is indeed used by
+					the<span class="ph pname">Cloud connector</span>, you can delete or uninstall the old JVM. </p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

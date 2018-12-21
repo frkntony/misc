@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Java: Application Operations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio76f6dcfab9ec481dae0843873271d66c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Java: Application Operations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">After you have developed and deployed your Java application on <span class="ph pname">SAP Cloud Platform</span>, you can
+			configure and operate it using the cockpit, the console client, or the Eclipse IDE. </p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_mt3_33h_wr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="100%" id="d5395345e31">Content</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="100%" headers="d5395345e31 ">
+							<p class="p"><a class="xref" href="76f6dcfab9ec481dae0843873271d66c.html#loio76f6dcfab9ec481dae0843873271d66c__configure_applications">Configuring Applications</a></p>
+
+							<p class="p"><a class="xref" href="76f6dcfab9ec481dae0843873271d66c.html#loio76f6dcfab9ec481dae0843873271d66c__manage_applications">Managing the Lifecycle of Deployed Applications</a></p>
+
+							<p class="p"><a class="xref" href="76f6dcfab9ec481dae0843873271d66c.html#loio76f6dcfab9ec481dae0843873271d66c__monitoring">Monitoring</a></p>
+
+							<p class="p"><a class="xref" href="76f6dcfab9ec481dae0843873271d66c.html#loio76f6dcfab9ec481dae0843873271d66c__profiling">Profiling</a></p>
+
+							<p class="p"><a class="xref" href="76f6dcfab9ec481dae0843873271d66c.html#loio76f6dcfab9ec481dae0843873271d66c__logging">Logging</a></p>
+
+							<p class="p"><a class="xref" href="76f6dcfab9ec481dae0843873271d66c.html#loio76f6dcfab9ec481dae0843873271d66c__update_applications">Updating Productive Applications</a></p>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<div class="section" id="loio76f6dcfab9ec481dae0843873271d66c__configure_applications"><div class="section_title">Configuring Applications</div><div type="Configuring Applications">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_syf_hpm_fq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e97">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e97 ">
+								<p class="p"><a class="xref" href="8f4d9db9ecb34b08865c2c7a61d7719f.html" title="In the cockpit, information about the resources available to your account and their current and past usage is provided at both account and application level. At account level, the values are aggregated for all applications in the account.">Viewing Resource Consumption</a></p>
+
+								<p class="p"><a class="xref" href="343663e8f3e34573ac292106861a8590.html" title="SAP Cloud Platform provides two productive application runtimes based on the set of supported Java EE APIs. These are Java Web and Java EE 6 Web Profile.">Understanding the Runtime Information</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e97 ">
+								<p class="p"/>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e132">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e132 ">
+								<p class="p"><a class="xref" href="cadb1dd3cda3464b8a5315a08cbb0566.html" title="You can update a property of an application running on SAP Cloud Platform without redeploying it.">Updating Application Properties</a></p>
+
+								<p class="p"><a class="xref" href="13afe5ca6e38485d8e6523f610c0ed29.html" title="Applications deployed on SAP Cloud Platform are always started on the latest version of the application runtime container. This version contains all released fixes, critical patches and enhancements and is respectively the recommended option for applications. In some special cases, you can choose the version of the runtime container your application uses by specifying it with the parameter --runtime-version when deploying your application. To change this version, you need to redeploy the application without specifying this parameter.">Choosing Application Runtime Version</a></p>
+
+								<p class="p"><a class="xref" href="ee71c1a4aea84558accb2524785b21bc.html" title="You can choose the Java Runtime Environment (JRE) version used for an application.">Choosing JRE Version</a></p>
+
+								<p class="p"><a class="xref" href="390594a7ee9e4a51b5f5eb6af61d8bdc.html" title="Usage of gzip response compression can optimize the response time and improve interaction with an application as it reduces the traffic between the Web server and browsers. Enabling compression configures the server to return zipped content for the specified MIME type and size of the response.">Enabling and Configuring Gzip Response Compression</a></p>
+
+								<p class="p"><a class="xref" href="b82d3929218a42558146c58d2f68121e.html" title="Using SAP Cloud Platform console client, you can configure the JRE by specifying custom VM arguments.">Configuring VM Arguments</a></p>
+
+								<p class="p"><a class="xref" href="745781b3ddb24c8a9670aff28cf09e36.html" title="Each application is started on a dedicated SAP Cloud Platform Runtime. One application can be started on one or many application processes, according to the compute unit quota that you have.">Scaling Applications</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e132 ">
+								<p class="p">Specify various configurations using commands.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e214">
+								<p class="p">Eclipse IDE</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e214 ">
+								<p class="p"><a class="xref" href="113c0f26cc7b42eab08fbfbf0af35438.html" title="SAP Cloud Platform Tools provide options for advanced server and application configurations from the Eclipse IDE, as well as direct reference to the cockpit UI.">Advanced Application Configurations</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e214 ">
+								<p class="p">Use the options for advanced server and application
+									configurations as well as direct reference to the cockpit
+									UI.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio76f6dcfab9ec481dae0843873271d66c__manage_applications"><div class="section_title">Managing the Lifecycle of Deployed Applications</div><div type="Managing the Lifecycle of Deployed Applications">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_tgc_4fw_5r" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e263">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e263 ">
+								<p class="p"><a class="xref" href="9b232700022f4055a817485e3cac7447.html" title="You can view details about your currently selected Java application. By adding a suitable display name and a description, you can identify the application more easily.">Defining Application Details (Java Apps)</a></p>
+
+								<p class="p"><a class="xref" href="7612f03c711e1014839a8273b0e91070.html" title="You can directly start, stop, and undeploy applications, as well as start, stop, and disable individual application processes.">Starting and Stopping Applications</a></p>
+
+								<p class="p"><a class="xref" href="499992d9c31648b0afdae88c463ba9b4.html" title="The status of an individual process is based on values that reflect the process run state and its monitoring metrics.">Checking the Process Status</a></p>
+
+								<p class="p"><a class="xref" href="8f4d9db9ecb34b08865c2c7a61d7719f.html" title="In the cockpit, information about the resources available to your account and their current and past usage is provided at both account and application level. At account level, the values are aggregated for all applications in the account.">Viewing Resource Consumption</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e263 ">
+								<p class="p">Start, stop, and undeploy applications, as well as start, stop,
+									and disable individual application processes.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e313">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e313 ">
+								<p class="p"><a class="xref" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a>; <a class="xref" href="b5bfcbf682684129b142606e1d4ca5cb.html" title="Use this command to stop your deployed and started application or application process.">stop</a>; <a class="xref" href="7c0f7a18a4564e0e8b6f997d230285ff.html" title="Use this command to restart your application or a single application process. The effect of the restart command is the same as executing the stop command first and when the application is stopped, starting it with the start command.">restart</a></p>
+
+								<p class="p"><a class="xref" href="13a70e053b984202982161d2a551bb0e.html" title="This command enables new connection requests to a disabled application or application process. The enable command cannot be used for an application that is in maintenance mode.">enable</a>; <a class="xref" href="59fedc12d81b4801aa24c3b12414e382.html" title="This command stops the creation of new connections to an application or application process, but keeps the already running sessions alive. You can check if an application or application process has been disabled by executing the status command.">disable</a>; <a class="xref" href="7e09b85c9710481884e5bc3609a38bb0.html" title="Undeploying an application removes it from SAP Cloud Platform. To undeploy an application, you have to stop it first.">undeploy</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e313 ">
+								<p class="p">Manage the lifecycle of a deployed application or individual
+									application processes by executing the respective command.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e378">
+								<p class="p">Eclipse IDE</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e378 ">
+								<p class="p"><a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a></p>
+
+								<p class="p"><a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e378 ">
+								<p class="p">Start, stop, republish and perform delta deploy of
+									applications.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio76f6dcfab9ec481dae0843873271d66c__monitoring"><div class="section_title">Monitoring</div><div type="Monitoring">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_wqf_4fw_5r" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e439">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e439 ">
+								<p class="p"><a class="xref" href="82cbd81b4d2447c5b1e90333c977a7c0.html" title="In the cockpit, you can view the current metrics of a selected process to check the runtime behavior of your applications. You can also view the metrics history of an application or a process to examine the performance trends of your application over different intervals of time or investigate the reasons that have led to problems with it.">Viewing Monitoring Metrics of Java Applications</a></p>
+
+								<p class="p"><a class="xref" href="03963928a1e64b15a25553318679822f.html" title="Performance statistics enable you to monitor the resources used by your applications and to investigate the causes of performance issues.">Performance Statistics Service (Beta)</a></p>
+
+								<p class="p"><a class="xref" href="fd1b85b336ff4c1b8b2f160fd51656ee.html" title="In the cockpit, you can configure availability checks for the applications deployed in your account. If you have configured an availability check on account level, you can override it by creating one on application level. You can manage the checks on account level from the console client only.">Configuring Availability Checks for Java Applications from the Cockpit</a></p>
+
+								<p class="p"><a class="xref" href="cc4f1ceddacb4b16844fd3f3885b73dd.html" title="You can manage subscriptions to Java and HTML5 applications.">Managing Subscriptions</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e439 ">
+								<p class="p">View the current metrics of a selected process to check the
+									runtime behavior of your applications.</p>
+
+								<p class="p">Get performance statistics metrics</p>
+
+								<p class="p">Configure availability checks</p>
+
+								<p class="p">Subscribe an account to an application.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e498">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e498 ">
+								<p class="p"><a class="xref" href="6537f99f89c047c6ad16d49eb3f97a11.html" title="This topic shows how you can configure an availability check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring Availability Checks for Java Applications from the Console Client</a></p>
+
+								<p class="p"><a class="xref" href="21d734fa88f44298a8a9cb1f759f8fb9.html" title="This topic shows how you can configure a JMX check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring a JMX Check to Monitor Your Application</a></p>
+
+								<p class="p"><a class="xref" href="b0930320e5f946a3a47692be3cebb468.html#loio1911f82d783349c49b801fc429bd962f" title="Using the console client, you can subscribe an account to an application.">Subscribing an Account to an Application</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e498 ">
+								<p class="p">To monitor whether a deployed application is up and running,
+									register availability checks and JMX checks to receive
+									notifications if the application goes down</p>
+
+								<p class="p">Subscribe an account to an application.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio76f6dcfab9ec481dae0843873271d66c__profiling"><div class="section_title">Profiling</div><div type="Profiling">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_rjq_4fw_5r" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e565">
+								<p class="p">Eclipse IDE</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e565 ">
+								<p class="p"><a class="xref" href="8967d195af3c4c249cfeef80736ea21e.html" title="The SAP JVM Profiler helps you analyze resource-related problems in your Java application regardless of whether the JVM is running locally or on the cloud.">Profiling Applications</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e565 ">
+								<p class="p">Analyze resource related problems in your application.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio76f6dcfab9ec481dae0843873271d66c__logging"><div class="section_title">Logging</div><div type="Logging">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_sgn_4fw_5r" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e612">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e612 ">
+								<p class="p"><a class="xref" href="2555df65182c4b09a25e56fa3b57b0a8.html" title="You can view the logs and change the log settings of any applications deployed in your account. The cockpit provides the following types of logs: default trace logs, HTTP access logs, and garbage collection logs.">Using Logs in the Cockpit</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e612 ">
+								<p class="p">View the logs and change the log settings of any applications
+									deployed in your account.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e638">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e638 ">
+								<p class="p"><a class="xref" href="e4fd83c5bb5710149b1e94f127f108e4.html">Using Logs in the Console Client</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e638 ">
+								<p class="p">Manage some of the logging configurations of a started
+									application.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e661">
+								<p class="p">Eclipse IDE</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e661 ">
+								<p class="p"><a class="xref" href="db01af2fd976101493f9b90b81cd791f.html">Using Logs in the Eclipse IDE</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e661 ">
+								<p class="p">View the logs and change the log settings of the applications
+									deployed in your account or on you local server.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio76f6dcfab9ec481dae0843873271d66c__update_applications"><div class="section_title">Updating Productive Applications</div><div type="Updating Productive Applications">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio76f6dcfab9ec481dae0843873271d66c__table_ayb_xww_5r" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e705">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e705 ">
+								<p class="p"><a class="xref" href="aa04f29a908f4db7b7666c12552ddd53.html" title="An operator can start and stop planned application downtime, during which a customized maintenance page for that application is shown to end users.">Using Maintenance Mode for Planned Downtimes</a></p>
+
+								<p class="p"><a class="xref" href="17e8e9622e63434a880f322f75db3e8e.html" title="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs.">Soft Shutdown</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e705 ">
+								<p class="p">Supports zero downtime and planned downtime scenarios. Disable
+									the application or individual processes in order to shut down
+									the application or processes gracefully.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5395345e739">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5395345e739 ">
+								<p class="p"><a class="xref" href="a10f6c2071b443698eb7dfc411d0ed6d.html" title="The platform allows you to update an application in a manner in which the application remains operable all the time and your users do not experience downtime.">Updating Applications with Zero Downtime</a></p>
+
+								<p class="p"><a class="xref" href="aa04f29a908f4db7b7666c12552ddd53.html" title="An operator can start and stop planned application downtime, during which a customized maintenance page for that application is shown to end users.">Using Maintenance Mode for Planned Downtimes</a></p>
+
+								<p class="p"><a class="xref" href="17e8e9622e63434a880f322f75db3e8e.html" title="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs.">Soft Shutdown</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d5395345e739 ">
+								<p class="p">Deploy a new version of a productive application or perform maintenance.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

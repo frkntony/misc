@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Monitoring</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6d9c937dd35344bca3eb61ebf34a5c1d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Monitoring</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"> </p>
+
+		<div class="section"><div class="section_title">Monitoring in the Cockpit</div><div type="Monitoring in the Cockpit">
+			
+			<p class="p">The cockpit provides a <span class="ph uicontrol">Connectivity</span> view. Here an administrator can
+				check the status of the <span class="ph pname">Cloud connector</span>
+				attached in the current account, if any. The view provides information about the
+					<span class="ph pname">Cloud connector</span>
+				ID, version, used Java runtime, high availability setup, and some more details.
+				Access is granted to administrators, developers and support users.</p>
+
+			<p class="p"><img class="image" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__image_vlb_4p1_ws" src="loio570a86379f9042f29fcbaf8a7d41ef39_HiRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Monitoring in the Cloud Connector</div><div type="Monitoring in the Cloud Connector"><p class="p">The <span class="ph pname">Cloud connector</span> offers
+				various views for monitoring its activities and state. Choose one of the tabs on the
+					<span class="ph uicontrol">Monitor</span> screen:</p>
+<p class="p"/>
+<div class="sectiondiv subsection">
+				<p class="p subsectiontitle" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__Performance"><strong class="ph b">Performance</strong></p>
+
+			</div><p class="p"/>
+<p class="p">All requests that went through the <span class="ph pname">Cloud connector</span> to the
+				respective back-ends as specified through access control take a certain amount of
+				time. You can check the duration of requests in a bar chart. The bar chart either
+				shows the duration statistics for all virtual hosts or for a selected virtual host.
+				The requests are not shown individually, but are clustered (assigned to buckets).
+				Each of these buckets represents a time range. </p>
+<p class="p">For example, the first bucket
+				contains all requests that took 10ms or less, the second one the requests that took
+				longer than 10ms, but not longer than 20ms. The last bucket contains all requests
+				that took longer than 5000ms. </p>
+<div class="p">The collection of duration statistics starts as
+				soon as the <span class="ph pname">Cloud connector</span> is
+				operational. At any point you may delete all of these statistical records using the
+				button <span class="ph uicontrol">Delete All</span>. After that, the collection of duration
+				statistics will start from scratch. <div class="note note"><span class="notetitle">Note</span> Deleting means that the list of most
+					recent requests as well as top time consumers (see below) will be cleared.
+				</div>
+</div>
+<p class="p"/>
+<div class="sectiondiv subsection">
+				<p class="p subsectiontitle" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__Requests"><strong class="ph b">Most Recent Requests</strong></p>
+
+			</div><p class="p"/>
+<p class="p">A table shows recorded requests starting with the most recent
+				requests:</p>
+<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__image_ac4_tjk_xv" src="loio8ca3948ee6b94b7895b9fd822dcf4eaf_LowRes.png"/>
+			</div></div>
+<p class="p"/>
+<p class="p">The number of displayed requests is limited to 50. You can either view all
+				requests or just the ones destined for a certain virtual host, which you can select
+				from a drop-down box. For all requests listed in the table you can view the details
+				by selecting the respective table row: </p>
+<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__image_uvn_wjk_xv" src="loio37faef8b8feb4ff0b10bb50ab12978b3_LowRes.png"/>
+			</div></div>
+<p class="p"/>
+<div class="p">A horizontal stacked bar chart breaks down the duration of the request into
+				5 parts as per legend. The numbers shown on the chart sections are milliseconds.
+					<div class="note note"><span class="notetitle">Note</span> Parts with a duration of less than 1ms are not shown at
+				all.</div>
+</div>
+<p class="p">In the example shown above the selected request took 25ms, to
+				which the <span class="ph pname">Cloud connector</span>
+				contributed 1ms. Opening a connection took 5ms. Processing at the back-end side
+				consumed 7ms. Latency effects accounted for the remaining 12ms, while there was no
+				SSO handling necessary and hence it took no time at all. </p>
+<p class="p"/>
+<div class="sectiondiv subsection">
+				<p class="p subsectiontitle" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__Consumers"><strong class="ph b">Top Time Consumers</strong></p>
+
+			</div><p class="p"/>
+<p class="p">This view is in major parts identical to <span class="ph uicontrol">Most Recent
+					Requests</span>. However, requests are not shown in order of appearance,
+				but rather sorted by their duration (in descending order). Furthermore, you can
+				delete top time consumers, which has no effect on most recent requests nor the
+				performance overview. </p>
+<p class="p"/>
+<div class="sectiondiv subsection">
+				<p class="p subsectiontitle" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__Connections"><strong class="ph b">Back-End Connections</strong></p>
+
+			</div><p class="p"/>
+<p class="p">This section shows a tabular overview of all active and idle
+				connections, aggregated for each virtual host. By selecting a row (i.e. a virtual
+				host) you can view the details of all active connections as well as a graphical
+				summary of all idle connections. The graphical summary is an accumulative view of
+				connections based on the time the connections have been idle. </p>
+<p class="p">The maximum
+				idle time is displayed on the rightmost side of the horizontal axis. For any point
+					<span class="keyword parmname">t</span> on that axis (representing a time value ranging between
+				0ms and the maximal idle time) the ordinate is the number of connections that have
+				been idle for not more than <span class="keyword parmname">t</span>. You can click inside the graph
+				area to view the respective abscissa <span class="keyword parmname">t</span> and ordinate. </p>
+<p class="p"/>
+<div class="sectiondiv subsection">
+				<p class="p subsectiontitle" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__Metrics"><strong class="ph b">Hardware Metrics</strong></p>
+
+			</div><p class="p"/>
+<p class="p">You can check the current state of critical system resources through
+				pie charts. Furthermore, the history of CPU and memory usage (recorded in intervals
+				of fifteen seconds) is displayed graphically. </p>
+<p class="p">The history graphs allow you
+				to:</p>
+<div class="p">
+				<ul class="ul" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__ul_p3q_ppk_xv">
+					<li class="li">view the usage at a certain point in time by clicking inside the main graph
+						area, and</li>
+
+					<li class="li">zoom in on a certain excerpt of the historic data through standard click,
+						drag and release of the left mouse button. </li>
+
+				</ul>
+
+			</div>
+<p class="p">The entire historic data is always visible in the smaller bottom area right below
+				the main graph. </p>
+<p class="p">In case you have zoomed in, an excerpt window in the bottom
+				area shows you where you are in the main area with respect to the entire data. You
+				can:</p>
+<div class="p">
+				<ul class="ul" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__ul_lp5_rpk_xv">
+					<li class="li">drag that window (press left mouse button when inside the window and keep it
+						pressed down while dragging) or</li>
+
+					<li class="li">position it somewhere else by clicking anywhere inside the bottom area. You
+						can also</li>
+
+					<li class="li">undo zooming, using the button located in the top right corner of the
+						respective graph area. </li>
+
+				</ul>
+
+			</div>
+<p class="p"/>
+</div></div>
+
+		<div class="section"><div class="section_title">Monitoring APIs</div><div type="Monitoring APIs">
+			
+			<p class="p">As a user of the <span class="ph pname">Cloud connector</span>, you might want to integrate some monitoring information in the monitoring tool
+				you use. In future, the <span class="ph pname">Cloud connector</span> will
+				offer more APIs for that purpose. Find below the APIs currently available.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Health Check (version 2.6.0)</div><div type="Health Check (version 2.6.0)">
+			
+			<p class="p">With the health check API, it is possible to recognize that the <span class="ph pname">Cloud connector</span> is up
+				and running. The purpose of this health check is only to verify that the Cloud
+				connector is not down. It does not check any internal state, nor tunnel connection
+				states. Thus, it is a quick check, which you can often execute. </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio6d9c937dd35344bca3eb61ebf34a5c1d__table_vvq_13n_fs" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d4573139e224">URL</th>
+
+							<th class="entry" valign="top" width="50%" id="d4573139e227">Expected Return Code</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d4573139e224 ">
+								<p class="p"><kbd class="ph userinput">https://&lt;scc_host&gt;:&lt;scc_port&gt;/exposed?action=ping</kbd></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d4573139e227 ">
+								<p class="p"><kbd class="ph userinput">200</kbd></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7613a394711e1014839a8273b0e91070.html" title="To monitor whether your deployed application is up and running, you can register an availability check and JMX checks for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. You can also generate a report of metrics that shows performance statistics of the CPU, DB, and response times.">Monitoring Java Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

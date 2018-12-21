@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Developing Client-Initiated Synchronization</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio920d7738db534786986d7919170855e3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Developing Client-Initiated Synchronization</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio920d7738db534786986d7919170855e3__ul_tdj_3tw_3r">
+				<li class="li">An SQL Anywhere version 16 installation is available on the client side. For
+					more information, see <a class="xref" href="cdc9600ec42a47ea90f8997906e959a0.html">Getting Access to the Remote Data Sync Service</a>.</li>
+
+				<li class="li">A MobiLink server is running in your account. For more information, see <a class="xref" href="ac7e5e6c84214d14a3303dfc2536f0c2.html">Provisioning a MobiLink Server in Your Account</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This page provides a simple example that demonstrates how to synchronize data from a remote
+				SQL Anywhere database into the SAP HANA database, using the Remote Data Sync service
+				and the underlying SQL Anywhere MobiLink technology. For more information on
+				MobiLink synchronizations, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://dcx.sap.com/index.html#sa160/en/mlstart/mg-basics-s-6081943.html" target="_blank" alt="http://dcx.sap.com/index.html#sa160/en/mlstart/mg-basics-s-6081943.html" title="http://dcx.sap.com/index.html#sa160/en/mlstart/mg-basics-s-6081943.html">Quick start to MobiLink (Synchronization)<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> The SQL Anywhere database running on the client side is called <span class="ph emphasis emphasis">remote
+					database</span>. The central SAP HANA database running on <span class="ph pname">SAP Cloud Platform</span> is called <span class="ph emphasis emphasis">consolidated database</span>. </div>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="concept_mgw_54j_gs">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">1. Connect to a local database</div><div type="1. Connect to a local database">
+				
+				<p class="p">This demo database will be used as a source for the synchronization.</p>
+
+				<ol class="ol" id="concept_mgw_54j_gs__ol_x12_1pj_gs">
+					<li class="li">Start <span class="keyword cmdname">Sybase Central</span>. </li>
+
+					<li class="li">From the top-level menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Connections</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Connection Profiles</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SQL Anywhere 16 Demo</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> profile. </li>
+
+					<li class="li">Choose <span class="ph uicontrol">Connect</span>.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_szl_psj_gs" src="loiobd65e1f5fabf42e3bead6913370c7e63_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">2. Create a new user</div><div type="2. Create a new user">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_g1g_1qj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, double-click <span class="ph uicontrol">MobiLink Users</span>. </li>
+
+					<li class="li">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">MobiLink User</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Enter a user name, for example <kbd class="ph userinput">TEST_USER</kbd>, and choose
+							<span class="ph uicontrol">Finish</span>.</li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the toolbar menu to get back
+						to the root task level.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_asl_vsj_gs" src="loio600cd8eb13704ca99f40441647dc32b8_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">3. Create a new table in the remote database</div><div type="3. Create a new table in the remote database">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_vmj_gqj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, goto <span class="ph uicontrol">Database Design Tasks </span>. </li>
+
+					<li class="li">Open the context menu above the tabs and choose <span class="ph uicontrol">Open Interactive
+						SQL</span>. </li>
+
+					<li class="li">Execute the following script: <div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">
+CREATE TABLE hello_world (
+    pkey BIGINT NOT NULL,
+    first_name VARCHAR ( 10 ) DEFAULT '' NOT NULL,
+    last_name VARCHAR ( 10 ) DEFAULT '' NOT NULL,
+    PRIMARY KEY ( pkey )
+);</pre></div>
+
+						</div>
+</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_oz5_ysj_gs" src="loio022b2a1d5d58430ca157f047a8aa446e_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">4. Create a publication</div><div type="4. Create a publication">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_ww3_mqj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, double-click
+							<span class="ph uicontrol">Publications</span>. </li>
+
+					<li class="li">From the context menu, select <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Publication</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Enter <kbd class="ph userinput">hello_world_publication</kbd> as the name and choose
+							<span class="ph uicontrol">Next</span>. </li>
+
+					<li class="li">Leave the publication type <span class="ph uicontrol">Log scan</span> and choose
+							<span class="ph uicontrol">Next</span>. </li>
+
+					<li class="li">Select the <span class="ph uicontrol">hello_world</span> table and choose
+							<span class="ph uicontrol">Finish</span>.</li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the toolbar menu to get
+						back to the root task level.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_plm_ctj_gs" src="loio59a3e603dcb243549f3b6b3afe7591b7_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">5. Create a synchronization subscription</div><div type="5. Create a synchronization subscription">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_tlb_tqj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, double-click
+							<span class="ph uicontrol">Synchronization Subscriptions</span>. </li>
+
+					<li class="li">From the context menu, select <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Subscription</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Enter <kbd class="ph userinput">hello_world_subscription</kbd> as the name and choose
+							<span class="ph uicontrol">v1</span> as the script version. </li>
+
+					<li class="li">Select <span class="ph uicontrol">hello_world_publication</span> and
+							<span class="ph uicontrol">TEST_USER</span>, and choose
+							<span class="ph uicontrol">Finish</span>.</li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the toolbar menu to get
+						back to the root task level.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_kcm_gtj_gs" src="loio79c2ad6fac374d82acc63d563c48a6f4_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">6. Create a synchronization profile</div><div type="6. Create a synchronization profile">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_fgg_1rj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, double-click
+							<span class="ph uicontrol">Synchronization Profiles</span>. </li>
+
+					<li class="li">From the context menu, select <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Synchronization Profile</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+					<li class="li">Enter <kbd class="ph userinput">hello_world_sync_profile</kbd> as the name. </li>
+
+					<li class="li">Skip the comment wizard and choose <span class="ph uicontrol">Finish</span>. </li>
+
+					<li class="li">In the new <span class="ph uicontrol">Synchronization Profile Properties</span> view,
+						select <span class="ph uicontrol">hello_world_subscription</span> and choose
+							<span class="ph uicontrol">OK</span>. </li>
+
+					<li class="li">Set the script version number for Synchronization Profile in the
+							<span class="ph uicontrol">Extended Options</span> tab and choose
+							<span class="ph uicontrol">OK</span>. </li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the toolbar menu to get
+						back to the root task level.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_j14_jtj_gs" src="loio819cd1a2fb7841f0a89820d066024d5b_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">7. Connect the MobiLink client to the MobiLink server</div><div type="7. Connect the MobiLink client to the MobiLink server">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_ab4_hrj_gs">
+					<li class="li">In Sybase Central, double-click Synchronization Profiles. </li>
+
+					<li class="li">Select hello_world_sync_profile, and from its context menu, choose
+						Properties. </li>
+
+					<li class="li">Go to the Connection tab. </li>
+
+					<li class="li">Fill in the connection details of the MobiLink server as described below: <ul class="ul" id="concept_mgw_54j_gs__ul_lr1_gbv_hw">
+							<li class="li"><span class="ph uicontrol">Protocol</span>: <kbd class="ph userinput">HTTPS</kbd>
+							</li>
+
+							<li class="li"><span class="ph uicontrol">Host</span>: URL to the MobiLink server. To see this
+								URL, open the cockpit and navigate to <span class="ph uicontrol">Java
+									Applications</span>. From the list of applications, select
+								the MobiLink server (NOTE: as of today, it appears as a Java
+								application), and then copy the <span class="ph uicontrol">Application
+									URL</span> for the application shown in the
+									<span class="ph uicontrol">Application Details</span> view. </li>
+
+							<li class="li"><span class="ph uicontrol">Port</span>: <kbd class="ph userinput">443</kbd>
+							</li>
+
+							<li class="li"><span class="ph uicontrol">Proxy host</span>: define your local proxy host, if
+								available </li>
+
+							<li class="li"><span class="ph uicontrol">Proxy port</span>: define your local proxy port, if
+								available </li>
+
+						</ul>
+</li>
+
+					<li class="li">Choose <span class="ph uicontrol">OK</span>.</li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the toolbar menu to get back
+						to the root task level.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_ry3_4tj_gs" src="loiob47a173d234c4045815648d77670953b_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">8. Insert sample data in the hello_world table</div><div type="8. Insert sample data in the hello_world table">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_rkk_qrj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, select the <span class="ph uicontrol">demo</span>
+						database. </li>
+
+					<li class="li">From its context menu, choose <span class="ph uicontrol">Open Interactive SQL</span>. </li>
+
+					<li class="li">Execute the following script: <div class="p">
+							<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">insert into hello_world (pkey, first_name, last_name) values (50, 'John', 'Miller');'
+insert into hello_world (pkey, first_name, last_name) values (52, 'Olivia', 'Snider');</pre></div>
+
+							</div>
+
+						</div>
+</li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the toolbar menu to get
+						back to the root task level.</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">9. Run a synchronization</div><div type="9. Run a synchronization">
+				
+				<ol class="ol" id="concept_mgw_54j_gs__ol_vvd_5rj_gs">
+					<li class="li">In <span class="keyword cmdname">Sybase Central</span>, double-click
+							<span class="ph uicontrol">Synchronization Profiles</span>. </li>
+
+					<li class="li">Select <span class="ph uicontrol">hello_world_sync_profile</span>, and from its context
+						menu, choose <span class="ph uicontrol">Synchronize</span> and then
+							<span class="ph uicontrol">OK</span>. </li>
+
+					<li class="li">Check for errors in the synchronization output. The lines will be colored in
+						red if there is an sync failure. </li>
+
+					<li class="li">Use SAP HANA Studio to validate that the data from the remote database has
+						been synchronized into the consolidated SAP HANA database. </li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Back</span> button in the <span class="keyword cmdname">Sybase Central</span>
+						toolbar menu to get back to the root task level.</li>
+
+				</ol>
+
+				<p class="p"><img class="image" id="concept_mgw_54j_gs__image_bm1_p5j_gs" src="loio7d565c7ee4f649f3849380514965c095_HiRes.png"/></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+				
+			</div></div>
+
+			<div class="section">
+				<p class="p"><a class="xref" href="c05a3ae1b5bd4204bc482ce8496db66c.html">Accessing MobiLink Server Logs</a></p>
+
+				<p class="p"><a class="xref" href="5244437599194207a984d5730c3b41d2.html" title="This page helps you to achieve end-to-end traceability of all synchronizations done via the Remote Data Sync service of SAP Cloud Platform. This way, you can track who made what changes during work on the SAP HANA target database in the cloud.">Audit Logging of MobiLink Synchronizations</a></p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

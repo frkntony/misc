@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.core.tools.eclipse.help.feature"
+      label="%featureName"
+      version="1.116.0"
+      provider-name="%providerName"
+      plugin="com.sap.core.tools.eclipse.help">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.help"
+         download-size="57024"
+         install-size="69223"
+         version="1.116.0"/>
+
+</feature>

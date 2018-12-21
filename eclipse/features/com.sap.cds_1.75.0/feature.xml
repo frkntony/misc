@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.cds"
+      label="%featureName"
+      version="1.75.0"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.cds.ddl"
+         download-size="647"
+         install-size="1655"
+         version="1.75.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.cds.ddl.ui"
+         download-size="273"
+         install-size="529"
+         version="1.75.0"
+         unpack="false"/>
+
+</feature>

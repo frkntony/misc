@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_25
+Built-By: hudson
+Created-By: Apache Maven 3.0.4
+Archiver-Version: Plexus Archiver
+
+Name: META-INF/maven/com.sap.conn.jco.eclipse/com.sap.conn.jco.eclipse
+ .feature/pom.properties
+SHA1-Digest: qEMqiut72tmkl0QiqadvpvNj5L4=
+
+Name: feature_zh_CN.properties
+SHA1-Digest: ufnHFZdeOKP6re6u+tPktKgZG9g=
+
+Name: feature_ru.properties
+SHA1-Digest: zbn2iXosld5kamA/L5L9pN8eb1s=
+
+Name: feature_pt.properties
+SHA1-Digest: oCGvnXaYue/q5p1RqQ7qOfSa18c=
+
+Name: feature_ja.properties
+SHA1-Digest: roWgd0sH/a6Ae5BsQhtsbKtoAMg=
+
+Name: META-INF/maven/com.sap.conn.jco.eclipse/com.sap.conn.jco.eclipse
+ .feature/pom.xml
+SHA1-Digest: 5BS9DM5pU4Ybz8kIyxrU7bpPgqQ=
+
+Name: feature_fr.properties
+SHA1-Digest: 9CC5FzrNKzQlhO+tLqy8dd6mUy8=
+
+Name: feature.xml
+SHA1-Digest: v4zcUnkxWz6XuiJgLakKBBCo8XU=
+
+Name: feature_en.properties
+SHA1-Digest: f7Agf8i8dWNSMXhFGqbmH9v8cok=
+
+Name: feature_de.properties
+SHA1-Digest: un/kAbYIqrhbdUVLvv2X6mZameQ=
+
+Name: feature.properties
+SHA1-Digest: /fGsTlm62ayMGQ2y98VgQT5v7u8=
+
+Name: feature_es.properties
+SHA1-Digest: uutura6Z0j2W25Q68f+dwFQDfwA=
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="As an operator, you can configure an SAP Cloud Platform application according to your scenario."/>
+<meta name="description" content="As an operator, you can configure an SAP Cloud Platform application according to your scenario."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio54017f830b944a0e882a5243d23bfc30">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Applications</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">As an operator, you can configure an <span class="ph pname">SAP Cloud Platform</span> application according to
+		your scenario.</p>
+
+		<div class="section"><div class="section_title">Make specific application configurations during deploy</div><div type="Make specific application configurations during deploy">
+			
+			<p class="p">When you are deploying the application using <span class="ph pname">SAP Cloud Platform</span> console client, you can
+				specify various configurations using the deploy command parameters:</p>
+
+			<p class="p"><a class="xref" href="13afe5ca6e38485d8e6523f610c0ed29.html" title="Applications deployed on SAP Cloud Platform are always started on the latest version of the application runtime container. This version contains all released fixes, critical patches and enhancements and is respectively the recommended option for applications. In some special cases, you can choose the version of the runtime container your application uses by specifying it with the parameter --runtime-version when deploying your application. To change this version, you need to redeploy the application without specifying this parameter.">Choosing Application Runtime Version</a></p>
+
+			<p class="p"><a class="xref" href="390594a7ee9e4a51b5f5eb6af61d8bdc.html" title="Usage of gzip response compression can optimize the response time and improve interaction with an application as it reduces the traffic between the Web server and browsers. Enabling compression configures the server to return zipped content for the specified MIME type and size of the response.">Enabling and Configuring Gzip Response Compression</a></p>
+
+			<p class="p"><a class="xref" href="b82d3929218a42558146c58d2f68121e.html" title="Using SAP Cloud Platform console client, you can configure the JRE by specifying custom VM arguments.">Configuring VM Arguments</a></p>
+
+			<p class="p"><a class="xref" href="ee71c1a4aea84558accb2524785b21bc.html" title="You can choose the Java Runtime Environment (JRE) version used for an application.">Choosing JRE Version</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Update application properties</div><div type="Update application properties">
+			
+			<p class="p">You can change the properties you specified during deployment. </p>
+
+			<p class="p"><a class="xref" href="cadb1dd3cda3464b8a5315a08cbb0566.html" title="You can update a property of an application running on SAP Cloud Platform without redeploying it.">Updating Application Properties</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Scale your application</div><div type="Scale your application">
+			
+			<p class="p">You can scale an application to ensure its ability to handle more requests.</p>
+
+			<p class="p"><a class="xref" href="745781b3ddb24c8a9670aff28cf09e36.html" title="Each application is started on a dedicated SAP Cloud Platform Runtime. One application can be started on one or many application processes, according to the compute unit quota that you have.">Scaling Applications</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configure identity and access management</div><div type="Configure identity and access management">
+			
+			<p class="p">Using the cockpit, you can perform the following identity and access management configuration
+				tasks:</p>
+
+			<p class="p"><a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a></p>
+
+			<p class="p"><a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a></p>
+
+			<p class="p"><a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio7e658b3e4cea4a79b035d0f1d2798c1f" title="Register clients, manage access tokens, configure scopes and perform other OAuth configuration tasks.">Configuring OAuth 2.0</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configure connectivity destinations</div><div type="Configure connectivity destinations">
+			
+			<p class="p"> Using the cockpit and the console client, you can configure HTTP, Mail and RFC destinations
+				to make use of them in your applications:</p>
+
+			<p class="p"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></p>
+
+			<p class="p"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">View and download log files</div><div type="View and download log files">
+			
+			<p class="p"> Using the cockpit and the console client, you can view and download log files of any
+				applications deployed in your account: </p>
+
+			<p class="p"><a class="xref" href="2555df65182c4b09a25e56fa3b57b0a8.html" title="You can view the logs and change the log settings of any applications deployed in your account. The cockpit provides the following types of logs: default trace logs, HTTP access logs, and garbage collection logs.">Using Logs in the Cockpit</a></p>
+
+			<p class="p"><a class="xref" href="e4fd83c5bb5710149b1e94f127f108e4.html">Using Logs in the Console Client</a></p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="76132306711e1014839a8273b0e91070.html">Console Client</a></div>
+<div><a class="link" href="113c0f26cc7b42eab08fbfbf0af35438.html" title="SAP Cloud Platform Tools provide options for advanced server and application configurations from the Eclipse IDE, as well as direct reference to the cockpit UI.">Advanced Application Configurations</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

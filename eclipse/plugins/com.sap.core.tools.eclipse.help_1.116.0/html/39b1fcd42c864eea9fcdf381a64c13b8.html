@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the application code, you can obtain an initial JNDI context by creating a javax.naming.InitialContext object, and then retrieve the data source by looking up the naming environment through the InitialContext. Alternatively, you can directly inject the data source."/>
+<meta name="description" content="In the application code, you can obtain an initial JNDI context by creating a javax.naming.InitialContext object, and then retrieve the data source by looking up the naming environment through the InitialContext. Alternatively, you can directly inject the data source."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Retrieving Data Sources</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio39b1fcd42c864eea9fcdf381a64c13b8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Retrieving Data Sources</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the application code, you can obtain an initial JNDI context by creating a
+			<span class="keyword apiname">javax.naming.InitialContext</span> object, and then retrieve the data source
+		by looking up the naming environment through the <span class="keyword apiname">InitialContext</span>.
+		Alternatively, you can directly inject the data source. </p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">To create an intitial JNDI context and look up the data source, add the following code to
+					your application and make sure that the JNDI name matches the one specified in
+					the <span class="ph filepath">web.xml</span> file: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">InitialContext ctx = new InitialContext();
+DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DefaultDB");</pre></div>
+
+					<p class="p">Note that according to the Java EE Specification, the prefix
+							<span class="ph filepath">java:comp/env</span> should be added to the JNDI resource
+						name (as specified in the <span class="ph filepath">web.xml</span>) to form the lookup
+						name. For more information about defining and referencing resources
+						according to the Java EE standard, see the <cite class="cite">Java EE
+							Specification</cite>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">If the application uses multiple data sources, create the lookup in a similar
+					manner: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">InitialContext ctx = new InitialContext();
+DataSource ds1 = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource1");
+DataSource ds2 = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource2");</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Alternatively, to directly inject the data source, use the <samp class="ph codeph">@Resource</samp>
+					annotation: </span>
+				<div class="itemgroup info">
+					<ul class="ul" id="loio39b1fcd42c864eea9fcdf381a64c13b8__ul_gbb_45z_vk">
+						<li class="li">Default data source<div class="p">Since the default data source is provided
+								automatically, it can be injected without an explicit resource name,
+								as shown below. It is also not necessary to declare the JNDI
+								resource reference in the <span class="ph filepath">web.xml</span> or
+									<span class="ph filepath">persistence.xml</span>
+								file:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Resource
+private javax.sql.DataSource ds;</pre></div>
+
+							</div>
+</li>
+
+						<li class="li">Explicitly named data sources<div class="p">These are injected with a specific resource name, as specified in
+								the <span class="ph filepath">web.xml</span> or
+									<span class="ph filepath">persistence.xml</span>
+								file:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Resource(name="jdbc/datasource1")
+    private javax.sql.DataSource ds1;
+
+@Resource(name="jdbc/datasource2")
+    private javax.sql.DataSource ds2;</pre></div>
+
+							</div>
+</li>
+
+					</ul>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=https://jcp.org/aboutJava/communityprocess/final/jsr244/index.html" target="_blank" alt="https://jcp.org/aboutJava/communityprocess/final/jsr244/index.html" title="https://jcp.org/aboutJava/communityprocess/final/jsr244/index.html">Java EE Specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

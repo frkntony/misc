@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Audit Logging in the Cloud Connector</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2264c7002f844fe4833186a1d168de66">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Audit Logging in the <span class="ph pname">Cloud Connector</span></h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">Starting with version <span class="ph emphasis emphasis">2.2</span>, the <span class="ph pname">Cloud connector</span> is
+				providing an auditor tool. It allows you to verify the integrity of the available
+				audit log files.</p>
+
+		</div></div>
+
+		<div class="section" id="loio2264c7002f844fe4833186a1d168de66__section_50B0B8B863F545F7984E1F76FFCE2B51"><div class="section_title">Audit Logs in the Cloud Connector</div><div type="Audit Logs in the Cloud Connector">
+			
+			<p class="p">Choose <span class="ph uicontrol">Audit</span> from your account menu and go to section
+					<span class="ph uicontrol">Settings</span> to specify which kind of audit events the <span class="ph pname">Cloud connector</span> should
+				log at runtime. Currently, you can choose between three different <span class="ph uicontrol">Audit
+					Levels</span>: </p>
+
+			<ul class="ul" id="loio2264c7002f844fe4833186a1d168de66__ul_a4t_4yh_zm">
+				<li class="li"><kbd class="ph userinput">Security</kbd>: Default value. The <span class="ph pname">Cloud connector</span>
+					writes an audit entry for each request that was blocked ("<span class="keyword cmdname">Access
+						Denied</span>"). It also writes audit entries, whenever an administrator
+					changes one of the critical configuration settings, such as exposed backend
+					systems, allowed resources, and so on.</li>
+
+				<li class="li"><kbd class="ph userinput">All</kbd>: The <span class="ph pname">Cloud connector</span>
+					writes one audit entry for each received request, regardless of whether it was
+					allowed to pass or not ("<span class="keyword cmdname">Access Allowed</span>" and "<span class="keyword cmdname">Access
+						Denied</span>"). It also writes audit entries relevant to the
+						<kbd class="ph userinput">Security</kbd> mode.</li>
+
+				<li class="li">
+					<kbd class="ph userinput">Off</kbd>: No audit entries are written. </li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> We recommend that you switch to <kbd class="ph userinput">All</kbd> only in case of legal
+				requirements or company policies for which not only security-relevant events shall
+				be logged.</div>
+
+			<p class="p">
+			</p>
+
+			<p class="p">Audit entries for configuration changes are written for the following different
+				categories: </p>
+
+			<ul class="ul" id="loio2264c7002f844fe4833186a1d168de66__ul_q4t_4yh_zm">
+				<li class="li"><span class="keyword parmname">BackendMapping</span>: Something changed in the virtual to
+					internal system mappings. </li>
+
+				<li class="li"><span class="keyword parmname">AllowedResource</span>: For one of the virtual systems, something
+					changed in the accessible resources. </li>
+
+				<li class="li"><span class="keyword parmname">DomainMapping</span>: Something changed in the domain mappings. </li>
+
+				<li class="li"><span class="keyword parmname">ServiceChannelConfiguration</span>: The configuration of a service
+					channel was changed.</li>
+
+				<li class="li"><span class="keyword parmname">SCCPassword</span>: The <span class="ph pname">Cloud connector</span>
+					administration password was changed. </li>
+
+				<li class="li"><span class="keyword parmname">LDAPConfiguration</span>: Something changed in the LDAP settings. </li>
+
+				<li class="li"><span class="keyword parmname">SNCSettings</span>: The <span class="ph pname">Cloud connector</span>'s
+					SNC settings were changed.</li>
+
+				<li class="li"><span class="keyword parmname">Configuration</span>: The settings for the connection to
+						<span class="ph pname">SAP Cloud Platform</span> were changed. </li>
+
+				<li class="li"><span class="keyword parmname">ProxySettings</span>: The proxy settings were changed. </li>
+
+				<li class="li"><span class="keyword parmname">SystemCertificate</span>: The system certificate was changed. </li>
+
+				<li class="li"><span class="keyword parmname">Account</span>: The account configuration was changed.</li>
+
+				<li class="li"><span class="keyword parmname">PrincipalPropagationConfiguration</span>: The principal
+					propagation settings were changed.</li>
+
+				<li class="li"><span class="keyword parmname">TrustSynchronization</span>: The trust configuration for principal
+					propagation was synchronized.</li>
+
+				<li class="li"><span class="keyword parmname">IdentityProviderTrust</span>: The trust configuration for a
+					specific identity provider was changed.</li>
+
+				<li class="li"><span class="keyword parmname">KerberosConfiguration</span>: The Kerberos configuration was
+					changed.</li>
+
+				<li class="li"><span class="keyword parmname">ApplicationTrust</span>: The trust configuration to applications
+					was changed.</li>
+
+				<li class="li"><span class="keyword parmname">AuditLogLevel</span>: The audit log level was changed.</li>
+
+				<li class="li"><span class="keyword parmname">PayloadTrace</span>: Payload trace (traffic data) was
+					activated/deactivated.</li>
+
+				<li class="li"><span class="keyword parmname">CPICTrace</span>: The CPIC trace level was changed.</li>
+
+			</ul>
+
+			<p class="p">
+			</p>
+
+			<p class="p">In the <span class="ph uicontrol">Audit Viewer</span> section, you can first define filter
+				criteria and then display the selected audit entries. </p>
+
+			<ul class="ul" id="loio2264c7002f844fe4833186a1d168de66__ul_fpt_4yh_zm">
+				<li class="li">In the <span class="ph uicontrol">Audit Type</span> field, you can select whether you want
+					to view the audit entries for: <ul class="ul" id="loio2264c7002f844fe4833186a1d168de66__ul_vpt_4yh_zm">
+						<li class="li">only requests that were denied; </li>
+
+						<li class="li"> only requests that were allowed; </li>
+
+						<li class="li"><span class="ph pname">Cloud connector</span> changes; </li>
+
+						<li class="li">all of the above. </li>
+
+					</ul>
+
+				</li>
+
+				<li class="li">In the <span class="ph uicontrol">Pattern</span> field, you can specify a certain string
+					that the detail text of each selected audit entry must contain. The detail text
+					contains information about the user name, requested resource/URL, and the
+					virtual <var class="keyword varname">&lt;host&gt;:&lt;port&gt;</var>. Wildcards are currently
+					not supported in this field. This feature can help you: <ul class="ul" id="loio2264c7002f844fe4833186a1d168de66__ul_wpt_4yh_zm">
+						<li class="li"> Filter the audit log for all requests that a particular HTTP user has
+							made during a certain time frame </li>
+
+						<li class="li">Identify all users who attempted to request a particular URL </li>
+
+						<li class="li">Identify all requests to a particular back-end system </li>
+
+						<li class="li">Find out whether someone has changed a certain <span class="ph pname">SAP Cloud Platform</span> connnector
+							configuration. For example, a search for string
+								"<kbd class="ph userinput">BackendMapping</kbd>" will return all
+								<span class="keyword parmname">add-</span>, <span class="keyword parmname">delete-</span> or
+								<span class="keyword parmname">modify-</span> operations on the <span class="ph uicontrol">Mapping
+								Virtual To Internal System</span> page. </li>
+
+					</ul>
+
+				</li>
+
+				<li class="li"> The <span class="ph uicontrol">Time Range</span> settings specify the time frame for which
+					you want to display the audit events. </li>
+
+			</ul>
+
+			<p class="p">
+			</p>
+
+			<p class="p">These three filter criteria are combined with a logical <span class="keyword parmname">AND</span> so
+				that all audit entries that match these criteria are displayed. If you have modified
+				one of the criteria, choose the  <span class="ph uicontrol">Refresh</span> button to display
+				the updated selection of audit events that match the new criteria. </p>
+
+			<p class="p"> </p>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> In order to ensure separation of concerns, we recommend that the operating system
+				administrator and the <span class="ph pname">SAP Cloud Platform</span> administrator
+				are different persons. Thus, a single person cannot change audit log level and
+				delete all existing audit logs. Additionally, we recommend to turn on the audit log
+				on operating system level for file operations.</div>
+
+			<p class="p">The <img class="image" id="loio2264c7002f844fe4833186a1d168de66__image_e4b_d13_zm" src="loio34b91de049b7447d80335293fa78198b_HiRes.png" alt="Check" title="Check"/>
+				<span class="ph uicontrol">Check</span> button checks all files that are filtered by the
+				specified date range.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Verifying the Integrity of Audit Logs</div><div type="Verifying the Integrity of Audit Logs">
+			
+			<p class="p">To check the integrity of the audit logs, go to
+					<span class="ph filepath">&lt;scc_installation&gt;/auditor</span>. This directory contains an
+				executable <span class="ph filepath">go</span> script file (respectively,
+					<span class="ph filepath">go.cmd</span> on Microsoft Windows OS and
+					<span class="ph filepath">go.sh</span> on other OS).</p>
+
+			<p class="p">if you start the <span class="ph filepath">go</span> file without specifying parameters from
+					<span class="ph filepath">&lt;scc_installation&gt;/auditor</span>, it will start the
+				verification of all available audit logs for the current <span class="ph pname">Cloud connector</span>
+				installation.</p>
+
+			<p class="p">The tool is built as a Java Application and hence requires Java runtime for
+				execution. The best way is to specify JAVA_HOME:</p>
+
+			<ul class="ul" id="loio2264c7002f844fe4833186a1d168de66__ul_pnk_3yh_zm">
+				<li class="li">For Microsoft Windows OS, set
+						<span class="ph uicontrol">JAVA_HOME=&lt;path-to-java-installation&gt;</span></li>
+
+				<li class="li">For Linux OS and Mac OS X, export:
+						<span class="ph uicontrol">JAVA_HOME=&lt;path-to-java-installation&gt;</span></li>
+
+			</ul>
+
+			<p class="p">Alternatively, include the Java <span class="ph filepath">bin</span> directory into the
+					<span class="keyword parmname">PATH</span> variable so that Java can be executed.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">In the following example, the <span class="ph uicontrol">Audit Viewer</span> displays all audit
+				entries on level Security, with denied access, for the time frame between
+					<span class="ph emphasis emphasis">May 28, 00:00:00</span> and <span class="ph emphasis emphasis">May 28,
+				23:59:59</span>:</p>
+
+			<p class="p"><img class="image" id="loio2264c7002f844fe4833186a1d168de66__image_cyk_q13_zm" width="1400px" src="loiob320cb8abb57101481a2974fa30e425b_LowRes.png" alt="Audit Selection" title="Audit Selection"/></p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.xse.debugger.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jdt" version="3.8.2" match="greaterOrEqual"/>
+      <import feature="org.eclipse.wst.jsdt.feature" version="1.4.1" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.xse.debugger.core"
+         download-size="141"
+         install-size="305"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.xse.debugger.ui"
+         download-size="211"
+         install-size="447"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.xse.editor"
+         download-size="251"
+         install-size="529"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

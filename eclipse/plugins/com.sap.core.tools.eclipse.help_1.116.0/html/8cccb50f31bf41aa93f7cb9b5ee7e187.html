@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Missions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8cccb50f31bf41aa93f7cb9b5ee7e187">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Missions</h1>
+
+	<div class="body conbody">
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have logged on to the gamification workbench with the role
+					<span class="ph sap-technical-name sap-technical-name">GamificationDesigner</span> and you have
+				opened the <span class="ph uicontrol">Missions</span> tab.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context"><p class="p">A mission defines what has to be achieved to gain a measurable
+				outcome. Besides basic standalone missions the <span class="ph pname">gamification service</span>
+				allows modelling complex mission structures using mission conditions and
+				consequences. </p>
+<div class="note note"><span class="notetitle">Note</span> Mission conditions and consequences are of descriptive
+				nature only. Actual condition checking and the execution of consequences has to be
+				done by corresponding rules. These rules are not generated automatically
+				yet.</div>
+<p class="p">Sample structure of complex missions:</p>
+<img class="image" id="loio8cccb50f31bf41aa93f7cb9b5ee7e187__image_jm5_hzp_zv" src="loio881ebfd684a44ac587a5eb0d3bef71ba_LowRes.png"/><div class="p">Currently two types of completion
+				conditions are supported:<ul class="ul" id="loio8cccb50f31bf41aa93f7cb9b5ee7e187__ul_vvm_kzp_zv">
+					<li class="li">
+						<p class="p">Point Conditions: A number of points, each with a respective threshold. Each point can be
+							considered as a progress indicator: As soon as the threshold is reached,
+							the condition is met.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">A list of missions that have to be completed. Within the API such
+							missions are referred to as sub missions.</p>
+
+					</li>
+
+				</ul>
+</div>
+<p class="p">The consequences part is limited to a list of follow-up missions, which
+				should be assigned or unlocked after the current mission has been completed. Within
+				the API such follow-up missions are referred to as
+				<samp class="ph codeph">nextMissions</samp>.</p>
+<div class="p">Example for a rule that checks a point
+				condition in its WHEN part and assigns a follow-up mission in its THEN part:<ul class="ul" id="loio8cccb50f31bf41aa93f7cb9b5ee7e187__ul_ujn_zzp_zv">
+					<li class="li">
+						<p class="p">WHEN</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$p : Player($playerid : id) 
+eval(queryAPIv1.hasPlayerMission($playerid, 'Troubleshooting', false) == true) 
+eval(queryAPIv1.getScoreForPlayer($playerid, 'Critical Tickets', null, null).getAmount() &gt;= 5)
+</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">THEN</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.completeMissionForPlayer($playerid, 'Troubleshooting', null);
+updateAPIv1.assignMissionToPlayer($playerid, 'Troubleshooting reloaded', null);
+</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

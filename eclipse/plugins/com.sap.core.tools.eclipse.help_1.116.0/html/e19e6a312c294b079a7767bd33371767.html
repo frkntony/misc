@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Cloud Connector Administration</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe19e6a312c294b079a7767bd33371767">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1"><span class="ph pname">Cloud Connector</span>
+		Administration</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Operating System Access and Configuration</div><div type="Operating System Access and Configuration">
+			
+			<p class="p">As the <span class="ph pname">Cloud connector</span> is a
+				security critical component enabling external access to systems of an isolated
+				network, similar to a reverse proxy in a DMZ, we recommend that you restrict the
+				access to the operating system on which the <span class="ph pname">Cloud connector</span> is
+				installed to the minimal set of users who shall administrate the system. This will
+				minimize the risk of unauthorized people accessing the <span class="ph pname">Cloud connector</span> system
+				and trying to modify or damage a running <span class="ph pname">Cloud connector</span>
+				instance. </p>
+
+			<p class="p">We also recommend that you use hard-drive encryption for the <span class="ph pname">Cloud connector</span> system.
+				This ensures that the <span class="ph pname">Cloud connector</span>
+				configuration data cannot be read by unauthorized users, even if they obtain access
+				to the hard drive. </p>
+
+			<p class="p">To learn all tips and tricks for secure setup, see <a class="xref" href="e7ea82a4bb571014a4ceb61cb7e3d31f.html">Recommendations for Secure Setup</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configuring a Trusted Certificate for the Administration UI</div><div type="Configuring a Trusted Certificate for the Administration UI">
+			
+			<p class="p">After a new installation, the <span class="ph pname">Cloud connector</span>
+				provides a self-signed <span class="keyword cmdname">X.509</span> certificate used for the SSL
+				communication between the <span class="ph pname">Cloud connector</span>
+				Administration UI running in a Web browser and the <span class="ph pname">Cloud connector</span> process
+				itself. For security reasons, this certificate should be replaced for productive
+				scenarios with a certificate trusted by your organization. </p>
+
+			<p class="p">To learn in detail how to do this, read this page: <a class="xref" href="bcd5e113c9164ae8a443325692cd5b12.html">Recommended: Replacing the Default SSL Certificate</a>
+			</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Basic Configuration</div><div type="Basic Configuration">
+			
+			<p class="p">The basic configuration steps for the <span class="ph pname">Cloud connector</span> consist
+				of: </p>
+
+			<ul class="ul" id="loioe19e6a312c294b079a7767bd33371767__ul_jrw_jtc_sn">
+				<li class="li">Changing the initial password for the built-in
+						<kbd class="ph userinput">Administrator</kbd> user</li>
+
+				<li class="li">Connecting the <span class="ph pname">Cloud connector</span> against a cloud account</li>
+
+			</ul>
+
+			<p class="p">Detailed documentation of these two steps can be found here: <a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html">Initial Configuration</a>
+			</p>
+
+			<p class="p">You are forced to change the initial password to a specific one immediately after
+				installation. The <span class="ph pname">Cloud connector</span> itself
+				does not check the strength of the password, thus the <span class="ph pname">Cloud connector</span>
+				administrators should voluntarily choose a strong password that cannot be guessed
+				easily.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e8f055e712434c90a4747c8f4d7ba2a4.html">Connecting and Disconnecting a Cloud Account</a></div>
+<div><a class="link" href="3b12086100b344d39a2ff0c9410e66c6.html">Configuring Accessible Resources</a></div>
+<div><a class="link" href="0c48337629d3494888f7b9d06855ba6e.html">Configuring Trust between Cloud Connector and On-Premise Systems</a></div>
+<div><a class="link" href="3859e50f652e4a4b9c66a6a572ced7a4.html">Configuring Named Cloud Connector Administrator Users</a></div>
+<div><a class="link" href="63bd823990cb4d26a098869fe3a0a8a7.html">Using the Audit Log</a></div>
+<div><a class="link" href="b643fbecb14e4c89ab3c03b21200cb08.html">Authenticating Users for On-Premise Systems</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

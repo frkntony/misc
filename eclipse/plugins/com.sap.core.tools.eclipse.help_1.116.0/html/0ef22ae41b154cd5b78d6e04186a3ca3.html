@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Assign authorizations to access transaction CERTRULE."/>
+<meta name="description" content="Assign authorizations to access transaction CERTRULE."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Assigning Authorization Objects for Rule-based Mapping</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0ef22ae41b154cd5b78d6e04186a3ca3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Assigning Authorization Objects for Rule-based Mapping</h1>
+
+	
+	<div class="body"><p class="shortdesc">Assign authorizations to access transaction CERTRULE.</p>
+
+		<p class="p"/>
+
+		<p class="p">To access transaction CERTRULE, you need the following authorizations:</p>
+
+		<div class="p">
+			<ul class="ul" id="loio0ef22ae41b154cd5b78d6e04186a3ca3__ul_ns4_q1j_s5">
+				<li class="li">CC control center: System administration (S_RZL_ADM) <ul class="ul" id="loio0ef22ae41b154cd5b78d6e04186a3ca3__ul_wyc_s1j_s5">
+						<li class="li"><span class="keyword parmname">Activity 03</span> grants display authorizations. </li>
+
+						<li class="li"><span class="keyword parmname">Activity 01</span> grants change authorizations. </li>
+
+					</ul>
+</li>
+
+				<li class="li">User Master Maintenance: User Groups (S_USER_GRP) <ul class="ul" id="loio0ef22ae41b154cd5b78d6e04186a3ca3__ul_q4q_v1j_s5">
+						<li class="li"><span class="keyword parmname">Activity 03</span> grants display authorizations. </li>
+
+						<li class="li"><span class="keyword parmname">Activity 02</span> grants change authorizations. </li>
+
+						<li class="li"><span class="keyword parmname">Class</span>: enter the names of user groups for which the
+							administrator can maintain explicit mappings. </li>
+
+					</ul>
+</li>
+
+			</ul>
+
+		</div>
+
+		<p class="p"/>
+
+		<p class="p">To assign these authorization objects, proceed as follows:</p>
+
+		<div class="p">
+			<ol class="ol" id="loio0ef22ae41b154cd5b78d6e04186a3ca3__ol_k3b_dbj_s5">
+				<li class="li">Create a <em class="ph i">Single Role</em> with transaction PFCG.</li>
+
+				<li class="li">Goto tab <span class="ph uicontrol">Authorizations</span>, choose <span class="ph uicontrol">Change Authorization
+						data</span> and press the <span class="ph uicontrol">Manually</span> button to add
+					the authorization objects <kbd class="ph userinput">S_RZL_ADM</kbd> and
+						<kbd class="ph userinput">S_USER_GRP</kbd>. </li>
+
+				<li class="li">Choose <span class="ph uicontrol">Generate</span> to generate the profile and save the
+					changes.</li>
+
+				<li class="li">In the <span class="ph uicontrol">User</span> tab, enter the user who should execute the
+					transaction CERTRULE. </li>
+
+				<li class="li">Choose <span class="ph uicontrol">User comparison</span> to match the newly generated profiles to the
+					users. </li>
+
+			</ol>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

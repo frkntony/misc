@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can take a snapshot of an existing virtual machine volume in your account and use it to create a new virtual machine with the same file system thus saving any manual installation."/>
+<meta name="description" content="You can take a snapshot of an existing virtual machine volume in your account and use it to create a new virtual machine with the same file system thus saving any manual installation."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Volume Snapshots</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio93dd4760f72f42f6a668c903030272a4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Volume Snapshots</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can take a snapshot of an existing virtual machine volume in your account and use it
+		to create a new virtual machine with the same file system thus saving any manual
+		installation.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loio93dd4760f72f42f6a668c903030272a4__ul_hmd_dbz_x5">
+					<li class="li">
+						<p class="p">You have created a virtual machine.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Your account has sufficient quota for snapshots.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Each virtual machine has a volume – the storage behind the file system and all software
+				installed on it. Using console client commands, you can create a snapshot of the
+				volume of a virtual machine. This snapshot contains everything that was installed on
+				the file system, but does not keep any running processes and runtime configurations.
+				Then, you create a new virtual machine from this volume snapshot.</p>
+
+			<p class="p"><img class="image" id="loio93dd4760f72f42f6a668c903030272a4__image_tnv_g5r_zv" src="loio20265f21377642c89788af0891aeefaf_LowRes.png"/></p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">List virtual machines in your account to find out the volume of which you want to take a
+					snapshot.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-vms  --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+					<p class="p">The command output includes all virtual machines with their volume IDs. Copy
+						the ID of the volume you need.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create a snapshot of the specified VM volume.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo create-volume-snapshot --volume-id myvolumeid --display-name myvolumesnapshot --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check the status of volume snapshot creation. You can find the snapshot ID in the output of
+					the <span class="keyword cmdname">create-volume-snapshot</span> command.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo display-volume-snapshot --snapshot-id mysnapshotid --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create a new virtual machine from the volume snapshot.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo create-vm –volume-snapshot-id volumesnapshotid --size x-small --name myvm --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) List all volume snapshots in your account. This will give you more information
+					about each snapshot, such as ID, name, status, volume ID.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-volume-snapshots --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Delete a snapshot when you no longer need it. This will free some
+					quota to use for new volume snapshots.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo delete-volume-snapshot --snapshot-id mysnapshotid --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

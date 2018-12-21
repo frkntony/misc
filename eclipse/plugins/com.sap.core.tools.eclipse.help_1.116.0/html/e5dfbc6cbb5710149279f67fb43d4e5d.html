@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Deploying and Updating Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe5dfbc6cbb5710149279f67fb43d4e5d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Deploying and Updating Applications</h1>
+<div class="body conbody">
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__table_b4d_cym_wr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="100%" id="d11400529e23">Content</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="100%" headers="d11400529e23 ">
+							<p class="p"><a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html#loioe5dfbc6cbb5710149279f67fb43d4e5d__deploying">Deploying
+									Applications</a></p>
+
+							<p class="p"><a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html#loioe5dfbc6cbb5710149279f67fb43d4e5d__update_properties">Updating Application Properties</a></p>
+
+							<p class="p"><a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html#loioe5dfbc6cbb5710149279f67fb43d4e5d__update_during_dev">Updating During Development</a></p>
+
+							<p class="p"><a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html#loioe5dfbc6cbb5710149279f67fb43d4e5d__update_prod_apps">Updating Productive Applications</a></p>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+<div class="section" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__deploying"><div class="section_title">Deploying Applications</div><div type="Deploying Applications">
+			
+			<div class="p">After you have created your Java application, you need to deploy and run it on
+					<span class="ph pname">SAP Cloud Platform</span>. We recommend that you first deploy and
+				test your application on the local runtime before deploying it on the cloud. Use the
+				tool that best fits your scenario: 
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__table_syf_hpm_fq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+						
+						
+						
+						<tbody class="tbody">
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e82">
+									<p class="p">Eclipse IDE</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e82 ">
+									<p class="p"><a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a></p>
+
+									<p class="p"><a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e82 ">
+									<p class="p">You have developed your application using <span class="ph pname">SAP Cloud Platform</span> Tools in the Eclipse IDE.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e125">
+									<p class="p">Console Client</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e125 ">
+									<p class="p"><a class="xref" href="937c833b72bb101490cf767db0e91070.html" title="The console client allows you to install a server runtime in a local folder and use it to deploy your application.">Deploying Locally with the Console Client</a></p>
+
+									<p class="p"><a class="xref" href="030863cd5d0d4dd3b742957970f8eec9.html" title="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters.">Deploying on the Cloud with the Console Client</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e125 ">
+									<p class="p">You want to deploy an application in the form of one or more
+										WAR files.</p>
+
+									<p class="p">Command: <span class="keyword parmname">deploy</span></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e167">
+									<p class="p">Cockpit</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e167 "><a class="xref" href="abded969628240259d486c4b29b3948c.html" title="The cockpit allows you to deploy Java applications as WAR files and supports a number of deployment options for configuring the application.">Deploying on the Cloud with the Cockpit</a></td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e167 ">
+									<p class="p">You want to deploy an application in the form of a WAR
+										file.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div></div>
+<div class="section" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__update_properties"><div class="section_title">Updating Application Properties</div><div type="Updating Application Properties">
+			
+			<div class="p">Application properties are configured during deployment with a set of parameters. To
+				update these properties, use one of the following approaches:
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__table_tkd_zrm_fq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+						
+						
+						
+						<tbody class="tbody">
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e212">
+									<p class="p">Console Client</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e212 ">
+									<p class="p"><a class="xref" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e212 ">
+									<p class="p">Deploy the application with new WAR file(s) and make changes
+										to the configuration parameters.</p>
+
+									<p class="p">Command: <span class="keyword parmname">deploy</span></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e246">
+									<p class="p">Console Client</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e246 ">
+									<p class="p"><a class="xref" href="113e95746d63472a801ba8339a67b021.html" title="Use this command to change the value of a single property of a deployed application without the need to redeploy it. Execute the command separately for each property that you want to set. For the changes to take effect, restart the application.">set-application-property</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e246 ">
+									<p class="p">Change some of the application properties you defined during
+										deployment without redeploying the application binaries.</p>
+
+									<p class="p">Command: <span class="keyword parmname">set-application-property</span>
+									</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e278">
+									<p class="p">Cockpit</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e278 ">
+									<p class="p"><a class="xref" href="abded969628240259d486c4b29b3948c.html" title="The cockpit allows you to deploy Java applications as WAR files and supports a number of deployment options for configuring the application.">Deploying on the Cloud with the Cockpit</a></p>
+</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e278 ">
+									<p class="p">Update the application with a new WAR file or make changes to
+										the configuration parameters.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div></div>
+
+	<div class="section" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__update_during_dev"><div class="section_title">Updating During Development</div><div type="Updating During Development">
+			
+			<div class="p">If you want to quickly see your changes while developing an application, use the
+				following approaches:
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__table_ddj_ftm_fq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+						
+						
+						
+						<tbody class="tbody">
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e326">
+									<p class="p">Eclipse IDE</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e326 ">
+									<p class="p"><a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a></p>
+</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e326 ">
+									<p class="p">Republish the application. The cloud server is not restarted,
+										and only the application binaries are updated.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e354">
+									<p class="p">Console Client</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e354 ">
+									<p class="p"><a class="xref" href="7ae6493455844b4ab993c1a1b69595fa.html" title="The hot-update command enables a developer to redeploy and update the binaries of an application started on one process faster than the normal deploy and restart. Use it to apply and activate your changes during development and not for updating productive applications.">hot-update</a></p>
+</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e354 ">
+									<p class="p">Apply and activate changes. Use the command to speed up
+										development and not for updating productive
+										applications.</p>
+
+									<p class="p">Command: <span class="keyword parmname">hot-update</span>
+									</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e385">
+									<p class="p">Console Client</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e385 ">
+									<p class="p"><a class="xref" href="7a4aba21ee7d42eb86bc70c8787611fa.html" title="By using the delta deployment option, you can apply changes in a deployed application faster without uploading the entire set of files tо SAP Cloud Platform.">Delta Deployment</a></p>
+
+									<p class="p"><a class="xref" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></p>
+
+									<p class="p"><a class="xref" href="7ae6493455844b4ab993c1a1b69595fa.html" title="The hot-update command enables a developer to redeploy and update the binaries of an application started on one process faster than the normal deploy and restart. Use it to apply and activate your changes during development and not for updating productive applications.">hot-update</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e385 ">
+									<p class="p">Apply changes in a deployed application without uploading the
+										entire set of files.</p>
+
+									<p class="p">Command: <span class="keyword parmname">deploy</span> or
+										<span class="keyword parmname">hot-update</span></p>
+
+									<p class="p">Parameter: <span class="keyword parmname">--delta</span>
+									</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__update_prod_apps"><div class="section_title">Updating Productive Applications</div><div type="Updating Productive Applications">
+			
+			<div class="p">If you are an application operator and need to deploy a new version of a productive
+				application or perform maintenance, you can choose among several approaches:
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe5dfbc6cbb5710149279f67fb43d4e5d__table_ext_nzw_gq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="33.333333333333336%"/><col width="50%"/></colgroup>
+
+						
+						
+						
+						<tbody class="tbody">
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e470">
+									<p class="p">Zero Downtime</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e470 ">
+									<p class="p"><a class="xref" href="a10f6c2071b443698eb7dfc411d0ed6d.html" title="The platform allows you to update an application in a manner in which the application remains operable all the time and your users do not experience downtime.">Updating Applications with Zero Downtime</a></p>
+
+									<p class="p"><a class="xref" href="3f5d41207b6a4d0b9ad2e46dc6f27e69.html" title="The rolling-update command performs update of an application without downtime in one go.">rolling-update</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e470 ">
+									<p class="p">Use when the new application version is backward compatible with the old version. Deploy
+										a new version of the application and disable and enable
+										processes in a rolling manner, or, do it at one go with the
+											<span class="keyword cmdname">rolling-update</span> command.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e507">
+									<p class="p">Planned Downtime</p>
+
+									<p class="p"> (Maintenance Mode)</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e507 ">
+									<p class="p"><a class="xref" href="aa04f29a908f4db7b7666c12552ddd53.html" title="An operator can start and stop planned application downtime, during which a customized maintenance page for that application is shown to end users.">Using Maintenance Mode for Planned Downtimes</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e507 ">
+									<p class="p">Use when the new application version is backward
+										incompatible. Enable maintenance mode for the time of the
+										planned downtime.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d11400529e536">
+									<p class="p">Soft Shutdown</p>
+
+								</th>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d11400529e536 ">
+									<p class="p"><a class="xref" href="17e8e9622e63434a880f322f75db3e8e.html" title="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs.">Soft Shutdown</a></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d11400529e536 ">
+									<p class="p">Supports zero downtime and planned downtime scenarios.
+										Disable the application or individual processes in order to
+										shut down the application or processes gracefully.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e6ddaefcbb571014b70fa01fc6a3f818.html">Product Prerequisites and Restrictions</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

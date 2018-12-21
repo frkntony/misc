@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Rule Snapshot and Recovery Mechanism</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8fc0c26969924e0681bb2ca14ca1d9cd">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Rule Snapshot and Recovery Mechanism</h1>
+
+	<div class="body taskbody">
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have logged on to the gamification workbench with the role
+					<span class="ph sap-technical-name sap-technical-name">TenantOperator</span> or
+					<span class="ph sap-technical-name sap-technical-name">AppAdmin</span>, and you have opened the
+					<span class="ph uicontrol">Rule Engine</span> tab of the releated app.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The <span class="ph pname">gamification service</span>
+				creates a rule engine instance for each app. Over time the state of each rule engine
+				instance changes based on its usage. A recovery mechanism for different rule engine
+				states has been introduced to allow a clean recovery in case of errors, rule set
+				changes or system migrations. This mechanism allows to create and restore snapshots
+				of the current rule engine instance session and its deployed rule set. Snapshots are
+				stored into the database.</p>
+
+			<p class="p">Generation of snapshots</p>
+
+			<p class="p">Using “apply changes” (see <a class="xref" href="4e39a6549a1e46b180c871875d075738.html">Updating Rules</a> for
+				details), the current rule set stored in the database is deployed on the currently
+				running rule engine instance. Technically, the current session, which includes all
+				facts and events, is upgraded to a new rule set. To assure compatibility of new
+				rules with the existing session, rules are being evaluated one by one. Compatible
+				pairs of session and rule set are stored as snapshots. </p>
+
+			<p class="p">Additionally, when receiving events via the “handleEvent” method, the session will
+				change as well and requires the same recovery mechanism. The <span class="ph pname">gamification service</span>
+				service will generate snapshots during event execution in dynamic intervals.</p>
+
+			<div class="p">The <span class="ph pname">gamification service</span>
+				manages rules and corresponding snapshots in the following way:<ul class="ul" id="loio8fc0c26969924e0681bb2ca14ca1d9cd__ul_agw_tmt_vw">
+					<li class="li">
+						<p class="p">After each successful rule deployment (<span class="ph uicontrol">Apply Changes</span>) the
+							corresponding rule set as well as the session are both tagged with a new
+							version. The service stores the latest 10 versions at max. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">For the latest (currently active) version as well as the previous version the <span class="ph pname">gamification service</span> stores the 10 latest snapshots in slots numbered 1 through 10.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">By using the API and the Workbench you can retrieve all available snapshots as well as the
+							corresponding rule set. Additionally, the rule engine can be restored to
+							any of these snapshots.</p>
+
+					</li>
+
+				</ul>
+</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">The <span class="ph uicontrol">Rule Engine</span> section lists a table with all available
+					rule engine snapshots and their details.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose a rule engine snapshot to recover and press its
+						<span class="ph uicontrol">Recover</span> button.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Read and confirm the modal dialog.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">The <span class="ph pname">gamification service</span> is now recovering the snapshot. This may take a few seconds.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> Rule engine snapshots are constantly being created, when events are being
+						sent. Older snapshots are removed by the system during the process. It is
+						recommended to stop any applications from sending events to the rule engine
+						while restoring snapshots. </div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://gamification.hana.ondemand.com/gamification/documentation/com/sap/gamification/interfaces/IRuleEngineProxyExternal.html" target="_blank" alt="https://gamification.hana.ondemand.com/gamification/documentation/com/sap/gamification/interfaces/IRuleEngineProxyExternal.html" title="https://gamification.hana.ondemand.com/gamification/documentation/com/sap/gamification/interfaces/IRuleEngineProxyExternal.html">Event Submission API documentation</a></div>
+<div><a class="link" href="https://gamification.hana.ondemand.com/gamification/documentation/com/sap/gamification/interfaces/IRuleAPIExternal.html" target="_blank" alt="https://gamification.hana.ondemand.com/gamification/documentation/com/sap/gamification/interfaces/IRuleAPIExternal.html" title="https://gamification.hana.ondemand.com/gamification/documentation/com/sap/gamification/interfaces/IRuleAPIExternal.html">Game Rules Management API documentation</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

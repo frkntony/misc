@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can setup HANA cloud connector and establish a connection to ABAP backend systems."/>
+<meta name="description" content="You can setup HANA cloud connector and establish a connection to ABAP backend systems."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css?x=96629001731359"/>
+<title>Connecting Remote Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"> </script>
+</head>
+<body class="" id="loio3e3e35a949a84284bddb0e9c9928cca3">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Connecting Remote Systems</h1>
+<div class="body taskbody"><p class="shortdesc">You can setup HANA cloud connector and establish a connection to  ABAP backend
+		systems.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>For every system to connect perform the following steps:</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand"><span class="ph cmd">Log on with a user (who is an account member) to the SAP Cloud Platform cockpit to the
+					developer account at
+						<kbd class="ph userinput">https://account.hanatrial.ondemand.com/cockpit</kbd>.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Create the following new destinations which target the logical system on the cloud
+					connector with the following general settings:</span> 
+					<ul class="ul" id="loio3e3e35a949a84284bddb0e9c9928cca3__ul_pvd_q4k_24"><li class="li">For OData access with the URL path <samp class="ph codeph">/sap/opu/odata</samp>.<p class="p">Add the additional
+								property <span class="ph sap-technical-name sap-technical-name">RDEUsage</span>
+								<samp class="ph codeph">odata_abap</samp>.</p>
+</li>
+<li class="li">With path <samp class="ph codeph">/sap/bc/ui5_ui5</samp>. <p class="p">Add the additional property
+									<span class="ph sap-technical-name sap-technical-name">RDEUsage</span>
+								<samp class="ph codeph">ui5_execute_abap</samp>.</p>
+</li>
+<li class="li">Only for 7.30 with UIAddOn or 7.40 ABAP systems with path <samp class="ph codeph">/sap/bc/adt</samp>.
+								<p class="p">Add the additional property
+									<span class="ph sap-technical-name sap-technical-name">RDEUsage</span>
+								<samp class="ph codeph">dev_abap</samp>.</p>
+</li>
+</ul>
+
+				</li>
+<li class="li step stepexpand"><span class="ph cmd">For all destinations apply the following general settings:</span>
+					<ul class="ul" id="loio3e3e35a949a84284bddb0e9c9928cca3__ul_qjk_jml_tm"><li class="li">Name can be chosen freely but should indicate the system.</li>
+<li class="li">Description can be chosen freely but should indicate the system and the
+							usage. </li>
+<li class="li">Proxy type <span class="ph uicontrol">OnPremise</span></li>
+<li class="li">Specify an additional property <span class="ph sap-technical-name sap-technical-name">RDEEnabled</span> with
+							value <samp class="ph codeph">true</samp>.</li>
+<li class="li">Specify an additional property <span class="ph sap-technical-name sap-technical-name">RDESystem</span> with
+							value &lt;system_ID&gt; which is the system ID of the ABAP system.</li>
+</ul>
+
+				</li>
+</ol>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e6c7616abb5710148cfcf3e75d96d596.html">SAP Cloud Platform Connector</a></div>
+<div><a class="link" href="1e110da0ddd8453aaf5aed2485d84f25.html">Creating HTTP Destinations</a></div>
+</div>
+</div></div></div>
+</body>
+</html>

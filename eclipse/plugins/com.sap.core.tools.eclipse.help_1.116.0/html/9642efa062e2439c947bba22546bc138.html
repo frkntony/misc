@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Variables</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9642efa062e2439c947bba22546bc138">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Variables</h1>
+
+	<div class="body conbody">
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">Variables can be defined in the trigger part and can afterwards be used in both the
+				trigger and the consequences part. Variables are recommended in case one object is
+				used more than once. For example, a player object needs to be updated multiple
+				times.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Procedure</div><div type="Procedure">
+			
+			<p class="p">A variable is declared by any string with a leading <span class="keyword">$</span> sign, for
+				example <span class="keyword cmdname">$player</span> or <span class="keyword cmdname">$var</span>.</p>
+
+			<p class="p">Declaration of a variable:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">$&lt;VARIABLE&gt; : &lt;EXPRESSION&gt;</pre></div>
+
+			</div>
+
+			<div class="p">Examples for variable declaration:<ul class="ul" id="loio9642efa062e2439c947bba22546bc138__ul_bvx_5ft_4t">
+					<li class="li">
+						<p class="p">Binding of a variable for the player object.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">$player : Player($playerid : uid)</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of a variable for the event object.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">$event : EventObject(type=="solvedProblem", $playerid:playerid) from entry-point eventstream</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

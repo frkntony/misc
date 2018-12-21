@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>SAP Assertion SSO Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio754bb467759c420489525333ae3ef15b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">SAP Assertion SSO Authentication</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loio754bb467759c420489525333ae3ef15b__section_N10017_N10011_N10001"><div class="section_title">Context</div><div type="Context">
+			
+			<div class="p">By default, all SAP systems accept SAP assertion tickets for user propagation. <div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">The SAP assertion ticket is a special type of logon ticket. For more
+						information, see <a class="xref" href="http://help.sap.com/saphelp_nw73/helpdata/en/4e/16c7b1b84a1a27e10000000a42189e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_nw73/helpdata/en/4e/16c7b1b84a1a27e10000000a42189e/frameset.htm" title="http://help.sap.com/saphelp_nw73/helpdata/en/4e/16c7b1b84a1a27e10000000a42189e/frameset.htm">SAP Logon Tickets</a> and <a class="xref" href="http://help.sap.com/saphelp_nw75/helpdata/en/83/b37ddcdc3f422290f0bc4456dafeaa/content.htm?frameset=/en/48/639c25b1b0501ee10000000a421937/frameset.htm&amp;current_toc=/en/33/12e0f98f494692b9777dd0ce9fba1e/plain.htm&amp;node_id=456" target="_blank" alt="http://help.sap.com/saphelp_nw75/helpdata/en/83/b37ddcdc3f422290f0bc4456dafeaa/content.htm?frameset=/en/48/639c25b1b0501ee10000000a421937/frameset.htm&amp;current_toc=/en/33/12e0f98f494692b9777dd0ce9fba1e/plain.htm&amp;node_id=456" title="http://help.sap.com/saphelp_nw75/helpdata/en/83/b37ddcdc3f422290f0bc4456dafeaa/content.htm?frameset=/en/48/639c25b1b0501ee10000000a421937/frameset.htm&amp;current_toc=/en/33/12e0f98f494692b9777dd0ce9fba1e/plain.htm&amp;node_id=456">Logon Using Tickets</a>.</p>
+
+				</div>
+The aim of the <span class="ph uicontrol">SAPAssertionSSO</span> destination is to
+				generate such an assertion ticket in order to propagate the currently logged-on
+					<span class="ph pname">SAP Cloud Platform</span> user
+				to an SAP back-end system. You can only use this authentication type if the user IDs
+				on both sides are the same. The following diagram shows the elements of the
+				configuration process on the <span class="ph pname">SAP Cloud Platform</span> and in the
+				corresponding back-end system:</div>
+
+			<p class="p"/>
+
+			<div class="fig fignone" id="loio754bb467759c420489525333ae3ef15b__fig_wc4_fxw_fv"><div class="figcontainer">
+				<img class="image" id="loio754bb467759c420489525333ae3ef15b__image_g3l_pxw_fv" src="loio3a2cd9721b624cdfad3d49cccf555d9f_LowRes.png"/>
+			</div></div>
+
+		</div></div>
+
+		<div class="section" id="loio754bb467759c420489525333ae3ef15b__section_N10032_N10011_N10001"><div class="section_title">Configuration Steps</div><div type="Configuration Steps">
+			
+			<ol class="ol" id="loio754bb467759c420489525333ae3ef15b__ol_stv_pwq_qj">
+				<li class="li">
+					<p class="p">Configure the back-end system so that it can accept SAP assertion tickets
+						signed by a trusted <span class="keyword parmname">x.509</span> key pair. For more
+						information, see <a class="xref" href="http://help.sap.com/saphelp_nw73/helpdata/en/48/c8554bf63335bfe10000000a42189d/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_nw73/helpdata/en/48/c8554bf63335bfe10000000a42189d/frameset.htm" title="http://help.sap.com/saphelp_nw73/helpdata/en/48/c8554bf63335bfe10000000a42189d/frameset.htm">Configuring a Trust Relationship for SAP Assertion
+							Tickets</a>. </p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Create and configure a <span class="ph uicontrol">SAPAssertionSSO</span> destination by using the
+						properties listed below, and deploy it on <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+					<ul class="ul" id="loio754bb467759c420489525333ae3ef15b__ul_a34_2xl_m4">
+						<li class="li"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></li>
+
+						<li class="li"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></li>
+
+					</ul>
+
+					<div class="note note" id="loio754bb467759c420489525333ae3ef15b__note_N103E3_N103D4_N103C0_N103A5_N10013_N10001"><span class="notetitle">Note</span> Configuring
+							<span class="ph uicontrol">SAPAssertionSSO</span> destinations from the Eclipse IDE
+						is not yet supported. </div>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Properties</div><div type="Properties">
+			
+			<p class="p">The following credentials need to be specified:</p>
+
+			<div class="table-wrapper"><table summary="" id="loio754bb467759c420489525333ae3ef15b__simpletable_gkt_swq_qj" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d4878662e121" class="stentry">Property </th>
+
+					<th valign="bottom" align="left" id="d4878662e124" class="stentry">Description </th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">Name</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">Destination name. It must be the same as the destination name you use
+						for the configuration tools, that is, the console client and
+							<span class="ph uicontrol">Destinations</span> editor (cockpit).</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">Type</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">Destination type. Use <kbd class="ph userinput">HTTP</kbd> for all HTTP(S)
+						destination.</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">URL</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">URL of the protected resource on the called application</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">Authentication</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">Authentication type. Use <kbd class="ph userinput">SAPAssertionSSO</kbd> as a
+						value.</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">IssuerSID </span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">This system ID should be trusted by the back-end system.</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">IssuerClient</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">This client ID should be trusted by the back-end system.</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">RecipientSID</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">System ID (SID) of the back-end system</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">RecipientClient</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">Client ID of the back-end system</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">Certificate</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">A base64 encoded certificate that is trusted by the SAP
+						system</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">SigningKey</span>
+					</td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">A base64 encoded signing/private key that is trusted by the SAP
+						system</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">SystemUser</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">
+						<p class="p">Optional property. </p>
+
+						<ul class="ul" id="loio754bb467759c420489525333ae3ef15b__ul_jfj_jyl_m4">
+							<li class="li">If specified, all SAP assertion tickets are generated with the
+								specified user ID. </li>
+
+							<li class="li">If not specified, all SAP assertion tickets are sent on behalf of
+								the currently logged-on user.</li>
+
+						</ul>
+
+						<p class="p">Thus, if the current user needs to be propagated, do not use this
+							property. </p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">ProxyType</span></td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">You can use both proxy types <kbd class="ph userinput">Internet</kbd> and
+							<kbd class="ph userinput">OnPremise</kbd>.</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d4878662e121" class="stentry"><span class="keyword parmname">CloudConnectorLocationId</span>
+					</td>
+
+					<td valign="top" headers="d4878662e124" class="stentry">Starting with SAP HANA <span class="ph pname">Cloud connector</span>
+						2.9.0, it is possible to connect multiple cloud connectors to an account as
+						long as their location ID is different. The value defines the location ID
+						identifying the <span class="ph pname">Cloud connector</span>
+						over which the connection shall be opened. The default value is the empty
+						string identifying the <span class="ph pname">Cloud connector</span>
+						that is connected without any location ID, which is also the case for all
+							<span class="ph pname">Cloud connector</span>
+						versions prior to 2.9.0. </td>
+
+				</tr>
+</table></div>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=weather
+Type=HTTP
+Authentication=SAPAssertionSSO
+IssuerSID=JAV
+IssuerClient=000
+RecipientSID=SAP
+RecipientClient=100
+Certificate=MIICiDCCAkegAwI...rvHTQ\=\=
+SigningKey=MIIBSwIB...RuqNKGA\= 
+</pre></div>
+
+			<p class="p">
+			</p>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

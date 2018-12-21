@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can open your SAP HANA XS applications in a Web browser directly from the cockpit."/>
+<meta name="description" content="You can open your SAP HANA XS applications in a Web browser directly from the cockpit."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Launching SAP HANA XS Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0dd61c3e5d1d4d6cbea9aec94b7f4725">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Launching SAP HANA XS Applications</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can open your SAP HANA XS applications in a Web browser directly from the cockpit. </p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit, select an account and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">HANA XS Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">HANA XS Applications</span> table, click the application URL link to
+					launch the application.</span>
+				<div class="itemgroup stepresult">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">If an HTTP status 404 (not found) error is shown, bear in mind that the
+							cockpit displays only the root of an application’s URL path. This means
+							that you might have to either:</p>
+
+						<div class="p">
+							<ul class="ul" id="loio0dd61c3e5d1d4d6cbea9aec94b7f4725__ul_dc3_52y_mm">
+								<li class="li">
+									<p class="p">Add the application name to the URL address in the browser,
+										for example, <span class="ph filepath">hello.xsjs</span>.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Use an <span class="ph filepath">index.html</span> file, which is the
+										default setting for the file displayed when the package is
+										accessed without specifying a file name in the URL.</p>
+
+								</li>
+
+								<li class="li">
+									<div class="p">Override the above default setting by specifying the <span class="keyword">default_file</span>
+										keyword in the <span class="ph filepath">.xsaccess</span> file, for
+										example:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+"exposed" : true,
+"default_file": "hello.xsjs"
+}</pre></div>
+</div>
+
+								</li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

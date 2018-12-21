@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If you do not want to use the custom domain any longer, you can remove it using the console client commands. As a result, your application will be accessible only on its default hana.ondemand.com domain."/>
+<meta name="description" content="If you do not want to use the custom domain any longer, you can remove it using the console client commands. As a result, your application will be accessible only on its default hana.ondemand.com domain."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Removing the Custom Domain</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio318a016c3a234370a60475625b947de0">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Removing the Custom Domain</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">If you do not want to use the custom domain any longer, you can remove it using the
+		console client commands. As a result, your application will be accessible only on its
+		default hana.ondemand.com domain.</p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the console client command line, execute <kbd class="ph userinput">neo
+					remove-custom-domain</kbd>. </span>
+				<div class="itemgroup info">Note that you will need the SSL host name defined when configuring the custom
+					domain. You can view it by executing
+					<kbd class="ph userinput">list-ssl-hosts</kbd>.</div>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo remove-custom-domain --account myacc --user mymail@example.com --host hana.ondemand.com
+--custom-domain www.example.com --ssl-host mysslhostname
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Unbind the certificate. </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo unbind-domain-certificate --account myaccount --user mymail@example.com --host hana.ondemand.com --ssl-host mysslhostname  </pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Delete the certificate. </span>
+				<div class="itemgroup info">Note that you will need the certificate name defined when configuring the custom
+					domain.</div>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo delete-domain-certificate --account myaccount --user mymail@example.com --host hana.ondemand.com --name myfirstcert
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Delete the SSL host.</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo delete-ssl-host --account myaccount --user mymail@example.com --host hana.ondemand.com --name mysslhostname
+ </pre></div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="de15ca85ffab4301986c89e7ed239ece.html" title="Removes a custom domain as an access point of an application. Use this command if you no longer want an application to be accessible on the configured custom domain.">remove-custom-domain</a></div>
+<div><a class="link" href="f8d24b6a1c4e4cec841b3ee1118189bb.html" title="Unbinds a certificate from an SSL host. The certificate will not be deleted from SAP Cloud Platform storage.">unbind-domain-certificate</a></div>
+<div><a class="link" href="c3076ccbad214c129b056778c33bcd3e.html" title="Deletes a certificate.">delete-domain-certificate</a></div>
+<div><a class="link" href="f7241b71da0b4643971bcf6102366ba9.html" title="Deletes an SSL host.">delete-ssl-host</a></div>
+<div><a class="link" href="e8fc50cc0c0f410a8d8ec54f391d01dc.html" title="Lists SSL hosts for a given account.">list-ssl-hosts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

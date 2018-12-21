@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This service enables you to access the text types that are available in SAP Translation Hub."/>
+<meta name="description" content="This service enables you to access the text types that are available in SAP Translation Hub."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Text Type Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc42e8c5393aa4881aa64a34f25736187">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Text Type Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This service enables you to access the text types that are available in SAP Translation
+		Hub.</p>
+
+		<div class="section"><div class="section_title">Usage</div><div type="Usage">
+			
+			<p class="p">Short texts, for example, those used on user interfaces (UIs), in SAP products are
+				characterized by various text types. The type of a specific text is determined by
+				the UI element that it describes.</p>
+
+			<p class="p">The text type service returns a list of the text types that are available in SAP
+				Translation Hub. You can combine the text type service with the suggestion service
+				to narrow down the results of the suggestion service.</p>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">Request</div><div type="Request"><div class="p"><span class="ph emphasis emphasis">URL:</span>
+				<span class="ph filepath"><var class="keyword varname">&lt;base URL of SAP Translation
+					Hub&gt;</var>/translationhub/api/v1/texttypes</span><div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">For information about the base URL, see <cite class="cite">Building
+                                Base URL of SAP Translation Hub</cite> in the <cite class="cite">Related
+                                Information</cite> section.</p>
+
+				</div>
+</div>
+<p class="p"><span class="ph emphasis emphasis">HTTP Method: </span>
+				<span class="keyword">GET</span></p>
+<p class="p"><span class="ph emphasis emphasis">Request Parameters</span></p>
+<p class="p">The
+				service requires a JSON request payload and the request content type:
+					<kbd class="ph userinput">application/json; charset=utf-8</kbd>. If you do not use this
+				content type, the service call fails.</p>
+<p class="p">To check whether a specific text type is
+				available, you can add the following parameter to the URL:</p>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc42e8c5393aa4881aa64a34f25736187__table_rxl_wmc_lq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d8897616e86">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d8897616e89">Description</th>
+
+							<th class="entry" valign="top" width="25%" id="d8897616e92">Type</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d8897616e86 "><span class="ph uicontrol">search</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d8897616e89 ">Shows whether a particular text type is available in SAP
+								Translation Hub. For example: <span class="ph filepath"><var class="keyword varname">&lt;base URL of SAP
+										Translation
+										Hub&gt;</var>/translationhub/api/v1/texttypes?search=<var class="keyword varname">&lt;text
+										type name&gt;</var></span><div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">You can enter all or part of the name of the text type, for
+										example, <span class="ph uicontrol">message</span>.</p>
+
+								</div>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d8897616e92 ">Optional</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+<p class="p"><span class="ph emphasis emphasis">Request Body Example</span></p>
+<var class="keyword varname">&lt;base URL of SAP
+				Translation
+				Hub&gt;</var><samp class="ph codeph">/translationhub/api/v1/texttypes?search=message</samp>
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">Response</div><div type="Response">
+			
+			<div class="p">The result is a JSON object, and contains the following key-value pairs:
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc42e8c5393aa4881aa64a34f25736187__table_axs_mf5_3q" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d8897616e158">Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d8897616e161">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d8897616e164">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d8897616e158 "><span class="ph uicontrol">id</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d8897616e161 ">The ID of a text type.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d8897616e164 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d8897616e158 "><span class="ph uicontrol">name</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d8897616e161 ">The short description of a text type.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d8897616e164 ">Always in response</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<p class="p"><span class="ph emphasis emphasis">Response Body Example</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{	
+	"texttypes":[
+			{
+				"id":"MSAG",
+				"name":"Message Classes"
+			},
+			{
+				"id":"XMSG",
+				"name":"Message text"
+			}
+		]
+	}
+</pre></div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

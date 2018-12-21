@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup."/>
+<meta name="description" content="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>AuthenticationHeaderProvider API</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodf6c1ffd39f0451594d737cf7638ce00">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">AuthenticationHeaderProvider API</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">All connectivity API packages are visible by default from all Web applications.
+		Applications can consume the authentication header provider via a JNDI lookup.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The <span class="keyword apiname">AuthenticationHeaderProvider</span> API allows your Web applications to use
+				their own HTTP clients, as it also provides them with authentication token
+				generation (application-to-application SSO, on-premise SSO). This API also:</p>
+
+			<ul class="ul" id="loiodf6c1ffd39f0451594d737cf7638ce00__ul_x1q_1qd_sn">
+				<li class="li">Provides additional helper methods, which facilitate the task to initialize an HTTP client
+					(for example, authentication method that helps you set headers for
+					application-to-application SSO).</li>
+
+				<li class="li">Consists of both a <kbd class="ph userinput">public REST API</kbd> and a <kbd class="ph userinput">Java client
+						API</kbd>. </li>
+
+			</ul>
+
+			<p class="p"/>
+
+			<p class="p">The <span class="keyword apiname">AuthenticationHeaderProvider</span> API is supported by all runtimes,
+				including <kbd class="ph userinput">Java Web Tomcat 7</kbd>. For more information about
+				runtimes, see <a class="xref" href="7613bd28711e1014839a8273b0e91070.html">Application Runtime Container</a>.</p>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="concept_stx_hqd_sn">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<p class="p"/>
+
+			<p class="p"/>
+
+			<div class="section"><div class="section_title">Retrieving Authentication Header Providers</div><div type="Retrieving Authentication Header Providers">
+				
+				<ol class="ol" id="concept_stx_hqd_sn__ol_e5m_z34_lp">
+					<li class="li">To consume the authentication header provider API using JNDI, you need to
+						define <samp class="ph codeph">AuthenticationHeaderProvider</samp> API as a resource in
+						the <span class="keyword cmdname">web.xml</span> file. An example of a
+							<samp class="ph codeph">AuthenticationHeaderProvider</samp> resource named
+							<kbd class="ph userinput">myAuthHeaderProvider</kbd>, which is described in the
+							<span class="keyword cmdname">web.xml</span> file, is as
+						follows:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;myAuthHeaderProvider&lt;/res-ref-name&gt;
+    &lt;res-type&gt;com.sap.core.connectivity.api.authentication.AuthenticationHeaderProvider&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+</li>
+
+					<li class="li">In your servlet code, you can look up the
+							<samp class="ph codeph">AuthenticationHeaderProvider</samp> API from the JNDI registry
+						as following:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">import javax.naming.Context;
+import javax.naming.InitialContext;
+import com.sap.core.connectivity.api.authentication.AuthenticationHeaderProvider;
+...
+ 
+// look up the connectivity authentication header provider resource called "myAuthHeaderProvider"
+Context ctx = new InitialContext();
+AuthenticationHeaderProvider authHeaderProvider = (AuthenticationHeaderProvider) ctx.lookup("java:comp/env/myAuthHeaderProvider");</pre></div>
+</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Generating Application-to-Application SSO Authentication</div><div type="Generating Application-to-Application SSO Authentication">
+				
+				<p class="p">The <span class="keyword apiname">AuthenticationHeaderProvider</span> API can generate authorization header to
+					be used in scenario of application-to-application communication where the caller
+					needs to propagate its logged in user. Both applications are deployed on <span class="ph pname">SAP Cloud Platform</span> and
+					consumed within a single account. The header must be embedded in the request to
+					the target application.</p>
+
+				<div class="note tip"><span class="tiptitle">Tip</span> We recommend that you pack the HTTP client (Apache or other) inside
+					the <span class="ph filepath">lib</span> folder of your Web application archive.</div>
+
+				<p class="p"><span class="ph emphasis emphasis">Restrictions:</span>
+				</p>
+
+				<ul class="ul" id="concept_stx_hqd_sn__ul_m4d_yqd_sn">
+					<li class="li">Principal Propagation must be enabled for the account. For more information,
+						see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a> → section
+						"Specifying Custom Local Provider Settings"</li>
+
+					<li class="li">Both applications must run on behalf of the same account.</li>
+
+					<li class="li">The receiving application must use SAML2 authentication.</li>
+
+				</ul>
+
+				<div class="note note"><span class="notetitle">Note</span> In case you work with <kbd class="ph userinput">Java Web Tomcat 7</kbd> runtime: Bear in mind that
+					the following code snippet works properly only when using Apache HTTP client
+					version <span class="ph emphasis emphasis">4.1.3</span>. If you use other (higher) versions of Apache
+					HTTP client, you should adapt your code.</div>
+
+				<p class="p"/>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">// retrieve the authorization header for application-to-application SSO
+AuthenticationHeader appToAppSSOHeader = authHeaderProvider.getAppToAppSSOHeader(url);
+ 
+ 
+// create an HTTP client and add the header to the request
+HttpClient httpClient = new DefaultHttpClient();
+ 
+HttpGet request = new HttpGet(url);
+request.addHeader(appToAppSSOHeader.getName(), appToAppSSOHeader.getValue());
+ 
+// execute the request
+HttpResponse response = httpClient.execute(request);</pre></div>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Generating On-Premise SSO Authentication</div><div type="Generating On-Premise SSO Authentication">
+				
+				<p class="p">To learn how to generate on-premise SSO authentication, see <a class="xref" href="622f1bf248634206bb35afdb5106dba4.html">Principal Propagation Using HTTP Proxy</a>.</p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Generating SAPAssertionSSO Headers</div><div type="Generating SAPAssertionSSO Headers">
+				
+				<p class="p"><span class="ph pname">SAP Cloud Platform</span> provides support
+					for applications to use the SAML Bearer assertion flow for consuming
+					OAuth-protected resources. In this way, applications do not need to deal with
+					some of the complexities of OAuth and can reuse existing identity providers for
+					user data. Users are authenticated by using SAML against the configured trusted
+					identity providers. The SAML assertion is then used to request an access token
+					from an OAuth authorization server. This access token should be injected in all
+					HTTP requests to the OAuth-protected resources. </p>
+
+				<p class="p"/>
+
+				<div class="note tip"><span class="tiptitle">Tip</span> Тhe access tokens are cached by
+						<span class="keyword apiname">AuthenticationHeaderProvider</span> and are auto-renovated. When
+					a token is about to expire, a new token is created shortly before the expiration
+					of the old one.</div>
+
+				<p class="p">The <span class="keyword apiname">AuthenticationHeaderProvider</span> API provides the following
+					method for generating such headers:</p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">List&lt;AuthenticationHeader&gt; getOAuth2SAMLBearerAssertionHeaders(DestinationConfiguration destinationConfiguration);</pre></div>
+
+				<p class="p">For more information, see: </p>
+
+				<ul class="ul" id="concept_stx_hqd_sn__ul_rhb_2mv_rs">
+					<li class="li">
+						<p class="p"><a class="xref" href="754bb467759c420489525333ae3ef15b.html">SAP Assertion SSO Authentication</a></p>
+
+					</li>
+
+					<li class="li"><a class="xref" href="e51e152ceaeb4b75affe5f15c65dfe6c.html">SAML Bearer Assertion Authentication</a></li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="https://help.hana.ondemand.com/javadoc/index.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/index.html" title="https://help.hana.ondemand.com/javadoc/index.html">https://help.hana.ondemand.com/javadoc/index.html</a>
+							<span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">com.sap.core.connectivity.api.authentication</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">AuthenticationHeaderProvider</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span></p>
+
+					</li>
+
+				</ul>
+
+			</div></div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d872cfb4801c4b54896816df4b75c75d.html">HTTP Proxy for On-Premise Connectivity</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

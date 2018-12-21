@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the second step of this tutorial, you will learn how to create a Builder module."/>
+<meta name="description" content="In the second step of this tutorial, you will learn how to create a Builder module."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Building a Builder Module for the Wishlist Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3c345185b617471189467d056843f82c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Building a Builder Module for the Wishlist Service</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the second step of this tutorial, you will learn how to create a Builder
+    module.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To create a builder module for the Wishlist service, follow these steps. You can find a simple
+        builder module for the Wishlist service at <a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlistbuilder" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlistbuilder" title="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlistbuilder">GitHub<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Create a builder module. </span>
+        <div class="itemgroup info">
+          <p class="p">Following the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://devportal.yaas.io/gettingstarted/createabuildermodule/index.html" target="_blank" alt="https://devportal.yaas.io/gettingstarted/createabuildermodule/index.html" title="https://devportal.yaas.io/gettingstarted/createabuildermodule/index.html">Create a Builder Module<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> tutorial you create a module with
+            default content using the Builder SDK: <samp class="ph codeph">builder createModule
+              wishlistModule</samp>.</p>
+
+        </div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enable CORS requests. </span>
+				<div class="itemgroup info">
+          <p class="p">To use CORS, a simple option is to enable the built-in CORS servlet filter that comes
+            with Java Web Tomcat 7. To enable static content as well, configure the Default servlet,
+            because servlet filters are only applied to servlets configured in the
+              <samp class="ph codeph">web.xml</samp>. A typical <samp class="ph codeph">wishlistModule/WEB-INF/web.xml</samp>
+            looks like this:</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!DOCTYPE web-app
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;
+
+&lt;web-app&gt;
+  &lt;filter&gt;
+    &lt;filter-name&gt;CorsFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.catalina.filters.CorsFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;cors.allowed.origins&lt;/param-name&gt;
+      &lt;param-value&gt;*&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;cors.allowed.methods&lt;/param-name&gt;
+      &lt;param-value&gt;GET,POST,OPTIONS&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;cors.allowed.headers&lt;/param-name&gt;
+      &lt;param-value&gt;DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;cors.exposed.headers&lt;/param-name&gt;
+      &lt;param-value&gt;Access-Control-Allow-Origin,Access-Control-Allow-Credentials&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;cors.support.credentials&lt;/param-name&gt;
+      &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;cors.preflight.maxage&lt;/param-name&gt;
+      &lt;param-value&gt;10&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;CorsFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.apache.catalina.servlets.DefaultServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Build a WAR file. </span>
+				<div class="itemgroup info">
+          <p class="p">This example uses Maven and adapts the location of the WAR source directory to the
+            directory generated in the previous step.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.example.projects&lt;/groupId&gt;
+  &lt;artifactId&gt;documentedproject&lt;/artifactId&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;Wishlist Builder Module&lt;/name&gt;
+
+  &lt;build&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+          &lt;version&gt;2.6&lt;/version&gt;
+          &lt;configuration&gt;
+            &lt;warSourceDirectory&gt;wishlistModule&lt;/warSourceDirectory&gt;
+          &lt;/configuration&gt;
+        &lt;/plugin&gt;
+      &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+    <div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+      <p class="p"><a class="xref" href="bfb30b6964b14d8894cc870125d6a59a.html" title="In the third step of this tutorial, you will learn how to build and deploy an application using the YaaS Storefront template.">Using the YaaS Storefront Application Template</a></p>
+
+    </div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.portal.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.dwb.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.portal.ui"
+         download-size="198"
+         install-size="383"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

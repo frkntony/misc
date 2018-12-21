@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="An extension application usually consists of several layers. There is a front-end UI layer decoupled from the back end by OData, REST, or JSON services."/>
+<meta name="description" content="An extension application usually consists of several layers. There is a front-end UI layer decoupled from the back end by OData, REST, or JSON services."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Extension Application Front End</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio21931b835c7e490eaefc21404ddf0a63">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Extension Application Front End</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">An extension application usually consists of several layers. There is a front-end UI
+		layer decoupled from the back end by OData, REST, or JSON services.</p>
+
+		<p class="p">To achieve smooth retheming and rebranding, you implement the front end UI layer using
+			SAPUI5. You can also use any HTML5 or JavaScript UI framework.</p>
+
+		<p class="p"><span class="ph pname">SAP Cloud Platform</span> offers various tools and capabilities to help you create, customize,
+			and integrate your extension front-end components.</p>
+
+		<div class="p">The following artifacts are part of the UI package and delivered with the extension:<ul class="ul" id="loio21931b835c7e490eaefc21404ddf0a63__ul_usf_24r_cr">
+				<li class="li">
+					<p class="p">Content – the actual business application wrapped as a widget or a tile</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Structure – navigation, pages, layout, templates, and themes, and other</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Metadata – metadata such as configuration information</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Mobile client - either a native client wrapping an HTML5 UI or a truly native
+						mobile client</p>
+
+				</li>
+
+			</ul>
+</div>
+
+		<p class="p">The following graphic provides an overview of the building blocks of the extension
+			application front end:</p>
+
+		<p class="p"><img class="image" id="loio21931b835c7e490eaefc21404ddf0a63__image_hb2_gt1_gs" src="loio42b2e58343a74dcd803f25cbc561eb01_LowRes.png"/></p>
+
+		<p class="p"> Extensions usually aggregate data from multiple different business systems by combining
+			multiple application widgets on one or multiple pages. If you have to combine data and
+			need to apply additional security checks, then you usually define a higher level
+			back-end services in Java or XS, aggregating the required data and exposing it with a
+			new REST, JSON or OData API to the UI tier. </p>
+
+		<p class="p">The extension application UI can be based on the solution’s native UI technology (by
+			leveraging solution-native genarted UIs) or on HTML5. The latter can either be served
+			out of the Java or XS layer or most commonly, can leverage the <span class="ph pname">SAP Cloud Platform</span>
+			HTML5 application infrastructure, thus ensuring clear decoupling between UI and back-end
+			services. </p>
+
+		<div class="section"><div class="section_title">Native customization</div><div type="Native customization">
+			
+			<p class="p">There are different native custumization options available with the SAP solutions. Most
+				commonly, you can adjust the user interface by changing the initial product
+				configuration, by adjusting object metadata, by manipulating field and operation
+				visibility or by defining custom business objects. These customization options do
+				not require any coding on the frond-end tier since the resulting UI is generated
+				natively in the extended solution.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">SAPUI5 UI</div><div type="SAPUI5 UI">
+			
+			<p class="p">To achieve smooth retheming and rebranding, you leverage SAPUI5 for the extension UI.
+				SAPUI5 allows smooth subsequent embedding of the custom UIs in the extended SAP
+				solutions. The built-in extension and customization mechanisms of SAPUI5 make it
+				easy to replace standard views, to customize i18N resource texts, to add new or to
+				customize the existing navigation paths or even override existing code. Using SAPUI5
+				is a good practice but you can also use other popular UI frameworks.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">SAP Cloud Platform Portal Service</div><div type="SAP Cloud Platform Portal Service">
+			
+			<p class="p">To achieve dynamic branding and retheming of extension UIs, we recommend that you use Portal
+				service sites configured with a corresponding template to mimic the look and feel of
+				the extended SAP solution. Furthermore, the Portal service allows dynamic redesign
+				of pages leveraging the Portal authoring environment.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">SAP Web IDE</div><div type="SAP Web IDE">
+			
+			<p class="p">If you decide to go beyond pure configuration and customize the UI using SAPUI5, a
+				natural choice would be SAP Web IDE. SAP Web IDE helps you develop, test, and deploy
+				SAPUI5 applications in your <span class="ph pname">SAP Cloud Platform</span> account, and expose your
+				applications as widgets. It offers various extension templates such as SAPUI5
+				templates which you can use to start with. Based on the OData services of the
+				extended solution and on their metadata, you can start creating and adjusting the
+				new user interface. SAP Web IDE comes with a source code editor that helps you fine
+				tune the generated HTML code on your own, leveraging code completion.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://sapui5.hana.ondemand.com/sdk/#docs/guide/99ac68a5b1c3416ab5c84c99fefa250d.html" target="_blank" alt="https://sapui5.hana.ondemand.com/sdk/#docs/guide/99ac68a5b1c3416ab5c84c99fefa250d.html" title="https://sapui5.hana.ondemand.com/sdk/#docs/guide/99ac68a5b1c3416ab5c84c99fefa250d.html">UI development toolkit for HTML5 (SAPUI5)</a></div>
+<div><a class="link" href="39723061bc4b4b679726b120cbefdf5a.html" title="SAP Cloud Platform enables you to easily develop and run lightweight HTML5 applications in a cloud environment.">HTML5: Development</a></div>
+<div><a class="link" href="43ca1e9e90764dc19191d15b06466fd0.html" title="SAP Web IDE is a fully extensible and customizable experience that accelerates the development life cycle with interactive code editors, integrated developer assistance, and end-to-end application development life cycle support. SAP Web IDE was developed by developers for developers.">SAP Web IDE</a></div>
+<div><a class="link" href="https://help.hana.ondemand.com/cloud_portal/frameset.htm" target="_blank" alt="https://help.hana.ondemand.com/cloud_portal/frameset.htm" title="https://help.hana.ondemand.com/cloud_portal/frameset.htm">SAP Cloud Platform Portal Service</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Installation on Microsoft Windows OS</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio204aaad4270245f3baa0c57c8ab1dd60">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Installation on Microsoft Windows OS</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio204aaad4270245f3baa0c57c8ab1dd60__ul_ydd_4lc_ql">
+				<li class="li">You have either of the following 64-bit operating systems: Windows 7, Windows 8.1, Windows
+					10, Windows Server 2008 R2, Windows Server 2012, or Windows Server 2012 R2.</li>
+
+				<li class="li">You have downloaded either the <span class="keyword cmdname">portable</span> variant as ZIP archive for
+					Windows, or the MSI <span class="keyword cmdname">installer</span> from the <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">SAP
+						Development Tools for Eclipse</a> page.</li>
+
+				<li class="li">You need to install <span class="ph pname">Microsoft Visual Studio C++ 2010</span> runtime libraries. For
+					more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.microsoft.com/en-us/download/confirmation.aspx?id=14632" target="_blank" alt="http://www.microsoft.com/en-us/download/confirmation.aspx?id=14632" title="http://www.microsoft.com/en-us/download/confirmation.aspx?id=14632">Microsoft Visual Studio C++ 2010 Redistributable Package
+						(x64)<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a><div class="note note"><span class="notetitle">Note</span> Even if you have a more recent version of the
+							<span class="ph pname">Microsoft Visual C++</span> runtime libraries, you still need to
+						install the <span class="ph pname">Microsoft Visual Studio C++ 2010</span>
+						libraries.</div>
+</li>
+
+				<li class="li">Java 7 or Java 8 needs to be installed. In case you want to use SAP JVM, you can download it
+					from the <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">SAP Development Tools for Eclipse</a> page. </li>
+
+				<li class="li">When using the <span class="keyword cmdname">portable</span> variant, the environment variable
+						<var class="keyword varname">&lt;JAVA_HOME&gt;</var> needs to be set to the Java installation
+					directory, so that the <span class="ph filepath">bin</span> subdirectory can be found.
+					Alternatively, you can add the relevant <span class="ph filepath">bin</span> subdirectory to
+					the <var class="keyword varname">&lt;PATH&gt;</var> variable.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You can choose between a simple <span class="keyword cmdname">portable</span> variant of the <span class="ph pname">Cloud connector</span> and the
+				MSI-based <span class="keyword cmdname">installer</span>. The <span class="keyword cmdname">installer</span> is the
+				generally recommended means that can be used for both developer and productive
+				scenarios. It takes care, for example, to register the <span class="ph pname">Cloud connector</span> as a
+				Windows service and this way to automatically start it after machine reboot. </p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> If you are a developer, you might want to use the <span class="keyword cmdname">portable</span>
+				variant as you can run the <span class="ph pname">Cloud connector</span> after a
+				simple unzip (archive extraction). You might want to use it also if you cannot
+				perform a true installation due to lack of permissions, or if you need to use
+				multiple versions of the <span class="ph pname">Cloud connector</span>
+				simultaneously on the same machine. </div>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="concept_wkc_kvz_tl">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Portable Scenario</div><div type="Portable Scenario">
+				
+				<p class="p"/>
+
+				<ol class="ol" id="concept_wkc_kvz_tl__ol_iyb_mxz_tl">
+					<li class="li">Extract the <var class="keyword varname">&lt;sapcc-&lt;version&gt;-windows-x64.zip&gt;</var> ZIP file
+						to an arbitrary directory on your local file system.</li>
+
+					<li class="li">Set the environment variable JAVA_HOME to the installation directory of the JDK you want to
+						use to run the <span class="ph pname">Cloud connector</span>. (Alternatively, you can add the <span class="ph filepath">bin</span> subdirectory of
+						the JDK installation directory to the PATH﻿ environment variable.)</li>
+
+					<li class="li">Change to the <span class="ph pname">Cloud connector</span> installation directory and start it via the <span class="ph filepath">go.bat</span>
+						batch file.</li>
+
+					<li class="li">Continue with the <kbd class="ph userinput">Next Steps</kbd> section.</li>
+
+				</ol>
+
+				<div class="note note"><span class="notetitle">Note</span> <span class="ph pname">Cloud connector</span> 2.x is not
+					started as a service when using the portable variant, and hence will not
+					automatically start after a reboot of your system. Also, the portable version
+					does not support the automatic upgrade procedure.</div>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Installer Scenario</div><div type="Installer Scenario">
+				
+				<p class="p"/>
+
+				<ol class="ol" id="concept_wkc_kvz_tl__ol_uyg_2yz_tl">
+					<li class="li">Start the <var class="keyword varname">&lt;sapcc-&lt;version&gt;-windows-x64.msi&gt;</var>  installer
+						by double-clicking it.</li>
+
+					<li class="li">The installer informs you that you are now guided through the installation
+						process. Choose <span class="ph uicontrol">Next&gt;</span>.</li>
+
+					<li class="li">Navigate to the desired installation directory for your <span class="ph pname">Cloud connector</span>
+						and choose <span class="ph uicontrol">Next&gt;</span>. When doing the installation in
+						the context of an upgrade, make sure that you choose the previous
+						installation directory again.</li>
+
+					<li class="li">You can choose the port on which the administration UI is reachable. Either
+						leave the default <kbd class="ph userinput">8443</kbd> or choose a different port if
+						needed. Then choose <span class="ph uicontrol">Next&gt;</span>.</li>
+
+					<li class="li">Select the JDK to be used for running the <span class="ph pname">Cloud connector</span>. The installer will display a list of all JDKs of version
+							<span class="ph emphasis emphasis">7</span> that are installed on your machine. If the needed
+						JDK is not listed in the drop-down box (for example, if it's an SAP JVM that
+						is not registered in the Windows Registry upon installation), you can browse
+						to its installation directory and select it. We recommend that you use an
+						up-to-date Java <span class="ph emphasis emphasis">7</span> installation to run the <span class="ph pname">Cloud connector</span>.</li>
+
+					<li class="li">On this step, decide whether the <span class="ph pname">Cloud connector</span>
+						should be started immediately after finishing the setup. If you do not want
+						this now, remove the check from the checkbox. Then choose
+							<span class="ph uicontrol">Next&gt;</span>.</li>
+
+					<li class="li">After all installation options have been fulfilled, if you really want to
+						install, press again the <span class="ph uicontrol">Next&gt;</span> button.</li>
+
+					<li class="li">In up to a few seconds, the installation has been done. To finish the
+						installer, choose the <span class="ph uicontrol">Close</span> button.</li>
+
+					<li class="li">Continue with the <kbd class="ph userinput">Next Steps</kbd> section.</li>
+
+				</ol>
+
+				<div class="note note"><span class="notetitle">Note</span> <span class="ph pname">Cloud connector</span> 2.x is
+					started as a Windows Service in the Productive use case. Hence, installation
+					requires administration permissions. After installation, the service should be
+					administrated under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Control Panel</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Administrative Tools</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Services</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. The service name is <span class="keyword parmname">Cloud Connector 2.0</span>.
+					Make sure that the service is executed with a user that has limited privileges.
+					Typically, privileges allowed for service users are defined by your company
+					policy. Afterwards, you should adjust the folder and file permissions to be
+					manageable by only this user and system administrators.</div>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+				
+				<p class="p"/>
+
+				<ol class="ol" id="concept_wkc_kvz_tl__ol_fdy_xyz_tl">
+					<li class="li">In a browser, enter: <kbd class="ph userinput">https://&lt;hostname&gt;:8443</kbd>, where
+							<var class="keyword varname">&lt;hostname&gt;</var> is the host name of the machine on
+						which you have installed the <span class="ph pname">Cloud connector</span>. <p class="p">If you access the <span class="ph pname">Cloud connector</span> locally from the same machine, you can just enter
+								<kbd class="ph userinput">localhost</kbd>.</p>
+</li>
+
+					<li class="li">Continue with initial configuration of the <span class="ph pname">Cloud connector</span>. <p class="p">For more information, see <a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html">Initial Configuration</a>.</p>
+</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Related Information</div><div type="Related Information">
+				
+				<p class="p"><a class="xref" href="76137f42711e1014839a8273b0e91070.html">(Optional) Installing SAP JVM</a></p>
+
+				<p class="p"><a class="xref" href="e7ea82a4bb571014a4ceb61cb7e3d31f.html">Recommendations for Secure Setup</a></p>
+
+				<p class="p"><a class="xref" href="bcd5e113c9164ae8a443325692cd5b12.html">Recommended: Replacing the Default SSL Certificate</a></p>
+
+			</div></div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

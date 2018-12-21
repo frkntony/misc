@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>com.sap.core.tools.eclipse.connectivity.editor.feature</artifactId>
+	<packaging>eclipse-feature</packaging>
+	<name>Connectivity Configuration Editor for SAP Cloud Platform</name>
+	<parent>
+		<artifactId>destinations.editor</artifactId>
+		<groupId>com.sap.core.ide</groupId>
+		<version>1.35.0</version>
+		<relativePath>../destinations.editor.releng/pom.xml</relativePath>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.sap.prd.codesign</groupId>
+				<artifactId>com.sap.prd.codesign.maven-jarsigner-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+

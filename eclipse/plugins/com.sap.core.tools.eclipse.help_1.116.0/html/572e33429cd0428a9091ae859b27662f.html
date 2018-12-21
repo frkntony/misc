@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You use the EntityManagerFactory interface to manually create and manage the entity managers in your Web application."/>
+<meta name="description" content="You use the EntityManagerFactory interface to manually create and manage the entity managers in your Web application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating Entity Managers</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio572e33429cd0428a9091ae859b27662f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating Entity Managers</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You use the <span class="keyword apiname">EntityManagerFactory</span> interface to manually create and
+		manage the entity managers in your Web application. </p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Use <span class="keyword apiname">javax.persistence.Persistence.createEntityManagerFactory</span> to create
+					an <span class="keyword apiname">EntityManagerFactory</span> object that operates on the data
+					source that you have retrieved as follows: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Map properties = new HashMap();
+properties.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds);
+emf = Persistence.createEntityManagerFactory("persistence-with-jpa", properties);
+</pre></div>
+
+					<div class="p">In the code above, the non-JTA data source element has been set in the persistence unit
+						properties, and the persistence unit name is the name of the persistence
+						unit declared in the <span class="ph filepath">persistence.xml</span> file. <div class="note note"><span class="notetitle">Note</span> You
+							are advised to include the above code in the servlet
+								<samp class="ph codeph">init()</samp> method, as illustrated in the tutorial
+								<cite class="cite">Adding Application-Managed Persistence with JPA (Java Web
+								SDK)</cite>, since this method is called only once during
+							initialization when the servlet instance is loaded.</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">If the application uses multiple data sources, create an entity manager factory for each
+					data source: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Map properties = new HashMap();
+properties.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds1);
+emf1 = Persistence.createEntityManagerFactory("hanadb", properties);
+...
+Map properties2 = new HashMap();
+properties2.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds2);
+emf2 = Persistence.createEntityManagerFactory("maxdb", properties);
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Use the entity manager factory obtained above to create an entity manager as follows: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EntityManager em = emf.createEntityManager();</pre></div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>Application-managed entity managers are always extended and therefore retain the
+			entities beyond the scope of a transaction. You should therefore close an entity manager
+			when it is no longer needed by calling <samp class="ph codeph">EntityManager.close()</samp> or
+			alternatively <samp class="ph codeph">EntityManager.clear()</samp> wherever appropriate, such as at
+			the end of a transaction. Bear in mind that an entity manager must not be used
+			concurrently by multiple threads, so design your entity manager handling in such a way
+			that concurrent access of entity managers is prevented. </div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e663d584bb571014a99af48717abd94a.html" title="When working with a resource-local entity manager, the transaction boundaries need to be set manually in your application code using the EntityTransaction API. You can obtain the entity transaction attached to the entity manager by calling EntityManager.getTransaction().">Entity Transaction API</a></div>
+<div><a class="link" href="73e8d4c514f14a399c25711dd43f6975.html" title="To test an application on the local server, you need to define any data sources the application uses as connection properties for the local database. This step is not necessary if the application uses the default data source.">Configuring Data Sources As Connection Properties</a></div>
+<div><a class="link" href="e4aeacd2bb5710148ee99255136d96a5.html" title="This step-by-step tutorial shows how you can use JPA to apply application-managed persistence in a simple Java EE web application that manages a list of persons.">Adding Application-Managed Persistence with JPA (Java Web SDK)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

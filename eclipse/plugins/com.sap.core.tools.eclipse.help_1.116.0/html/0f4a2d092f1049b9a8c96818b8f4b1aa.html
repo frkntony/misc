@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The document service supports ACLs (Access Control Lists) consisting of ACEs (Access Control Entries) to control the access to documents and folders as described in the CMIS standard."/>
+<meta name="description" content="The document service supports ACLs (Access Control Lists) consisting of ACEs (Access Control Entries) to control the access to documents and folders as described in the CMIS standard."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>ACLs in the Document Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">ACLs in the Document Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The document service supports ACLs (Access Control Lists) consisting of ACEs (Access
+		Control Entries) to control the access to documents and folders as described in the CMIS
+		standard.</p>
+
+		<p class="p">The document service supports the following permissions:</p>
+
+		<ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_qz3_1lf_pn">
+			<li class="li"><span class="ph sap-technical-name sap-technical-name">cmis:read</span><ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_fbr_2lf_pn">
+					<li class="li">Allows fetching an object (folder or document).</li>
+
+					<li class="li">Allows reading the ACL, properties and the content of an object.</li>
+
+				</ul>
+</li>
+
+			<li class="li"><span class="ph sap-technical-name sap-technical-name">sap:file</span><ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_acf_flf_pn">
+					<li class="li">Includes all privileges of
+							<span class="ph sap-technical-name sap-technical-name">cmis:read</span>.</li>
+
+					<li class="li">Allows the creation of objects in a folder and to move an object.</li>
+
+				</ul>
+</li>
+
+			<li class="li"><span class="ph sap-technical-name sap-technical-name">cmis:write</span><ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_wpt_nlf_pn">
+					<li class="li">Includes all privileges of
+						<span class="ph sap-technical-name sap-technical-name">sap:file</span>.</li>
+
+					<li class="li">Allows modifying the properties and the content of an object.</li>
+
+					<li class="li">Allows checking out of a versionable document.</li>
+
+				</ul>
+</li>
+
+			<li class="li"><span class="ph sap-technical-name sap-technical-name">sap:delete</span><ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_qsv_llf_pn">
+					<li class="li">Includes all privileges of
+							<span class="ph sap-technical-name sap-technical-name">cmis:write</span>.</li>
+
+					<li class="li">Allows the deletion of an object.</li>
+
+					<li class="li">Allows checking in and canceling check out of a private working copy.</li>
+
+				</ul>
+</li>
+
+			<li class="li"><span class="ph sap-technical-name sap-technical-name">cmis:all</span><ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_q22_llf_pn">
+					<li class="li">Includes all privileges of
+							<span class="ph sap-technical-name sap-technical-name">sap:delete</span>.</li>
+
+					<li class="li">Allows modifying the ACL of an object.</li>
+
+				</ul>
+</li>
+
+		</ul>
+
+		<p class="p">For a repository the initial settings for the root folder are:</p>
+
+		<ul class="ul" id="loio0f4a2d092f1049b9a8c96818b8f4b1aa__ul_rbd_tlf_pn">
+			<li class="li">The ACL contains one ACE for the
+					<span class="ph sap-technical-name sap-technical-name">{sap:builtin}everyone</span> principal with
+				the <span class="ph sap-technical-name sap-technical-name">cmis:all</span> permission. With these
+				settings, all principals have full control over the root folder.</li>
+
+			<li class="li">The owner property is set to
+					<span class="ph sap-technical-name sap-technical-name">{sap:builtin}admin</span> (ownership is
+				described below).</li>
+
+		</ul>
+
+		<p class="p">Initially, without specific ACL settings, all documents and folders possess an ACL with one ACE
+			for the built-in principal
+				<span class="ph sap-technical-name sap-technical-name">{sap:builtin}everyone</span> with the
+				<span class="ph sap-technical-name sap-technical-name">cmis:all</span> permission that grants all users
+			unrestricted access.</p>
+
+		<p class="p">ACLs or ACEs are not inherited but explicitly stored at the particular objects. An empty
+			ACL means that no principal has permission, except the owner of the object. The owner
+			concept is described below in more detail.</p>
+
+		<div class="note sap-example example"><span class="exampletitle">Example</span> 
+			<div class="p">The example assumes that every user has full access to the folder. In the following, the
+				access to a folder is restricted in such a way that User1 has full access and User2
+				has only read access.
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+    	Session session = ..;
+    	Folder folder = ..;
+    	String userIdOfUser1 = ..;
+    	String userIdOfUser2 = ..;
+
+    	// list of ACEs which should be added
+    	List&lt;Ace&gt; addAcl = new ArrayList&lt;Ace&gt;();
+
+    	// build and add ACE for user U1
+    	List&lt;String&gt; permissionsUser1 = new ArrayList&lt;String&gt;();
+    		permissionsUser1.add("cmis:all");
+    	Ace aceUser1 = session.getObjectFactory().createAce(userIdOfUser1, 
+    	    	permissionsUser1);
+    	addAcl.add(aceUser1);
+
+    	// build and add ACE for user U2
+    	List&lt;String&gt; permissionsUser2 = new ArrayList&lt;String&gt;();
+    		permissionsUser2.add("cmis:read");
+    	Ace aceUser2 = session.getObjectFactory().createAce(userIdOfUser2, 
+    		permissionsUser1);
+    	addAcl.add(aceUser2);
+
+    	// list of ACEs which should be removed
+    	List&lt;Ace&gt; removeAcl = new ArrayList&lt;Ace&gt;();
+
+    	// build and add ACE for user {sap:builtin}everyone
+    	List&lt;String&gt; permissionsEveryone = new ArrayList&lt;String&gt;();
+    		permissionsEveryone.add("cmis:all");
+    	Ace aceEveryone = session.getObjectFactory().createAce(
+    	    	"{sap:builtin}everyone", permissionsEveryone);
+    	removeAcl.add(aceEveryone);
+    
+   	// add and remove the ACEs at the folder
+   	folder.applyAcl(addAcl, removeAcl, AclPropagation.OBJECTONLY);
+</pre></div>
+</div>
+
+		</div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

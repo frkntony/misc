@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+   <context  id="LoggersEditorPart" title="About Loggers Editor">
+        <description>In the Loggers Editor, you can view and manage the effective level of loggers.</description>
+		<topic href="../com.sap.core.tools.eclipse.help/html/db01af2fd976101493f9b90b81cd791f.html"  label="Using Logs in the Eclipse IDE"/>
+   </context>
+</contexts>

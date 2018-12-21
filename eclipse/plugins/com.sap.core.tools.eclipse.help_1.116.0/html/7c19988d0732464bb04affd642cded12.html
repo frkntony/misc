@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Getting Player Achievements</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7c19988d0732464bb04affd642cded12">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Getting Player Achievements</h1>
+
+	<div class="body taskbody">
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">Navigate to the Terminal in the <span class="ph uicontrol">Game Mechanics</span> tab. </p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The Terminal allows you to execute all methods for retrieving the user achievements data.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Enter list of JSON RPC calls with the method with the desired achievement query
+					methods.</span>
+				<div class="itemgroup info">
+					<p class="p">Example <samp class="ph codeph">getPlayerRecord</samp>:</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">[ {"method":"getPlayerRecord", "params":["demo-user@mail.com"]} ] </pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Execute</span> to execute the calls. Check <span class="ph uicontrol">Force
+						synchronous execution</span> checkbox to enforce sequential execution
+					of calls in a JSON array.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Review server response. You can view the detailed JSON response by clicking on
+					the symbol on the right. Once the event is send successfully you will see the
+					result.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

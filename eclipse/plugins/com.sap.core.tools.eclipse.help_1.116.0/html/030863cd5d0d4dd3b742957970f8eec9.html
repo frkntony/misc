@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters."/>
+<meta name="description" content="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Deploying on the Cloud with the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio030863cd5d0d4dd3b742957970f8eec9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Deploying on the Cloud with the Console Client</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Deploying an application publishes it to <span class="ph pname">SAP Cloud Platform</span>. During
+		deploy, you can define various specifics of the deployed application using the deploy
+		command optional parameters. </p>
+
+		<div class="section prereq p" id="loio030863cd5d0d4dd3b742957970f8eec9__prereq_N10019_N10016_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio030863cd5d0d4dd3b742957970f8eec9__ul_qx4_r4g_sk">
+				<li class="li">You have downloaded and configured <span class="ph pname">SAP Cloud Platform</span> console client. For more
+					information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a></li>
+
+				<li class="li">Depending on your account type, deploy the application on the respective landscape. For more
+					information, see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio030863cd5d0d4dd3b742957970f8eec9__step_N10018_N10015_N10012_N10001">
+				<span class="ph cmd">In the opened command line console, execute <kbd class="ph userinput">neo deploy</kbd> command with
+					the appropriate parameters. </span>
+				<div class="itemgroup info">
+					<p class="p">You can define the parameters of commands directly in the command line as in
+						the example below, or in the properties file. For more information, see
+							<a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loio030863cd5d0d4dd3b742957970f8eec9__step_N10021_N10015_N10012_N10001">
+				<span class="ph cmd">Enter your password if requested. </span>
+			</li>
+<li class="li step stepexpand" id="loio030863cd5d0d4dd3b742957970f8eec9__step_N1002A_N10015_N10012_N10001">
+				<span class="ph cmd">Press ENTER and deployment of your application will start. If deployment fails, check if
+					you have defined the parameters correctly.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span>  The size of an application deployed on <span class="ph pname">SAP Cloud Platform</span> can be up
+						to 1.5 GB. If the application is packaged as a WAR file, the size of the
+						unzipped content is taken into account.</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --source samples/deploy_war/example.war --user &lt;email_or_user&gt;  </pre></div>
+
+		</div>
+
+		<div class="section postreq" id="loio030863cd5d0d4dd3b742957970f8eec9__postreq_N1005A_N10016_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">To make your deployed application available for requests, you need to start it by executing
+				the <kbd class="ph userinput">neo start</kbd> command. </p>
+
+			<p class="p">Then, you can manage the application lifecycle (check the status; stop; restart;
+				undeploy) using dedicated console client commands.</p>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a></div>
+<div><a class="link" href="7c0f7a18a4564e0e8b6f997d230285ff.html" title="Use this command to restart your application or a single application process. The effect of the restart command is the same as executing the stop command first and when the application is stopped, starting it with the start command.">restart</a></div>
+<div><a class="link" href="b5bfcbf682684129b142606e1d4ca5cb.html" title="Use this command to stop your deployed and started application or application process.">stop</a></div>
+<div><a class="link" href="d4f6592584464cc6a5c3c0b6fc88abf9.html" title="You can check the current status of an application or application process. The command lists all application processes with their IDs, state, last change date sorted chronologically, and runtime information.">status</a></div>
+<div><a class="link" href="7e09b85c9710481884e5bc3609a38bb0.html" title="Undeploying an application removes it from SAP Cloud Platform. To undeploy an application, you have to stop it first.">undeploy</a></div>
+<div><a class="link" href="7a4aba21ee7d42eb86bc70c8787611fa.html" title="By using the delta deployment option, you can apply changes in a deployed application faster without uploading the entire set of files tо SAP Cloud Platform.">Delta Deployment</a></div>
+<div><a class="link" href="87cfe1b6ed6d478098c1e8170e8302c1.html" title="If you are an application operator and need to deploy a new version of a productive application or perform maintenance, you can choose among several approaches.">Updating Applications</a></div>
+<div><a class="link" href="cadb1dd3cda3464b8a5315a08cbb0566.html" title="You can update a property of an application running on SAP Cloud Platform without redeploying it.">Updating Application Properties</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

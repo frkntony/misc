@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Translation Hub uses translation projects to manage the translation workflow of properties files used in HTML5 applications."/>
+<meta name="description" content="SAP Translation Hub uses translation projects to manage the translation workflow of properties files used in HTML5 applications."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating Translation Projects for Properties Files in SAP HCP Git Repository</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio56702a8f43ed496ab346582259afd5c8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating Translation Projects for Properties Files in SAP HCP Git Repository</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">SAP Translation Hub uses translation projects to manage the translation workflow of
+		properties files used in HTML5 applications.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio56702a8f43ed496ab346582259afd5c8__ul_csj_34t_tw">
+				<li class="li">The source language of the properties files is English.</li>
+
+				<li class="li">The encoding of the .properties file is ISO 8859-1, which is also known as Latin-1.</li>
+
+				<li class="li">If you use the suggestion service to propose texts in the code editor of SAP Web
+					IDE, use one of the browsers listed in <a class="xref" href="https://help.hana.ondemand.com/webide/frameset.htm?51321a804b1a4935b0ab7255447f5f84.html" target="_blank" alt="https://help.hana.ondemand.com/webide/frameset.htm?51321a804b1a4935b0ab7255447f5f84.html" title="https://help.hana.ondemand.com/webide/frameset.htm?51321a804b1a4935b0ab7255447f5f84.html">Opening SAP Web IDE</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To translate texts in the source properties files of HTML5 applications, SAP
+				Translation Hub requires some details about the HTML5 application, such as the
+				location of the source properties file in the Git repository and the required target
+				languages.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step">
+				<span class="ph cmd">Create a Git translation project for each source properties file in an HTML5 application
+					that you want to translate.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Enter the following data about the source properties file:</span>
+				
+<table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio56702a8f43ed496ab346582259afd5c8__choicetable_wrr_g4z_jt">
+<thead><tr><th valign="bottom" align="left" id="d3509191e58-option">
+							<p class="p">Field</p>
+
+						</th>
+<th valign="bottom" align="left" id="d3509191e58-desc">
+							<p class="p">Entry</p>
+
+						</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d3509191e58-option" id="d3509191e77" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Application Name</span></strong></td>
+
+						<td valign="top" headers="d3509191e58-desc d3509191e77" class="stentry chdesc" width="80%">Enter the name of the HTML5 application that contains the source properties file that
+							you want to translate.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3509191e58-option" id="d3509191e87" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Branch</span></strong></td>
+
+						<td valign="top" headers="d3509191e58-desc d3509191e87" class="stentry chdesc" width="80%">By default, the branch is <span class="ph uicontrol">master</span>. If you're using a different
+							branch in the Git repository, change the entry as required.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3509191e58-option" id="d3509191e100" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Path to Properties File</span></strong></td>
+
+						<td valign="top" headers="d3509191e58-desc d3509191e100" class="stentry chdesc" width="80%">
+							<div class="p">Enter the path to - and the name of - the source properties file of your HTML5 application
+								in SAP Web IDE. <div class="note note"><span class="notetitle">Note</span> <p class="p">Use the following notation, starting with
+										the level <span class="ph emphasis emphasis">below</span> the name of your HTML5
+										application in SAP Web IDE: <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol"><var class="keyword varname">&lt;first folder under HTML5
+												application&gt;</var></span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">/<var class="keyword varname">&lt;names of any additional
+												folders&gt;</var></span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">/<var class="keyword varname">&lt;name of properties
+												file&gt;</var></span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+<p class="p">For example, <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">i18n</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">/i18n.properties</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+</div>
+</div>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3509191e58-option" id="d3509191e147" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Domain</span></strong></td>
+
+						<td valign="top" headers="d3509191e58-desc d3509191e147" class="stentry chdesc" width="80%">Select the translation domain that most closely matches the
+							application area of the HTML5 application. </td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3509191e58-option" id="d3509191e158" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Target Languages</span></strong></td>
+
+						<td valign="top" headers="d3509191e58-desc d3509191e158" class="stentry chdesc" width="80%">Choose the target languages into which you want to translate the
+							texts in the properties file.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3509191e58-option" id="d3509191e168" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Keep Translations</span></strong></td>
+
+						<td valign="top" headers="d3509191e58-desc d3509191e168" class="stentry chdesc" width="80%">
+							<p class="p">If you already translated the texts in your properties file, for example, using a
+								different translation provider to SAP Translation Hub, your
+								application already contains translations in language-specific
+								properties files. You use the <cite class="cite">Keep Translations</cite> option
+								to determine how SAP Translation Hub handles these existing
+								translations:</p>
+
+							<ul class="ul" id="loio56702a8f43ed496ab346582259afd5c8__ul_lxg_2nk_by">
+								<li class="li">
+									<p class="p">If you want to keep the existing translations and have SAP Translation Hub translate
+										only those texts that do not yet have a translation in your
+										application, choose <span class="ph uicontrol">Yes</span>. </p>
+
+									<div class="p">
+										<div class="note note"><span class="notetitle">Note</span> 
+											<p class="p">When you use SAP Translation Hub to translate the texts in your properties file, SAP
+												Translation Hub stores the translations. If you use
+												SAP Translation Hub to translate your properties
+												file a second or subsequent time, for example, if
+												you add texts in the source language, SAP
+												Translation Hub uses the same translations for the
+												existing texts that it used during the previous
+												translation of the properties file.</p>
+
+											<p class="p">If you change any <span class="ph emphasis emphasis">translations</span> directly in the language-specific
+												properties files in your Git project and then use
+												SAP Translation Hub again, SAP Translation Hub
+												ignores your translation changes. The translation
+												changes from your Git project are lost.</p>
+
+											<p class="p">To prevent SAP Translation Hub from overwriting any translations in your Git project,
+												we recommend that you make all translation changes
+												in SAP Translation Hub.</p>
+
+										</div>
+
+									</div>
+
+								</li>
+
+								<li class="li">If you want SAP Translation Hub to translate all the texts in your properties file from
+									scratch, and therefore overwrite any existing translations in
+									your properties files, choose <span class="ph uicontrol">No</span>.</li>
+
+							</ul>
+
+						</td>
+
+					</tr>
+
+				</tbody></table>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Save the translation project.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>Your translation project contains the data required to translate the texts in a properties
+			file. You can use the translation workflow to get an initial translation of the texts in
+			the properties file, as well as to update translations whenever changes are made to the
+			texts in the source properties file.<p class="p">SAP Translation Hub creates a properties file for
+				each of the target languages specified in the translation project, and places the
+				translations in the corresponding language-specific properties file.</p>
+<div class="note note"><span class="notetitle">Note</span> The
+				language-specific properties files are stored in the project for the HTML5
+				application project in the Git repository.</div>
+</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3a011fba82644259a2cc3c919863f4b4.html" title="The base URL is main part of the complete URL that you need to access the services of SAP Translation Hub.">Building Base URL of SAP Translation Hub</a></div>
+<div><a class="link" href="27ce9c5dde2c43fcae30984ac638726b.html" title="SAP Translation Hub provides a special user interface (UI) that you can use to create translation projects.">Accessing SAP Translation Hub User Interface</a></div>
+<div><a class="link" href="56702a8f43ed496ab346582259afd5c8.html" title="SAP Translation Hub uses translation projects to manage the translation workflow of properties files used in HTML5 applications.">Creating Translation Projects for Properties Files in SAP HCP Git Repository</a></div>
+<div><a class="link" href="f07744c92b574cb5b333711f0c4344f9.html" title="You use translation projects to translate properties files, which are stored in a Git repository, as part of the translation workflow of SAP Translation Hub.">Translating Properties Files</a></div>
+<div><a class="link" href="deca2b46a8444612a7e07212f8990426.html" title="You can use the SAP Translation Hub UI to add or change translations created by SAP Translation Hub during the translation workflow.">Updating Translations in Properties Files</a></div>
+<div><a class="link" href="658768871d6845b6b7da94ad5fe15c94.html">Removing Password Prompt from Translation Workflow</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

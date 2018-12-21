@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Application-to-Application SSO Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe022a5eebaec4dbbabef7f5d60e13dd4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Application-to-Application SSO Authentication</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__section_N10017_N10011_N10001"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">The <span class="ph uicontrol">AppToAppSSO</span> destinations are used in scenario of
+				application-to-application communication where the caller needs to propagate its
+				logged-in user. Both applications are deployed on <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+		</div></div>
+
+		<div class="section" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__section_N10024_N10011_N10001"><div class="section_title">Configuration Steps</div><div type="Configuration Steps">
+			
+			<ol class="ol" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__ol_kmh_dxq_qj">
+				<li class="li">Configure your account to allow principal propagation. For more information, see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a> → section "Specifying Custom
+					Local Provider Settings".<div class="note note" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__note_N1003A_N10033_N1002F_N10024_N10011_N10001"><span class="notetitle">Note</span> This setting is done per
+						account, which means that once set to <kbd class="ph userinput">Enabled</kbd> all
+						applications within the account will accept user propagation.</div>
+</li>
+
+				<li class="li"> Create and configure an <span class="ph uicontrol">AppToAppSSO</span> destination by using the
+					properties listed below, and deploy it on <span class="ph pname">SAP Cloud Platform</span>. For more
+					information, see: <ul class="ul" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__ul_vfw_x3k_m4">
+						<li class="li"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></li>
+
+						<li class="li"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></li>
+
+					</ul>
+<div class="note note" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__note_N10049_N10043_N1002F_N10024_N10011_N10001"><span class="notetitle">Note</span> Configuring
+							<span class="ph uicontrol">AppToAppSSO</span> destinations from the Eclipse IDE is
+						not yet supported.</div>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__section_N10053_N10011_N10001"><div class="section_title">Properties</div><div type="Properties">
+			
+			<p class="p">The following credentials need to be specified:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe022a5eebaec4dbbabef7f5d60e13dd4__table_pgg_5xq_qj" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d10652171e106">Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d10652171e109">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 "><span class="keyword parmname">Name</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">Destination name. It must be the same as the destination name you use for the
+								configuration tools, that is, the console client and
+									<span class="ph uicontrol">Destinations</span> editor (cockpit).</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 "><span class="keyword parmname">Type</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">Destination type. Use <kbd class="ph userinput">HTTP</kbd> as a value for all HTTP(S)
+								destinations. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 "><span class="keyword parmname">Authentication</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">Authentication type. Use <kbd class="ph userinput">AppToAppSSO</kbd> as a value. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 "><span class="keyword parmname">URL</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">URL of the protected resource on the called application</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 ">
+								<p class="p"><span class="keyword parmname">SessionCookieNames</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">
+								<p class="p">Optional. </p>
+
+								<div class="p">The <span class="ph uicontrol">AppToApp</span> authentication module will use it to recognize the
+									user session which improves the performance of the HTTP client.
+										<div class="note note"><span class="notetitle">Note</span> In case that a session cookie name has a variable part
+										you can specify it as a regular expression. </div>
+</div>
+
+								<p class="p">You can specify more than one session cookie name as comma
+									separated list:</p>
+
+								<p class="p"><em class="ph i">Example</em>:</p>
+
+								<div class="p">
+									<kbd class="ph userinput">JSESSIONID, JTENANTSESSIONID_.*, CookieName,
+										Cookie*Name, CookieName.*</kbd>
+									<div class="note note"><span class="notetitle">Note</span> The spaces after comma are optional.</div>
+If several
+									cookies are listed, the session is recognized as soon as all of
+									them are available in the response from the server.
+										<div class="note note"><span class="notetitle">Note</span> Recommended value for the target Java app on <span class="ph pname">SAP Cloud Platform</span> is:
+											<kbd class="ph userinput">JTENANTSESSIONID_.*</kbd>, and for the
+										HANA XS app is: <kbd class="ph userinput">xsId.*</kbd>.</div>
+</div>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 "><span class="keyword parmname">saml2_audience</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">
+								<div class="p">Specifies a local SAML 2.0 provider name of the account which consumes the target
+									application. <div class="note note"><span class="notetitle">Note</span> If not specified, both applications must be
+										consumed in the same account.</div>
+</div>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d10652171e106 "><span class="keyword parmname">SkipSSOTokenGenerationWhenNoUser</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d10652171e109 ">Optional.<p class="p">If this parameter is set and there is no user logged
+									in, token generation is skipped, thus allowing anonymous access
+									to public resources. If set, it may have any value.</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">#
+#Wed Jan 13 12:25:47 UTC 2016
+Name=apptоapp
+URL=https://someurl.com
+ProxyType=Internet
+Type=HTTP
+SessionCookieNames=JTENANTSESSIONID_.*
+Authentication=AppToAppSSO
+</pre></div>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3f1247537c1a4f069235ee63633659c5.html">Server Certificate Authentication</a></div>
+<div><a class="link" href="d872cfb4801c4b54896816df4b75c75d.html">HTTP Proxy for On-Premise Connectivity</a></div>
+<div><a class="link" href="df6c1ffd39f0451594d737cf7638ce00.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup.">AuthenticationHeaderProvider API</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

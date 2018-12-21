@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using XS Destinations for On-Demand to On-Premise Connectivity</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0022f78f5d4d4e858c909b2d06286343">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using XS Destinations for On-Demand to On-Premise Connectivity</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">This tutorial explains how to create a simple SAP HANA XS application that consumes a sample
+				back-end system exposed via the <span class="ph pname">Cloud connector</span>. </p>
+
+			<p class="p">In this example, the XS application consumes an on-premise system with basic authentication on
+				landscape <span class="ph uicontrol">hana.ondemand.com</span>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loio0022f78f5d4d4e858c909b2d06286343__ul_rz1_3zf_tm">
+				<li class="li">You have a productive SAP HANA instance. For more information, see <a class="xref" href="c6f5764433354640a1e44b893399eaee.html" title="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment.">Using a Productive SAP HANA Database System</a>.</li>
+
+				<li class="li">You have installed the SAP HANA tools. For more information, see <a class="xref" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a>. You need them to open a
+					Database Tunnel.</li>
+
+				<li class="li">You have <span class="ph pname">Cloud connector</span> 2.x
+					installed on an on-premise system. For more information, see <a class="xref" href="57ae3d62f63440f7952e57bfcef948d3.html">Installing the Cloud Connector</a>.</li>
+
+				<li class="li">A sample back-end system with basic authentication is available on an on-premise host. For
+					more information, see <a class="xref" href="e59dc589bb57101480939e290c55e680.html">Setting Up an Application as a Sample Back-End System</a>.</li>
+
+				<li class="li">You have created a tunnel between your account and a <span class="ph pname">Cloud connector</span>.
+					For more information, see <a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html">Initial Configuration</a>
+					→ section "Establishing Connections to <span class="ph pname">SAP Cloud Platform</span>".</li>
+
+				<li class="li">The back-end system is exposed for the SAP HANA XS application via <span class="ph pname">Cloud connector</span>
+					configuration using as settings: <span class="keyword parmname">virtual_host</span> =
+						<span class="ph emphasis emphasis">virtualpingbackend</span> and
+						<span class="keyword parmname">virtual_port</span> = <span class="ph emphasis emphasis">1234</span>. For more
+					information, see <a class="xref" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a>. </li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> The last two prerequisites can be achieved by exposing any other available HTTP service in
+				your on-premise network. In this case, you shall adjust accordingly the
+					<span class="keyword parmname">pathPrefix</span> value, mentioned below in procedure "2. Create
+				an XS Destination File".</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">1. Initial Steps</div><div type="1. Initial Steps">
+			
+			<p class="p">To create and assign an XS destination, you need to have a developed HANA XS
+				application.</p>
+
+			<ul class="ul" id="loio0022f78f5d4d4e858c909b2d06286343__ul_ctm_1z2_vm">
+				<li class="li">If you have already created one and have opened a database tunnel, go straight
+					to procedure <span class="ph emphasis emphasis">2. Create an XS Destination File</span> on this
+					page.</li>
+
+				<li class="li">If you need to create an XS application from scratch, go to page <a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loio3762b229a4074fc59ac6a9ee7404f8c9" title="Create and test a simple SAP HANA XS application that displays the &#34;Hello World&#34; message.">Creating an SAP HANA XS Hello World Application Using SAP HANA Studio</a> and execute procedures
+						<span class="ph emphasis emphasis">1</span> to <span class="ph emphasis emphasis">4</span>. Then execute the
+					procedures from this page (<span class="ph emphasis emphasis">2</span> to
+					<span class="ph emphasis emphasis">5</span>).</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> The subpackage in which you will later create your XS destination and XSJS files
+				has to be named <span class="ph emphasis emphasis">connectivity</span>.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">2. Create an XS Destination File</div><div type="2. Create an XS Destination File">
+			
+			<ol class="ol" id="loio0022f78f5d4d4e858c909b2d06286343__ol_kbh_vbp_nm">
+				<li class="li">In the <span class="ph uicontrol">Project Explorer</span> view, select the
+						<span class="ph uicontrol">connectivity</span> folder and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">File</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Enter the file name <kbd class="ph userinput">odop.xshttpdest</kbd> and choose
+						<span class="ph uicontrol">Finish</span>.</li>
+
+				<li class="li">Copy and paste the following destination configuration settings:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+host = "virtualpingbackend";
+port = 1234;
+useSSL = false;
+pathPrefix = "/BackendAppHttpBasicAuth/basic";
+useProxy = true;
+proxyHost = "localhost";
+proxyPort = 20003;
+timeout = 3000;
+</pre></div>
+<div class="note note"><span class="notetitle">Note</span> In
+						case you use SDK with a version equal to or lower than
+							<kbd class="ph userinput">1.44.0.1</kbd> (Java Web) and
+							<kbd class="ph userinput">2.24.13</kbd> (Java EE 6 Web Profile) respectively, you
+						should find the on-premise WAR files in directory
+							<span class="ph filepath">&lt;SDK_location&gt;/tools/samples/connectivity/onpremise</span>.
+						Also, the pathPrefix should be
+							<span class="keyword parmname">/PingAppHttpBasicAuth/pingbasic</span>. </div>
+</li>
+
+				<li class="li">Save your changes.</li>
+
+				<li class="li">Activate the file.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">3. Create an XSJS File</div><div type="3. Create an XSJS File">
+			
+			<ol class="ol" id="loio0022f78f5d4d4e858c909b2d06286343__ol_slh_ydp_nm">
+				<li class="li">In the <span class="ph uicontrol">Project Explorer</span> view, select the
+						<span class="ph uicontrol">connectivity</span> folder and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">File</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Enter the file name <kbd class="ph userinput">ODOPTest.xsjs</kbd> and choose
+						<span class="ph uicontrol">Finish</span>.</li>
+
+				<li class="li">Copy and paste the following JavaScript code into the file:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+$.response.contentType = "text/html";
+var dest = $.net.http.readDestination("connectivity","odop");
+
+var client = new $.net.http.Client();
+var req = new $.web.WebRequest($.net.http.GET, "");
+client.request(req, dest);
+
+var response = client.getResponse().body.asString();
+$.response.setBody(response);
+</pre></div>
+</li>
+
+				<li class="li">Save your changes.</li>
+
+				<li class="li">Activate the file.</li>
+
+			</ol>
+
+			<div class="note note"><span class="notetitle">Note</span> You also need to enter your on-premise credentials. You should not enter them in
+				the destination file since they must not be exposed as plain text.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">4. Provide Secured Credentials</div><div type="4. Provide Secured Credentials">
+			
+			<ol class="ol" id="loio0022f78f5d4d4e858c909b2d06286343__ol_uxg_gfp_nm">
+				<li class="li">Open a Web browser and start the SAP HANA XS Administration Tool
+						(<span class="ph uicontrol">https://&lt;schema&gt;&lt;account&gt;.&lt;host&gt;/sap/hana/xs/admin/</span>).</li>
+
+				<li class="li">On the<span class="ph uicontrol"> XS Applications</span> page, expand the nodes in the
+					application tree to locate your application.</li>
+
+				<li class="li">Select the <span class="ph filepath">odop.xshttpdest</span> file to display the HTTP destination details
+					and then choose <span class="ph uicontrol">Edit</span>.</li>
+
+				<li class="li">In section <span class="ph uicontrol">AUTHENTICATION</span>, choose the
+						<span class="ph uicontrol">Basic</span> radio button.</li>
+
+				<li class="li">Enter your on-premise credentials (user and password).</li>
+
+				<li class="li">Save your entries.</li>
+
+			</ol>
+
+			<div class="note note"><span class="notetitle">Note</span> If you later need to make another configuration change to your XS destination, you need to
+				enter your password again since it is no longer remembered by the editor.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">5. Grant a Role to the User</div><div type="5. Grant a Role to the User">
+			
+			<ol class="ol" id="loio0022f78f5d4d4e858c909b2d06286343__ol_m54_pvm_fq">
+				<li class="li">In the <span class="ph uicontrol">Systems</span> view, expand <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Users</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and then double-click your user ID.</li>
+
+				<li class="li">On the <span class="ph uicontrol">Granted Roles</span> tab, choose the <span class="ph uicontrol">+
+						(Add)</span> button. </li>
+
+				<li class="li">Select the <kbd class="ph userinput">model_access</kbd> role in the list and choose
+						<span class="ph uicontrol">OK</span>. The role is now listed on the <span class="ph uicontrol">Granted
+						Roles</span> tab.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Deploy</span> in the upper right corner of screen. A
+					message confirms that your user has been modified.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">6. Test Your Application</div><div type="6. Test Your Application">
+			
+		</div></div>
+
+		<div class="section">
+			<p class="p">Open the cockpit and proceed as described in <a class="xref" href="0dd61c3e5d1d4d6cbea9aec94b7f4725.html" title="You can open your SAP HANA XS applications in a Web browser directly from the cockpit.">Launching SAP HANA XS Applications</a>.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Principal Propagation to on-premise systems</div><div type="Principal Propagation to on-premise systems">
+			
+			<p class="p">Principal Propagation scenario is available for HANA XS applications. It is used for
+				propagating the currently logged in user to an on-premise backend system using the
+					<span class="ph pname">Cloud connector</span>
+				and connectivity service. To configure the scenario make sure to: </p>
+
+			<p class="p">1.Create an XS destination with the parameter
+					<span class="keyword parmname">authType=SamlAssertionPropagation</span>. </p>
+
+			<p class="p">2.Open the <span class="ph pname">Cloud connector</span> and
+				mark your HANA instance as trusted in the <span class="ph uicontrol">Principal
+					Propagation</span> tab. The HANA instance name is displayed in the cockpit
+				under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. For more information, see <a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html">Setting Up Trust</a>. </p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7e953740b7ea4988b9a7e1dc733f9927.html">XS Destination Properties</a></div>
+<div><a class="link" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a></div>
+<div><a class="link" href="4959458552574c77b62fe27b0eb363ef.html#loio4959458552574c77b62fe27b0eb363ef" title="Create and test a simple SAP HANA XS application that displays the &#34;Hello World&#34; message.">Creating an SAP HANA XS Hello World Application Using SAP HANA Web-based Development Workbench</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

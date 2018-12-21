@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Subject Pattern for Principal Propagation</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio58803a25e5894d759e0df1c5513b41ed">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Subject Pattern for Principal Propagation </h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">How to configure a principal propagation subject?</div><div type="How to configure a principal propagation subject?">
+			
+			<p class="p">Using the principal propagation, a secure way is provided to forward the on-demand identity to
+				the <span class="ph pname">Cloud connector</span>
+				and from there to the back end. The pattern identifying the user for the subject of
+				the generated short-living <span class="keyword cmdname">X.509</span> certificate, as well as its
+				validity period, can be defined as shown in the picture below.</p>
+
+			<p class="p"><img class="image" id="loio58803a25e5894d759e0df1c5513b41ed__image_mkr_mkv_rn" width="1400px" src="loio83c48dab125e476681b2b6048d2490d0_HiRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Subject Pattern</div><div type="Subject Pattern">
+			
+			<p class="p">There are two ways to define the subject's distinguished name (DN), for which the certificate
+				will be issued:</p>
+
+			<ul class="ul" id="loio58803a25e5894d759e0df1c5513b41ed__ul_qjc_wfv_rn">
+				<li class="li">Adding/editing the subject pattern field directly with free text. </li>
+
+				<li class="li">Using the help of the selection menu, that is, the <img class="image" id="loio58803a25e5894d759e0df1c5513b41ed__image_anp_4kv_rn" src="loioec86d5932075429f942fc5dee80e5c6f_HiRes.png"/>
+					icon.</li>
+
+			</ul>
+
+			<p class="p">Thus, you can assign a value for each parameter (either directly as a free text or as a
+				variable selected from the menu of this field). Those selectable parameters are:</p>
+
+			<ul class="ul" id="loio58803a25e5894d759e0df1c5513b41ed__ul_if3_zfv_rn">
+				<li class="li"><span class="keyword parmname">${name}</span></li>
+
+				<li class="li"><span class="keyword parmname">${mail}</span></li>
+
+				<li class="li"><span class="keyword parmname">${display_name}</span></li>
+
+				<li class="li"><span class="keyword parmname">${login_name}</span> (as of cloud connector version 2.8.1.1)</li>
+
+			</ul>
+
+			<p class="p">The values for these variables will be provided by the <span class="keyword cmdname">Certificate
+					Authority</span>, which also provides the values for the subject's DN.</p>
+
+			<p class="p">By the help of this menu, you can define the distinguished name of the subject as its
+					<span class="keyword cmdname">subject pattern</span>. By default, the following attributes are
+				provided:</p>
+
+			<ul class="ul" id="loio58803a25e5894d759e0df1c5513b41ed__ul_ncx_ggv_rn">
+				<li class="li"><span class="keyword parmname">CN:</span>   (common name) – the name of the certificate
+					owner</li>
+
+				<li class="li"><span class="keyword parmname">EMAIL:</span> (email address) - the email address of the
+					certificate owner</li>
+
+				<li class="li"><span class="keyword parmname">L:</span>   (locality) – the locality of the certificate
+					owner</li>
+
+				<li class="li"><span class="keyword parmname">O:</span> (organization) – the organization/company to which the certificate
+					owner belongs</li>
+
+				<li class="li"><span class="keyword parmname">OU:</span> (name of organizational unit) – the organizational unit to which
+					the certificate owner belongs</li>
+
+				<li class="li"><span class="keyword parmname">ST:</span>   (state of residence) – the state of residence of the
+					certificate issuer</li>
+
+				<li class="li"><span class="keyword parmname">C:</span> (country of residence) – the country of the certificate
+					owner</li>
+
+			</ul>
+
+			<p class="p">By choosing <span class="ph uicontrol">Generate Sample Certificate</span> you can create a sample
+				certificate that looks like one of the short-living certificates created at runtime.
+				It can be used for generating user mapping rules in the target system, for example,
+				via transaction CERTRULE in an ABAP system. If your subject pattern contains
+				variable fields, a small wizard will allow you to provide meaningful values for each
+				of them and eventually you can save the sample certificate in <span class="keyword cmdname">DER</span>
+				format.</p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loio58803a25e5894d759e0df1c5513b41ed__image_qwm_dd5_cy" width="1400px" src="loio8a00fae7115e493ca5d9238bbbe742c8_LowRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Expired Session Tolerance Time (h)</div><div type="Expired Session Tolerance Time (h)">
+			
+			<p class="p">This is the time, provided in hours, that defines how long the application can use a principal
+				issued for a user after the token provided from cloud side has been expired.  </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Certificate Validity Period (min)</div><div type="Certificate Validity Period (min)">
+			
+			<p class="p">This is the time, provided in minutes, that defines how long the certificate generated for
+				principal propagation can be used to authenticate against the back end. Reuse of a
+				previously generated certificate increases the performance.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3f1247537c1a4f069235ee63633659c5.html">Server Certificate Authentication</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connectivity for SAP HANA XS (Productive Version)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9d0e9e8397f544d9a5de5df52fd1e757">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connectivity for SAP HANA XS (Productive Version)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">This section represents the usage of the <span class="ph pname">connectivity
+                            service</span> in
+				a productive SAP HANA instance. Below are listed the available scenarios depending
+				on the connectivity and authentication types you use for your development work.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+</div>
+<div class="topic concept nested1" id="concept_fdj_wkn_nm">
+		<h2 class="title topictitle2">Connectivity Types</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Internet Connectivity</div><div type="Internet Connectivity">
+				
+				<p class="p">In this case, you can develop an XS application in a productive SAP HANA instance at <span class="ph pname">SAP Cloud Platform</span> so that
+					the application connects to external Internet services or resources.</p>
+
+				<p class="p"/>
+
+				<div class="table-wrapper"><table summary="" id="concept_fdj_wkn_nm__simpletable_t1y_bln_nm" border="1" class="simpletable"><tr class="sthead">
+						<th valign="bottom" align="left" id="d7358124e79" class="stentry" width="25%">XS parameter</th>
+
+						<th valign="bottom" align="left" id="d7358124e82" class="stentry" width="25%">hana.ondemand.com</th>
+
+						<th valign="bottom" align="left" id="d7358124e85" class="stentry" width="25%">us1.hana.ondemand.com</th>
+
+						<th valign="bottom" align="left" id="d7358124e88" class="stentry" width="25%">ap1.hana.ondemand.com</th>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e79" class="stentry"><span class="keyword parmname">useProxy</span></td>
+
+						<td valign="top" headers="d7358124e82" class="stentry">true</td>
+
+						<td valign="top" headers="d7358124e85" class="stentry">true</td>
+
+						<td valign="top" headers="d7358124e88" class="stentry">false</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e79" class="stentry"><span class="keyword parmname">proxyHost</span></td>
+
+						<td valign="top" headers="d7358124e82" class="stentry">proxy</td>
+
+						<td valign="top" headers="d7358124e85" class="stentry">proxy</td>
+
+						<td valign="top" headers="d7358124e88" class="stentry">N/A</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e79" class="stentry"><span class="keyword parmname">proxyPort</span></td>
+
+						<td valign="top" headers="d7358124e82" class="stentry">8080</td>
+
+						<td valign="top" headers="d7358124e85" class="stentry">8080</td>
+
+						<td valign="top" headers="d7358124e88" class="stentry">N/A</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e79" class="stentry"><span class="keyword parmname">useSSL</span></td>
+
+						<td valign="top" headers="d7358124e82" class="stentry">true / false</td>
+
+						<td valign="top" headers="d7358124e85" class="stentry">true / false</td>
+
+						<td valign="top" headers="d7358124e88" class="stentry">true / false</td>
+
+					</tr>
+</table></div>
+
+				<p class="p"/>
+
+				<div class="note note"><span class="notetitle">Note</span> In the outbound scenarion, the <span class="keyword parmname">useSSL</span> property can be set to
+						<kbd class="ph userinput">true</kbd> or <kbd class="ph userinput">false</kbd> depending on the
+					XS application's needs.</div>
+
+				<p class="p">For more information, see  <a class="xref" href="06ca24043b0f4eb78cf39c6bc1d8a8dc.html">Using XS Destinations for Internet Connectivity</a></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">On-Demand to On-Premise Connectivity</div><div type="On-Demand to On-Premise Connectivity">
+				
+				<p class="p">In this case, you can develop an XS application in a productive SAP HANA instance at <span class="ph pname">SAP Cloud Platform</span> so that
+					the application connects, via a <span class="ph pname">Cloud connector</span>
+					tunnel, to on-premise services and resources.</p>
+
+				<p class="p">The corresponding XS parameters for all productive landscapes are the same. That is:</p>
+
+				<div class="table-wrapper"><table summary="" id="concept_fdj_wkn_nm__simpletable_jxy_qln_nm" border="1" class="simpletable"><tr class="sthead">
+						<th valign="bottom" align="left" id="d7358124e202" class="stentry" width="25%">XS parameter</th>
+
+						<th valign="bottom" align="left" id="d7358124e205" class="stentry" width="25%">hana.ondemand.com</th>
+
+						<th valign="bottom" align="left" id="d7358124e208" class="stentry" width="25%">us1.hana.ondemand.com</th>
+
+						<th valign="bottom" align="left" id="d7358124e211" class="stentry" width="25%">ap1.hana.ondemand.com</th>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e202" class="stentry"><span class="keyword parmname">useProxy</span></td>
+
+						<td valign="top" headers="d7358124e205" class="stentry">true</td>
+
+						<td valign="top" headers="d7358124e208" class="stentry">true</td>
+
+						<td valign="top" headers="d7358124e211" class="stentry">true</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e202" class="stentry"><span class="keyword parmname">proxyHost</span></td>
+
+						<td valign="top" headers="d7358124e205" class="stentry">localhost</td>
+
+						<td valign="top" headers="d7358124e208" class="stentry">localhost</td>
+
+						<td valign="top" headers="d7358124e211" class="stentry">localhost</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e202" class="stentry"><span class="keyword parmname">proxyPort</span></td>
+
+						<td valign="top" headers="d7358124e205" class="stentry">20003</td>
+
+						<td valign="top" headers="d7358124e208" class="stentry">20003</td>
+
+						<td valign="top" headers="d7358124e211" class="stentry">20003</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d7358124e202" class="stentry"><span class="keyword parmname">useSSL</span></td>
+
+						<td valign="top" headers="d7358124e205" class="stentry">false</td>
+
+						<td valign="top" headers="d7358124e208" class="stentry">false</td>
+
+						<td valign="top" headers="d7358124e211" class="stentry">false</td>
+
+					</tr>
+</table></div>
+
+				<p class="p"/>
+
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">When XS applications consume the <span class="ph pname">connectivity
+                            service</span> to connect to on-premise systems, the <span class="keyword parmname">useSSL</span>
+						property must always be set to <kbd class="ph userinput">false</kbd>.</p>
+
+					<p class="p">The communication between the XS application and the proxy listening on localhost is always
+						via HTTP. Whether the connection to the on-premise back-end should be HTTP
+						or HTTPS is a matter of access control configuration in the <span class="ph pname">Cloud connector</span>. For more information, see <a class="xref" href="e7d4927dbb571014af7ef6ebd6cc3511.html">Configuring Access Control (HTTP)</a>.</p>
+
+				</div>
+
+				<p class="p">For more information, see <a class="xref" href="0022f78f5d4d4e858c909b2d06286343.html">Using XS Destinations for On-Demand to On-Premise Connectivity</a></p>
+
+			</div></div>
+
+		</div>
+
+	</div>
+
+	<div class="topic concept nested1" id="concept_bwl_hpn_nm">
+		<h2 class="title topictitle2">Authentication Types</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">No Authenticaion</div><div type="No Authenticaion">
+				
+				<p class="p"/>
+
+				<ul class="ul" id="concept_bwl_hpn_nm__ul_npl_lpn_nm">
+					<li class="li">Internet via HTTP - you can directly connect to an Internet service.</li>
+
+					<li class="li">Internet via HTTPS - you need to use SSL certificate to access an Internet service. To meet
+						this requirement, proceed as follows:<ol class="ol" id="concept_bwl_hpn_nm__ol_jyw_mpn_nm">
+							<li class="li">As a prerequisite, you need to have previously exported a
+								certificate for the relevant HTTPS site.</li>
+
+							<li class="li">Then, open a Web browser and start the SAP HANA XS Administration
+								Tool
+									(<span class="ph uicontrol">https://&lt;schema&gt;&lt;account&gt;.&lt;host&gt;sap/hana/xs/admin/</span>).</li>
+
+							<li class="li">On the <span class="ph uicontrol">XS Applications</span> page, expand the nodes
+								in the application tree to locate your application.</li>
+
+							<li class="li">Select the <span class="keyword parmname">.xshttpdest</span> file to display details
+								of the HTTP destination and then choose
+								<span class="ph uicontrol">Edit</span>.</li>
+
+							<li class="li">In the <span class="ph uicontrol">AUTHENTICATION</span> section, leave the
+									<span class="ph uicontrol">None</span> radio button selected..</li>
+
+							<li class="li">Select the <span class="ph uicontrol">Use SSL</span> checkbox and from the
+									<span class="ph uicontrol">Trust Store</span> field choose your
+								certificate.</li>
+
+							<li class="li">Save your entries.</li>
+
+						</ol>
+
+					</li>
+
+				</ul>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Basic Authentication</div><div type="Basic Authentication">
+				
+				<p class="p">You need credentials to access an Internet or on-premise service. To meet this requirement,
+					proceed as follows:</p>
+
+				<ol class="ol" id="concept_bwl_hpn_nm__ol_vvj_xpn_nm">
+					<li class="li">Open a Web browser and start the SAP HANA XS Administration Tool
+							(<span class="ph uicontrol">https://&lt;schema&gt;&lt;account&gt;.&lt;host&gt;/sap/hana/xs/admin/</span>).</li>
+
+					<li class="li">On the <span class="ph uicontrol">XS Applications</span> page, expand the nodes in the
+						application tree to locate your application.</li>
+
+					<li class="li">Select the <span class="keyword parmname">.xshttpdest</span> file to display details of the
+						HTTP destination and then choose <span class="ph uicontrol">Edit</span>.</li>
+
+					<li class="li">In the <span class="ph uicontrol">AUTHENTICATION</span> section, choose the
+							<span class="ph uicontrol">Basic</span> radio button.</li>
+
+					<li class="li">Enter the credentials for the on-premise service.</li>
+
+					<li class="li">Save your entries.</li>
+
+				</ol>
+
+			</div></div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

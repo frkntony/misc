@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can allow communication with SAP Cloud Platform virtual machines from other systems by managing security group rules using console client commands. Communication between virtual machines within the same account is available by default."/>
+<meta name="description" content="You can allow communication with SAP Cloud Platform virtual machines from other systems by managing security group rules using console client commands. Communication between virtual machines within the same account is available by default."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Enabling Communication from SAP Cloud Platform Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio41c987c040f04c7cb6157dcc824a7762">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Enabling Communication from <span class="ph pname">SAP Cloud Platform</span> Systems</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"> You can allow communication with <span class="ph pname">SAP Cloud Platform</span> virtual machines from other
+		systems by managing security group rules using console client commands. Communication
+		between virtual machines within the same account is available by default.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have created a virtual machine. For more information, see <a class="xref" href="c0d2dd37428944d3b673ffdd74f3a975.html" title="You need to create and start a virtual machine using the console client. Then, you establish a secure communication channel to it over Secure Shell (SSH) protocol. You open an SSH tunnel and get all the communication details you need to log in to the virtual machine and install and maintain your software.">Managing Virtual Machines</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">After you create a virtual machine, it is secure and communication to it is allowed only via
+				SSH using the console client. You can define the allowed ports on which another <span class="ph pname">SAP Cloud Platform</span> system can connect to the specific virtual machine by
+				configuring a security group rule for it.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Create a security group rule specifying the range of allowed ports:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo create-security-rule --account myaccount --user mymail@example.com --host hana.ondemand.com --name myvm --source-id mysystem --source-type HANA --from-port &lt;from_port&gt; --to-port &lt;to_port&gt;</pre></div>
+
+					</div>
+
+					<p class="p">For an SAP HANA system, the <span class="keyword parmname">--source-id</span> is the SAP HANA
+						database system name. You can find your SAP HANA database system name in the
+						cockpit, where you navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Database Systems</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. For a Java application, it is the application name.</p>
+
+					<p class="p">The type of the system is specified in the <span class="keyword parmname">--source-id</span> field. The
+						acceptable <span class="keyword parmname">--source-type</span> values are HANA and JAVA.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check the security group rules for the virtual machine: </span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-security-rules --account myaccount --user mymail@example.com --host hana.ondemand.com --name myvm
+ </pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) When you no longer need the configured communication, delete the security group
+					rule:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo delete-security-rule --account myaccount --user mymail@example.com --host hana.ondemand.com --name myvm --source-id mysystem --source-type HANA --from-port &lt;from_port&gt; --to-port &lt;to_port&gt;
+</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="b140be7514b240f9b7a0106651cc8eac.html" title="This console client command creates a security group rule for a virtual machine.">create-security-rule</a></div>
+<div><a class="link" href="64ecd69a56e2429b86286bc0e96fb9f2.html" title="This console client command lists the security rules configured for a virtual machine.">list-security-rules</a></div>
+<div><a class="link" href="4ffac63a8a724cd4a14ef803eb54f8f5.html" title="This console client command deletes a security rule configured for a virtual machine.">delete-security-rule</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

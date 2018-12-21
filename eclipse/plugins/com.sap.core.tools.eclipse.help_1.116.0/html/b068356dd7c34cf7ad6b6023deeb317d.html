@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>HTTP Destinations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob068356dd7c34cf7ad6b6023deeb317d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">HTTP Destinations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loiob068356dd7c34cf7ad6b6023deeb317d__section_N10017_N10011_N10001"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">The HTTP destinations provide data communication via HTTP protocol and is used for
+				both Internet and on-premise connections.</p>
+
+		</div></div>
+
+		<div class="section" id="loiob068356dd7c34cf7ad6b6023deeb317d__section_N10024_N10011_N10001"><div class="section_title">HTTP Destination Properties</div><div type="HTTP Destination Properties">
+			
+			<p class="p">The runtime tries to resolve a destination in the order: <span class="ph uicontrol">Subscription
+					Level</span> → <span class="ph uicontrol">Account Level</span> →
+					<span class="ph uicontrol">Application Level</span>. By using the optional
+					"<span class="keyword parmname">DestinationProvider</span>" property, a destination can be
+				limited to application level only, that is, the runtime tries to resolve the
+				destination on application level.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob068356dd7c34cf7ad6b6023deeb317d__table_khb_t1j_jj" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d8349860e56">Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d8349860e59">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d8349860e56 "><span class="keyword parmname">DestinationProvider</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d8349860e59 ">Restricts destination to application level. If the property is
+								specified, the destination will be searched on the application level
+								only. By default, destinations are searched on all configuration
+								levels.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> If you use Java Web Tomcat 7 runtime container, the
+						<span class="keyword parmname">DestinationProvider</span> property is not supported. Instead,
+					you can use <a class="xref" href="df6c1ffd39f0451594d737cf7638ce00.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup.">AuthenticationHeaderProvider API</a>.</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=weather
+Type=HTTP
+Authentication=NoAuthentication
+DestinationProvider=Application
+</pre></div>
+
+		</div>
+
+		<div class="section" id="loiob068356dd7c34cf7ad6b6023deeb317d__section_34CAB926317746379CFEDF0DC89F0242"><div class="section_title">Supported Proxy Types for Connectivity</div><div type="Supported Proxy Types for Connectivity">
+			
+			<p class="p">The proxy types supported by the <span class="ph pname">connectivity
+                            service</span>
+				are: </p>
+
+			<ul class="ul" id="loiob068356dd7c34cf7ad6b6023deeb317d__ul_zcb_cvq_qj">
+				<li class="li">
+					<span class="ph uicontrol">Internet</span> - The application can connect to an external
+					REST or SOAP service on the Internet. </li>
+
+				<li class="li"><span class="ph uicontrol">OnPremise</span> - The application can connect to an on-premise back-end
+					system through the <span class="ph pname">Cloud connector</span>. </li>
+
+			</ul>
+
+			<p class="p">The proxy type used for a destination must be specified by the destination property
+					<span class="keyword parmname">ProxyType</span>. The property's default value (if not configured
+				explicitly) is <kbd class="ph userinput">Internet</kbd>. </p>
+
+		</div></div>
+
+		<div class="section" id="loiob068356dd7c34cf7ad6b6023deeb317d__section_38788239B8A74BBA8024B6F5CE821225"><div class="section_title">Setting Proxy Types for SAP HANA Cloud Local Runtime</div><div type="Setting Proxy Types for SAP HANA Cloud Local Runtime">
+			
+			<p class="p">If you work in your local development environment behind a proxy server and want to
+				use a service from the Internet, you need to configure your proxy settings on JVM
+				level. To do this, proceed as follows: </p>
+
+			<ol class="ol" id="loiob068356dd7c34cf7ad6b6023deeb317d__ol_rgh_dvq_qj">
+				<li class="li">On the <span class="ph uicontrol">Servers</span> view, double-click the added server and
+					choose <span class="ph uicontrol">Overview</span> to open the editor. </li>
+
+				<li class="li">Click the <span class="ph uicontrol">Open Launch Configuration</span> link. </li>
+
+				<li class="li"> Choose the <span class="ph uicontrol">(x)=Arguments</span> tab page. </li>
+
+				<li class="li">In the <span class="ph uicontrol">VM Arguments</span> box, add the following row:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">
+-Dhttp.proxyHost=yourproxyHost -Dhttp.proxyPort=yourProxyPort -Dhttps.proxyHost=yourproxyHost -Dhttps.proxyPort=yourProxyPort
+</pre></div>
+
+				</li>
+
+				<li class="li"> Choose <span class="ph uicontrol">OK</span>. </li>
+
+				<li class="li"> Start/restart your SAP HANA Cloud local runtime. </li>
+
+			</ol>
+
+			<p class="p">For more information and example, see <a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html">Consuming Internet Services (Java Web or Java EE 6 Web Profile)</a>.</p>
+
+			<p class="p">
+			</p>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section" id="loiob068356dd7c34cf7ad6b6023deeb317d__section_N100F0_N10013_N10001"><div class="section_title">Setting Proxy Types for SAP HANA Cloud</div><div type="Setting Proxy Types for SAP HANA Cloud">
+			
+			<ul class="ul" id="loiob068356dd7c34cf7ad6b6023deeb317d__ul_lpk_jsy_4j">
+				<li class="li">When using the <span class="ph uicontrol">Internet</span> proxy type, you do not need to
+					perform any additional configuration steps. </li>
+
+				<li class="li">When using the <span class="ph uicontrol">OnPremise</span> proxy type, you configure the
+					setting the standard way through the <span class="ph uicontrol">Connectivity</span> editor
+					in the Eclipse IDE. <p class="p">For more information and example, see <a class="xref" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a>.
+					</p>
+</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configuring Authentication</div><div type="Configuring Authentication">
+			
+			<p class="p">When creating an HTTP destination, you can use different authentication types for
+				access control::</p>
+
+			<div class="p">
+				<ul class="ul" id="loiob068356dd7c34cf7ad6b6023deeb317d__ul_hmr_zqy_dv">
+					<li class="li">
+						<p class="p"><a class="xref" href="3f1247537c1a4f069235ee63633659c5.html">Server Certificate Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="754bb467759c420489525333ae3ef15b.html">SAP Assertion SSO Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="56dd01441ef443c488406940ce09da8b.html">Principal Propagation Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e51e152ceaeb4b75affe5f15c65dfe6c.html">SAML Bearer Assertion Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e022a5eebaec4dbbabef7f5d60e13dd4.html">Application-to-Application SSO Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="9018a9e54b3c48d98aa63538d47bdcd6.html">Client Authentication Types for HTTP Destinations</a></p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="276dc66e2e8849e69430e2b2850407f3.html">LDAP Destinations</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

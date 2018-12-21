@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To use container-managed entity managers, you need to configure JTA data sources in the persistence.xml file. JTA data sources are managed data sources and are associated with JTA transactions."/>
+<meta name="description" content="To use container-managed entity managers, you need to configure JTA data sources in the persistence.xml file. JTA data sources are managed data sources and are associated with JTA transactions."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Persistence Units</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4f035202395d410f93ae345ac02c60ce">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Persistence Units</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To use container-managed entity managers, you need to configure JTA data sources in the
+			<span class="ph filepath">persistence.xml</span> file. JTA data sources are managed data sources and
+		are associated with JTA transactions. </p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To configure JTA data sources, you set the transaction type attribute
+					(<samp class="ph codeph">transaction-type</samp>) to JTA and specify the names of the JTA data
+				sources (<samp class="ph codeph">jta-data-source</samp>), unless the application is using the
+				default data source. </p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view, select
+						<span class="ph filepath">&lt;project&gt;/Java
+						Resources/src/META-INF/persistence.xml</span>, and from the context menu
+					choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Open With</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Persistence XML Editor</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">On the <span class="ph uicontrol">Connection</span> tab, enter the transaction type
+						<kbd class="ph userinput">JTA</kbd> or leave the default setting, which is JTA.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">If the application is using an explicitly named data source, enter the JNDI
+					name of the data source in the <span class="ph uicontrol">JTA data source</span>
+					field.</span>
+				<div class="itemgroup info">If it uses the default data source, it is not necessary to specify a data
+					source in the <span class="ph filepath">persistence.xml</span> file.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">If the application uses more than one data source, define a corresponding
+					number of persistence units, each with its own data source. The data source name
+					is the JNDI name used for the lookup and must match the name used for the schema
+					binding. To do this, switch to the <span class="ph uicontrol">Source</span> tab of the
+						<span class="ph filepath">persistence.xml</span> file.</span>
+				<div class="itemgroup info">
+					<div class="p">The example below shows the persistence units defined for two data sources,
+						where each data source is associated with a different
+						database:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;persistence&gt;
+&lt;persistence-unit name="hanadb" transaction-type="JTA"&gt;
+&lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;
+&lt;jta-data-source&gt;jdbc/hanaDB&lt;/jta-data-source&gt;
+        &lt;class&gt;com.sap.cloud.sample.persistence.Person&lt;/class&gt;
+        &lt;properties&gt;
+            &lt;property name="eclipselink.ddl-generation" value="create-tables" /&gt;
+        &lt;/properties&gt;
+&lt;/persistence-unit&gt;
+&lt;persistence-unit name="maxdb" transaction-type="JTA"&gt;
+        &lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;
+        &lt;jta-data-source&gt;jdbc/maxDB&lt;/jta-data-source&gt;
+        &lt;class&gt;com.sap.cloud.sample.persistence.Person&lt;/class&gt;
+        &lt;properties&gt;
+            &lt;property name="eclipselink.ddl-generation" value="create-tables" /&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</pre></div>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the file.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a></div>
+<div><a class="link" href="73e8d4c514f14a399c25711dd43f6975.html" title="To test an application on the local server, you need to define any data sources the application uses as connection properties for the local database. This step is not necessary if the application uses the default data source.">Configuring Data Sources As Connection Properties</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

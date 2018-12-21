@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To access resources from another HTML5 application or a subscription to an HTML5 application, you can map an application path to the corresponding application or subscription."/>
+<meta name="description" content="To access resources from another HTML5 application or a subscription to an HTML5 application, you can map an application path to the corresponding application or subscription."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing Application Resources</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio152cb759db2842db9851d404167d40bc">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accessing Application Resources</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">To access resources from another HTML5 application or a subscription to an HTML5
+		application, you can map an application path to the corresponding application or
+		subscription.</p>
+
+		<div class="p">If the given path matches a request path, the resource is loaded from the mapped application or
+            subscription. This feature may be used to separate re-usable resources in a dedicated application.<div class="note note"><span class="notetitle">Note</span> 
+                <p class="p">If multiple routes are defined in the application descriptor, the route for the
+                    first matching path in the application descriptor is selected.</p>
+
+            </div>
+</div>
+
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+...
+"routes": [
+        {
+           "path": "&lt;application path to be mapped&gt;",
+           "target": {
+               "type": "application",
+               "name": "&lt;name of the application or subscription&gt;"
+               "version": "&lt;version to be referenced. Default is active version&gt;",
+               },
+           "description": "&lt;description&gt;"
+             }
+          ]
+...
+</pre></div>
+
+		<div class="note sap-example example"><span class="exampletitle">Example</span> 
+            <p class="p">This configuration example maps all paths starting with
+                    <span class="ph sap-technical-name sap-technical-name">/icons</span> to the active version of the
+                application named <span class="ph sap-technical-name sap-technical-name">iconlibrary</span>.</p>
+
+            <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+...
+"routes": [
+             {
+           "path": "/icons", 
+           "target": {
+               "type": "application",
+               "name": "iconlibrary"
+               },
+           "description": "Icon Library"
+             }
+          ]
+...
+</pre></div>
+
+        </div>
+
+	</div>
+
+    <div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="aed1ffa3f3e741b3a4573c9e475aa2a4.html" title="Using the application descriptor file you can configure the behavior of your HTML5 application.">Application Descriptor File</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

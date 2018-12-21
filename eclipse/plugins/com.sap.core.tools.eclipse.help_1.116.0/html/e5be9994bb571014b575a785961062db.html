@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using the Apache Tomcat CSRF Prevention Filter</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe5be9994bb571014b575a785961062db">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using the Apache Tomcat CSRF Prevention Filter</h1>
+<div class="body"><div class="section" id="loioe5be9994bb571014b575a785961062db__section_2B5216929F7A410F8AFE7256DC3A6A7C"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		 
+		<p class="p">You have created a working Web application and have enforced authentication for it. See <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a></p>
+ 
+		<p class="p">For the purposes of this tutorial, an example
+		  application consisting of the following URLs will be used: 
+		</p>
+ 
+		<ul class="ul"><li class="li"><span class="ph filepath">/home</span> - displays home page, and
+			 has links to 
+			 <span class="ph filepath">/doActionA</span> and
+			 
+			 <span class="ph filepath">/doActionB</span> 
+		  </li>
+<li class="li"><span class="ph filepath">/doActionA</span> - executes a security
+			 sensitive action A, and also has a link to 
+			 <span class="ph filepath">/doActionB</span> 
+		  </li>
+<li class="li"><span class="ph filepath">/doActionB</span> - executes a security
+			 sensitive action B 
+		  </li>
+</ul>
+ 
+	 </div></div>
+<div class="section" id="loioe5be9994bb571014b575a785961062db__section_AF1CCB2ECA864A018FC435E89E6F0E49"><div class="section_title">Adding CSRF Prevention to a Web Application</div><div type="Adding CSRF Prevention to a Web Application"> 
+		 
+		<p class="p"><strong class="ph b">1. Choose entry point
+			 URLs</strong> 
+		</p>
+ 
+		<div class="p">Entry points are URLs used as a starting point for
+		  the navigation across the application. They are not protected against CSRF as
+		  requests to them will not be tested for the presence of a valid nonce. Entry
+		  points should meet the following criteria: 
+		<ul class="ul"><li class="li">Entry
+			 points are protected resources . 
+			 <ul class="ul"><li class="li">Entry points should not trigger any
+				  security sensitive actions. 
+				</li>
+<li class="li">Using the full set of entry points as
+				  navigation starting points, it should be possible to reach any link in the
+				  application that is being protected against CSRF. 
+				</li>
+</ul>
+ 
+		  </li>
+</ul>
+ 
+		</div>
+ 
+		<p class="p">Considering the example application, 
+		  <span class="ph filepath">/doActionA</span>
+		  and<span class="ph filepath"> /doActionB</span> are not
+		  plausible for entry points since they are state changing URLs. They should be
+		  protected against CSRF. Following the rules above, you could easily conclude
+		  that 
+		  <span class="ph filepath">/home</span> is best
+		  suited to be the entry point. 
+		</p>
+ 
+	 </div></div>
+<p class="p"> 
+		<strong class="ph b">2. Define the filter in the application's
+		  web.xml 
+		</strong> 
+	 </p>
+<p class="p">The CSRF Prevention Filter should be defined in the 
+		<span class="ph filepath">web.xml</span>
+		configuration file. Important init parameters are 
+		<span class="keyword cmdname">entryPoints</span> and 
+		<span class="keyword cmdname">nonceCacheSize</span>.
+		The first parameter's value is a comma separated list of the entry points,
+		identified in the previous step. In this case 
+		<span class="ph filepath">/home</span>. 
+	 </p>
+<p class="p">The second parameter, 
+		<span class="keyword cmdname">nonceCacheSize</span>,
+		should be used in case of parallel requests that might cause a new nonce to be
+		generated, before the validation of an encoded URL. The 
+		<span class="keyword cmdname">nonceCacheSize</span>
+		parameters defines the number of previous values stored. The default number is
+		5. 
+	 </p>
+<p class="p">The definition below will protect all URLs except for
+		the entry point 
+		<span class="ph filepath">/home</span>. 
+	 </p>
+<div class="p"> 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  &lt;filter&gt;
+    &lt;filter-name&gt;CsrfFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.catalina.filters.CsrfPreventionFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;entryPoints&lt;/param-name&gt;
+      &lt;param-value&gt;/home&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/filter&gt;
+</pre></div>
+ 
+	 </div>
+<p class="p"><strong class="ph b">3. Define the filter
+		  mapping in the web.xm</strong>l 
+	 </p>
+<p class="p">The general recommendation is to enable the filter
+		for all URLs using the pattern /*: 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;CsrfFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+</pre></div>
+<p class="p">4. Encode all URL links 
+	 </p>
+<p class="p">In the example application the URLs that should be
+		encoded are<span class="ph filepath">
+		  /protected/doActionA</span> and 
+		<span class="ph filepath">/protected/doActionB</span> in 
+		<span class="ph filepath">/protected/home</span>,
+		and the<span class="ph filepath">
+		  /protected/doActionB</span> URL in<span class="ph filepath"> /protected/doActionA</span>. To encode
+		the URLs use 
+		<span class="keyword cmdname">HttpServletResponse#encodeRedirectURL(String)</span>
+		or 
+		<span class="keyword cmdname">HttpServletResponse#encodeURL(String)</span>.
+		
+	 </p>
+<p class="p">Here is the source for the 
+		<span class="ph filepath">home.jsp</span>, mapped
+		to<span class="ph filepath"> /protected/home</span>. 
+	 </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"&gt;
+&lt;title&gt;Home&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	This is a home page and I am an entry point.
+	&lt;br/&gt;
+
+	&lt;%
+		String urlActionA = "doActionA";
+		String urlActionAEncoded = response.encodeURL(urlActionA);
+	%&gt;
+	&lt;form action="&lt;%=urlActionAEncoded %&gt;" method="POST"&gt;
+		&lt;input type="text" name="arg" value="A"/&gt;
+		&lt;input type="submit" value="Do Action A"/&gt;
+	&lt;/form&gt;
+	&lt;br/&gt;
+
+	&lt;%
+		// Encode URL for action B
+		String urlActionB = "doActionB";
+		String urlActionBEncoded = response.encodeURL(urlActionB);
+	%&gt;
+	&lt;form action="&lt;%=urlActionBEncoded %&gt;" method="POST"&gt;
+		&lt;input type="text" name="arg" value="B"/&gt;
+		&lt;input type="submit" value="Do Action B"/&gt;
+	&lt;/form&gt;
+	&lt;br/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<p class="p"><strong class="ph b">5. Adding new URLs to a
+		  CSRF protected application</strong> 
+	 </p>
+<p class="p">In case a new URL needs to be added to the
+		application later, for example, 
+		<span class="keyword cmdname">/newlink</span>, then
+		you should evaluate its need of CSRF protection. For example, if it executes a
+		state changing action, it certainly should be protected. Depending on the case
+		there are two possibilities: 
+	 </p>
+<ul class="ul"><li class="li">No CSRF
+		  protection is needed 
+		  <p class="p">The URL should be defined as entry point. This is
+			 done by editing the 
+			 <span class="ph filepath">web.xml</span> and
+			 adding the new URL to the value of the init parameter 
+			 <span class="ph filepath">entryPoints</span> of
+			 the 
+			 <span class="ph filepath">CsrfPreventionFilter</span> from step 2.
+			 The new value should be separated with a comma. 
+		  </p>
+ 
+		</li>
+<li class="li">CSRF
+		  protection is needed. 
+		  <p class="p">The 
+			 <span class="keyword cmdname">/newlink</span> URL
+			 should be encoded in all pages that use it as described in step 4. 
+		  </p>
+ 
+		</li>
+</ul>
+<p class="p">All CSRF protected links that are used in the new
+		page should be encoded, as described in step 4. 
+	 </p>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

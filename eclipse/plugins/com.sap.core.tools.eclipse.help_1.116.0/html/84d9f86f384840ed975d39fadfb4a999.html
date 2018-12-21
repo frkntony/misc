@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Integration Architecture Overview</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio84d9f86f384840ed975d39fadfb4a999">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Integration Architecture Overview</h1>
+
+	<div class="body conbody">
+		<p class="p">The graphic below illustrates how a gamified application (gamified app) running on <span class="ph pname">SAP Cloud Platform</span> is typically
+			integrated with the <span class="ph pname">gamification service</span>.
+			The demo application "Help Desk" follows this integration architecture:</p>
+
+		<p class="p"><img class="image" id="loio84d9f86f384840ed975d39fadfb4a999__image_xl2_24h_3r" src="loioa9cdc60b132244eb83e6b899093ba892_HiRes.png"/></p>
+
+		<p class="p">In a <span class="ph pname">SAP Cloud Platform</span> setting we
+			assume that the gamified app and the <span class="ph pname">gamification service</span>
+			subscription are located in the same account. Furthermore, we assume that the
+			application back end is written in Java, while the application front end is based on
+			HTML5 or SAP UI5.</p>
+
+		<p class="p">The technical endpoint is used to send gamification-relevant events and perform user management
+			tasks from the application back end. Communication is based on a BASIC AUTH destination
+			that uses the user name and password of a technical user.</p>
+
+		<p class="p">The easiest way to show player achievements is to integrate a default user profile that comes
+			with the <span class="ph pname">gamification service</span>
+			subscription as an iFrame in the application's web front end.</p>
+
+		<p class="p">To implement a user profile or single widgets (for example a progress bar tailored to the
+			application's front end), we recommend you use the user endpoint in combination with a
+			local proxy servlet and an app-to-app SSO destination. The proxy servlet prevents
+			running into cross-site scripting issues and the app-to-app SSO destination
+			automatically forwards the credentials of the authenticated user to the <span class="ph pname">gamification service</span>.
+			This allows reuse of the access control mechanisms offered by the <span class="ph pname">gamification service</span>.</p>
+
+		<p class="p">Since the user endpoint is used from a browser it is protected against cross-site request
+			forgery. Accordingly, an XSRF token has to be acquired by the client first. </p>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="68231e0cd13b4c5a9aedbfdea1eb75d2.html">Exchanging Data via HTTP Protocol</a></div>
+<div><a class="link" href="e022a5eebaec4dbbabef7f5d60e13dd4.html">Application-to-Application SSO Authentication</a></div>
+<div><a class="link" href="6fafbaa9508e4a0a94b1f7369efe03c2.html">Security Development</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

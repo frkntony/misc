@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Generic facts can be used as global variables and are stored in the working memory. The creation of a generic fact instance has to be done in the consequences part. In the trigger part you can query for certain generic fact instances and (if required) bind them to local variables. This works just like querying the EventObject."/>
+<meta name="description" content="Generic facts can be used as global variables and are stored in the working memory. The creation of a generic fact instance has to be done in the consequences part. In the trigger part you can query for certain generic fact instances and (if required) bind them to local variables. This works just like querying the EventObject."/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Working with Generic Facts (Storing Arbitrary States)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3bb0d106fa264aac9c2e258752207530">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Working with Generic Facts (Storing Arbitrary States)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Generic facts can be used as global variables and are stored in the working memory. The
+		creation of a generic fact instance has to be done in the consequences part. In the trigger
+		part you can query for certain generic fact instances and (if required) bind them to local
+		variables. This works just like querying the <samp class="ph codeph">EventObject</samp>.</p>
+
+		<p class="p">Creation of a generic fact:</p>
+
+		<p class="p">Creation of a generic fact with a given key.</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">GenericFact myFact = new GenericFact(&lt;KEY&gt;);
+insert(myFact); 
+</pre></div>
+
+		</div>
+
+		<div class="p">Examples for the creation of generic facts:<ul class="ul" id="loio3bb0d106fa264aac9c2e258752207530__ul_vgx_wxz_4t">
+				<li class="li">
+					<p class="p">Declaration of a generic fact with the key “factA”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">GenericFact factA = new GenericFact('factA');
+insert(factA);
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Declaration of a generic fact with the key “factB” with a property
+						“relevance” and according value “critical”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">GenericFact factB = new GenericFact('factB');
+factB.addData('relevance', 'critical');
+insert(factB);
+</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<p class="p">Reading a generic fact:</p>
+
+		<p class="p">The generic fact variable has to be declared in the trigger part.</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$&lt;FACT_VARIABLE&gt;.getData();</pre></div>
+
+		</div>
+
+		<div class="p">Examples for reading generic facts:<ul class="ul" id="loio3bb0d106fa264aac9c2e258752207530__ul_jbw_bzz_4t">
+				<li class="li">
+					<p class="p">Assigning the value of the generic fact “loginCounter” to a variable.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">int lCounter = $loginCounter.getData();</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Assigning the data of the generic fact “daysOfWeek” to a variable of type
+						HashMap.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">HashMap&lt;String,Object&gt; hmDays = $daysOfWeek.getData();</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<p class="p">Updating a generic fact:</p>
+
+		<p class="p">The generic fact variable has to be declared in the trigger part.</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$&lt;FACT_VARIABLE&gt;.setData(&lt;VALUE&gt;);
+update($&lt;FACT_VARIABLE&gt;);
+</pre></div>
+
+		</div>
+
+		<div class="p">Examples for updating generic facts:<ul class="ul" id="loio3bb0d106fa264aac9c2e258752207530__ul_npw_nzz_4t">
+				<li class="li">
+					<p class="p">Assigning the value “59” to the generic fact “loginCounter”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$loginCounter.setData("59");
+update($loginCounter);
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Assigning the value of the variable “lCounter” to the generic fact
+						“loginCounter”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$loginCounter.setData(lCounter);
+update($loginCounter);
+</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<p class="p">Deleting a generic fact: </p>
+
+		<p class="p">The generic fact variable has to be declared in the trigger part.</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">retract($&lt;FACT_VARIABLE&gt;);</pre></div>
+
+		</div>
+
+		<p class="p">Examples for deleting generic facts:</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">retract($loginCounter);</pre></div>
+
+		</div>
+
+		<p class="p">Examples for querying or binding generic facts in WHEN-part:</p>
+
+		<ul class="ul" id="loio3bb0d106fa264aac9c2e258752207530__ul_nfw_1kf_m5">
+			<li class="li">
+				<div class="p">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='wpbStartChapter', $playerid:playerid, $chapter:data['chapterId']) from entry-point eventstream
+$p : Player($playerid == uid)
+not GenericFact(key==$playerid,data['chapterId']==$chapter)
+</pre></div>
+
+				</div>
+
+			</li>
+
+		</ul>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

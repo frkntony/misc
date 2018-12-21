@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the cockpit, information about the resources available to your account and their current and past usage is provided at both account and application level. At account level, the values are aggregated for all applications in the account."/>
+<meta name="description" content="In the cockpit, information about the resources available to your account and their current and past usage is provided at both account and application level. At account level, the values are aggregated for all applications in the account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Viewing Resource Consumption</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8f4d9db9ecb34b08865c2c7a61d7719f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Viewing Resource Consumption</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">In the cockpit, information about the resources available to your account and their
+		current and past usage is provided at both account and application level. At account level,
+		the values are aggregated for all applications in the account. </p>
+
+		<p class="p">Resource consumption is presented in the form of aggregate values, which depend on the resource type:</p>
+
+		<ul class="ul" id="loio8f4d9db9ecb34b08865c2c7a61d7719f__ul_umk_43r_4m">
+			<li class="li">
+				<p class="p"><span class="ph uicontrol">Sum</span>: The sum for the selected month</p>
+
+			</li>
+
+			<li class="li">
+				<p class="p"><span class="ph uicontrol">Maximum</span>: The maximum value recorded for the selected month</p>
+
+				<p class="p">If the current month is selected, the latest value recorded is also shown. The frequency with which metrics are measured varies
+					depending on the resource type. For some it is only once per day.</p>
+
+			</li>
+
+		</ul>
+
+		<p class="p">To view the resource consumption for the selected account, open the account in the cockpit and choose <span class="ph uicontrol">Resource
+				Consumption</span> in the navigation area.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">By default, resource consumption is displayed for the current month. You can select an earlier month from the dropdown box.</p>
+
+		</div>
+
+		<p class="p">Each resource type is listed with the associated platform service and the measurements recorded for the selected month, as well as the
+			quota actually assigned to the account:</p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loio8f4d9db9ecb34b08865c2c7a61d7719f__table_jny_qsr_4m" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="17.730496453900706%"/><col width="29.255319148936167%"/><col width="53.01418439716311%"/></colgroup>
+
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="17.730496453900706%" id="d6543118e71">Service</th>
+
+						<th class="entry" valign="top" width="29.255319148936167%" id="d6543118e74">Resource</th>
+
+						<th class="entry" valign="top" width="53.01418439716312%" id="d6543118e77">Description</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="17.730496453900706%" headers="d6543118e71 ">Runtime</td>
+
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Compute Unit Size</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum number of VMs used of the given size. <div class="p">Sizes:<ul class="ul" id="loio8f4d9db9ecb34b08865c2c7a61d7719f__ul_n3s_jqm_rm">
+									<li class="li">Lite: 1 CPU Core; 2048 MB Main memory</li>
+
+									<li class="li">Professional: 2 CPU Cores; 4096 MB Main memory</li>
+
+									<li class="li">Premium: 4 CPU Cores; 8192 MB Memory</li>
+
+									<li class="li">Premium Plus: 8 CPU Cores; 16384 MB Memory</li>
+
+								</ul>
+</div>
+</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" rowspan="2" valign="top" width="17.730496453900706%" headers="d6543118e71 ">Network</td>
+
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Data Transfer</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Total size of outgoing HTTP traffic (egress bandwidth)</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Incoming Requests</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum number of incoming HTTP requests per day<p class="p">There is no quota assigned.</p>
+</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="17.730496453900706%" headers="d6543118e71 ">Connectivity</td>
+
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Connections to non-SAP on-premise systems</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum number of connections to non-SAP on-premise systems</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" rowspan="3" valign="top" width="17.730496453900706%" headers="d6543118e71 ">Document</td>
+
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Transactions</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Total number of HTTP requests to the document service</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Storage Content Size</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum amount of user data for stored documents and versions</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">Storage Metadata Size</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum amount of metadata for stored documents (for example, properties, folders, ACLs)<p class="p">There is no quota
+								assigned.</p>
+</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" rowspan="2" valign="top" width="17.730496453900706%" headers="d6543118e71 ">Persistence</td>
+
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">DB Space (HANA DB)</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum schema size, including table data and indexes</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="29.255319148936167%" headers="d6543118e74 ">DB Space (MaxDB)</td>
+
+						<td class="entry" valign="top" width="53.01418439716312%" headers="d6543118e77 ">Maximum schema size, including table data and indexes</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<div class="p">To view the resource consumption for a specific application, open the account in the cockpit and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area. Select the relevant application in the list and then choose <span class="ph uicontrol">Resource
+				Consumption</span> in the navigation area.<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p"> The same information is displayed as at the level of the account, except for the account quota.</p>
+
+			</div>
+</div>
+
+		
+		
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="c4c25cc63ac845779f76202360f98694.html" title="You can manage accounts and assign the quota available for a global account to the accounts associated with this global account.">Managing Accounts and Quota</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

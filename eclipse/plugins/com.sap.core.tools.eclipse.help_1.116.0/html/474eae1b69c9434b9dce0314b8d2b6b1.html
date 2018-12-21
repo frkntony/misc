@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming Back-End Systems (Java Web Tomcat 7)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio474eae1b69c9434b9dce0314b8d2b6b1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Consuming Back-End Systems (Java Web Tomcat 7)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__section_AC2508AEBEAF45B89EEFBFD930E6A1FD"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">This step-by-step tutorial demonstrates how a sample Web application consumes a back-end
+				system via HTTP(S) by using the <span class="ph pname">connectivity
+                            service</span>.
+				For simplicity, instead of using a real back-end system, we use a second sample Web
+				application containing <span class="keyword parmname">BackendServlet</span>, which mimics the
+				back-end system and can be called via HTTP(S). </p>
+
+			<p class="p">The servlet code, the <span class="ph filepath">web.xml</span> content, and the destination file
+					(<kbd class="ph userinput">backend-no-auth-destination</kbd>) used in this tutorial are
+				mapped to the connectivity sample project located in
+					<span class="ph filepath">&lt;SDK_location&gt;/samples/connectivity</span>. You can directly
+				import this sample in your Eclipse IDE. For more information, see <a class="xref" href="e8001e24bb571014946684289214ba84.html" title="To get a sample application up and running, import it as an Eclipse project into your Eclipse IDE and then deploy it on the local runtime and SAP Cloud Platform.">Importing Samples as Eclipse Projects</a>.</p>
+
+			<p class="p">The tutorial guides you through the following sections: </p>
+
+			<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_xjz_dpq_24">
+				<li class="li"><a class="xref" href="474eae1b69c9434b9dce0314b8d2b6b1.html#loio474eae1b69c9434b9dce0314b8d2b6b1__backend_service">Set Up
+						Application as a Back-End System</a></li>
+
+				<li class="li"><a class="xref" href="474eae1b69c9434b9dce0314b8d2b6b1.html#loio474eae1b69c9434b9dce0314b8d2b6b1__create_web_project">Create a
+						Dynamic Web Project</a></li>
+
+				<li class="li"><a class="xref" href="474eae1b69c9434b9dce0314b8d2b6b1.html#loio474eae1b69c9434b9dce0314b8d2b6b1__create_sample_servlet">Create
+						a Sample Servlet</a></li>
+
+				<li class="li"><a class="xref" href="474eae1b69c9434b9dce0314b8d2b6b1.html#loio474eae1b69c9434b9dce0314b8d2b6b1__deploy">Deploy the
+						Application</a></li>
+
+				<li class="li"><a class="xref" href="474eae1b69c9434b9dce0314b8d2b6b1.html#loio474eae1b69c9434b9dce0314b8d2b6b1__configure_destination_cloud">Configure the Destination in the Cloud</a></li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__user_roles"><div class="section_title">Connectivity User Roles</div><div type="Connectivity User Roles">
+			
+			<p class="p">In the on-demand to on-premise connectivity end-to-end scenario, different user roles
+				are involved. The particular steps for the relevant roles are described below: </p>
+
+			<ul class="ul" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ul_ldg_1ts_cq">
+				<li class="li">
+					<p class="p"><span class="ph uicontrol">IT Administrator</span> - Sets up and configures the <span class="ph pname">Cloud connector</span>. Scenario steps: </p>
+
+					<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_ffg_1ts_cq">
+						<li class="li">
+							<p class="p">Downloads the <span class="ph pname">Cloud connector</span> from <a class="xref" href="http://tools.hana.ondemand.com/#cloud" target="_blank" alt="http://tools.hana.ondemand.com/#cloud" title="http://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a>
+							</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Installs the connector. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Establishes an SSL tunnel from the connector to an <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Configures the exposed back-end systems and resources. </p>
+
+						</li>
+
+					</ol>
+
+				</li>
+
+				<li class="li">
+					<p class="p"><span class="ph uicontrol">Application Developer</span> - Develops Web applications
+						using destinations. Scenario steps: </p>
+
+					<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_kgg_1ts_cq">
+						<li class="li">
+							<p class="p">Installs the Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span> Tools for Java, and SDK. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Develops a Java EE application using the destination API. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Configures connectivity destinations as resources in the
+									<span class="ph filepath">web.xml</span> file. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Configures connectivity destinations via the <span class="ph pname">SAP Cloud Platform</span> server adapter in Eclipse IDE. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Deploys the Java EE application locally and on the cloud. </p>
+
+						</li>
+
+					</ol>
+
+				</li>
+
+				<li class="li"><span class="ph uicontrol">Account Operator</span> - Deploys Web applications, configures
+					their destinations, and conducts tests. Scenario steps: <ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_qhg_1ts_cq">
+						<li class="li">
+							<p class="p">Obtains a ready Java EE application WAR file. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Deploys the Java EE application to an <span class="ph pname">SAP Cloud Platform</span> account. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Uploads the connectivity destination configuration via the console
+								client. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Tests the Java EE application on a local server and deploys it again to a <span class="ph pname">SAP Cloud Platform</span> account. </p>
+
+						</li>
+
+					</ol>
+
+				</li>
+
+			</ul>
+
+			<p class="p">For more information, see <a class="xref" href="e6c7616abb5710148cfcf3e75d96d596.html">SAP Cloud Platform Cloud Connector</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__prerequisites"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ul_bbr_bts_cq">
+				<li class="li">You have downloaded and configured the <span class="ph pname">Cloud connector</span>.
+					For more information, see <a class="xref" href="e6c7616abb5710148cfcf3e75d96d596.html">SAP Cloud Platform Cloud Connector</a>. </li>
+
+				<li class="li">You have downloaded and set up your Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span> Tools for
+					Java, and SDK. <p class="p">For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>.</p>
+<div class="note note"><span class="notetitle">Note</span> You need to
+						install <kbd class="ph userinput">SDK for Java Web Tomcat 7</kbd>.</div>
+
+				</li>
+
+			</ul>
+
+			<p class="p">
+			</p>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__backend_service"><div class="section_title">1. Set Up Application as a Back-End System</div><div type="1. Set Up Application as a Back-End System">
+			
+			<p class="p">This tutorial uses a Web application that responds to a request with a ping as a sample
+				back-end system. The <span class="ph pname">connectivity
+                            service</span>
+				supports HTTP and HTTPS as protocols and provides an easy way to consume REST-based
+				Web services. </p>
+
+			<p class="p">To set up the sample application as a back-end system, see <a class="xref" href="e59dc589bb57101480939e290c55e680.html">Setting Up an Application as a Sample Back-End System</a>. </p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> 
+				<p class="p">Instead of the sample back-end system provided in this tutorial, you can use
+					other systems to be consumed through REST-based Web services.</p>
+
+			</div>
+
+			<p class="p">Once the back-end application is running on your local Tomcat, you need to configure the ping
+				service, provided by the application, in your installed <span class="ph pname">Cloud connector</span>. This
+				is required since the <span class="ph pname">Cloud connector</span> only
+				allows access to white-listed back-end services. To do this, follow the steps below: </p>
+
+			<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_krh_xxn_kr">
+				<li class="li">Open the <span class="ph pname">Cloud connector</span> and
+					from the <span class="ph uicontrol">Content</span> navigation (in left), choose
+						<span class="ph uicontrol">Access Control</span>.</li>
+
+				<li class="li">Under <span class="ph uicontrol">Mapping Virtual To Internal System</span>, choose the
+						<span class="ph uicontrol">Add</span> button and define an entry as shown on the
+					following screenshot. The <span class="ph uicontrol">Internal Host</span> must be the
+					physical host name of the machine on which the Tomcat of the back-end
+					application is running. <p class="p">
+						<img class="image" id="loio474eae1b69c9434b9dce0314b8d2b6b1__image_k13_xxn_kr" height="326" src="loiob08c5681bb5710149475ca0100541acd_LowRes.png" width="484"/>
+					</p>
+
+				</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Save</span>. The newly mapped system appears in the
+					table.</li>
+
+				<li class="li">Click on it. A new table, <span class="ph uicontrol">Resources Accessible On
+						&lt;host&gt;:&lt;port&gt;</span>, opens below.</li>
+
+				<li class="li">Specify the URL paths <span class="keyword parmname">/BackendAppHttpBasicAuth </span> and
+						<span class="keyword parmname">/BackendAppHttpNoAuth </span> as accessible resources, as
+					shown on the screenshot below. When defining the paths, make sure you have
+					selected the <span class="ph uicontrol">Path and all sub-paths</span> option. <p class="p"><img class="image" id="loio474eae1b69c9434b9dce0314b8d2b6b1__image_abg_cyn_kr" src="loiob053fb10bb571014aee2a177d3215184_LowRes.png"/></p>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__create_web_project"><div class="section_title">2. Create a Dynamic Web Project</div><div type="2. Create a Dynamic Web Project">
+			
+			<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_wpx_15s_cq">
+				<li class="li">Open the <span class="ph uicontrol">Java EE</span> perspective of the Eclipse IDE. </li>
+
+				<li class="li">From the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Project name</span> field, enter
+						<kbd class="ph userinput">ConnectivityHelloWorld </kbd>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Target Runtime</span> pane, select <kbd class="ph userinput">Java Web
+						Tomcat 7</kbd> as the runtime you want to use to deploy the
+					application. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Configuration</span> pane, leave the default
+					configuration.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span> to finalize the creation of your project.
+							<p class="p"><img class="image" id="loio474eae1b69c9434b9dce0314b8d2b6b1__image_wbw_ghs_cq" src="loiod0f633d76f4a416e9c608465e4ea2cf6_HiRes.png"/></p>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__create_sample_servlet"><div class="section_title">3. Create a Sample Servlet</div><div type="3. Create a Sample Servlet">
+			
+			<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_j2w_35s_cq">
+				<li class="li">From the <span class="ph uicontrol">ConnectivityHelloWorld</span> context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Enter <kbd class="ph userinput">hello</kbd> as the <span class="ph uicontrol">Java package</span>
+					and <kbd class="ph userinput">ConnectivityServlet</kbd> as the <span class="ph uicontrol">Class
+						name</span> and choose <span class="ph uicontrol">Next</span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">URL mappings</span> field, select
+						<span class="ph uicontrol">/ConnectivityServlet </span> and choose
+						<span class="ph uicontrol">Edit</span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Pattern</span> field, replace the current value with just
+						"<kbd class="ph userinput">/</kbd>". In this way, the servlet will be mapped as a
+					welcome page for the application. <p class="p"><img class="image" id="loio474eae1b69c9434b9dce0314b8d2b6b1__image_jkw_35s_cq" height="120" src="loio7612b41e711e1014839a8273b0e91070_LowRes.png" width="316"/>
+					</p>
+
+				</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span> so that the
+						<span class="ph uicontrol">ConnectivityServlet.java</span> servlet is created and
+					opened in the Java editor. </li>
+
+				<li class="li">Go to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">ConnectivityHelloWorld</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">WebContent</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">WEB-INF</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and open the <span class="ph filepath">web.xml</span> file. </li>
+
+				<li class="li">To consume connectivity configuration using JNDI, you need to define the
+						<span class="keyword apiname">ConnectivityConfiguration</span> API as a resource in the
+						<span class="ph filepath">web.xml</span> file. Below is an example of a
+						<span class="keyword apiname">ConnectivityConfiguration</span> resource, named
+						<kbd class="ph userinput">connectivityConfiguration</kbd>. <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+ &lt;resource-ref&gt;
+    &lt;res-ref-name&gt;connectivityConfiguration&lt;/res-ref-name&gt;
+    &lt;res-type&gt;com.sap.core.connectivity.api.configuration.ConnectivityConfiguration&lt;/res-type&gt;
+ &lt;/resource-ref&gt;
+</pre></div>
+
+					<p class="p"/>
+<div class="note note" id="loio474eae1b69c9434b9dce0314b8d2b6b1__note_N10225_N10219_N101AF_N101A7_N10013_N10001"><span class="notetitle">Note</span> 
+						<p class="p">Destination <kbd class="ph userinput">backend-no-auth-destination</kbd> will be looked-up via
+							ConnectivityConfiguration JNDI lookup. For more information, see <a class="xref" href="4da3b13c88ce4220bbd56a4361799668.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the connectivity configuration via a JNDI lookup.">ConnectivityConfiguration API</a>.</p>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<div class="p">Replace the entire servlet class to make use of the configuration API. The configuration API
+						is visible by default for cloud applications and must not be added
+						explicitly to the application class path.
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.connectivity;
+ 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
+ 
+import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+ 
+import com.sap.cloud.account.TenantContext;
+import com.sap.core.connectivity.api.configuration.ConnectivityConfiguration;
+import com.sap.core.connectivity.api.configuration.DestinationConfiguration;
+/**
+ * Servlet class making http calls to specified http destinations.
+ * Destinations are used in the following example connectivity scenarios:&lt;br&gt;
+ * - Connecting to an outbound Internet resource using HTTP destinations&lt;br&gt;
+ * - Connecting to an on-premise backend using on premise HTTP destinations,&lt;br&gt;
+ *   where the destinations have no authentication.&lt;br&gt;
+ */
+public class ConnectivityServlet extends HttpServlet {
+    @Resource
+    private TenantContext  tenantContext;
+    
+    private static final long serialVersionUID = 1L;
+    private static final int COPY_CONTENT_BUFFER_SIZE = 1024;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectivityServlet.class);
+ 
+    private static final String ON_PREMISE_PROXY = "OnPremise";
+ 
+    /** {@inheritDoc} */
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpURLConnection urlConnection = null;
+        String destinationName = request.getParameter("destname");
+        
+        // The default request to the Servlet will use outbound-internet-destination
+        if (destinationName == null) {
+            destinationName = "outbound-internet-destination";
+        }
+        
+        try {
+            // Look up the connectivity configuration API
+            Context ctx = new InitialContext();
+            ConnectivityConfiguration configuration = (ConnectivityConfiguration) ctx.lookup("java:comp/env/connectivityConfiguration");
+            
+            // Get destination configuration for "destinationName"
+            DestinationConfiguration destConfiguration = configuration.getConfiguration(destinationName);
+            if (destConfiguration == null) {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                        String.format("Destination %s is not found. Hint: Make sure to have the destination configured.", destinationName));
+                return;
+            }
+            
+            // Get the destination URL
+            String value = destConfiguration.getProperty("URL");
+            URL url = new URL(value);
+            
+            String proxyType = destConfiguration.getProperty("ProxyType");
+            Proxy proxy = getProxy(proxyType);
+            
+            urlConnection = (HttpURLConnection) url.openConnection(proxy);
+            
+            // Insert the required header in the request for on-premise destinations
+            injectHeader(urlConnection, proxyType);
+            
+            // Copy content from the incoming response to the outgoing response
+            InputStream instream = urlConnection.getInputStream();
+            OutputStream outstream = response.getOutputStream();
+            copyStream(instream, outstream);
+        } catch (Exception e) {
+            // Connectivity operation failed
+            String errorMessage = "Connectivity operation failed with reason: "
+                    + e.getMessage()
+                    + ". See "
+                    + "logs for details. Hint: Make sure to have an HTTP proxy configured in your "
+                    + "local environment in case your environment uses "
+                    + "an HTTP proxy for the outbound Internet "
+                    + "communication.";
+            LOGGER.error("Connectivity operation failed", e);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    errorMessage);
+        }
+    }
+    
+    private Proxy getProxy(String proxyType) {
+        String proxyHost = null;
+        int proxyPort;
+        if (ON_PREMISE_PROXY.equals(proxyType)) {
+            // Get proxy for on-premise destinations
+            proxyHost = System.getenv("HC_OP_HTTP_PROXY_HOST");
+            proxyPort = Integer.parseInt(System.getenv("HC_OP_HTTP_PROXY_PORT"));
+        } else {
+            // Get proxy for internet destinations
+            proxyHost = System.getProperty("http.proxyHost");
+            proxyPort = Integer.parseInt(System.getProperty("http.proxyPort"));
+        }
+        return new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
+    }
+    
+    private void injectHeader(HttpURLConnection urlConnection, String proxyType) {
+        if (ON_PREMISE_PROXY.equals(proxyType)) {
+            // Insert header for on-premise connectivity with the consumer account name
+            urlConnection.setRequestProperty("SAP-Connectivity-ConsumerAccount", tenantContext.getAccountName());
+        }
+    }
+    
+    private void copyStream(InputStream inStream, OutputStream outStream) throws IOException {
+        byte[] buffer = new byte[COPY_CONTENT_BUFFER_SIZE];
+        int len;
+        while ((len = inStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, len);
+        }
+    }
+} 
+</pre></div>
+
+					</div>
+
+					<p class="p"/>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">The given servlet can be run with different destination scenarios, for which user should
+							specify the destination name as a requested parameter in the calling
+							URL. In the case of on-premise connection to a back-end system, the
+							destination names should be
+								<kbd class="ph userinput">backend-no-auth-destination</kbd>. That is, it will
+							be accessed at:
+								<span class="keyword parmname">&lt;application_URL&gt;/?destname=backend-no-auth-destination</span></p>
+
+						<p class="p"/>
+
+					</div>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">When accessing a destination with a specific authentication type, use
+									<a class="xref" href="df6c1ffd39f0451594d737cf7638ce00.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup.">AuthenticationHeaderProvider API</a> to get
+								authentication headers and then inject them in all requests to this
+								destination.</p>
+
+						</div>
+
+					</div>
+
+					<p class="p"/>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Save the Java editor and make sure the project compiles without errors. </p>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__deploy"><div class="section_title">4. Deploy the Application</div><div type="4. Deploy the Application">
+			
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">We only recommend but not obligate that you create the destination before
+					starting the application.</p>
+
+			</div>
+
+			<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_ezl_kvs_cq">
+				<li class="li">
+					<p class="p">To deploy your Web application locally or on the cloud, follow the steps
+						described in the respective
+						pages:</p>
+
+					<p class="p"><a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a></p>
+
+					<p class="p"><a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a></p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Once the application is successfully deployed locally or on the cloud, the
+						application issues an exception saying that the
+							<kbd class="ph userinput">backend-no-auth-destination</kbd> destination has not
+						been specified yet: </p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">
+HTTP Status 500 - Destination backend-no-auth-destination is not found. Hint: Make sure to have the destination configured.
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">As a next step, you need to configure
+							<kbd class="ph userinput">backend-no-auth-destination</kbd>. </p>
+
+				</li>
+
+			</ol>
+
+			<p class="p">For more information, see <a class="xref" href="4da3b13c88ce4220bbd56a4361799668.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the connectivity configuration via a JNDI lookup.">ConnectivityConfiguration API</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__configure_destination_cloud"><div class="section_title">5. Configure the Destination in the Cloud</div><div type="5. Configure the Destination in the Cloud">
+			
+			<p class="p">To configure the destination in <span class="ph pname">SAP Cloud Platform</span>, you need to
+				use the virtual host name (<kbd class="ph userinput">virtualpingbackend</kbd>) and port
+					(<kbd class="ph userinput">1234</kbd>) specified in one of the previous steps on the
+					<span class="ph pname">Cloud connector</span>'s <span class="ph uicontrol">Access Control</span> tab page. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<ul class="ul" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ul_u23_d12_y4">
+					<li class="li">On-premise destinations support HTTP connections only. </li>
+
+					<li class="li">The connection from an application to the <span class="ph pname">Cloud connector</span>
+						(through the tunnel) is encrypted on TLS level. Also, you can choose between
+						using HTTP or HTTPS to hop from the <span class="ph pname">Cloud connector</span>
+						to the back end.</li>
+
+				</ul>
+
+			</div>
+
+			<ol class="ol" id="loio474eae1b69c9434b9dce0314b8d2b6b1__ol_a2v_lws_cq">
+				<li class="li">In the Eclipse IDE, open the <span class="ph uicontrol">Servers</span> view and
+					double-click on <var class="keyword varname">&lt;application&gt;.&lt;account&gt;</var> to open
+					the cloud server editor. </li>
+
+				<li class="li">Open the <span class="ph uicontrol">Connectivity</span> tab page. </li>
+
+				<li class="li">In the <span class="ph uicontrol">All Destinations</span> section, choose <img class="image" id="loio474eae1b69c9434b9dce0314b8d2b6b1__image_akv_lws_cq" height="15" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" width="13"/> to create a new destination with the name
+						<kbd class="ph userinput">backend-no-auth-destination</kbd>. </li>
+
+				<li class="li">Use the following configuration:<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=backend-no-auth-destination
+Type=HTTP
+URL=http://virtualpingbackend:1234/BackendAppHttpNoAuth/noauth
+Authentication=NoAuthentication
+ProxyType=OnPremise 
+CloudConnectorVersion=2
+</pre></div>
+
+					</div>
+<p class="p"><img class="image" id="loio474eae1b69c9434b9dce0314b8d2b6b1__image_q4w_tlq_nm" src="loiob01a7620bb571014a9e7f323f53dfd73_LowRes.png" alt="Connectivity Editor Cloud - No Auth" title="Connectivity Editor Cloud - No Auth"/></p>
+
+				</li>
+
+				<li class="li">Save the destination. </li>
+
+				<li class="li">The <span class="ph uicontrol">Connectivity</span> editor automatically saves the
+					configuration in the cloud.</li>
+
+				<li class="li">Call the URL that references the cloud application again in the internal Web
+					browser. The application should now return the ping response. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio474eae1b69c9434b9dce0314b8d2b6b1__section_DFF1C1CC9A874488837771E50D5B32C6"><div class="section_title">Next Step</div><div type="Next Step">
+			
+			<p class="p">You can monitor the state and logs of your Web application deployed on <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<p class="p">For more information, see <a class="xref" href="db01af2fd976101493f9b90b81cd791f.html">Using Logs in the Eclipse IDE</a>. </p>
+
+			<p class="p">
+			</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Related Information</div><div type="Related Information">
+			
+			<p class="p"><a class="xref" href="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/configuration/ConnectivityConfiguration.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/configuration/ConnectivityConfiguration.html" title="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/configuration/ConnectivityConfiguration.html">JavaDoc ConnectivityConfiguration</a></p>
+
+			<p class="p"><a class="xref" href="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/configuration/DestinationConfiguration.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/configuration/DestinationConfiguration.html" title="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/configuration/DestinationConfiguration.html">JavaDoc DestinationConfiguration</a></p>
+
+			<p class="p"><a class="xref" href="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/authentication/AuthenticationHeaderProvider.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/authentication/AuthenticationHeaderProvider.html" title="https://help.hana.ondemand.com/javadoc/com/sap/core/connectivity/api/authentication/AuthenticationHeaderProvider.html">JavaDoc AuthenticationHeaderProvider </a></p>
+
+			<p class="p"><a class="xref" href="df6c1ffd39f0451594d737cf7638ce00.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup.">AuthenticationHeaderProvider
+					API</a></p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

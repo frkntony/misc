@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Translation Hub comprises a set of Web services that applications can consume to translate texts using a multilingual text repository and machine translation."/>
+<meta name="description" content="SAP Translation Hub comprises a set of Web services that applications can consume to translate texts using a multilingual text repository and machine translation."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming the SAP Translation Hub Services</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9ce1acde6ee04f08a06239a881f42b54">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Consuming the SAP Translation Hub Services</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">SAP Translation Hub comprises a set of Web services that applications can consume to
+		translate texts using a multilingual text repository and machine translation.</p>
+
+		<p class="p">You can use the Web services to translate texts, for example, in SAP Cloud Platform for Customer, your
+			own translation user interface, or through a translation tool that you create in an
+			integrated development environment (IDE). In this section, you will learn how to consume
+			the SAP Translation Hub services on SAP Cloud Platform.</p>
+
+		<div class="p">The Web services that SAP Translation Hub comprises are as follows:<ul class="ul" id="loio9ce1acde6ee04f08a06239a881f42b54__ul_wdm_tvb_cm">
+				<li class="li">Domain</li>
+
+				<li class="li">Language</li>
+
+				<li class="li">Suggestion</li>
+
+				<li class="li">Text type</li>
+
+				<li class="li">Translation</li>
+
+				<li class="li">Translation project</li>
+
+			</ul>
+</div>
+
+		<div class="section"><div class="section_title">Access</div><div type="Access"><p class="p">You access the Web services only through the HTTPS protocol.
+				Standard functions of SAP Identity Service manage user authorizations for the
+				services.</p>
+To be able to consume the SAP Translation Hub services, work through
+			the following items:<ol class="ol" id="loio9ce1acde6ee04f08a06239a881f42b54__ol_ytd_fzf_wl">
+				<li class="li">Have you got a developer account on SAP Cloud Platform?<div class="p">If you have, proceed to the next
+						step. If you don't, no worries. It takes just a moment to request a free
+						trial developer account at <a class="xref" href="https://account.hanatrial.ondemand.com/" target="_blank" alt="https://account.hanatrial.ondemand.com/" title="https://account.hanatrial.ondemand.com/">https://account.hanatrial.ondemand.com/</a>.<div class="note note"><span class="notetitle">Note</span> If you have an S
+							user that you use to log on to platforms like SAP Jam, you can use the
+							same user ID to register for a trial account on SAP Cloud Platform.
+							The resulting account name on SAP Cloud Platform will be
+									<span class="ph uicontrol"><var class="keyword varname">&lt;s
+						user&gt;</var>trial</span>.</div>
+</div>
+</li>
+
+				<li class="li">If you've heard about SAP Translation Hub before, maybe you've already enabled
+					the SAP Translation Hub service for your account? If you have, you're good to go
+					with the next step. If you haven't, complete the next couple of steps:<ol class="ol" type="a" id="loio9ce1acde6ee04f08a06239a881f42b54__ol_hv2_ztd_jq">
+						<li class="li">In the SAP Cloud Platform cockpit, choose
+								<span class="ph uicontrol">Services</span> in the navigation tree.</li>
+
+						<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">SAP Translation Hub</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Enable</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.<p class="p">For more information about enabling services, see
+									<cite class="cite">Accessing Services </cite> in the <cite class="cite">Related
+									Information</cite> section. </p>
+</li>
+
+					</ol>
+<div class="note note"><span class="notetitle">Note</span> You don't need to configure any destinations.</div>
+</li>
+
+				<li class="li">If several people need to access the SAP Translation Hub services, assign the
+					roles of those users.<p class="p">For more information about role assignments, see
+							<cite class="cite">User Authentication and Authorization</cite> in the <cite class="cite">Related
+							Information</cite> section.</p>
+</li>
+
+			</ol>
+</div></div>
+
+		<div class="section"><div class="section_title">URL of Services</div><div type="URL of Services">To access the services, you'll need the base URL of SAP
+			Translation Hub plus the service name and service-specific parameters. For information
+			about the base URL, see <cite class="cite">Building Base URL of SAP Translation Hub</cite> in the
+				<cite class="cite">Related Information</cite> section.</div></div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<p class="p">To filter or modify the response, the Web services use query parameters that are located in
+				the query part of the URL, for example, as follows:</p>
+
+			<p class="p"><var class="keyword varname">&lt;base URL of SAP Translation
+						Hub&gt;</var><samp class="ph codeph">/translationhub/api/v1/languages?search=<strong class="ph b">&lt;query_parameters&gt;</strong></samp></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Content</div><div type="Content">
+			
+			<p class="p">The Web services use JSON as the content of the HTTPS request or response. All of the service
+				responses that contain JSON have the JSON content type <span class="ph uicontrol">application/json;
+					charset=utf-8</span>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Troubleshooting</div><div type="Troubleshooting">
+			
+			<p class="p">If you run into difficulties when trying to consume the services in SAP Translation Hub, check
+				out the frequently asked questions (FAQ) page at <a class="extlink" href="http://help.sap.com/disclaimer?site=https://wiki.scn.sap.com/wiki/x/HyW7Gg" target="_blank" alt="https://wiki.scn.sap.com/wiki/x/HyW7Gg" title="https://wiki.scn.sap.com/wiki/x/HyW7Gg">SAP Translation
+					Hub - FAQ<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Error Handling</div><div type="Error Handling">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9ce1acde6ee04f08a06239a881f42b54__table_dqc_5wb_cm" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1:
+					Error Codes</span></caption>
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="50%" id="d7035238e192">Error</th>
+
+								<th class="entry" valign="top" width="50%" id="d7035238e195">Description</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d7035238e192 ">
+									<div class="p">
+										<pre class="pre screen">400 Bad Request</pre>
+
+									</div>
+
+									<div class="p">
+										<pre class="pre screen">Content-Length: 0</pre>
+
+									</div>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d7035238e195 ">If not all of the required query parameters are specified or an invalid value type is
+									passed, an HTTPS Bad Request status is returned.</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d7035238e192 ">
+									<div class="p">
+										<pre class="pre screen">404 Not Found</pre>
+
+									</div>
+
+									<div class="p">
+										<pre class="pre screen">Content-Length: 0</pre>
+
+									</div>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d7035238e195 ">If the wrong URL is used to call a service, an HTTPS Not Found status is
+									returned.</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">SAP API Hub</div><div type="SAP API Hub">
+			
+			<p class="p">Interested in consumuing the services of SAP Translation Hub from a central console? Check out
+				the SAP API Business Hub service on SAP Cloud Platform.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://help.hana.ondemand.com/help/frameset.htm?a32d3d532e2d4dceaaca4ebab68df037.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?a32d3d532e2d4dceaaca4ebab68df037.html" title="https://help.hana.ondemand.com/help/frameset.htm?a32d3d532e2d4dceaaca4ebab68df037.html">Accessing Services</a></div>
+<div><a class="link" href="3a011fba82644259a2cc3c919863f4b4.html" title="The base URL is main part of the complete URL that you need to access the services of SAP Translation Hub.">Building Base URL of SAP Translation Hub</a></div>
+<div><a class="link" href="c2588ca79d0248e88a7225427d796759.html" title="This service enables you to view the domains that are available in SAP Translation Hub.">Domain Service</a></div>
+<div><a class="link" href="ca7053f6e50e44298e5c6821033c569a.html" title="This service enables you to view the languages that SAP Translation Hub supports.">Language Service</a></div>
+<div><a class="link" href="2eb7958c958a42d48a48675734fa3f2c.html" title="This service enables you to get suggestions for short texts during the development process.">Suggestion Service</a></div>
+<div><a class="link" href="c42e8c5393aa4881aa64a34f25736187.html" title="This service enables you to access the text types that are available in SAP Translation Hub.">Text Type Service</a></div>
+<div><a class="link" href="9d0dee4adf014a71b0e531c6026ff132.html" title="This service enables you to translate English short texts into the languages that SAP Translation Hub supports.">Translation Service</a></div>
+<div><a class="link" href="d0d35f58206b4274b957714e84317246.html" title="This service enables you to translate English short texts and to edit the translations in a translation project.">Translation Project Service</a></div>
+<div><a class="link" href="5cc08779546b4bcf9f5155b8029ee4bf.html" title="To test the individual Web services, for example, the translation service, you can use a REST service client.">Testing the Services</a></div>
+<div><a class="link" href="fdf665ee6c594bb8a54afaa41ec36a7f.html" title="An authorization process controls access to SAP Translation Hub.">User Authentication and Authorization</a></div>
+<div><a class="link" href="https://api.sap.com" target="_blank" alt="https://api.sap.com" title="https://api.sap.com">SAP API Business Hub</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform provides two productive application runtimes based on the set of supported Java EE APIs. These are Java Web and Java EE 6 Web Profile."/>
+<meta name="description" content="SAP Cloud Platform provides two productive application runtimes based on the set of supported Java EE APIs. These are Java Web and Java EE 6 Web Profile."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Understanding the Runtime Information</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio343663e8f3e34573ac292106861a8590">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Understanding the Runtime Information</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> provides two productive application runtimes based on the set of
+		supported Java EE APIs. These are Java Web and Java EE 6 Web Profile.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The runtime is assigned either by default or explicitly set when an application is
+				deployed. If a version is not specified during deployment, the major runtime version
+				is determined automatically based on the SDK that is used to deploy the application.
+				By default, applications are deployed with the latest minor version of the
+				respective major version.</p>
+
+			<p class="p">You are strongly advised to use the default version, since this contains all released fixes
+				and critical patches, including security patches. Override this behavior only in
+				exceptional cases by explicitly setting the version, but note that this is not
+				recommended practice.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the cockpit, choose <span class="ph uicontrol">Java Applications</span> in the navigation area and
+					then select the relevant application in the application list.</span>
+				<div class="itemgroup stepresult">The <span class="ph uicontrol">Runtime</span> panel provides the following information:<div class="p">
+						<ul class="ul" id="loio343663e8f3e34573ac292106861a8590__ul_e2m_yhp_zl">
+							<li class="li">The application runtime name and version</li>
+
+							<li class="li">For user-defined runtimes: <ul class="ul" id="loio343663e8f3e34573ac292106861a8590__ul_t1r_1x1_g4">
+									<li class="li">The major and minor versions, for example, 1.35.</li>
+
+									<li class="li">The date until when the specified runtime version is
+										recommended for use, or whether it is no longer recommended
+										or has expired (also indicated by a runtime version status
+										icon).</li>
+
+								</ul>
+</li>
+
+						</ul>
+
+					</div>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To view the actual runtime versions used by the individual processes (requires
+					that the application is running), select a process in the process list.</span>
+				<div class="itemgroup stepresult">The <span class="ph uicontrol">Runtime</span> panel at process level provides the following information:<div class="p">
+						<ul class="ul" id="loio343663e8f3e34573ac292106861a8590__ul_rqh_d3p_zl">
+							<li class="li">The exact runtime version on which the process has been started
+								(major, minor, micro, and nano versions).</li>
+
+							<li class="li">The date until when this runtime version is recommended for use, or
+								whether it is no longer recommended or has expired (also indicated
+								by a runtime version status icon).</li>
+
+						</ul>
+
+					</div>
+</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="13afe5ca6e38485d8e6523f610c0ed29.html" title="Applications deployed on SAP Cloud Platform are always started on the latest version of the application runtime container. This version contains all released fixes, critical patches and enhancements and is respectively the recommended option for applications. In some special cases, you can choose the version of the runtime container your application uses by specifying it with the parameter --runtime-version when deploying your application. To change this version, you need to redeploy the application without specifying this parameter.">Choosing Application Runtime Version</a></div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

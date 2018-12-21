@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This document describes how to protect SAP Cloud Platform applications from XSS attacks."/>
+<meta name="description" content="This document describes how to protect SAP Cloud Platform applications from XSS attacks."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Protecting from Cross-Site Scripting (XSS)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe6433164bb571014aae3ba1ee751b250">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Protecting from Cross-Site Scripting
+	 (XSS)</h1>
+
+	<div class="body conbody"><p class="shortdesc">This document describes how to protect <span class="ph pname">SAP Cloud Platform</span> applications from XSS
+		attacks. </p>
+<div class="section" id="loioe6433164bb571014aae3ba1ee751b250__section_91F4FFC184824A82ADB53630B16B45C6"><div class="section_title">What is Cross-Site Scripting (XSS)</div><div type="What is Cross-Site Scripting (XSS)"> 
+		 
+		<p class="p">Cross-site Scripting (XSS) is the name of a class
+		  of security vulnerabilities that can occur in Web applications. It summarizes
+		  all vulnerabilities that allow an attacker to inject HTML Markup and/or
+		  JavaScript into the affected Web application's front-end. 
+		</p>
+ 
+		<p class="p">XSS can occur whenever the application dynamically
+		  creates its HTML/JavaScript/CSS content, which is passed to the user's Web
+		  browser, and attacker-controlled values are used in this process. In case these
+		  values are included into the generated HTML/JavaScript/CSS without proper
+		  validation and encoding, the attacker is able to include arbitrary
+		  HTML/JavaScript/CSS into the application's frontend, which in turn is rendered
+		  by the victim's Web browser and, thus, interpreted in the victim's current
+		  authentication context. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loioe6433164bb571014aae3ba1ee751b250__section_75217150BA2741E2BE898BA3C5001D2A"><div class="section_title">Protecting Applications Using SAPUI5</div><div type="Protecting Applications Using SAPUI5"> 
+		 
+		<p class="p">For SAPUI5 applications, XSS vulnerabilities can
+		  exist at different levels: 
+		</p>
+ 
+		<ul class="ul"><li class="li">Within
+			 the HTML page or custom data transports sent to the browser by the server 
+		  </li>
+<li class="li">Within
+			 the JavaScript Code of the application processing server responses 
+		  </li>
+<li class="li">Within
+			 the HTML renderers of SAPUI5 controls 
+		  </li>
+</ul>
+ 
+	 	<p class="p">For more information about the security measures implemented by SAPUI5, see <a class="xref" href="https://sapui5.hana.ondemand.com/sdk/#docs/guide/91f3d8706f4d1014b6dd926db0e91070.html" target="_blank" alt="https://sapui5.hana.ondemand.com/sdk/#docs/guide/91f3d8706f4d1014b6dd926db0e91070.html" title="https://sapui5.hana.ondemand.com/sdk/#docs/guide/91f3d8706f4d1014b6dd926db0e91070.html">Securing SAPUI5 Applications</a>. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe6433164bb571014aae3ba1ee751b250__section_8F4578378FF747ACAA288C571D3C0A8B">
+			<div class="section_title">Protecting Applications Using the XSS Output Encoding Library</div><div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">Using the XSS output encoding library is given as an option that you can use
+						for your applications. You can successfully use your custom or third-party
+						XSS protection libraries that you have available.</p>
+
+				</div>
+
+			</div>
+<p class="p">
+				<span class="ph pname">SAP Cloud Platform</span> provides an output encoding library that
+				helps protecting from XSS vulnerabilities. It is a central library that implements
+				several encoding methods for the different contexts. </p>
+
+			<p class="p">In the application node, first retrieve the
+					<samp class="ph codeph">com.sap.security.core.server.csi.IXSSEncoder</samp> interface using
+					<samp class="ph codeph">com.sap.security.core.server.csi.XSSEncoder.getInstance()</samp>. </p>
+
+			<p class="p">The interface provides methods for retrieving parameters or attributes, and for
+				encoding and decoding data. </p>
+
+			<p class="p">It also has various methods for different data types that should be encoded: </p>
+
+			<div class="table-wrapper"><table summary="" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d11557060e90" class="stentry">Data Type </th>
+
+					<th valign="bottom" align="left" id="d11557060e93" class="stentry">Code Sample for Encoding</th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11557060e90" class="stentry">HTML / XML:</td>
+
+					<td valign="top" headers="d11557060e93" class="stentry"> out = XSSEncoder.encodeHTML( in ); / XSSEncoder.encodeXML( val
+						);</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11557060e90" class="stentry">JavaScript:</td>
+
+					<td valign="top" headers="d11557060e93" class="stentry">out = XSSEncoder.encodeJavaScript( val ); </td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11557060e90" class="stentry">URL:</td>
+
+					<td valign="top" headers="d11557060e93" class="stentry">out = XSSEncoder.encodeURL( val );</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11557060e90" class="stentry">CSS:</td>
+
+					<td valign="top" headers="d11557060e93" class="stentry">out = XSSEncoder.encodeCSS( val ); </td>
+
+				</tr>
+</table></div>
+
+			<div class="section_title">Installing the XSS Output Encoding Library</div>
+			<p class="p">Тo use XSS output encoding API, you need to add it as library to the Dynamic Web
+				Project. This is done with the following steps: </p>
+
+			<ol class="ol">
+				<li class="li">In the <span class="ph uicontrol">Project Explorer</span> view, select the
+						<span class="ph uicontrol">persistence-with-jpa/WebContent/WEB-INF/lib</span> node. </li>
+
+				<li class="li">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Import</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">General</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">File System</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and choose <span class="ph uicontrol">Next.</span>
+				</li>
+
+				<li class="li">Browse to your local directory where you downloaded and unpacked the <span class="ph pname">SAP Cloud Platform</span> SDK, select the
+						<span class="ph uicontrol">repository/plugins</span> directory
+						(<span class="ph uicontrol">/impl</span> directory if you are using the Tomcat 7
+					runtime), and choose <span class="ph uicontrol">OK</span>. </li>
+
+				<li class="li">Select the archive
+						<span class="ph uicontrol">com.sap.security.core.server.csi_1.x.y.jar</span> and choose
+						<span class="ph uicontrol">Finish</span>. </li>
+
+			</ol>
+
+			<div class="section_title">Using the XSS Output Encoding Library</div> In the following example, we
+			demonstrate the use of the XSS Output Encoding API. The example has one HTML form that
+			retrieves user input, which can contain malicious code:
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt; 
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+    &lt;head&gt;
+&lt;title&gt;Login Page&lt;/title&gt;
+&lt;link rel="stylesheet" href="resources/login.css" /&gt;
+&lt;meta http-equiv="cache-control" content="no-cache"/&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div class="fields"&gt;
+&lt;form method="post" action="checkedInput.jsp"&gt;
+          &lt;span class="header"&gt;Enter your names:&lt;/span&gt;&lt;br/&gt;
+          &lt;table border="0"&gt;
+            &lt;tr&gt;
+              &lt;td&gt;First name: &lt;/td&gt;
+              &lt;td&gt;&lt;input name="firstname"/&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+&lt;tr&gt;
+              &lt;td&gt;Last name: &lt;/td&gt;
+              &lt;td&gt;&lt;input name="lastname"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;input type="submit" value="Submit"/&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/table&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+</pre></div>
+
+			Тhis form sends parameters to a second JSP: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt;
+&lt;%@ page import="com.sap.security.core.server.csi.IXSSEncoder" %&gt;
+&lt;%@ page import="com.sap.security.core.server.csi.XSSEncoder" %&gt;
+&lt;%@ page import="java.io.UnsupportedEncodingException" %&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome&lt;/title&gt;
+&lt;link rel="stylesheet" href="resources/login.css" /&gt;
+&lt;meta http-equiv="cache-control" content="no-cache"/&gt; &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+&lt;div class="fields"&gt;
+      &lt;form&gt;
+&lt;%
+String encodedName = validateInput(request.getParameter("firstname"));
+out.println("&lt;br&gt;Hello, " + encodedName);
+        String lastName = request.getParameter("lastname");
+out.println("&lt;br&gt; Hacked: " + lastName);
+%&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;%!
+      private String validateInput(String firstName) {
+String encodedInput = null;
+        IXSSEncoder xssEncoder = XSSEncoder.getInstance();
+try {
+encodedInput = xssEncoder.encodeHTML(firstName).toString();
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+        } return encodedInput;
+      }
+    %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+</pre></div>
+
+			<p class="p">Even though the attacker might attempt to inject malicious code in both parameters -
+					<span class="ph uicontrol">firstname</span> and <span class="ph uicontrol">lastname</span>, the
+				firstname is protected, since it uses the output encoding library to neutralize all
+				special symbols. However, the attack attempt will be successful for the lastname
+				parameter since it is printed directly to the output. This is unsafe behavior and
+				should be avoided. </p>
+
+		</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

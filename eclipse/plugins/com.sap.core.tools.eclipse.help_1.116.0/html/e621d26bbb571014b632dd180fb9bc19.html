@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="One benefit of Content Management Interoperability Services (CMIS) as compared to a file system is the extended handling of metadata."/>
+<meta name="description" content="One benefit of Content Management Interoperability Services (CMIS) as compared to a file system is the extended handling of metadata."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Handling CMIS Metadata</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe621d26bbb571014b632dd180fb9bc19">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Handling CMIS Metadata</h1>
+
+	<div class="body conbody"><p class="shortdesc">One benefit of Content Management Interoperability Services (CMIS) as compared to a file system is the extended handling of
+		metadata.</p>
+
+		<p class="p">You can use metadata to structure content and make it easier to find documents in a repository, even if it contains millions of documents.
+			In the CMIS domain model, metadata is structured using types. A type contains the set of allowed or required properties, for example, an
+				<span class="ph sap-technical-name sap-technical-name">Invoice</span> type that has the <span class="ph sap-technical-name sap-technical-name">InvoiceNo</span> and
+				<span class="ph sap-technical-name sap-technical-name">CustomerNo</span> properties.</p>
+
+		<div class="section"><div class="section_title">The CMIS Type System</div><div type="The CMIS Type System">
+			
+			<p class="p">A type is described in a type definition and contains a list of property definitions. CMIS has
+				a set of predefined types and predefined properties. Custom-specific types and
+				additional custom properties can extend the predefined types. When a type is
+				created, it is derived from a parent type and extends the set of the parent
+				properties. In this way, a hierarchy of types is built. The base types do not have
+				parents. Base types are defined in the CMIS specification. The most important base
+				types are <span class="ph sap-technical-name sap-technical-name">cmis:document</span> and
+					<span class="ph sap-technical-name sap-technical-name">cmis:folder</span>.</p>
+
+			<p class="p">Predefined properties contain metadata that is usually available in the existing repositories.
+				These are, for example, <span class="ph sap-technical-name sap-technical-name">cmis:name</span>,
+					<span class="ph sap-technical-name sap-technical-name">cmis:createdBy</span>,
+					<span class="ph sap-technical-name sap-technical-name">cmis:modifiedBy</span>,
+					<span class="ph sap-technical-name sap-technical-name">cmis:createdAt</span>, and
+					<span class="ph sap-technical-name sap-technical-name">cmis:modifiedAt</span>. They contain the name
+				of the author, the creation date, and the date of the last modification. Some
+				properties are type-specific, for example, a folder has a parent folder and a
+				document has a property for content length.</p>
+
+			<p class="p">Each property has a data format (String, Integer, Date, Decimal, ID, and so on) and can define
+				additional constraints, such as:</p>
+
+			<ul class="ul" id="loioe621d26bbb571014b632dd180fb9bc19__ul_ypm_ydm_pj">
+				<li class="li">
+					<p class="p">Required (must have a value)</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Read-only (cannot be updated)</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Value range (minimum value, maximum value)</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Value list (value must be one of a fixed list of values)</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">A property is either single-valued or multi-valued.</p>
+
+			<p class="p">Each object stored in a CMIS repository has a type and a set of properties. Types and
+				properties provide the mechanism used to find objects with CMIS queries.</p>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/" target="_blank" alt="http://chemistry.apache.org/" title="http://chemistry.apache.org/">http://chemistry.apache.org/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/developing/guide.html" target="_blank" alt="http://chemistry.apache.org/java/developing/guide.html" title="http://chemistry.apache.org/java/developing/guide.html">http://chemistry.apache.org/java/developing/guide.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/0.9.0/maven/apidocs/" target="_blank" alt="http://chemistry.apache.org/java/0.9.0/maven/apidocs/" title="http://chemistry.apache.org/java/0.9.0/maven/apidocs/">http://chemistry.apache.org/java/0.9.0/maven/apidocs/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/examples/index.html" target="_blank" alt="http://chemistry.apache.org/java/examples/index.html" title="http://chemistry.apache.org/java/examples/index.html">http://chemistry.apache.org/java/examples/index.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oasis-open.org/cmis/CMIS/v1.1" target="_blank" alt="http://docs.oasis-open.org/cmis/CMIS/v1.1" title="http://docs.oasis-open.org/cmis/CMIS/v1.1">http://docs.oasis-open.org/cmis/CMIS/v1.1<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/6/docs/api/java/security/KeyStore.html" target="_blank" alt="http://docs.oracle.com/javase/6/docs/api/java/security/KeyStore.html" title="http://docs.oracle.com/javase/6/docs/api/java/security/KeyStore.html">http://docs.oracle.com/javase/6/docs/api/java/security/KeyStore.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

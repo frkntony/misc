@@ -1,0 +1,20 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: WchDbCxUjd1rWJBKA4tCu7UyabYSk
+ 0jpfHHqcc0UIkA=
+SHA-256-Digest-Manifest: bdR3b3XvyG+UGdqo5ihptE91UiSsn4vv6UJFSdmXo0c=
+Created-By: 1.8.0_45 (Oracle Corporation)
+
+Name: collectSupportInformation.bat
+SHA-256-Digest: XWArbhOshcFHiTDp6Dfcz62s/QXs0T+cKnIrcVD9xOo=
+
+Name: META-INF/maven/com.sap.ide.support/com.sap.ide.support.launcher.
+ win32/pom.xml
+SHA-256-Digest: UbXgOr1uayXbweaMlpIDtQSdGn5bM5au5Lto9VkiY1E=
+
+Name: plugin.properties
+SHA-256-Digest: /xDIJr0MqNgDpXxXAfcB44ksAwg0YZNVXC7LTPHmiis=
+
+Name: META-INF/maven/com.sap.ide.support/com.sap.ide.support.launcher.
+ win32/pom.properties
+SHA-256-Digest: da1H7fASP5TU49m7bmE1Pf8PuH5bPWLOeJZM9UpPQqE=
+

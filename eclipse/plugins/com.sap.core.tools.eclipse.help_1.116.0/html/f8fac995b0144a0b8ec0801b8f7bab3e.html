@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Target System Configuration</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof8fac995b0144a0b8ec0801b8f7bab3e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Target System Configuration</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__section_N1001A_N10011_N10001"><div class="section_title">Overview</div><div type="Overview"><p class="p">Two types of configurations
+				exist that can be used alternatively: </p>
+<ul class="ul" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__ul_bnp_2xx_1k">
+				<li class="li">Direct connection to an ABAP application server;</li>
+
+				<li class="li">Load balancing connection to a group of ABAP application servers via a message
+					server.</li>
+
+			</ul>
+Depending on the configuration used, different properties are considered mandatory
+			or optional.</div></div>
+
+		<div class="section" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__section_N10031_N10011_N10001"><div class="section_title">Direct Connection Configuration</div><div type="Direct Connection Configuration">
+			
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__table_nl2_jxx_1k" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d13050447e53">Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d13050447e56">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13050447e53 "><span class="keyword parmname">jco.client.ashost</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13050447e56 ">Represents the application server host to be used. In the case of configurations in
+								<span class="ph pname">SAP Cloud Platform</span>, this property needs to match a virtual host entry in
+								the <span class="ph pname">Cloud connector</span>
+								<span class="ph uicontrol">Access Control</span> configuration. The existence
+								of this property signals that a direct connection shall be
+								established. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13050447e53 "><span class="keyword parmname">jco.client.sysnr</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13050447e56 ">Represents the so-called "system number" and has two digits. It identifies the logical
+								port on which the application server is listening for incoming
+								requests. In the case of configurations in <span class="ph pname">SAP Cloud Platform</span>, this
+								property needs to match a virtual port entry in the <span class="ph pname">Cloud connector</span>
+								<span class="ph uicontrol">Access Control</span> configuration. <div class="note note" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__note_N10086_N1007F_N10076_N10061_N10041_N1003C_N10031_N10011_N10001"><span class="notetitle">Note</span> The virtual port in the above access control entry needs to be
+									named <kbd class="ph userinput">sapgw&lt;##&gt;</kbd>, where
+										<var class="keyword varname">&lt;##&gt;</var> is the value of
+										<span class="ph uicontrol">sysnr</span>.</div>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__section_N1009C_N10011_N10001"><div class="section_title">Load Balancing Configuration</div><div type="Load Balancing Configuration">
+			
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__table_mmx_wxx_1k" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d13050447e136">Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d13050447e139">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13050447e136 "><span class="keyword parmname">jco.client.mshost</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13050447e139 ">Represents the message server host to be used. In the case of configurations in <span class="ph pname">SAP Cloud Platform</span>, this property needs to match a virtual host entry in the
+									<span class="ph pname">Cloud connector</span>
+								<span class="ph uicontrol">Access Control</span> configuration. The existence
+								of this property signals that load balancing shall be used for
+								establishing a connection.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13050447e136 "><span class="keyword parmname">jco.client.group</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13050447e139 ">Optional property. Identifies the group of application servers
+								that shall be used, the so-called "logon group". If the property is
+								not specified, the group <span class="keyword parmname">PUBLIC</span> will be used.
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13050447e136 "><span class="keyword parmname">jco.client.r3name</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13050447e139 ">Represents the three-character system ID of the ABAP system to be addressed. In the
+								case of configurations in <span class="ph pname">SAP Cloud Platform</span>, this property needs to
+								match a virtual port entry in the <span class="ph pname">Cloud connector</span>
+								<span class="ph uicontrol">Access Control</span> configuration. <div class="note note" id="loiof8fac995b0144a0b8ec0801b8f7bab3e__note_N10104_N100FD_N100F4_N100CD_N100AD_N100A8_N1009D_N10011_N10001"><span class="notetitle">Note</span> The virtual port in the above access control entry needs to be
+									named <kbd class="ph userinput">sapms&lt;###&gt;</kbd>, where
+										<var class="keyword varname">&lt;###&gt;</var> is the value of
+										<span class="ph uicontrol">r3name</span>.</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d13050447e136 "><span class="keyword parmname">jco.client.msserv</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d13050447e139 ">Represents the port on which the message server is listening for incoming requests.
+								This property can be used as an alternative to
+									<span class="keyword parmname">jco.client.r3name</span>. One of these two needs
+								to be present. In the case of configurations in <span class="ph pname">SAP Cloud Platform</span>, this
+								property needs to match a virtual port entry in the <span class="ph pname">Cloud connector</span>
+								<span class="ph uicontrol">Access Control</span> configuration. You can
+								therefore avoid lookups in the <span class="ph filepath">/etc/services</span>
+								file
+									(<span class="ph filepath">&lt;Install_Drive&gt;\Windows\System32\drivers\etc\services</span>)
+								on the <span class="ph pname">Cloud connector</span> host.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

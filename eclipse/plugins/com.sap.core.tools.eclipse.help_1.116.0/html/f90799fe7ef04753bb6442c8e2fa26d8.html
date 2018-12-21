@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="EclipseLink versions prior to 2.5 do not contain the SAP HANA database platform. To deploy applications on the SAP HANA database, you need to specify it as the target database and, for application-managed persistence, import the corresponding JAR file into your project."/>
+<meta name="description" content="EclipseLink versions prior to 2.5 do not contain the SAP HANA database platform. To deploy applications on the SAP HANA database, you need to specify it as the target database and, for application-managed persistence, import the corresponding JAR file into your project."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Special Settings for EclipseLink Versions Prior to 2.5</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof90799fe7ef04753bb6442c8e2fa26d8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Special Settings for EclipseLink Versions Prior to 2.5</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">EclipseLink versions prior to 2.5 do not contain the SAP HANA database platform. To
+		deploy applications on the SAP HANA database, you need to specify it as the target database
+		and, for application-managed persistence, import the corresponding JAR file into your
+		project. </p>
+
+		<div class="section"><div class="section_title">Container-Managed Persistence</div><div type="Container-Managed Persistence">
+			
+			<p class="p">Specify the target database as a persistence unit property:</p>
+
+			<div class="p">
+				<ol class="ol" id="loiof90799fe7ef04753bb6442c8e2fa26d8__ol_src_k2x_jm">
+					<li class="li">Select the <span class="ph filepath">&lt;project&gt;/Java
+							Resources/src/META-INF/persistence.xml</span> file and from the
+						context menu choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Open With</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Persistence XML Editor</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+					<li class="li">On the <span class="ph uicontrol">Options</span> tab enter
+							<kbd class="ph userinput">com.sap.persistence.platform.database.HDBPlatform</kbd>
+						in the <span class="ph uicontrol">Target database</span> field. </li>
+
+				</ol>
+
+			</div>
+
+			<p class="p">The source code should now contain the following:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;properties&gt;
+            &lt;property name="eclipselink.target-database" value="com.sap.persistence.platform.database.HDBPlatform"/&gt;
+&lt;/properties&gt;</pre></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Application-Managed Persistence</div><div type="Application-Managed Persistence">
+			
+			<p class="p">Specify the target database as shown above or directly in the servlet code, as shown
+				in the example below:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DefaultDB");
+connection = ds.getConnection();
+Map properties = new HashMap();
+properties.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds);
+properties.put("eclipselink.target-database", "com.sap.persistence.platform.database.HDBPlatform");</pre></div>
+
+			</div>
+
+			<div class="p">Add the SAP HANA JAR to the Web application project:<ol class="ol" id="loiof90799fe7ef04753bb6442c8e2fa26d8__ol_kjk_ffx_jm">
+					<li class="li">Select the <span class="ph filepath">&lt;project&gt;/WebContent/WEB-INF/lib</span> node. </li>
+
+					<li class="li">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Import</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">General</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> File System</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and then choose <span class="ph uicontrol">Next</span>.</li>
+
+					<li class="li">Browse to the local directory where you downloaded and unpacked the <span class="ph pname">SAP Cloud Platform</span> SDK, select the <span class="ph filepath">repository/plugins</span>
+						directory, and choose <span class="ph uicontrol">OK</span>.</li>
+
+					<li class="li">Select the checkbox
+							<span class="ph uicontrol">com.sap.core.persistence.osgi.hdb.platform_x.y.z.jar</span>
+						and choose <span class="ph uicontrol">Finish</span>.</li>
+
+				</ol>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">General Points</div><div type="General Points">
+			
+			<p class="p">The target database property should be set before you deploy the application on the
+				SAP HANA database, otherwise an error will occur. If this happens, you need to
+				re-create the table with the correct definitions by setting the DDL generation type
+				to <kbd class="ph userinput">Drop and Create Tables</kbd> and then redeploy the application.
+				Afterwards, set it back to <kbd class="ph userinput">Create Tables</kbd> so that you do not
+				lose your data once you deploy again. </p>
+
+			<p class="p">When testing the application locally, remember to remove this property.</p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

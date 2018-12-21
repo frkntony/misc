@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Translation Hub supports the translation of short texts in different scenarios."/>
+<meta name="description" content="SAP Translation Hub supports the translation of short texts in different scenarios."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Translation Workflow with SAP Translation Hub</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioda544d140f39451eae992d1b1246f98b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Translation Workflow with SAP Translation Hub</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">SAP Translation Hub supports the translation of short texts in different
+		scenarios.</p>
+
+		<p class="p">You can use SAP Translation Hub to translate texts from the following sources:</p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loioda544d140f39451eae992d1b1246f98b__table_ny1_wlt_hq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d9790249e35">Source of Texts to Be Translated</th>
+
+						<th class="entry" valign="top" width="50%" id="d9790249e38">Details</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d9790249e35 ">HTML5 applications from the Git repository of SAP Cloud Platform</td>
+
+						<td class="entry" valign="top" width="50%" headers="d9790249e38 ">
+							<p class="p">The integration of SAP Translation Hub with Git projects enables you
+								to translate texts in source properties files for HTML5
+								applications.</p>
+
+							<p class="p">You can use this workflow if you want to translate the texts in HTML5 applications that
+								are stored in the Git repository of SAP Cloud Platform.</p>
+
+							<p class="p">Each HTML5 application comprises at least one properties file that contains texts that
+								require translation. The translation workflow reads the texts in a
+								source properties file from the Git repository, translates the texts
+								using one of the translation providers in SAP Translation Hub, and
+								stores the translations in language-specific properties files in the
+								Git repository.</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d9790249e35 ">ABAP-based repositories using a remote function call (RFC)</td>
+
+						<td class="entry" valign="top" width="50%" headers="d9790249e38 ">
+							<p class="p">The integration of SAP Translation Hub with ABAP systems enables you to translate short
+								texts from ABAP objects such as data elements, message classes, and
+								reports.</p>
+
+							<p class="p">You can use this workflow to leverage SAP Translation Hub’s
+								translation providers, such as the multilingual text repository and
+								machine translation, in your ABAP-based applications.</p>
+
+							<p class="p">By using an RFC connection, you can import source texts from object lists in ABAP systems,
+								and then push the translations back to your ABAP system.</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d9790249e35 ">Manual file upload</td>
+
+						<td class="entry" valign="top" width="50%" headers="d9790249e38 ">
+							<div class="p">The following file formats are supported:<ul class="ul" id="loioda544d140f39451eae992d1b1246f98b__ul_nxd_1w5_tw">
+									<li class="li">Java properties</li>
+
+									<li class="li">JSON</li>
+
+									<li class="li">ABAP-based XLIFF files, such as the files that you can generate with the export
+										features of SAP NetWeaver</li>
+
+								</ul>
+</div>
+
+							<p class="p">You can use this workflow to leverage SAP Translation Hub’s translation providers, before
+								you import the translated files in to your original application.</p>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<div class="section"><div class="section_title">Translation Projects</div><div type="Translation Projects">
+			
+			<p class="p">To manage the translation workflow, SAP Translation Hub requires some information about your
+				application. For example, for an HTML5 application, it needs the location of the
+				source properties file in the Git repository and the required target languages. For
+				ABAP-based translations, a remote function call (RFC) must be set up. For
+				information about how to create a translation project, see the <cite class="cite">Related
+					Information</cite> section.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Main Steps of Translation Workflow</div><div type="Main Steps of Translation Workflow">
+			
+			<div class="p">When you start the translation workflow, SAP Translation Hub does the following:<ol class="ol" id="loioda544d140f39451eae992d1b1246f98b__ol_vlq_szv_kt">
+					<li class="li">Reads the translation project.</li>
+
+					<li class="li">Gets translations from the following sequence of
+						translation providers:<ol class="ol" type="a" id="loioda544d140f39451eae992d1b1246f98b__ol_bd5_v2v_mv">
+							<li class="li">Multilingual text repository in SAP Translation Hub</li>
+
+							<li class="li">SAP-internal machine translation solution based on the Moses open source toolkit (SAP
+								machine translation)</li>
+
+						</ol>
+</li>
+
+					<li class="li">Enters translations in the source repository or in an export file.</li>
+
+				</ol>
+</div>
+
+			<div class="p">The following figure shows the main parts of the translation workflow: <div class="fig fignone" id="loioda544d140f39451eae992d1b1246f98b__fig_bwh_xgp_3q"><div class="figcontainer">
+					<img class="image" id="loioda544d140f39451eae992d1b1246f98b__image_zjk_2qv_kt" src="loiodf73dfdf5a1d429ca899d35f63ba8d01_LowRes.png"/>
+				</div></div>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="27ce9c5dde2c43fcae30984ac638726b.html" title="SAP Translation Hub provides a special user interface (UI) that you can use to create translation projects.">Accessing SAP Translation Hub User Interface</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

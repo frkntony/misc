@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Machine-Readable Command Output</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob35e1e92ceb647daac49098b828dac92">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Machine-Readable Command Output</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">The console commands can return structured, machine-readable output. When you use the optional
+					<span class="keyword parmname">--output</span> parameter in a command, the command returns values
+				and objects in a format that a machine can easily parse.  The currently supported
+				output format is JSON. </p>
+
+			<p class="p">Syntax: <span class="keyword parmname">--output &lt;format&gt;</span>
+			</p>
+
+			<p class="p">Accepted format value: <kbd class="ph userinput">json</kbd></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Cases</div><div type="Cases">
+			
+			<ul class="ul" id="loiob35e1e92ceb647daac49098b828dac92__ul_tzl_ksj_sn">
+				<li class="li">If a command supports structured output, it returns machine-readable result
+					values.</li>
+
+				<li class="li">If a command does not (yet) support structured output,it returns basic
+					information including the standard OUT/ERR output. </li>
+
+				<li class="li">If the command is invoked without the <span class="keyword parmname">--output</span> parameter,
+					it works as before.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">JSON Output Format</div><div type="JSON Output Format">
+			
+			<p class="p">When <samp class="ph codeph">--output json</samp> is specified, the console client prints out a
+				single JSON object containing information about the command execution and the
+				result, if available.</p>
+
+			<p class="p">The JSON object contains the following properties:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob35e1e92ceb647daac49098b828dac92__table_hpw_rsj_sn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d8586299e87">Property Name</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d8586299e90">Type</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d8586299e93">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">command</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">String</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The name of the invoked <span class="keyword parmname">neo</span> command</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">argLine</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">String</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The exact arguments line as specified by the calling script
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">pid</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">Name</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The process ID of the invoked command</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">exitCode</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">Name</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The process exit code of the invoked command (
+									<kbd class="ph userinput">0</kbd> = successful, everything else =
+								failure)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">errorMsg</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">String</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The message provided when the command implementation throws
+								instance of
+									<span class="keyword parmname">com.sap.jpaas.infrastructure.console.exception.CommandException</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">commandOutput</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">String</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The command output written to<span class="keyword parmname"> system.out</span> and
+								captured by the console client framework</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">commandErrorOutput</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">String</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The command output written to <span class="keyword parmname">system.err</span> and
+								captured by the console client framework</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e87 "><span class="keyword cmdname">result</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e90 ">Object</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8586299e93 ">The result object returned by the command following the new
+								contract for structured, machine-readable output</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">Here is a full example of a command ( <kbd class="ph userinput">neo start</kbd> ) that
+				supports structured output and displays result values:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">{
+    "command": "start",
+    "argLine": "-a myaccount -b myapplication -h hana.ondemand.com -u myuser -p ******* -y",
+    "pid": 6523,
+    "exitCode": 0,
+    "errorMsg": null,
+    "commandOutput": "Requesting start for:
+   application           : myapplication
+   account               : myaccount
+   host                  : https://hana.ondemand.com
+   synchronous           : true
+   SDK version           : 1.48.99
+   user                  : myuser
+ 
+ 
+[Tue Feb 25 18:07:19 CET 2014] Start request performed successfully.
+ 
+Triggered start of application process.
+Status: STARTING
+ 
+[Tue Feb 25 18:07:19 CET 2014] Waiting for STARTED status..............
+[Tue Feb 25 18:07:25 CET 2014] Status STARTING reached for 6161 ms
+[Tue Feb 25 18:07:19 CET 2014] Waiting for STARTED status..................................
+[Tue Feb 25 18:08:47 CET 2014] Status STARTED reached for 87838 ms
+ 
+web: STARTED
+ 
+URL: https://myapplicationmyaccount.hana.ondemand.com
+ 
+Access points:
+  https://myapplicationmyaccount.hana.ondemand.com
+ 
+Runtime: 1.47 (valid until 20-May-2015)
+ 
+Application processes
+ID          State       Last Change              Runtime
+  fc735dc     STARTED     25-Feb-2014 18:07:48     1.47.10.2
+",
+    "commandErrorOutput": "",
+    "result": {
+        "status": "STARTED",
+        "url": "https://myapplicationmyaccount.hana.ondemand.com",
+        "accessPoints": [
+            "https://myapplicationmyaccount.hana.ondemand.com",
+            "https://myapplicationmyaccount.hana.ondemand.com/app2"
+        ],
+        "applicationProcesses": [
+            {
+                "id": "fc735dc",
+                "state": "STARTED",
+                "lastChange": "2014-02-25T18:07:48Z",
+                "runtime": "1.47.10.2"
+            }
+        ]
+    }
+}</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> The shown command result is only an example and may look different in the real or
+				future implementation. The output is similar for commands that do not support
+				structured result values but the result property is then null.</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7886796eb9b9419fa6cecf1d215c38d8.html">Exit Codes</a></div>
+<div><a class="link" href="1b651b3aa5f54538a8f452f6fda0f5c3.html">Viewing the Default Trace</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

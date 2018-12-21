@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Event Object with Type and Parameters</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2c239bbb2dd84b9dad422781e667f062">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Event Object with Type and Parameters</h1>
+
+	<div class="body conbody">
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">An event type must be set for each incoming event. The event type needs to be checked
+				within the trigger part. The player's ID is sent with each event, it should be
+				stored in a variable for further use.</p>
+
+			<p class="p">Additionally, multiple parameters can be passed with an event and evaluated. The parameters
+				can be a string or any numeric values. The parameters can be evaluated with logical
+				operators such as equal (<samp class="ph codeph">=</samp>), larger than (<samp class="ph codeph">&gt;</samp>)
+				and smaller than (<samp class="ph codeph">&lt;</samp>). </p>
+
+			<p class="p">Multiple evaluations of event objects can be triggered in one rule.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Procedure</div><div type="Procedure">
+			
+			<p class="p">Declaration of an event object with a given event type and declaration of a variable
+				with a given player ID:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='&lt;EVENT_TYPE&gt;', $playerid:playerid) from entry-point eventstream</pre></div>
+
+			</div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">It is recommended to always assign the player ID (<span class="keyword cmdname">playerid</span>)
+					within the event object of a variable since the player ID is necessary to get
+					the according player object for updating achievements in the consequence
+					part.</p>
+
+			</div>
+
+			<p class="p">Declaration of an event with a given event type, declaration of a variable with a
+				given player ID and evaluation of a property:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='&lt;EVENT_TYPE&gt;', data['&lt;PROPERTY&gt;']&lt;OPERATOR&gt;&lt;VALUE&gt; $playerid:playerid) from entry-point eventstream</pre></div>
+
+			</div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">It is recommended to always evaluate event parameters within the event object
+					instead of defining additional parameters and using additional eval
+					statements.</p>
+
+			</div>
+
+			<div class="p">Examples for event declaration:<ul class="ul" id="loio2c239bbb2dd84b9dad422781e667f062__ul_esz_drt_4t">
+					<li class="li">
+						<p class="p">Declaration of event with the given type “solvedProblem”. </p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='solvedProblem', $playerid:playerid) from entry-point eventstream
+</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of event with the given type “buttonPressed”.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='buttonPressed', $playerid:playerid) from entry-point eventstream</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+
+			<div class="p">Examples for an event with given properties:<ul class="ul" id="loio2c239bbb2dd84b9dad422781e667f062__ul_rrp_nst_4t">
+					<li class="li">
+						<p class="p">Declaration of event with the given type “solvedProblem” and a property
+							with the name “relevance” and the value “critical”.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='solvedProblem', data['relevance']=='critical', $playerid:playerid) from entry-point eventstream</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of event with the given type “buttonPressed” and a property
+							with the name “color” and the value “red”.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='buttonPressed', data['color']=='red', $playerid:playerid) from entry-point eventstream</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of event with the given type “temperatureIncreased” and an
+							integer property with the name “temperatureValue” where the numeric
+							value is larger than 30.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='temperatureIncreased', Integer.parseInt(data['temperatureValue'])&gt;30, $playerid:playerid) from entry-point eventstream</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+
+			<div class="p">Examples for the combination of event declarations:<ul class="ul" id="loio2c239bbb2dd84b9dad422781e667f062__ul_ocz_yst_4t">
+					<li class="li">
+						<p class="p">Declaration of two events of type “ticketEventA” and “ticketEventB”. Both
+							events must occur and they have to belong to different players.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='ticketEventA', $playerid:playerid) 
+EventObject(type=='ticketEventB', playerid!=$playerid)</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of two events of type “ticketEventA” and “ticketEventB” using
+							the explicit “and” operator. Both events must occur and they have to
+							belong to different players.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">(EventObject(type=='ticketEventA', $playerid:playerid) &amp;&amp; EventObject(type=='ticketEventB', playerid!=$playerid))</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of two events of type “ticketEventA” and “ticketEventB” using
+							the “or” operator that describes that “eventA” or “eventB” must occur
+							and the "player IDs" must not be the same.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">(EventObject(type=='ticketEventA', $playerid:playerid) || EventObject(type=='ticketEventB', playerid!=$playerid)) </pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Declaration of two events of type “ticketEvent” where the “player IDs”
+							are different and the “ticked id” is the same and another event of the
+							type “connectedEvent” that must not be true.</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject(type=='ticketEvent', $ticketid:data['ticketid'], $playerid:playerid) EventObject(type=='ticketEvent', data['ticketid']==$ticketid, playerid!=$playerid, $playerid2:playerid)
+not(EventObject(type=='connectedEvent', playerid==$playerid, data['friendid']==$playerid2))
+</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

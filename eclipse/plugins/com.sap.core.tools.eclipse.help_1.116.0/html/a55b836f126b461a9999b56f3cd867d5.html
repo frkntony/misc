@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team."/>
+<meta name="description" content="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Guidelines for Creating Database Users</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa55b836f126b461a9999b56f3cd867d5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Guidelines for Creating Database Users</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">As an account administrator on <span class="ph pname">SAP Cloud Platform</span>, you are able to create your own
+		SAP HANA database user and, following this, set up user accounts in SAP HANA for the members
+		of your development team. </p>
+
+		<div class="section"><div class="section_title">Create an SAP HANA Administrator User</div><div type="Create an SAP HANA Administrator User">
+			
+			<p class="p">Create your own SAP HANA database user using the database user feature in the
+				cockpit. For more information, see <a class="xref" href="c0fce6f0322246daaf1e29a25414f15e.html" title="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database.">Creating a Database Administrator User</a>.</p>
+
+			<p class="p">You will be assigned a database user with extensive rights, including system
+				administration and monitoring. The user ID is identical to your SCN user, and the
+				password shown is an initial password and must be changed when you log onto an SAP
+				HANA system for the first time. You are responsible for choosing a strong password
+				and keeping it secure. </p>
+
+			<p class="p">Your database user is initially assigned a minimal set of roles, which includes
+					<span class="keyword">HCP_PUBLIC</span>, <span class="keyword">HCP_SYSTEM</span>, and
+					<span class="keyword">PUBLIC</span>. The <span class="keyword">HCP_SYSTEM</span> role contains the
+					<span class="keyword">USER ADMIN</span> and <span class="keyword">ROLE ADMIN</span> system
+				privileges, allowing you to create database users and grant additional roles to your
+				own and other database users.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The initial set of roles also contains the
+						<span class="keyword">sap.hana.xs.ide.roles::Developer</span> role, allowing you to
+					work with the SAP HANA Web-based Development Workbench, but not the SAP HANA XS
+					Administration tool.</p>
+
+				<p class="p">To be able to work with the SAP HANA XS Administration Tool
+						<span class="ph filepath">(https://&lt;schema&gt;&lt;account&gt;.&lt;host&gt;sap/hana/xs/admin/)</span>,
+					you require the relevant <span class="keyword">sap.hana.xs.admin.roles</span>. These are
+					not included in the initial set of roles, however. You can assign these roles to
+					yourself as follows: </p>
+
+				<ol class="ol" id="loioa55b836f126b461a9999b56f3cd867d5__ol_ug3_swt_4t">
+					<li class="li">Log on in with your user to one of the following tools:<ul class="ul" id="loioa55b836f126b461a9999b56f3cd867d5__ul_nmp_1wv_kt">
+							<li class="li">Use the Eclipse IDE and connect to your SAP HANA studio. For more
+								information, see <a class="xref" href="4efc124a0ccc42b3b502ad3a3908d23d.html" title="Connect to a dedicated SAP HANA database using SAP HANA Tools via the Eclipse IDE.">Connecting to SAP HANA Databases via the Eclipse IDE</a>.</li>
+
+							<li class="li">Use the SAP HANA Web-based Development Workbench. For more
+								information, see <a class="xref" href="ad3717d2c242436095fd12c158d7876f.html" title="SAP Cloud Platform supports the following Web-based tools: SAP HANA Web-based Development Workbench, SAP HANA Studio, and SAP HANA XS Administration Tool.">Supported SAP HANA Web-based Tools</a>.</li>
+
+						</ul>
+</li>
+
+					<li class="li">Assign the set of roles to yourself in the Security section.<p class="p">For more information, see
+								<a class="xref" href="d7c4ca5dac4f4dbbb47901eebe9ea0d1.html" title="To use the SAP HANA Web-based tools, you require specific roles.">Roles Required for Web-based Tools</a>.</p>
+</li>
+
+				</ol>
+
+			</div>
+
+			<div class="note note"><span class="notetitle">Note</span> There may be some roles that you cannot assign to your own database user. In this
+				case, we recommend that you create a second database user (for example,
+					<span class="keyword">ROLE_GRANTOR</span>) and assign it the <span class="keyword">HCP_SYSTEM</span>
+				role. Then log onto the SAP HANA system with that user and grant your database user
+				the roles you require. </div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Assign Members to Your Account</div><div type="Assign Members to Your Account">
+			
+			<p class="p">Open the cockpit on the productive landscape and assign the required development team members
+				to your account. For more information, see <a class="xref" href="937c3cef72bb101490cf767db0e91070.html" title="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform.">Managing Members</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Set Up Database Users for Account Members</div><div type="Set Up Database Users for Account Members">
+			
+			<p class="p">In the SAP HANA system, create database users for the members of your account and assign them
+				the required developer roles. For more information, see the following:</p>
+
+			<div class="p">
+				<p class="lines"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm">Managing SAP HANA Users</a></p>
+
+				<p class="lines"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm">Setting Up Roles and Authorizations</a></p>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d7c4ca5dac4f4dbbb47901eebe9ea0d1.html" title="To use the SAP HANA Web-based tools, you require specific roles.">Roles Required for Web-based Tools</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

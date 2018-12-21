@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This topic shows how you can configure an availability check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly."/>
+<meta name="description" content="This topic shows how you can configure an availability check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Availability Checks for Java Applications from the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6537f99f89c047c6ad16d49eb3f97a11">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Availability Checks for Java Applications from the Console Client</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">This topic shows how you can configure an availability check for your application and
+		subscribe recipients to receive alert e-mail notifications when your application is down or
+		responds slowly.</p>
+
+		<div class="section prereq p" id="loio6537f99f89c047c6ad16d49eb3f97a11__prereq_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio6537f99f89c047c6ad16d49eb3f97a11__ul_dpr_tzs_rk">
+				<li class="li">You have deployed and started an application on the platform.</li>
+
+				<li class="li">You have set up the console client. <p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+</li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio6537f99f89c047c6ad16d49eb3f97a11__step_N10024_N10021_N10012_N10001">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing <span class="ph filepath">neo.bat and neo.sh
+						(&lt;SDK installation folder&gt;/tools)</span>.</span>
+			</li>
+<li class="li step stepexpand" id="loio6537f99f89c047c6ad16d49eb3f97a11__step_N10031_N10021_N10012_N10001">
+				<span class="ph cmd">Create the availability check.</span>
+				<div class="itemgroup info">
+					<p class="p">Execute:</p>
+
+					<p class="p"><kbd class="ph userinput">neo create-availability-check -a myaccount -b myapp -u myuser -U
+							/heartbeat -C 6 -W 4 --host hana.ondemand.com</kbd></p>
+
+					<ul class="ul" id="loio6537f99f89c047c6ad16d49eb3f97a11__ul_zpr_ndt_rk">
+						<li class="li">Replace <span class="ph emphasis emphasis">"myapp"</span>, <span class="ph emphasis emphasis">"myaccount"</span>
+							and <span class="ph emphasis emphasis">"myuser"</span> with the names of your account,
+							application, and user respectively.</li>
+
+						<li class="li">The availability URL (<span class="ph emphasis emphasis">/heartbeat</span> in this case) is
+							not provided by default by the platform. Replace it with a suitable URL
+							that is already exposed by your application or create it for your
+							application. Keep in mind the limitations for availability URLs,
+							described in "Availability Checks" document (see Related Links
+							below).</li>
+
+						<li class="li">The check will trigger warnings <span class="ph emphasis emphasis">"-W 4"</span> if the response time is above
+								<span class="ph emphasis emphasis">4</span> seconds and critical alerts <span class="ph emphasis emphasis">"-C
+								6"</span> if the response time is above 6 seconds or the
+							application is not available. </li>
+
+						<li class="li">Use the respective landscape host for your account type. For more information, see Related
+							Links section below.</li>
+
+					</ul>
+
+					<div class="note note" id="loio6537f99f89c047c6ad16d49eb3f97a11__note_N10094_N10046_N1003E_N1002E_N10012_N10001"><span class="notetitle">Note</span> The availability check will be
+						visible in the <span class="ph pname">SAP Cloud Platform</span> cockpit in around 2 minutes.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loio6537f99f89c047c6ad16d49eb3f97a11__step_N10042_N10021_N10012_N10001">
+				<span class="ph cmd">Subscribe recipients to notification alerts. </span>
+				<div class="itemgroup info">
+					<p class="p">Execute:</p>
+
+					<p class="p"><kbd class="ph userinput">neo set-alert-recipients -a myaccount -b myapp -u myuser -e
+							alert_recipients@example.com --host hana.ondemand.com</kbd></p>
+
+					<ul class="ul" id="loio6537f99f89c047c6ad16d49eb3f97a11__ul_trl_5mt_rk">
+						<li class="li">Replace <span class="ph emphasis emphasis">"myapp"</span>, <span class="ph emphasis emphasis">"myaccount"</span>
+							and <span class="ph emphasis emphasis">"myuser"</span> with the names of your account,
+							application, and user respectively.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"alert-recipients@example.com"</span> with the email addresses that
+							you want to receive alerts. Separate email addresses with commas. We
+							recommend that you use distribution lists rather than personal email
+							addresses. Keep in mind that you will remain responsible for handling of
+							personal email addresses with respect to data privacy regulations
+							applicable.</li>
+
+						<li class="li">Use the respective landscape host for your account type.</li>
+
+					</ul>
+
+					<div class="note note"><span class="notetitle">Note</span> Setting an alert recipient for an application will trigger sending all alerts for this
+						application to the configured email(s). Once the recipients are subscribed,
+						you do not need to subscribe them again after every new check you configure.
+						You can also set the recipients on account level if you skip the
+							<span class="keyword parmname">-b</span> parameter so that they receive alerts for all
+						applications and for all the metrics you are monitoring.</div>
+
+					<div class="note caution" id="loio6537f99f89c047c6ad16d49eb3f97a11__note_N1004E_N1004B_N10040_N10021_N10012_N10001"><span class="cautiontitle">Caution</span> If you
+						stop the application by yourself, you will not receive a notification alert.
+						Alerting is suppressed with the manual stop of an application. Alerting is
+						automatically enabled once again when you start the application.</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+<div><a class="link" href="173dd2ca9c834df8bb79fa46c3ae8c00.html">Availability Checks</a></div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+</div>
+
+<div class="linklist linklist">Availability Checks Commands<br/>
+
+<div><a class="link" href="d37bcfc3460e497cad80338192833fc5.html" title="Lists the availability checks.">list-availability-check</a></div>
+<div><a class="link" href="83d45827519b413bb98c4e2aaf9b3752.html" title="Creates an availability check.">create-availability-check</a></div>
+<div><a class="link" href="2a387e4e5faa4e35939ba472b33cb74a.html" title="Deletes an availability check.">delete-availability-check</a></div></div>
+
+<div class="linklist linklist">Alert Recipients Commands<br/>
+
+<div><a class="link" href="f326f9df2f5246bbb1878b01cfdbc0ba.html" title="Lists alert recipients.">list-alert-recipients</a></div>
+<div><a class="link" href="6dae74f3792446b7be65f5d8187c2425.html" title="Sets alert recipients.">set-alert-recipients</a></div>
+<div><a class="link" href="0f2b2cda9d844939bad3cbda32c167d8.html" title="Clears alert recipients.">clear-alert-recipients</a></div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

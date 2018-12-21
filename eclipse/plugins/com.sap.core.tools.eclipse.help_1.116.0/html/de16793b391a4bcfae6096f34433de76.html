@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Authentication is the process of establishing and verifying the identity of a user as a prerequisite for accessing an application."/>
+<meta name="description" content="Authentication is the process of establishing and verifying the identity of a user as a prerequisite for accessing an application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiode16793b391a4bcfae6096f34433de76">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Authentication</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Authentication is the process of establishing and verifying the identity of a user as a
+		prerequisite for accessing an application.</p>
+
+		<p class="p">By default an HTML5 application is protected with SAML2 authentication, which authenticates the
+			user against the configured RDP. For more information, see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a>. For public applications the
+			authentication can be switched off using the following syntax:</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+"authenticationMethod": "saml" | "none"</pre></div>
+
+			<div class="note sap-example example"><span class="exampletitle">Example</span> An example configuration that switches off authentication looks like this:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">"authenticationMethod": "none"</pre></div>
+</div>
+
+		</div>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">Even if authentication is disabled, authentication is still required for accessing inactive
+				application versions.</p>
+
+			<p class="p">To protect only parts of your application, set the <span class="ph sap-technical-name sap-technical-name">authenticationMethod</span> to
+					"<span class="ph sap-technical-name sap-technical-name">none</span>" and define a security constraint for the paths you want to protect. If you want to
+				enforce only authentication, but no additional authorization, define a security constraint without a permission (see <a class="xref" href="a139548b21954e319a2a351e993bac40.html" title="To enforce authorization for an HTML5 application, permissions can be added to application paths.">Authorization</a>).</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Handling Session Timeout</div><div type="Handling Session Timeout">
+			
+			<p class="p">After 20 minutes of inactivity user sessions are invalidated. If the user tries to access an
+				invalidated session, <span class="ph pname">SAP Cloud Platform</span> returns a logon page, where the user
+				must log on again. If you are using SAML as a logon method, you cannot rely on the
+				response code to find out whether the session has expired because it is either 200
+				or 302. To check whether the response requires a new logon, get the
+					<span class="ph sap-technical-name sap-technical-name">com.sap.cloud.security.login</span> HTTP
+				header and reload the page. For example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+jQuery(document).ajaxComplete(function(e, jqXHR) {
+    if(jqXHR.getResponseHeader("com.sap.cloud.security.login")) {
+        alert("Session is expired, page shall be reloaded.");
+        window.location.reload();
+    }
+})
+</pre></div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

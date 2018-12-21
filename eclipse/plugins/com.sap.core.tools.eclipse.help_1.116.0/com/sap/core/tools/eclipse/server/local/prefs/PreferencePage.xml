@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+   <context  id="PreferencePage" title="About SAP Cloud Platform">
+        <description>1.	In the Landscape host field, enter the location of your SAP Cloud Platform landscape. The default is <b>hana.ondemand.com</b>.
+
+2.	In the SDK Location field, you need to specify the location of the SAP Cloud Platform SDK. Choose the Browse button to refer to local directory containing the SDK or manually type the full path. 
+
+3.	In the Account name field, enter the name of the account you have been registered. 
+
+4.	In the User name field, enter the SAP Cloud Platform user name you will use to deploy your applications.
+
+5.	Select box Always overwrite and restart applications without warning me if you want to not be asked for confirmation each time when you deploy into an existing SAP Cloud Platform application.
+
+6.	Choose the Validate button to validate the settings you provided. 
+
+7.	If you directly choose the Apply button, your settings will be applied and no validation will be performed.
+
+8.	If you want to get the original set of preferences, choose the Restore Defaults button.
+</description>
+		<topic href="../com.sap.core.tools.eclipse.help/html/e815ca4cbb5710148376c549fd74c0db.html"  label="Installing Java Tools for Eclipse and SDK"/> 
+   </context>
+</contexts>

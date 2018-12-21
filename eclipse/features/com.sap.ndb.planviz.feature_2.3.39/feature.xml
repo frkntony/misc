@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.planviz.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.ndb.planviz.common"
+         download-size="55"
+         install-size="98"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.common.base"
+         download-size="4652"
+         install-size="5111"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.common.model"
+         download-size="464"
+         install-size="991"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.graph"
+         download-size="740"
+         install-size="1574"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.statistics.common"
+         download-size="118"
+         install-size="237"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.timeline"
+         download-size="192"
+         install-size="389"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.swt"
+         download-size="75"
+         install-size="134"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.planviz"
+         download-size="21"
+         install-size="32"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.planviz.protocol.base"
+         download-size="13"
+         install-size="18"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.hampton.common"
+         download-size="47"
+         install-size="89"
+         version="2.3.39"
+         unpack="false"/>
+			 
+   <plugin
+         id="com.sap.ndb.studio.hampton.r10"
+         download-size="75"
+         install-size="155"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.hampton.tablesused"
+         download-size="29"
+         install-size="51"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.hampton.common"
+         download-size="24"
+         install-size="42"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.hampton.kpis"
+         download-size="84"
+         install-size="173"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.hampton.planviz"
+         download-size="30"
+         install-size="57"
+         version="2.3.39"
+         unpack="false"/>
+		 
+   <plugin
+         id="com.sap.ndb.hampton.planviz.analysis"
+         download-size="40"
+         install-size="70"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.planviz.plantrace"
+         download-size="135"
+         install-size="311"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.hampton.analysis.schema"
+         download-size="18"
+         install-size="28"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.planviz.network"
+         download-size="16"
+         install-size="26"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.planviz.calcview.model"
+         download-size="205"
+         install-size="414"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.planviz.calcview"
+         download-size="623"
+         install-size="1110"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.planviz.diff"
+         download-size="63"
+         install-size="119"
+         version="2.3.39"
+         unpack="false"/> 
+	
+	<plugin
+         id="com.sap.ndb.planviz.performance"
+         download-size="411"
+         install-size="833"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

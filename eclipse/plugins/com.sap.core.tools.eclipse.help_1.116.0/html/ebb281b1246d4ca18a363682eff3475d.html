@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Use this procedure to configure the connectivity between your Java extension application and the SuccessFactors system associated with your SAP Cloud Platform extension account."/>
+<meta name="description" content="Use this procedure to configure the connectivity between your Java extension application and the SuccessFactors system associated with your SAP Cloud Platform extension account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configure the Extension Applications's Connectivity to SAP SuccessFactors</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioebb281b1246d4ca18a363682eff3475d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configure the Extension Applications's Connectivity to <span class="ph pname">SAP SuccessFactors</span></h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Use this procedure to configure the connectivity between your Java extension application
+		and the SuccessFactors system associated with your <span class="ph pname">SAP Cloud Platform</span> extension
+		account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			<ul class="ul" id="loioebb281b1246d4ca18a363682eff3475d__ul_vdt_xsz_4n">
+				<li class="li">If you configure access to the HCM Suite OData API, you must have the OData API enabled for
+					your <span class="ph pname">SAP SuccessFactors</span> company
+					instance in Provisioning. For more information, see the<cite class="cite">OData API
+						Programmer's Guide</cite>, available on SAP Help Portal at <a class="xref" href="http://help.sap.com/cloud4hr" target="_blank" alt="http://help.sap.com/cloud4hr" title="http://help.sap.com/cloud4hr">http://help.sap.com/cloud4hr</a> .</li>
+
+				<li class="li">You have made yourself familiar with the <span class="ph pname">SAP Cloud Platform</span> console client. For more
+					information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?76132306711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?76132306711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?76132306711e1014839a8273b0e91070.html">Console Client</a></li>
+
+				<li class="li">You have the role-based permissions enabled for the <span class="ph pname">SAP SuccessFactors</span> company
+					instance.</li>
+
+				<li class="li">The <span class="ph pname">SAP Cloud Platform</span> account in
+					which you configure the connectivity to the <span class="ph pname">SAP SuccessFactors</span> system is an
+					extension account. For more information about extension accounts, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html" title="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html">Basic Concepts</a></li>
+
+				<li class="li">Your application runtime supports destinations. For more information about the
+					application runtimes supported by <span class="ph pname">SAP Cloud Platform</span>, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?7613bd28711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?7613bd28711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?7613bd28711e1014839a8273b0e91070.html">Application Runtime Container</a></li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> This procedure is relevant only for Java extension applications.</div>
+
+			</div>
+
+			<div class="p">The extension applications interact with the extended <span class="ph pname">SAP SuccessFactors</span> system using the
+				HCM Suite OData API. The HCM Suite OData API is a RESTful API based on the OData
+				protocol intended to enable access to data in the <span class="ph pname">SAP SuccessFactors</span> system. You have
+				the following API access scenarios:<ul class="ul" id="loioebb281b1246d4ca18a363682eff3475d__ul_jwc_3wk_ht">
+					<li class="li">
+						<p class="p">OData access with SAML2BearerAssertion authentication</p>
+
+						<p class="p"> This scenario is used for performing OData API calls with logged-in user
+							propagation, thus enforcing permission checks for accessing objects.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">OData access with SAML2BearerAssertion authentication and a technical
+							user</p>
+
+						<p class="p">This scenario is used for performing OData API calls with a predefined
+							technical user when the extension application is performing scheduled
+							jobs or data replication.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">To enable the API access and configure the connectivity between the Java extension
+				applications and the SuccessFactors sytem associated with your extension account,
+				you use the <span class="keyword cmdname">hcmcloud-create-connection</span> console client command.
+				Using the command, you specify the connection details for the remote communication
+				of the extension application and create the HTTP destinations required for
+				configuring the API access. The command also creates and configures the
+				corresponding OAuth clients in the SuccessFactors company instance. </p>
+
+			<div class="p">The command uses the following predefined destination names for the different
+				connection types:
+<div class="table-wrapper tablenoborder"><table summary="" id="loioebb281b1246d4ca18a363682eff3475d__table_swc_gdl_ht" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="50%" id="d12414145e150">
+									<p class="p">Connection Type</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="50%" id="d12414145e156">
+									<p class="p">Destination</p>
+
+								</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d12414145e150 ">
+									<p class="p">OData</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d12414145e156 ">
+									<p class="p"><span class="keyword parmname">sap_hcmcloud_core_odata</span></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d12414145e150 ">
+									<p class="p">OData with technical user</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d12414145e156 ">
+									<p class="p"><span class="keyword parmname">sap_hcmcloud_core_odata_service</span></p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p">If your scenario requires it, you can two connections for an extension application as long as
+				the type of the connections differs.</p>
+
+			<p class="p">Depending on whether the extension application is deployed in your account or your
+				account is subscribed to the extension application, you configure the connectivity
+				on an application level in the account where the application is deployed, or on a
+				subscription level in the account subscribed to the application.</p>
+
+			<p class="p">You can optionally list the connections created for the extension application:</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioebb281b1246d4ca18a363682eff3475d__steps_r21_t4z_tn"><li class="li step">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Configure the connectivity. In the console client command line, execute
+						<kbd class="ph userinput">hcmcloud-create-connection</kbd>, as follows:</span>
+				<ul class="ul choices" id="loioebb281b1246d4ca18a363682eff3475d__choices_qzq_fwx_2r">
+					<li class="li choice">For an application deployed in your account, specify the name of your extension
+						application for the <span class="keyword parmname">application</span> parameter.<div class="p">For example, to create a connection of the OData type for an application deployed in
+							your account in the US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-create-connection --application <var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For example, to configure a connection of the OData type for an application to which your
+							account in the US East data center is subscribed,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-create-connection --application <var class="keyword varname">&lt;application_provider_account:my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+				</ul>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">(Optional) List the connections created for the extension application. In the
+					console client command line, execute<kbd class="ph userinput">
+						hcmcloud-list-connections</kbd>, as follows:</span>
+				<ul class="ul choices" id="loioebb281b1246d4ca18a363682eff3475d__choices_kgf_32m_ht">
+					<li class="li choice">For an application deployed in your account, specify the name of your
+						extension application for the <span class="keyword parmname">application</span> parameter.
+							<div class="p">For example, to list the connections for an application deployed in your account in the US
+							East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-list-connections --application <var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_acc&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the
+						application provider account and the name of your extension application for
+						the <span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;app_provider_account&gt;</var>:<var class="keyword varname">&lt;my_app&gt;</var>.<div class="p">For example, to list the connections for an application to which your account in the US East
+							data center is subscribed, execute:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-list-connections --application <var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+				</ul>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">(Optional) If your scenario requires it, remove the connectivity configured between your
+					extension application and the <span class="ph pname">SAP SuccessFactors</span> systems
+					associated with the extension account. In the console client command line,
+					execute <kbd class="ph userinput">hcmcloud-delete-connection</kbd>, as follows:</span>
+				<ul class="ul choices" id="loioebb281b1246d4ca18a363682eff3475d__choices_ynq_pxx_2r">
+					<li class="li choice">For an application deployed in your account, specify the name of your
+						extension application for the <span class="keyword parmname">application</span> parameter.
+							<div class="p">For example, to remove a connection of the OData type for an application deployed in your
+							account in the US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-delete-connection --application <var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var>  --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com --name sap_hcmcloud_core_odata</pre></div>
+
+						</div>
+</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;app_provider_account&gt;</var>:<var class="keyword varname">&lt;my_app&gt;</var>.<div class="p">For
+							example, to remove a connection of type OData with technical user for an
+							application to which your account in the US East data center is
+							subscribed,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-delete-connection --application <var class="keyword varname">&lt;application_provider_account:my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com --name sap_hcmcloud_core_odata_technical_user</pre></div>
+</div>
+</li>
+
+				</ul>
+
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="1445cb5e66ed40728c1bbfd44c81d0c9.html" title="This command removes the specified connection configured between an extension application and a SAP SuccessFactors system associated with the specified SAP Cloud Platform account.">hcmcloud-delete-connection (Beta)</a></div>
+<div><a class="link" href="ba4e8bbf0ec4409fae7064bcbbe07e49.html" title="This command configures the connectivity of an extension application to a SAP SuccessFactors system associated with a specified SAP Cloud Platform account. The command creates the required HTTP destination and registers an OAuth client for the extension application in SAP SuccessFactors. The command is relevant for Java extension applications.">hcmcloud-create-connection (Beta)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

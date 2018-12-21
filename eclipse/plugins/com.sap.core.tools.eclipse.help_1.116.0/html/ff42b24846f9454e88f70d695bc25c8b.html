@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This tutorial guides you how to use the SAP Cloud Platform Feedback Service from the Java code in a simple Java EE Web application."/>
+<meta name="description" content="This tutorial guides you how to use the SAP Cloud Platform Feedback Service from the Java code in a simple Java EE Web application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming the Feedback Service Via Web Application Backend</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioff42b24846f9454e88f70d695bc25c8b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Consuming the <span class="ph pname">Feedback Service</span> Via Web Application Backend</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">This tutorial guides you how to use the <span class="ph pname">SAP Cloud Platform Feedback Service</span> from
+		the Java code in a simple Java EE Web application.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loioff42b24846f9454e88f70d695bc25c8b__ul_hbf_rpw_cm">
+				<li class="li">Have a <span class="ph pname">SAP Cloud Platform</span> developer account.</li>
+
+				<li class="li">You have installed the <span class="ph pname">SAP Cloud Platform</span> Tools and created a <span class="ph pname">SAP Cloud Platform</span>
+					server runtime environment. For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>.</li>
+
+				<li class="li">To be able to operate in the <span class="ph uicontrol">Administration</span> and
+						<span class="ph uicontrol">Analysis</span> UIs of the <span class="ph pname">Feedback Service</span> so that you can
+					test the feedback for your application, you need to assign the following roles
+					to your user:<ul class="ul" id="loioff42b24846f9454e88f70d695bc25c8b__ul_av1_f31_zp">
+						<li class="li">FeedbackAdministrator</li>
+
+						<li class="li">FeedbackAnalyst</li>
+
+					</ul>
+</li>
+
+				<li class="li">For more information, see: <a class="xref" href="d31882e270da412b93c29176f549a56a.html">Getting Feedback for Applications</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step">
+				<span class="ph cmd">Create a dynamic web project:</span>
+				<ol type="a" class="ol substeps" id="loioff42b24846f9454e88f70d695bc25c8b__substeps_qgd_d5w_cm">
+					<li class="li substep">
+						<span class="ph cmd">From the Eclipse main menu, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">In the <span class="ph uicontrol">Project name</span> field, enter
+								<kbd class="ph userinput">feedback-app</kbd>. Make sure that SAP HANA Cloud
+							is selected as the target runtime.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">Leave the default values for the other project settings and choose
+								<span class="ph uicontrol">Finish</span>. </span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Add a servlet to the web project:</span>
+				<ol type="a" class="ol substeps" id="loioff42b24846f9454e88f70d695bc25c8b__substeps_xpc_xww_cm">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view, select the
+								<span class="ph uicontrol">feedback-app</span> node.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">From the Eclipse main menu, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Enter the Java package <kbd class="ph userinput">hello</kbd> and the class name
+								<kbd class="ph userinput">FeedbackServlet</kbd>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">To generate the servlet, choose <span class="ph uicontrol">Finish</span>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Replace the source code with the following content:</span>
+						<div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">FeedbackServlet.java
+package hello;
+
+import java.io.IOException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.entity.StringEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sap.core.connectivity.api.DestinationException;
+import com.sap.core.connectivity.api.http.HttpDestination;
+
+/**
+ * Servlet implementation class FeedbackServlet
+ */
+public class FeedbackServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(FeedbackServlet.class);
+
+    public FeedbackServlet() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpClient httpClient = null;
+		try {
+			Context ctx = new InitialContext();
+			HttpDestination destination = (HttpDestination) ctx.lookup("java:comp/env/FeedbackService");
+
+			httpClient = destination.createHttpClient();
+			HttpPost post = new HttpPost();
+
+			String text = request.getParameter("text");
+			String rating = request.getParameter("rating");
+			String page = request.getParameter("page");
+			String body = "{\"texts\":{\"t1\": \"" + text + "\"}, \"ratings\":{\"r1\": {\"value\": " + rating + "}}, \"context\": {\"page\": \"" + page + "\", \"lang\": \"en\", \"attr1\": \"mobile\"}}";
+
+			//Use the proper content type
+			post.setEntity(new StringEntity(body, "application/json", "UTF-8"));
+
+			HttpResponse httpResponse = httpClient.execute(post);
+			int responceCode = httpResponse.getStatusLine().getStatusCode();
+
+			if (responceCode != HttpServletResponse.SC_OK) {
+				LOGGER.error("Feedback Service call failed with HTTP responce code " + responceCode + ". Error: " + httpResponse.getStatusLine().getReasonPhrase());
+				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Something went wrong please try again later.");
+			} else {
+				response.getWriter().print("Your feedback was accepted. Thank You!");
+			}
+		} catch (NamingException e) {
+			LOGGER.error("Cannot lookup the feedback service destination", e);
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Cannot lookup the feedback service destination");
+		} catch (DestinationException e) {
+			LOGGER.error("Cannot create HttpClient", e);
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Something went wrong please try again later.");
+		} finally {
+			if (httpClient != null) {
+				ClientConnectionManager connectionManager = httpClient.getConnectionManager();
+				if (connectionManager != null) {
+					connectionManager.shutdown();
+				}
+			}
+		}
+	}
+
+}
+</pre></div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Add an HTML file to the web project:</span>
+				<ol type="a" class="ol substeps" id="loioff42b24846f9454e88f70d695bc25c8b__substeps_fwd_bvw_cm">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view, select the
+								<span class="ph uicontrol">feedback-app</span> node.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">From the Eclipse main menu, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">HTML File</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Enter as file name <kbd class="ph userinput">index.html</kbd>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">To generate the file, choose <span class="ph uicontrol">Finish</span>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Replace the source code with the following content:</span>
+						<div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/&gt;
+    &lt;title&gt;Feedback Application&lt;/title&gt;
+
+    &lt;script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        id="sap-ui-bootstrap"
+        data-sap-ui-libs="sap.m, sap.ui.commons"
+        data-sap-ui-theme="sap_bluecrystal"&gt;
+    &lt;/script&gt;
+
+    &lt;script&gt;
+      var app = new sap.m.App({initialPage:"page1"});
+      var t1 = new sap.m.Text({text: "Please share your feedback"});
+      var t2 = new sap.m.Text({text: "Do you like it"});
+      var ind1 = new sap.m.RatingIndicator({maxValue : 5, value : 4});
+      var t3 = new sap.m.Text({text: "Some free comments:"});
+      var textArea = new sap.m.TextArea({rows : 2, cols: 40});
+
+      var sendBtn = new sap.m.Button({
+          text : "Send",
+          press : function() {
+        	  var data = {
+        			  "text": textArea.getValue(),
+        			  "rating": ind1.getValue(),
+        			  "page": "page1"
+        	  };
+
+              $.ajax({
+            	  url: "FeedbackServlet",
+            	  type: "POST",
+            	  data: data
+              }).done(function() {
+            	  jQuery.sap.require("sap.m.MessageToast");
+            	  sap.m.MessageToast.show("Thank you. Your feedback was accepted.");
+              }).fail(function() {
+            	  jQuery.sap.require("sap.m.MessageToast");
+            	  sap.m.MessageToast.show("Something went wrong plese try again later.");
+              });
+          }
+      });
+
+      var vbox = new sap.m.VBox({
+    	  fitContainer: true,
+    	  displayInline: false,
+    	  items: [t1, t2, ind1, t3, textArea, sendBtn]
+      });
+
+      var page1 = new sap.m.Page("page1", {
+          title: "Feedback Application",
+          content : vbox
+      });
+
+      app.addPage(page1);
+      app.placeAt("content");
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body class="sapUiBody"&gt;
+    &lt;div id="content"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</pre></div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Declare a reference to the <span class="ph pname">Feedback Service</span> destination:</span>
+				<ol type="a" class="ol substeps" id="loioff42b24846f9454e88f70d695bc25c8b__substeps_lyf_mxw_cm">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Open the <span class="ph uicontrol">WebContent/WEB-INF/web.xml</span> file and add
+							the following content just before the closing web-app tag:</span>
+						<div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">web.xml
+...
+&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;FeedbackService&lt;/res-ref-name&gt;
+    &lt;res-type&gt;com.sap.core.connectivity.api.http.HttpDestination&lt;/res-type&gt;
+  &lt;/resource-ref&gt;
+...</pre></div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Test: the application on <span class="ph pname">SAP Cloud Platform</span> local runtime:</span>
+				<ol type="a" class="ol substeps" id="loioff42b24846f9454e88f70d695bc25c8b__substeps_xsp_rxw_cm">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Deploy the application on the <span class="ph pname">SAP Cloud Platform</span> local
+							runtime.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Open the <span class="ph uicontrol">Connectivity</span> tab page of the <span class="ph pname">SAP Cloud Platform</span> local runtime.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Create a destination with the name <kbd class="ph userinput">FeedbackService</kbd> and configure
+							it so it can be consumed by the application at runtime. For more
+							information, see the Related Links section.</span>
+						<div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">Name=FeedbackService
+Type=HTTP
+URL=https://feedback-<var class="keyword varname">&lt;account_name&gt;</var>.hanatrial.ondemand.com/api/v2/apps/<var class="keyword varname">&lt;your_application_id&gt;</var>/posts
+Authentication=NoAuthentication
+
+</pre></div>
+
+							<p class="p">The application feedback URL which contains the application ID is
+								automatically generated after you have registered your application
+								in the <span class="ph uicontrol">Administration</span> UI of the <span class="ph pname">Feedback Service</span>. For more information about how to obtain the application
+								feedback URL, see <cite class="cite"><span class="ph pname">Feedback Service</span> Administration</cite> in
+								the <cite class="cite">Related Links</cite> section.</p>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Open the application in your web browser: <samp class="ph codeph">
+									http://<var class="keyword varname">&lt;host&gt;</var>:<var class="keyword varname">&lt;port&gt;</var>/feedback-app/</samp>.
+							Send sample feedback.</span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Testing the application on <span class="ph pname">SAP Cloud Platform</span>:</span>
+				<ol type="a" class="ol substeps" id="loioff42b24846f9454e88f70d695bc25c8b__substeps_nyg_jcx_cm">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Deploy the application on the <span class="ph pname">SAP Cloud Platform</span>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Open the <span class="ph pname">SAP Cloud Platform</span> Cockpit in your web browser. Create a destination with
+							the name <kbd class="ph userinput">FeedbackService</kbd> and configure it so it
+							can be consumed by the application at runtime. For more information, see
+							the <cite class="cite">Related Links</cite> section.</span>
+						<div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">Name=FeedbackService
+Type=HTTP
+URL=https://feedback-<var class="keyword varname">&lt;account_name&gt;</var>.hanatrial.ondemand.com/api/v2/apps/<var class="keyword varname">&lt;your_application_id&gt;</var>/posts
+Authentication=NoAuthentication
+
+</pre></div>
+
+							<p class="p">The application feedback URL which contains the application ID is
+								automatically generated after you have registered your application
+								in the <span class="ph uicontrol">Administration</span> UI of the <span class="ph pname">Feedback Service</span>. For more information about how to obtain the application
+								feedback URL, see <cite class="cite"><span class="ph pname">Feedback Service</span> Administration</cite> in
+								the <cite class="cite">Related Links</cite> section.</p>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Start the application and open it in your web browser.</span>
+					</li>
+
+				</ol>
+
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a></div>
+<div><a class="link" href="9995d98e0cce4d4d9a010e63bdf48bf9.html">Consuming the Feedback Service</a></div>
+<div><a class="link" href="479a6e3db07948558c0319d17749ade1.html">Feedback Service Administration</a></div>
+<div><a class="link" href="e520383cbb571014858bc5d52295f433.html">Configuring Destinations from the Eclipse IDE</a></div>
+<div><a class="link" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

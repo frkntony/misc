@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="All connectivity API packages are visible by default from all Web applications. Applications can consume the destinations via a JNDI lookup."/>
+<meta name="description" content="All connectivity API packages are visible by default from all Web applications. Applications can consume the destinations via a JNDI lookup."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>HttpDestination API and DestinationFactory</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio462dbffef4614044b5c727c9de37672e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">HttpDestination API and DestinationFactory</h1>
+
+	<p class="shortdesc">All connectivity API packages are visible by default from all Web applications.
+		Applications can consume the destinations via a JNDI lookup.</p>
+
+	<div class="topic concept nested1" id="concept_zvz_ggw_5n">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<p class="p"/>
+
+			<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+				
+				<p class="p">You have set up your Java development environment. See also: <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Retrieving HTTP Destinations Using HttpDestination API</div><div type="Retrieving HTTP Destinations Using HttpDestination API">
+				
+				<p class="p">To consume destinations using <span class="keyword apiname">HttpDestination</span> API, you need to
+					define your destination as a resource in the <span class="keyword cmdname">web.xml</span>
+					file.</p>
+
+				<ol class="ol" id="concept_zvz_ggw_5n__ol_ol2_kgw_5n">
+					<li class="li">An example of a destination resource named <kbd class="ph userinput">myBackend</kbd>,
+						which is described in the <span class="keyword cmdname">web.xml</span> file, is as follows:<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;myBackend&lt;/res-ref-name&gt;
+    &lt;res-type&gt;com.sap.core.connectivity.api.http.HttpDestination&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+
+						</div>
+</li>
+
+					<li class="li">In your servlet code, you can look up the destination (a HTTP destination in
+						this example) from the JNDI registry as following:<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">import javax.naming.Context;
+import javax.naming.InitialContext;
+import com.sap.core.connectivity.api.http.HttpDestination;
+...
+ 
+// coding to lookup the destination "myBackend"
+Context ctx = new InitialContext();
+HttpDestination destination = (HttpDestination) ctx.lookup("java:comp/env/myBackend");</pre></div>
+
+						</div>
+<div class="note note"><span class="notetitle">Note</span> If you want the lookup name to differ from the destination name,
+							you can specify the lookup name in <samp class="ph codeph">&lt;res-ref-name&gt;</samp>
+							and the destination name in <samp class="ph codeph">&lt;mapped-name&gt;</samp>, as
+							shown in the following example.</div>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+   &lt;res-ref-name&gt;myLookupName&lt;/res-ref-name&gt;
+   &lt;res-type&gt;com.sap.core.connectivity.api.http.HttpDestination&lt;/res-type&gt;
+   &lt;mapped-name&gt;myBackend&lt;/mapped-name&gt;
+&lt;/resource-ref&gt;</pre></div>
+
+						</div>
+</li>
+
+					<li class="li">With the retrieved HTTP destination, you can then, for example, send a
+						simple GET request to the configured remote system by using the following
+						code: <div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.HttpResponse;
+...
+ 
+// coding to call service "myService" on the system configured in the given destination
+HttpClient createHttpClient = destination.createHttpClient();
+HttpGet get = new HttpGet("myService");
+HttpResponse resp = createHttpClient.execute(get);</pre></div>
+
+						</div>
+<div class="note note"><span class="notetitle">Note</span> If you want to use <samp class="ph codeph">&lt;res-ref-name&gt;</samp>, which
+							contains "/", the name after the last "/" should be the same as the
+							destination name. For example, you can use
+								<samp class="ph codeph">&lt;res-ref-name&gt;connectivity/myBackend&lt;/res-ref-name&gt;</samp>.
+							In this case, you should use
+								<samp class="ph codeph">java:comp/env/connectivity/myBackend</samp> as a lookup
+							string.</div>
+</li>
+
+				</ol>
+
+				<p class="p">If you want to get the URL of your configured destination, use the <span class="keyword apiname">URI
+						getURI()</span> method. This method returns the URL, defined in the
+					destination configuration, converted to URI.</p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Retrieving HTTP Destinations Using DestinationFactory</div><div type="Retrieving HTTP Destinations Using DestinationFactory">
+				
+				<p class="p">As alternative approach how to retrieve an HTTP destination,
+						<span class="keyword apiname">DestinationFactory</span> can be used. We recommend this
+					approach if the used destinations are unknown at implementation time and should
+					be loaded dynamically at runtime. </p>
+
+				<ol class="ol" id="concept_zvz_ggw_5n__ol_r2k_2hw_5n">
+					<li class="li">Define the <span class="keyword apiname">DestinationFactory</span> as a JNDI resource in the
+							<span class="keyword cmdname">web.xml</span> file: <div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;resource-ref&gt;
+   &lt;res-ref-name&gt;connectivity/DestinationFactory&lt;/res-ref-name&gt;
+   &lt;res-type&gt;com.sap.core.connectivity.api.DestinationFactory&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+
+						</div>
+</li>
+
+					<li class="li">In your Java code, you can then look it up and use it in following way: <div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+DestinationFactory destinationFactory = (DestinationFactory) ctx.lookup(DestinationFactory.JNDI_NAME);             
+   destination = (HttpDestination) destinationFactory.getDestination(destinationName);</pre></div>
+
+						</div>
+</li>
+
+				</ol>
+
+				<div class="p">
+					<div class="note note"><span class="notetitle">Note</span> If you have two destinations with the same name, one configured on account
+						level and the other on application level, the
+							<span class="keyword apiname">getConfiguration()</span> method will return the destination
+						on account level. <p class="p">The preference order is: subscription level -&gt;
+							account level -&gt; application level.</p>
+</div>
+
+				</div>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Related Information</div><div type="Related Information">
+				
+				<p class="p">If you need to also add Maven dependencies, take a look at this blog: </p>
+
+				<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/community/developer-center/cloud-platform/blog/2014/05/27/building-java-applications-with-maven" target="_blank" alt="http://scn.sap.com/community/developer-center/cloud-platform/blog/2014/05/27/building-java-applications-with-maven" title="http://scn.sap.com/community/developer-center/cloud-platform/blog/2014/05/27/building-java-applications-with-maven">Building Java Web Applications with Maven<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+				<p class="p">See also: </p>
+
+				<p class="p"><a class="xref" href="4cbdab6e2eb14c92ab76540ffb32174c.html" title="SAP offers a Maven plugin that supports you in using Maven to develop Java applications for SAP Cloud Platform. It allows you to conveniently call the SAP Cloud Platform console client and its commands from the Maven environment.">Maven Plugin</a></p>
+
+			</div></div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

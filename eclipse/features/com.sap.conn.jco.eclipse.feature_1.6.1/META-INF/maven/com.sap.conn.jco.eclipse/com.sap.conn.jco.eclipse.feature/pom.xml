@@ -1,0 +1,62 @@
+<project
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>com.sap.conn.jco.eclipse.feature</artifactId>
+  <version>1.6.1</version>
+  <name>com.sap.conn.jco.eclipse.feature</name>
+  <packaging>eclipse-feature</packaging>
+
+  <parent>
+    <artifactId>parent</artifactId>
+    <groupId>com.sap.conn.jco.eclipse</groupId>
+    <version>1.6.1</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho.extras</groupId>
+        <artifactId>tycho-source-feature-plugin</artifactId>
+        <version>${tycho-extras-version}</version>
+        <configuration>
+          <includeBinaryFeature>false</includeBinaryFeature>
+          <excludes>
+            <plugin id="com.sap.conn.jco"/>
+            <plugin id="com.sap.conn.jco.linux.x86"/>
+            <plugin id="com.sap.conn.jco.linux.x86_64"/>
+            <plugin id="com.sap.conn.jco.win32.x86"/>
+            <plugin id="com.sap.conn.jco.win32.x86_64"/>
+            <plugin id="com.sap.conn.jco.macosx.x86_64"/>
+            <plugin id="com.sap.js.tc.logging"/>
+            <plugin id="com.sap.js.passport.api"/>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>source-feature</id>
+            <phase>package</phase>
+            <goals>
+              <goal>source-feature</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <executions>
+          <execution>
+            <id>attached-p2-metadata</id>
+            <phase>package</phase>
+            <goals>
+              <goal>p2-metadata</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

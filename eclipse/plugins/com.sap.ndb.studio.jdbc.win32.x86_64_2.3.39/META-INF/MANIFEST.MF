@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.sap.ndb.studio.jdbc.win32.x86_64;singleton:=t
+ rue
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Eclipse-PlatformFilter: (& (osgi.os=win32) (osgi.arch=x86_64))
+Bundle-Vendor: %providerName
+Fragment-Host: com.sap.ndb.studio.jdbc
+Bundle-Name: %fragmentName
+Bundle-Version: 2.3.39
+Bundle-Localization: fragment
+Bundle-NativeCode: jniauthentication.dll;osname=win32;processor=x86_64
+Created-By: Apache Maven 3.1.1
+Build-Jdk: 1.8.0_66
+Eclipse-BundleShape: dir
+
+Name: fragment.properties
+SHA-256-Digest: rz3XigPwaiSK0OA9SbMioJFZPOMUh7kxiTgP2zoKYCU=
+
+Name: META-INF/maven/com.sap.ndb.studio/com.sap.ndb.studio.jdbc.win32.
+ x86_64/pom.xml
+SHA-256-Digest: YPxT3zV8dyJcgtXRBY+HS1OGySsPpjIonzZBI30Z5x0=
+
+Name: jniauthentication.dll
+SHA-256-Digest: 5O7yN3etQsk++JBvMG/w6HMKR1vmEExJstGX+UrqFmg=
+
+Name: META-INF/maven/com.sap.ndb.studio/com.sap.ndb.studio.jdbc.win32.
+ x86_64/pom.properties
+SHA-256-Digest: ashtm60mIDvS9lreDkPPs+0+bgFC/9C0TYVibkgL0vI=
+

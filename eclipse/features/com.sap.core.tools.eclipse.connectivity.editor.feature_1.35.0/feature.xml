@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.core.tools.eclipse.connectivity.editor.feature"
+      label="%featureName"
+      version="1.35.0"
+      provider-name="%providerName"
+      plugin="com.sap.core.tools.eclipse.connectivity.editor">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.connectivity.editor"
+         download-size="28"
+         install-size="50"
+         version="1.35.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.connectivity.editor.common"
+         download-size="268"
+         install-size="593"
+         version="1.35.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.connectivity.editor.cloud"
+         download-size="22"
+         install-size="38"
+         version="1.35.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.configuration.client"
+         download-size="34"
+         install-size="59"
+         version="1.14.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.destinationtype.http"
+         download-size="84"
+         install-size="188"
+         version="1.35.0"/>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.destinationtype.mail"
+         download-size="25"
+         install-size="39"
+         version="1.35.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.destinationtype.jco"
+         download-size="26"
+         install-size="41"
+         version="1.35.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.connectivity.apiext.local.crypto"
+         download-size="16"
+         install-size="23"
+         version="0.1.4"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.connectivity.apiext.validation"
+         download-size="126"
+         install-size="238"
+         version="0.1.4"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.dbdev.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.rnd.feature" version="1.4.2" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.dwb.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.afm.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.bi.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.cds.tools.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.dwb.dt.roles.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.fuzzysearch.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.hdb.editor.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.rules.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.sqlscript.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.mrjobs.editor.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.authorization.reposearch"
+         download-size="11"
+         install-size="16"
+         version="2.3.39"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.devhelper.help"
+         download-size="7245"
+         install-size="12890"
+         version="1.6.3"
+         unpack="false"/>
+
+</feature>

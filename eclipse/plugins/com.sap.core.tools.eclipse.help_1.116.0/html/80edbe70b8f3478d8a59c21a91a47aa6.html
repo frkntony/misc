@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Change the default user base for access to the cockpit of your SAP Cloud Platform account."/>
+<meta name="description" content="Change the default user base for access to the cockpit of your SAP Cloud Platform account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring the Identity Provider for the Cockpit</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio80edbe70b8f3478d8a59c21a91a47aa6">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring the Identity Provider for the Cockpit</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Change the default user base for access to the cockpit of your <span class="ph pname">SAP Cloud Platform</span>
+		account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have a <span class="ph pname">Identity Authentication</span> tenant
+				configured. See <a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm"><span class="ph pname">Identity
+                            Authentication</span>
+					documentation</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">By default, the cockpit is configured to use SAP ID Service as an identity provider for user
+				authentication. <span class="ph pname">Identity Authentication</span>, however, uses
+				the SAP user base and default tenant settings. If you want to use your custom user
+				base or custom <span class="ph pname">Identity Authentication</span> tenant
+				settings (such as two-factor user authentication, or corporate user store, for
+				example), you can use a custom <span class="ph pname">Identity Authentication</span> tenant as an
+				identity provider.</p>
+
+			<p class="p">Once you configure cockpit trust with a <span class="ph pname">Identity Authentication</span> tenant, you
+				start accessing the cockpit using the following URL:</p>
+
+			<p class="p"><samp class="ph codeph">https://account-&lt;account-name&gt;.hana.ondemand.com</samp></p>
+
+			<p class="p">If you open the default cockpit URL (see <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>), SAP ID Service will be used
+				for user authentication.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> This is a Beta feature and must not be used productively. The current
+				implementation is for cockpit access to your productive <span class="ph pname">SAP Cloud Platform</span>
+				account only. The <span class="ph pname">SAP Cloud Platform</span> console client, Eclipse tools and other
+				tools still use only the user base and trust settings of SAP ID Service.</div>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> Once you configure the cockpit for using a <span class="ph pname">Identity Authentication</span> tenant, we
+				recommend removing most account members coming from the default user base, SAP ID
+				Service. Keeping one or several SAP ID Service users with administrator role can be
+				useful for restoring account access in case the trust with the <span class="ph pname">Identity Authentication</span> tenant stops
+				working properly.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> Changing the identity provider for the cockpit does <span class="ph emphasis emphasis">not</span>
+				affect the identity provider settings for your applications in this account.</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, open the cockpit. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to the <span class="ph uicontrol">Platform Identity Provider</span> tab. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Use Identity Authentication Tenant</span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the required tenant and save.</span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loio80edbe70b8f3478d8a59c21a91a47aa6__image_umt_ch2_hq" src="loioadb298c6ccd249faaf20042be66f0c17_LowRes.png"/></p>
+
+					<p class="p">After you complete these steps, the cockpit is configured to trust and use the <span class="ph pname">Identity Authentication</span> tenant
+						as an identity provider for user access to this account. </p>
+
+					<p class="p"><img class="image" id="loio80edbe70b8f3478d8a59c21a91a47aa6__image_a1t_v52_hy" src="loio38c80ede94974a92b388e5c900e2ea71_LowRes.png"/></p>
+
+					<p class="p">The <span class="ph pname">Identity Authentication</span> tenant’s
+						Administration Console, in turn, displays the <span class="ph pname">SAP Cloud Platform</span>
+						cockpit as a registered application. The application has
+							<samp class="ph codeph">&lt;Identity Authentication tenant ID&gt;</samp> as
+							<span class="ph uicontrol">display name</span>, and
+							<samp class="ph codeph">https://account.hana.ondemand.com/&lt;account
+							name&gt;/admin</samp> as <span class="ph uicontrol">SP name</span>.</p>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div><div class="sectiondiv">
+				<p class="p"><span class="ph emphasis emphasis">Managing Account Members</span></p>
+
+				<p class="p">You can now configure the cockpit user access for this account. Go to the
+						<span class="ph uicontrol">Members</span> tab in the cockpit. You can see all cockpit
+					users, with their IDs, roles and user base, listed here. To add a new member,
+					choose <span class="ph uicontrol">Add Members</span> and configure the member users from
+					the respective user base (<span class="ph pname">Identity Authentication</span> tenant).
+					See also <a class="xref" href="937c3cef72bb101490cf767db0e91070.html" title="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform.">Managing Members</a>.</p>
+
+				<p class="p"><img class="image" id="loio80edbe70b8f3478d8a59c21a91a47aa6__image_z1h_cdf_hy" src="loio3c031c09877a445a8663ecb8427852d4_LowRes.png"/></p>
+
+				<p class="p"><span class="ph emphasis emphasis">Accessing the Cockpit</span></p>
+
+				<p class="p">You can now test logging in the cockpit using the required <span class="ph pname">Identity Authentication</span> tenant.
+					Choose the <span class="ph uicontrol">Cockpit</span> button. The cockpit opens in a new
+					browser tab, using the chosen <span class="ph pname">Identity Authentication</span> tenant as
+					an identity provider. </p>
+
+				<p class="p"><span class="ph emphasis emphasis">Configuring the <span class="ph pname">Identity
+                            Authentication</span>
+						Tenant</span></p>
+
+				<p class="p">You can configure the <span class="ph pname">Identity Authentication</span> tenant. Choose the <span class="ph uicontrol">Administration Console</span> button. </p>
+
+				<p class="p">Related information in the documentation of <span class="ph pname">Identity Authentication</span>: </p>
+
+				<ul class="ul" id="loio80edbe70b8f3478d8a59c21a91a47aa6__ul_xvd_pw2_hy">
+					<li class="li"><a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?461d71c148594608b9c8b6d016e0a0c5.html#loio461d71c148594608b9c8b6d016e0a0c5" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?461d71c148594608b9c8b6d016e0a0c5.html#loio461d71c148594608b9c8b6d016e0a0c5" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?461d71c148594608b9c8b6d016e0a0c5.html#loio461d71c148594608b9c8b6d016e0a0c5">Corporate User Store</a></li>
+
+					<li class="li"><a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?b0301657df074ab081ab7556854aca56.html#loiob0301657df074ab081ab7556854aca56" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?b0301657df074ab081ab7556854aca56.html#loiob0301657df074ab081ab7556854aca56" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?b0301657df074ab081ab7556854aca56.html#loiob0301657df074ab081ab7556854aca56">Configure Kerberos Authentication</a></li>
+
+					<li class="li"><a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?228428f9f476449cafd841a68d75b234.html#loio228428f9f476449cafd841a68d75b234" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?228428f9f476449cafd841a68d75b234.html#loio228428f9f476449cafd841a68d75b234" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?228428f9f476449cafd841a68d75b234.html#loio228428f9f476449cafd841a68d75b234">User Management</a></li>
+
+					<li class="li"><a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?bc52fbf3d59447bbb6aa22f80d8b6056.html#loiobc52fbf3d59447bbb6aa22f80d8b6056" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?bc52fbf3d59447bbb6aa22f80d8b6056.html#loiobc52fbf3d59447bbb6aa22f80d8b6056" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?bc52fbf3d59447bbb6aa22f80d8b6056.html#loiobc52fbf3d59447bbb6aa22f80d8b6056">Configure Risk-Based Authentication</a></li>
+
+					<li class="li"><a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?6a8e67cf98bf41968ea2849dfd0b6bbd.html" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?6a8e67cf98bf41968ea2849dfd0b6bbd.html" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?6a8e67cf98bf41968ea2849dfd0b6bbd.html">Operation Guide</a></li>
+
+				</ul>
+
+			</div></div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

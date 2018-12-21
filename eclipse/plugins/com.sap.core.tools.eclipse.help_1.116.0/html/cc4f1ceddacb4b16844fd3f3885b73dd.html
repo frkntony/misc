@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can manage subscriptions to Java and HTML5 applications."/>
+<meta name="description" content="You can manage subscriptions to Java and HTML5 applications."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Subscriptions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocc4f1ceddacb4b16844fd3f3885b73dd">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Subscriptions</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can manage subscriptions to Java and HTML5 applications.</p>
+
+		<div class="section" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__section_vyb_sdf_cz"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">By using <span class="ph pname">SAP Cloud Platform</span>, a provider
+				can build and run an application to be consumed by multiple customers. For that
+				purpose, the platform provides the multitenant functionality, which allows providers
+				to own, deploy, and operate the application for multiple customers with reduced
+				costs. For example, the provider can upgrade the application for all customers
+				instead of performing each individually, or can share resources across many
+				customers. On the other side, the customers as application consumers can configure
+				certain features of their applications and launch them through consumer-specific
+				URLs. Furthermore, they can protect the application by isolating their tenants. To
+				learn about multitenant applications, see <cite class="cite">Related Information</cite>.</p>
+
+			<p class="p">Consumers do not deploy their applications in their accounts, but they simply subsribe to the
+				provider application. As a result, a subscription is created in the consumer
+				account. This subscription represents the contract or relation between an account
+				(tenant) and a provider application.</p>
+
+			<p class="p"><img class="image" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__image_c4v_t1g_cz" width="1400px" src="loio06d9607bdc9d47609dafa7433708646b_LowRes.png"/></p>
+
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> supports Java and
+				HTML5 subscriptions. HTML5 subscriptions used for HTML5 provider applications are
+				configured only through the cockpit. </p>
+
+			<p class="p">However, Java applications can be subscribed only through the console client. When such a
+				subscription is set in the consumer account, the Java provider application can use a
+				connectivity destination that is configured in the consumer account. .</p>
+
+		</div></div>
+
+		<div class="section" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__section_oqz_t2f_cz"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__ul_drz_x2f_cz">
+				<li class="li">
+					<p class="p">You have a customer or partner account. For more information, see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have developed and deployed an application for multiple consumers. For more information,
+						see <a class="xref" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">The provider and consumer accounts belong to the same landscape. For more information, see
+							<a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">(Only for Java subscriptions) You have set up the console client. For more information, see
+							<a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__section_e3b_wff_cz"><div class="section_title">Console Client Operations</div><div type="Console Client Operations">
+			
+			<ul class="ul" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__ul_eqq_xff_cz">
+				<li class="li">
+					<p class="p">List Java subscriptions</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Create Java subscriptions</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Remove Java subscriptions</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__section_dm3_cgf_cz"><div class="section_title">Cockpit Operations</div><div type="Cockpit Operations">
+			
+			<p class="p">Under the <span class="ph uicontrol">Subscriptions</span> overview, you can do the
+				following:</p>
+
+			<ul class="ul" id="loiocc4f1ceddacb4b16844fd3f3885b73dd__ul_uz3_fgf_cz">
+				<li class="li">
+					<p class="p">List all Java and HTML5 applications to which your account is subscribed.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Launch the applications through dedicated (consumer-specific) URLs.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Create custom roles for your subscribed applications and assign roles (custom
+						or predefined) to individual users and groups.</p>
+
+					<p class="p">For this configuration, choose <span class="ph uicontrol">Roles</span> in the navigation
+						area.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">(Only for Java subscriptions) Configure connection parameters to other
+						systems by creating connectivity destinations.</p>
+
+					<p class="p">For this configuration, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Connectivity</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Destinations</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">(Only for HTML5 subscriptions) Display the log files of the subscription.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">(Only for HTML5 subscriptions) Manage subscriptions.</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> <br/>
+<ul class="ullinks">
+<div><strong><a class="link" href="e7e62c88b0184307af165a7d9323aa2e.html">Managing Java Subscriptions</a></strong><br/>
+<div class="linkdesc">Manage subscriptions to Java applications by viewing, creating or removing
+		subscriptions.</div></div>
+<div><strong><a class="link" href="f16cd5b03b8e4ba39a1328b15bd89fbe.html">Managing HTML5 Subscriptions</a></strong><br/>
+<div class="linkdesc">Manage subscriptions to HTML5 applications by viewing, creating or removing
+		subscriptions.</div></div>
+</ul>
+
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a></div>
+<div><a class="link" href="b12016370421435a9f38e6955a2820e8.html" title="Set up your HTML5 development environment and run your first application in the cloud.">HTML5: Getting Started</a></div>
+<div><a class="link" href="42575dcfcc784ec4aab6a23e9310a5fa.html" title="You create new applications in the SAP Cloud Platform cockpit.">Creating an HTML5 Application</a></div>
+<div><a class="link" href="e66f3eecbb5710148397a19b46c4979b.html" title="Set up your Java development environment and deploy your first application in the cloud.">Java: Getting Started</a></div>
+<div><a class="link" href="9bd4dd19aef947b58eadf688ccc90de7.html" title="SAP Cloud Platform enables you to develop, deploy and use Java applications in a cloud environment. Applications run on a runtime container where they can use the platform services APIs and Java EE APIs according to standard patterns.">Java: Development</a></div>
+<div><a class="link" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></div>
+<div><a class="link" href="2a795b95e44c42d08c446893a07921db.html" title="Database instances in the cloud are protected by a firewall, in other words, they are not directly accessible. Access to remote database instances is therefore only possible through a database tunnel, which provides a secure connection from your local machine and bypasses the firewall.">Accessing Databases Remotely</a></div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

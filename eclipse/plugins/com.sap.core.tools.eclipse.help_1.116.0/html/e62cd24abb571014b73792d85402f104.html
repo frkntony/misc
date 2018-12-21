@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Sample Application (Java)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe62cd24abb571014b73792d85402f104">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Sample Application (Java)</h1>
+<div class="body taskbody">
+	   <div class="section prereq p" id="loioe62cd24abb571014b73792d85402f104__prereq_N10016_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div><ul class="ul"><li class="li">You have downloaded and configured the SAP Eclipse platform. For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>. </li>
+<li class="li">You have created a HelloWorld Web application as described in <a class="xref" href="e5a8b1d3bb571014a0f89bb4706d4e0b.html">Creating a HelloWorld Application</a>.</li>
+<li class="li">You have downloaded the SDK used for local development.</li>
+
+        <li class="li">You have installed MongoDB as described in <a class="xref" href="1c6d4a951e7c48c1acfd29b63b56ef43.html" title="To use the document service in a Web application, download the SDK and install the MongoDB database.">Local Development Setup</a>.</li>
+</ul>
+</div>
+
+	   <div class="section context" id="loioe62cd24abb571014b73792d85402f104__context_N10031_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>This tutorial describes how you extend the HelloWorld Web application so that it uses the <span class="ph pname">SAP Cloud Platform
+                                Document service</span> for managing unstructured content in your application. You
+      test and run the Web application on your local server and the <span class="ph pname">SAP Cloud Platform</span>.<div class="p">
+        <div class="note note"><span class="notetitle">Note</span> For historic reasons, <span class="ph sap-technical-name sap-technical-name">ecm</span> is used to refer to the document service in the coding and the coding
+          samples.</div>
+
+      </div>
+</div>		 
+	 <div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loioe62cd24abb571014b73792d85402f104__step_N10039_N10036_N10013_N10001">
+	     <span class="ph cmd">Connect the HelloWorld Web application to the document service.</span><div class="itemgroup info">The document service client library is used to connect to the document service. The library connects to the local or central document service
+          and returns an authenticated OpenCMIS session. If you are running your application locally in the Eclipse IDE, the document service client
+          library connects to a local document service of the <span class="ph pname">SAP Cloud Platform</span> SDK that is
+          connected to your local MongoDB. If your application is deployed on <span class="ph pname">SAP Cloud Platform</span>, the document service client library connects to the document service that belongs to the corresponding system landscape.</div>
+	   </li>
+<li class="li step stepexpand" id="loioe62cd24abb571014b73792d85402f104__step_N10045_N10036_N10013_N10001">
+	     <span class="ph cmd">If your application needs authenticated users and these users should be automatically
+          propagated to the document service, configure your Web application to enable user
+          authentication.</span>
+	     <ol type="a" class="ol substeps">
+	       <li class="li substep">
+	         <span class="ph cmd">Expand the <span class="ph uicontrol">HelloWorld/WebContent/WEB-INF</span> node.</span>
+	       </li>
+
+          <li class="li substep">
+            <span class="ph cmd">Select the <span class="ph filepath">web.xml</span> file and choose <span class="ph uicontrol">Open</span>
+              from the context menu.</span>
+          </li>
+
+          <li class="li substep">
+            <span class="ph cmd">Enable authentication for your application.</span>
+          </li>
+
+	     </ol>
+
+        <div class="itemgroup info">For more information about authentication, see <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a>.</div>
+	   </li>
+<li class="li step stepexpand" id="loioe62cd24abb571014b73792d85402f104__step_N1007E_N10036_N10013_N10001">
+        <span class="ph cmd">Connect to the document service and create a folder and a document.</span>
+        <ol type="a" class="ol substeps" id="loioe62cd24abb571014b73792d85402f104__substeps_xvk_vwh_xj">
+          <li class="li substep substepexpand">
+            <span class="ph cmd">Expand the <span class="ph uicontrol">HelloWorld/Java Resources/src/hello</span> node.</span>
+          </li>
+
+          <li class="li substep substepexpand">
+            <span class="ph cmd">Select the <span class="ph filepath">HelloWorldServlet.java</span> file and, choose
+                <span class="ph uicontrol">Open</span> from the context menu.</span>
+          </li>
+
+          <li class="li substep substepexpand">
+            <span class="ph cmd">Add the following code to the <span class="ph filepath">HelloWorldServlet.java</span>.</span>
+            <div class="itemgroup info">
+              <div class="p">
+                <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package hello;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.chemistry.opencmis.client.api.CmisObject;
+import org.apache.chemistry.opencmis.client.api.Document;
+import org.apache.chemistry.opencmis.client.api.Folder;
+import org.apache.chemistry.opencmis.client.api.ItemIterable;
+import org.apache.chemistry.opencmis.client.api.Session;
+import org.apache.chemistry.opencmis.commons.PropertyIds;
+import org.apache.chemistry.opencmis.commons.data.ContentStream;
+import org.apache.chemistry.opencmis.commons.enums.VersioningState;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisNameConstraintViolationException;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisObjectNotFoundException;
+
+import com.sap.ecm.api.RepositoryOptions;
+import com.sap.ecm.api.RepositoryOptions.Visibility;
+import com.sap.ecm.api.EcmService;
+import javax.naming.InitialContext;
+
+/**
+ * Servlet implementation class HelloWorldServlet
+ */
+public class HelloWorldServlet extends HttpServlet {
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * @see HttpServlet#HttpServlet()
+   */
+  public HelloWorldServlet() {
+    super();
+  }
+
+  /**
+   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+   *      response)
+   */
+  protected void doGet(HttpServletRequest request,
+                       HttpServletResponse response) throws ServletException, IOException {
+    response.getWriter().println("&lt;html&gt;&lt;body&gt;");
+    try {
+      // Use a unique name with package semantics e.g. com.foo.MyRepository
+      String uniqueName = "com.foo.MyRepository";
+      // Use a secret key only known to your application (min. 10 chars)
+      String secretKey = "my_super_secret_key_123";
+      Session openCmisSession = null;
+        InitialContext ctx = new InitialContext();
+        String lookupName = "java:comp/env/" + "EcmService";
+        EcmService ecmSvc = (EcmService) ctx.lookup(lookupName);
+      try {
+        // connect to my repository
+        openCmisSession = ecmSvc.connect(uniqueName, secretKey);
+      }
+      catch (CmisObjectNotFoundException e) {
+        // repository does not exist, so try to create it
+        RepositoryOptions options = new RepositoryOptions();
+        options.setUniqueName(uniqueName);
+        options.setRepositoryKey(secretKey);
+        options.setVisibility(Visibility.PROTECTED);
+        ecmSvc.createRepository(options);
+        // should be created now, so connect to it
+        openCmisSession = ecmSvc.connect(uniqueName, secretKey);
+      }
+      response.getWriter().println(
+        "&lt;h3&gt;You are now connected to the Repository with Id "
+        + openCmisSession.getRepositoryInfo().getId()
+        + "&lt;/h3&gt;");
+
+      // access the root folder of the repository
+      Folder root = openCmisSession.getRootFolder();
+
+      // create a new folder
+      Map&lt;String, String&gt; newFolderProps = new HashMap&lt;String, String&gt;();
+      newFolderProps.put(PropertyIds.OBJECT_TYPE_ID, "cmis:folder");
+      newFolderProps.put(PropertyIds.NAME, "SapHANANeo");
+      try {
+        root.createFolder(newFolderProps);
+      } catch (CmisNameConstraintViolationException e) {
+        // Folder exists already, nothing to do
+      }
+
+      // create a new file in the root folder
+      Map&lt;String, Object&gt; properties = new HashMap&lt;String, Object&gt;();
+      properties.put(PropertyIds.OBJECT_TYPE_ID, "cmis:document");
+      properties.put(PropertyIds.NAME, "HelloWorld.txt");
+      byte[] helloContent = "Hello World!".getBytes("UTF-8");
+      InputStream stream = new ByteArrayInputStream(helloContent);
+      ContentStream contentStream = openCmisSession.getObjectFactory()
+                                    .createContentStream("HelloWorld.txt",
+                                    helloContent.length, "text/plain; charset=UTF-8", stream);
+      try {
+        root.createDocument(properties, contentStream, VersioningState.NONE);
+      } catch (CmisNameConstraintViolationException e) {
+        // Document exists already, nothing to do
+      }
+
+      // Display the root folder's children objects
+      ItemIterable&lt;CmisObject&gt; children = root.getChildren();
+      response.getWriter().println("The root folder of the repository with id " + root.getId()
+                                 + " contains the following objects:&lt;ul&gt;");
+      for (CmisObject o : children) {
+        response.getWriter().print("&lt;li&gt;" + o.getName());
+        if (o instanceof Folder) {
+          response.getWriter().println(" createdBy: " + o.getCreatedBy() + "&lt;/li&gt;");
+        } else {
+          Document doc = (Document) o;
+          response.getWriter().println(" createdBy: " + o.getCreatedBy() + " filesize: "
+                                     + doc.getContentStreamLength() + " bytes"
+                                     + "&lt;/li&gt;");
+        }
+      }
+      response.getWriter().println("&lt;/ul&gt;");
+    } catch (Exception e) {
+      throw new ServletException(e);
+    } finally {
+      response.getWriter().println("&lt;/body&gt;&lt;/html&gt;");
+    }
+  }
+
+  /**
+   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+   *      response)
+   */
+  protected void doPost(HttpServletRequest request,
+                        HttpServletResponse response) throws ServletException, IOException {
+    // TODO Auto-generated method stub
+  }
+
+}
+</pre></div>
+
+              </div>
+
+            </div>
+          </li>
+
+        </ol>
+
+        <div class="itemgroup info">For more information about using the OpenCMIS API, see the Apache Chemistry
+          documentation.</div>
+        <div class="itemgroup stepresult">During execution, this servlet executes the following steps:<ol class="ol" type="a" id="loioe62cd24abb571014b73792d85402f104__ol_rps_bxh_xj">
+            <li class="li">It connects to a repository. If the repository does not yet exist, the servlet creates the repository.</li>
+
+            <li class="li">It creates a subfolder.</li>
+
+            <li class="li">It creates a document.</li>
+
+            <li class="li">It displays the children of the root folder.</li>
+
+          </ol>
+</div>
+      </li>
+<li class="li step stepexpand" id="loioe62cd24abb571014b73792d85402f104__step_N100D9_N10036_N10013_N10001">
+        <span class="ph cmd">Add the resource reference description to the <span class="ph filepath">web.xml</span> file.</span>
+        <div class="itemgroup info">
+          <div class="note note"><span class="notetitle">Note</span> The document service is consumed by defining a resource in your
+              <span class="ph filepath">web.xml</span> file and by using JNDI lookup to retrieve an instance of
+            the <span class="ph sap-technical-name sap-technical-name">com.sap.ecm.api.EcmService</span> class. Once you
+            have established a connection to the document service, you can use one of the
+              <span class="ph sap-technical-name sap-technical-name">connect(…)</span> methods to get a CMIS session
+              (<span class="ph sap-technical-name sap-technical-name">org.apache.chemistry.opencmis.client.api.Session</span>).
+            A few examples of how to use the OpenCMIS Client API from the Apache Chemistry project
+            are described below. For more information, see the Apache Chemistry page.</div>
+
+        </div>
+        <ol type="a" class="ol substeps" id="loioe62cd24abb571014b73792d85402f104__substeps_stg_yxh_xj">
+          <li class="li substep substepexpand">
+            <span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view, expand the
+                <span class="ph uicontrol">HelloWorld/WebContent/WEB-INF</span> node.</span>
+          </li>
+
+          <li class="li substep substepexpand">
+            <span class="ph cmd">Select the <span class="ph filepath">web.xml</span> file and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Open With</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Text Editor</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> from the context menu.</span>
+          </li>
+
+          <li class="li substep substepexpand">
+            <span class="ph cmd">Insert the following content after the <samp class="ph codeph">&lt;servlet-mapping&gt;</samp>
+              elements.</span>
+            <div class="itemgroup info">
+              <div class="p">
+                <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+   &lt;res-ref-name&gt;EcmService&lt;/res-ref-name&gt;
+   &lt;res-type&gt;com.sap.ecm.api.EcmService&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+
+              </div>
+
+            </div>
+          </li>
+
+        </ol>
+
+      </li>
+<li class="li step stepexpand" id="loioe62cd24abb571014b73792d85402f104__step_N10128_N10036_N10013_N10001">
+        <span class="ph cmd">Test the Web application locally or in the <span class="ph pname">SAP Cloud Platform</span>. For testing,
+          proceed as described in <a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a> or <a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a>
+          linked below.</span>
+      </li>
+</ol>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/opencmis.html" target="_blank" alt="http://chemistry.apache.org/java/opencmis.html" title="http://chemistry.apache.org/java/opencmis.html">http://chemistry.apache.org/java/opencmis.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/" target="_blank" alt="http://chemistry.apache.org/" title="http://chemistry.apache.org/">http://chemistry.apache.org/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/developing/guide.html" target="_blank" alt="http://chemistry.apache.org/java/developing/guide.html" title="http://chemistry.apache.org/java/developing/guide.html">http://chemistry.apache.org/java/developing/guide.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/0.13.0/maven/apidocs/" target="_blank" alt="http://chemistry.apache.org/java/0.13.0/maven/apidocs/" title="http://chemistry.apache.org/java/0.13.0/maven/apidocs/">http://chemistry.apache.org/java/0.13.0/maven/apidocs/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/examples/index.html" target="_blank" alt="http://chemistry.apache.org/java/examples/index.html" title="http://chemistry.apache.org/java/examples/index.html">http://chemistry.apache.org/java/examples/index.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="link" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a></div>
+<div><a class="link" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

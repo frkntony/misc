@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The extension application back end includes existing SAP solution services, or it can expose custom services delivered with the extension application on SAP Cloud Platform. Usually, the back end is decoupled from the front end by OData, REST, or JSON services."/>
+<meta name="description" content="The extension application back end includes existing SAP solution services, or it can expose custom services delivered with the extension application on SAP Cloud Platform. Usually, the back end is decoupled from the front end by OData, REST, or JSON services."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Extension Application Back End</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiobf3958c9eba64b2caf1525806d76d863">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Extension Application Back End</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The extension application back end includes existing SAP solution services, or it can
+		expose custom services delivered with the extension application on <span class="ph pname">SAP Cloud Platform</span>.
+		Usually, the back end is decoupled from the front end by OData, REST, or JSON
+		services.</p>
+
+		<div class="p">The extension application back end comprises the following artifacts:<ul class="ul" id="loiobf3958c9eba64b2caf1525806d76d863__ul_lcg_yz4_3r">
+				<li class="li">
+					<p class="p">Active business logic, including both the content and the security checks</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Persistency layer</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Connectivity to one or more back-end systems</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section"><div class="section_title">Business logic</div><div type="Business logic">
+			
+			<p class="p">The clearly decoupled business logic makes it easier to develop, test and operate
+				extension applications on <span class="ph pname">SAP Cloud Platform</span>. It also enables the
+				implementation of concepts such as zero-downtime updates, A/B testing for UI, and
+				other. It ensures that all security checks are performed on the right level, leaving
+				no space for error of putting business logic in the UI tier. Extension applications
+				can leverage any available <span class="ph pname">SAP Cloud Platform</span> runtime. However, the level of
+				integration of the different runtimes may vary. The list of features whose support
+				may vary depending on the runtime includes but is not limited to automatic
+				application provisioning, roles and identity propagation, auto-discovery of
+				different application-bundled artifacts.</p>
+
+			<p class="p">Extension applications benefit from the security model provided by both <span class="ph pname">SAP Cloud Platform</span> and the extended SAP solution. The security frame comprises automatic
+				roles and permissions import, usage of SAP solution-native admin tools, transparency
+				on roles permission assignment, consistent administration experience.</p>
+
+			<p class="p">By leveraging all the available platform services, extension applications will benefit from
+				the account-levelhave Single Sign-On with the extended solution. For some of the SAP
+				solutions (for example, <span class="ph pname">SAP SuccessFactors</span>), it is possible to
+				turn on native management of permissions and roles using the solution-native
+				administration tools. This is implemented by changing the default <span class="ph pname">SAP Cloud Platform</span> role
+				provider. Essentially, extension applications use the available runtime-specific
+				standard mechanisms to check for role assignment and <span class="ph pname">SAP Cloud Platform</span> transparently
+				performs the assignment check in the underlying extended SAP solution.</p>
+
+			<p class="p"> In the scenario where the extended solution does not come with an embedded identity provider
+				(IdP), we use the <span class="ph pname">SAP Cloud Platform Identity Authentication
+                                service</span> as a central
+				point for managing trust and user authentication. By using the IdP-proxy feature of
+					<span class="ph pname">Identity Authentication</span>, you
+				can define your own identity provider.</p>
+
+			<p class="p">The following graphic provides an overview of the business logic of the extension application
+				back end: </p>
+
+			<p class="p"><img class="image" id="loiobf3958c9eba64b2caf1525806d76d863__image_oy2_dcb_gs" src="loio9e438d314cc543f9b3cd6cf0ca11b767_HiRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Persistency</div><div type="Persistency">
+			
+			<p class="p">The persistency layer is an essential aspect that needs to be considered when
+				developing an extension application. There are several options for storing data
+				offered by <span class="ph pname">SAP Cloud Platform</span>, including both relational (for example, SAP HANA
+				and Sybase ASE as offered by persistence service) and unstructured (document
+				service) data storage options. Thus, the various storage needs of the extension
+				applications can be covered.</p>
+
+			<p class="p">It is also possible to store data in the extended SAP solution in the form of custom
+				field or custom business objects. This option varies for the different extended
+				solutions. Custom business objects, however, are usually limited both in volume and
+				in number.</p>
+
+			<p class="p">The following graphic provides an overview of the persistency options for the
+				extension applications:</p>
+
+			<p class="p"><img class="image" id="loiobf3958c9eba64b2caf1525806d76d863__image_kxj_q3b_gs" src="loio748a8f6fa8d244dc885276a534333b7c_HiRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Connectivity</div><div type="Connectivity">
+			
+			<p class="p">One of the most critical layers for the <span class="ph pname">SAP Cloud Platform</span> extension concept is
+				the connectivity layer. It connects an extension application to the extended SAP
+				solution and to other required backend systems. The connectivity is accomplished
+				through a set of standardized destinations. All back-end calls are performed on
+				behalf of the user who is logged on to the extension front-end layer. To implement
+				that, <span class="ph pname">SAP Cloud Platform</span> leverages SAML 2.0 bearer assertion authentication
+				flow. The standardized destination names allow the portability of partner
+				applications - partner extension applications can expect to be installed in an
+				environment where the required destinations are in place and can be used. For more
+				information about the standardized destinations, see solution-specific section.</p>
+
+			<p class="p">It is also possible to have destinations configured to use basic authentication or
+				other authentication means. However, we do not recommend the use of service users or
+				a hard-coded user for back-end calls because the back-end systems will not be able
+				to perform user-based authorization checks. Furthermore, using service users makes
+				the end-to-end traceability very hard to achieve.</p>
+
+			<p class="p">The following graphic provides an overview of the connectivity layer. </p>
+
+			<p class="p"><img class="image" id="loiobf3958c9eba64b2caf1525806d76d863__image_gnq_bnb_gs" src="loio1779f05b6ca94752befe1cb8fd136b2a_HiRes.png"/></p>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> 
+				<p class="p">Extension applications work with your critical business data. Therefore, you must use only
+					applications that come from a trusted application provider. Always make sure
+					that the extension application complies with the common security best practices
+					and fulfills data confidentiality and data protection requirements defined for
+					your organization. Do not deploy or allow access of untrusted applications to
+					your mission-critical back-end systems. </p>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e7b3c275bb571014a910b3fb4329cf09.html" title="Store data using in-memory and relational data persistence made available to your applications that run on SAP Cloud Platform by the persistence service. This ensures data availability and resiliency. In addition to managing and providing access to databases, the persistence service also performs other tasks such as backup, recovery and load balancing.">Persistence Service</a></div>
+<div><a class="link" href="e60b7e45bb57101487a881c7c5487778.html" title="The SAP Cloud Platform Document service provides an on-demand content repository for unstructured or semi-structured content.">Document Service</a></div>
+<div><a class="link" href="e54cc8fbbb571014beb5caaf6aa31280.html">SAP Cloud Platform Connectivity</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

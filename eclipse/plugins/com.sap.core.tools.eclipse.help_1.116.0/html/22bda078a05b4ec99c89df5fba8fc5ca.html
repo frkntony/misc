@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If you have SAP Cloud Platform extension package for SuccessFactors configured for your account, you can change the default SAP Cloud Platform role provider to another one."/>
+<meta name="description" content="If you have SAP Cloud Platform extension package for SuccessFactors configured for your account, you can change the default SAP Cloud Platform role provider to another one."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Changing the Default Role Provider</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio22bda078a05b4ec99c89df5fba8fc5ca">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Changing the Default Role Provider</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">If you have <span class="ph pname">SAP Cloud Platform</span> extension package for SuccessFactors configured for
+		your account, you can change the default <span class="ph pname">SAP Cloud Platform</span> role provider to another
+		one.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio22bda078a05b4ec99c89df5fba8fc5ca__ul_yjc_xdj_jq">
+				<li class="li">You have an <span class="ph pname">SAP Cloud Platform</span> partner or customer account. For more information about
+					account types, see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account
+						Types</a>
+				</li>
+
+				<li class="li">You have an <span class="ph pname">SAP Cloud Platform</span> extension package for SuccessFactors and the extension
+					package is configured for your <span class="ph pname">SAP Cloud Platform</span> account. For more
+					information, see the <cite class="cite">Configuring Extension Package for
+						SuccessFactors</cite> section in the <a class="xref" href="http://help.sap.com/disclaimer?site=http://service.sap.com/%7Esapidb/012002523100013621492014E" target="_blank" alt="http://help.sap.com/disclaimer?site=http://service.sap.com/%7Esapidb/012002523100013621492014E" title="http://help.sap.com/disclaimer?site=http://service.sap.com/%7Esapidb/012002523100013621492014E">http://help.sap.com/disclaimer?site=http://service.sap.com/%7Esapidb/012002523100013621492014E</a></li>
+
+				<li class="li">You are an administrator of your <span class="ph pname">SAP Cloud Platform</span> account.</li>
+
+				<li class="li">Your application runtime supports destinations. For more information about the
+					application runtimes supported by <span class="ph pname">SAP Cloud Platform</span>, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?7613bd28711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?7613bd28711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?7613bd28711e1014839a8273b0e91070.html">Application Runtime Container</a></li>
+
+				<li class="li">You have configured the HTTP destination required to ensure your application's
+					connectivity to SuccessFactors. For more information, see the <cite class="cite">Configuring
+						Destinations for Extension Applications</cite> section in <a class="extlink" href="http://help.sap.com/disclaimer?site=https://service.sap.com/%7Esapidb/012002523100013621492014E/SAP_HCP_Ext_Package_Imp.pdf" target="_blank" download="" alt="https://service.sap.com/%7Esapidb/012002523100013621492014E/SAP_HCP_Ext_Package_Imp.pdf" title="https://service.sap.com/%7Esapidb/012002523100013621492014E/SAP_HCP_Ext_Package_Imp.pdf"><span class="ph pname">SAP Cloud Platform</span>, Extension Package for
+						SuccessFactors: Implementation Guide<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</li>
+
+				<li class="li">In the SuccessFactors system, you have roles with the required permissions and these roles
+					are with the same names as those defined in the web.xml file of the extension
+					application. For more information about creating permission roles in
+					SuccessFactors, see the <cite class="cite">How do you create a permission role?</cite>
+					section in <a class="xref" href="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf" target="_blank" download="" alt="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf" title="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf">Role-Based Permissions Administration Guide</a>.</li>
+
+				<li class="li">In the SuccessFactors system, you have assigned the required roles to the corresponding
+					users and groups. For more information, see the <cite class="cite">How can you grant
+						permission roles?</cite> section in the <a class="xref" href="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf" target="_blank" download="" alt="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf" title="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf">Role-Based Permissions Administration Guide</a>.</li>
+
+				<li class="li">When creating the extension application, you have defined the required roles in the web.xml
+					file of the application and these roles are the same as the ones you have for
+					the application in the SuccessFactors system. For more information about how to
+					define roles in the web.xml file of the application, see  <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a></li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>A role provider is the component that retrieves the roles for a particular user. By
+			default, the role provider used for <span class="ph pname">SAP Cloud Platform</span> applications and services is
+			the <span class="ph pname">SAP Cloud Platform</span> role provider. For extension applications, however, you can
+			change the default role provider to another one, for example, a SuccessFactors role
+			provider. Depending on whether the application is running in your account or your
+			account is subscribed to the extension application, you configure the role provider from
+			either the <span class="ph uicontrol">Roles</span> section for your application, or the
+				<span class="ph uicontrol">Subscription</span> section for your account. In addition, you can
+			view the role provider for each enabled <span class="ph pname">SAP Cloud Platform</span> service in the
+				<span class="ph uicontrol">Services</span> section of the <span class="ph pname">SAP Cloud Platform</span>
+			cockpit.</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio22bda078a05b4ec99c89df5fba8fc5ca__steps_gsd_4gk_jq"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and select the required account.</span>
+				<div class="itemgroup info">
+					<p class="p">Make sure that you have selected the relevant global account to be able to
+						select the right account.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Navigate to the application for which you want to change the role provider. To do so,
+					proceed as follows:</span>
+				<ul class="ul choices" id="loio22bda078a05b4ec99c89df5fba8fc5ca__choices_smx_ybk_jq">
+					<li class="li choice">For a Java application running in your account, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and then choose the link of the application.</li>
+
+					<li class="li choice">For a Java application to which your account is subscribed, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Subscriptions</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and then choose the link of the application.</li>
+
+				</ul>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Roles</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Role Provider</span> panel, select the required role
+					provider from the <span class="ph uicontrol">Provider</span> dropdown box.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) To view the role provider for an <span class="ph pname">SAP Cloud Platform</span> service, in
+					the cockpit navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Services</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"><var class="keyword varname">&lt;service_name&gt;</var></span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and then choose <span class="ph uicontrol">Configure Roles</span>.</span>
+				<div class="itemgroup info">
+					<p class="p">The system displays the role provider in the <span class="ph uicontrol">Role
+							Provider</span> panel in a read-only mode.</p>
+
+				</div>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">For an account with <span class="ph pname">SAP Cloud Platform</span> extension package for SuccessFactors, the role
+								provider for <span class="ph pname">SAP Cloud Platform</span> Portal is
+									<span class="ph uicontrol">SuccessFactors</span>.</p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>
+			<p class="p">The changes take effect after 5 minutes. If you want the changes to take effect
+				immediately, you restart the application (valid only for applications running in
+				your account).</p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

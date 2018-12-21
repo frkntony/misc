@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Lists all volumes in the specified account. Use display-volume to get information about a specific volume."/>
+<meta name="description" content="Lists all volumes in the specified account. Use display-volume to get information about a specific volume."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>list-volumes</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio14270511f8d7474f8de6d8d4a453685f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">list-volumes</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Lists all volumes in the specified account. Use <span class="keyword cmdname">display-volume</span> to get
+		information about a specific volume.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-volumes --account &lt;account_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; </pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loio14270511f8d7474f8de6d8d4a453685f__section_N1001E_N10012_N10001">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio14270511f8d7474f8de6d8d4a453685f__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d926876e45">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d926876e45 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d926876e45 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d926876e45 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d926876e45 ">Use the respective landscape host for your account type.
+										<p class="p"><span class="keyword cmdname">Type</span>: URL. For acceptable values see
+										<a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d926876e45 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d926876e45 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d926876e45 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d926876e45 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio14270511f8d7474f8de6d8d4a453685f__table_ilz_3m4_mv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d926876e147">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d926876e147 "><span class="keyword parmname">-n</span>, <span class="keyword parmname">--not-attached-only</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d926876e147 ">
+								<p class="p">Lists only volumes that are not attached</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-volumes --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="93dd4760f72f42f6a668c903030272a4.html" title="You can take a snapshot of an existing virtual machine volume in your account and use it to create a new virtual machine with the same file system thus saving any manual installation.">Managing Volume Snapshots</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

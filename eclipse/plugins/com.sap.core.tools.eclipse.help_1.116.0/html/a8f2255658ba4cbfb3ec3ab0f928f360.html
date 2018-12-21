@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Tenant Context API</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa8f2255658ba4cbfb3ec3ab0f928f360">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Tenant Context API</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">In a provider-managed application scenario, each application consumer gets its own access URL
+				for the provider application. To be able to use an application with a
+				consumer-specific URL, the consumer must be subscribed to the provider application.
+				When an application is launched via a consumer-specific URL, the tenant runtime is
+				able to identify the current consumer of the application. The tenant runtime
+				provides an API to retrieve the current application consumer. Each application
+				consumer is identified by a unique ID which is called
+					<kbd class="ph userinput">tenantId</kbd>. </p>
+
+			<p class="p">Since the information about the current consumer is extracted from the request URL, the tenant
+				runtime can only provide a tenant ID if the current thread has been started via an
+				HTTP request. In case the current thread was not started via an HTTP request (for
+				example, a background process), the tenant context API only returns a tenant if the
+				current application instance has been started for a dedicated consumer. If the
+				current application instance is shared between multiple consumers and the thread was
+				not started via an HTTP request, the tenant runtime throws an exception.</p>
+
+			<div class="note note"><span class="notetitle">Note</span>  The tenant context API is of interest to application providers only.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tenant Context API</div><div type="Tenant Context API">
+			
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa8f2255658ba4cbfb3ec3ab0f928f360__table_owp_zwv_bm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d7910234e52">API</th>
+
+							<th class="entry" valign="top" width="50%" id="d7910234e55">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d7910234e52 "><span class="keyword parmname">com.sap.cloud.account</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d7910234e55 ">
+								<p class="p">The tenant context API provides the following methods:</p>
+
+								<ul class="ul" id="loioa8f2255658ba4cbfb3ec3ab0f928f360__ul_bbk_nmv_rs">
+									<li class="li"><kbd class="ph userinput">getTenant</kbd> - returns the tenant
+										associated with the current thread.</li>
+
+									<li class="li"><kbd class="ph userinput">execute</kbd> - executes
+											<span class="keyword apiname">callable.call()</span> method on behalf of
+										the specified tenant and returns the result of a called
+										method.</li>
+
+									<li class="li"><kbd class="ph userinput">getSubscribedTenants</kbd> - returns all
+										tenants subscribed to a calling application, or empty
+										collection if there are no subscribed tenants.</li>
+
+								</ul>
+
+								<p class="p">To find the tenant context API in your local SDK installation, go
+									to:
+										<span class="ph filepath">&lt;SDK_location&gt;/javadoc/com/sap/cloud/account</span></p>
+
+								<p class="p">You can also access it at the following URL:  <a class="xref" href="https://help.hana.ondemand.com/javadoc/index.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/index.html" title="https://help.hana.ondemand.com/javadoc/index.html">https://help.hana.ondemand.com/javadoc/index.html</a>
+									<span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">com.sap.cloud.account</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">TenantContext</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>
+								</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tenant Context API via JNDI Lookup</div><div type="Tenant Context API via JNDI Lookup">
+			
+			<p class="p">To look up the <span class="keyword apiname">TenantContext</span> API via JNDI, follow the steps:</p>
+
+			<ol class="ol" id="loioa8f2255658ba4cbfb3ec3ab0f928f360__ol_zn5_m3y_lr">
+				<li class="li">Add the following resource reference of type
+						<span class="keyword apiname">com.sap.cloud.account.TenantContext</span> in your
+						<span class="ph filepath">web.xml</span>
+					file:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;TenantContext&lt;/res-ref-name&gt;
+    &lt;res-type&gt;com.sap.cloud.account.TenantContext&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+</li>
+
+				<li class="li">Then, use the following code to look
+					up:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Context ctx = new InitialContext();
+TenantContext tenantctx = (TenantContext) ctx.lookup("java:comp/env/TenantContext");</pre></div>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tenant Context API via Resource Injection</div><div type="Tenant Context API via Resource Injection">
+			
+			<p class="p">To get an instance of the <span class="keyword apiname">TenantContext</span> API, use resource
+				injection the following way:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+@Resource
+private TenantContext tenantContext;</pre></div>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">When you use WebSockets, the <span class="keyword apiname">TenantId</span> and
+						<span class="keyword apiname">AccountName</span> parameters, provided by the
+						<span class="keyword apiname">TenantContext</span> API, are correct only during processing of
+					WebSocket handshake request. This is because what follows after the handshake
+					does not conform to the HTTP protocol. In case <span class="keyword apiname">TenantId</span> and
+						<span class="keyword apiname">AccountName</span> are needed during next WebSocket requests,
+					they should be stored into the HTTP session, and, if needed, you can use
+						<span class="keyword apiname">TenantContext.execute(...)</span> to operate on behalf of the
+					relevant tenant.</p>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Account API</div><div type="Account API">
+			
+			<p class="p">The <span class="keyword apiname">Account</span> API provides methods to get account ID, account
+				display name, and attributes. For more information, see the <a class="xref" href="https://help.hana.ondemand.com/javadoc/index.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/index.html" title="https://help.hana.ondemand.com/javadoc/index.html">Javadoc</a>. </p>
+
+			<p class="p">You can access the <span class="keyword apiname">Account</span> API in two ways.</p>
+
+			<ul class="ul" id="loioa8f2255658ba4cbfb3ec3ab0f928f360__ul_xyf_kvj_gs">
+				<li class="li">Via looking up or injecting the <span class="keyword apiname">TenantContext</span> API:<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Context ctx = new InitialContext();
+TenantContext tenantctx = (TenantContext) ctx.lookup("java:comp/env/TenantContext");
+ 
+Account account = tenantctx.getTenant().getAccount();</pre></div>
+
+					</div>
+</li>
+
+				<li class="li">Via the <span class="keyword apiname">getSubscribedTenants</span> method: <div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+
+Context ctx = new InitialContext();
+TenantContext tenantctx = (TenantContext) ctx.lookup("java:comp/env/TenantContext");
+ 
+Collection&lt;Tenant&gt; subscribedTenants = tenantctx.getSubscribedTenants();
+ 
+for(Tenant tenant: subscribedTenants ) {
+    Account subscribedAccount = tenant.getAccount();
+}</pre></div>
+
+					</div>
+</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a></div>
+<div><a class="link" href="1b651b3aa5f54538a8f452f6fda0f5c3.html">Viewing the Default Trace</a></div>
+<div><a class="link" href="b0930320e5f946a3a47692be3cebb468.html#loiob0930320e5f946a3a47692be3cebb468" title="Using the console client, you can create accounts and subscribe them to applications to test how applications can be provided to multiple consumers.">Providing Subscriptions to Provider Applications for Testing</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

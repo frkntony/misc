@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You retrieve Java application metrics in a JSON format by performing a REST API request defined by the monitoring API."/>
+<meta name="description" content="You retrieve Java application metrics in a JSON format by performing a REST API request defined by the monitoring API."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Structure of a Monitoring Service Response</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa8cf72ccc97b4e498ee2c09e69700e3d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Structure of a Monitoring Service Response</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You retrieve Java application metrics in a JSON format by performing a REST API request
+		defined by the monitoring API.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The easiest way to view the metrics is to enter the request URI in your browser. You may be
+				asked to provide your credentials before the retrieval process is performed. You can
+				then use any JSON prettifier or formatter to improve the readability of the
+				results.</p>
+
+		</div>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa8cf72ccc97b4e498ee2c09e69700e3d__table_gwy_tjt_cv" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: JSON Response Parameters</span></caption>
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="50%" id="d7877286e37">
+							<p class="p">Parameter</p>
+
+						</th>
+
+						<th class="entry" valign="top" width="50%" id="d7877286e43">
+							<p class="p">Value</p>
+
+						</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">account</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The name of the account as a string</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">application</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The name of the application as a string</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">state</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p"><span class="keyword">"OK"</span>, <span class="keyword">"WARNING"</span> (not used for a status metric), or
+									<span class="keyword">"CRITICAL"</span></p>
+
+							<p class="p">This parameter is used to specify the state of the application,
+								metric, or process.</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">processes</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">A list of processes. Each process contains the process ID, the state of the process, and
+								the list of the metrics for that process.</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">process</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The process ID as a string</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">metrics</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">A list of metrics. Each metric contains the following parameters:</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">name</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The name of the metric as a string</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">value</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The metric value as an integer</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">unit</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The unit for the value as a string</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">warningThreshold</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The warning threshold or the lower threshold as an integer</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">errorThreshold</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The critical threshold or the upper threshold as an integer</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">timestamp</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The time in milliseconds from January 1, 1970 to this call as a
+								positive integer</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">output</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">A summary of the metric as a string</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">min</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The minimum value as an integer.</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">max</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p">The maximum value as an integer.</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="50%" headers="d7877286e37 ">
+							<p class="p"><span class="keyword parmname">metricType</span></p>
+
+						</td>
+
+						<td class="entry" valign="top" width="50%" headers="d7877286e43 ">
+							<p class="p"><span class="keyword">"status"</span>, <span class="keyword">"performance"</span>, or
+									<span class="keyword">"rate"</span></p>
+
+							<p class="p">The state of each type of metric is determined based on the following metrics:</p>
+
+							<ul class="ul" id="loioa8cf72ccc97b4e498ee2c09e69700e3d__ul_bwm_gxt_cv">
+								<li class="li">
+									<p class="p">status metric - <span class="keyword">"OK"</span> or
+											<span class="keyword">"CRITCAL"</span> state of the metric is
+										returned directly.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">performance metric - the returned value is compared with the
+										predefined warning and critical thresholds. Values less than
+										the warning threshold result in an <span class="keyword">"OK"</span>
+										state, values between the warning and the critical
+										thresholds result in a <span class="keyword">"WARNING"</span> state,
+										and values greater than the critical threshold are
+										considered as <span class="keyword">"CRITICAL"</span>.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">rate metric - similar to the performance metric, but the returned value is calculated as
+										a percent using the minimum and maximum values and compared
+										with the warning and critical thresholds.</p>
+
+								</li>
+
+							</ul>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">The JSON response for Java application metrics may look like the following example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">[
+   {
+      "account": "myAccount",
+      "application": "hello",
+      "state": "Ok",
+      "processes": [
+         {
+            "process": "bf061f611cc520f39839f2fa9e44813b2a20cdb7",
+            "state": "Ok",
+            "metrics": [
+               {
+                  "name": "Used Disc Space",
+                  "state": "Ok",
+                  "value": 43,
+                  "unit": "%",
+                  "warningThreshold": 90,
+                  "errorThreshold": 95,
+                  "timestamp": 1456408611000,
+                  "output": "DISK OK - free space: / 4177 MB (54% inode=84%); /var 1417 MB (74% inode=98%); /tmp 1845 MB (96% inode=99%);",
+                  "metricType": "rate",
+                  "min": 0,
+                  "max": 8063
+               },
+               {
+                  "name": "Requests per Minute",
+                  "state": "Ok",
+                  "value": 0,
+                  "unit": "requests",
+                  "warningThreshold": 0,
+                  "errorThreshold": 0,
+                  "timestamp": 1456408611000,
+                  "output": "JMX OK - RequestsCountMin = 0 ",
+                  "metricType": "performance",
+                  "min": 0,
+                  "max": 0
+               },
+               {
+                  "name": "CPU Load",
+                  "state": "Ok",
+                  "value": 2,
+                  "unit": "%",
+                  "warningThreshold": 80,
+                  "errorThreshold": 90,
+                  "timestamp": 1456408611000,
+                  "output": "OK CPUValue: 2 (W&gt; 80, C&gt; 90) ",
+                  "metricType": "performance",
+                  "min": 0,
+                  "max": 0
+               },
+               {
+                  "name": "Disk I/O",
+                  "state": "Ok",
+                  "value": 36386,
+                  "unit": "B/s",
+                  "warningThreshold": 1.0E7,
+                  "errorThreshold": 1.5E7,
+                  "timestamp": 1456408611000,
+                  "output": "OK: DiskRead: 0 B/s (W&gt; 10000000, C&gt; 15000000) DiskWrite: 36386 B/s (W&gt; 10000000, C&gt; 15000000)",
+                  "metricType": "performance",
+                  "min": 0,
+                  "max": 0
+               },
+               {
+                  "name": "OS Memory Usage",
+                  "state": "Ok",
+                  "value": 41,
+                  "unit": "%",
+                  "warningThreshold": 98,
+                  "errorThreshold": 98,
+                  "timestamp": 1456408611000,
+                  "output": "OK: MemoryValue: 41 (W&gt; 98, C&gt; 98) ",
+                  "metricType": "performance",
+                  "min": 0,
+                  "max": 0
+               },
+               {
+                  "name": "Heap Memory Usage",
+                  "state": "Ok",
+                  "value": 8,
+                  "unit": "%",
+                  "warningThreshold": 0,
+                  "errorThreshold": 0,
+                  "timestamp": 1456408611000,
+                  "output": "HeapMemoryUsage.used = 101 of 1224m MB ",
+                  "metricType": "rate",
+                  "min": 0,
+                  "max": 1224
+               },
+               {
+                  "name": "Average Response Time",
+                  "state": "Ok",
+                  "value": 0,
+                  "unit": "ms",
+                  "warningThreshold": 0,
+                  "errorThreshold": 0,
+                  "timestamp": 1456408611000,
+                  "output": "JMX OK - AverageResponseTimeMin = 0ms ",
+                  "metricType": "performance",
+                  "min": 0,
+                  "max": 0
+               },
+               {
+                  "name": "Busy Threads",
+                  "state": "Ok",
+                  "value": 0,
+                  "warningThreshold": 150,
+                  "errorThreshold": 180,
+                  "timestamp": 1456408611000,
+                  "output": "JMX OK - currentThreadsBusy = 0 ",
+                  "metricType": "performance",
+                  "min": 0,
+                  "max": 0
+               }
+            ]
+         }
+      ]
+   }
+]</pre></div>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://api.hana.ondemand.com/monitoring/v1/documentation" target="_blank" alt="https://api.hana.ondemand.com/monitoring/v1/documentation" title="https://api.hana.ondemand.com/monitoring/v1/documentation">Monitoring API documentation</a></div>
+<div><a class="link" href="2dacf6f12dd047efad9bc8929ff1759d.html" title="You can use the monitoring service to receive the metrics of your Java applications running on SAP Cloud Platform.">Monitoring Service</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

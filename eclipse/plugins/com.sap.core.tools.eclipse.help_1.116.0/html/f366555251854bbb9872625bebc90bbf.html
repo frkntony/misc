@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform Enterprise Messaging (Beta) enables you to manage connectivity between different SAP Cloud Platform applications."/>
+<meta name="description" content="SAP Cloud Platform Enterprise Messaging (Beta) enables you to manage connectivity between different SAP Cloud Platform applications."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Overview of Messaging Architecture</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof366555251854bbb9872625bebc90bbf">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Overview of Messaging Architecture</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph emphasis emphasis"><span class="ph pname">SAP Cloud Platform
+                                    Enterprise Messaging (Beta)</span></span> enables you to manage connectivity between different <span class="ph pname">SAP Cloud Platform</span>
+		applications.</p>
+
+		<div class="section"><div class="section_title">Peer-to-Peer Messaging Without Messaging Middleware</div><div type="Peer-to-Peer Messaging Without Messaging Middleware"><p class="p">In a typical
+				IT landscape, you can come across a scenario where various systems interact and
+				communicate with each other directly, at optimum efficiency. However, as you know,
+				an IT landscape is never static. With time, more systems based on different
+				technologies get added and as a result the complexity of the interactions also
+				increases. Managing this complex web of applications and systems require time,
+				money, and resources and, in the mid-term, it's not efficient or scalable without
+				the introduction of a messaging architecture.</p>
+<p class="p">The following diagram
+				illustrates peer-to-peer integration without messaging middleware.</p>
+<img class="image" id="loiof366555251854bbb9872625bebc90bbf__image_wp3_hfz_qw" src="loio3aaa4e8ea0524ec49f369afa13c7633d_LowRes.png"/></div></div>
+
+		<div class="section"><div class="section_title">Messaging-Oriented Architecture</div><div type="Messaging-Oriented Architecture"><p class="p"><span class="ph pname">Enterprise
+                                    Messaging</span> simplifies connectivity. SAP’s messaging-as-a-service solution in the Cloud
+				enables you to connect the applications in your landscape through
+					<span class="ph emphasis emphasis">messaging hosts</span>. A messaging host acts as an intermediary
+				message broker and is responsible for sending and receiving messages between your
+				applications. It effectively decouples communication between senders and receivers
+				and is responsible for ensuring that messages are sent to all intended receivers. If
+				receiving applications are temporarily offline, the messaging host buffers the
+				message until it can be sent to the receiver successfully.</p>
+<p class="p">The following
+				diagram illustrates this messaging-oriented architecture with a central messaging
+				host.</p>
+<img class="image" id="loiof366555251854bbb9872625bebc90bbf__image_xf1_3fz_qw" src="loioc809e31a72c14a6d9037dc4849360ac3_LowRes.png"/><p class="p">The messaging host uses a queue to enable point-to-point communication between
+				two applications. An application sends a message to a specific queue in a messaging
+				host. The intended receiver, in this setup, is subscribed to that same queue and can
+				read any messages from it as soon as they have been published by the
+			sender.</p>
+</div></div>
+
+		<div class="section"><div class="section_title">Administrative Tasks</div><div type="Administrative Tasks">
+			
+			<div class="p">As an administrator, you can perform the following tasks to set up messaging in your
+					landscape:<ol class="ol" id="loiof366555251854bbb9872625bebc90bbf__ol_mcm_jnf_rw">
+					<li class="li">Manage messaging hosts. For more information, see <a class="xref" href="4693b6e4ea6d4636859255fb228998b0.html" title="Access SAP Cloud Platform Enterprise Messaging (Beta) in SAP Cloud Platform cockpit to manage messaging hosts.">Managing Messaging Hosts</a>.</li>
+
+					<li class="li">Manage and create application bindings to a messaging host. For more
+						information, see <a class="xref" href="ccf8bef1cc104e419e5e1baced9b9665.html" title="Access SAP Cloud Platform Enterprise Messaging (Beta) in SAP Cloud Platform cockpit to create and manage application bindings to messaging hosts.">Managing Application Bindings</a>.</li>
+
+				</ol>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

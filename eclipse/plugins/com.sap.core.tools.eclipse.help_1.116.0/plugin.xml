@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+   <extension point="org.eclipse.help.toc">
+      <tocIcon id="SAPid" openIcon="sap_toc_open.gif" closedIcon="sap_toc_closed.gif" altText="SAP Cloud Platform"/>
+      <toc file="toc.xml" primary="true"/>
+   </extension>
+   <extension point="org.eclipse.help.index">
+      <index file="index.xml"/>
+   </extension>
+   <extension point="org.eclipse.help.contexts">
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/cloud/ui/wizard/CloudServerWizard.xml"
+            plugin="com.sap.core.tools.eclipse.server.cloud">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/local/prefs/PreferencePage.xml"
+            plugin="com.sap.core.tools.eclipse.server.local">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/local/ui/wizard/SdkRuntimeWizard.xml"
+            plugin="com.sap.core.tools.eclipse.server.local">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/javaweb/ui/wizard/SdkRuntimeWizardTomcat.xml"
+            plugin="com.sap.core.tools.eclipse.server.javaweb">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/javaweb/ui/wizard/SdkRuntimeWizardTomcat8.xml"
+            plugin="com.sap.core.tools.eclipse.server.javaweb">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/local/ui/wizard/SdkRuntimeWizardWebProfile.xml"
+            plugin="com.sap.core.tools.eclipse.server.local">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/server/local/ui/wizard/LocalServerWizard.xml"
+            plugin="com.sap.core.tools.eclipse.server.local">
+      </contexts>
+      <contexts
+            file="src/com/sap/core/tools/eclipse/logging/LoggersEditorPart.xml"
+            plugin="com.sap.core.tools.eclipse.logging">
+      </contexts>
+   </extension>
+</plugin>

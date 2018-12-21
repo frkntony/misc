@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using the Terminal</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio13373b801d354070b3aeda22cedbc41f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using the Terminal</h1>
+
+	<div class="body taskbody">
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have logged into the gamification workbench and opened the <span class="ph uicontrol">Terminal</span>
+				tab.</p>
+
+			<p class="p">You have the role <span class="ph sap-technical-name sap-technical-name">GamificationDesigner</span>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The Terminal within the game mechanics area allows you to quickly execute one or more API
+				calls. Make sure that you have the appropriate access rights for executing the call. </p>
+
+			<p class="p">A comprehensive documentation of the API can be found in your <span class="ph pname">SAP Cloud Platform, gamification service</span>
+				subscription under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Help </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">API Documentation</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio13373b801d354070b3aeda22cedbc41f__steps_q4s_1s1_pt"><li class="li step stepexpand">
+				<span class="ph cmd">Enter the list of JSON RPC calls as a JSON array: [JSON_RPC_CALL1,
+					JSON_RPC_CALL2,…]</span>
+				<div class="itemgroup info">
+					<p class="p">Example: </p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">[{"method":"createMission", "id":1, "params":["missionname", "mission description", "mission consequence"]},{"method":"createLevel", "id":1, "params":["name","1","Experience Points"]}]</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press <span class="ph uicontrol">Execute</span> to execute the calls. Check <span class="ph uicontrol">Force
+						synchronous execution</span> checkbox to enforce sequential execution
+					of calls in the JSON array.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Review server response. You can view the detailed JSON response by clicking on
+					the symbol on the right.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">The calls are executed in the context of the currently selected app (see
+							dropdown box in the upper right corner of the gamification
+							workbench).</p>
+
+						<p class="p">The defined JSON RPC calls are stored in the browser cache. For restoring
+							the initial sample calls press <span class="ph uicontrol">Restore
+							Example</span>.</p>
+
+						<p class="p">Press the <span class="ph uicontrol">Restore Example</span> button in the
+								<span class="ph uicontrol">Terminal</span> section to show some example
+							requests. Use the API Documentation (<span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Help</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Open API Documentation</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>  ) to find a list of all available methods. </p>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="a74f87fd88c546ef88270b9b808fa759.html">Sending Player Events</a></div>
+<div><a class="link" href="7c19988d0732464bb04affd642cded12.html">Getting Player Achievements</a></div>
+</div>
+</div>
+	
+	</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

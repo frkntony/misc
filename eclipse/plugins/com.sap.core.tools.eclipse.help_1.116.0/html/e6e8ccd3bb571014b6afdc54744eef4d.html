@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Logging in Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe6e8ccd3bb571014b6afdc54744eef4d">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Logging in Applications</h1>
+<div class="body conbody"><div class="section" id="loioe6e8ccd3bb571014b6afdc54744eef4d__section_F5C5308BC0C24205AB5BCDDE4BB25F36"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">To produce logs that you can use for analysis and troubleshooting at runtime,  use a
+				logging API in your cloud application. </p>
+
+			<p class="p">For cloud applications, we support and the  <span class="keyword cmdname">Simple Logging Facade for
+					Java</span> (SLF4J) API. This API is built upon using the
+					<span class="keyword parmname">Logger</span> class. All logs are placed in the default trace file
+				of the server and can be seen at runtime in the cockpit.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The log file is rotated according to the following:</p>
+
+				<ul class="ul" id="loioe6e8ccd3bb571014b6afdc54744eef4d__ul_drw_lh1_ty">
+					<li class="li">
+						<p class="p">Every day at midnight according to the landscape's server time</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Any time the size exceeds 50MB</p>
+
+					</li>
+
+				</ul>
+
+				<p class="p">In both cases, the log file is archived into a GZ file, and it starts over
+					collecting logs. The name of the newly archived file contains the date it is
+					created.</p>
+
+			</div>
+
+		</div></div>
+<div class="section" id="loioe6e8ccd3bb571014b6afdc54744eef4d__section_C112B5301B304EE9899B0BAB1D0D7B08"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		
+			<ul class="ul" id="loioe6e8ccd3bb571014b6afdc54744eef4d__ul_hgg_qhx_pw">
+				<li class="li">
+					<p class="p">Create an application for <span class="ph pname">SAP Cloud Platform</span>. For
+						more information, see <a class="xref" href="e5a8b1d3bb571014a0f89bb4706d4e0b.html">Creating a HelloWorld Application</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Ensure that you are assigned a <span class="ph uicontrol">Developer</span> or
+							<span class="ph uicontrol">Administrator</span> role. For more information, see
+							<a class="xref" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a>.</p>
+
+				</li>
+
+			</ul>
+ 
+	 </div></div>
+
+		<div class="section" id="loioe6e8ccd3bb571014b6afdc54744eef4d__section_N1004E_N10013_N10001"><div class="section_title">Implementing the SLF4J API in Applications</div><div type="Implementing the SLF4J API in Applications">
+			
+			<p class="p">Follow the guidelines in the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.slf4j.org/manual.html" target="_blank" alt="http://www.slf4j.org/manual.html" title="http://www.slf4j.org/manual.html">SLF4J User
+					Manual<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> Cloud applications can directly access the SLF4J API without adding any references or
+				packaging the library in the application archive. For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.slf4j.org/apidocs/index.html" target="_blank" alt="http://www.slf4j.org/apidocs/index.html" title="http://www.slf4j.org/apidocs/index.html">SLF4J API<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> <span class="ph pname">SAP Cloud Platform</span> provides a
+				logging framework implementation that cannot be changed. Including an slf4j-api
+				library into a WAR causes conflicts. Exclude this library from your application and
+				all its dependencies recursively.</div>
+
+			<p class="p">To construct a parameterized message, you can use one of the following ways: </p>
+
+			<ul class="ul" id="loioe6e8ccd3bb571014b6afdc54744eef4d__ul_a2d_1zf_54">
+				<li class="li">Pass the parameter inside the message string. <p class="p">Also add a log level check here, to prevent
+						you from creating too many string objects, which might lead to performance
+						degradation of your
+					application.</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+if (logger.isInfoEnabled()) {
+    logger.info("Message logged for name " + name + " with level info");
+}</pre></div>
+</li>
+
+				<li class="li">Pass the parameter as an argument to the respective methods (info, error, and so
+					on):<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">logger.info("Message logged for name {} with level info", name);</pre></div>
+</li>
+
+			</ul>
+
+			<p class="p">For more guidance, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.slf4j.org/faq.html#logging_performance" target="_blank" alt="http://www.slf4j.org/faq.html#logging_performance" title="http://www.slf4j.org/faq.html#logging_performance">SLF4J
+					Logging Performance (FAQ)<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+			
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">You can add an error log in your application using the following code: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class YourClass {
+   public static void main(String[] args){
+      Logger logger = LoggerFactory.getLogger(YourClass.class);      
+      logger.error("message");
+   }
+}
+</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Log Retention</div><div type="Log Retention">
+			
+			<p class="p">Log records are  kept on the central log server for only seven days. For archival purposes,
+				you can download any kind of log file using any of the <span class="ph pname">SAP Cloud Platform</span> tools
+				(Eclipse IDE, console client, cockpit). </p>
+
+			<div class="note note"><span class="notetitle">Note</span> After the logs have been written by the application runtime, they are transported to the
+				central log server. If, however,  the application is restarted during this transfer,
+				part of the logs may be lost.</div>
+
+		</div></div>
+
+		<div class="section" id="loioe6e8ccd3bb571014b6afdc54744eef4d__section_N100AF_N10013_N10001"><div class="section_title">Log Level Mapping</div><div type="Log Level Mapping">
+			
+			<p class="p">SLF4J uses the following log levels: </p>
+
+			<div class="table-wrapper"><table summary="" id="loioe6e8ccd3bb571014b6afdc54744eef4d__simpletable_pwg_mrk_kj" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d11755558e183" class="stentry">
+						<p class="p">Level</p>
+
+					</th>
+
+					<th valign="bottom" align="left" id="d11755558e189" class="stentry">
+						<p class="p">Description</p>
+
+					</th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">ALL</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">The lowest possible rank and is intended to turn on all logging.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">TRACE</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">Finer-grained informational events than DEBUG.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">DEBUG</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">Fine-grained informational events that are most useful to debug an application.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">INFO</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">Informational messages that highlight the progress of the application at coarse-grained
+							level.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">WARN</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">Potentially harmful situations.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">ERROR</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">Error events that might still allow the application to continue running. </p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11755558e183" class="stentry">
+						<p class="p">OFF</p>
+
+					</td>
+
+					<td valign="top" headers="d11755558e189" class="stentry">
+						<p class="p">This level has the highest possible rank and is intended to turn off
+							logging.</p>
+
+					</td>
+
+				</tr>
+</table></div>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="db01af2fd976101493f9b90b81cd791f.html">Using Logs in the Eclipse IDE</a></div>
+<div><a class="link" href="e4fd83c5bb5710149b1e94f127f108e4.html">Using Logs in the Console Client</a></div>
+<div><a class="link" href="2555df65182c4b09a25e56fa3b57b0a8.html" title="You can view the logs and change the log settings of any applications deployed in your account. The cockpit provides the following types of logs: default trace logs, HTTP access logs, and garbage collection logs.">Using Logs in the Cockpit</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You use the cockpit or the console client to create a new cross-account permission, allowing an account to use a database that is owned by another account."/>
+<meta name="description" content="You use the cockpit or the console client to create a new cross-account permission, allowing an account to use a database that is owned by another account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Adding New Cross-Account Permissions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod848edea0e4f4136922d7edcb47a7b7a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Adding New Cross-Account Permissions </h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You use the cockpit or the console client to create a new cross-account permission,
+		allowing an account to use a database that is owned by another account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loiod848edea0e4f4136922d7edcb47a7b7a__ul_dvf_dxy_2x">
+				<li class="li">The database you would like to share has been provisioned in an account. See
+						<a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>.</li>
+
+				<li class="li">You have the administrator role in that account.</li>
+
+				<li class="li">(For the console command only) You have set up the console client. See <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a> and <a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>As an account member with the administrator role, you use the cockpit or the console
+			client to give accounts permission to use a productive SAP HANA or SAP ASE database that
+			is owned by another acccount. <div class="note restriction"><span class="restrictiontitle">Restriction</span> 
+				<p class="p">The account providing the permission to use the database and the account
+					receiving the permission must be part of the same global account.</p>
+
+			</div>
+</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p">
+				<span class="ph cmd">Choose one of the following options:</span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loiod848edea0e4f4136922d7edcb47a7b7a__choicetable_y3j_ttn_54">
+<thead><tr><th valign="bottom" align="left" id="d9962285e70-option">To add a new cross-account permission...</th>
+<th valign="bottom" align="left" id="d9962285e70-desc">Do the following</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d9962285e70-option" id="d9962285e83" class="stentry choption" width="25%"><strong>
+							<p class="p">Using the Cockpit</p>
+
+						</strong></td>
+
+						<td valign="top" headers="d9962285e70-desc d9962285e83" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loiod848edea0e4f4136922d7edcb47a7b7a__ol_jx5_wtn_54">
+								<li class="li">Log on to the cockpit with the administrator role and select the account that owns the
+									database you would like to share.</li>
+
+								<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area. </li>
+
+								<li class="li">Choose the required database.</li>
+
+								<li class="li">In the navigation area, choose <span class="ph uicontrol">Cross-Account
+										Permissions</span>.</li>
+
+								<li class="li">Choose <span class="ph uicontrol">New Permission</span>.</li>
+
+								<li class="li">In the dialog box, do the following:<ol class="ol" type="i" id="loiod848edea0e4f4136922d7edcb47a7b7a__ol_j51_qrp_gr">
+										<li class="li">Select the account that you want to receive permission
+											to use the database to from the dropdown box.</li>
+
+										<li class="li">Choose the binding type by selecting the
+												<span class="ph uicontrol">TUNNEL</span> and/or the
+												<span class="ph uicontrol">BINDING</span> checkbox. </li>
+
+										<li class="li">Choose <span class="ph uicontrol">Save</span>.</li>
+
+									</ol>
+</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d9962285e70-option" id="d9962285e152" class="stentry choption" width="25%"><strong>
+							<p class="p">Using the Console Client</p>
+
+						</strong></td>
+
+						<td valign="top" headers="d9962285e70-desc d9962285e152" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loiod848edea0e4f4136922d7edcb47a7b7a__ol_cns_nvr_gx">
+								<li class="li">
+									<div class="p">Open the command window in the
+											<span class="ph filepath">&lt;SDK&gt;/tools</span> folder and enter
+										the following
+											command:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo grant-db-access --account &lt;account_ID&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --id &lt;database_ID&gt; 
+--to-account &lt;to-account_name&gt; --permissions &lt;permission_type&gt;</pre></div>
+<div class="note note"><span class="notetitle">Note</span> For
+											an example, see <a class="xref" href="e7d72bf3da2e45cfb135b2feed3a58d0.html" title="This command gives another account permission to access a database. The account providing the permission and the account receiving the permission must be part of the same global account.">grant-db-access</a>.</div>
+</div>
+
+								</li>
+
+								<li class="li">Optional: Check that permission has been given successfully by entering the following
+										command:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-db-access-permissions --account &lt;account_ID&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --id &lt;database_ID&gt; 
+--to-account &lt;to-account_name&gt; --permissions &lt;permission_type&gt;</pre></div>
+<div class="note note"><span class="notetitle">Note</span> For
+										an example, see <a class="xref" href="28a621871d5b49ddb03fd7748e6c49f9.html" title="This command lists the permissions that other accounts have for accessing databases in the specified account.">list-db-access-permissions</a>.</div>
+</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+			</div>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have given an account permission to use a database that is owned by another account.
+			In the account that owns the database, the <span class="ph uicontrol">Shared</span> icon is
+			displayed in the  <span class="ph uicontrol">Databases &amp; Schemas</span> list in the cockpit
+			next to all databases that can be used by other accounts.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="44d0d8ebfbc74d08b3f30f7e88d9a974.html" title="You use the cockpit to change the type of an existing cross-account permission.">Changing Cross-Account Permission Types</a></div>
+<div><a class="link" href="732612bb5cd5439aa3d99d302ad1bb32.html" title="You use the cockpit or the console client to revoke a cross-account permission.">Revoking Cross-Account Permissions</a></div>
+<div><a class="link" href="907b1707dec64bd9bfcc85333ab4b65d.html" title="You use the cockpit or the console client to bind a Java application that you deployed in one account to a productive SAP HANA and SAP ASE database that is owned by another account.">Binding Applications to Databases in the Same Global Account</a></div>
+<div><a class="link" href="95534daca15841aabb5f930fc3cd872c.html" title="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account.">Opening Tunnels to Databases in Other Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

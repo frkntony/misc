@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The SAP Cloud Platform Git service can be used to store and version source code of applications, for example HTML5 and Java applications, in Git repositories."/>
+<meta name="description" content="The SAP Cloud Platform Git service can be used to store and version source code of applications, for example HTML5 and Java applications, in Git repositories."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Git Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob8cd659181f549c9ba11af7cf51f5806">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Git Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The <span class="ph pname">SAP Cloud Platform Git
+                                service</span> can be used to store and version source code of
+		applications, for example HTML5 and Java applications, in Git repositories.</p>
+
+		<p class="p">Git is a widely used open source system for revision management of source code that facilitates distributed and concurrent large-scale
+			development workflows.</p>
+
+		<p class="p">You can use any standard compliant Git client to connect to the Git service. Many modern integrated development environments, including but not
+			limited to Eclipse and the SAP Web IDE, provide tools for working with Git. There are also native clients available for many operating
+			systems and platforms.</p>
+
+		<div class="section"><div class="section_title">Features</div><div type="Features">
+			
+			<div class="p">
+				<ul class="ul" id="loiob8cd659181f549c9ba11af7cf51f5806__ul_wfw_yvp_g5">
+					<li class="li">
+						<p class="p">Highly distributed. Every clone of a repository contains the complete version history.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Cheap and simple creation and merging of branches supporting a multitude of development styles.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Almost all operations are performed on a local clone of a repository and therefore are very fast.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">No need to be permanently online, only when synchronizing with the Git service.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Only differences between versions are recorded allowing for very compact storage and efficient transport.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Widely used and supported by many tools.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Restrictions</div><div type="Restrictions">
+			
+			<p class="p">The Git service is a dedicated service for source code versioning.</p>
+
+			<p class="p">While Git can manage and compare text files very efficiently, it was not designed for processing large files or files with binary content, such
+				as libraries, build artifacts, multimedia files (images or  movies), or database backups. Consider using the document service or some
+				other suitable storage service for storing such content.</p>
+
+			<p class="p">To ensure best possible performance and health of the service, the following restrictions apply:</p>
+
+			<div class="p">
+				<ul class="ul" id="loiob8cd659181f549c9ba11af7cf51f5806__ul_kmk_fwp_g5">
+					<li class="li">
+						<p class="p">The size of an individual file must not exceed 20 MB. Pushes of changes that contain a larger file will be rejected.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">The overall size of the bare repository stored in the Git service must not exceed 500 MB.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">The number of repositories per account  is not currently limited. Note, however, that SAP may take measures to protect the Git service
+							against misuse.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Third Party Notice</div><div type="Third Party Notice">
+			
+			<p class="p">This product makes use of the Git-Icon-1788C image made available by Git (<a class="extlink" href="http://help.sap.com/disclaimer?site=https://git-scm.com/downloads/logos" target="_blank" alt="https://git-scm.com/downloads/logos" title="https://git-scm.com/downloads/logos">https://git-scm.com/downloads/logos<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>) under the Creative Commons Attribution 3.0 Unported License (CC BY
+				3.0) <a class="extlink" href="http://help.sap.com/disclaimer?site=http://creativecommons.org/licenses/by/3.0" target="_blank" alt="http://creativecommons.org/licenses/by/3.0" title="http://creativecommons.org/licenses/by/3.0">http://creativecommons.org/licenses/by/3.0<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="4835c2e7070947bdabe433893be67afa.html" title="In the cockpit, you can create and delete Git repositories, as well as lock and unlock repositories for write operations. In addition, you can monitor the current disk consumption of your repositories and perform garbage collections to clean up and compact repository content.">Managing Repositories</a></div>
+<div><a class="link" href="57fc81b26db34e4797739748c97653fe.html" title="Git supports a large variety of commands for working with repositories.">Working with Repositories</a></div>
+<div><a class="link" href="e926e66e58c143dfb9fa4d130d73c43b.html" title="Access to the Git service is protected by SAP Cloud Platform roles and granted only to members of an account.">Security</a></div>
+<div><a class="link" href="7032e96e47954e068c2f3714ed1884c8.html" title="Use these best practices to get started with Git and to avoid common pitfalls.">Best Practices</a></div>
+<div><a class="link" href="fcc9b157ea9644aa9d292e65fd3108f8.html" title="While working with the Git service, you might encounter these common problems and error messages. Note that the actual error messages and their presentation depend on the Git client you are using for communication with the Git service.">Troubleshooting</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://git-scm.com/" target="_blank" alt="http://git-scm.com/" title="http://git-scm.com/">Git<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.eclipse.org/" target="_blank" alt="http://www.eclipse.org/" title="http://www.eclipse.org/">Eclipse<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="link" href="https://help.hana.ondemand.com/webide/frameset.htm?0221845d73ad403ab2852142f3179177.html" target="_blank" alt="https://help.hana.ondemand.com/webide/frameset.htm?0221845d73ad403ab2852142f3179177.html" title="https://help.hana.ondemand.com/webide/frameset.htm?0221845d73ad403ab2852142f3179177.html">SAP Web IDE</a></div>
+<div><a class="link" href="e60b7e45bb57101487a881c7c5487778.html" title="The SAP Cloud Platform Document service provides an on-demand content repository for unstructured or semi-structured content.">Document Service</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Created-By: Apache Maven 3.1.1
+Build-Jdk: 1.8.0_66
+
+Name: feature_zh_CN.properties
+SHA-256-Digest: 4kevHsRqRJrUtucug/vtlPWbKRYdkfZTWbcMJC+xJ4Y=
+
+Name: feature_ja.properties
+SHA-256-Digest: NyY3wZW7/lSa4+Ky/X19IxxWqdjTG7j4oE0LNM+r6mA=
+
+Name: feature_de.properties
+SHA-256-Digest: zrGBg3DI73RPiz+uIvevNQ0PFRCsOT5sYC84q+A77ic=
+
+Name: feature_en.properties
+SHA-256-Digest: wOF9Eu0gu+zrMnSRMSX+ol3p9AYhpUw6VJgStLoHL1g=
+
+Name: feature.xml
+SHA-256-Digest: 75SY7/L6Shxealrow3hOpdI+HUgL9R9Yy6JlE7b2jFQ=
+
+Name: feature_fr.properties
+SHA-256-Digest: ZxuzkhOA8/RvgVUpXqgZ3VjWVO5RkhS00mMG4TLcRDg=
+
+Name: feature.properties
+SHA-256-Digest: mUZSVi8rR9Oxq4qUFk3kXjyeUzZEaenebgrpq+G1j7o=
+

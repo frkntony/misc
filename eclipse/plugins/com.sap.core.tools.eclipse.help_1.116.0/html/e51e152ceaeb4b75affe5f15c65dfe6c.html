@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>SAML Bearer Assertion Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe51e152ceaeb4b75affe5f15c65dfe6c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">SAML Bearer Assertion Authentication</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> provides support for
+				applications to use the SAML Bearer assertion flow for consuming OAuth-protected
+				resources. In this way, applications do not need to deal with some of the
+				complexities of OAuth and can reuse existing identity providers for user data. Users
+				are authenticated by using SAML against the configured trusted identity providers.
+				The SAML assertion is then used to request an access token from an OAuth
+				authorization server. This access token is automatically injected in all HTTP
+				requests to the OAuth-protected resources.</p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> Тhe access tokens are auto-renovated. When a token is about to expire,
+				a new token is created shortly before the expiration of the old one.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configuration Steps</div><div type="Configuration Steps"><p class="p">You can create and configure an
+					<span class="ph uicontrol">OAuth2SAMLBearerAssertion</span> destination by using the
+				properties listed below, and deploy it on <span class="ph pname">SAP Cloud Platform</span>. For more
+				information, see:</p>
+<div class="p">
+				<ul class="ul" id="loioe51e152ceaeb4b75affe5f15c65dfe6c__ul_vfw_x3k_m4">
+					<li class="li"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></li>
+
+					<li class="li"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></li>
+
+				</ul>
+
+				<div class="note note"><span class="notetitle">Note</span> Configuring <span class="ph uicontrol">OAuth2SAMLBearerAssertion</span> destinations from
+					the Eclipse IDE is not yet supported.</div>
+
+			</div>
+<p class="p"/>
+If you use  proxy type <kbd class="ph userinput">OnPremise</kbd>, <em class="ph i">both</em> OAuth
+			server and the protected resource have to be located on premise and exposed via the
+				<span class="ph pname">SAP Cloud Platform cloud
+                                connector</span>. Make
+			sure to set <span class="keyword parmname">URL</span> to the virtual address of the protected resource
+			and <span class="keyword parmname">tokenServiceURL</span> to the virtual address of the OAuth server (see
+			section <em class="ph i">Properties</em> below). <div class="note note"><span class="notetitle">Note</span> The combination <em class="ph i">on-premise</em> OAuth server
+				and protected resource on the <em class="ph i">Internet</em> is not supported, as well as OAuth
+				server on the <em class="ph i">Internet</em> and protected resource <em class="ph i">on
+			premise</em>.</div>
+</div></div>
+
+		<div class="section"><div class="section_title">Properties</div><div type="Properties">
+			
+			<p class="p">The table below lists the destination properties needed for
+					<span class="ph uicontrol">OAuth2SAMLBearerAssertion</span> authentication type. The values
+				for these properties should be found in the documentation of the particular provider
+				of OAuth-protected services. Usually, only a subset of the optional properties are
+				required by a particular service provider.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe51e152ceaeb4b75affe5f15c65dfe6c__table_vkf_ljk_m4" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d11162838e122">Property</th>
+
+							<th class="entry" valign="top" width="50%" id="d11162838e125">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" colspan="2" valign="top" headers="d11162838e122 d11162838e125 "><span class="ph emphasis emphasis">Required</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">Name</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Destination name. It must be the same as the destination name you use for the
+								configuration tools, that is, the console client and
+									<span class="ph uicontrol">Destinations</span> editor (cockpit).</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">Type</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Destination type. Use <kbd class="ph userinput">HTTP</kbd> as a value for all HTTP(S)
+								destinations.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">URL</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">URL of the protected resource on the called application</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">ProxyType</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">You can use both proxy types <kbd class="ph userinput">Internet</kbd> and
+									<kbd class="ph userinput">OnPremise</kbd>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">Authentication</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Authentication type. Use <kbd class="ph userinput">OAuth2SAMLBearerAssertion</kbd> as a
+								value.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">audience</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Intended audience for the assertion, which will be verified by the OAuth authorization
+								server</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">clientKey</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Key that identifies the consumer to the authorization server</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">tokenServiceURL</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">URL of the OAuth server</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">tokenServiceUser</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">User for basic authentication to OAuth server (if
+								required)</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">tokenServicePassword</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Password for <span class="keyword parmname">tokenServiceUser</span> (if required)
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" colspan="2" valign="top" headers="d11162838e122 d11162838e125 "><span class="ph emphasis emphasis">Additional</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">SystemUser</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">User to be used when requesting access token from the OAuth authorization server. If
+								this property is not specified, the currently logged-in user will be
+								used.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">nameQualifier</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Security domain of the user for which access token will be requested</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">companyId</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Company identifier</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">assertionIssuer</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Issuer of the SAML assertion</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">authnContextClassRef</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Value of the <span class="keyword parmname">AuthnContextClassRef</span> tag, which
+								is part of generated
+									<kbd class="ph userinput">OAuth2SAMLBearerAssertion</kbd> authentication.
+								For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://saml.xml.org/saml-specifications" target="_blank" alt="http://saml.xml.org/saml-specifications" title="http://saml.xml.org/saml-specifications">SAML 2.0 specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">nameIdFormat</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">Value of the <span class="keyword parmname">NameIdFormat</span> tag, which is part
+								of generated <kbd class="ph userinput">OAuth2SAMLBearerAssertion</kbd>
+								authentication. For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://saml.xml.org/saml-specifications" target="_blank" alt="http://saml.xml.org/saml-specifications" title="http://saml.xml.org/saml-specifications">SAML 2.0 specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">userIdSource</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">When this property is set, the generated SAML2 assertion uses the
+								currently logged-in user as a value for the
+									<span class="keyword parmname">NameId</span> tag. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 ">
+								<p class="p"><span class="keyword parmname">scope</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">
+								<p class="p">The value of the OAuth 2.0 <span class="keyword parmname">scope</span> parameter
+									expressed as a list of space-delimited, case-sensitive
+									strings.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d11162838e122 "><span class="keyword parmname">SkipSSOTokenGenerationWhenNoUser</span>
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d11162838e125 ">If this parameter is set and there is no user logged in, token
+								generation is skipped, thus allowing anonymous access to public
+								resources. If set, it may have any value.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> When the OAuth authorization server is called, it accepts the trust settings of
+				the destination. For more information, see <a class="xref" href="3f1247537c1a4f069235ee63633659c5.html">Server Certificate Authentication</a>.</div>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">The connectivity destination below provides HTTP access to the OData API of
+					<span class="ph uicontrol">SuccessFactors Jam</span>.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">URL=https://demo.sapjam.com/OData/OData.svc
+Name=sap_jam_odata
+TrustAll=true
+ProxyType=Internet
+Type=HTTP
+Authentication=OAuth2SAMLBearerAssertion
+tokenServiceURL=https://demo.sapjam.com/api/v1/auth/token
+clientKey=Aa1Bb2Cc3DdEe4F5GHIJ
+audience=cubetree.com
+nameQualifier=www.successfactors.com</pre></div>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="1e110da0ddd8453aaf5aed2485d84f25.html">Creating HTTP Destinations</a></div>
+<div><a class="link" href="4695b89877f148dbadc5200a9cc8cdd4.html">Examples (Cockpit)</a></div>
+<div><a class="link" href="e6c7616abb5710148cfcf3e75d96d596.html">SAP Cloud Platform Cloud Connector</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

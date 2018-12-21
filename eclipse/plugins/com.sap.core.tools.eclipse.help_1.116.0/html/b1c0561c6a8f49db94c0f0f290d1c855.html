@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The SAP HANA database and SAP Cloud Platform, streaming analytics are located on the same host, and share the host's memory resources. Understanding how they use and manage memory resources is crucial to the understanding of your own system setup."/>
+<meta name="description" content="The SAP HANA database and SAP Cloud Platform, streaming analytics are located on the same host, and share the host's memory resources. Understanding how they use and manage memory resources is crucial to the understanding of your own system setup."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Controlling Memory Resources</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob1c0561c6a8f49db94c0f0f290d1c855">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Controlling Memory Resources</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The SAP HANA database and <span class="ph pname">SAP Cloud Platform, streaming analytics</span> are located on
+		the same host, and share the host's memory resources. Understanding how they use and manage
+		memory resources is crucial to the understanding of your own system setup.</p>
+
+		<div class="section"><div class="section_title">Memory in SAP HANA</div><div type="Memory in SAP HANA">
+			
+			<p class="p">When you're setting up an SAP HANA system with <span class="ph pname">streaming analytics</span>, you
+				need to allocate sufficient memory resources, and set up various parameters to
+				control memory consumption. SAP HANA provides multiple ways to do this.</p>
+
+			<p class="p">The SAP HANA database preallocates a pool of memory from the operating system over
+				time, up to a predefined global allocation limit. You can change this limit in the
+					<span class="ph filepath">global.ini</span> configuration file by editing the
+					<span class="keyword parmname">global_allocation_limit</span> parameter. This parameter limits
+				the total amount of memory that can be used by the database, and by all installed
+				options.</p>
+
+			<p class="p">At install time, SAP HANA removes 16GB of memory from the global allocation limit,
+				and grants it to <span class="ph pname">streaming analytics</span>. You
+				can raise or lower the alloted memory by changing this parameter. When you're
+				considering memory allocation for both the SAP HANA database and <span class="ph pname">streaming analytics</span>, set
+				this parameter first, before handling any other memory settings. See <a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/bd/e79b28bb5710149d6eee5e75fe7f17/content.htm?frameset=/en/8d/277dcc98a94784a4375c029d19d088/frameset.htm&amp;current_toc=/en/00/0ca1e3486640ef8b884cdf1a050fbb/plain.htm&amp;node_id=156&amp;show_children=false" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/bd/e79b28bb5710149d6eee5e75fe7f17/content.htm?frameset=/en/8d/277dcc98a94784a4375c029d19d088/frameset.htm&amp;current_toc=/en/00/0ca1e3486640ef8b884cdf1a050fbb/plain.htm&amp;node_id=156&amp;show_children=false" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/bd/e79b28bb5710149d6eee5e75fe7f17/content.htm?frameset=/en/8d/277dcc98a94784a4375c029d19d088/frameset.htm&amp;current_toc=/en/00/0ca1e3486640ef8b884cdf1a050fbb/plain.htm&amp;node_id=156&amp;show_children=false">Monitoring Memory Usage</a> in the <cite class="cite">SAP HANA
+					Administration Guide</cite> for more information.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Memory in Streaming Analytics</div><div type="Memory in Streaming Analytics">
+			
+			<div class="p"><span class="ph pname">Streaming analytics</span> controls memory
+				on a per-project basis. You can customize memory consumption by setting various
+				project deployment options in SAP HANA studio. The parameters that affect memory use
+					are:<ul class="ul" id="loiob1c0561c6a8f49db94c0f0f290d1c855__ul_g4j_lf3_k5">
+					<li class="li"><span class="keyword parmname">memory</span></li>
+
+					<li class="li"><span class="keyword parmname">memory-reserve</span></li>
+
+					<li class="li"><span class="keyword parmname">java-max-heap</span></li>
+
+				</ul>
+</div>
+
+			<p class="p">When running multiple projects, ensure that the total memory assigned to the
+				individual the projects does not exceed the total memory allocated for <span class="ph pname">streaming analytics</span>. </p>
+
+			<p class="p">To learn more about these options, see <cite class="cite">Project Deployment Options</cite> in the
+					<cite class="cite">SAP HANA Smart Data Streaming: Configuration and Administration
+					Guide</cite>.</p>
+
+			<p class="p">If you are using the SAP HANA Output adapter in a streaming project, you should also
+				be aware of its memory consumption, and size it according to your project's needs.
+				See <cite class="cite">Performance and Tuning Tips for the SAP HANA Adapter</cite> in the
+					<cite class="cite">SAP HANA Smart Data Streaming: Adapters Guide</cite> for the specific
+				properties you need to set, both within the adapter configuration, and within your
+				system setup.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> Scaling your <span class="ph pname">SAP Cloud Platform, streaming analytics</span> systems
+				is not currently supported.</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+</div>
+
+<div class="linklist linklist">
+<div><div><a class="link" href="https://help.sap.com/viewer/6ee33a7b909040d794d9cea38556432e/1.0.12/en-US/04db2916fce4403fb1a1fb75d5d096ee.html" target="_blank" alt="https://help.sap.com/viewer/6ee33a7b909040d794d9cea38556432e/1.0.12/en-US/04db2916fce4403fb1a1fb75d5d096ee.html" title="https://help.sap.com/viewer/6ee33a7b909040d794d9cea38556432e/1.0.12/en-US/04db2916fce4403fb1a1fb75d5d096ee.html">Monitor Project Memory Usage</a></div>
+</div>
+<div><div><a class="link" href="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e78401fd6f0f1014b7c1f1d2ea3e1a80.html" target="_blank" alt="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e78401fd6f0f1014b7c1f1d2ea3e1a80.html" title="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/e78401fd6f0f1014b7c1f1d2ea3e1a80.html">Performance and Tuning Tips for the SAP HANA Adapter</a></div>
+</div>
+<div><div><a class="link" href="https://help.sap.com/viewer/b7845c2575aa4a2ab36e606832eb05ab/1.0.12/en-US/e78d90776f0f1014befe9ef76a9dd81d.html" target="_blank" alt="https://help.sap.com/viewer/b7845c2575aa4a2ab36e606832eb05ab/1.0.12/en-US/e78d90776f0f1014befe9ef76a9dd81d.html" title="https://help.sap.com/viewer/b7845c2575aa4a2ab36e606832eb05ab/1.0.12/en-US/e78d90776f0f1014befe9ef76a9dd81d.html">Project Deployment Options</a></div>
+</div>
+<div><div><a class="link" href="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/" target="_blank" alt="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/" title="https://help.sap.com/viewer/34b97bb51d324fe3ace65b3102e453cd/1.0.12/en-US/">SAP HANA Smart Data Streaming: Adapters Guide</a></div>
+</div>
+<div><div><a class="link" href="https://help.sap.com/viewer/b7845c2575aa4a2ab36e606832eb05ab/1.0.12/en-US" target="_blank" alt="https://help.sap.com/viewer/b7845c2575aa4a2ab36e606832eb05ab/1.0.12/en-US" title="https://help.sap.com/viewer/b7845c2575aa4a2ab36e606832eb05ab/1.0.12/en-US">SAP HANA Smart Data Streaming: Configuration and Administration Guide</a></div>
+</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

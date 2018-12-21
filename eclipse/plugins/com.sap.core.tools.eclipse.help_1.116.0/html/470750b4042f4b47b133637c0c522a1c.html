@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can give a Java application in another account permission to access a productive SAP HANA and SAP ASE database in your account."/>
+<meta name="description" content="You can give a Java application in another account permission to access a productive SAP HANA and SAP ASE database in your account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Giving Applications in Other Accounts Permission to Access a Database</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio470750b4042f4b47b133637c0c522a1c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Giving Applications in Other Accounts Permission to Access a Database</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can give a Java application in another account permission to access a productive SAP
+		HANA and SAP ASE database in your account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio470750b4042f4b47b133637c0c522a1c__ul_dvf_dxy_2x">
+				<li class="li">The database you would like to share has been provisioned in an account. See
+						<a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>.</li>
+
+				<li class="li">You have the administrator role in that account.</li>
+
+				<li class="li">You have set up the console client. See <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a> and <a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To give a Java application permission to access a database in your account, you generate an
+				access token using the <samp class="ph codeph">grant-schema-access</samp>. A member of the account
+				in which the application has been deployed uses the token to create a data source
+				bindng.</p>
+
+			<p class="p">The following applies for an access token:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio470750b4042f4b47b133637c0c522a1c__ul_l4y_xkt_2y">
+					<li class="li">It always applies to one database and one application, and is not
+						transferrable</li>
+
+					<li class="li">It has an unlimited validity period</li>
+
+					<li class="li">It can be revoked whenever you wish, irrespective of whether the target
+						application has already been bound to the database</li>
+
+					<li class="li">It can be used for as long as application bindings exist or until the
+						permission is revoked</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">The following example data is used in the procedure below:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio470750b4042f4b47b133637c0c522a1c__ul_n5g_ccp_qm">
+					<li class="li"> Account (database owner): <kbd class="ph userinput">owner</kbd></li>
+
+					<li class="li">Host: <kbd class="ph userinput">hana.ondemand.com</kbd></li>
+
+					<li class="li">Database: <kbd class="ph userinput">database1</kbd><div class="note note"><span class="notetitle">Note</span> This must be an SAP HANA database, an SAP
+							HANA database enabled for multitenant database container support, or an
+							SAP ASE database.</div>
+</li>
+
+					<li class="li">Account (receiving the permission): <kbd class="ph userinput">salescorp</kbd></li>
+
+					<li class="li">Application (receiving the permission): <kbd class="ph userinput">salesapp</kbd></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder
+					and enter the following command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo grant-schema-access --account owner --host hana.ondemand.com --user myuser --id database1 --application salescorp:salesapp</pre></div>
+
+					<div class="note note"><span class="notetitle">Note</span> Specify the requesting application in the format
+							<samp class="ph codeph">&lt;account&gt;:&lt;application&gt;</samp>.</div>
+
+				</div>
+				<div class="itemgroup stepresult">If generated successfully, the access token (an alphanumeric string) is
+					displayed.</div>
+			</div>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>To give a Java application in another account access to your database, create a database
+			user and a password and provide it, together with the access token, to a member of the
+			account receiving the permission.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a></div>
+<div><a class="link" href="667d7a43e38843988516e46923129b32.html" title="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted.">Binding Applications to Databases in Other Accounts</a></div>
+<div><a class="link" href="6e94fa2412ae42d2925edf8f940206aa.html" title="You can revoke the permission to access a productive SAP HANA and SAP ASE database in your account for applications in other accounts.">Revoking Database Access Permissions for Applications in Other Accounts</a></div>
+<div><a class="link" href="c6f5764433354640a1e44b893399eaee.html" title="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment.">Using a Productive SAP HANA Database System</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

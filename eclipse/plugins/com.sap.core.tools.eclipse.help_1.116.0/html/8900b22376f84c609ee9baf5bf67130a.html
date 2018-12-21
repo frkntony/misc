@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;."/>
+<meta name="description" content="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8900b22376f84c609ee9baf5bf67130a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using the Console Client</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You execute a console client command by entering <span class="ph uicontrol">neo &lt;command
+			name&gt;</span> with the appropriate parameters. To list all parameters available for
+		the respective command, execute <span class="ph uicontrol">neo help &lt;command
+		name&gt;</span>.</p>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__section_N10043_N10013_N10001">
+			<div class="p">
+				<ul class="ul" id="loio8900b22376f84c609ee9baf5bf67130a__ul_etn_bwc_qp"><li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__opening_the_console_client">Opening the Console Client</a></li>
+
+					<li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__properties_file">Properties
+						File</a></li>
+
+					<li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__command_line">Command Line</a></li>
+
+					<li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__parameter_priority">Parameter
+							Priority</a></li>
+
+					<li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__parameter_values">Parameter
+							Values</a></li>
+
+					<li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__proxy_settings">Proxy
+						Settings</a></li>
+
+					<li class="li"><a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html#loio8900b22376f84c609ee9baf5bf67130a__output_mode">Output Mode</a></li>
+
+				</ul>
+
+			</div>
+
+			<div class="p">You can define the parameters of the different commands either directly in <span class="ph uicontrol">the
+					command line</span>, or, in <span class="ph uicontrol">a properties file</span>:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo &lt;command name&gt; &lt;mandatory parameters&gt; [optional parameters]</pre></div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo &lt;command name&gt; &lt;properties file location&gt;</pre></div>
+</div>
+
+		</div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__opening_the_console_client"><div class="section_title">Opening the Console Client</div><div type="Opening the Console Client">
+			
+			<p class="p">The console client is part of the <span class="ph pname">SAP Cloud Platform</span> SDK. You can find it in the
+				tools folder of your SDK installation. </p>
+
+			<p class="p">To start it, open the command prompt and change the current directory to the
+				&lt;SDK_installation_folder&gt;\tools location, which contains the neo.bat and
+				neo.sh files. </p>
+
+		</div></div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__command_line"><div class="section_title">Command Line</div><div type="Command Line">
+			
+			
+			<div class="p">You can deploy the same application as in the example above by executing the following command
+				directly in the command line:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --account &lt;account name&gt; --application &lt;application name&gt; --source samples/deploy_war/example.war --user &lt;user name or email&gt;</pre></div>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__properties_file"><div class="section_title">Properties File</div><div type="Properties File">
+			
+			<p class="p">Within the<span class="ph uicontrol"> tools</span> folder, a file
+					<kbd class="ph userinput">example_war.properties</kbd> can be found in the
+					<kbd class="ph userinput">samples/deploy_war folder</kbd>. In the file, enter your own
+				user and account name: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">
+################################################
+    # General settings - relevant for all commands #
+    ################################################
+
+    # Your account name
+    account=&lt;your account&gt;
+
+    # Application name
+    application=&lt;your application name&gt;
+
+    # User for login to hana.ondemand.com.
+    user=&lt;email or user name&gt;
+
+    # Host of the landscape admin server. Optional. Defaults to hana.ondemand.com.
+    host=hana.ondemand.com
+
+    #################################################################
+    # Deployment descriptor settings - relevant only for deployment #
+    #################################################################
+
+    # List of file system paths to *.war files and folders containing them
+    source=samples/deploy_war/example.war
+  
+</pre></div>
+
+			<p class="p">Then execute the deployment with the following line: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy samples/deploy_war/example_war.properties</pre></div>
+
+			<p class="p">Note that you can have more than one properties file. For example, you can have a
+				different properties file for each application or user in your account.</p>
+
+			<p class="p">For more information about using the properties file, watch the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://youtu.be/UHuSnBMimPA" target="_blank" alt="http://youtu.be/UHuSnBMimPA" title="http://youtu.be/UHuSnBMimPA">video tutorial<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__parameter_priority"><div class="section_title">Parameter Priority</div><div type="Parameter Priority">
+			
+			<p class="p">Argument values specified in the command line override the values specified in the
+				properties file. For example, if you have specified <kbd class="ph userinput">account=a</kbd>
+				in the properties file and then enter <kbd class="ph userinput">account=b</kbd> in the
+				command line, the operation will take effect in <kbd class="ph userinput">account
+				b</kbd>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__parameter_values"><div class="section_title">Parameter Values</div><div type="Parameter Values">
+			
+			<p class="p">Since the client is executed in a console environment, not all characters can be used
+				in arguments. There are special characters that should be quoted and escaped. </p>
+
+			<p class="p">Consult your console/shell user guide on how to use special characters as command
+				line arguments. </p>
+
+			<p class="p">For example, to use argument with value
+					<kbd class="ph userinput">abc&amp;()[]{}^=;!'+,`~123</kbd> on Windows 7, you should quote
+				the value and escape the<kbd class="ph userinput">!</kbd> character. Therefore you should use
+					<kbd class="ph userinput">"abc&amp;()[]{}^=;^!'+,`~123"</kbd>. </p>
+
+			<p class="p"><span class="ph uicontrol">User </span></p>
+
+			<p class="p">You can use your e-mail, SAP ID or user name. </p>
+
+			<p class="p"><span class="ph uicontrol">Password </span></p>
+
+			<p class="p">Do not specify your password in the properties file or as a command line argument.
+				Enter a password only when prompted by <span class="ph pname">SAP Cloud Platform</span> console client. </p>
+
+			<p class="p">For example, use: </p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy samples/deploy_war/example_war.properties</pre></div>
+
+			</div>
+
+			<p class="p"> instead of </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --password &lt;mypassword &gt; samples/deploy_war/example_war.properties</pre></div>
+
+			<div class="note restriction"><span class="restrictiontitle">Restriction</span> 
+				<p class="p">Your password cannot start with the "<span class="ph cmdtext">@</span>" character.</p>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__proxy_settings"><div class="section_title">Proxy Settings</div><div type="Proxy Settings">
+			
+			<p class="p">If you work in a proxy environment, before you execute commands, you need to
+				configure the proxy.</p>
+
+			<p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a></p>
+
+		</div></div>
+
+		<div class="section" id="loio8900b22376f84c609ee9baf5bf67130a__output_mode"><div class="section_title">Output Mode</div><div type="Output Mode">
+			
+			<p class="p">You can configure the console to print detailed output during command execution.</p>
+
+			<p class="p">For more information, see <a class="xref" href="4b6069b765fd4b299fbdd1415901d3da.html">Verbose Mode of the Console Commands Output</a></p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="56e309f496cc446ba441d862db94cb18.html">Console Client Commands</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

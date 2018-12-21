@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SQU-INLINE-START<feature id="com.sap.jvm.profiling" label="SAP JVM Tools" version="$toolsVersion" provider-name="SAP" plugin="com.sap.jvm.profiling.ui">SQU-INLINE-END -->
+<feature id="com.sap.jvm.profiling" label="SAP JVM Tools" version="2.4.6" provider-name="SAP" plugin="com.sap.jvm.profiling.ui">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <url/>
+
+   <requires>
+      <import plugin="org.eclipse.core.expressions" version="3.5" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem" version="1.5" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.net" version="1.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.10" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.11" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.debug.core" version="3.10" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.debug.ui" version="3.11" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.common" version="3.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help" version="3.6" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help.base" version="4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help.ui" version="4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help.webapp" version="3.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.11" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.launching" version="3.8" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.debug" version="3.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.debug.ui" version="3.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.junit" version="3.8" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.ui" version="3.11" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.search" version="3.10" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.107" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.forms" version="3.6" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views" version="3.8" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.11" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.console" version="3.6" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor" version="3.9" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.intro" version="3.4" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.9" match="greaterOrEqual"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.se" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.se" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.inspector" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.inspector" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.i18n" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.i18n" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.core" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.core" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.snapshot" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.snapshot" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.icons" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.icons" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui.library" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui.library" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.presentation" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.presentation" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.controller" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.controller" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui.help" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui.help" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui.widgets" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui.widgets" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui.library.swt" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui.library.swt" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui.util" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui.util" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.profiling.ui.workbench" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.profiling.ui.workbench" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.debugging.controller" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.debugging.controller" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.debugging.core" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.debugging.core" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.debugging.jdi" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.debugging.jdi" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.debugging.presentation" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.debugging.presentation" version="2.4.6" match="perfect"/>
+      <!-- SQU-INLINE-START      <import plugin="com.sap.jvm.debugging.ui" version="$toolsVersion" match="perfect"/>SQU-INLINE-END -->
+      <import plugin="com.sap.jvm.debugging.ui" version="2.4.6" match="perfect"/>
+   </requires>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.se" download-size="37" install-size="42" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.se" download-size="37" install-size="42" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.inspector" download-size="1948" install-size="1948" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.inspector" download-size="1948" install-size="1948" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.i18n" download-size="99" install-size="99" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.i18n" download-size="99" install-size="99" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.core" download-size="486" install-size="578" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.core" download-size="486" install-size="578" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.snapshot" download-size="625" install-size="735" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.snapshot" download-size="625" install-size="735" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.icons" download-size="542" install-size="695" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.icons" download-size="542" install-size="695" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui.library" download-size="197" install-size="221" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui.library" download-size="197" install-size="221" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.presentation" download-size="590" install-size="701" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.presentation" download-size="590" install-size="701" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.controller" download-size="397" install-size="489" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.controller" download-size="397" install-size="489" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui.library.swt" download-size="118" install-size="138" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui.library.swt" download-size="118" install-size="138" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui.widgets" download-size="650" install-size="742" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui.widgets" download-size="650" install-size="742" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui.workbench" download-size="653" install-size="766" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui.workbench" download-size="653" install-size="766" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui" download-size="155" install-size="202" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui" download-size="155" install-size="202" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui.help" download-size="2859" install-size="2859" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui.help" download-size="2859" install-size="2859" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.profiling.ui.util" download-size="8" install-size="10" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.profiling.ui.util" download-size="8" install-size="10" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.debugging.controller" download-size="8" install-size="10" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.debugging.controller" download-size="8" install-size="10" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.debugging.core" download-size="542" install-size="695" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.debugging.core" download-size="542" install-size="695" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.debugging.jdi" download-size="6" install-size="8" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.debugging.jdi" download-size="6" install-size="8" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.debugging.presentation" download-size="6" install-size="8" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.debugging.presentation" download-size="6" install-size="8" unpack="false" version="2.4.6"/>
+
+   <!-- SQU-INLINE-START   <plugin id="com.sap.jvm.debugging.ui" download-size="6" install-size="8" unpack="false" version="$toolsVersion"/>SQU-INLINE-END -->
+   <plugin id="com.sap.jvm.debugging.ui" download-size="6" install-size="8" unpack="false" version="2.4.6"/>
+</feature>

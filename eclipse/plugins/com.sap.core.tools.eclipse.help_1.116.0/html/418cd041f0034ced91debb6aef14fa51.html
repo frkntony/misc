@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Translation Hub enables you to upload and translate files in various formats."/>
+<meta name="description" content="SAP Translation Hub enables you to upload and translate files in various formats."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating Translation Projects for Individual Files</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio418cd041f0034ced91debb6aef14fa51">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating Translation Projects for Individual Files</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">SAP Translation Hub enables you to upload and translate files in various
+		formats.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio418cd041f0034ced91debb6aef14fa51__ul_tzk_ln5_tw">
+				<li class="li">The source language of the file is English.</li>
+
+				<li class="li">The encoding of the file is UTF-8.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>You can import files in the following formats:<ul class="ul" id="loio418cd041f0034ced91debb6aef14fa51__ul_wbx_zl5_tw">
+				<li class="li">iOS strings files</li>
+
+				<li class="li">Java properties files</li>
+
+				<li class="li">JSON files with the following structure: <div class="note sap-codesyntaxblock codesyntax"><span class="codesyntaxtitle">Code Syntax</span> 
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+	"key1" : "value1"
+	," key2" : " value2"
+}
+						</pre></div>
+
+					</div>
+ For example: <div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+{
+	"okButton" : "OK"
+	,"cancelButton" : "Cancel"
+} 
+						</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">ABAP-based XLIFF files that are generated using the export features of SAP NetWeaver. For
+					information about exporting and importing XLIFF files in ABAP systems, see the
+					following topic on SAP Help Portal at <a class="xref" href="http://help.sap.com/nw" target="_blank" alt="http://help.sap.com/nw" title="http://help.sap.com/nw">http://help.sap.com/nw</a> under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">SAP NetWeaver Platform</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"><var class="keyword varname">&lt;your NetWeaver version&gt;</var></span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Help</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Function-Oriented View</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. Then follow the path listed below based on your SAP NetWeaver
+						version:<ul class="ul" id="loio418cd041f0034ced91debb6aef14fa51__ul_pgf_jc5_tw">
+						<li class="li">7.3 - 7.5:<p class="p"><span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Application Server</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Server ABAP</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other Services</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Services for Information Developers and
+										Translators</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Setting Up and Coordinating Translation
+										(BC-DOC-TTL)</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"/> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span></p>
+</li>
+
+						<li class="li">7.0 including Enhancement Package 3:<p class="p"><span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Application Platform by Key Capability</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Server ABAP</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other Services</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Services for Information Developers and
+										Translators</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Setting Up and Coordinating Translation
+										(BC-DOC-TTL)</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span></p>
+</li>
+
+						<li class="li">7.0 - 7.0 including Enhancement Package 2:<p class="p"><span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Application Platform by Key Capability </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">ABAP Technology</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Documentation and Translation Tools
+										(BC-DOC)</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Setting Up and Coordinating Translation
+										(BC-DOC-TTL)</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span></p>
+</li>
+
+					</ul>
+<div class="note note"><span class="notetitle">Note</span> 
+						<div class="p">More specifically, check the details in the following topics:<ul class="ul" id="loio418cd041f0034ced91debb6aef14fa51__ul_xvp_yjd_xw">
+								<li class="li">Exporting Texts for Offline Translation</li>
+
+								<li class="li">Importing Texts After Offline Translation</li>
+
+							</ul>
+</div>
+
+					</div>
+</li>
+
+			</ul>
+</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step">
+				<span class="ph cmd">Create a translation project by choosing <span class="ph uicontrol">File Upload</span> as the
+					type.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Enter the following data:</span>
+				
+<table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio418cd041f0034ced91debb6aef14fa51__choicetable_wrr_g4z_jt">
+<thead><tr><th valign="bottom" align="left" id="d2670327e175-option">
+							<p class="p">Field</p>
+
+						</th>
+<th valign="bottom" align="left" id="d2670327e175-desc">
+							<p class="p">Entry</p>
+
+						</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d2670327e175-option" id="d2670327e194" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Project Name</span></strong></td>
+
+						<td valign="top" headers="d2670327e175-desc d2670327e194" class="stentry chdesc" width="80%">Enter your project name.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d2670327e175-option" id="d2670327e204" class="stentry choption" width="20%"><strong><span class="ph uicontrol">File Type</span></strong></td>
+
+						<td valign="top" headers="d2670327e175-desc d2670327e204" class="stentry chdesc" width="80%">Select the file type from the list of supported formats.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d2670327e175-option" id="d2670327e214" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Domain</span></strong></td>
+
+						<td valign="top" headers="d2670327e175-desc d2670327e214" class="stentry chdesc" width="80%">Select the translation domain that most closely matches the
+							application area of your source texts, for example,
+								<kbd class="ph userinput">Controlling</kbd> or <kbd class="ph userinput">Personnel
+								Management</kbd>. </td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d2670327e175-option" id="d2670327e230" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Target Languages</span></strong></td>
+
+						<td valign="top" headers="d2670327e175-desc d2670327e230" class="stentry chdesc" width="80%">Choose the target languages into which you want to translate the texts in your source
+							file.</td>
+
+					</tr>
+
+				</tbody></table>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Save the translation project.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Upload your file by selecting it using the value help or by dragging and dropping the file
+					directly onto the <span class="ph uicontrol">Details</span> screen of your project.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>Your translation project contains the data required to translate the texts in your source file.<div class="note note"><span class="notetitle">Note</span> 
+				<div class="p">Once you have created your project, note the following:<ul class="ul" id="loio418cd041f0034ced91debb6aef14fa51__ul_vsj_b45_tw">
+						<li class="li">You cannot change the source file type.</li>
+
+						<li class="li">You can add more target languages, but to enable SAP Translation Hub to register
+							additional target languages, you must upload the source file again.</li>
+
+						<li class="li">You can upload the source file as many times as you want, and even replace the source file
+							with a different file. However, if you upload a
+								<span class="ph emphasis emphasis">different</span> file, your project’s source texts
+							will be replaced with the source texts from the new file that you
+							upload. Any translations that you have done in the project will be
+							deleted. To avoid losing your work, export your translations before you
+							upload a different source file. For more details, see <cite class="cite">Adding
+								Translations</cite> and <cite class="cite">Updating and Exporting
+								Translations</cite> in the <cite class="cite">Related Information</cite>
+							section.</li>
+
+						<li class="li">If you use ABAP-based XLIFF files, there are usually multiple .xlf files, because ABAP
+							systems generate one file per language pair during the export process.
+							Upload only one of the files; it does not matter which file you upload.
+							SAP Translation Hub does not import any of the translations that the
+							XLIFF files contain. </li>
+
+					</ul>
+</div>
+
+			</div>
+</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3a011fba82644259a2cc3c919863f4b4.html" title="The base URL is main part of the complete URL that you need to access the services of SAP Translation Hub.">Building Base URL of SAP Translation Hub</a></div>
+<div><a class="link" href="27ce9c5dde2c43fcae30984ac638726b.html" title="SAP Translation Hub provides a special user interface (UI) that you can use to create translation projects.">Accessing SAP Translation Hub User Interface</a></div>
+<div><a class="link" href="c06fe3bbdb854d14a84fa35178d682b3.html" title="You use translation projects to translate files of the supported formats as part of the translation workflow of SAP Translation Hub.">Translating Individual Files</a></div>
+<div><a class="link" href="f04bbec741a543c58dc47d10a12fe2d8.html" title="You can use the SAP Translation Hub UI to add or change translations created by SAP Translation Hub during the translation workflow.">Updating and Exporting Translations in Individual Files</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

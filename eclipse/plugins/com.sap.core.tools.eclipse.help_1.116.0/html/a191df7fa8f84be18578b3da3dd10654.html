@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="A mail destination is used to specify the mail server settings for sending or fetching e-mail, such as the e-mail provider, e-mail account, and protocol configuration."/>
+<meta name="description" content="A mail destination is used to specify the mail server settings for sending or fetching e-mail, such as the e-mail provider, e-mail account, and protocol configuration."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Mail Destinations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa191df7fa8f84be18578b3da3dd10654">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Mail Destinations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">A mail destination is used to specify the mail server settings for sending or fetching
+		e-mail, such as the e-mail provider, e-mail account, and protocol configuration. </p>
+
+		<div class="p">The name of the mail destination must match the name used for the mail session resource. You
+			can configure a mail destination directly in a destination editor or in a mail
+			destination properties file. The mail destination then needs to be made available in the
+			cloud. If a mail destination is updated, an application restart is required so that the
+			new configuration becomes effective. <div class="note note"><span class="notetitle">Note</span> SAP does not act as e-mail provider. To use
+				this service, please cooperate with an external e-mail provider of your
+				choice.</div>
+</div>
+
+		<div class="section" id="loioa191df7fa8f84be18578b3da3dd10654__section_N1001D_N10012_N10001"><div class="section_title">Mail Destination Properties</div><div type="Mail Destination Properties">
+			
+			<p class="p">The following properties are used to configure the mail destination:</p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa191df7fa8f84be18578b3da3dd10654__table_pcy_n3j_fj" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="17.825311942959004%"/><col width="53.83244206773619%"/><col width="28.342245989304814%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="17.825311942959004%" id="d7532842e45">Property</th>
+
+								<th class="entry" valign="top" width="53.83244206773619%" id="d7532842e48">Description</th>
+
+								<th class="entry" valign="top" width="28.342245989304814%" id="d7532842e51">Mandatory</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="17.825311942959004%" headers="d7532842e45 "><span class="keyword parmname">Name</span></td>
+
+								<td class="entry" valign="top" width="53.83244206773619%" headers="d7532842e48 ">
+									<p class="p">The name of the destination. The mail session that is configured by this mail
+										destination is available by injecting the mail session
+										resource <span class="ph filepath">mail/&lt;Name&gt;</span>. The name of
+										the mail session resource must match the destination name. </p>
+
+									<p class="p">The recommended name for a mail destination is <span class="ph filepath">Session</span>. </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.342245989304814%" headers="d7532842e51 ">
+									<p class="p">Yes </p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="17.825311942959004%" headers="d7532842e45 "><span class="keyword parmname">Type</span></td>
+
+								<td class="entry" valign="top" width="53.83244206773619%" headers="d7532842e48 ">
+									<p class="p">The type of destination. It must be <span class="ph filepath">MAIL</span> for mail destinations. </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.342245989304814%" headers="d7532842e51 ">
+									<p class="p">Yes </p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="17.825311942959004%" headers="d7532842e45 "><span class="keyword parmname">mail.*</span></td>
+
+								<td class="entry" valign="top" width="53.83244206773619%" headers="d7532842e48 ">
+									<p class="p"><span class="keyword apiname">javax.mail</span> properties for configuring the mail session.</p>
+
+									<p class="p">To send e-emails, you must specify at least <span class="keyword parmname">mail.transport.protocol</span>
+										and <span class="keyword parmname">mail.smtp.host</span>. </p>
+
+									<p class="p">To retrieve e-mails, you must specify at least <span class="keyword parmname">mail.store.protocol</span>,
+											<span class="keyword parmname">mail.&lt;protocol&gt;.host</span>, and for
+										POP3 <span class="keyword parmname">mail.pop3.port</span>.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.342245989304814%" headers="d7532842e51 ">
+									<p class="p">Depends on the mail protocol used. </p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="17.825311942959004%" headers="d7532842e45 "><span class="keyword parmname">mail.password</span></td>
+
+								<td class="entry" valign="top" width="53.83244206773619%" headers="d7532842e48 ">
+									<p class="p">Password that is used for authentication. The user name for authentication is specified
+										by <span class="keyword parmname">mail.user</span> (a standard
+											<span class="keyword apiname">javax.mail</span> property). </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.342245989304814%" headers="d7532842e51 ">
+									<p class="p">Yes, if authentication is used (<span class="keyword parmname">mail.smtp.auth=true</span> and generally
+										for fetching e-mail). </p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p">Note the following points:</p>
+
+			<div class="p">
+				<ul class="ul" id="loioa191df7fa8f84be18578b3da3dd10654__ul_jpj_qbr_hj">
+					<li class="li"><span class="keyword parmname">mail.smtp.port</span>: The SMTP standard ports 465 (SMTPS) and 587
+						(SMTP+STARTTLS) are open for outgoing connections on <span class="ph pname">SAP Cloud Platform</span>.</li>
+
+					<li class="li"><span class="keyword parmname">mail.pop3.port</span>: The POP3 standard ports 995 (POP3S) and 110
+						(POP3+STARTTLS) are open for outgoing connections (used to fetch
+						e-mail).</li>
+
+					<li class="li"><span class="keyword parmname">mail.imap.port</span>: The IMAP standard ports 993 (IMAPS) and 143 (IMAP
+						+STARTTLS) are open for outgoing connections (used to fetch e-mail).</li>
+
+					<li class="li"><span class="keyword parmname">mail.&lt;protocol&gt;.host</span>: The mail server of an e-mail provider
+						accessible on the Internet, such as Google Mail (for example,
+						smtp.gmail.com, imap.gmail.com, and so on).</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loioa191df7fa8f84be18578b3da3dd10654__section_N10135_N10012_N10001"><div class="section_title">SMTP and IMAP Example</div><div type="SMTP and IMAP Example">
+			
+			<div class="p">The destination below has been configured to use Gmail as the e-mail provider, SMTP
+				with STARTTLS (port 587) for sending e-mail, and IMAP (SSL) for receiving
+				e-mail:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Name=Session
+Type=MAIL
+
+mail.user=&lt;gmail account name&gt;
+mail.password=&lt;gmail account password&gt;
+
+mail.transport.protocol=smtp
+mail.smtp.host=smtp.gmail.com
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.smtp.port=587
+
+mail.store.protocol=imaps
+mail.imaps.host=imap.gmail.com</pre></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loioa191df7fa8f84be18578b3da3dd10654__section_N10147_N10012_N10001"><div class="section_title">SMTPS Example</div><div type="SMTPS Example">
+			
+			<div class="p">The destination below uses Gmail and SMTPS (port 465) for sending
+				e-mail:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">Name=Session
+Type=MAIL
+
+mail.user=&lt;gmail account name&gt;
+mail.password=&lt;gmail account password&gt;
+
+mail.transport.protocol=smtps
+mail.smtps.host=smtp.gmail.com
+mail.smtps.auth=true
+mail.smtps.port=465</pre></div>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=https://javamail.java.net/nonav/docs/api/" target="_blank" alt="https://javamail.java.net/nonav/docs/api/" title="https://javamail.java.net/nonav/docs/api/">JavaMail API Documentation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="link" href="e520383cbb571014858bc5d52295f433.html">Configuring Destinations from the Eclipse IDE</a></div>
+<div><a class="link" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></div>
+<div><a class="link" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

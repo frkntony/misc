@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Monitoring Availability of the MobiLink Server</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6b92c0a502494286bbd3fc0de640513a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Monitoring Availability of the MobiLink Server</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio6b92c0a502494286bbd3fc0de640513a__ul_tdj_3tw_3r">
+				<li class="li">An SQL Anywhere version 16 installation is available on the client side. For
+					more information, see <a class="xref" href="cdc9600ec42a47ea90f8997906e959a0.html">Getting Access to the Remote Data Sync Service</a>.</li>
+
+				<li class="li">A MobiLink server is running in your account. For more information, see <a class="xref" href="ac7e5e6c84214d14a3303dfc2536f0c2.html">Provisioning a MobiLink Server in Your Account</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This page describes how you can configure an availability check for your MobiLink server and
+				subscribe recipients to receive alert e-mail notifications when your server is down
+				or responds slowly. Furthermore, recommended actions are listed in case of issues. </p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the console client, navigating to the
+						<span class="ph filepath">&lt;SDK_installation&gt;/tools</span> directory.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To create the availability check, execute the following command  (exemplary
+					data).</span>
+				<div class="itemgroup stepresult">
+					<p class="p"><span class="ph emphasis emphasis">Example</span>:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-availability-check -a myaccount -b mymlinstance -u p1234567890 -U /status -C 6 -W 4 -h hana.ondemand.com</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To subscribe recipients to notification alerts, execute the following command
+					(exemplary data).</span>
+				<div class="itemgroup stepresult">
+					<p class="p"><span class="ph emphasis emphasis">Example</span>:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-alert-recipients -a myaccount -b mymlinstance -u p1234567890 -e john.smith@google.com -h hana.ondemand.com</pre></div>
+
+					<div class="note tip"><span class="tiptitle">Tip</span> To add multiple e-mail addresses, separate them with commas. We recommend that
+						you use distribution lists rather than personal e-mail addresses. Keep in
+						mind that you will remain responsible for handling of personal e-mail
+						addresses with respect to data privacy regulations applicable.</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p"><span class="ph emphasis emphasis">Recommended actions in case of issues</span>:</p>
+
+			<ul class="ul" id="loio6b92c0a502494286bbd3fc0de640513a__ul_hk1_zxw_3r">
+				<li class="li">Check the logs. In case of synchronization errors, use the <span class="keyword cmdname">MobiLink
+						Profiler</span> tool to drill down into the problem for root cause
+					analysis. </li>
+
+				<li class="li">In case of crude server startup parameters, reset the MobiLink server. </li>
+
+				<li class="li">If your MobiLink server hangs, restart it.</li>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6537f99f89c047c6ad16d49eb3f97a11.html" title="This topic shows how you can configure an availability check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring Availability Checks for Java Applications from the Console Client</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

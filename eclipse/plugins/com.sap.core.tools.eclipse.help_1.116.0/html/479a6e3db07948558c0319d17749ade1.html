@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Feedback Service Administration</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio479a6e3db07948558c0319d17749ade1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Feedback Service Administration</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="p">As a feedback administrator, you can:<ul class="ul" id="loio479a6e3db07948558c0319d17749ade1__ul_xvg_2rm_dm">
+				<li class="li">Add applications for which feedback is to be collected in the
+						<span class="ph uicontrol">Administration</span> UI of the feedback service</li>
+
+				<li class="li">Customize descriptions of feedback questions</li>
+
+				<li class="li">Customize descriptions of context attributes</li>
+
+				<li class="li">Free up feedback quota space</li>
+
+			</ul>
+Once you add an application to your list, you enable it to use the feedback
+			service. As a result, a unique account-specific and application-specific URL is
+			generated. To start collecting feedback, the developer needs to integrate the URL in her
+			or his application UI where end users post feedback (for example, in a feedback form).
+			The URL is called through a POST request by the application that wants to send feedback.
+			That is, once an end user submits the feedback form, the application calls the feedback
+			service through the URL and the service stores user feedback.</div>
+
+		<p class="p">An application feedback URL looks like this:</p>
+
+		<p class="p">
+			<samp class="ph codeph">https://feedback-<var class="keyword varname">&lt;account_name&gt;</var>.hanatrial.ondemand.com/api/v2/apps/<var class="keyword varname">&lt;application_id&gt;</var>/posts</samp>
+		</p>
+
+		<p class="p">To be able to operate in the <span class="ph uicontrol">Administration</span> UI of the feedback service,
+			you need to assign the FeedbackAdministrator role to your user.</p>
+
+		<p class="p">To access <span class="ph uicontrol">Administration</span>, open the following URL in your browser:</p>
+
+		<p class="p">
+			<span class="ph filepath">https://feedback-<var class="keyword varname">&lt;account_name&gt;</var>.hanatrial.ondemand.com/admin/mobile</span>
+		</p>
+
+		<p class="p">Each account has a feedback quota assigned – that is, a specific amount of feedback data that
+			can be stored in the SAP HANA DB. The amount equals to 250 feedback forms filled in by
+			end users. Once you reach 70% of the feedback quota, you get a warning message. Once you
+			reach the feedback quota limit, however, the feedback service ceases processing feedback
+			requests and storing feedback data. What you can do in either case is free up quota
+			space. You do this by deleting the feedback records for a particular time period of your
+			choice.</p>
+
+		<div class="p">For each application, you can edit the description of:<ul class="ul" id="loio479a6e3db07948558c0319d17749ade1__ul_ufg_kn5_bm">
+				<li class="li">rating questions</li>
+
+				<li class="li">free text questions</li>
+
+				<li class="li">context attributes</li>
+
+			</ul>
+<div class="note note"><span class="notetitle">Note</span> The feedback administrator can enter as descripitons the questions' text from
+				the application feedback form.</div>
+</div>
+
+		<p class="p">Descriptions are displayed in the <span class="ph uicontrol">Analysis</span> UI of the feedback
+			service.</p>
+
+		<p class="p">If you have the FeedbackAnalyst role assigned (in addition to the FeedbackAdministrator role),
+			you can analyze feedback results and export raw feedback data.</p>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="993b03f16e4546718d812954a91635ea.html">Administering Application Feedback</a></div>
+<div><a class="link" href="a950b3327320434fb7c3da6c478ff781.html">Feedback Analysis</a></div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To trigger a logout of the logged-in user, you can configure a logout page in the application descriptor."/>
+<meta name="description" content="To trigger a logout of the logged-in user, you can configure a logout page in the application descriptor."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Logout Page</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0c5ca8eb95214869bd1e8c5880f4b1b5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Logout Page</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">To trigger a logout of the logged-in user, you can configure a logout page in the application descriptor.</p>
+
+		<p class="p">When executing a request to the configured logout page, the server triggers a logout. This results in a response containing a logout request that
+			is send to the identity provider (IdP) to invalidate the user's session on the IdP. After the user is logged out from the IdP, the
+			configured logout page is called again. Now, the content of the logout page is served. The logout page is always unprotected, independent
+			of the authentication method of the application and independent of additional security constraints. In case additional resources, for
+			example, SAPUI5, are referenced from the logout page, those resources have to be unprotected as well.</p>
+
+		<p class="p">For information on how to configure certain paths as unprotected, see <a class="xref" href="de16793b391a4bcfae6096f34433de76.html" title="Authentication is the process of establishing and verifying the identity of a user as a prerequisite for accessing an application.">Authentication</a> and <a class="xref" href="a139548b21954e319a2a351e993bac40.html" title="To enforce authorization for an HTML5 application, permissions can be added to application paths.">Authorization</a>. </p>
+
+		<p class="p">Because non-active application versions always require authentication, a logout is only triggered for the active application version. For
+			non-active application versions the logout page is served without triggering a logout.</p>
+
+		<div class="p">To configure a logout page for your application, use the following format in the <span class="ph filepath">neo-app.json</span>
+				file:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+...
+    "logoutPage": "&lt;path to logout page&gt;"
+...
+</pre></div>
+<div class="note sap-example example"><span class="exampletitle">Example</span> An example configuration of a logout
+				page looks like this:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+...
+    "logoutPage": "/logout.html"
+...
+</pre></div>
+</div>
+</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

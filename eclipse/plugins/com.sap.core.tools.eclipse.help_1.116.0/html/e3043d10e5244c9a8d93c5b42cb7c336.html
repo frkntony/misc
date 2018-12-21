@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Control a user's access to and control over streaming analytics by providing the permissions necessary to complete specific tasks."/>
+<meta name="description" content="Control a user's access to and control over streaming analytics by providing the permissions necessary to complete specific tasks."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Granting Permissions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe3043d10e5244c9a8d93c5b42cb7c336">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Granting Permissions</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Control a user's access to and control over <span class="ph pname">streaming analytics</span> by providing
+		the permissions necessary to complete specific tasks. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loioe3043d10e5244c9a8d93c5b42cb7c336__ul_yzl_tqk_35">
+				<li class="li">You have created an <span class="ph pname">SAP Cloud Platform</span> account. See <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?868d804efd0b4eb788bdebd7b36a57a4.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?868d804efd0b4eb788bdebd7b36a57a4.html" title="https://help.hana.ondemand.com/help/frameset.htm?868d804efd0b4eb788bdebd7b36a57a4.html">SAP HANA: Getting Started</a>.</li>
+
+				<li class="li">You have installed the SAP HANA smart data streaming on-premise components. See <a class="xref" href="2170be6d356b475190230e2ac9946ea1.html" title="Although the streaming analytics server is located on the SAP Cloud Platform, you need to download and install some on-premise components to connect to the server from the client side.">Downloading and Installing Smart Data Streaming Components</a>.</li>
+
+				<li class="li">You have set the STREAMING_HOME environment variable.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>You need to grant permissions to users before they can connect to any web services, or
+			use streaming in SAP HANA studio. <p class="p">When you enable <span class="ph pname">streaming analytics</span>, you
+				have to create a database user named SDSADMIN. Use this database user to perform
+				policy administration functions, such as granting and revoking privileges.
+				</p>
+<p class="p">Because the SDSADMIN user is intended to set up user authorization policies,
+				the standard <span class="ph pname">streaming analytics</span> user
+				authorization commands do not work on SDSADMIN. For example, <span class="keyword cmdname">get
+					users</span>, which lists all users granted authorization to use <span class="ph pname">streaming analytics</span>, will
+				not list SDSADMIN because it was created at installation time with a predefined set
+				of permissions.</p>
+</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log in to the SAP HANA cockpit, and open the <span class="ph uicontrol">Assign Roles to
+						Users</span> tile.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the user SDSADMIN and click <span class="ph uicontrol">Edit</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Click <span class="ph uicontrol">Assign Roles</span>, and select the following
+					roles:</span>
+				<ul class="ul choices" id="loioe3043d10e5244c9a8d93c5b42cb7c336__choices_agw_yn4_1w">
+					<li class="li choice"><samp class="ph codeph">sap.hana.admin.roles::Monitoring</samp></li>
+
+					<li class="li choice"><samp class="ph codeph">sap.hana.streaming.monitoring.roles::Monitoring</samp></li>
+
+					<li class="li choice"><samp class="ph codeph">sap.hana.uis.db::SITE_DESIGNER</samp>
+					</li>
+
+				</ul>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Click <span class="ph uicontrol">OK</span>, then <span class="ph uicontrol">Save</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start <samp class="ph codeph">streamingclusteradmin</samp> in interactive mode for your SAP HANA
+					instance:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$STREAMING_HOME/bin/streamingclusteradmin --uri=https://&lt;https://<var class="keyword varname">&lt;hana-instance-name&gt;</var>wsp<var class="keyword varname">&lt;HCP-account-name&gt;</var>.<var class="keyword varname">&lt;landscape-name&gt;</var>.hana.ondemand.com:443 --username=SDSADMIN --password=<var class="keyword varname">&lt;password&gt;</var></pre></div>
+
+					
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Execute the <span class="keyword cmdname">grant perm</span> command for each of the permissions
+					needed by the user. The only required arguments are the privilege (action you
+					want to permit), whether you are granting it to a user or a role, and the name
+					of that user or role, in the following format:</span>
+				<div class="itemgroup info"><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">grant perm <var class="keyword varname">&lt;priv&gt;</var> [<var class="keyword varname">&lt;privtype&gt;</var>] [on [any]<var class="keyword varname">&lt;resource-type&gt;</var> [<var class="keyword varname">&lt;resource&gt;</var>]] to user|role <var class="keyword varname">&lt;name&gt;</var></pre></div>
+So,
+					to grant permission to perform all actions, with no restrictions, to the user
+					SDSADMIN, enter:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">grant perm all on all to user SDSADMIN</pre></div>
+For
+					more information on granting permissions in <span class="ph pname">streaming analytics</span>,
+					see <cite class="cite">User Authorization Policies</cite> in the <cite class="cite">SAP HANA Smart Data
+						Streaming: Security Guide</cite>.</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div><a class="xref" href="94ae174f4c8141988907624789e79d0b.html" title="Streaming analytics provides two methods for connecting to the SAP Cloud Platform: the Streaming Web Service, and the Web Services Provider. Each of these methods is responsible for different tasks.">Access the Streaming Web Service and
+				the Web Services Provider</a> to begin administering <span class="ph pname">streaming analytics</span>, and
+			working with streaming projects.</div>
+		
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://uacp2.hana.ondemand.com/viewer/173b8a48532d462fb2d02b32f7a25044/1.0.12/en-US/fc413e1b3cad48ad95231388de55f331.html" target="_blank" alt="https://uacp2.hana.ondemand.com/viewer/173b8a48532d462fb2d02b32f7a25044/1.0.12/en-US/fc413e1b3cad48ad95231388de55f331.html" title="https://uacp2.hana.ondemand.com/viewer/173b8a48532d462fb2d02b32f7a25044/1.0.12/en-US/fc413e1b3cad48ad95231388de55f331.html">User Authorization Policies</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

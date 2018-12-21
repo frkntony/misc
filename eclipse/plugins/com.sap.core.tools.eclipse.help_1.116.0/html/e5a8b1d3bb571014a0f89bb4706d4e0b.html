@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a HelloWorld Application</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a HelloWorld Application</h1>
+<div class="body conbody"><p class="p">
+	 </p>
+<div class="section" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__section_0068BDF9EA2349BD9AFB40B2C86B00EF"> 
+		<p class="p">This document describes how to create a simple HelloWorld Web application, which you can use
+				for testing on <span class="ph pname">SAP Cloud Platform</span>. </p>
+ 
+		<p class="p">First, you create a dynamic Web project and then you add a simple HelloWorld servlet to it. </p>
+ 
+		<p class="p">After you have created the Web application, you can test it on the local runtime and then
+				deploy it on the cloud. </p>
+ 
+		<p class="p">
+				
+			</p>
+ 
+	 </div>
+<div class="section" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__section_FB011DEB005B4ED49935C9C1EB04F8B3"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		 
+		<p class="p">You have installed the <span class="ph pname">SAP Cloud Platform</span> Tools.  For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>. </p>
+
+			<p class="p">Make sure you have downloaded the JRE that matches the SDK.</p>
+
+			<p class="p">If you work in a proxy environment, set the proxy host and port correctly.</p>
+ 
+	 </div></div>
+<div class="section" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__section_5FDC78C1E9814454BF278761AA2750B7"><div class="section_title">1. Create a Dynamic Web Project</div><div type="1. Create a Dynamic Web Project"> 
+		 
+		<ol class="ol">
+				<li class="li">Open your Eclipse IDE for Java EE Developers and switch to the Workbench screen.</li>
+<li class="li">From the Eclipse IDE main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+<li class="li">In the <span class="ph uicontrol">Project name</span>  field, enter <kbd class="ph userinput">HelloWorld</kbd>. </li>
+<li class="li">In the <span class="ph uicontrol">Target Runtime</span> pane, select the runtime you want to use to deploy
+					the HelloWorld application. In this tutorial, we use <kbd class="ph userinput">Java
+						Web</kbd>. </li>
+<li class="li"> In the <span class="ph uicontrol">Configuration</span> pane, use the default configuration.<div class="note note" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__note_N10092_N1008B_N1005C_N10054_N10013_N10001"><span class="notetitle">Note</span> The application will be
+						provisioned with JRE version matching the Web project Java facet. If the JRE
+						version is not supported by <span class="ph pname">SAP Cloud Platform</span>, the default JRE for the
+						selected SDK will be used (SDK for Java Web and for Java EE 6 Web Profile –
+						JRE 7).</div>
+<p class="p"/>
+<p class="p"><img class="image" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__dynamic_web_project" src="loioe16cfb9d2b8c495396d6d49357bc9b1a_HiRes.png"/>
+					</p>
+
+				</li>
+<li class="li">Optional: If you want your context root to be different from "HelloWorld", proceed as follows: <ol class="ol" type="a">
+						<li class="li">Choose the <span class="ph uicontrol">Next</span> button until you reach the
+								<span class="ph uicontrol">Web Module</span> wizard page. </li>
+
+						<li class="li">Edit the <span class="ph uicontrol">Context</span> root field. If you want to deploy the application
+							in the server's root, just replace the current string with
+								"<span class="ph uicontrol">/</span>". <p class="p">
+									<img class="image" height="310" src="loiod4a83aded295406c8232463945f8ad0b_HiRes.png" width="505"/>
+							</p>
+
+						</li>
+
+					</ol>
+
+				</li>
+<li class="li">Choose <span class="ph uicontrol">Finish</span>. </li>
+</ol>
+ 
+		<p class="p">
+		</p>
+ 
+		<p class="p">
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__section_9BD5933C093A44BABD79F10BBABD77C3"><div class="section_title">2. Create a HelloWorld Servlet</div><div type="2. Create a HelloWorld Servlet"> 
+		 
+		<ol class="ol"><li class="li">On the <span class="ph uicontrol">HelloWorld</span> project node, open the context menu and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> . Window <span class="ph uicontrol">Create Servlet</span> opens. </li>
+<li class="li">Enter <kbd class="ph userinput">hello</kbd> as Java package and <kbd class="ph userinput">HelloWorldServlet</kbd>
+					as class name. <p class="p">
+						<img class="image" height="433" src="loioe48029b64f354d2fbfd203990174dab8_HiRes.png" width="559"/>
+					</p>
+
+				</li>
+<li class="li">Choose <span class="ph uicontrol">Next</span>. </li>
+<li class="li">In the <span class="ph uicontrol">URL mappings</span> field, select
+						<span class="ph uicontrol">/HelloWorldServlet</span> and choose
+						<span class="ph uicontrol">Edit</span>. </li>
+<li class="li">In the <span class="ph uicontrol">Pattern</span> field, replace the current value with just
+						"<kbd class="ph userinput">/</kbd>". In this way, the servlet will be mapped as a
+							welcome page for the application. <p class="p"><img class="image" height="120" src="loio0836f757dbb343fc9cfc7731c83dd383_HiRes.png" width="316"/>
+					</p>
+
+				</li>
+<li class="li">Choose <span class="ph uicontrol">Finish</span> to generate the servlet. The Java Editor with the
+						<samp class="ph codeph">HelloWorldServlet</samp> opens. </li>
+<li class="li">Replace the body content of the <samp class="ph codeph">doGet(…)</samp> method with the following line:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">response.getWriter().println("Hello World!");
+</pre></div>
+
+				</li>
+<li class="li">Save your changes. <p class="p">
+		  	<img class="image" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__code_final" src="loio49c2e88a08f349b3b4c2e495c385b1bc_HiRes.png" alt="Screenshot_final.PNG" title="Screenshot_final.PNG"/>
+					</p>
+
+				</li>
+</ol>
+ 
+	 </div></div>
+<div class="section" id="loioe5a8b1d3bb571014a0f89bb4706d4e0b__section_FA65AB91DE4A4DF897B0B2DC738F15D6"><div class="section_title">Next Steps</div><div type="Next Steps">
+			
+			<p class="p"> Test your HelloWorld application locally and deploy it to <span class="ph pname">SAP Cloud Platform</span>. For more information, see <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</p>
+
+		</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

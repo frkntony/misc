@@ -1,0 +1,100 @@
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>com.sap.ndb.studio.jdbc.win32.x86_64</artifactId>
+  <!--artifactVersion--><version>2.3.39</version><!--/artifactVersion-->
+  <name>com.sap.ndb.studio.jdbc.win32.x86_64</name>
+  <packaging>eclipse-plugin</packaging>
+
+  <parent>
+    <artifactId>parent.admin</artifactId>
+    <groupId>com.sap.ndb.studio</groupId>
+    <version>2.3.39</version>
+    <relativePath>../../build/com.sap.ndb.studio.build/parents/admin/pom.xml</relativePath>
+  </parent>
+
+  <build>
+    <plugins>
+    
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <environments>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+          </environments>
+        </configuration>
+      </plugin>
+    
+      <plugin>
+	  <!-- extract archive -->
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.sap.hana.clients.ntamd64.release.msvc2010</groupId>
+                  <artifactId>client-jniauth</artifactId>
+                  <version>2.1.44-sap1</version>
+                  <classifier>ntamd64</classifier>
+                  <type>tar.gz</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.basedir}</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+	  <!-- copy jniauthentication.dll -->
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+            <overwrite>true</overwrite>
+              <outputDirectory>${project.basedir}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/clientsrc-jniauth</directory>
+                    <includes>
+                      <include>jniauthentication.dll</include>
+                    </includes>
+                </resource>
+              </resources> 
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+</project>

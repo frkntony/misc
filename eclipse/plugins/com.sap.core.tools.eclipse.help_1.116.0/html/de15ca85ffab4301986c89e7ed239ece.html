@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Removes a custom domain as an access point of an application. Use this command if you no longer want an application to be accessible on the configured custom domain."/>
+<meta name="description" content="Removes a custom domain as an access point of an application. Use this command if you no longer want an application to be accessible on the configured custom domain."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>remove-custom-domain</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiode15ca85ffab4301986c89e7ed239ece">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">remove-custom-domain </h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Removes a custom domain as an access point of an application. Use this command if you no
+		longer want an application to be accessible on the configured custom domain.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo remove-custom-domain --account &lt;account_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --custom-domain &lt;custom_domain&gt; --ssl-host &lt;ssl_host&gt;</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loiode15ca85ffab4301986c89e7ed239ece__section_N1001E_N10012_N10001">To list all parameters available for this command,
+			execute <kbd class="ph userinput">neo help remove-custom-domain</kbd> in the command line. 
+<div class="table-wrapper tablenoborder"><table summary="" id="loiode15ca85ffab4301986c89e7ed239ece__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d10376674e45">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10376674e45 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10376674e45 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10376674e45 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10376674e45 ">Use the respective landscape host for your account type.
+										<p class="p"><span class="keyword cmdname">Type</span>: URL. For acceptable values see
+										<a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10376674e45 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10376674e45 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10376674e45 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10376674e45 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10376674e45 "><span class="keyword parmname">-e</span>,
+								<span class="keyword parmname">--custom-domain</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10376674e45 ">Custom domain for accessing the
+										application<p class="p"><span class="keyword cmdname">Type</span>: string (Fully
+									qualified domain name - FQDN)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10376674e45 "><span class="keyword parmname">-l</span>, <span class="keyword parmname">--ssl-host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10376674e45 ">SSL host as defined with the<span class="keyword parmname"> --name</span>
+								parameter when created, or 'default' if not specified.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo remove-custom-domain --account myacc --user mymail@example.com --host hana.ondemand.com --custom-domain www.example.com --ssl-host mysslhostname</pre></div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ebc5269d0df34330b9a68fe1b8adc3ef.html" title="Use this command to add a custom domain to an application URL. This will route the traffic for the custom domain to your application on SAP Cloud Platform.">add-custom-domain</a></div>
+<div><a class="link" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loiobf395cf25683491eabefadb4383ed7ff" title="To make your application on the SAP Cloud Platform accessible via the custom domain, you need to map the custom domain to the application URL.">Add the Custom Domain</a></div>
+<div><a class="link" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio77cf0e6cd32e496c9cc8eeac4bedde94" title="To make sure your domain is trusted and all application data is protected, you need to first set up secure SSL communication. The next step will then be to make your application accessible via the custom domain and route traffic to it.">Configuring Custom Domains</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Accounts</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">Effective version <span class="ph emphasis emphasis">2.2</span>, it is possible to connect to several accounts
+				within a single <span class="ph pname">Cloud connector</span>
+				installation. Those accounts can use the <span class="ph pname">Cloud connector</span>
+				concurrently with different configurations. By selecting an account from the
+				drop-down box, all tab entries will show the configuration, audit and state specific
+				to this account. In case of audit and traces, cross account info is merged with the
+				account specific parts in the UI.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p"/>
+
+				<div class="p">We recommend that you group only accounts of the same quality in a single
+						installation:<ul class="ul" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e__ul_ojd_bg3_zm">
+						<li class="li">Productive accounts should reside on a <span class="ph pname">Cloud connector</span> that is used for productive accounts only. </li>
+
+						<li class="li"> Test and development accounts could be merged, depending on the group
+							of people that are supposed to deal with those accounts. However, the
+							mostly preferred logical setup is to have separate development and test
+							installations.</li>
+
+					</ul>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Account Dashboard</div><div type="Account Dashboard">
+			
+			<p class="p">In the account dashboard (choose your <span class="ph uicontrol">Account</span> from the main menu), you
+				can check the state of all account connections managed by this <span class="ph pname">Cloud connector</span> at a
+				glance.</p>
+
+			<p class="p"><img class="image" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e__image_mgg_hj3_zm" width="1400px" src="loiod7625b295d0247ba900caea890b0e06b_HiRes.png" alt="Account Dashboard" title="Account Dashboard"/></p>
+
+			<p class="p">In the screenshot above, the <span class="ph uicontrol">trial</span> account (display name
+					<span class="keyword cmdname">trial23</span>) is already connected, but has no active resources
+				exposed. The <span class="keyword cmdname">test</span> account (display name
+				<span class="keyword cmdname">test23</span>) is currently disconnected. </p>
+
+			<p class="p">In addition, depending on the connection state the dashboard allows you to do disconnect and
+				connect operations for the accounts by pressing the respective button in the
+					<span class="ph uicontrol">Actions</span> column. </p>
+
+			<p class="p">In case you want to have an additional account to be connected with your on-premise landscape,
+				just press the <span class="ph uicontrol">Add Account</span> button and a dialog appears, which
+				is similar to the <span class="ph uicontrol">Initial Configuration</span> operation when
+				establishing the first connection.</p>
+
+			<p class="p"/>
+
+			<p class="p"><img class="image" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e__image_n4j_wrc_b5" src="loioe51337e149034250a4cbca0a2734e466_HiRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Procedure</div><div type="Procedure">
+			
+			<p class="p"/>
+
+			<ol class="ol" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e__ol_rrz_h33_zm">
+				<li class="li">The <var class="keyword varname field">&lt;Landscape Host&gt;</var> field specifies the <span class="ph pname">SAP Cloud Platform</span> landscape
+					that should be used. You can choose the one you need from the dropdown list. For
+					more information, see <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a> →
+					section "Logon".</li>
+
+				<li class="li">For <var class="keyword varname field">&lt;Account Name&gt;</var> and <var class="keyword varname field">&lt;Account User&gt;</var> (user/password), enter the
+					values you obtained when you registered your account on <span class="ph pname">SAP Cloud Platform</span> or add a
+						<a class="xref" href="937c3cef72bb101490cf767db0e91070.html" title="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform.">new Account User</a>
+					with role <span class="keyword parmname">Cloud Connector Admin</span> from the
+					<span class="ph uicontrol">Members</span> tab in the <span class="ph pname">SAP Cloud Platform</span> cockpit and use the
+					new user and password.<div class="note note"><span class="notetitle">Note</span> If the <span class="ph pname">Cloud connector</span>
+						is installed in an environment that is operated by SAP, SAP will provide a
+						user that you should add as new member in your <span class="ph pname">SAP Cloud Platform</span>
+						account. In this case, please assign the <span class="keyword parmname">Cloud Connector
+							Admin</span> role (see <a class="xref" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a>) to the user provided by
+						SAP. Once the <span class="ph pname">Cloud connector</span>
+						connection is established, this user is not needed any more since it serves
+						for initial connection setup only. You may revoke the corresponding role
+						assignment then and remove the user from the <span class="ph uicontrol">Members</span>
+						list. </div>
+</li>
+
+				<li class="li">Optional: You can define a <var class="keyword varname field">&lt;Display Name&gt;</var>, which allows you to easily recognize
+					a specific account in the UI compared to the technical <var class="keyword varname field">&lt;Account
+						Name&gt;</var>. </li>
+
+				<li class="li">Optional: You can define a <var class="keyword varname field">&lt;Location ID&gt;</var>, which identifies the location of this
+						<span class="ph pname">Cloud connector</span> for
+					a specific account. Starting with <span class="ph pname">Cloud connector</span>
+					release 2.9.0, the location ID is used as routing information and thus it is
+					possible to connect multiple cloud connectors to a single account. If not
+					specifying any value for Location ID, the default will be used, which is
+					representing the behavior of previous <span class="ph pname">Cloud connector</span>
+					versions. The location ID needs to be unique per account and should be some
+					identifier that can be used in a URI. In order to route requests to a <span class="ph pname">Cloud connector</span>
+					with a Location ID, the location ID needs to be configured in the respective
+					destinations.</li>
+
+				<li class="li">Optional: You can provide a <var class="keyword varname field">&lt;Description&gt;</var> of the account that will
+					be shown when clicking on the <span class="ph uicontrol">Details</span> icon in the
+						<span class="ph uicontrol">Actions</span> column.</li>
+
+				<li class="li">Once all the settings have been completed, choose <span class="ph uicontrol">Save</span>.</li>
+
+			</ol>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+			
+			<ul class="ul" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e__ul_vbq_l5s_cs">
+				<li class="li">To modify an existing account, press the <span class="ph uicontrol">Edit</span> icon and then change
+					the <var class="keyword varname field">&lt;Display Name&gt;</var>, <var class="keyword varname field">&lt;Location ID&gt;</var> and/or
+						<var class="keyword varname field">&lt;Description&gt;</var>. <p class="p"/>
+<p class="p"><img class="image" id="loiof16df12fab9f4fe1b8a4122f0fd54b6e__image_pvl_csc_b5" width="1400px" src="loiocee3063142ac4d8386ff618551727b38_HiRes.png"/></p>
+</li>
+
+				<li class="li">You can also delete an account from the list of connections. After confirming
+					that you really want to delete it, the account will be disconnected and all
+					configurations will be removed from the installation.</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Multiple schemas allow you to use multiple databases in parallel. You might, for example, want to use SAP MaxDB for normal transaction processing and the SAP HANA database for analytics."/>
+<meta name="description" content="Multiple schemas allow you to use multiple databases in parallel. You might, for example, want to use SAP MaxDB for normal transaction processing and the SAP HANA database for analytics."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Multiple Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocd5c892dc69c4ffda918fae53177474f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using Multiple Schemas</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Multiple schemas allow you to use multiple databases in parallel. You might, for
+		example, want to use SAP MaxDB for normal transaction processing and the SAP HANA database
+		for analytics.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">In this scenario, you use the <span class="keyword cmdname">create-schema</span> command to create two schemas,
+				one associated with SAP MaxDB and the other with the SAP HANA database. You then use
+				the <span class="keyword cmdname">bind-schema</span> command to bind both schemas to the application.
+				The following example data is used: </p>
+
+			<div class="p">
+				<ul class="ul" id="loiocd5c892dc69c4ffda918fae53177474f__ul_anl_nrx_tk">
+					<li class="li">The application is named <kbd class="ph userinput">myapp</kbd> and not yet been
+						deployed.</li>
+
+					<li class="li">Runtime environment: Java Web</li>
+
+					<li class="li">Schemas: <kbd class="ph userinput">myhana</kbd> (SAP HANA database) and
+							<kbd class="ph userinput">mymaxdb</kbd> (SAP MaxDB)</li>
+
+					<li class="li">Data source names: <kbd class="ph userinput">jdbc/dshana</kbd> and
+							<kbd class="ph userinput">jdbc/dsmaxdb</kbd></li>
+
+					<li class="li">User: <kbd class="ph userinput">test</kbd></li>
+
+					<li class="li">Account: <kbd class="ph userinput">myaccount</kbd></li>
+
+					<li class="li">Deployment landscape: <span class="ph filepath">hana.ondemand.com</span> (replace as
+						necessary, for example, with <span class="ph filepath">hanatrial.ondemand.com</span> for
+						developer accounts) </li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the application's <span class="ph filepath">web.xml</span> file, add resource definitions for the
+					two data sources: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+&lt;res-ref-name&gt;jdbc/dshana&lt;/res-ref-name&gt;
+&lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+&lt;res-ref-name&gt;jdbc/dsmaxdb&lt;/res-ref-name&gt;
+&lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Add JNDI lookups in the application code using the two data sources. This will
+					allow the application to access both the <span class="ph filepath">myhana</span> and
+						<span class="ph filepath">mymaxdb</span> schemas: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"># JNDI lookup
+InitialContext ctx = new InitialContext();
+DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/dshana");
+...
+InitialContext ctx = new InitialContext();
+DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/dsmaxdb");</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Deploy the application but do not start it.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder and enter the
+					following command to create a schema for the SAP HANA database:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-schema -h hana.ondemand.com -u test -a myaccount --id myhana --dbtype hana</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create a schema for SAP MaxDB: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-schema -h hana.ondemand.com -u test -a myaccount --id mymaxdb --dbtype maxdb</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check the schemas have been created:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-schemas -a myaccount -h hana.ondemand.com -u test --verbose</pre></div>
+
+					<div class="p">Example
+						output:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Schema ID DB Type
+myhana    hana
+mymaxdb   maxdb</pre></div>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Bind the schemas to the application using the data source names
+						<span class="ph filepath">jdbc/dshana</span> and <span class="ph filepath">jdbc/dsmaxdb</span>: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-schema -h hana.ondemand.com -u test -a myaccount -b myapp --data-source jdbc/dshana --id myhana
+neo bind-schema -h hana.ondemand.com -u test -a myaccount -b myapp --data-source jdbc/dsmaxdb --id mymaxdb</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">In both cases, a confirmation is displayed that the schema was
+					successfully bound.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optionally check as follows:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-datasources -a myaccount -h hana.ondemand.com -u test -b myapp</pre></div>
+
+					<div class="p">Example
+						output:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Schema ID DB Type Data Source
+myhana    hana    jdbc/dshana
+mymaxdb   maxdb   jdbc/dsmaxdb</pre></div>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start the application so that it uses the two new schemas.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

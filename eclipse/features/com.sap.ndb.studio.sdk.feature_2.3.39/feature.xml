@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.sdk.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.modeler.reuse.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.base.emf"
+         download-size="14"
+         install-size="21"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.repository"
+         download-size="282"
+         install-size="632"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.resource.bi"
+         download-size="69"
+         install-size="159"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.resource.repository"
+         download-size="121"
+         install-size="283"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.bi.model"
+         download-size="852"
+         install-size="2149"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.bi.sdk"
+         download-size="34"
+         install-size="65"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.resource.deployment.bi"
+         download-size="209"
+         install-size="484"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.resource.base"
+         download-size="45"
+         install-size="78"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sdk.resource.sql"
+         download-size="26"
+         install-size="49"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.businessobjects.mds.integrity"
+         download-size="54"
+         install-size="97"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.catalog"
+         download-size="26"
+         install-size="45"
+         version="2.3.39"
+         unpack="false"/>
+         
+    <plugin
+         id="com.sap.ndb.studio.modeler.sdk"
+         download-size="37"
+         install-size="67"
+         version="2.3.39"
+         unpack="false"/>     
+         
+     <plugin
+         id="com.sap.ndb.studio.view.resource"
+         download-size="80"
+         install-size="178"
+         version="2.3.39"
+         unpack="false"/>
+         
+     <plugin
+         id="com.sap.ndb.studio.view.model.transformation"
+         download-size="232"
+         install-size="597"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

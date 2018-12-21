@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can view details about the Java quota and virtual machines quota purchased for a global account and how it is distributed between the accounts in this global account. As long as there are free quotas, you can freely distribute them between the accounts."/>
+<meta name="description" content="You can view details about the Java quota and virtual machines quota purchased for a global account and how it is distributed between the accounts in this global account. As long as there are free quotas, you can freely distribute them between the accounts."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Account Quota</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe5e8c85fefa44e489838ba85f703e976">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Account Quota</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can view details about the Java quota and virtual machines quota purchased for a
+		global account and how it is distributed between the accounts in this global account. As
+		long as there are free quotas, you can freely distribute them between the
+		accounts.</p>
+
+		
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>You have the Administrator role for the accounts for which you want to manage the
+			quota.</div>
+
+		
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The overview of accounts available to you is your starting point for viewing quota
+				information in the cockpit. The overview shows the different quotas in use, how they
+				are distributed between individual accounts, and how many free quotas there are for
+				which purchased edition. For example, there are 2 free Java quotas out of 5 that can
+				be used in the different accounts. </p>
+
+			<p class="p">On the <span class="ph uicontrol">Quota Management</span> page in the cockpit, you can view
+				quota information
+				per account
+				and edition, and manage quota for the currently selected global
+				account. The quota purchased for a global account is available to the applications
+				deployed in all accounts in this global
+				account. The
+				quota assigned to individual accounts in the global account must not exceed the
+				purchased limits. You can free quotas by removing them from an
+				account. Quotas are sold in different editions.
+				</p>
+
+			<p class="p">In the editing
+				mode,
+				use
+				the <span class="ph emphasis emphasis">+</span> and <span class="ph emphasis emphasis">–</span> buttons to adjust the quota in
+				the specified limits.</p>
+
+			<p class="p">Note the following:</p>
+
+			<ul class="ul" id="loioe5e8c85fefa44e489838ba85f703e976__ul_usc_tz4_5v">
+				<li class="li">
+					<p class="p">The <span class="ph uicontrol">Edit</span> option on the <span class="ph uicontrol">Quota
+							Management</span> will only be enabled if you have the
+						Administrator role for at least one account in this global account.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You need the Administrator role for the account in question to be able to
+						change the quota. Otherwise, the <span class="ph emphasis emphasis">+</span> and
+							<span class="ph emphasis emphasis">–</span> buttons are disabled and you can only view how
+						the quota is distributed.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">There is a category <span class="ph uicontrol">Other Accounts</span> for which the total
+						quota of all accounts belonging to this category is displayed, but no
+						details. These are the accounts to which you are not assigned as member and
+						that you cannot access.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You cannot decrease quota any further if it is still in use. You first need
+						to release some resources before you can continue (that means, stop some of
+						the applications or processes in that account).</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You cannot increase quota any further if you have reached the limit of your
+						purchased quota because you have distributed all the available quota
+						already.</p>
+
+				</li>
+
+				
+				<li class="li">
+					<p class="p">You can filter the quota information by quota type and by account.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Clicking the link for the account name takes you to the overview page for
+						this account.</p>
+
+				</li>
+
+				
+			</ul>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioe5e8c85fefa44e489838ba85f703e976__steps_jgs_mxw_z5"><li class="li step">
+				<span class="ph cmd">Log on to the cockpit and choose <span class="ph uicontrol">Quota Management</span> in the
+					navigation area.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Edit</span>.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Use the
+						<span class="ph emphasis emphasis">+</span> and <span class="ph emphasis emphasis">–</span> buttons to adjust the
+					quota in the specified limits
+					as
+					needed and save your changes.</span>
+			</li>
+</ol>
+
+	</div>
+
+	
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7612fbaf711e1014839a8273b0e91070.html">Compute Units</a></div>
+<div><a class="link" href="fd5a3c1c93cf403db636de8ad67a7e70.html" title="You can use the SAP Cloud Platform virtual machines to install and maintain your own applications in scenarios not covered by the platform.">Virtual Machines</a></div>
+<div><a class="link" href="2abad162138e41bc843c7de93e162d28.html" title="Lists all accounts that a customer has. Authorization is performed against the account passed as --account parameter.">list-accounts</a></div>
+<div><a class="link" href="4108f0f0680446a39db27f624c0e8b6a.html" title="Sets compute unit quotas for a given account.">set-quota</a></div>
+</div>
+</div>
+	
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

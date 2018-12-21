@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+   <context  id="SDKRuntimeWizardTomcat8" title="About Java Web Tomcat 8">
+        <description>
+Java Web Tomcat 8 requires JVM 7 or higher.
+        
+1. In the <b>Name</b> field, enter a name for your runtime environment. The default is <b>Java Web Tomcat 8</b>.
+
+2. In the <b>Use Java Web Tomcat 8 SDK from the following location</b> field you can manually type the full path to the directory where you have downloaded the Java Web Tomcat 8 SDK. If you do not have this SDK locally, choose <b>Download and Install</b>.
+
+3. From the <b>JRE</b> dropdown list, select an environment variable that specifies where your JDK is installed. You can either select the relevant value from the <b>JRE</b> list, or choose <b>Installed JREs</b> to define a new JRE environment variable.
+
+4. Choose <b>Finish</b>.
+</description>
+		<topic href="../com.sap.core.tools.eclipse.help/html/e815ca4cbb5710148376c549fd74c0db.html"  label="Installing Java Tools for Eclipse and SDK"/> 
+   </context>
+</contexts>

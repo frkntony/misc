@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="An account is a hosted environment on SAP Cloud Platform in which users deploy applications and connect them to services."/>
+<meta name="description" content="An account is a hosted environment on SAP Cloud Platform in which users deploy applications and connect them to services."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8ed4a705efa0431b910056c0acdbf377">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accounts</h1>
+
+	
+	
+	<div class="body conbody"><p class="shortdesc">An account is a hosted environment on <span class="ph pname">SAP Cloud Platform</span> in which users deploy
+		applications and connect them to services. </p>
+
+		<div class="section"><div class="section_title">Accounts</div><div type="Accounts">
+			
+			<p class="p">An account on <span class="ph pname">SAP Cloud Platform</span> represents the scope of the functionality you
+				have purchased based on your contract with SAP and the agreed level of support you are entitled to. It is the logical representation
+				of your <span class="ph pname">SAP Cloud Platform</span> landscape. In a productive environment, the account
+				model has a higher degree of complexity than in a trial environment. It may consist of more than one account, each representing a
+				different instance in your landscape, for example.</p>
+
+			<p class="p">There are also differences in how accounts work depending on the account type you choose. The account type determines pricing,
+				conditions of use, resources, services available, and landscape host. It depends on your use case if you choose a free trial account
+				(for testing) or a licensed account on a productive landscape.</p>
+
+			<p class="p">You can start by getting a free <span class="ph pname">SAP Cloud Platform</span> developer license that is for
+				trial use only. This also gives you access to our community and all the free technical resources, tutorials, blogs, support you need.
+				For productive use, please buy a paid customer or a partner account. It is important that you are aware of these differences to enable
+				you to plan and set up your landscape and account model in the best possible way. For this, please answer a couple of questions, for
+				example:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio8ed4a705efa0431b910056c0acdbf377__ul_y12_trt_qy">
+					<li class="li">
+						<p class="p">Do you only want to try something out in a trial environment?</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Is your account meant for running your productive business?</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">How many accounts do you need?</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">In the cockpit, accounts are organized in a hierarchical structure and are associated with a particular data center. To run and manage
+				your applications on <span class="ph pname">SAP Cloud Platform</span> and to connect them to services, your
+				user must be assigned to an account. Your user can be assigned to one or more accounts. You can view a list of all accounts available
+				to you and access them using the cockpit. A user with administrative permissions can use a self-service to create accounts, add users
+				to accounts, and assign roles to users for the account in question.</p>
+
+			<p class="p">Depending on your needs, different account types are available for testing (free) or productive use (paid accounts). The account type
+				determines pricing, conditions of use, resources, services available, and landscape host. You can start by getting a free <span class="ph pname">SAP Cloud Platform</span> developer license that is for trial use only. This also gives
+				you access to our community and all the free technical resources, tutorials, blogs, support you need. For productive use, you need to
+				purchase a paid customer or a partner account.</p>
+
+			<p class="p">For more information, see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a>.</p>
+
+			<p class="p">Each account is associated with a particular data center, which is the physical location (for example, Europe, US East) where
+				applications, data, or services are hosted.</p>
+
+			<p class="p">While developer accounts use the trial landscape, which is located in Europe only, customer and partner accounts use a productive
+				landscape, which is available on a regional basis.</p>
+
+			<p class="p">The specific landscape associated with an account is relevant when you deploy applications (landscape host) and access the <span class="ph pname">SAP Cloud Platform</span> cockpit (cockpit URL).</p>
+
+			<div class="note note"><span class="notetitle">Note</span> You can have several accounts in one or more landscapes. Your accounts are independent of each other, even if you have accounts of
+				the same name in different regions. The data center assigned to your account is not directly related to your location. You could be
+				located in the United States, for example, but operate your account in Europe.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Global Accounts</div><div type="Global Accounts">
+			
+			<p class="p">Each customer or partner account is associated with a particular global account. The global account groups together different accounts
+				that an administrator makes available to the users in their organization for deploying applications on the cloud platform. The
+				customer data, billing information, and purchased quota (such as Java quota) are stored in a global account. Accounts in a global
+				account are independent from each other. This is important to consider with respect to security, user management, data migration and
+				management, integration, and so on, when you plan the landscape and overall architecture.</p>
+
+			<p class="p">Administrators can assign the available quota to the different accounts and move it between accounts that belong to the same global
+				account (Prerequisite: You have the Administrator role for the relevant accounts.). New accounts are assigned automatically to the
+				associated global account. The global account is the same on all landscapes.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> The global account feature is not available in a trial environment. As a user working in a trial environment, you see your account
+				in which you deploy and run applications.</div>
+
+			
+			
+		</div></div>
+
+	</div>
+
+	
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+<div><a class="link" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a></div>
+<div><a class="link" href="975c8fc61a384668a82e91c8448deb0b.html" title="To deploy applications on SAP Cloud Platform, you need an account that corresponds to your role.">Getting an Account</a></div>
+<div><a class="link" href="c4c25cc63ac845779f76202360f98694.html" title="You can manage accounts and assign the quota available for a global account to the accounts associated with this global account.">Managing Accounts and Quota</a></div>
+<div><a class="link" href="937c3cef72bb101490cf767db0e91070.html" title="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform.">Managing Members</a></div>
+<div><a class="link" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a></div>
+<div><a class="link" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

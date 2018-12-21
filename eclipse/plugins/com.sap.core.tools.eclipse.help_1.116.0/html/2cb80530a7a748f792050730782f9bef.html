@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Specific Procedures and Views</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2cb80530a7a748f792050730782f9bef">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Specific Procedures and Views</h1>
+<div class="body conbody"><div class="p">As a developer, you can use the SAP HANA Studio for native development on SAP Cloud Platform
+			Platform. Each developer on the platform has a certain limited set of access rights so
+			that there is user and data isolation. If you, as a developer, are to extend your rights
+			(without isolation breach), so that you can execute more tasks, you can use the
+			additional SQL procedures provided into the <span class="ph uicontrol">HCP</span> DB schema. These
+			SQL procedures are related to the following:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_icn_jvr_tl"><li class="li">Select rights for a modeled view to a developer’s role – once you model and
+					activate an SAP HANA modeled view, you use these SQL procedures to make this
+					modeled view visible in the <span class="ph uicontrol">_SYS_BIC</span> DB schema</li>
+<li class="li">Grant activated <span class="ph uicontrol">hdbroles</span> – once you create and activate
+					an <span class="ph uicontrol">hdbrole</span>, you use these SQL procedures to grant
+					privileges of the activated <span class="ph uicontrol">hdbrole</span> to your developer’s
+					role</li>
+<li class="li">Update developer’s role privileges – SQL procedures for <span class="ph uicontrol">Grant
+						activated hdbroles</span> technically grants the privileges to an
+					internal role prefixed with <span class="ph uicontrol">HCP/</span>, which is granted to the
+					developer’s role. The reason for having such an <span class="ph uicontrol">HCP/</span> role
+					is security. Once an activated <span class="ph uicontrol">hdbrole</span> is updated, you
+					use the <span class="ph uicontrol">update</span> SQL procedures to synchronize privileges
+					from the activated hdbrole and the ones from the corresponding internal
+						<span class="ph uicontrol">HCP/</span> role. The internal <span class="ph uicontrol">HCP/</span>
+					roles are automatically synchronized when a developer uses the grant SQL
+					procedures.</li>
+<li class="li">Revoke activated <span class="ph uicontrol">hdbrole</span> – all grant SQL procedures have
+					their corresponding revoke SQL procedures</li>
+<li class="li">Grant activated<span class="ph uicontrol"> hdbrole</span> to end user – grant privileges
+					from an activated hdbrole to an end user. An end user for a trial landscape is
+					an <span class="ph uicontrol">C</span>, <span class="ph uicontrol">D</span>, <span class="ph uicontrol">P</span>,
+						<span class="ph uicontrol">S</span> or <span class="ph uicontrol">I</span> user. You can use this
+					pack of SQL procedures to grant XS privileges for an XS application to an end
+					user who will use the application.</li>
+<li class="li">Developer’s metadata – this set of SQL procedures provides useful metadata for a
+					developer user, for example schema, package, role name, activated
+						<span class="ph uicontrol">hdbroles</span> for a developer’s package, and so on.</li>
+</ul>
+</div>
+<div class="section"><div class="section_title">Developer User Metadata</div><div type="Developer User Metadata">
+			
+			<div class="p">You can acces developer user metadata (developer's schema, activated
+					<span class="ph uicontrol">hdbroles</span>, and so on) using the following views:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_l1z_byr_tl"><li class="li"><span class="ph uicontrol">HCP_ACTIVATED_ROLES</span> - you use this view to get all
+						the activated hdbroles from the developer's package<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">SELECT * FROM "HCP"."HCP_ACTIVATED_ROLES"</pre></div>
+
+						</div>
+</li>
+<li class="li"><span class="ph uicontrol">HCP_DEV_METADATA</span> - you use this view to get developer
+						user's schema, package, and role name<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">SELECT * FROM "HCP"."HCP_DEV_METADATA"</pre></div>
+
+						</div>
+</li>
+</ul>
+</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Select Rights for Activated Modeled Views</div><div type="Select Rights for Activated Modeled Views">
+			
+			<div class="p">To enable select on activated modeled views, HDB views, or procedures you need to use the
+				following SQL procedures:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_zq5_myr_tl"><li class="li"><span class="ph uicontrol">HCP_GRANT_SELECT_ON_ACTIVATED_OBJECT(IN package_name
+							VARCHAR(256), IN object_name VARCHAR(256))</span> - you use this
+						procedure to grant a select privilege for activated modeled view, HDB view,
+						and procedure to the developer's role<p class="p">The first procedure paramater is
+								<span class="ph uicontrol">package_name</span> that consists of the name of the
+							package in which the modeled view, HDB view, or procedure is located
+							(for example, <span class="ph uicontrol">demo.epm.data</span>).</p>
+<p class="p">The second
+							procedure paramater is <span class="ph uicontrol">object_name</span> that consists
+							of the name of the modeled view, HDB view, or procedure (for example,
+								<span class="ph uicontrol">MY_ORDERS</span>).</p>
+<p class="p">For
+							example:</p>
+<div class="p"><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_GRANT_SELECT_ON_ACTIVATED_OBJECT"('demo.epm.data', 'MY_ORDERS')</pre></div>
+
+							Result:</div>
+<p class="p">Developer's role is granted with select privilege to
+								<span class="ph uicontrol">_SYS_BIC.demo.epm.data/MY_ORDERS</span></p>
+</li>
+<li class="li"><span class="ph uicontrol">HCP_GRANT_SELECT_ON_ACTIVATED_OBJECTS()</span> - you use
+						this procedure to grant select privilege for all activated modeled views
+						from the developer's package to the developer's role<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_GRANT_SELECT_ON_ACTIVATED_OBJECTS"</pre></div>
+
+						</div>
+<p class="p">Result:</p>
+<p class="p">Developer's role is granted with select privilege to
+							activated modeled views, for example <span class="ph uicontrol">
+								_SYS_BIC.demo.epm.data/MY_ORDERS1;
+								_SYS_BIC.demo.epm.data2/MY_ORDERS2</span>.</p>
+</li>
+</ul>
+</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Activated Hdbroles for Grant, Update, and Revoke</div><div type="Activated Hdbroles for Grant, Update, and Revoke">
+			
+			<p class="p">For security reasons, some privileges are not allowed to be granted to activated
+					<span class="ph uicontrol">hdbroles</span>.</p>
+
+			<div class="p">Allowed privileges:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_nqb_nzr_tl"><li class="li">Granted roles or hierarchy of roles</li>
+<li class="li">Object privileges - for <span class="ph uicontrol">hdbtable</span>,
+							<span class="ph uicontrol">hdbprocedure</span>, and
+						<span class="ph uicontrol">hdbview</span></li>
+<li class="li">Analityc privileges</li>
+<li class="li">Application privileges</li>
+</ul>
+Privileges not allowed:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_hdb_5zr_tl"><li class="li">System privileges</li>
+<li class="li">Object privileges on schema level</li>
+<li class="li">Package privileges</li>
+</ul>
+Use the following procedures:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_t44_yzr_tl"><li class="li"><span class="ph uicontrol">HCP_GRANT_ACTIVATED_ROLE (IN role_name NVARCHAR(256)</span>)
+						- you use this procedure to grant an activated
+							<span class="ph uicontrol">hdbrole</span> to the developer's role.<p class="p">The procedure
+							parameter is <span class="ph uicontrol">role_name</span> which is and activated
+								<span class="ph uicontrol">hdbrole</span> that will be granted to the
+							developer's role</p>
+<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_GRANT_ACTIVATED_ROLE"('demo.epm.data::model_admin')</pre></div>
+
+						</div>
+<p class="p">Result:</p>
+<p class="p">Developer's role is granted with all allowed privileges
+							of the activated <span class="ph uicontrol">hdbrole</span>.</p>
+</li>
+<li class="li">HCP_REVOKE_ACTIVATED_ROLE(IN role_name NVARCHAR(256)) - you use this
+						procedure to revoke an activated <span class="ph uicontrol">hdbrole</span> from the
+						developer's role<p class="p">The procedure parameter is
+								<span class="ph uicontrol">role_name</span> - the activated
+								<span class="ph uicontrol">hdbrole</span> which will be revoked from the
+							developer's role</p>
+<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_REVOKE_ACTIVATED_ROLE"('demo.epm.data::model_admin')</pre></div>
+
+						</div>
+<p class="p">Result:</p>
+<p class="p">Privileges of the activated
+								<span class="ph uicontrol">hdbrole</span> are revoked from the developer's
+							role.</p>
+</li>
+<li class="li"><span class="ph uicontrol">HCP_GRANT_ACTIVATED_ROLES()</span> - you use this role to
+						grant all the activated <span class="ph uicontrol">hdbroles</span> from the developer's
+						package to the developer role<p class="p">Example:</p>
+</li>
+<li class="li">
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_GRANT_ACTIVATED_ROLES"</pre></div>
+
+						</div>
+
+					</li>
+<li class="li"><span class="ph uicontrol">HCP_SYNCHRONIZE_ROLES()</span> - you use this procedure to
+						synchronize the developer's role with the activated
+							<span class="ph uicontrol">hdbroles</span> from the developer's
+							package<p class="p">Example:</p>
+</li>
+<li class="li">
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_SYNCHRONIZE_ROLES"</pre></div>
+
+						</div>
+
+						<p class="p">Result:</p>
+
+						<p class="p">Developer's role privileges are updated with the privileges from the
+							activated <span class="ph uicontrol">hdbroles</span> from the developer's package.
+						</p>
+
+					</li>
+<li class="li">
+						<p class="p"><span class="ph uicontrol">HCP_GRANT_ROLE_TO_USER(role_name NVARCHAR(256), user_name
+								VARCHAR(256))</span> - you use this procedure to grant an
+							activated <span class="ph uicontrol">hdbrole</span> to an end user. For the trial
+							landscape the end user name is their <span class="ph uicontrol">C</span>,
+								<span class="ph uicontrol">D</span>, <span class="ph uicontrol">P</span>,
+								<span class="ph uicontrol">S</span>, or <span class="ph uicontrol">I</span> user.</p>
+
+						<div class="p">Parameters:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_shn_bbs_tl"><li class="li"><span class="ph uicontrol">role_name</span> - activated
+										<span class="ph uicontrol">hdbrole</span> which is granted to the user
+									with name <span class="ph uicontrol">user_name</span></li>
+<li class="li"><span class="ph uicontrol">user_name</span> - existing end user name. For
+									the trial landscape, the end user name is their
+										<span class="ph uicontrol">C</span>, <span class="ph uicontrol">D</span>,
+										<span class="ph uicontrol">P</span>, <span class="ph uicontrol">S</span>, or
+										<span class="ph uicontrol">I</span> user.</li>
+</ul>
+</div>
+
+						<p class="p">Example:</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_GRANT_ROLE_TO_USER"('demo.epm.data::model_admin', 'trial_username')</pre></div>
+
+						</div>
+
+						<p class="p">Result:</p>
+
+						<p class="p">The end user is granted with privileges from the activated
+								<span class="ph uicontrol">hdbrole</span>. </p>
+
+					</li>
+</ul>
+<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_twh_3bs_tl"><li class="li"><span class="ph uicontrol">HCP_REVOKE_ROLE_FROM_USER(role_name NVARCHAR(256), user_name
+							VARCHAR(256))</span> - you use this procedure to revoke the
+						activated <span class="ph uicontrol">hdbrole</span> from the end user. For the trial
+						landscape, the end user name is their <span class="ph uicontrol">C</span>,
+							<span class="ph uicontrol">D</span>, <span class="ph uicontrol">P</span>,
+							<span class="ph uicontrol">S</span>, or <span class="ph uicontrol">I</span>
+								user.<div class="p">Parameters:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_f31_mbs_tl"><li class="li"><span class="ph uicontrol">role_name</span> - activated
+										<span class="ph uicontrol">hdbrole</span> that is revoked from user
+									with name <span class="ph uicontrol">user_name</span></li>
+<li class="li">user_name - existing end user name. For the trial landscape, the
+									end user name is their <span class="ph uicontrol">C</span>,
+										<span class="ph uicontrol">D</span>, <span class="ph uicontrol">P</span>,
+										<span class="ph uicontrol">S</span>, or <span class="ph uicontrol">I</span>
+									user.</li>
+</ul>
+</div>
+<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_REVOKE_ROLE_FROM_USER"('demo.epm.data::model_admin', 'trial_username')</pre></div>
+
+						</div>
+<p class="p">Result:</p>
+<p class="p">Privileges from the activated
+								<span class="ph uicontrol">hdbrole</span> are revoked from the end
+						user.</p>
+</li>
+</ul>
+<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_jbz_pvy_xl"><li class="li"><span class="ph uicontrol">HCP_GRANT_TO_PUBLIC_ROLE(role_name NVARCHAR(256)) </span> -
+						you use this procedure to grant an activated <span class="ph uicontrol">hdbrole</span>
+						to the <span class="ph uicontrol">HCP_PUBLIC</span> role.
+							<span class="ph uicontrol">HCP_PUBLIC</span> role is granted to all end users by
+						default. For the trial landscape, the end user name is their
+							<span class="ph uicontrol">C</span>, <span class="ph uicontrol">D</span>,
+							<span class="ph uicontrol">P</span>, <span class="ph uicontrol">S</span>, or
+							<span class="ph uicontrol">I</span> user.<div class="p">Parameters:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_edz_pvy_xl"><li class="li"><span class="ph uicontrol">role_name</span> - activated
+										<span class="ph uicontrol">hdbrole</span> which is granted to
+										<span class="ph uicontrol">HCP_PUBLIC</span> role </li>
+</ul>
+</div>
+<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_GRANT_TO_PUBLIC_ROLE"('demo.epm.data::model_access')</pre></div>
+
+						</div>
+<p class="p">Result:</p>
+<p class="p">All end users are granted with privileges from the
+							activated <span class="ph uicontrol">hdbrole</span> through
+								<span class="ph uicontrol">HCP_PUBLIC</span> role. </p>
+</li>
+</ul>
+<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_f54_lwy_xl"><li class="li"><span class="ph uicontrol">HCP_REVOKE_FROM_PUBLIC_ROLE(role_name NVARCHAR(256)) </span>
+						- you use this procedure to revoke the activated
+							<span class="ph uicontrol">hdbrole</span> from the
+							<span class="ph uicontrol">HCP_PUBLIC</span> role.
+							<span class="ph uicontrol">HCP_PUBLIC</span> role is granted to all end users by
+						default. For the trial landscape, the end user name is their
+							<span class="ph uicontrol">C</span>, <span class="ph uicontrol">D</span>,
+							<span class="ph uicontrol">P</span>, <span class="ph uicontrol">S</span>, or
+							<span class="ph uicontrol">I</span> user.<div class="p">Parameters:<ul class="ul" id="loio2cb80530a7a748f792050730782f9bef__ul_pw4_lwy_xl"><li class="li"><span class="ph uicontrol">role_name</span> - activated
+										<span class="ph uicontrol">hdbrole</span> which is revoked from
+										<span class="ph uicontrol">HCP_PUBLIC</span> role </li>
+</ul>
+</div>
+<p class="p">Example:</p>
+<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">call "HCP"."HCP_REVOKE_FROM_PUBLIC_ROLE"('demo.epm.data::model_access')</pre></div>
+
+						</div>
+<p class="p">Result:</p>
+<p class="p">Privileges from the activated
+								<span class="ph uicontrol">hdbrole</span> are revoked from all end users by
+							revoking <span class="ph uicontrol">hdbrole</span> from
+								<span class="ph uicontrol">HCP_PUBLIC</span> role.</p>
+</li>
+</ul>
+</div>
+
+		</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

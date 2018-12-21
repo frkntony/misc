@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="An operator can start and stop planned application downtime, during which a customized maintenance page for that application is shown to end users."/>
+<meta name="description" content="An operator can start and stop planned application downtime, during which a customized maintenance page for that application is shown to end users."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Maintenance Mode for Planned Downtimes</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioaa04f29a908f4db7b7666c12552ddd53">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using Maintenance Mode for Planned Downtimes</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">An operator can start and stop planned application downtime, during which a customized
+		maintenance page for that application is shown to end users. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">To redirect an application, you require a maintenance application. A maintenance
+				application replaces your application for a temporary period and can be as simple as
+				a static page or have more complex logic. You need to provide the maintenance
+				application yourself and ensure that it meets the following conditions:</p>
+
+			<div class="p">
+				<ul class="ul" id="loioaa04f29a908f4db7b7666c12552ddd53__ul_vdp_f25_kn">
+					<li class="li">It is a Java application.</li>
+
+					<li class="li">It is deployed in the same account as your application.</li>
+
+					<li class="li">It has been started, that is, it is up and running. </li>
+
+					<li class="li">It must not be in maintenance itself.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> Not applicable to <span class="ph uicontrol">hanatrial.ondemand.com</span>.</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="topic task nested1" id="task_xw4_xrx_4n">
+		<h2 class="title topictitle2">Cockpit</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">You can enable the maintenance mode for an application from the application dashboard. An
+					application can be put into maintenance mode only if it is not being used as a
+					maintenance application itself and is running (<span class="ph uicontrol">Started</span>
+					state).</p>
+
+			</div>
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_xw4_xrx_4n__steps_cmq_xrx_4n"><li class="li step stepexpand">
+					<span class="ph cmd">Log on to the cockpit, select an account and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Click the applications name in the list to open the application dashboard and in the
+							<span class="ph uicontrol">Application Maintenance</span> panel choose <img class="image" id="task_xw4_xrx_4n__image_ymr_xrx_4n" src="loio8bbf58a378eb424085f3266d5e3c794f_LowRes.png"/>
+							(<span class="ph uicontrol">Start Maintenance</span>).</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">In the dialog box, select the application that will serve as the
+						maintenance application and choose <span class="ph uicontrol">Set Selected
+							Application</span>. In the application list, the application’s
+						state is now shown as <span class="ph uicontrol">Started (In Maintenance)</span>.</span>
+					<div class="itemgroup stepresult">From this point on, new connections will be redirected to the
+						maintenance application. All active connections will still be handled until
+						the application is stopped.</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Optional: To view the details in the <span class="ph uicontrol">State</span> panel,
+						select your application in the list. </span>
+					<div class="itemgroup info">The following details confirm that your application is in maintenance
+							mode:<ul class="ul" id="task_xw4_xrx_4n__ul_r1s_xrx_4n">
+							<li class="li"><img class="image" id="task_xw4_xrx_4n__image_kls_xrx_4n" src="loio2e1da1e5bd7c4fdab525daafdde6dd54_LowRes.png"/>
+								<span class="ph uicontrol"> In Maintenance</span></li>
+
+							<li class="li">A link to the assigned maintenance application: Click the link to
+								open the application dashboard for this application.</li>
+
+						</ul>
+</div>
+				</li>
+</ol>
+
+			<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>
+				<p class="p">The temporary redirect to the maintenance application remains effective until you
+					take your application out of maintenance. To disable the maintenance mode,
+					choose <img class="image" id="task_xw4_xrx_4n__image_ovs_xrx_4n" src="loioc3f0dd041adb46db9505d7a6bf495c2a_LowRes.png"/> (<span class="ph uicontrol">Switch maintenance mode
+					off</span>). Before doing so, you should ensure that your application is up
+					and running to avoid end users experiencing HTTP errors.</p>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_y4m_vwg_nn">
+		<h2 class="title topictitle2">Console Client</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_y4m_vwg_nn__steps_etp_wwg_nn"><li class="li step stepexpand">
+					<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh
+							(<span class="ph filepath">&lt;SDK installation folder&gt;/tools</span>).</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Start the planned application downtime by executing <var class="keyword varname">&lt;neo
+							start-maintenance&gt;</var> in the command line. This stops traffic to
+						the application and registers a maintenance page application. All active
+						connections will be still handled until the application is stopped.</span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo start-maintenance --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt; 
+--maintenance-application &lt;maintenance application name&gt; </pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Perform the planned maintenance, update or configuration of your
+						application:</span>
+					<ol type="a" class="ol substeps" id="task_y4m_vwg_nn__substeps_zpk_gxg_nn">
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Before stopping the application, wait for the working sessions to
+								finish. You can wait for a given time period that should be enough
+								for most of the sessions to finish, or configure JMX checks to
+								monitor user requests and used resources. For more information, see
+									<a class="xref" href="21d734fa88f44298a8a9cb1f759f8fb9.html" title="This topic shows how you can configure a JMX check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring a JMX Check to Monitor Your Application</a></span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Stop the application by executing:</span>
+							<div class="itemgroup stepxmp">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo stop --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;email_or_user&gt; </pre></div>
+
+							</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Deploy the new version of your application by executing:</span>
+							<div class="itemgroup stepxmp">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --source &lt;file_location&gt;
+ --user &lt;e-mail_or_user&gt; </pre></div>
+
+							</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Start the new version of the application by executing:</span>
+							<div class="itemgroup stepxmp">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo start --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --source &lt;file_location&gt;
+ --user &lt;e-mail_or_user&gt; </pre></div>
+
+							</div>
+						</li>
+
+					</ol>
+
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Stop the planned application downtime by executing <var class="keyword varname">&lt;neo
+							stop-maintenance&gt;</var> in the command line. This resumes traffic to
+						the application and the maintenance page application stops handling incoming
+						requests.</span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo stop-maintenance --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt;  --user &lt;e-mail_or_user&gt;</pre></div>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="f42be92739bf483fa930a9caa7efaf13.html" title="This command starts the planned downtime of an application, during which it no longer receives requests and a custom maintenance page for that application is shown to the user. All active connections will still be handled until the application is stopped.">start-maintenance</a></div>
+<div><a class="link" href="3fbd6fed625945db8d02ed24276872a9.html" title="This command stops the planned downtime of an application, starts traffic to it and deregisters the maintenance application page.">stop-maintenance</a></div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

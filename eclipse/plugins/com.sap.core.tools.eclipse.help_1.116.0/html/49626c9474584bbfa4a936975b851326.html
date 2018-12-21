@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="For the purposes of continuous delivery and automated tests, the open-db-tunnel command supports a background mode, which allows a database tunnel to be opened by automated scripts or as part of a Maven build."/>
+<meta name="description" content="For the purposes of continuous delivery and automated tests, the open-db-tunnel command supports a background mode, which allows a database tunnel to be opened by automated scripts or as part of a Maven build."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Automating the Use of Database Tunnels</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio49626c9474584bbfa4a936975b851326">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Automating the Use of Database Tunnels</h1>
+
+	<p class="shortdesc">For the purposes of continuous delivery and automated tests, the
+			<samp class="ph codeph">open-db-tunnel</samp> command supports a background mode, which allows a
+		database tunnel to be opened by automated scripts or as part of a Maven build. </p>
+
+	<div class="topic task nested1" id="task_zj3_bwl_t4">
+		<h2 class="title topictitle2">Opening the Database Tunnel in Scripts</h2>
+
+		
+		<div class="body taskbody"><p class="shortdesc">The example below shows how to automatically execute an SQL statement on an SAP
+			HANA database via a database tunnel.</p>
+
+			<div class="section prereq p"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Prerequisites</h3></div>
+				<div class="p">
+					<ul class="ul" id="task_zj3_bwl_t4__ul_ovp_dwl_t4">
+						<li class="li">You have a continuous integration (CI) server that can execute Bash scripts, for example,
+							Jenkins running on Linux.</li>
+
+						<li class="li">You have set up the console client on the CI server. For more
+							information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</li>
+
+						<li class="li">You have installed the SAP HANA client on the CI server. For more
+							information, see <a class="xref" href="http://help.sap.com/hana/SAP_HANA_Client_Installation_Update_Guide_en.pdf" target="_blank" download="" alt="http://help.sap.com/hana/SAP_HANA_Client_Installation_Update_Guide_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Client_Installation_Update_Guide_en.pdf">SAP HANA Client Installation Guide</a>.</li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_zj3_bwl_t4__steps_pvp_dwl_t4"><li class="li step stepexpand">
+					<span class="ph cmd">Create a new job on the CI server.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Set the password for your account in the environment variable
+						<span class="keyword parmname">HCP_PASSWORD</span>, either globally on the CI server or
+						just for the newly created job.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Configure the job to execute the following Bash script:</span>
+					<div class="itemgroup info">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sh">#!/bin/bash -ex
+
+PATH=$PATH:~/sap/neo/tools:~/sap/hdbclient  # add console client and HANA client to PATH
+    
+user=mymail@example.com  # TODO replace with your user ID
+account=myaccount        # TODO replace with your account ID
+dbSchema=myschema        # TODO replace with your schema
+    
+json=$(neo.sh open-db-tunnel -h hanatrial.ondemand.com -a "$account" -u "$user" -p "$HCP_PASSWORD" -i "$dbSchema" --background --output json)
+regex='.*"host":"([^"]*)".*"port":([^,]*),.*"instanceNumber":"([^"]*)".*"dbUser":"([^"]*)".*"dbUserPassword":"([^"]*)".*"sessionId":"([^"]*)".*'
+[[ $json =~ $regex ]]
+dbHost=${BASH_REMATCH[1]}
+dbPort=${BASH_REMATCH[2]}
+dbInstance=${BASH_REMATCH[3]}
+dbUser=${BASH_REMATCH[4]}
+dbPassword=${BASH_REMATCH[5]}
+tunnelSessionId=${BASH_REMATCH[6]}
+	
+hdbsql -n "$dbHost:$dbPort" -i "$dbInstance" -u "$dbUser" -p "$dbPassword" "SELECT * FROM dummy"
+
+neo.sh close-db-tunnel --session-id $tunnelSessionId
+</pre></div>
+
+					</div>
+				</li>
+</ol>
+
+			<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>
+				<p class="p">You have set up a CI job that automatically executes an SQL statement on your SAP HANA
+					database instance. Depending on what you would like to achieve, you could now
+					modify the job to execute different SQL statements.</p>
+
+			</div>
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></div>
+<div><a class="link" href="c7c36e6d97764822bd86be07bfe84090.html" title="This command closes one or all database tunnel sessions that have been opened in a background process using the open-db-tunnel --background command.">close-db-tunnel</a></div>
+</div>
+</div>
+	</div>
+
+	<div class="topic task nested1" id="task_tfb_jwl_t4">
+		<h2 class="title topictitle2">Opening the Database Tunnel in Maven Builds</h2>
+
+		<div class="body taskbody">
+			<div class="section prereq p"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Prerequisites</h3></div>
+				<p class="p">You have set up the console client on the CI server. For more information, see
+						<a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+			</div>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><div class="li step p">
+					<span class="ph cmd">To open or close the database tunnel in a Maven build, use the following goals of the <span class="ph pname">SAP Cloud Platform</span> Maven plugin:</span>
+					<div class="itemgroup info">
+						<div class="p">
+							<ul class="ul" id="task_tfb_jwl_t4__ul_erp_lwl_t4">
+								<li class="li"><samp class="ph codeph">open-db-tunnel</samp></li>
+
+								<li class="li"><samp class="ph codeph">close-db-tunnel</samp></li>
+
+							</ul>
+
+							<div class="note tip"><span class="tiptitle">Tip</span> 
+								<p class="p">Take a look at the following samples delivered with the <span class="ph pname">SAP Cloud Platform</span> SDK:</p>
+
+								<ul class="ul" id="task_tfb_jwl_t4__ul_qln_ywl_t4">
+									<li class="li"><cite class="cite">persistence-with-ejb</cite></li>
+
+									<li class="li"><cite class="cite">persistence-with-jpa</cite></li>
+
+								</ul>
+
+								<p class="p">Each sample includes a test that opens a database tunnel in background mode within the
+									Maven build and executes some SQL statements.</p>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://help.hana.ondemand.com/mavenSite/index.html" target="_blank" alt="https://help.hana.ondemand.com/mavenSite/index.html" title="https://help.hana.ondemand.com/mavenSite/index.html"><span class="ph pname">SAP Cloud Platform</span> Maven Plugin Documentation</a></div>
+<div><a class="link" href="7612e180711e1014839a8273b0e91070.html" title="This step-by-step tutorial shows how you can use JPA together with EJB to apply container-managed persistence in a simple Java EE web application that manages a list of persons.">persistence-with-ejb</a></div>
+<div><a class="link" href="e4aeacd2bb5710148ee99255136d96a5.html" title="This step-by-step tutorial shows how you can use JPA to apply application-managed persistence in a simple Java EE web application that manages a list of persons.">persistence-with-jpa</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

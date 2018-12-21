@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This page provides sizing information for applications using the Remote Data Sync service."/>
+<meta name="description" content="This page provides sizing information for applications using the Remote Data Sync service."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Performance and Scalability of the MobiLink Server</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio04c7bd5566914ddc93d7b7710f76dd58">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Performance and Scalability of the MobiLink Server</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This page provides sizing information for applications using the Remote Data Sync
+		service. </p>
+
+		<p class="p">Although the only realistic answers to optimal resource planning are “It depends” and “Testing
+			will show what you need”, this section aims to help you choose the right hardware
+			parameters. </p>
+
+		<div class="section"><div class="section_title">Synchronization Phases</div><div type="Synchronization Phases">
+			
+			<p class="p">The figure below shows the major phases of a synchronization session. Though not
+				complete, it covers many common use cases.</p>
+
+			<ol class="ol" id="loio04c7bd5566914ddc93d7b7710f76dd58__ol_rhr_21d_4s">
+				<li class="li">Synchronization is initiated by a remote database client. It uploads any changes
+					made at the remote database to the server. </li>
+
+				<li class="li">MobiLink applies the changes to the database. </li>
+
+				<li class="li">MobiLink queries the database and prepares the changes to be sent to the remote
+					database client. </li>
+
+				<li class="li">MobiLink sends the changes to the remote database client. </li>
+
+			</ol>
+
+			<p class="p"><img class="image" id="loio04c7bd5566914ddc93d7b7710f76dd58__image_bkw_51d_4s" src="loio91b5fc2a847047e8bae8ed94439f2f68_HiRes.png"/></p>
+
+			<p class="p">Roughly, the MobiLink server uses two thread pools – one for database connections,
+				and one for the network side. These can be controlled by command-line options,
+				although, by default, the Remote Data Sync service dynamically tunes the size of the
+				worker thread pool to accommodate load changes. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Database Capacity</div><div type="Database Capacity">
+			
+			<p class="p">When the Remote Data Sync server applies changes to the consolidated database and
+				prepares changes to be sent to the remote database client, it typically does so by
+				executing SQL statements or stored procedures that are invoked by MobiLink events.
+				For example, to apply an upload MobiLink may execute insert, update, and delete
+				statements for each table being synchronized; to prepare a download MobiLink may
+				execute a query for each table being synchronized. </p>
+
+			<p class="p">Database tuning is outside the scope of this document, but the load on the database can be
+				substantial. Think of MobiLink as a concentrator of database load. All the
+				operations that are carried out against the remote database while disconnected, in
+				addition to the requests for updates to be downloaded to the remote database, are
+				executed in two transactions (1 upload, 1 download) against the consolidated
+				database. This can place a heavy load on the database. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Maximum Number of Concurrent Synchronizations</div><div type="Maximum Number of Concurrent Synchronizations">
+			
+			<p class="p">You should know the number of concurrent synchronizations as a starting point, and from there
+				on, calculate back on the required resources. Typically, this number is limited by
+				RAM requirements. To estimate, you need a typical upload and download data volume as
+				a starting point. </p>
+
+			<p class="p">A machine with <kbd class="ph userinput">N</kbd> MB of RAM can have <kbd class="ph userinput">C</kbd>
+				clients each with about <kbd class="ph userinput">V</kbd> MB of upload or download data
+				volume, where <kbd class="ph userinput">C = N/V</kbd>. </p>
+
+			<p class="p">Following this formula, for large synchronizations (&lt; 20 MB), you can have: </p>
+
+			<ul class="ul" id="loio04c7bd5566914ddc93d7b7710f76dd58__ul_pnr_14g_ks">
+				<li class="li"><span class="keyword cmdname">Remote Data Sync service, Standard</span>: C = 4096/20 → C @ 200 simultaneous
+					syncs </li>
+
+				<li class="li"><span class="keyword cmdname">Remote Data Sync service, Premium</span>: C = 8192/20 → C @ 400 simultaneous
+					syncs </li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Maximum Sustainable Throughput</div><div type="Maximum Sustainable Throughput">
+			
+			<p class="p">The rate limiting steps of a synchronization are commonly: </p>
+
+			<ul class="ul" id="loio04c7bd5566914ddc93d7b7710f76dd58__ul_v2d_g4g_ks">
+				<li class="li">Data transfer, in the case of slow networks </li>
+
+				<li class="li">Database operations, especially in the case of complex schemas and complex
+					synchronization logic.</li>
+
+			</ul>
+
+			<p class="p">Remote Data Sync servers are not typically CPU intensive, and typically require less
+				than half the processing that is required by the consolidated database. When
+				selecting the appropriate compute units for MobiLink, memory is more likely to limit
+				the maximum sustainable throughput for a Remote Data Sync server than CPU.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Example:</span></p>
+
+			<ol class="ol" id="loio04c7bd5566914ddc93d7b7710f76dd58__ol_fpw_m4g_ks">
+				<li class="li">Let's assume the database can process the target load of
+						<kbd class="ph userinput">L</kbd> synchronizations per second (and that is a matter
+					for testing). </li>
+
+				<li class="li">At this throughput, one database thread will come open every <kbd class="ph userinput">1/L</kbd>
+					seconds. To keep throughput high, a synchronization request should be ready,
+					with data uploaded and available to pass to the database thread. </li>
+
+				<li class="li">To keep the database busy, if a synchronization request takes <kbd class="ph userinput">t</kbd>
+					seconds to upload (which will depend on network speed and data volume, and which
+					should be determined by testing), then the Remote Data Sync server must be able
+					to hold (<kbd class="ph userinput">L</kbd> x <kbd class="ph userinput">t</kbd>) client data
+					uploads in memory. </li>
+
+				<li class="li">The Remote Data Sync server must also be able to download the data to the client to prevent
+					the database threads having to wait for a network connection to download. In the
+					case, this volume is similar to the uploads we end up with: MobiLink should be
+					able to support (<kbd class="ph userinput">2</kbd> x <kbd class="ph userinput">L</kbd> x
+						<kbd class="ph userinput">t</kbd>) simultaneous synchronizations to maintain a
+					throughput of <kbd class="ph userinput">L</kbd> synchronizations per second.</li>
+
+			</ol>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">For example, to support a peak sustained throughput of <kbd class="ph userinput">50</kbd>
+					synchronizations per second, with a client that takes <kbd class="ph userinput">0.5</kbd>
+					seconds to upload and download data, then the Remote Data Sync server should be
+					able to support <kbd class="ph userinput">50</kbd> simultaneous synchronizations in RAM
+					to sustain this rate as a peak throughput. Assuming data transfer volumes per
+					client are less than <kbd class="ph userinput">80</kbd> MB (which is a very high number
+					for data synchronization), a <span class="keyword cmdname">Standard</span> machine would be a good
+					choice to start with.</p>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Error Code 500</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe8af957cbb571014abba8cc2799d9fda">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Error Code 500</h1>
+<div class="body conbody"><div class="section" id="loioe8af957cbb571014abba8cc2799d9fda__section_2409891B6BC0434D92668DD877F3CC6A"><div class="section_title">Symptom</div><div type="Symptom"> 
+		 
+		<p class="p">The destination HTTP response has status code 500 and the <span class="keyword parmname">HttpResponse</span>
+				body contains the following text:</p>
+
+			<p class="p"><kbd class="ph userinput"> Could not connect to the requested service</kbd>
+			</p>
+ 
+	 </div></div>
+<div class="section" id="loioe8af957cbb571014abba8cc2799d9fda__section_638B387205AB4F299B27C1560CBCEE91"><div class="section_title">Problem</div><div type="Problem"> 
+		 
+		<p class="p">The connected Cloud connector has no access to the requested back-end service. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe8af957cbb571014abba8cc2799d9fda__section_EC3F00D421BC4951AD1CA3AB4EF654F1"><div class="section_title">Keywords</div><div type="Keywords"> 
+		 
+		<p class="p"> error, 500, SAP Cloud Platform connector, SCC </p>
+ 
+	 </div></div>
+<div class="section" id="loioe8af957cbb571014abba8cc2799d9fda__section_1A56B8897AF54EC9B84FAB39949BFEDC"><div class="section_title">Solution</div><div type="Solution"> 
+		 
+		<ol class="ol"><li class="li">Check the configuration of the destinations and the Cloud connector: The URL of the destination
+					used should consist of a host and a port that are configured on the
+						<span class="ph uicontrol">Access Control</span> tab page as virtual host and port. </li>
+<li class="li">Check that the back-end system is running and accessible from the Cloud connector machine. </li>
+<li class="li"> Check that the correct protocol is used for the requested back-end system in the destination
+					configuration (that is, HTTP/HTTPS), as it was specified on the
+						<span class="ph uicontrol">Access Control</span> tab. </li>
+<li class="li">If a
+			 system certificate is configured, make sure it is the correct certificate with
+			 permissions to the relevant back-end system. 
+		  </li>
+<li class="li">If the
+			 problem persists, create a ticket in the SAP customer support system to
+			 describe your problem. For more information, see 
+			 <a class="xref" href="e5580c5dbb5710149e53c6013301a9f2.html">Connectivity Troubleshooting Guide</a>
+			 → 
+			 <span class="ph uicontrol">SAP Support
+				Information</span>. 
+		  </li>
+</ol>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+<script type="text/javascript">
+			$(document).ready(function (){
+			$('.collapsible').collapsify({expandText:"Display Content",collapseText:"Hide Content",imagePath:"../images/"});
+			}); 
+			</script>
+</body>
+</html>

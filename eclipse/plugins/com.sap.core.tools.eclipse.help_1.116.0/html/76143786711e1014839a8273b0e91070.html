@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating the SDK</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio76143786711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Updating the SDK</h1>
+<div class="body conbody"><div class="section" id="loio76143786711e1014839a8273b0e91070__section_99A0605EE5EA428BA9426BFFE0BBED42"><div class="section_title">Context</div><div type="Context"> 
+		 
+		<p class="p">If you have already installed an SDK package, you
+		  only need to update it regularly. To update your SDK, follow the steps below. 
+		</p>
+ 
+	 </div></div>
+<div class="section" id="loio76143786711e1014839a8273b0e91070__section_60CF91400ADD4107B680D1FF955D9489"><div class="section_title">Procedure</div><div type="Procedure"> 
+		 
+		<ol class="ol"><li class="li">Download the new SDK version from <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a></li>
+<li class="li">Unzip
+			 the SDK to a new directory on your local file system. Do not install the new
+			 SDK version to a directory that already contains SDK. 
+		  </li>
+<li class="li">Configure the location of the new SDK version in the Eclipse IDE: <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Preferences</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAP Cloud Platform</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SDK Location</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. <div class="note note" id="loio76143786711e1014839a8273b0e91070__note_N10053_N10038_N10029_N10021_N10013_N10001"><span class="notetitle">Note</span> If the
+						SDK version is higher and not supported by the version of your <span class="ph pname">SAP Cloud Platform</span> Tools for Java, a message appears prompting you to update
+						your <span class="ph pname">SAP Cloud Platform</span> Tools for Java. You can check for updates
+						(recommended) or ignore the message. </div>
+
+				</li>
+<li class="li">Go to the <span class="ph uicontrol">Servers</span> tab view. </li>
+<li class="li">Stop and delete all local servers. </li>
+<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Preferences</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Runtime Environment</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. <p class="p">For each previously added local runtime: </p>
+
+					<ol class="ol" type="a">
+						<li class="li">Select the corresponding entry in the table. </li>
+
+						<li class="li">Choose the <span class="ph uicontrol">Edit</span> button. </li>
+
+						<li class="li">Locate the new SDK version:<ul class="ul" id="loio76143786711e1014839a8273b0e91070__ul_tmy_jwt_fp">
+								<li class="li">For <kbd class="ph userinput">Java Web</kbd>: Select option <span class="ph uicontrol">Use Java Web SDK from the
+										following location</span> and then choose the
+										<span class="ph uicontrol">Browse</span> button and find the folder
+									where you have unpacked the SDK ZIP file. </li>
+
+								<li class="li">For <kbd class="ph userinput">Java Web Tomcat 7</kbd>: Choose the <span class="ph uicontrol">Browse</span>
+									button and find the folder where you have unpacked the SDK ZIP
+									file or use the <span class="ph uicontrol">Download and Install</span>
+									button to get the latest version.</li>
+
+								<li class="li">For <kbd class="ph userinput">Java Web Tomcat 8</kbd>: Choose the <span class="ph uicontrol">Browse</span>
+									button and find the folder where you have unpacked the SDK ZIP
+									file or use the <span class="ph uicontrol">Download and Install</span>
+									button to get the latest version.</li>
+
+								<li class="li">For <kbd class="ph userinput">Java EE 6 Web Profile</kbd>: Select option <span class="ph uicontrol">Use Java EE 6
+										Web Profile SDK from the following location</span> and
+									then choose the <span class="ph uicontrol">Browse</span> button and find
+									the folder where you have unpacked the SDK ZIP file. </li>
+
+							</ul>
+<div class="note note" id="loio76143786711e1014839a8273b0e91070__note_N100A6_N1009F_N10090_N10066_N10029_N10021_N10013_N10001"><span class="notetitle">Note</span> Again, if the SDK version is higher and not supported by the
+								version of your <span class="ph pname">SAP Cloud Platform</span> Tools for Java, a message
+								appears prompting you to update your <span class="ph pname">SAP Cloud Platform</span> Tools
+								for Java. You can check for updates (recommended) or ignore the
+								message. </div>
+
+						</li>
+
+						<li class="li">Choose <span class="ph uicontrol">Finish</span>. </li>
+
+					</ol>
+
+				</li>
+<li class="li">After editing all local runtimes, choose <span class="ph uicontrol">OK</span>. </li>
+</ol>
+ 
+	 </div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7613843c711e1014839a8273b0e91070.html">Installing the SDK</a></div>
+<div><a class="link" href="7613bd28711e1014839a8273b0e91070.html">Application Runtime Container</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

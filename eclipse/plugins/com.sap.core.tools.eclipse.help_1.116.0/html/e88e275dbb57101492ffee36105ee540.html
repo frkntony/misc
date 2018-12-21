@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Error Code 403</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe88e275dbb57101492ffee36105ee540">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Error Code 403</h1>
+<div class="body conbody"><div class="section" id="loioe88e275dbb57101492ffee36105ee540__section_DB0626B054704FD280D8CF436B00017B"><div class="section_title">Symptom</div><div type="Symptom"> 
+		 
+		<p class="p">The destination HTTP response has status code 403. The content type is
+					<kbd class="ph userinput">text/xml</kbd> and the response looks as follows: </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;?xml version=\"1.0\"?&gt;&lt;sopc-processor&gt;&lt;error-message&gt;Access denied for user &lt;user&gt; to resource &lt;resource&gt; 
+on system &lt;system&gt;&lt;/error-message&gt;&lt;/sopc-processor&gt;
+</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loioe88e275dbb57101492ffee36105ee540__section_025C87F80F5A4BE4AF3A0B0D34638C62"><div class="section_title">Problem</div><div type="Problem"> 
+		 
+		<p class="p">In the Cloud connector configuration, either there is no entry defined as the virtual host for
+				the <var class="keyword varname">&lt;system&gt;</var> used, or the virtual host is specified but the
+					<var class="keyword varname">&lt;resource&gt;</var> used is not defined in its list of
+				configured resources. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe88e275dbb57101492ffee36105ee540__section_CF69CA4D4B7D4350B0F57E5B39624449"><div class="section_title">Keywords</div><div type="Keywords"> 
+		 
+		<p class="p">error, 403, HttpResponse, text/xml, SAP Cloud Platform connector, SCC </p>
+ 
+	 </div></div>
+<div class="section" id="loioe88e275dbb57101492ffee36105ee540__section_736ADE3443FC46D29C27E8AB81AEF277"><div class="section_title">Solution</div><div type="Solution"> 
+		 
+		<p class="p">Log on to the Cloud connector, and make sure that in the <span class="ph uicontrol">Access Control</span>
+				tab section the <span class="keyword parmname">&lt;system&gt;</span> and
+					<span class="keyword parmname">&lt;resource&gt;</span> parameters are configured as required. </p>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+<script type="text/javascript">
+			$(document).ready(function (){
+			$('.collapsible').collapsify({expandText:"Display Content",collapseText:"Hide Content",imagePath:"../images/"});
+			}); 
+			</script>
+</body>
+</html>

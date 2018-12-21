@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.core.tools.eclipse.server.feature"
+      label="%featureName"
+      version="1.86.0"
+      provider-name="%providerName"
+      plugin="com.sap.core.tools.eclipse.server.branding">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <includes
+         id="com.sap.core.tools.eclipse.server.cloud.feature"
+         version="1.85.0"/>
+
+   <includes
+         id="com.sap.core.tools.eclipse.connectivity.editor.feature"
+         version="1.35.0"/>
+
+   <includes
+         id="com.sap.core.tools.eclipse.users.editor.feature"
+         version="1.19.0"/>
+
+   <includes
+         id="com.sap.core.tools.eclipse.logging.feature"
+         version="1.33.0"/>
+
+   <includes
+         id="com.sap.cloud.tools.eclipse.prefs.feature"
+         version="1.3.0"/>
+
+   <requires>
+      <import feature="com.sap.ide.support.feature" version="1.13.1" match="compatible"/>
+      <import feature="org.eclipse.jdt"/>
+      <import feature="org.eclipse.pde"/>
+      <import feature="org.eclipse.jst.web_ui.feature"/>
+      <import feature="org.eclipse.wst.web_ui.feature"/>
+      <import feature="org.eclipse.jst.enterprise_ui.feature"/>
+      <import feature="org.eclipse.jst.server_ui.feature"/>
+      <import feature="org.eclipse.libra.facet.feature"/>
+      <import feature="org.eclipse.jpt.jpa.feature"/>
+      <import feature="org.eclipse.jpt.jpa.eclipselink.feature"/>
+      <import feature="org.eclipse.jpt.jpadiagrameditor.feature"/>
+      <import feature="org.eclipse.wst.xml_ui.feature"/>
+   </requires>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.server.branding"
+         download-size="19"
+         install-size="22"
+         version="1.86.0"/>
+
+</feature>

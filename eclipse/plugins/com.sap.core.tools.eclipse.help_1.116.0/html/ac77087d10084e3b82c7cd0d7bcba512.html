@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Integrating Player (User) Management</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioac77087d10084e3b82c7cd0d7bcba512">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Integrating Player (User) Management</h1>
+
+	
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The players (users) must be explicitly created before they can be used to assign
+				achievements. A player context is always valid for one tenant and therefore can be
+				used across multiple apps (managed in one tenant).</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioac77087d10084e3b82c7cd0d7bcba512__steps_hzt_xzs_4t"><li class="li step stepexpand">
+				<span class="ph cmd">Register (create) a player (user) for a tenant subscription using the API
+					method <span class="keyword cmdname">createPlayer</span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> This is done automatically on the first event if the flag Auto-Create
+						Players is set to <samp class="ph codeph">true</samp> for the given app.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Initialize a player (user) by creating a rule listening for an event of type
+						<span class="keyword cmdname">initPlayerForApp</span>.</span>
+				<ol type="a" class="ol substeps" id="loioac77087d10084e3b82c7cd0d7bcba512__substeps_vhy_g1t_4t">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Precondition: The player is registered.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">On event: if a player has not been initialized for the given app yet an event of type
+								<span class="keyword cmdname">initPlayerForApp</span> is automatically inserted into
+							the engine. The THEN-part of this rule should include the user-defined
+							init actions, for example assigning initial missions.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">(Optional) If you want players to be created with a display name you can add the optional
+							parameter <span class="keyword parmname">playerName</span> to the event. During the
+							automated player creation this parameter is used for setting the player
+							name. Example:</span>
+						<div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">{"method":"handleEvent","params":[{"type":"linkProvided","playerid":"maria.rossi@sap.com", "playerName": "Maria Rossi", "data":{}}]}</pre></div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Submit any events using the API method <span class="keyword cmdname">handleEvent</span>.</span>
+				<ol type="a" class="ol substeps" id="loioac77087d10084e3b82c7cd0d7bcba512__substeps_brx_fbt_4t">
+					<li class="li substep">
+						<span class="ph cmd">Precondition: The player is registered. Otherwise the call is
+							rejected.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">According rules are triggered.</span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optional: Remove a player from the app using the event
+						<span class="keyword cmdname">removePlayerFromApp</span>.</span>
+				<ol type="a" class="ol substeps" id="loioac77087d10084e3b82c7cd0d7bcba512__substeps_glv_mbt_4t">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Precondition: The player is registered and has been initialized (if
+							necessary).</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">The event has to be triggered explicitly by the host application.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">A rule has to be provided that removes the player fact and performs all further
+							scenario-specific clean-up actions.</span>
+						<div class="itemgroup info">
+							<p class="p">Sample minimal clean-up rule:</p>
+
+							<div class="p">
+								<ul class="ul" id="loioac77087d10084e3b82c7cd0d7bcba512__ul_wbd_sfw_55">
+									<li class="li">
+										<p class="p">WHEN-Part: Select user fact based on id provided with
+											removePlayerForApp event</p>
+
+										<div class="p">
+											<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='removePlayerFromApp', $playerid:playerid) from entry-point eventstream 
+$p : Player(id==$playerid)
+</pre></div>
+
+										</div>
+
+									</li>
+
+									<li class="li">
+										<p class="p">THEN-Part: Retract the given player fact</p>
+
+										<p class="p">retract($p);</p>
+
+									</li>
+
+								</ul>
+
+							</div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Delete player (user) for tenant subscription using the API method
+						<span class="keyword cmdname">deletePlayer</span>.</span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loioac77087d10084e3b82c7cd0d7bcba512__image_qwd_jct_4t" src="loioe58592d945144809a32dfba7941f53e7_LowRes.png"/></p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connecting DB Tools to SAP HANA via Service Channels</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio64d6a510e98941d28dbff2fc8179f175">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connecting DB Tools to SAP HANA via Service Channels</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This section describes how you can connect database, BI, or replication tools running in
+				on-premise network to a HANA database on <span class="ph pname">SAP Cloud Platform</span> using service
+				channels of the <span class="ph pname">Cloud connector</span>. You
+				can also use the high availability support of the <span class="ph pname">Cloud connector</span> to
+				achieve a highly available database connection. The picture below shows the
+				landscape in such a scenario.</p>
+
+			<p class="p"><img class="image" id="loio64d6a510e98941d28dbff2fc8179f175__image_tty_3hd_vy" src="loioa1e983571c804e54aac89bfde7d07e67_LowRes.png"/></p>
+
+			<p class="p">Follow the steps below to set up failover support, configure a service channel and
+				connect on-premise DB tools via JDBC or ODBC to the SAP HANA database.</p>
+
+			<div class="p">
+				<ul class="ul" id="loio64d6a510e98941d28dbff2fc8179f175__ul_fwr_ksz_xw">
+					<li class="li">For more information on using SAP HANA instances, see <a class="xref" href="c6f5764433354640a1e44b893399eaee.html" title="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment.">Using a Productive SAP HANA Database System</a></li>
+
+					<li class="li">For the connection string via ODBC you need a corresponding database user
+						and password (see step 4 below). See also: <a class="xref" href="a55b836f126b461a9999b56f3cd867d5.html" title="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team.">Guidelines for Creating Database Users</a></li>
+
+					<li class="li">Find detailed information on failover support in the <em class="ph i">SAP HANA Administration Guide</em>:
+							<a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/27/eddf5616ae449a8db32653a98f24e4/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/27/eddf5616ae449a8db32653a98f24e4/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/27/eddf5616ae449a8db32653a98f24e4/frameset.htm">Configuring Clients for Failover</a>. <div class="note note"><span class="notetitle">Note</span> This
+							link points to the latest release of <em class="ph i">SAP HANA Administration
+								Guide</em>. Refer to the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833"><span class="ph pname">SAP Cloud Platform</span> Release Notes<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> to find out which HANA SPS is
+							supported by <span class="ph pname">SAP Cloud Platform</span>.
+							Find the list of guides for earlier releases in the <em class="ph i">Related Links</em>
+							section below.</div>
+</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p"/>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">To establish a highly available connection to one or multiple SAP HANA instances in the
+					cloud, we recommend that you make use of the failover support of the <span class="ph pname">Cloud connector</span>.
+					For this aim, set up a master and a shadow instance. For more information, see
+						<a class="xref" href="c697705179a24d2b8b6be038fae59c33.html" title="The Cloud connector allows you to install a redundant instance, which monitors the main instance.">Installing a Failover Instance for High Availability</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the master instance, configure a service channel to the SAP HANA database of the <span class="ph pname">SAP Cloud Platform</span> account
+					to which you want to connect. Let's assume that the chosen port of the service
+					channel is <kbd class="ph userinput">30015</kbd>. For more information, see <a class="xref" href="3dc28b456bb64fad89084d2d10af602c.html">Configuring a Service Channel for HANA Database</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">You can now connect on-premise DB tools via JDBC to the SAP HANA database by
+					using the following connection string: </span>
+				<div class="itemgroup stepresult">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">jdbc:sap://&lt;cloud-connector-master-host&gt;:30015;&lt;cloud-connector-shadow-host&gt;:30015[/?&lt;options&gt;]</pre></div>
+
+					</div>
+
+					<p class="p">The SAP HANA JDBC driver supports failover out of the box. All you need is to configure the
+						shadow instance of the <span class="ph pname">Cloud connector</span>
+						as a failover server in the JDBC connection string. The different options
+						supported in the JDBC connection string are described in page: <a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ff/15928cf5594d78b841fbbe649f04b4/content.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ff/15928cf5594d78b841fbbe649f04b4/content.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ff/15928cf5594d78b841fbbe649f04b4/content.htm">Connect to SAP HANA via JDBC</a></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">You can also connect on-premise DB tools via ODBC to the SAP HANA database. The
+					connection string is as follows:</span>
+				<div class="itemgroup stepresult">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">"DRIVER=HDBODBC32;UID=&lt;user&gt;;PWD=&lt;password&gt;;SERVERNODE=&lt;cloud-connector-master-host&gt;:30015;&lt;cloud-connector-shadow-host&gt;:30015;"</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/hana_platform_earlier_releases" target="_blank" alt="http://help.sap.com/hana_platform_earlier_releases" title="http://help.sap.com/hana_platform_earlier_releases">Guides for earlier releases of SAP HANA</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

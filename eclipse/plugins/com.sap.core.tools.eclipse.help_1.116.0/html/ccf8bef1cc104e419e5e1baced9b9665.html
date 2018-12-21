@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Access SAP Cloud Platform Enterprise Messaging (Beta) in SAP Cloud Platform cockpit to create and manage application bindings to messaging hosts."/>
+<meta name="description" content="Access SAP Cloud Platform Enterprise Messaging (Beta) in SAP Cloud Platform cockpit to create and manage application bindings to messaging hosts."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Application Bindings</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioccf8bef1cc104e419e5e1baced9b9665">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Application Bindings</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Access <span class="ph emphasis emphasis"><span class="ph pname">SAP Cloud Platform
+                                    Enterprise Messaging (Beta)</span></span> in <span class="ph pname">SAP Cloud Platform</span> cockpit to create and manage application bindings to messaging hosts.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To complete the messaging setup, it is important to create application bindings that connect
+				Java applications to messaging hosts. After an application binding has been created,
+				applications can publish messages to any queue in the messaging host or subscribe to
+				receive messages that have been published to any queue in the messaging host.</p>
+
+			<p class="p">You can use the following procedure to create and manage an application binding.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to <span class="ph pname">SAP Cloud Platform</span> cockpit
+					and select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Services</span> in the navigation area. You can see the
+					list of services available to you.</span>
+				<div class="itemgroup info">
+					<p class="p">For more information about accessing services, see <a class="xref" href="a32d3d532e2d4dceaaca4ebab68df037.html" title="The cockpit provides an overview of all the platform services that you can access and use for creating or extending applications. Services are grouped by service category.">Services in the Cockpit</a>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Enterprise Messaging</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Application Bindings</span> in the navigation area.</span>
+				<div class="itemgroup stepresult">
+					<p class="p">You can see a list of existing application bindings.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To create an application binding, perform the following substeps:</span>
+				<ol type="a" class="ol substeps" id="loioccf8bef1cc104e419e5e1baced9b9665__substeps_aq1_xzx_vw">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Choose <span class="ph uicontrol">Create Application Binding</span>.</span>
+						<div class="itemgroup info">
+							<div class="note note"><span class="notetitle">Note</span> At least one Java application must be available to create an application binding. For
+								more information on developing Java applications, see <a class="xref" href="ac36e1fc0f634c0caa99916b3bd6b446.html">Developing Java Applications</a>.</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Select a Java application.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Select the messaging host to which you want to bind the application.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Enter a name for the application binding.</span>
+						<div class="itemgroup info">
+							<div class="note note"><span class="notetitle">Note</span> This name must be unique across all application bindings
+								associated with the selected Java application. </div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To delete an application binding, choose <img class="image" id="loioccf8bef1cc104e419e5e1baced9b9665__image_csg_4lk_xw" src="loio5fb737f0262b4facbf7b41dc65d2ffdf_LowRes.png"/>
+						(<span class="ph uicontrol">Delete Binding</span>).</span>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

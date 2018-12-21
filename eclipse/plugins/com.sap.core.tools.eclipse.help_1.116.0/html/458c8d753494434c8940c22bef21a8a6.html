@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account."/>
+<meta name="description" content="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Opening Tunnels to Databases in Other Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="copy458c8d753494434c8940c22bef21a8a6">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Opening Tunnels to Databases in Other Accounts</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">If you want to open a tunnel to a database that is owned by another account, you request
+		permission from that account. If your request is approved, the account that owns the
+		database in question provides you with an access token, a database user, and password. This
+		allows you to open a tunnel from your account to the database in the other
+		account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="copy458c8d753494434c8940c22bef21a8a6__ul_jsl_jpb_gy">
+				<li class="li">
+					<p class="p">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">The account that owns the database has given you an access token and a
+						database user and password. See <a class="xref" href="6efad73a5cfa41b486348b6758a6a391.html" title="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account.">Giving Other Accounts Permission to Open a Database Tunnel</a>.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Once you have received the token and the database credentials, you can open the database
+				tunnel. You use the access token parameter for the <samp class="ph codeph">open-db-tunnel</samp>
+				command instead of the database ID parameter. Then you can use a database tool of
+				your choice to connect to the database in another account. Log on to the database
+				with the user and password that you received from the provider. You can then work on
+				the remote database instance. This works just like the
+					<samp class="ph codeph">open-db-tunnel</samp> command, except that you use the access token
+				instead of the database ID.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> All members of the consumer account have permission to access the database in the provider
+				account.</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="copy458c8d753494434c8940c22bef21a8a6__steps_oqp_xmn_3q"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder.
+				</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following command to open a tunnel to the database in another account:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo open-db-tunnel -h &lt;host&gt; -u &lt;user&gt; -a &lt;consumer account&gt; --access-token &lt;myaccess-token&gt;</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">If the tunnel is opened successfully, the following details are
+						displayed:</p>
+
+					<div class="p">
+						<ul class="ul" id="copy458c8d753494434c8940c22bef21a8a6__ul_i2t_mkd_kl">
+							<li class="li"><span class="ph uicontrol">Host name</span>: Always <samp class="ph systemoutput">localhost</samp></li>
+
+							<li class="li"><span class="ph uicontrol">Database type</span>: <samp class="ph systemoutput">HANAXS</samp>,
+									<samp class="ph systemoutput">HANAMDC</samp>,
+									or<samp class="ph systemoutput">ASE</samp></li>
+
+							<li class="li"><span class="ph uicontrol">JDBC URL</span>: For example,
+									<span class="ph filepath">jdbc:sap://localhost:30015</span>. Required for
+								the Eclipse Data Tools Platform (DTP). </li>
+
+							<li class="li"><span class="ph uicontrol">Instance number</span>: For example, <samp class="ph systemoutput">00</samp>.
+								Required for SAP HANA studio.</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<div class="p">Once you have opened the tunnel, you can connect to the database. See: <ul class="ul" id="copy458c8d753494434c8940c22bef21a8a6__ul_fgc_kxh_fy">
+					<li class="li"><a class="xref" href="4efc124a0ccc42b3b502ad3a3908d23d.html" title="Connect to a dedicated SAP HANA database using SAP HANA Tools via the Eclipse IDE.">Connecting to SAP HANA Databases via the Eclipse IDE</a></li>
+
+					<li class="li"><a class="xref" href="c597f8231b4e463da0dcc3095ea139b7.html" title="Follow the procedure below to make a direct connection to a shared SAP HANA schema via the Eclipse IDE, using SAP HANA Tools.">Connecting to SAP HANA Schemas via the Eclipse IDE</a></li>
+
+					<li class="li"><a class="xref" href="107ffdb907334d97be99fdcb7aad8961.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP ASE Database</a></li>
+
+				</ul>
+</div>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6efad73a5cfa41b486348b6758a6a391.html" title="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account.">Giving Other Accounts Permission to Open a Database Tunnel</a></div>
+<div><a class="link" href="a583f98202c44c408646f9885b45752a.html" title="You can revoke the permission to open database tunnels to a productive SAP HANA adatabase in your account for other accounts.">Revoking Tunnel Access to Databases for Other Accounts</a></div>
+<div><a class="link" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></div>
+<div><a class="link" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

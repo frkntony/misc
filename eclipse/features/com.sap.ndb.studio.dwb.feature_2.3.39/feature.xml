@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.dwb.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ide.platform.feature" version="1.5.0" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.dwb.tools.core.feature" version="2.3.39"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.team"
+         download-size="431"
+         install-size="1017"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.team.ui"
+         download-size="1127"
+         install-size="2639"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.repository"
+         download-size="247"
+         install-size="572"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.catalog"
+         download-size="26"
+         install-size="45"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.tools.ui"
+         download-size="126"
+         install-size="265"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.tools.changetracking"
+         download-size="231"
+         install-size="463"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.alm.ui"
+         download-size="19"
+         install-size="37"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.repository.whereused"
+         download-size="26"
+         install-size="48"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.repository.whereused.ui"
+         download-size="58"
+         install-size="121"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.repository.refactoring.core"
+         download-size="106"
+         install-size="240"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.repository.refactoring.ui"
+         download-size="175"
+         install-size="426"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

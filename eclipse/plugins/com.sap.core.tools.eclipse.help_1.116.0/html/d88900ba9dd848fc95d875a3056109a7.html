@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Multitenant Connectivity Application</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod88900ba9dd848fc95d875a3056109a7">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating a Multitenant Connectivity Application</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loiod88900ba9dd848fc95d875a3056109a7__ul_krm_md1_pr">
+				<li class="li">You have downloaded and set up your Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span> Tools for Java
+					and SAP HANA SDK. For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>.</li>
+
+				<li class="li">You are an application provider. For more information, see <a class="xref" href="48b552fa449945b9afc7885e1919ce2b.html">Multitenancy Roles</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This tutorial explains how you can create a sample application which is based on the
+				multitenancy concept, makes use of the connectivity service, and can be later
+				consumed by other users. That means, you can enable your application to be consumed
+				by users, members of a tenant which is subscribed for this application in a
+				multitenant flavor. The output of the application you are about to create, displays
+				a welcome page showing the URI of the tenant-specific destination configuration.
+				This means that the administrator of the consumer account may have been previously
+				set a tenant-specific configuration for this application. However, in case such
+				configuration has not been set, the application would use the default one, set by
+				the administrator of the provider account. </p>
+
+			<p class="p">The application code is the same as for a standard <span class="keyword cmdname">HelloWorld</span>
+				consuming the connectivity service as the latter manages the multitenancy with no
+				additional actions required by you. The users of the consumer account, which is
+				subscribed to this application, can access the application using a tenant-specific
+				URL. This would lead the application to use a tenant-specific destination
+				configuration. For more information, see <a class="xref" href="b92140a0c6b942e1a0f72e9fd1133fd9.html">Multitenancy in SAP Cloud Platform Connectivity</a>.</p>
+
+			<div class="note note"><span class="notetitle">Note</span>  As a provider, you can set your destination configuration on
+					<span class="ph emphasis emphasis">application</span> and <span class="ph emphasis emphasis">account</span> level. They
+				are the default destination configurations in case a consumer has not configured
+				tenant-specific destination configuration (on subscription level).</div>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="concept_fg2_nmy_xl">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section" id="concept_fg2_nmy_xl__section_02D65FD5DB1740B28F2E46E4CCEA71C7"><div class="section_title">1. Create a dynamic Web project</div><div type="1. Create a dynamic Web project">
+				
+				<ol class="ol" id="concept_fg2_nmy_xl__ol_nhn_rmy_xl">
+					<li class="li">Open the <span class="ph uicontrol">Java EE</span> perspective of the Eclipse IDE. </li>
+
+					<li class="li">In the <span class="ph uicontrol">Project Explorer</span> view, from the context menu,
+						choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li"> Enter <kbd class="ph userinput">MultitenantConnectivity</kbd> as the
+							<span class="ph uicontrol">Project name</span>. </li>
+
+					<li class="li">In the <span class="ph uicontrol">Target Runtime</span> pane, select the runtime you
+						want to use to deploy the application. In this tutorial, we choose
+							<kbd class="ph userinput">Java Web</kbd>. </li>
+
+					<li class="li">In the <span class="ph uicontrol">Configuration</span> pane, leave the default configuration.</li>
+
+					<li class="li">Choose <span class="ph uicontrol">Finish</span> to finalize the creation of your
+						project. </li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">2. Add resource declaration in file "Web deployment descriptor"</div><div type="2. Add resource declaration in file &#34;Web deployment descriptor&#34;">
+				
+				<ol class="ol" id="concept_fg2_nmy_xl__ol_jy3_j4y_xl">
+					<li class="li">Go to <span class="ph filepath">/MultitenantConnectivity/WebContent/WEB-INF</span> and
+						open the <span class="ph uicontrol">web.xml</span> file.</li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Source</span> tab page. </li>
+
+					<li class="li">Add the following code block to the <span class="keyword parmname">&lt;web-app&gt;</span> element:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;resource-ref&gt;
+	&lt;res-ref-name&gt;search_engine_destination&lt;/res-ref-name&gt;
+	&lt;res-type&gt;com.sap.core.connectivity.api.http.HttpDestination&lt;/res-type&gt;
+&lt;/resource-ref&gt;
+</pre></div>
+
+					</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">3. Create a sample JSP file</div><div type="3. Create a sample JSP file">
+				
+				<ol class="ol" id="concept_fg2_nmy_xl__ol_q4p_s4y_xl">
+					<li class="li">Under the <span class="ph uicontrol">MultitenantConnectivity</span> project node,
+						choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">JSP File</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the context menu.</li>
+
+					<li class="li">Enter <kbd class="ph userinput">index.jsp</kbd> as the <span class="ph uicontrol">File</span>
+						name and choose <span class="ph uicontrol">Finish</span>.</li>
+
+					<li class="li">Open the <span class="ph uicontrol">index.jsp</span> file using the text editor.</li>
+
+					<li class="li">Replace the entire JSP file content with the following sample code:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;%@page
+	import="javax.naming.InitialContext,javax.naming.Context,com.sap.core.connectivity.api.http.HttpDestination,java.util.Arrays"%&gt;
+&lt;%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"&gt;
+&lt;title&gt;<span class="ph pname">SAP Cloud Platform</span> - Multitenant Connectivity Demo Application&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;h2&gt;Welcome to <span class="ph pname">SAP Cloud Platform</span> - multitenant connectivity demo application&lt;/h2&gt;
+	&lt;br&gt;&lt;/br&gt;
+
+	&lt;%
+		try {
+			Context context = (Context) new InitialContext()
+					.lookup("java:comp/env");
+
+			// In this case you don't need to explicitly use the TenantContext API
+			// because the Connectivity service handles the tenancy by itself.
+			// The retrieved HttpDestination object will be tenant-specific.
+			String destinationName = "search_engine_destination";
+			HttpDestination destination = (HttpDestination) context
+					.lookup(destinationName);
+			out.println("&lt;p&gt;&lt;font size=\"5\"&gt; Retreived destination with name &lt;i&gt;"
+					+ destination.getName()
+					+ "&lt;/i&gt; and URI &lt;b&gt;"
+					+ destination.getURI() + "&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;");
+		} catch (Exception e) {
+			out.println("&lt;b&gt;An exception has been thrown: &lt;i&gt;" + e.getMessage()
+					+ "&lt;/i&gt;&lt;/b&gt;");
+			out.println(Arrays.toString(e.getStackTrace()));
+		}
+	%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</li>
+
+					<li class="li">Save the JSP file. <p class="p">The project compiles without errors. </p>
+</li>
+
+				</ol>
+
+				<p class="p">You have successfully created a Web application containing a sample JSP file and consuming
+					the connectivity service via looking up a destination configuration.</p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">4. Deploy the application</div><div type="4. Deploy the application">
+				
+				<p class="p"> To learn how to deploy your application, see  <a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a>.</p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">5. Define the destination configurations</div><div type="5. Define the destination configurations">
+				
+				<p class="p">You, as application provider, can configure a default destination, which is then used at
+					runtime when the application is requested in the context of the provider
+					account. In this case, the URL used to access the application is not
+					tenant-specific. </p>
+
+				<p class="p"><span class="ph emphasis emphasis">Example:</span></p>
+
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=search_engine_destination
+URL=https://www.google.com
+Type=HTTP
+ProxyType=Internet
+Authentication=NoAuthentication
+TrustAll=true
+</pre></div>
+
+				<p class="p">For more information on how to define a destination for provider account,
+					see:</p>
+
+				<p class="p">
+					<a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a>.</p>
+
+				<p class="p"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Result</div><div type="Result">
+				
+				<p class="p">You have created a sample application which can be requested in a browser. Its
+					output depends on the tenant name.</p>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+				
+				<ul class="ul" id="concept_fg2_nmy_xl__ul_csm_ff1_pr">
+					<li class="li">To test the access to your multitenant application, go to a browser and
+						request it on behalf of your account. Use the following URL pattern:
+						<samp class="ph codeph">https://&lt;application_name&gt;&lt;provider_account&gt;.&lt;landscape_host&gt;/&lt;application_path&gt;</samp></li>
+
+					<li class="li">If you want to test the access to your multitenant application on behalf of
+						a consumer account, follow the steps in page: <a class="xref" href="d2886a5dd7814888b1ebb98cec56130d.html">Consuming a Multitenant Connectivity Application</a></li>
+
+				</ul>
+
+			</div></div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7bd8fcd7e74c467c811144505e0280fb.html">Uploading Destinations</a></div>
+<div><a class="link" href="e5a8b1d3bb571014a0f89bb4706d4e0b.html">Creating a HelloWorld Application</a></div>
+<div><a class="link" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

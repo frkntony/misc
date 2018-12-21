@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can use the SAP Cloud Platform virtual machines to install and maintain your own applications in scenarios not covered by the platform."/>
+<meta name="description" content="You can use the SAP Cloud Platform virtual machines to install and maintain your own applications in scenarios not covered by the platform."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Virtual Machines</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiofd5a3c1c93cf403db636de8ad67a7e70">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Virtual Machines</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can use the <span class="ph pname">SAP Cloud Platform</span> virtual machines to install and maintain your
+		own applications in scenarios not covered by the platform.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">Virtual machines are currently available only in the data center in Europe. <span class="ph pname">SAP Cloud Platform</span> systems in other data centers can communicate with virtual machines only
+				via public Internet, so you have to architect your applications accordingly.</p>
+
+		</div>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">As the owner of a virtual machine, you are responsible for applying patches on the
+				operating system and for triggering backups via snapshots.</p>
+
+		</div>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">Backup services for the virtual machine volumes can be triggered manually, however
+				they are not part of SAP’s disaster recovery and contingency strategies. This means
+				that the underlying infrastructure used to store snapshots and volumes is set up in
+				a cluster running in High Availability mode. However, if a disaster occurs (that is,
+				the whole infrastructure crashes), there will be no backup and recovery possible.
+				Thus, you may consider storing your data by means of the persistence services
+				offered by <span class="ph pname">SAP Cloud Platform</span> or on other systems.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Building Components</div><div type="Building Components">
+			
+			<p class="p">An <span class="ph pname">SAP Cloud Platform</span> virtual machine is the virtualized hardware resources
+				(CPU, RAM, disk space, installed OS) on which the installed software runs. The
+				virtual machines come with a SUSE Linux Enterprise Server installed. For more
+				information about the currently supported version, see <a class="xref" href="52697bec27244aca983deffe60b2741e.html" title="When you create a virtual machine and thus become its owner, you have to take care to apply patches and updates on its operating system (OS). Whenever there is a new OS image with security patches available, the infrastructure will change the default image used and new virtual machines will be started with the new image. However, the virtual machines you have previously created will still use the old image and you need to update it. You need to apply security patches directly from the SUSE Linux Enterprise Server (SLES) repositories.">Patching the OS Image</a>. </p>
+
+			<p class="p">You create virtual machines on which you install your own software different from the
+				programming models supported by the platform.</p>
+
+			<p class="p">Each virtual machine has a volume - the storage behind the file system and all
+				software installed on it.</p>
+
+			<p class="p"><img class="image" id="loiofd5a3c1c93cf403db636de8ad67a7e70__image_gzv_3ys_qx" src="loio22ac7afe9af7414e8543f098208d1915_LowRes.png"/></p>
+
+			<p class="p">For each <span class="ph pname">SAP Cloud Platform</span> account, a quota for virtual machines with certain
+				sizes can be configured. You can distribute quota to virtual machines when you open
+				the <span class="ph pname">SAP Cloud Platform</span> cockpit and navigate to <span class="ph uicontrol">Quota
+					Management</span>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Virtual Machine Sizes</div><div type="Virtual Machine Sizes">
+			
+			<div class="p">Depending on your needs, you can choose from the following sizes with predefined
+					configurations:
+<div class="table-wrapper tablenoborder"><table summary="" id="loiofd5a3c1c93cf403db636de8ad67a7e70__table_n3p_2yn_bs" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d13355030e107">Virtual Machine Size </th>
+
+								<th class="entry" valign="top" width="25%" id="d13355030e110">CPU Core</th>
+
+								<th class="entry" valign="top" width="25%" id="d13355030e113">RAM (GB)</th>
+
+								<th class="entry" valign="top" width="25%" id="d13355030e116">Disk storage (GB)</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d13355030e107 ">
+									<p class="p">xs</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e110 ">
+									<p class="p">1</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e113 ">
+									<p class="p">2</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e116 ">
+									<p class="p">20</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d13355030e107 ">
+									<p class="p">s</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e110 ">
+									<p class="p">2</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e113 ">
+									<p class="p">4</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e116 ">
+									<p class="p">40</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d13355030e107 ">
+									<p class="p">m</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e110 ">
+									<p class="p">4</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e113 ">
+									<p class="p">8</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e116 ">
+									<p class="p">80</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d13355030e107 ">
+									<p class="p">l</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e110 ">
+									<p class="p">8</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e113 ">
+									<p class="p">16</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e116 ">
+									<p class="p">160</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d13355030e107 ">
+									<p class="p">xl</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e110 ">
+									<p class="p">16</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e113 ">
+									<p class="p">32</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d13355030e116 ">
+									<p class="p">320</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Capabilities</div><div type="Capabilities">
+			
+			<p class="p">You can </p>
+
+			<div class="p">
+				<ul class="ul" id="loiofd5a3c1c93cf403db636de8ad67a7e70__ul_yqp_dny_lv">
+					<li class="li">
+						<p class="p">Create a virtual machine, connect to it and manage its lifecycle</p>
+
+						<p class="p">As the owner of the virtual machine, you can install your software that will be hosted on
+							<span class="ph pname">SAP Cloud Platform</span>. You have to make sure that the software you
+							install on the virtual machines has the necessary licenses. Also, you
+							need to take care of updating them with the latest patches.</p>
+
+						<p class="p">For more information, see <a class="xref" href="c0d2dd37428944d3b673ffdd74f3a975.html" title="You need to create and start a virtual machine using the console client. Then, you establish a secure communication channel to it over Secure Shell (SSH) protocol. You open an SSH tunnel and get all the communication details you need to log in to the virtual machine and install and maintain your software.">Managing Virtual Machines</a>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Configure communication to the virtual machine</p>
+
+						<p class="p">By default, outbound communication from the virtual machines to the Internet and other
+							systems is allowed, but inbound communication has to be configured.</p>
+
+						<p class="p">For more information, see <a class="xref" href="41c987c040f04c7cb6157dcc824a7762.html" title="You can allow communication with SAP Cloud Platform virtual machines from other systems by managing security group rules using console client commands. Communication between virtual machines within the same account is available by default.">Enabling Communication from SAP Cloud Platform Systems</a> and <a class="xref" href="acf74847c5f846d0b4512cba64c18353.html" title="You can make your software running on a virtual machine accessible from the Internet if your scenario requires it.">Enabling Internet Access</a>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Manage virtual machine volumes</p>
+
+						<p class="p">Each virtual machine has a volume that stores the file system and all software installed on
+							it. You can create a new virtual machine with the same volume and delete
+							a volume.</p>
+
+						<p class="p">For more information, see <a class="xref" href="a533e9cd946f4cc4b4d5973c326a685b.html" title="A volume is the persistent storage that is created automatically when a virtual machine is created.">Managing Volumes</a>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Create a snapshot of a virtual machine volume</p>
+
+						<p class="p">You can take a snapshot of an existing virtual machine volume and use it to create a new
+							virtual machine with the same file system.</p>
+
+						<p class="p">For more information, see <a class="xref" href="93dd4760f72f42f6a668c903030272a4.html" title="You can take a snapshot of an existing virtual machine volume in your account and use it to create a new virtual machine with the same file system thus saving any manual installation.">Managing Volume Snapshots</a>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Consume a SAP HANA database from a virtual machine</p>
+
+						<p class="p">For more information, see <a class="xref" href="0e6288bd76cf452fab4411da044978dd.html" title="You can consume an SAP HANA database from a virtual machine using JDBC.">Consuming an SAP HANA Database From a Virtual Machine</a>.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Limitations</div><div type="Limitations">
+			
+			<div class="p">
+				<ul class="ul" id="loiofd5a3c1c93cf403db636de8ad67a7e70__ul_gdg_mx1_bt">
+					<li class="li">An <span class="ph pname">SAP Cloud Platform</span> virtual machine is running in a private network
+						and cannot be accessed from another customer account.</li>
+
+					<li class="li">Virtual machines are not exposed directly to the Internet. Outbound
+						communication to the Internet and other systems is allowed, but inbound
+						communication has to be configured by registering an access point.</li>
+
+					<li class="li">Communication to the virtual machines is allowed only via a SSH tunnel using
+						the console client. Additionally, communication from a <span class="ph pname">SAP Cloud Platform</span> Java Compute Unit or a SAP HANA system can be configured.</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

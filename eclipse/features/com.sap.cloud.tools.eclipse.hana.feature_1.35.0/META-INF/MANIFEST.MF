@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Build-Jdk: 1.6.0_51
+Created-By: Apache Maven 3.0.4
+
+Name: META-INF/maven/com.sap.cloud.tools.eclipse.hana/com.sap.cloud.to
+ ols.eclipse.hana.feature/pom.properties
+SHA-256-Digest: Sydfe0ZNyfMFXIkYDRTdehi9IttwLYuQGWPmPEa/2mY=
+
+Name: feature.xml
+SHA-256-Digest: YK1WS2casnHirkAEN/YNBf8kPvDDa/39lMfTu00rs6E=
+
+Name: META-INF/maven/com.sap.cloud.tools.eclipse.hana/com.sap.cloud.to
+ ols.eclipse.hana.feature/pom.xml
+SHA-256-Digest: Gz1NOsf82Nfxw4xue3Y5ueAfVFJQDTEBsxxOP4smlhQ=
+
+Name: feature.properties
+SHA-256-Digest: EkJ3jfZVs60M0uKR1NM5QvRH8cS9SxgKrRIf19Ti6gQ=
+

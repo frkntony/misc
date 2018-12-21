@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Application-managed entity managers are created manually using the EntityManagerFactory interface. Application-managed entity managers require resource-local transactions and non-JTA data sources, which need to be declared as JNDI resource references."/>
+<meta name="description" content="Application-managed entity managers are created manually using the EntityManagerFactory interface. Application-managed entity managers require resource-local transactions and non-JTA data sources, which need to be declared as JNDI resource references."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Application-Managed Persistence</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe658f24cbb571014a2f9e19ed3502198">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Application-Managed Persistence</h1>
+
+	<div class="body taskbody"><p class="shortdesc">Application-managed entity managers are created manually using the
+			<span class="keyword apiname">EntityManagerFactory</span> interface. Application-managed entity managers
+		require resource-local transactions and non-JTA data sources, which need to be declared as
+		JNDI resource references.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The scenario described in this section is based on the Java Web runtime, which only
+				supports manual creation of the entity manager factory.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioe658f24cbb571014a2f9e19ed3502198__steps_cv2_4xz_vk"><li class="li step">
+				<span class="ph cmd">Declare a JNDI resource reference.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd"> Configure the persistence units in the <span class="ph filepath">persistence.xml</span> file to use
+					resource-local transactions and non-JTA data sources. </span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Use a JNDI lookup in the application code to retrieve the data source.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Create an entity manager factory and entity manager.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e5d46793bb5710148c05ee3ad01abd39.html" title="An application can use one or more data sources. A data source can be a default data source or an explicitly named data source. Before a data source can be used, it needs to be declared as a JNDI resource reference in the web.xml deployment descriptor.">Declaring JNDI Resource References</a></div>
+<div><a class="link" href="c017f265b7cd463399470c7d452a0dc3.html" title="To use application-managed entity managers, you need to configure resource-local transactions in the persistence.xml file. Resource-local transactions are associated with non-JTA data sources (that is, unmanaged data sources) and are explicitly controlled by the application through the EntityTransaction interface of the entity manager.">Configuring Persistence Units</a></div>
+<div><a class="link" href="39b1fcd42c864eea9fcdf381a64c13b8.html" title="In the application code, you can obtain an initial JNDI context by creating a javax.naming.InitialContext object, and then retrieve the data source by looking up the naming environment through the InitialContext. Alternatively, you can directly inject the data source.">Retrieving Data Sources</a></div>
+<div><a class="link" href="572e33429cd0428a9091ae859b27662f.html" title="You use the EntityManagerFactory interface to manually create and manage the entity managers in your Web application.">Creating Entity Managers</a></div>
+<div><a class="link" href="bb269c2b9ce94840a057015264d0b253.html" title="The data source is determined dynamically at runtime and does not need to be defined beforehand in the web.xml or persistence.xml file. This allows you to bind additional schemas to an application and obtain the corresponding data source, without having to modify the application code or redeploy the application.">Using Dynamic Data Source Lookup</a></div>
+<div><a class="link" href="e663d584bb571014a99af48717abd94a.html" title="When working with a resource-local entity manager, the transaction boundaries need to be set manually in your application code using the EntityTransaction API. You can obtain the entity transaction attached to the entity manager by calling EntityManager.getTransaction().">Entity Transaction API</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

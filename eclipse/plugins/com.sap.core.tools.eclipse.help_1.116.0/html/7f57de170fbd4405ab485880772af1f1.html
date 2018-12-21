@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Master and Shadow Administration</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7f57de170fbd4405ab485880772af1f1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Master and Shadow Administration</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Administration of Shadow Instances</div><div type="Administration of Shadow Instances">
+			
+			<p class="p">There is few administration required (if possible) on the shadow instance. All
+				configuration of tunnel connections, host mappings, access rules, and so on, must be
+				maintained on the master instance. They can be replicated over to the shadow
+				instance only for display reasons. You may want to modify the <span class="ph emphasis emphasis">check
+					interval</span> (time between checks of whether the master is still alive)
+				and the <span class="ph emphasis emphasis">takeover delay</span> (time the shadow waits to see whether
+				the master would come back online, before taking over the master role itself).</p>
+
+			<p class="p">Keep in mind:</p>
+
+			<ul class="ul" id="loio7f57de170fbd4405ab485880772af1f1__ul_i51_jgj_q4">
+				<li class="li">The log level on master and shadow instances can be different.</li>
+
+				<li class="li">Configuration for check interval and takeover delay is maintained on the shadow
+					instance only, and will be transferred to the master for display.</li>
+
+				<li class="li">Audit logs are written on the master instance only and will not be transferred
+					to the shadow. That means, if the shadow has become master for a while, during
+					which the original master was down, the audit log is potentially distributed
+					over both master and shadow instances.</li>
+
+			</ul>
+
+			<p class="p">If you want to drop all configuration on the shadow that is related to the master,
+				choose the <span class="ph uicontrol">Reset</span> button, but only if the shadow is not
+				connected to the master.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Failover Process</div><div type="Failover Process">
+			
+			<p class="p">The shadow instance checks regularly if the master instance is still alive. Once the
+				check fails, the shadow instance tries to re-establish the connection to the master
+				instance for a time period specified by the takeover delay parameter.</p>
+
+			<ul class="ul" id="loio7f57de170fbd4405ab485880772af1f1__ul_y2h_5gj_q4">
+				<li class="li">If during this time, no connection was possible, the shadow tries to take over the master
+					role. At this point, it is still possible for the master to be alive and the
+					trouble to be caused by a network issue between the shadow and master. In any
+					case, the shadow instance then tries to establish a tunnel to the given <span class="ph pname">SAP Cloud Platform</span> account.
+					If the original master is still alive (and consequently its tunnel to the cloud
+					account is still active), this attempt will be denied and the shadow will remain
+					in "shadow status", periodically pinging the master and trying to connect to the
+					cloud, while the master is not yet reachable. </li>
+
+				<li class="li">Otherwise, the cloud side allows the tunnel to be opened and the shadow instance
+					therefore knows that the master is indeed down, and takes over its role.
+					Starting this moment, the shadow instance displays the UI of a master instance
+					and allows the usual operations of a master instance, e.g. starting/stopping
+					tunnels, modifying the configuration, etc.</li>
+
+			</ul>
+
+			<p class="p">When the former master instance is started again, it first checks whether in the meantime the
+				registered shadow instance has taken over the master role. In such a case, the
+				master registers itself as a shadow instance on the former shadow (now master)
+				instance. Thus, the two <span class="ph pname">Cloud connector</span>
+				installations, in fact, have switched their roles.</p>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> Only one shadow instance is supported. Any further shadow instances attempting to connect
+				will be declined by the master instance.</div>
+
+			<p class="p">The master considers a shadow as lost, if no check/ping is received from that shadow
+				instance during a time interval of three times the check period. Only after this
+				period, another shadow system can register itself.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> On the master, it is possible to trigger a failover process by choosing the
+					<span class="ph uicontrol">Switch Roles</span> button. If the shadow is up, this works as
+				described before, but even if the shadow can not be reached, a role switch of the
+				master can be enforced. Only enforce the switch if you are absolutely sure that this
+				is right.</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="c697705179a24d2b8b6be038fae59c33.html" title="The Cloud connector allows you to install a redundant instance, which monitors the main instance.">Installing a Failover Instance for High Availability</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded."/>
+<meta name="description" content="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>start</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocc417d7ac1284f9e903fd89613b08b27">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">start</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"> Starts a deployed application in order to make it available for customers. In case the
+		application is already started, the command starts an additional application process if the
+		quota for maximum allowed number of application processes is not exceeded.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo start --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt; 
+--host &lt;landscape_host&gt;</pre></div>
+
+		</div>
+
+		<div class="section" id="loiocc417d7ac1284f9e903fd89613b08b27__section_N1001F_N10012_N10001"><div class="section_title">Parameters</div><div type="Parameters">To list all parameters
+			available for this command, execute <kbd class="ph userinput">neo help start</kbd> in the command
+				line.
+<div class="table-wrapper tablenoborder"><table summary="" id="loiocc417d7ac1284f9e903fd89613b08b27__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d9428698e41">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9428698e41 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9428698e41 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9428698e41 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9428698e41 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9428698e41 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9428698e41 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9428698e41 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9428698e41 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9428698e41 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9428698e41 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loiocc417d7ac1284f9e903fd89613b08b27__table_tlk_pyy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d9428698e161">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9428698e161 ">
+								<span class="keyword parmname">-y</span>,<span class="keyword parmname">--synchronous</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9428698e161 ">Triggers the starting process and waits until the application is
+								started. The command without the <span class="keyword parmname">--synchronous</span>
+								parameter triggers the starting process and exits immediately
+								without waiting for the application to
+										start.<p class="p"><span class="keyword cmdname">Default</span>: off
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: switch, takes no value
+								</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">To start the application and wait for the operation to finish, execute:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo start --host hana.ondemand.com --account myacc --application myapp --user mymail@example.com --synchronous </pre></div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="76132306711e1014839a8273b0e91070.html">Console Client</a></div>
+<div><a class="link" href="d4f6592584464cc6a5c3c0b6fc88abf9.html" title="You can check the current status of an application or application process. The command lists all application processes with their IDs, state, last change date sorted chronologically, and runtime information.">status</a></div>
+<div><a class="link" href="745781b3ddb24c8a9670aff28cf09e36.html" title="Each application is started on a dedicated SAP Cloud Platform Runtime. One application can be started on one or many application processes, according to the compute unit quota that you have.">Scaling Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="There are some document service specific rules with respect to ACLs."/>
+<meta name="description" content="There are some document service specific rules with respect to ACLs."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Special Rules for ACL Settings</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe1a819264e34467ea8fe879e5290eef2">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Special Rules for ACL Settings</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">There are some document service specific rules with respect to ACLs.</p>
+
+		<div class="section"><div class="section_title">Object Creation</div><div type="Object Creation">
+			
+			<p class="p">When creating an object the connected user becomes the owner of the new object. The ACL of the
+				parent folder is copied to the new object and modified according to the
+					<span class="keyword parmname">addAcl</span> and <span class="keyword parmname">removeAcl</span> parameter
+				settings of the <span class="ph sap-technical-name sap-technical-name">create</span> method.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Access by Path</div><div type="Access by Path">
+			
+			<p class="p">A user is allowed to fetch an object using the path if the user has at least the
+					<span class="ph sap-technical-name sap-technical-name">cmis:read</span> permission for the object. In
+				this case, the ACLs of the ancestor folders of the object are not relevant.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Versioning</div><div type="Versioning">
+			
+			<ul class="ul" id="loioe1a819264e34467ea8fe879e5290eef2__ul_swn_m1h_qn">
+				<li class="li">All documents of a version series, except the private working copy (PWC), share
+					the same ACL and owner.</li>
+
+				<li class="li">It is only allowed to modify the ACL on the last version of a version series and
+					only if it is not checked out.</li>
+
+				<li class="li">Principals are allowed to check out a document if they have the
+						<span class="ph sap-technical-name sap-technical-name">cmis:write</span> permission for it. They
+					become the owner of the PWC and the ACL of the PWC initially contains only one
+					ACE with their principal name and the
+						<span class="ph sap-technical-name sap-technical-name">cmis:all</span> permission.</li>
+
+				<li class="li">The ACL and the owner of a PWC can be changed independently of the other objects
+					of the version series the PWC belongs to. Only the owner of the PWC and users
+					with the <span class="ph sap-technical-name sap-technical-name">sap:delete</span> permission are
+					allowed to check in or to cancel a checkout.</li>
+
+				<li class="li">Only principals having the <span class="ph sap-technical-name sap-technical-name">cmis:all</span>
+					permission for the version series are allowed to add or remove ACEs when
+					checking in a PWC.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Operations with Special Behavior</div><div type="Operations with Special Behavior">
+			
+			<ul class="ul" id="loioe1a819264e34467ea8fe879e5290eef2__ul_twn_m1h_qn">
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">getChildren</span><p class="p">Returns all children the principal is
+						allowed to see. If the principal has no read permission for the current
+						folder, a <span class="ph sap-technical-name sap-technical-name">NodeNotFoundException</span> is
+						thrown.</p>
+</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">getDecendants</span><p class="p">Returns only those descendants of a
+						folder F, which the principal is allowed to see. Only those descendants are
+						returned for which all folders on the path from F to the descendant are
+						accessible to the principal. If the principal has no read permission for the
+						current folder F, a
+							<span class="ph sap-technical-name sap-technical-name">NodeNotFoundException</span> is
+						thrown.</p>
+</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">getFolderTree</span><p class="p">Similar to
+							<span class="ph sap-technical-name sap-technical-name">getDecendants</span>.</p>
+</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">getFolderParent</span><p class="p">If the principal has no read
+						permission for the current folder, a
+							<span class="ph sap-technical-name sap-technical-name">NodeNotFoundException</span> is
+						thrown. If the principal has no read permission for the parent folder, a
+							<span class="ph sap-technical-name sap-technical-name">PermissionDeniedException</span> is
+						thrown.</p>
+</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">getObjectParents</span><p class="p">Returns a list with the parents
+						the principal is allowed to see. Only one parent is returned because the
+						document service does not support multi-filing. If the principal has no read
+						permission for the current object, a
+							<span class="ph sap-technical-name sap-technical-name">NodeNotFoundException</span> is
+						thrown.</p>
+</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">move</span><p class="p">This method is allowed if the principal has
+						the <span class="ph sap-technical-name sap-technical-name">sap:file</span> permission for the
+						source folder, target folder, and the object to move.</p>
+</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Destinations as Multi-Target Application Entities (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio08572d19ecfb45efb3cc470f0b4cac49">
+<div id="wrapper"><div id="container">
+
+  <h1 class="title topictitle1">Destinations as Multi-Target Application Entities (Beta)</h1>
+
+  <div class="body conbody">
+    <p class="p">In addition to creating connectivity destinations as described in <a class="xref" href="e4f1d97cbb571014a247d10f9f9a685d.html">Destinations</a>, you can also deploy new destinations as a
+      part of a Multi-Target Application described as a module type or as parameters of the
+        <span class="ph sap-technical-name sap-technical-name">com.sap.java</span> module. Using a common set of
+      parameters, you describe destinations needed or offered in the <span class="keyword parmname">mtad.yaml</span>
+      MTA deployment descriptor, and additionally in the extension descriptor if required. The
+      technical modelling of these destinations is based on whether the providing and consuming
+      sides are a part of a given MTA, or when the providing side is an external entity. In the
+      following cases, the resources that the destinations point at already exist.</p>
+
+    <p class="p">Currently, the following destination types are supported with MTA deployment:</p>
+
+    <ul class="ul" id="loio08572d19ecfb45efb3cc470f0b4cac49__ul_lwl_znz_bz">
+      <li class="li">Account-level destinations</li>
+
+      <li class="li">Application-level destinations</li>
+
+    </ul>
+
+    <p class="p">Depending on whether the destination is a part of your account or not, destinations are also
+      classified as internal or external.</p>
+
+  </div>
+
+  <div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="39fe8fa20d1747b49b84e1d395fd1f9b.html" title="Destinations to external resources lead to services or applications that are not part of the current MTA.">Destinations to External Resources</a></div>
+<div><a class="link" href="3afcf17e401d4af982ee8456e874bdff.html" title="Destinations to internal applications are destinations of type HTTP that point to a Java application that is a part of the current MTA. These destinations require more complex MTA modeling where MTA placeholders and MTA references are used.">Destinations to Internal Applications</a></div>
+<div><a class="link" href="d2be03c69ddd4cffb74f7e4765305d47.html" title="Placeholders are strings that are resolved depending on the scope in which they are used. They have the syntax ${&lt;name&gt;}.">MTA Placeholders Usage</a></div>
+<div><a class="link" href="d0750b6261334d2697433693d67ae769.html" title="References are used in conjunction with required dependencies to refer properties provided by a linked provided dependency.">MTA References Usage</a></div>
+<div><a class="link" href="0fa478c35b0847ad94b5ee5dfac5bd97.html" title="An untyped resource is an unclassified resource type that is used to group properties that are specified only once, so that they can be referred by multiple destinations using the MTA references mechanism. Untyped resources do not have a lifecycle.">MTA Untyped Resources Usage For Destinations</a></div>
+<div><a class="link" href="97ed62c7a68b4b23be3f7552829c855b.html">Destination Parameters</a></div>
+<div><a class="link" href="fa6d21a5858f41f7bf8b4a5b4dad5140.html">MTA Deployment Descriptors and Module Types</a></div>
+<div><a class="link" href="8e51e1d16b0d4e0eba7f8233494db31f.html">МТА Extension Descriptors (Beta)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

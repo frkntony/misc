@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="By using the delta deployment option, you can apply changes in a deployed application faster without uploading the entire set of files tо SAP Cloud Platform."/>
+<meta name="description" content="By using the delta deployment option, you can apply changes in a deployed application faster without uploading the entire set of files tо SAP Cloud Platform."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Delta Deployment</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7a4aba21ee7d42eb86bc70c8787611fa">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Delta Deployment</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">By using the delta deployment option, you can apply changes in a deployed application
+		faster without uploading the entire set of files tо <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>The <span class="keyword parmname">delta</span> parameter allows you to deploy only the changes between
+			the provided source and the previously deployed content - new content is added; missing
+			content is deleted; existing content is updated if there are changes. The
+				<span class="keyword parmname">delta</span> parameter is available in two commands –
+				<span class="keyword cmdname">deploy</span> and <span class="keyword cmdname">hot-update</span>.<div class="note note"><span class="notetitle">Note</span> Use it to save
+				time for development purposes only. For updating productive applications, deploy the
+				whole application. </div>
+</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p">
+				<span class="ph cmd">To upload only the changed files from the application WARs, use one of the two
+					approaches:</span>
+				<ul class="ul choices" id="loio7a4aba21ee7d42eb86bc70c8787611fa__choices_mhr_zqn_3r">
+					<li class="li choice">Deploy the application specifying the <span class="keyword parmname">--delta</span>
+							parameter:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy myapp.properties  --source &lt;file_location&gt; --delta </pre></div>
+<p class="p">For
+							the changes to take effect, restart the application.</p>
+</li>
+
+					<li class="li choice">Upload the delta and apply the changes on an already running application process with
+						the <span class="keyword cmdname">hot-update</span> command:
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hot-update myapp.properties  --source &lt;file_location&gt; --strategy &lt;update_strategy&gt; --delta</pre></div>
+</li>
+
+				</ul>
+
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> With the <span class="keyword parmname">source</span> parameter, provide the whole set of files of your
+						application, not only the changed ones.</div>
+
+				</div>
+			</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7ae6493455844b4ab993c1a1b69595fa.html" title="The hot-update command enables a developer to redeploy and update the binaries of an application started on one process faster than the normal deploy and restart. Use it to apply and activate your changes during development and not for updating productive applications.">hot-update</a></div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="030863cd5d0d4dd3b742957970f8eec9.html" title="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters.">Deploying on the Cloud with the Console Client</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+   <context  id="CloudServerWizard" title="About SAP Cloud Platform Application">
+        <description>1.	In the Application name field, specify a unique name that identifies your application for a given account.
+
+2.	In the Account name field, enter the name of the account you have been registered. You have been set a default one.
+
+3.	In the User name field, enter the SAP Cloud Platform user name you will use to deploy your applications. You have been set a default one. 
+
+4.	Enter the relevant the Password field.  
+
+5.	Optional: Select box Save password (could trigger secure storage login) if you want to not be prompted each time the system requires a password for the same server host and user.
+
+6.	Choose Next to continue or Finish to complete the wizard.
+</description>
+		<topic href="../com.sap.core.tools.eclipse.help/html/60ab35d9edde43a1b38cf48174a3dca2.html"  label="Deploying on the Cloud from Eclipse IDE"/> 
+   </context>
+</contexts>

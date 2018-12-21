@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can use the Apache Maven command line tool to run local and cloud integration tests for any of the SDK samples."/>
+<meta name="description" content="You can use the Apache Maven command line tool to run local and cloud integration tests for any of the SDK samples."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Building Samples from the Command Line</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioad423da413994430bfd9564633f7bc52">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Building Samples from the Command Line</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can use the Apache Maven command line tool to run local and cloud integration tests
+		for any of the SDK samples. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loioad423da413994430bfd9564633f7bc52__ul_itm_4n4_l4">
+					<li class="li">You have downloaded the Apache Maven command line tool. For more
+						information, see the detailed Maven documentation at <a class="extlink" href="http://help.sap.com/disclaimer?site=http://maven.apache.org" target="_blank" alt="http://maven.apache.org" title="http://maven.apache.org">http://maven.apache.org<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </li>
+
+					<li class="li">You are familiar with the Maven build lifecycle. For more information, see
+							<a class="extlink" href="http://help.sap.com/disclaimer?site=http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank" alt="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" title="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loioad423da413994430bfd9564633f7bc52__step_N10029_N10026_N10012_N10001">
+				<span class="ph cmd">Open the folder of the relevant project, for example,
+						<span class="ph filepath">&lt;sdk&gt;/samples/hello-world</span>, and then open the
+					command prompt.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the <span class="keyword cmdname">verify</span> command with the following profile in order
+					to activate the local integration test: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">mvn clean verify -P local-integration-tests ...</pre></div>
+
+					<p class="p">If you are using a proxy, you need to define additional Maven properties as described below
+						in step 4 (see proxy details).</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loioad423da413994430bfd9564633f7bc52__step_N1004C_N10026_N10012_N10001">
+				<span class="ph cmd">Press <kbd class="key">ENTER</kbd> to start the build process.</span>
+				<div class="itemgroup stepresult">All phases of the default lifecycle are executed up to and including the verify
+					phase, with the resulting build status shown on completion.</div>
+			</li>
+<li class="li step stepexpand" id="loioad423da413994430bfd9564633f7bc52__step_N1006C_N10026_N10012_N10001">
+				<span class="ph cmd">To activate the cloud integration test, which involves deploying the built Web application
+					on a landscape in the cloud, enter the following profile with the additional
+					Maven properties given below:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">mvn clean verify -P cloud-integration-tests ...</pre></div>
+
+					<div class="p">
+						<ul class="ul" id="loioad423da413994430bfd9564633f7bc52__ul_hw5_zs4_l4">
+							<li class="li">Landscape host<div class="p">The landscape host (default: <span class="ph filepath">hana.ondemand.com</span>) is predefined
+									in the parent <span class="ph filepath">pom.xml</span> file
+										(<span class="ph filepath">&lt;sdk&gt;/samples/pom.xml</span>) and can
+									be overwritten, as necessary. If you have a developer account,
+									for example, and are therefore using the trial landscape, enter
+									the
+									following:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">mvn clean verify -P cloud-integration-tests -Dsap.cloud.host=hanatrial.ondemand.com ...</pre></div>
+</div>
+</li>
+
+							<li class="li">Account details<div class="p">Provide your account, user name, and password:
+									<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">mvn clean verify -P cloud-integration-tests -Dsap.cloud.account=&lt;account&gt; -Dsap.cloud.username=&lt;user name&gt; -Dsap.cloud.password=&lt;password&gt; ...</pre></div>
+
+								</div>
+</li>
+
+							<li class="li">Proxy details<div class="p">If you use a proxy for HTTPS Internet access, provide your proxy host
+										(<span class="ph filepath">https.proxyHost</span>) and if necessary your
+									proxy port (<span class="ph filepath">https.proxyPort</span>):
+									<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">mvn clean verify -P cloud-integration-tests -Dhttps.proxyHost=&lt;proxy host&gt; -Dhttps.proxyPort=&lt;proxy port&gt; ...</pre></div>
+</div>
+<div class="p">
+									<div class="note tip"><span class="tiptitle">Tip</span> If your proxy requires authentication, you
+										might want to use the Authenticator class to pass the proxy
+										user name and password. For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html" target="_blank" alt="http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html" title="http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html">Authenticator<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. Note that for the
+										sake of simplicity this feature has not been included in the
+										samples.</div>
+
+								</div>
+</li>
+
+						</ul>
+
+					</div>
+
+					<div class="p">
+						<div class="note tip"><span class="tiptitle">Tip</span> 
+							<p class="p">To avoid having to repeatedly enter the Maven properties as described above, you can add
+								them directly to the <span class="ph filepath">pom.xml</span> file, as shown in
+								the example below: </p>
+
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;sap.cloud.username&gt;p0123456789&lt;/sap.cloud.username&gt;</pre></div>
+
+							<div class="p">You might also want to use environment variables to set the property values dynamically,
+								in particular when handling sensitive information such as passwords,
+								which should not be stored as plain
+								text:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;sap.cloud.password&gt;${env.SAP_CLOUD_PASSWORD}&lt;/sap.cloud.password&gt;</pre></div>
+</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

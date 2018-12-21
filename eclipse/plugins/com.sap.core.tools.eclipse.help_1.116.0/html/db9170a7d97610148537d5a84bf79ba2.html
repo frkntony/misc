@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Initial Configuration</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodb9170a7d97610148537d5a84bf79ba2">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Initial Configuration</h1>
+<div class="body conbody">
+		<div class="section" id="loiodb9170a7d97610148537d5a84bf79ba2__section_N10016_N10013_N10001"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">Once the <span class="ph pname">Cloud connector</span> has
+				been installed and the <span class="ph pname">Cloud connector</span> daemon
+				has been started, you can log on and perform the necessary customization to make
+				your <span class="ph pname">Cloud connector</span>
+				operational. To do this, follow the procedure below.</p>
+
+			<p class="p">Go through the following steps:</p>
+
+			<ul class="ul" id="loiodb9170a7d97610148537d5a84bf79ba2__ul_sz1_ywy_cr">
+				<li class="li"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html#loiodb9170a7d97610148537d5a84bf79ba2__log_in">Log in</a></li>
+
+				<li class="li"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html#loiodb9170a7d97610148537d5a84bf79ba2__change_password">Change your password</a></li>
+<li class="li"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html#loiodb9170a7d97610148537d5a84bf79ba2__configure_proxy">Set up parameters and HTTPS proxy</a></li>
+
+				<li class="li"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html#loiodb9170a7d97610148537d5a84bf79ba2__establish_cloud_conection">Establish connections to <span class="ph pname">SAP Cloud Platform</span></a></li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">We strongly recommend that you read and follow the steps described in <a class="xref" href="e7ea82a4bb571014a4ceb61cb7e3d31f.html">Recommendations for Secure Setup</a>.
+				For operating the <span class="ph pname">Cloud connector</span>
+				securely, see also <a class="xref" href="436ab4bbd288416da9d0339fdb9a7caf.html">Guidelines
+					for Secure Operation of <span class="ph pname">Cloud connector</span></a>.</p>
+
+		</div></div>
+<div class="section" id="loiodb9170a7d97610148537d5a84bf79ba2__log_in"><div class="section_title">Log in to the Cloud Connector</div><div type="Log in to the Cloud Connector">
+			
+			<p class="p">To administer the <span class="ph pname">Cloud connector</span>, you
+				need a Web browser. To check the list of supported browsers, go to <a class="xref" href="e6ddaefcbb571014b70fa01fc6a3f818.html">Product Prerequisites and Restrictions</a> → section "Browser Support". </p>
+
+			<ol class="ol" id="loiodb9170a7d97610148537d5a84bf79ba2__ol_p1z_j2v_5j">
+				<li class="li">In a Web browser, enter:
+						<kbd class="ph userinput">https://&lt;hostname&gt;:&lt;port&gt;</kbd>
+					<ul class="ul" id="loiodb9170a7d97610148537d5a84bf79ba2__ul_vq1_52v_5j">
+						<li class="li"><var class="keyword varname">&lt;hostname&gt;</var> refers to the machine on which the <span class="ph pname">Cloud connector</span> has been installed. If installed on your machine, you can enter
+								<kbd class="ph userinput">localhost</kbd>.</li>
+
+						<li class="li"><var class="keyword varname">&lt;port&gt;</var> is the <span class="ph pname">Cloud connector</span> port specified during installation (default port is
+								<kbd class="ph userinput">8443</kbd>). </li>
+
+					</ul>
+</li>
+
+				<li class="li">On the login screen, enter <kbd class="ph userinput">Administrator</kbd> /
+						<kbd class="ph userinput">manage</kbd> (case sensitive) for <span class="ph uicontrol">User
+						Name</span> / <span class="ph uicontrol">Password</span>.<p class="p"/>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loiodb9170a7d97610148537d5a84bf79ba2__change_password"><div class="section_title">Change your Password and Choose Installation Type</div><div type="Change your Password and Choose Installation Type">
+			
+			<ol class="ol" id="loiodb9170a7d97610148537d5a84bf79ba2__ol_zwc_jcz_cr">
+				<li class="li">When you first log in, you must change the password before you continue forwards, regardless
+					of the installation type you have chosen. </li>
+
+				<li class="li">Choose between master and shadow installation. Use <span class="ph uicontrol">Master</span>
+					if you are installing a single <span class="ph pname">Cloud connector</span>
+					instance or a main instance from a pair of <span class="ph pname">Cloud connector</span>
+					instances. For more information, see <a class="xref" href="c697705179a24d2b8b6be038fae59c33.html" title="The Cloud connector allows you to install a redundant instance, which monitors the main instance.">Installing a Failover Instance for High Availability</a>.<p class="p"><img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_rb5_kcz_cr" src="loio76126d2a711e1014839a8273b0e91070_LowRes.png" alt="SCC Mandatory Password Change.png" title="SCC Mandatory Password Change.png"/></p>
+<p class="p"/>
+
+				</li>
+
+				<li class="li">You can edit the password for the <kbd class="ph userinput">Administrator</kbd> user from
+						<span class="ph uicontrol">Configuration</span> in the main menu, tab <span class="ph uicontrol"/>, section <span class="ph uicontrol">Authentication</span>:
+							User
+						Interface<p class="p"><img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_gsn_mcz_cr" width="1400px" src="loio761273d8711e1014839a8273b0e91070_LowRes.png" alt="SCC password.png" title="SCC password.png"/></p>
+</li>
+
+			</ol>
+
+		</div></div>
+<div class="section" id="loiodb9170a7d97610148537d5a84bf79ba2__configure_proxy"><div class="section_title">Set up Connection Parameters and HTTPS Proxy</div><div type="Set up Connection Parameters and HTTPS Proxy">
+			
+			<p class="p"> </p>
+
+			<p class="p">Window <span class="ph uicontrol">Set Up Initial Configuration</span> is displayed. </p>
+
+			<p class="p">If your internal landscape is protected by a firewall that blocks any outgoing TCP traffic,
+				you need to specify an HTTPS proxy that the <span class="ph pname">Cloud connector</span> can use
+				to connect to <span class="ph pname">SAP Cloud Platform</span>. Normally,
+				you would need to use the same proxy settings as those being used by your standard
+				Web browser. The <span class="ph pname">Cloud connector</span> needs
+				this proxy for two operations: </p>
+
+			<ul class="ul" id="loiodb9170a7d97610148537d5a84bf79ba2__ul_lvh_l2f_hr">
+				<li class="li">Downloading the correct connection configuration corresponding to your account ID in <span class="ph pname">SAP Cloud Platform</span>. </li>
+
+				<li class="li">Establishing the SSL tunnel connection from the <span class="ph pname">Cloud connector</span>User
+					to your <span class="ph pname">SAP Cloud Platform</span> account.</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> In case you want to skip the initial configuration, you can click the <img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_qzh_l2f_hr" src="loio000bd0aed0a641f0914da65bca47f5ce_HiRes.png"/> icon in
+				the upper right corner. You might need this in case of connectivity issues described
+				in your logs. You can add accounts later as described in page <a class="xref" href="f16df12fab9f4fe1b8a4122f0fd54b6e.html">Managing Accounts</a>.</div>
+
+			<p class="p">When you first log on, the <span class="ph pname">Cloud connector</span>
+				collects the following required information:</p>
+
+			<ol class="ol" id="loiodb9170a7d97610148537d5a84bf79ba2__ol_qc3_l2f_hr">
+				<li class="li">For <span class="ph uicontrol">Landscape Host</span>, specify the <span class="ph pname">SAP Cloud Platform</span> landscape
+					that should be used. You can choose the one you need from the dropdown list. For
+					more information, see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>. </li>
+
+				<li class="li"> For <span class="ph uicontrol">Account Name</span>, <span class="ph uicontrol">Account User</span> and
+						<span class="ph uicontrol">Password</span>, enter the values you obtained when you
+					registered your account on <span class="ph pname">SAP Cloud Platform</span> or add a
+						<a class="xref" href="937c3cef72bb101490cf767db0e91070.html" title="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform.">new Account User</a>
+					with role <span class="keyword parmname">Cloud Connector Admin</span> from the
+						<span class="ph uicontrol">Members</span> tab in the <span class="ph pname">SAP Cloud Platform</span> cockpit
+					and use the new user and password..<div class="note note"><span class="notetitle">Note</span> If the <span class="ph pname">Cloud connector</span>
+						is installed in an environment that is operated by SAP, SAP will provide a
+						user that you should add as new member in your <span class="ph pname">SAP Cloud Platform</span>
+						account. In this case, please assign the <span class="keyword parmname">Cloud Connector
+							Admin</span> role (see <a class="xref" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a>) to the user provided by
+						SAP. Once the <span class="ph pname">Cloud connector</span>
+						connection is established, this user is not needed any more since it serves
+						for initial connection setup only. You may revoke the corresponding role
+						assignment then and remove the user from the <span class="ph uicontrol">Members</span>
+						list. </div>
+
+				</li>
+
+				<li class="li">Optional: You can define a <span class="ph uicontrol">Display Name</span>, which allows you
+					to easily recognize a specific account in the UI compared to the technical
+						<span class="ph uicontrol">Account Name</span>. </li>
+
+				<li class="li">Optional: you can define a <span class="ph uicontrol">Location ID</span> identifying the location of
+					this <span class="ph pname">Cloud connector</span> for
+					a specific account. Starting with <span class="ph pname">Cloud connector</span>
+					release <span class="ph emphasis emphasis">2.9.0</span>, the location ID is used as routing
+					information and thus it is possible to connect multiple cloud connectors to a
+					single account. If not specifying any value for Location ID, the default will be
+					used, which is representing the behavior of previous <span class="ph pname">Cloud connector</span>
+					versions. The location ID needs to be unique per account and should be some
+					identifier that can be used in a URI. In order to route requests to a <span class="ph pname">Cloud connector</span>
+					with a Location ID, the location ID needs to be configured in the respective
+						destinations.<div class="note note"><span class="notetitle">Note</span> Location IDs provided in older versions of Cloud
+						Connector will be discarded during upgrade to ensure compatibility for
+						existing scenarios.</div>
+</li>
+
+				<li class="li">Enter a suitable proxy host from your network and the port that is specified for this proxy.
+					If your network requires an authentication for the proxy, enter a corresponding
+					proxy user and password. You need to specify a proxy server that supports SSL
+					communication (a standard HTTP proxy will not suffice). <div class="note note"><span class="notetitle">Note</span> These settings
+						strongly depend on your specific network setup. If you need more detailed
+						information, please contact your local system administrator.</div>
+</li>
+
+				<li class="li">Optional: You can provide a <span class="ph uicontrol">Description</span> (free-text) of the account
+					that will be shown when clicking on the <span class="ph uicontrol">Details</span> icon in
+					the <span class="ph uicontrol">Actions</span> column of the Account Dashboard. It helps you
+					identify the particular <span class="ph pname">Cloud connector</span> you
+					use.</li>
+
+				<li class="li">When you have finished with the settings, choose <span class="ph uicontrol">Save</span>. </li>
+
+			</ol>
+
+			<p class="p"/>
+
+			<p class="p"><img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_xs3_g3c_b5" width="1400px" src="loiob3568339bb571014a923b3711e7a0df8_LowRes.png"/></p>
+
+		</div></div>
+
+		<div class="section">
+			<div class="p">The <span class="ph pname">Cloud connector</span> starts a
+				handshake with <span class="ph pname">SAP Cloud Platform</span> and attempts
+				to establish a secure SSL tunnel to the server hosting account in which your
+				on-demand applications are running. However, no requests are yet allowed to pass
+				from the cloud side to any of your internal back-end systems. To allow your
+				on-demand applications to access specific internal back-end systems, proceed with
+				the access configuration described in the next section. <div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">The internal network must allow access to the port. Specific configuration
+						for opening the respective port(s) depends on the firewall software used.
+						The default ports are <kbd class="ph userinput">80</kbd> for HTTP and
+							<kbd class="ph userinput">443</kbd> for HTTPS. For RFC communication, you need to
+						open a gateway port (default: <kbd class="ph userinput">33+&lt;instance
+							number&gt;</kbd> and an arbitrary message server port. For a
+						connection to a HANA Database (on <span class="ph pname">SAP Cloud Platform</span>) via
+						JDBC, you need to open an arbitrary <em class="ph i">outbound</em> port in your network.
+						Mail (SMTP) communication is not supported.</p>
+
+					<p class="p"/>
+
+				</div>
+</div>
+
+			<ul class="ul" id="loiodb9170a7d97610148537d5a84bf79ba2__ul_plm_3wk_cs">
+				<li class="li">
+					<p class="p">If you later need to change your proxy settings (for example, because the
+						company firewall rules have changed), choose
+							<span class="ph uicontrol">Configuration</span> from the main menu and go to tab
+							<span class="ph uicontrol">Cloud</span>, section<span class="ph uicontrol"> HTTPS
+						Proxy</span>. Some proxy servers require credentials for
+						authentication. In this case, you need to provide the relevant user/password
+						information.</p>
+
+					<p class="p"><img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_b33_l2f_hr" src="loio169e625f29264f9c9be0561ccf285433_HiRes.png"/></p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">If you want to change the description for your cloud connector, choose
+							<span class="ph uicontrol">Configuration</span> from the main menu, go to tab
+							<span class="ph uicontrol">Cloud</span>, section <span class="ph uicontrol">Connector
+							Info</span> and edit the description: </p>
+
+					<p class="p"><img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_g1h_zwk_cs" src="loio8898b572a0d1468688abed524e73685e_HiRes.png"/></p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section" id="loiodb9170a7d97610148537d5a84bf79ba2__establish_cloud_conection"><div class="section_title">Establish Connections to SAP Cloud Platform</div><div type="Establish Connections to SAP Cloud Platform">
+			
+			<p class="p">Once the initial setup has been completed successfully, the tunnel to the cloud endpoint is
+				open (even though no requests are allowed to pass until you have completed the
+					<span class="ph uicontrol">Access Control</span> setup). However, you can manually close
+				(and reopen) the connection to <span class="ph pname">SAP Cloud Platform</span> by opening
+				the <span class="ph uicontrol">Connector State</span> page and choosing the
+					<span class="ph uicontrol">Disconnect</span> button (or the <span class="ph uicontrol">Connect</span>
+				button to reconnect to <span class="ph pname">SAP Cloud Platform</span>). The yellow
+				state icon and the text indicate that there is still no resource exposed that could
+				be used from a cloud application. This requires additional configuration, which is
+				mentioned in the <span class="ph emphasis emphasis">Related Information</span> section.</p>
+
+			<p class="p"/>
+
+			<p class="p">Once the initial setup has been completed successfully, the tunnel to the cloud endpoint is
+				open (even though no requests are allowed to pass until you have completed the
+				access control setup. See <a class="xref" href="f42fe4471d6a4a5fb09b7f3bb83c66a4.html" title="When adding new accounts, it is possible for you to copy the complete access control settings from another account on the same Cloud connector. In case you skip this operation, you can do it later by using the import/export mechanism provided by the Cloud connector.">Configuring Access Control</a>).
+				However, you can manually close (and reopen) the connection to <span class="ph pname">SAP Cloud Platform</span> by choosing
+				your <span class="ph uicontrol">Account</span> from the main menu and pressing the
+					<span class="ph uicontrol">Disconnect/Connect</span> button. The status <span class="keyword cmdname">no active
+					resources available</span> indicates that additional configuration is
+				required.</p>
+
+			<p class="p">
+				<img class="image" id="loiodb9170a7d97610148537d5a84bf79ba2__image_iyd_myg_gk" src="loio761280b1711e1014839a8273b0e91070_LowRes.png" alt="Connector State" title="Connector State"/></p>
+
+			<div class="p">The green icons next to <span class="ph uicontrol">Landscape Host</span> and <span class="ph uicontrol">HTTPS
+					Proxy</span> indicate that they both are valid and work properly. In case
+				of a timeout or a connectivity issue, the icon is respectively yellow (warning) or
+				red (error), and a tooltip displays the cause of the problem. The <span class="ph uicontrol">Account
+					User</span> is the user that has originally established the tunnel. During
+				a normal operation, this user is no longer needed but some certificates, exchanged
+				during establishing a connection to an account, are used instead. <div class="note note"><span class="notetitle">Note</span> Once
+					connected, you can monitor the <span class="ph pname">Cloud connector</span>
+					also in the <em class="ph i">Connectivity</em> section of the <span class="ph pname">SAP Cloud Platform</span> cockpit.
+					There, you can track attributes like version, description and high availability
+					set up. Every <span class="ph pname">Cloud connector</span>
+					configured for your account will automatically appear in the Connectivity
+					section.</div>
+</div>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="f16df12fab9f4fe1b8a4122f0fd54b6e.html">Managing Accounts</a></div>
+<div><a class="link" href="120ceecfd84145a181ac160d588a7a3d.html" title="You can use LDAP (Lightweight Directory Access Protocol) to configure Cloud connector authentication.">Using LDAP for Authentication</a></div>
+<div><a class="link" href="de297ca9f7d04a8b83fea261f3fc3806.html">Configuring the Cloud Connector for HTTP</a></div>
+<div><a class="link" href="04acd29726494b86b05ba0d60984ae6f.html">Configuring the Cloud Connector for RFC</a></div>
+<div><a class="link" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

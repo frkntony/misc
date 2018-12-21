@@ -1,0 +1,35 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: eAZr2JjTv4sE4IahAd7PzE4IRMGmj
+ zXGDuuWSBvv/ZI=
+SHA-256-Digest-Manifest: XpD2cb+YNTr74DBHYOlEDq5NImx92BHd5r4VGcRxXzA=
+Created-By: 1.8.0_121 (Oracle Corporation)
+
+Name: p2.inf
+SHA-256-Digest: Ju0QcjkTUPKZRlBjkLQyE+IcM6/htuf/BNhQFZs2O8o=
+
+Name: feature_zh_CN.properties
+SHA-256-Digest: lpjffy+gjM+3pc/GtQc+rUw7N40KxDQq4U82OkEt+yM=
+
+Name: feature_ja.properties
+SHA-256-Digest: KbTguDoWRXXbqj80it3JFc7joWXin2zrBdXwCke+GI4=
+
+Name: feature_de.properties
+SHA-256-Digest: 5t5cTBSiwvYgkA+V+lcVpNlEc3uX+aJ1Dt2jw2HOhXk=
+
+Name: META-INF/maven/com.sap.ide.ui5/com.sap.ide.ui5.app.feature.exter
+ nal/pom.xml
+SHA-256-Digest: AQPDmD6XqqDTAAijVBAydbtV9/jmA5O0aVHTtJwkJvY=
+
+Name: feature_en.properties
+SHA-256-Digest: x9QTpf6V7ZRUwrkYh5WG1ouL84vVIwrRkB3SCXtpsfg=
+
+Name: feature.xml
+SHA-256-Digest: sfoSMZkLv1m6m3XpuHwPcAsM9/GYFZYAW/jc2JowJE0=
+
+Name: META-INF/maven/com.sap.ide.ui5/com.sap.ide.ui5.app.feature.exter
+ nal/pom.properties
+SHA-256-Digest: lM4Zr8mZKDkeFzksmn0Lhu6gg05ho8NKI7lTKFJ79Eo=
+
+Name: feature_fr.properties
+SHA-256-Digest: TlnT+Un2ex98Y4RUooORc0oukYL6fuZDWYyQBkUORIs=
+

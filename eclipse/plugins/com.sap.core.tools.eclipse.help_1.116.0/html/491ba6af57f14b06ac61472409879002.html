@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the SAP Cloud Platform cockpit, you can trigger a garbage collection for a repository to clean up unnecessary objects and compact the repository content aggressively."/>
+<meta name="description" content="In the SAP Cloud Platform cockpit, you can trigger a garbage collection for a repository to clean up unnecessary objects and compact the repository content aggressively."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Cleaning a Repository</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio491ba6af57f14b06ac61472409879002">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Cleaning a Repository</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the <span class="ph pname">SAP Cloud Platform</span>
+		cockpit, you can trigger a garbage collection for a repository to clean up unnecessary
+		objects and compact the repository
+		content
+		aggressively.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You are an administrator of the account.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Perform this operation from time to time to ensure the best possible performance for all Git operations. In addition, the Git service runs
+				normal garbage collections periodically.</p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">This operation might take a considerable amount of time and might impact the performance of some Git operations while it is running.</p>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio491ba6af57f14b06ac61472409879002__steps_hgx_qzp_g5"><li class="li step">
+				<span class="ph cmd">Log on to the <span class="ph pname">SAP Cloud Platform</span> cockpit, and select the required account.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Choose the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Repositories</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Git Repositories</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">In the list of Git repositories, locate the repository you want to work with and follow the link on the repository's name.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">On the details page of the repository, choose <span class="ph uicontrol">Garbage Collection</span>.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>The garbage collection runs in the background. You can use the Git repository without restrictions while the process is running.</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+   <context  id="LocalServerWizard" title="About Local Test Server for SAP Cloud Platform">
+        <description>1.	In HTTP port field, specify the HTTP port that the Web container will use to run and accept the HTTP requests. If you are not sure which port is free, leave the proposed default value.
+
+2.	If you prefer the configuration of your server instance to be created in a specific folder, select option Use custom working folder location.  You can:
+•	Manually type the full path to the folder 
+•	Use the Workspace button to select a folder from the workspace resources
+•	Use the File System button to select a folder from your local file system
+
+3.	Choose Next to continue or Finish to complete the wizard. 
+</description>
+		<topic href="../com.sap.core.tools.eclipse.help/html/0f16c9db4a9c407abb1b4987c0afe714.html"  label="Deploying Locally from Eclipse IDE"/> 
+   </context>
+</contexts>

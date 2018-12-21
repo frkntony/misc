@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can make your software running on a virtual machine accessible from the Internet if your scenario requires it."/>
+<meta name="description" content="You can make your software running on a virtual machine accessible from the Internet if your scenario requires it."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Enabling Internet Access</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioacf74847c5f846d0b4512cba64c18353">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Enabling Internet Access</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can make your software running on a virtual machine accessible from the Internet
+		if your scenario requires it.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Using console client commands, you can enable an access point of your application via which
+				end users can access the application over HTTPS. Alternatively, you can do that from
+				the <span class="ph pname">SAP Cloud Platform</span> cockpit.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p"><span class="ph pname">SAP Cloud Platform</span> supports communication over HTTPS only. So Internet
+					traffic will be directed over HTTPS to a software process running on your
+					virtual machine and listening on port 8041. For such communication, you need to
+					have a valid server certificate in place.</p>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Register an access point for a particular virtual machine:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo register-access-point --account myaccount --user mymail@example.com --host hana.ondemand.com --name myvm
+</pre></div>
+
+					</div>
+
+					<p class="p">You can check the access point with the <span class="keyword cmdname">list-vms</span>
+						command.</p>
+
+					<p class="p">Alternatively, you can enable Internet access to a virtual machine from the cockpit. Open
+							<span class="ph uicontrol">Virtual Machines</span> in the navigation, click the
+						name of the particular virtual machine and choose <span class="ph uicontrol">Expose to
+							Web</span>. </p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) When you no longer need the access point, remove it:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo unregister-access-point --account myaccount --user mymail@example.com --host hana.ondemand.com --name myvm
+</pre></div>
+
+					</div>
+
+					<p class="p">Alternatively, you can disable Internet access to a virtual machine from the cockpit. Open
+							<span class="ph uicontrol">Virtual Machines</span> in the navigation, click the
+						name of the particular virtual machine and choose <span class="ph uicontrol">Hide from
+							Web</span>.</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="962ccbbd5f634f918bbea9c1bf4273c3.html" title="Lists all virtual machines in the specified account. You can get information for a concrete virtual machine by name. The command output lists information about the virtual machine, such as size; status; SSH key; floating IP (if assigned); volume IDs.">list-vms</a></div>
+<div><a class="link" href="125cba59e7c14ecbac3d43c118cf570e.html" title="Registers an access point URL for a virtual machine specified by name or ID.">register-access-point</a></div>
+<div><a class="link" href="462a3d2ed57a487b954f1a05305e4eb2.html" title="Unregisters all access point URLs registered for a virtual machine specified by name or ID.">unregister-access-point</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

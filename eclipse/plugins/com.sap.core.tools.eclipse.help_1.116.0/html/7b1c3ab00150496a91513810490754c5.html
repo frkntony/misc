@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Rules Design Principles</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7b1c3ab00150496a91513810490754c5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Rules Design Principles</h1>
+
+	<div class="body conbody">
+		<div class="p">Rules are the core elements of the gamification design. Generally they follow the event
+			condition action (ECA) structure as for active rules in event driven architectures. Each
+			rule is structured in two parts: <ul class="ul" id="loio7b1c3ab00150496a91513810490754c5__ul_bwj_r5s_4t">
+				<li class="li">
+					<p class="p">Left hand side (LHS): rule conditions or trigger (events conditions and/or
+						player conditions)</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Right hand side (RHS): rule consequences (updates from the player and/or
+						event generation)</p>
+
+				</li>
+
+			</ul>
+</div>
+
+		<div class="p">The rule conditions (LHS) are maintained in the <span class="ph uicontrol">Trigger (“when”)</span>
+			area. Examples are:<ul class="ul" id="loio7b1c3ab00150496a91513810490754c5__ul_pdc_tvs_4t">
+				<li class="li">
+					<p class="p">Incoming event type - wait for event of type “solvedProblem”:</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='solvedProblem', $playerid:playerid) from entry-point eventstream</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Conditions on event parameters - player has more than 10 “Experience Points”:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='solvedProblem', data['relevance']=='critical', $playerid:playerid) from entry-point eventstream</pre></div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Conditions on player achievements - player has more than 10 "Experience Points":</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">eval(queryAPI.getPointsForPlayer($playerid, 'Experience Points').getAmount() &gt; 10) </pre></div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<div class="p">The rule consequences (RHS) are maintained in the <span class="ph uicontrol">Consequences
+				(“then”)</span> area. Examples are:<ul class="ul" id="loio7b1c3ab00150496a91513810490754c5__ul_smg_yxs_4t">
+				<li class="li">
+					<p class="p">Update achievements - “Experience Points” of the player are increased by 5:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPI.givePoints($playerid, "Experience Points", 5, "Task done" );
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Create new events - new event with the type “solvedProblemDelayed” that is triggered with a
+						delay of 1 minute:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject obj = new EventObject();
+obj.setType("solvedProblemDelayed");
+obj.setEventDuration(60*1000);
+obj.setPlayerid($playerid);
+entryPoints["unmanagedstream"].insert(obj);
+</pre></div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The <span class="ph pname">gamification service</span>
+				follows the “rule-first” approach. This means that any achievements of a player are
+				always updated using the rule engine. A modification of player achievements cannot
+				be done using an API (without any rule execution).</p>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

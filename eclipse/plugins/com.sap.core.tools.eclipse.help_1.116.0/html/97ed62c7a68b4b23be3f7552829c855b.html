@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Destination Parameters</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio97ed62c7a68b4b23be3f7552829c855b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Destination Parameters</h1>
+
+	<div class="body conbody">
+		<p class="p">This section lists the supported destination parameters.</p>
+
+		<div class="table-wrapper"><table summary="" id="loio97ed62c7a68b4b23be3f7552829c855b__simpletable_aj2_cpp_yy" border="1" class="simpletable"><tr class="sthead">
+				<th valign="bottom" align="left" id="d7104016e20" class="stentry" width="16.097190584662115%">MTA Parameter</th>
+
+				<th valign="bottom" align="left" id="d7104016e23" class="stentry" width="7.593014426727412%">Type</th>
+
+				<th valign="bottom" align="left" id="d7104016e26" class="stentry" width="8.428246013667428%">Mandatory</th>
+
+				<th valign="bottom" align="left" id="d7104016e29" class="stentry" width="8.048595292331058%">Sensitive</th>
+
+				<th valign="bottom" align="left" id="d7104016e32" class="stentry" width="18.678815489749432%">Possible Values</th>
+
+				<th valign="bottom" align="left" id="d7104016e36" class="stentry" width="9.339407744874716%">Default Value</th>
+
+				<th valign="bottom" align="left" id="d7104016e39" class="stentry" width="31.81473044798786%">Comment</th>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">name</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry"> </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">type</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">Enum</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"><span class="keyword parmname">HTTP, LDAP, MAIL, RFC</span></td>
+
+				<td valign="top" headers="d7104016e36" class="stentry">HTTP</td>
+
+				<td valign="top" headers="d7104016e39" class="stentry"> </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">description</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry"> </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">url</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">URL</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when the parameter <span class="keyword parmname">type</span> has the
+						<span class="keyword parmname">HTTP</span> or <span class="keyword parmname">LDAP</span> values. Mandatory
+					only for these types.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">proxy-type</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">Enum</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"><span class="keyword parmname">Internet, OnPremise</span></td>
+
+				<td valign="top" headers="d7104016e36" class="stentry">Internet</td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with <span class="keyword parmname">HTTP</span> or <span class="keyword parmname">LDAP</span> destination
+						<span class="keyword parmname">type</span>.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">authentication</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">Enum</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"><span class="keyword parmname">NoAuthentication, BasicAuthentication, AppToAppSSO,
+						ClientCertificateAuthentication, OAuth2SAMLBearerAssertion,
+						PrincipalPropagation, SAPAssertionSSO</span>
+				</td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"><span class="keyword parmname">NoAuthentication</span></td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with <span class="keyword parmname">HTTP</span> or <span class="keyword parmname">LDAP</span> destination
+						<span class="keyword parmname">type</span>.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">user</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when:<ul class="ul" id="loio97ed62c7a68b4b23be3f7552829c855b__ul_ydk_gt2_cz">
+						<li class="li">if <span class="keyword parmname">BasicAuthentication</span> is the Use
+								<span class="keyword parmname">Authentication</span> type</li>
+
+						<li class="li">if the parameter <span class="keyword parmname">type</span> has the values
+								<span class="keyword parmname">MAIL</span>, or <span class="keyword parmname">RFC</span>.</li>
+
+					</ul>
+</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">password</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when:<ul class="ul" id="loio97ed62c7a68b4b23be3f7552829c855b__ul_snq_st2_cz">
+						<li class="li">if <span class="keyword parmname">BasicAuthentication</span> is the
+								<span class="keyword parmname">Authentication</span> type</li>
+
+						<li class="li">if <span class="keyword parmname">MAIL</span>, or <span class="keyword parmname">RFC</span> are the
+							destination <span class="keyword parmname">type</span>.</li>
+
+					</ul>
+</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">audience</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> is the
+						<span class="keyword parmname">Authentication</span> type. Mandatory only for this
+					authentication.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">client-key</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e29" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> is the
+						<span class="keyword parmname">Authentication</span> type. Mandatory only for this
+					authentication.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">token-service-url</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">URL</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> is the
+						<span class="keyword parmname">Authentication</span> type. Mandatory only for this
+					authentication. </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">token-service-user</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> is the
+						<span class="keyword parmname">Authentication</span> type. </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">token-service-password</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> is the
+						<span class="keyword parmname">Authentication</span> type. </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">system-user</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> is the
+						<span class="keyword parmname">Authentication</span> type. </td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">issuer-sid</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">SAPAssertionSSO</span> is the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">issuer-client</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">SAPAssertionSSO</span> is the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">recipient-sid</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">SAPAssertionSSO</span> is the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">recipient-client</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">SAPAssertionSSO</span> is the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">certificate</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">SAPAssertionSSO</span> is the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">signing-key</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">SAPAssertionSSO</span> is the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">system-user</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use when <span class="keyword parmname">OAuth2SAMLBearerAssertion</span> or
+						<span class="keyword parmname">SAPAssertionSSO</span> are the
+						<span class="keyword parmname">Authentication</span> type.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">repository-user</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter
+					<span class="keyword parmname">type</span>.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">repository-password</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter
+					<span class="keyword parmname">type</span>.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">jco-client</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry">Yes</td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry">3 digits</td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter <span class="keyword parmname">type</span>.
+					Mandatory only for this authentication.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">jco-ashost</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry">00-99</td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter <span class="keyword parmname">type</span>..
+					Either this or <span class="keyword parmname">jco-mshost</span> must be specified.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">jco-sysnr</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter <span class="keyword parmname">type</span>,
+					if <span class="keyword parmname">jco-ashost</span> is specified.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">jco-mshost</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter <span class="keyword parmname">type</span>.
+					Either this or <span class="keyword parmname">jco-ashost</span> must be specified.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">jco-r3name</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry">3 letters or digits</td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter <span class="keyword parmname">type</span>,
+					if <span class="keyword parmname">jco-mshost</span> is specified.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">jco-msserv</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">String</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use with the <span class="keyword parmname">RFC</span> parameter <span class="keyword parmname">type</span>.,
+					if <span class="keyword parmname">jco-mshost</span> is specified.</td>
+
+			</tr>
+<tr class="strow">
+				<td valign="top" headers="d7104016e20" class="stentry"><span class="keyword parmname">additional-properties</span></td>
+
+				<td valign="top" headers="d7104016e23" class="stentry">Map</td>
+
+				<td valign="top" headers="d7104016e26" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e29" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e32" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e36" class="stentry"> </td>
+
+				<td valign="top" headers="d7104016e39" class="stentry">Use to define arbitrary additional properties.</td>
+
+			</tr>
+</table></div>
+
+		<div class="note note"><span class="notetitle">Note</span> In the case of account-level destinations, we recommend you place any sensitive
+			parameters in the MTA extension descriptor. In the case of the
+				<span class="keyword parmname">com.sap.java</span> module type, we recommend that you move all
+			destination parameters to the extension descriptor.</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

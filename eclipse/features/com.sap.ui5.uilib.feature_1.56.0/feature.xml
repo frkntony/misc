@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ui5.uilib.feature"
+      label="%label"
+      version="1.56.0"
+      provider-name="%providerName"
+	  plugin="com.sap.ui5.branding">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.ui5.branding"
+         download-size="8"
+         install-size="11"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.core"
+         download-size="10855"
+         install-size="41872"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.layout"
+         download-size="870"
+         install-size="4353"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.commons"
+         download-size="2180"
+         install-size="8201"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.table"
+         download-size="816"
+         install-size="3636"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.ux3"
+         download-size="1026"
+         install-size="4515"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.viz"
+         download-size="5694"
+         install-size="28489"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.rta"
+         download-size="737"
+         install-size="2648"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.comp"
+         download-size="2673"
+         install-size="12593"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.fl"
+         download-size="632"
+         install-size="2402"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.mobile"
+         download-size="6460"
+         install-size="29902"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.mobile-ext"
+         download-size="251"
+         install-size="1433"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.themelib_sap_bluecrystal"
+         download-size="1395"
+         install-size="7262"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.makit"
+         download-size="434"
+         install-size="1863"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.richtexteditor"
+         download-size="8283"
+         install-size="22754"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.unified"
+         download-size="1323"
+         install-size="5504"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.suite.suite-ui-microchart"
+         download-size="891"
+         install-size="5071"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.suite.suite-ui-commons"
+         download-size="2775"
+         install-size="14667"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.vbm"
+         download-size="2096"
+         install-size="8388"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.collaboration.collaboration-commons"
+         download-size="933"
+         install-size="3740"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ushell.ushell-lib"
+         download-size="13756"
+         install-size="50312"
+         version="1.56.0"
+         unpack="false"/>
+   <plugin
+         id="com.sap.ushell.ushell-lib-testresources"
+         download-size="3420"
+         install-size="17732"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ca.ui"
+         download-size="20891"
+         install-size="39709"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ca.scfld.md"
+         download-size="268"
+         install-size="891"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.apf.apf-lib"
+         download-size="2484"
+         install-size="18169"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.uxap.uxap-uilib"
+         download-size="611"
+         install-size="2659"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ovp.ovp-lib"
+         download-size="1665"
+         install-size="7247"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.gantt.gantt.lib"
+         download-size="1107"
+         install-size="4943"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.themelib_sap_belize"
+         download-size="5004"
+         install-size="32326"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.tnt"
+         download-size="250"
+         install-size="1196"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.ndc"
+         download-size="56"
+         install-size="138"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.generic-app"
+         download-size="229"
+         install-size="858"
+         version="1.56.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ui5.fiori"
+         download-size="499"
+         install-size="2253"
+         version="1.56.0"
+         unpack="false"/>
+
+</feature>

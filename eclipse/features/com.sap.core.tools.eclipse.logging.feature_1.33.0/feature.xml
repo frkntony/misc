@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.core.tools.eclipse.logging.feature"
+      label="%name"
+      version="1.33.0"
+      provider-name="%providerName"
+      plugin="com.sap.core.tools.eclipse.logging">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.core.log.dev.app.logs"
+         download-size="16"
+         install-size="26"
+         version="2.6.54"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.log.dev.rest.client"
+         download-size="17"
+         install-size="29"
+         version="2.6.54"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.logging"
+         download-size="162"
+         install-size="321"
+         version="1.33.0"
+         unpack="false"/>
+
+</feature>

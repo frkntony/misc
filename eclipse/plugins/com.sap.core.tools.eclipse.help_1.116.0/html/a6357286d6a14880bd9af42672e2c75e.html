@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Debugging Server-Side JavaScript with SAP HANA Web-based Development Workbench</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa6357286d6a14880bd9af42672e2c75e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Debugging Server-Side JavaScript with SAP HANA Web-based Development Workbench</h1>
+<div class="body taskbody"><div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>Use this procedure to debug your HANA XS applications with SAP HANA Web-based Development
+			Workbench. <div class="note note"><span class="notetitle">Note</span> If your session in SAP HANA Web-based Development Workbench expires and
+				you are requested to log on, close the browser tab or window, and use the
+					<span class="ph uicontrol">Open in Web-based Development Workbench</span> link in the
+				Cockpit to reopen it.</div>
+</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioa6357286d6a14880bd9af42672e2c75e__steps_kvw_hdq_h4"><li class="li step stepexpand"><span class="ph cmd">Log onto the cockpit on the Trial landscape and choose <span class="ph uicontrol">HANA XS
+						Applications</span>.</span><div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> We recommend that you use the Google Chrome browser.</div>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">In the <span class="ph uicontrol">HANA XS Applications</span> table, select the
+					application to display its details.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">In the <span class="ph uicontrol">Application Details</span> section, click
+						<span class="ph uicontrol">Open in Web-based Development Workbench</span>. </span></li>
+<li class="li step stepexpand"><span class="ph cmd">Grant your database user permission to debug your current session with the HANA
+					XS application. This is done as follows:</span><ol type="a" class="ol substeps" id="loioa6357286d6a14880bd9af42672e2c75e__substeps_e33_rgq_h4"><li class="li substep substepexpand"><span class="ph cmd">Open your XS application that you want to debug.</span></li>
+<li class="li substep substepexpand"><span class="ph cmd">Open the <span class="ph uicontrol">XS debugging</span> application using the following URL:
+								<span class="ph filepath">https://&lt;your HANA XS application
+								host&gt;/sap/hana/xs/debugger/</span></span><div class="itemgroup info">
+							<p class="p">You can get the HANA XS application root using the HANA XS
+								Applications section in the Cockpit (see the image below).</p>
+
+							<p class="p"><img class="image" id="loioa6357286d6a14880bd9af42672e2c75e__image_okh_lmy_j4" src="loio05f9340c4e6348dca91adfbe4bac6339_LowRes.png"/>
+							</p>
+
+						</div><div class="itemgroup stepxmp">For example, your URL may look like this:
+									<p class="p"><span class="ph filepath">https://s2hanaxs.hanatrial.ondemand.com/sap/hana/xs/debugger/</span></p>
+</div></li>
+<li class="li substep substepexpand"><span class="ph cmd">Enter your database user name and expiration date and time of the
+							permission.</span><div class="itemgroup info">
+							<div class="note tip"><span class="tiptitle">Tip</span> Get your database user name from the top right corner
+								of SAP HANA Web-based Development Workbench.<p class="p"><img class="image" id="loioa6357286d6a14880bd9af42672e2c75e__image_c51_3ng_34" src="loioc19c7f6231c24defbb8b2ea30f573973_LowRes.png"/></p>
+</div>
+
+						</div></li>
+<li class="li substep substepexpand"><span class="ph cmd">Choose <span class="ph uicontrol">Grant</span>.</span><div class="itemgroup info">
+							<p class="p"><img class="image" id="loioa6357286d6a14880bd9af42672e2c75e__image_msj_c4g_34" src="loiof3eb4d2e28364040a26f50a8e2bf7c5b_LowRes.png"/></p>
+</div></li>
+</ol>
+</li>
+<li class="li step stepexpand"><span class="ph cmd">In the SAP HANA Web-based Development Workbench, choose the
+						<span class="ph uicontrol">Settings</span> button, then choose the xsSessionId that you
+					want to debug.</span><div class="itemgroup info"><div class="note tip"><span class="tiptitle">Tip</span> Use your browser’s developer tools to get the value of the
+						xsSessionId cookie of the required session.</div>
+<img class="image" id="loioa6357286d6a14880bd9af42672e2c75e__image_idt_jpg_34" src="loio6c8ad15256904323bbcccbd971587fcd_LowRes.png"/></div></li>
+<li class="li step stepexpand"><span class="ph cmd">Depending on whether you want to debug a <span class="ph filepath">.xsjs</span> file directly, or a
+					more complex scenario (set a breakpoint in a <span class="ph filepath">.xsjs</span> file and
+					run another file), do the following:</span><ul class="ul choices" id="loioa6357286d6a14880bd9af42672e2c75e__choices_ur1_cmb_xm"><li class="li choice"><span class="ph filepath">.xsjs</span> file: <ol class="ol" type="a" id="loioa6357286d6a14880bd9af42672e2c75e__ol_zlw_fbc_xm"><li class="li">Set the breakpoints and then choose the <span class="ph uicontrol">Run on server
+									(F8)</span> button.</li>
+</ol>
+</li>
+<li class="li choice">Complex scenario:<ol class="ol" type="a" id="loioa6357286d6a14880bd9af42672e2c75e__ol_zl5_gbc_xm"><li class="li">Set the breakpoint in the <span class="ph filepath">.xsjs</span> file you want
+								to debug.</li>
+<li class="li">Open a new tab in the browser and then open the other file on this tab by entering its
+								URL (<span class="ph filepath">https://&lt;your HANA XS application
+									host&gt;/&lt;package&gt;/&lt;file&gt;</span>). </li>
+</ol>
+<div class="note note"><span class="notetitle">Note</span>  If you synchronously call the <span class="ph filepath">.xsjs</span> file in
+							which you have set a breakpoint and then open the other file in the SAP
+							HANA Web-based Development Workbench and execute it by choosing the
+								<span class="ph uicontrol">Run on server (F8)</span> button, you will block
+							your debugging session. You will then need to terminate the session by
+							closing the SAP HANA Web-based Development Workbench tab.
+						</div>
+</li>
+</ul>
+<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> If you leave your debugging session idle for some time once you have
+						started debugging, your session will time out. An error in the WebSocket
+						connection to the backend will be reported and your WebSocket connection for
+						debugging will be closed. If this occurs, reopen the SAP HANA Web-based
+						Development Workbench and start another debugging session.</div>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Perform the required activities in your HANA XS application, and observe the behavior of
+					the debugging session in <span class="ph uicontrol">Web-based Development
+					Workbench</span>.</span><div class="itemgroup info"><img class="image" id="loioa6357286d6a14880bd9af42672e2c75e__image_jts_ltg_34" src="loioda1cd4ad050e4a4da52f4afbbc8460b9_LowRes.png"/></div></li>
+</ol>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_en.pdf">SAP HANA Developer Guide</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

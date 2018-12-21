@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command stops the creation of new connections to an application or application process, but keeps the already running sessions alive. You can check if an application or application process has been disabled by executing the status command."/>
+<meta name="description" content="This command stops the creation of new connections to an application or application process, but keeps the already running sessions alive. You can check if an application or application process has been disabled by executing the status command."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>disable</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio59fedc12d81b4801aa24c3b12414e382">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">disable</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command stops the creation of new connections to an application or application
+		process, but keeps the already running sessions alive. You can check if an application or
+		application process has been disabled by executing the status command.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo disable --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt;</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loio59fedc12d81b4801aa24c3b12414e382__section_N1001E_N10012_N10001">To list all parameters available for this command,
+			execute <kbd class="ph userinput">neo help disable</kbd> in the command line. 
+<div class="table-wrapper tablenoborder"><table summary="" id="loio59fedc12d81b4801aa24c3b12414e382__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d4013657e45">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d4013657e45 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d4013657e45 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+<p class="p"><span class="keyword cmdname">Condition</span>: Not required if
+									using <span class="keyword parmname">--application-process-id</span></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d4013657e45 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d4013657e45 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a
+										letter)</p>
+<p class="p"><span class="keyword cmdname">Condition</span>: Not required if
+									using <span class="keyword parmname">--application-process-id</span></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d4013657e45 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d4013657e45 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d4013657e45 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d4013657e45 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d4013657e45 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d4013657e45 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio59fedc12d81b4801aa24c3b12414e382__table_hbv_n53_jl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d4013657e177">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d4013657e177 "><span class="keyword parmname">-i</span>,
+									<span class="keyword parmname">--application-process-id</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d4013657e177 ">Unique ID of a single application process. Use it to disable a
+								particular application process instead of the whole application. As
+								the process ID is unique, you do not need to specify account and
+								application parameters. You can list the application process ID by
+								using the <var class="keyword varname">&lt;status&gt;</var>
+										command.<p class="p"><span class="keyword cmdname">Default</span>: none
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string (hexadecimal sequence
+									of 2 to 40 characters)</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">To disable the whole application,
+				execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo disable --host hana.ondemand.com --account myacc --application myapp --user mymail@example.com</pre></div>
+</div>
+
+			<div class="p">To disable a single applcation process, first identify the application process you want to
+				disable by executing <kbd class="ph userinput">neo
+				status</kbd>:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo status --host hana.ondemand.com --account myacc --application myapp --user mymail@example.com</pre></div>
+</div>
+
+			<p class="p">From the generated list of application process IDs, copy the ID you need and execute
+					<kbd class="ph userinput">neo disable</kbd> for it:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo disable --application-process-id e8df21d  --host hana.ondemand.com --user mymail@example.com </pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="17e8e9622e63434a880f322f75db3e8e.html" title="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs.">Soft Shutdown</a></div>
+<div><a class="link" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a></div>
+<div><a class="link" href="d4f6592584464cc6a5c3c0b6fc88abf9.html" title="You can check the current status of an application or application process. The command lists all application processes with their IDs, state, last change date sorted chronologically, and runtime information.">status</a></div>
+<div><a class="link" href="7886796eb9b9419fa6cecf1d215c38d8.html">Exit Codes</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

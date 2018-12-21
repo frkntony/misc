@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>RFC Destinations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe184daba118b46679c6968567bacc98e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">RFC Destinations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loioe184daba118b46679c6968567bacc98e__section_N10017_N10011_N10001">
+			<p class="p">RFC destinations provide the configuration needed for communicating with an on-premise ABAP
+				system via RFC. The RFC destination data is used by the JCo version that is offered
+				within <span class="ph pname">SAP Cloud Platform</span> to
+				establish and manage the connection.</p>
+
+		</div>
+
+		<div class="section" id="loioe184daba118b46679c6968567bacc98e__section_N10024_N10011_N10001"><div class="section_title">RFC Destination Properties</div><div type="RFC Destination Properties">
+			
+			<p class="p">The RFC destination specific configuration in <span class="ph pname">SAP Cloud Platform</span> consists of
+				properties arranged in groups, as described below. The supported set of properties
+				is a subset of the standard JCo properties in arbitrary environments. The
+				configuration data is divided into the following groups: </p>
+
+			<ul class="ul" id="loioe184daba118b46679c6968567bacc98e__ul_qpz_lsx_1k">
+				<li class="li"><a class="xref" href="629f957a973b49fda84f67338ab39371.html">User logon properties</a></li>
+
+				<li class="li"><a class="xref" href="f8fac995b0144a0b8ec0801b8f7bab3e.html">Physical connection</a></li>
+
+				<li class="li"><a class="xref" href="9d768240af6446049cf90d47dc798b8d.html">Special parameters</a></li>
+
+				<li class="li"><a class="xref" href="8278bed44893498f95d5d6d5f0a47f35.html">Pooling configuration</a></li>
+
+				<li class="li"><a class="xref" href="41a1928a6bb8459d852b631bd5d55979.html">Repository configuration</a></li>
+
+			</ul>
+
+			<p class="p">The minimal configuration contains user logon properties and information identifying the
+				target host. This means you must provide at least a set of properties containing
+				this information.</p>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=SalesSystem
+Type=RFC
+jco.client.client=000
+jco.client.lang=EN
+jco.client.user=consultant
+jco.client.passwd=&lt;password&gt;
+jco.client.ashost=sales-system.cloud
+jco.client.sysnr=42
+jco.destination.pool_capacity=5
+jco.destination.peak_limit=10</pre></div>
+
+		</div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

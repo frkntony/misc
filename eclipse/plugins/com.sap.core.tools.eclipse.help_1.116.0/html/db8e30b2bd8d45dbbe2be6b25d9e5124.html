@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>MyDocumentTypeDefinition Class</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodb8e30b2bd8d45dbbe2be6b25d9e5124">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">MyDocumentTypeDefinition Class</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"/>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+import java.util.Map;
+
+import org.apache.chemistry.opencmis.commons.definitions.DocumentTypeDefinition;
+import org.apache.chemistry.opencmis.commons.definitions.PropertyDefinition;
+import org.apache.chemistry.opencmis.commons.enums.BaseTypeId;
+import org.apache.chemistry.opencmis.commons.enums.ContentStreamAllowed;
+
+public class MyDocumentTypeDefinition extends MyTypeDefinition implements DocumentTypeDefinition {
+
+  private ContentStreamAllowed contentStreamAllowed = null;
+  private Boolean versionable = null;
+
+  public MyDocumentTypeDefinition(String idAndQueryName, String description, 
+    String displayName, String localName, String localNamespace, 
+    String parentTypeId, Boolean isCreatable,
+    Boolean includedInSupertypeQuery, Boolean queryable,
+    ContentStreamAllowed contentStreamAllowed, Boolean versionable,
+    Map&lt;String, PropertyDefinition&lt;?&gt;&gt; propertyDefinitions) {
+
+    super(idAndQueryName, description, displayName, localName, localNamespace, 
+      parentTypeId, isCreatable, includedInSupertypeQuery, queryable, propertyDefinitions);
+
+    this.contentStreamAllowed = contentStreamAllowed;
+    this.versionable = versionable;
+  }
+
+  @Override
+  public BaseTypeId getBaseTypeId() {
+    return BaseTypeId.CMIS_DOCUMENT;
+  }
+
+  @Override
+  public ContentStreamAllowed getContentStreamAllowed() {
+    return contentStreamAllowed;
+  }
+
+  @Override
+  public Boolean isVersionable() {
+    return versionable;
+  }
+
+}
+
+</pre></div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

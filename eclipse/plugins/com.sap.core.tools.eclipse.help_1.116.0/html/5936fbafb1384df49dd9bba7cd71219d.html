@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To use a schema, you bind it to an application. Bindings are identified by a data source name, which must be unique per application. You can bind the same schema to multiple applications, and the same application to multiple schemas."/>
+<meta name="description" content="To use a schema, you bind it to an application. Bindings are identified by a data source name, which must be unique per application. You can bind the same schema to multiple applications, and the same application to multiple schemas."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Binding Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio5936fbafb1384df49dd9bba7cd71219d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Binding Schemas</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To use a schema, you bind it to an application. Bindings are identified by a data source
+		name, which must be unique per application. You can bind the same schema to multiple
+		applications, and the same application to multiple schemas.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">In the cockpit, you can create and delete schema bindings at both the
+				schema
+				and application level:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio5936fbafb1384df49dd9bba7cd71219d__ul_jbq_s4s_v4">
+					<li class="li">To create bindings by schema, use the <span class="ph uicontrol">Data Source Bindings</span> panel at
+						the schema level.</li>
+
+					<li class="li">To create bindings by application, use the <span class="ph uicontrol">Data Source Bindings</span>
+						panel at application level.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio5936fbafb1384df49dd9bba7cd71219d__steps_df1_hbj_44"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit
+					and select an account. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose one of the following options:</span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio5936fbafb1384df49dd9bba7cd71219d__choicetable_y3j_ttn_54">
+<thead><tr><th valign="bottom" align="left" id="d3986471e53-option">To create bindings...</th>
+<th valign="bottom" align="left" id="d3986471e53-desc">Do the following</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d3986471e53-option" id="d3986471e66" class="stentry choption" width="25%"><strong>
+							<p class="p">By schema </p>
+
+						</strong></td>
+
+						<td valign="top" headers="d3986471e53-desc d3986471e66" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loio5936fbafb1384df49dd9bba7cd71219d__ol_jx5_wtn_54">
+								<li class="li">
+									<p class="p">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Select
+										the schema for which you want to create a new binding. </p>
+
+									<p class="p">The
+										overview shows the schema details, for example, its state,
+										and the number of existing bindings, and provides access to
+										further actions.</p>
+
+								</li>
+
+								
+								<li class="li">
+									<p class="p">Choose <span class="ph uicontrol">Data Source Bindings</span> in the
+										navigation area.</p>
+
+									<p class="p">The overview shows the bindings available for the specific
+										schema.</p>
+
+								</li>
+
+								
+								<li class="li">
+									<p class="p">Choose the <span class="ph uicontrol">New Binding</span> button.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">In the <span class="ph uicontrol">New Binding</span> dialog box, enter a data source name and
+										select
+										the name of the application to which the
+										schema should be bound. Note that the application must be
+										deployed
+										in
+										the selected account.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Save your entries.</p>
+
+								</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3986471e53-option" id="d3986471e142" class="stentry choption" width="25%"><strong>
+							<p class="p">By application</p>
+
+						</strong></td>
+
+						<td valign="top" headers="d3986471e53-desc d3986471e142" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loio5936fbafb1384df49dd9bba7cd71219d__ol_eyk_h5n_54">
+								<li class="li">
+									<p class="p">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area and select the
+										relevant application in the application list.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Configuration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Data Source Bindings</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+									
+									<p class="p">The overview shows the bindings available for the specific
+										application.</p>
+
+									
+									
+								</li>
+
+								<li class="li">
+									<p class="p">Choose the <span class="ph uicontrol">New Binding</span> button.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Enter a data source name and
+										select
+										the schema to which the application should
+										be bound:</p>
+
+									<ul class="ul" id="loio5936fbafb1384df49dd9bba7cd71219d__ul_omd_s5n_54">
+										<li class="li">
+											<p class="p">If the schema already exists, select the schema from
+												the dropdown box.</p>
+
+										</li>
+
+										<li class="li">
+											<p class="p">To create a schema, choose <span class="ph uicontrol">New</span>, then enter the schema ID,
+												select a database from the dropdown box, and save
+												your entries. The newly created schema is entered in
+												the <span class="ph uicontrol">Schema ID</span> field.</p>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Save your entries.</p>
+
+								</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<ul class="ul" id="loio5936fbafb1384df49dd9bba7cd71219d__ul_ygd_y5n_54">
+							<li class="li">To create a binding to the default data source, enter the data
+								source name <kbd class="ph userinput">&lt;DEFAULT&gt;</kbd>. </li>
+
+							<li class="li">An application that is bound to the default data source (shown as
+									<samp class="ph systemoutput">&lt;DEFAULT&gt;</samp>) cannot be bound to
+								additional schemas. To use additional schemas, first rebind the
+								application using a named data source. </li>
+
+							<li class="li">Data source names are freely definable but need to match the JNDI
+								data source names used in the respective applications, as defined in
+								the <span class="ph filepath">web.xml</span> or
+									<span class="ph filepath">persistence.xml</span> file. For more information,
+								see the example scenarios. </li>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">An application’s state influences when a newly bound schema becomes effective. If an
+				application is already running (<span class="keyword">Started</span> state), it will continue
+				to use the old schema until it is restarted. A restart is also required if
+				additional schemas have been bound to the application. </p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> To unbind a schema from an application, simply delete the binding. The
+					application will retain access to the schema until it is restarted.</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="7e5b0443011d4b46bac953d729eadd2c.html" title="The schema management scenarios outline the steps involved for the most typical use cases of schemas. To manipulate schemas, the scenarios use the console client together with the schema commands provided by the persistence service. The scenarios can also be performed from the cockpit in a similar manner.">Example Scenarios</a></div>
+<div><a class="link" href="ce689b2f0d4c434cb820f945a0a3ae18.html" title="This command binds a schema to a Java application via a data source. If a data source name is not specified, the schema will be automatically bound to the default data source of the application.">bind-schema</a></div>
+<div><a class="link" href="41e70ab3109a44fd836cfaa460a6598e.html" title="This command unbinds a schema from an application for a particular data source.">unbind-schema</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can create schemas with a freely definable name and assign them certain properties, such as a specific database type. This allows you, for example, to create schemas that are associated with a database platform of your choice, rather than the default database platform assigned to the account. To use a schema, you bind it to an application."/>
+<meta name="description" content="You can create schemas with a freely definable name and assign them certain properties, such as a specific database type. This allows you, for example, to create schemas that are associated with a database platform of your choice, rather than the default database platform assigned to the account. To use a schema, you bind it to an application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating and Binding Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiobcc6c2f457d34fca80153296e3b9076c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating and Binding Schemas</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can create schemas with a freely definable name and assign them certain properties,
+		such as a specific database type. This allows you, for example, to create schemas that are
+		associated with a database platform of your choice, rather than the default database
+		platform assigned to the account. To use a schema, you bind it to an application. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">In this scenario, an application has been deployed with the default database type assigned to
+				the account. You use the <span class="keyword cmdname">unbind-schema</span> command to first remove
+				the schema already assigned to the application and then create a schema with the
+				database type you want to use (<span class="keyword cmdname">create-schema</span>) and bind it to the
+				application (<span class="keyword cmdname">bind-schema</span>). The following example data is used: </p>
+
+			<div class="p">
+				<ul class="ul" id="loiobcc6c2f457d34fca80153296e3b9076c__ul_ikl_zlx_tk">
+					<li class="li">The application <kbd class="ph userinput">myapp</kbd> runs on the SAP MaxDB database
+						and is bound to a schema that was created automatically. The application has
+						been stopped.</li>
+
+					<li class="li">Runtime environment: Java Web</li>
+
+					<li class="li">Data source name: <kbd class="ph userinput">jdbc/dshana</kbd></li>
+
+					<li class="li">Schema: <kbd class="ph userinput">myhana</kbd></li>
+
+					<li class="li">User: <kbd class="ph userinput">test</kbd></li>
+
+					<li class="li">Account: <kbd class="ph userinput">myaccount</kbd></li>
+
+					<li class="li">Deployment landscape: <kbd class="ph userinput">hana.ondemand.com</kbd> (replace as
+						necessary, for example, with <kbd class="ph userinput">hanatrial.ondemand.com</kbd>
+						for developer accounts)  </li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the application's <span class="ph filepath">web.xml</span> file, update the resource definition by
+					replacing the default data source
+						<samp class="ph codeph">&lt;res-ref-name&gt;jdbc/DefaultDB&lt;/res-ref-name&gt;</samp>, or
+					similar, with the named data source
+						<samp class="ph codeph">&lt;res-ref-name&gt;jdbc/dshana&lt;/res-ref-name&gt;</samp>: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+&lt;res-ref-name&gt;jdbc/dshana&lt;/res-ref-name&gt;
+&lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Adjust the JNDI lookup in the application to use the data source you just
+					defined in the <span class="ph filepath">web.xml</span> file. You will later bind the the
+					application to the <kbd class="ph userinput">myhana</kbd> schema using this data source: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint"># JNDI lookup
+InitialContext ctx = new InitialContext();
+DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/dshana");</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder and enter the
+					following command to create a schema for the SAP HANA database: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-schema -h hana.ondemand.com -u test -a myaccount --id myhana --dbtype hana</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check the schema has been created:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-schemas -a myaccount -h hana.ondemand.com -u test --verbose</pre></div>
+
+					<div class="p">Example
+						output:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Schema ID DB Type
+myhana    hana</pre></div>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Unbind the current schema from the application. Since the application has a
+					default binding, you do not need to specify a data source name:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo unbind-schema -a myaccount -b myapp -h hana.ondemand.com -u test</pre></div>
+
+					<p class="p">A confirmation is displayed that the schema was successfully unbound. </p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Since you have made code changes, redeploy the application. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Bind the schema to the application using the data source you defined in the application.
+					Make sure that the name is identical to that in the <span class="ph filepath">web.xml</span>
+					file and in the JNDI lookup (<kbd class="ph userinput">jdbc/dshana</kbd>): </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-schema -h hana.ondemand.com -u test -a myaccount -b myapp --data-source jdbc/dshana --id myhana</pre></div>
+
+					<p class="p">A confirmation is displayed that the schema was successfully bound.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optionally check as follows:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-datasources -a myaccount -h hana.ondemand.com -u test -b myapp</pre></div>
+
+					<div class="p">Example
+						output:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Schema ID DB Type Data Source
+myhana    hana    jdbc/dshana</pre></div>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start the application so that it uses the new schema. </span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

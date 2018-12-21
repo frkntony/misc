@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="When accessing a REST service from an HTML5 application, a new connection is initiated by the HTML5 application to the URL that is defined in the HTTP destination."/>
+<meta name="description" content="When accessing a REST service from an HTML5 application, a new connection is initiated by the HTML5 application to the URL that is defined in the HTTP destination."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing REST Services</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof4ffc398dcf9482e99ad6a0e1dbe1c20">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accessing REST Services</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">When accessing a REST service from an HTML5 application, a new connection is initiated by the HTML5 application to the URL that is defined
+		in the HTTP destination.</p>
+
+		<p class="p">To prevent that security-relevant headers or cookies are returned from the REST service to the client, only whitelisted headers are returned.
+			While some headers are whitelisted per default, additional headers can be whitelisted in the application descriptor file. For more
+			information about how to whitelist additional headers, see <a class="xref" href="df89d9cd06a84905a3a4747f102c5b2c.html" title="For security reasons not all HTTP headers are forwarded from the application to a backend or from the backend to the application.">Header Whitelisting</a>.</p>
+
+		<p class="p">Cookies that are retrieved from a REST service response are stored by the HTML5 application in an HTTP session that is bound to the client
+			request. The cookies are not returned to the client. If a subsequent request is initiated to the same REST service, the cookies are added
+			to the request by the application. Only those cookies are added that are valid for the request in the sense of correct domain and
+			expiration date. When the client session is terminated, all associated cookies are removed from the HTML5.</p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

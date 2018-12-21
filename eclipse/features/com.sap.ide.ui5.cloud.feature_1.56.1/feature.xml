@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ide.ui5.cloud.feature"
+      label="UI development toolkit for HTML5 (Developer Edition)"
+      version="1.56.1"
+      provider-name="SAP">
+
+   <description>
+      Tools for developing SAPUI5 applications. Offers easy-to-use wizards for creating and maintaining SAPUI5 applications and supports the SAPUI5 MVC concept.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <includes
+         id="com.sap.ide.ui5.app.feature"
+         version="1.56.1"/>
+
+   <includes
+         id="com.sap.ui5.runtime.feature"
+         version="1.56.0"/>
+
+   <includes
+         id="com.sap.ui5.uilib.feature"
+         version="1.56.0"/>
+
+</feature>

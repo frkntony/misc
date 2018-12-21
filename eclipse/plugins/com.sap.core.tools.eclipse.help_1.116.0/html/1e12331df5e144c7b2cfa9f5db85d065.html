@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command deploys Multi-Target Application (MTA) archives. One or more than one MTA archives can be deployed to your account in one go."/>
+<meta name="description" content="This command deploys Multi-Target Application (MTA) archives. One or more than one MTA archives can be deployed to your account in one go."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>deploy-mta</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio1e12331df5e144c7b2cfa9f5db85d065">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">deploy-mta</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command deploys Multi-Target Application (MTA) archives. One or more than one MTA
+		archives can be deployed to your account in one go. </p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy-mta --host &lt;landscape_host&gt; --account &lt;account_name&gt;  --source &lt;file(1)_location&gt;,&lt;file(2)_location&gt;,...,&lt;file(n)_location&gt; --user &lt;e-mail_or_user&gt;			</pre></div>
+
+		</div>
+
+		<div class="section" id="loio1e12331df5e144c7b2cfa9f5db85d065__section_N10015_N10012_N10001"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section">To list all parameters available for this command, execute <kbd class="ph userinput">neo help
+				deploy-mta</kbd> in the command line.
+<div class="table-wrapper tablenoborder"><table summary="" id="loio1e12331df5e144c7b2cfa9f5db85d065__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d1319972e45">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1319972e45 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1319972e45 ">The name of the account for which you provide a user and a
+								password.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1319972e45 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1319972e45 ">The landscape host on which you execute the command.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1319972e45 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1319972e45 ">Your user password. We recommend that you enter it only when
+								prompted, and not explicitly as a parameter in a properties file or
+								the command line.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1319972e45 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1319972e45 ">Your user email or SAP ID (SCN) user name.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1319972e45 "><span class="keyword parmname">-s, --source</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1319972e45 ">A comma-separated list of file locations, pointing to MTA archive
+								files or folders containing them.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio1e12331df5e144c7b2cfa9f5db85d065__table_ivf_cz5_ll" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d1319972e128">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" colspan="2" valign="top" headers="d1319972e128 "><span class="ph emphasis emphasis">Command-specific parameters
+								</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1319972e128 "><span class="keyword parmname">-y, --synchronous </span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1319972e128 ">Triggers the deployment and waits until the deployment operation
+								finishes. The command without the <span class="keyword parmname">--synchronous</span>
+								parameter triggers deployment and exits immediately without waiting
+								for the operation to finish. Takes no value.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section" id="loio1e12331df5e144c7b2cfa9f5db85d065__section_N1014A_N10012_N10001"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">You can deploy an MTA archive on a host different from the default one by specifying the host
+				parameter. For example, to use the data center located in the United States,
+				execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy-mta --host us1.hana.ondemand.com --account myacc --source /usr/test/deploy_mta/example.mta --user mymail@example.com</pre></div>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="c0ddd3c227b54c42bda6e00ee6a13618.html">Multi-Target Applications</a></div>
+<div><a class="link" href="8029e1a15ad948d2a2387266fb31c9ba.html" title="This command shows the MTA operation status with a given ID.">list-mta-operations</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform allows you to achieve isolation between the different application life cycle stages (development, testing, productive) by using multiple accounts."/>
+<meta name="description" content="SAP Cloud Platform allows you to achieve isolation between the different application life cycle stages (development, testing, productive) by using multiple accounts."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Multiple Accounts for Staged Application Development</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio486b0ac8494f49d7a4fd92fa05ff81d7">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using Multiple Accounts for Staged Application Development</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> allows you to achieve isolation between the different
+		application life cycle stages (development, testing, productive) by using multiple
+		accounts.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio486b0ac8494f49d7a4fd92fa05ff81d7__ul_qls_gkx_xl">
+				<li class="li">You have developed an application. For more information, see <a class="xref" href="ac36e1fc0f634c0caa99916b3bd6b446.html">Developing Java Applications</a>.</li>
+
+				<li class="li">You have a customer or partner account. For more information, see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div><p class="p"> Using multiple accounts ensures better stability as in the productive account, you only deploy
+				tested versions of the application. Also, you can achieve better security for
+				productive applications because permissions are given per account.</p>
+
+			<div class="p">For example, you can create three different accounts for one application and assign the
+				necessary amount of compute unit quota to them:: <ul class="ul" id="loio486b0ac8494f49d7a4fd92fa05ff81d7__ul_ip5_4jj_vl">
+					<li class="li"><span class="ph emphasis emphasis">dev</span> - use for development purposes and for testing the
+						increments in the cloud, you can grant permissions to all application
+						developers</li>
+
+					<li class="li"><span class="ph emphasis emphasis">test</span>- use for testing the developed application and its
+						critical configurations to ensure quality delivery (integration testing and
+						testing in productive-like environment prior to making it publicly
+						available)</li>
+
+					<li class="li"><span class="ph emphasis emphasis">prod</span> - use to run productive applications, give
+						permissions only to operators.</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">You can create multiple accounts and assign quota to them either using the console client or
+				the cockpit.</p>
+</div>
+	</div>
+
+	<div class="topic task nested1" id="task_atw_dlx_xl">
+		<h2 class="title topictitle2">Creating Multiple Accounts from the Cockpit</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_atw_dlx_xl__steps_skq_flx_xl"><li class="li step stepexpand">
+					<span class="ph cmd">Open the cockpit and navigate to <span class="ph uicontrol">Account</span>. </span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">In the <span class="ph uicontrol">Manage Accounts</span> section, choose
+							<span class="ph uicontrol">New Account...</span> and specify a display name. </span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Use the "+" and "-" buttons next to quota types to set the desired amount of quota and
+						choose the <span class="ph uicontrol">Save</span> button.</span>
+					<div class="itemgroup info">
+						<p class="p">Next, you can deploy your application in the newly created account using
+							the Eclipse IDE or the console client. Then, you can test your
+							application and make it ready for productive use.</p>
+
+						<p class="p">You can transfer the application from one account to another by
+							redeploying it in the respective account.</p>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_rpm_wlx_xl">
+		<h2 class="title topictitle2">Creating Multiple Accounts with the Console Client </h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_rpm_wlx_xl__steps_xwr_xlx_xl"><li class="li step stepexpand">
+					<span class="ph cmd">Open the command prompt and navigate to the folder containing
+							<span class="ph filepath">neo.bat/sh (&lt;SDK installation
+						folder&gt;/tools)</span>.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Create a new account.</span>
+					<div class="itemgroup info">
+						<p class="p">Execute:</p>
+
+						<p class="p"><kbd class="ph userinput">neo create-account -a &lt;account&gt; -u &lt;user who is member
+								of that account&gt; -h &lt;landscape host&gt; -n &lt;display name of the
+								new account&gt;</kbd></p>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Assign the necessary amount of quota to the account.</span>
+					<div class="itemgroup info">
+						<p class="p">Execute:</p>
+
+						<p class="p"><kbd class="ph userinput">neo set-quota -a &lt;account&gt; -u &lt;user name or email&gt; -h &lt;landscape
+								host&gt; -m &lt;type of the quota lite, pro, prem or
+								prem-plus&gt;:&lt;integer amount of the quota&gt; </kbd></p>
+
+						<p class="p">Next, you can deploy your application in the newly created account by
+							executing <kbd class="ph userinput">neo deploy -a &lt;account&gt; -h &lt;landscape host&gt;
+								-b &lt;application name&gt; -s &lt;file location&gt; -u &lt;user name or
+								email&gt;</kbd>. Then, you can test your application and make it
+							ready for productive use. </p>
+
+						<p class="p">You can transfer the application from one account to another by
+							redeploying it in the respective account.</p>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="c4c25cc63ac845779f76202360f98694.html" title="You can manage accounts and assign the quota available for a global account to the accounts associated with this global account.">Managing Accounts and Quota</a></div>
+<div><a class="link" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a></div>
+<div><a class="link" href="05f96cf62cec4e58b78514655b070a8e.html" title="Creates a new account with an automatically generated unique ID as account name and the specified display name and assigns the user as an account owner. The user is authorized against the existing account passed as --account parameter. Optionally, you can clone an existing account configuration to save time and effort.">create-account</a></div>
+<div><a class="link" href="8bd95529c8ae4ccf883095c5f43e38e1.html" title="Deletes a particular account. Only the user who has created the account is allowed to delete it.">delete-account</a></div>
+<div><a class="link" href="2abad162138e41bc843c7de93e162d28.html" title="Lists all accounts that a customer has. Authorization is performed against the account passed as --account parameter.">list-accounts</a></div>
+<div><a class="link" href="4108f0f0680446a39db27f624c0e8b6a.html" title="Sets compute unit quotas for a given account.">set-quota</a></div>
+</div>
+</div>
+	</div>
+
+
+
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You need to create and start a virtual machine using the console client. Then, you establish a secure communication channel to it over Secure Shell (SSH) protocol. You open an SSH tunnel and get all the communication details you need to log in to the virtual machine and install and maintain your software."/>
+<meta name="description" content="You need to create and start a virtual machine using the console client. Then, you establish a secure communication channel to it over Secure Shell (SSH) protocol. You open an SSH tunnel and get all the communication details you need to log in to the virtual machine and install and maintain your software."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Virtual Machines</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc0d2dd37428944d3b673ffdd74f3a975">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Virtual Machines</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"> You need to create and start a virtual machine using the console client. Then, you
+		establish a secure communication channel to it over Secure Shell (SSH) protocol. You open an
+		SSH tunnel and get all the communication details you need to log in to the virtual machine
+		and install and maintain your software. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loioc0d2dd37428944d3b673ffdd74f3a975__ul_uns_fqc_qs">
+					<li class="li">
+						<p class="p">Your account has quota for virtual machines. You can view and assign quota to virtual
+							machines when you open the <span class="ph pname">SAP Cloud Platform</span> cockpit and navigate
+							to <span class="ph uicontrol">Quota Management</span>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">You have downloaded the latest <span class="ph pname">SAP Cloud Platform</span> SDK to make sure the console client
+							contains the latest changes. For more information, see <a class="xref" href="7613843c711e1014839a8273b0e91070.html">Installing the SDK</a>. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">You have set up the <span class="ph pname">SAP Cloud Platform</span> console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the console client - in the command prompt, navigate to the folder containing
+					neo.bat/neo.sh (<span class="ph filepath">&lt;SDK installation
+					folder&gt;/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create a virtual machine. This also starts it.</span>
+				<div class="itemgroup info">
+					<p class="p">In the console client command line, execute:</p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo create-vm --size x-small --name myvm --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+				</div>
+				<div class="itemgroup info">
+					<p class="p">Note that in this step you can generate the key pair, which will be used to log in to the
+						virtual machine. When generating the key pair, the file name is
+						auto-generated and the file is saved under the following file path:
+							<span class="ph filepath">&lt;directory where the command is executed&gt;/&lt;landscape
+							host&gt;/&lt;account&gt;</span>. </p>
+
+					<p class="p">For security reasons, the private key in the generated key pair can be encrypted with a
+						passphrase. You will need the private key passphrase when you connect to the
+						virtual machine using an SSH client. Provide and confirm the passphrase with
+						the <span class="keyword parmname">--private-key-passphrase</span> and
+							<span class="keyword parmname">--private-key-passphrase-confirmation</span> parameters in
+						the command line, or, when prompted.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">Encryption with a passphrase is supported if you are using OpenSSH, but
+							may not work with other SSH clients. </p>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd"> Check if the virtual machine was created by executing <span class="keyword cmdname">list-vms</span>, which
+					shows all the virtual machines in an account:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-vms --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+				<div class="itemgroup info">
+					<p class="p">The command output lists information about the virtual machine, such as size; status; SSH
+						key; floating IP (if assigned); volumes.</p>
+
+					<p class="p">You can also view this information when you open the <span class="ph pname">SAP Cloud Platform</span> cockpit and
+						navigate to <span class="ph uicontrol">Virtual Machines</span>. To view details about a
+						specific virtual machine, choose its name in the list.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open an SSH tunnel to the virtual machine. </span>
+				<div class="itemgroup info">
+					<p class="p">You can provide a port on which you will connect to the virtual machine once the tunnel is
+						opened. If you do not provide a port, you receive such automatically.
+						Execute: </p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo open-ssh-tunnel  --port XXXXX --vm-id vm_id --account account_name --host landscape_host --user my_user</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">After opening an SSH tunnel, the virtual machine is available on
+							<span class="keyword parmname">localhost</span> on the respective port.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> Instead of opening an SSH tunnel, you can use the Service Channel option in the <span class="ph pname">SAP Cloud Platform cloud
+                                connector</span>
+						to connect to the virtual machine. For more information, see <a class="xref" href="cc51962d7f5b4cb18fcb3d423013fe3c.html">Configuring a Service Channel for Virtual Machine</a>.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check if the tunnel was opened by listing the currently opened SSH
+					tunnels:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-ssh-tunnels</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open your SSH client of choice.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Using the SSH client, connect to the virtual machine providing the public key and the
+					connection details you got when executing
+					<span class="keyword cmdname">open-ssh-tunnel</span>.</span>
+				<div class="itemgroup info">For example, you can use
+					OpenSSH:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">ssh root@localhost -p &lt;port from tunnel&gt; -i &lt;path to key&gt;</pre></div>
+</div>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You are now the owner of this virtual machine and can install your software on it. To do
+			that, or to apply an OS patch to your virtual machine, you need access to the SUSE Linux
+			Enterprise Server (SLES) repositories. SLES repositories, like any other repositories,
+			are storage locations from which you can retrieve and install software packages. To
+			configure your access to them, execute the following
+			commands:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+zypper addrepo -f https://slesrepo.hana.ondemand.com/repo/SUSE/Products/SLE-SERVER/12-SP1/x86_64/product/ SUSE12SP1
+zypper addrepo -f https://slesrepo.hana.ondemand.com/repo/SUSE/Products/SLE-SDK/12-SP1/x86_64/product/ SUSE12SP1SDK
+zypper addrepo -f https://slesrepo.hana.ondemand.com/repo/SUSE/Products/SLE-WE/12/x86_64/product/ SLEWE
+zypper addrepo -f https://slesrepo.hana.ondemand.com/repo/SUSE/Products/SLE-Module-Web-Scripting/12/x86_64/product/ SLEWS
+zypper addrepo -f https://slesrepo.hana.ondemand.com/repo/SUSE/Products/SLE-Module-Public-Cloud/12/x86_64/product/ SLEPublicCloud
+zypper addrepo -f https://slesrepo.hana.ondemand.com/repo/SUSE/Products/SLE-Module-Containers/12/x86_64/product/ SLEC</pre></div>
+</div>
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">You can manage the lifecycle of the created virtual machine - check its status and delete it
+				when no longer needed.</p>
+
+			<p class="p">You can create another virtual machine with the same file system by using volumes and volume
+				snapshots.</p>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a></div>
+<div><a class="link" href="6f8924a89b06426ea4aeac2042cd9acc.html" title="Opens a secure tunnel to a specific virtual machine.">open-ssh-tunnel</a></div>
+<div><a class="link" href="cc51962d7f5b4cb18fcb3d423013fe3c.html">Configuring a Service Channel for Virtual Machine</a></div>
+<div><a class="link" href="da73699a95284846a5f375a383b2b9fd.html" title="Lists the currently opened SSH tunnels on the user's machine.">list-ssh-tunnels</a></div>
+<div><a class="link" href="c5052684a01c4709b5f945519bc4a9f8.html" title="Closes the ssh-tunnel to the specified virtual machine. If no virtual machine ID is specified, closes all tunnels.">close-ssh-tunnel</a></div>
+<div><a class="link" href="16f9fab6ae2d40fda106cc7b469d484b.html" title="Creates a new virtual machine and starts it.">create-vm</a></div>
+<div><a class="link" href="9adf1b0d48d84c32893196003a695cc3.html" title="Stops and deletes a virtual machine by name or by ID.">delete-vm</a></div>
+<div><a class="link" href="962ccbbd5f634f918bbea9c1bf4273c3.html" title="Lists all virtual machines in the specified account. You can get information for a concrete virtual machine by name. The command output lists information about the virtual machine, such as size; status; SSH key; floating IP (if assigned); volume IDs.">list-vms</a></div>
+<div><a class="link" href="93dd4760f72f42f6a668c903030272a4.html" title="You can take a snapshot of an existing virtual machine volume in your account and use it to create a new virtual machine with the same file system thus saving any manual installation.">Managing Volume Snapshots</a></div>
+<div><a class="link" href="a533e9cd946f4cc4b4d5973c326a685b.html" title="A volume is the persistent storage that is created automatically when a virtual machine is created.">Managing Volumes</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

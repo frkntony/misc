@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password."/>
+<meta name="description" content="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Opening a Database Tunnel</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6930850a8f9a40489c01ed1aa381946d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Opening a Database Tunnel</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">A database tunnel allows you to connect to a remote database instance through a secure
+		connection. To open a tunnel, use the <samp class="ph codeph">open-db-tunnel</samp> command. When you open
+		the tunnel, you will obtain the connection details required for the remote database
+		instance, including a user and password.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder.
+				</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Execute the open-db-tunnel command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo open-db-tunnel -h &lt;host&gt; -u &lt;user&gt; -a &lt;account&gt; --id &lt;schema ID&gt; </pre></div>
+
+					<div class="note note"><span class="notetitle">Note</span> For more information on required parameters, see <a class="xref" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a>.</div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">If the tunnel is opened successfully, the following details are
+						displayed:</p>
+
+					<div class="p">
+						<ul class="ul" id="loio6930850a8f9a40489c01ed1aa381946d__ul_i2t_mkd_kl">
+							<li class="li">Host name: <samp class="ph systemoutput">localhost</samp></li>
+
+							<li class="li">Database type: <samp class="ph systemoutput">HANA</samp>, <samp class="ph systemoutput">HANAMDC</samp>,
+									<samp class="ph systemoutput">HANAXS</samp>,
+									<samp class="ph systemoutput">ASE</samp>, or
+									<samp class="ph systemoutput">MaxDB</samp></li>
+
+							<li class="li">JDBC URL: For example, <span class="ph filepath">jdbc:sap://localhost:30015</span>. Required for the
+								Eclipse Data Tools Platform (DTP). </li>
+
+							<li class="li">Instance number: For example, <samp class="ph systemoutput">00</samp>. Required for the SAP HANA
+								studio. </li>
+
+							<li class="li">User: User for connecting to the database. For SAP HANA database (MDC) and SAP ASE
+								database, no user or password is displayed. You can use the user
+								that you created. For more information on creating database users,
+									see<ol class="ol" type="a" id="loio6930850a8f9a40489c01ed1aa381946d__ol_dtn_zpy_qx">
+									<li class="li">
+										<p class="p"><a class="xref" href="c0fce6f0322246daaf1e29a25414f15e.html" title="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database.">Creating a Database Administrator User</a> for
+											SAP HANA databases (MDC)</p>
+
+									</li>
+
+									<li class="li"><a class="xref" href="d9532969173d4d9bad67ed033d5c0969.html" title="Use the cockpit to create an SAP ASE database on an SAP ASE database management system in your account and assign properties like database size.">Creating SAP ASE Databases</a> for
+										SAP ASE databases. </li>
+
+								</ol>
+
+							</li>
+
+							<li class="li">Password/Initial password: Password for the database login. An initial password is only
+								shown for schemas with database type HANAXS on productive SAP HANA
+								instances.</li>
+
+							<li class="li">Schema name: For database types HANA and HANAXS </li>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">Now that you have opened the database tunnel, you can connect to the remote database
+				instance using the connection details you have just obtained. </p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> The database tunnel must remain open while you work on the remote database
+					instance. Close it only when you have completed the session.</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="4bb0e3ed9f1d4683beec800a230d9dda.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP MaxDB database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP MaxDB Database</a></div>
+<div><a class="link" href="4efc124a0ccc42b3b502ad3a3908d23d.html" title="Connect to a dedicated SAP HANA database using SAP HANA Tools via the Eclipse IDE.">Connecting to SAP HANA Databases via the Eclipse IDE</a></div>
+<div><a class="link" href="c597f8231b4e463da0dcc3095ea139b7.html" title="Follow the procedure below to make a direct connection to a shared SAP HANA schema via the Eclipse IDE, using SAP HANA Tools.">Connecting to SAP HANA Schemas via the Eclipse IDE</a></div>
+<div><a class="link" href="6f61a4ece533475e858a9479047e5cfb.html" title="You want to access data from a productive SAP HANA or SAP ASE database in another account and you need the required permissions. The account prodiving the permission gives you access by providing you with a token and a database user, which you use to open a tunnel to the database that is owned by this account.">Access to Databases in Other Accounts</a></div>
+<div><a class="link" href="487b85d51994405d8198f8690c0be504.html" title="This command creates a user for an ASE database.">create-db-user-ase</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

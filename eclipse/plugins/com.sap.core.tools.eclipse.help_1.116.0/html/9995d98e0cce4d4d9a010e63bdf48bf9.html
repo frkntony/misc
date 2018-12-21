@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming the Feedback Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9995d98e0cce4d4d9a010e63bdf48bf9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Consuming the <span class="ph pname">Feedback Service</span></h1>
+
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The <span class="ph pname">Feedback Service</span> is a beta functionality that is available on the <span class="ph pname">SAP Cloud Platform</span> trial landscape for developer accounts.</p>
+
+		</div>
+
+		<div class="p">In this section, you will learn how to enable your application to use the <span class="ph pname">SAP Cloud Platform Feedback Service</span> to collect feedback. To do so, you need to:<ol class="ol" id="loio9995d98e0cce4d4d9a010e63bdf48bf9__ol_ytd_fzf_wl">
+				<li class="li">Have a <span class="ph pname">SAP Cloud Platform</span> developer account.<p class="p">You can request a free trial developer
+						account on <a class="xref" href="https://account.hanatrial.ondemand.com/" target="_blank" alt="https://account.hanatrial.ondemand.com/" title="https://account.hanatrial.ondemand.com/">https://account.hanatrial.ondemand.com/</a>.</p>
+</li>
+
+				<li class="li">Enable the <span class="ph pname">Feedback Service</span> for your account. To do so, proceed as follows:<ol class="ol" type="a" id="loio9995d98e0cce4d4d9a010e63bdf48bf9__ol_hv2_ztd_jq">
+						<li class="li">In the <span class="ph pname">SAP Cloud Platform</span> cockpit, choose
+								<span class="ph uicontrol">Services</span> in the navigation.</li>
+
+						<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Feedback Service (BETA)</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Enable</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.<p class="p">For more information about enabling services, see
+									<cite class="cite">Accessing Services </cite> in the <cite class="cite">Related
+									Information</cite> section. </p>
+</li>
+
+					</ol>
+</li>
+
+				<li class="li">Have the required roles assigned to the users who should have access to the
+						<span class="ph uicontrol">Analysis</span> and the
+						<span class="ph uicontrol">Administration</span> UIs. <p class="p">Account owners have the
+						required roles assigned to their user by default. As an account
+						administrator, you can assign the roles to other SAP ID users. To do so,
+						proceed as follows:</p>
+<ol class="ol" type="a" id="loio9995d98e0cce4d4d9a010e63bdf48bf9__ol_znp_plx_xs">
+						<li class="li">In the <span class="ph pname">SAP Cloud Platform</span> cockpit, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Services</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Feedback Service (BETA)</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+						<li class="li">Under <span class="ph uicontrol">Service Configuration</span>, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Configure feedback</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Roles</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and assign the <span class="ph pname">FeedbackAdministrator</span> and
+								<span class="ph pname">FeedbackAnalyst</span> roles to your user. <p class="p">When assigning
+								the roles, make sure you use the following settings:</p>
+<div class="p">
+								<ul class="ul" id="loio9995d98e0cce4d4d9a010e63bdf48bf9__ul_wgn_wd1_zs">
+									<li class="li"><span class="ph uicontrol">Account</span>:
+											<span class="keyword">usageanalytics</span></li>
+
+									<li class="li"><span class="ph uicontrol">Application</span>:
+											<span class="keyword">feedback</span></li>
+
+								</ul>
+
+							</div>
+<div class="note note"><span class="notetitle">Note</span> For the role assignments to take effect once you have made
+								them, you either use a new browser session or log out from the
+								cockpit and log on to it again.</div>
+</li>
+
+					</ol>
+
+				</li>
+
+				<li class="li">Add the application for which feedback is to be collected in the
+						<span class="ph uicontrol">Administration</span> UI of the <span class="ph pname">Feedback Service</span>. <p class="p">For
+						more information about accessing the <span class="ph uicontrol">Administration</span>
+						and <span class="ph uicontrol">Analysis</span> UIs of the <span class="ph pname">Feedback Service</span>, adding
+						applications, and analyzing feedback, see <a class="xref" href="d31882e270da412b93c29176f549a56a.html">Getting Feedback for Applications</a>.</p>
+</li>
+
+				<li class="li">Modify your application code to use the <span class="ph pname">Feedback Service</span> client API for collecting your
+					application users' feedback.<p class="p">Your application can consume the <span class="ph pname">Feedback Service</span>
+						either via a browser or via web application backend.</p>
+</li>
+
+			</ol>
+</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="eab5b93abe6d41dea7acd385135e0184.html">Feedback Service Client API</a></div>
+<div><a class="link" href="67a37dcbef0e461b8e8b2b23cc279c2c.html" title="This tutorial guides you how to use the SAP Cloud Platform Feedback Service directly via a web browser.">Consuming the Feedback Service Via a Browser</a></div>
+<div><a class="link" href="ff42b24846f9454e88f70d695bc25c8b.html" title="This tutorial guides you how to use the SAP Cloud Platform Feedback Service from the Java code in a simple Java EE Web application.">Consuming the Feedback Service Via Web Application Backend</a></div>
+<div><a class="link" href="d31882e270da412b93c29176f549a56a.html">Getting Feedback for Applications</a></div>
+<div><a class="link" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a></div>
+<div><a class="link" href="a32d3d532e2d4dceaaca4ebab68df037.html" title="The cockpit provides an overview of all the platform services that you can access and use for creating or extending applications. Services are grouped by service category.">Services in the Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

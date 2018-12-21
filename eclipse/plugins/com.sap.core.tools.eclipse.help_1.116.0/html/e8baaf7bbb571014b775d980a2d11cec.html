@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Error Code 503</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe8baaf7bbb571014b775d980a2d11cec">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Error Code 503</h1>
+<div class="body conbody"><div class="section" id="loioe8baaf7bbb571014b775d980a2d11cec__section_3A7A5BC601DA41A1AA1A2E624DC95E5D"><div class="section_title">Symptom</div><div type="Symptom"> 
+		 
+		<p class="p">The destination HTTP response has status code 503 and the <span class="keyword parmname">HttpResponse</span>
+				body contains the following text:</p>
+
+			<p class="p"><kbd class="ph userinput">No route for the requested service</kbd>
+			</p>
+ 
+	 </div></div>
+<div class="section" id="loioe8baaf7bbb571014b775d980a2d11cec__section_AD03BE9A5E184669A26B82F5F4CC41AC"><div class="section_title">Problem</div><div type="Problem"> 
+		 
+		<p class="p">The connectivity proxy in SAP Cloud Platform cannot resolve the requested URL. Either the
+				URL of the destination used is incorrect, or the service is not configured for the
+				connectivity proxy, or the tunnel is down. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe8baaf7bbb571014b775d980a2d11cec__section_B066FFE0C7CB4ADB8C56DD64787CBA34"><div class="section_title">Keywords</div><div type="Keywords"> 
+		 
+		<p class="p">error, 503, SAP Cloud Platform connector, SCC </p>
+ 
+	 </div></div>
+<div class="section" id="loioe8baaf7bbb571014b775d980a2d11cec__section_013A818E3D61444A84B335C43240A361"><div class="section_title">Solution</div><div type="Solution"> 
+		 
+		<ol class="ol"><li class="li"> Check the requested URL used by the destination (the host and port of the URL should match the
+					specified virtual host and port in the Cloud connector). </li>
+<li class="li"> Check that the tunnel is established. The Cloud connector should indicate a
+						<span class="keyword parmname">Connected</span> state for the relevant <span class="ph pname">SAP Cloud Platform
+						Platform</span> account. </li>
+<li class="li">Check that the back-end system required is configured on the <span class="ph uicontrol">Access
+						Control</span> tab page. </li>
+<li class="li">If the
+			 problem persists, create a ticket in the SAP customer support system to
+			 describe your problem. For more information, see 
+			 <a class="xref" href="e5580c5dbb5710149e53c6013301a9f2.html">Connectivity Troubleshooting Guide</a>
+			 → 
+			 <span class="ph uicontrol">SAP Support
+				Information</span>. 
+		  </li>
+</ol>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+<script type="text/javascript">
+			$(document).ready(function (){
+			$('.collapsible').collapsify({expandText:"Display Content",collapseText:"Hide Content",imagePath:"../images/"});
+			}); 
+			</script>
+</body>
+</html>

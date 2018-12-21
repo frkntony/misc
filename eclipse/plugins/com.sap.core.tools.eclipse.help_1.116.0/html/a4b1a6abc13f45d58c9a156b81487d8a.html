@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit."/>
+<meta name="description" content="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating an SAP HANA Database from the Cockpit</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa4b1a6abc13f45d58c9a156b81487d8a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating an SAP HANA Database from the Cockpit</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This step-by-step tutorial shows how you can create a database on an SAP HANA database
+		system from a selected account in the <span class="ph pname">SAP Cloud Platform</span> cockpit.</p>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">In your account in the <span class="ph emphasis emphasis"><span class="ph pname">SAP Cloud Platform</span> cockpit</span> (cockpit), you
+				create a database on an SAP HANA database system that is enabled for multitenant
+				database container support. Once the database is available, you start the
+					<span class="ph emphasis emphasis">SAP HANA Web-based Development Workbench</span> (Web IDE) from the
+				cockpit and create an <span class="ph emphasis emphasis">SAP HANA XS Hello World</span>. Then you run the
+				program from the Web IDE.</p>
+
+			<p class="p">In the cockpit you create a binding between the database and an existing Java
+				application. You deploy the Java application from the cockpit and run it.</p>
+
+			<p class="p">You can view the application in the browser and enter first names and last names in
+				the table. Then switch to the <span class="ph uicontrol">Catalog</span> view in the Web IDE and
+				search for the new table. Check that the names you entered are available in the
+				database.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> This document relates to beta functionality available on <span class="ph pname">SAP Cloud Platform</span>. To be
+				able to use this functionality, please order an SAP HANA database system enabled for
+				SAP HANA multitenant database containers..<p class="p">Please contact SAP for details at the
+					SAP Support Portal as described at <a class="xref" href="5dd739823b824b539eee47b7860a00be.html" title="If you have questions or encounter an issue while working with SAP Cloud Platform, you can address them as described below.">Get Support</a>.</p>
+</div>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> 
+                        <p class="p">You should not use <span class="ph pname">SAP Cloud Platform</span> beta features in productive accounts, as any productive use of the beta
+                                functionality is at the customer's own risk, and SAP shall not be liable for errors or damages caused by the use of
+                                beta features.</p>
+
+                </div>
+
+			<p class="p">Go through the relevant steps:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa4b1a6abc13f45d58c9a156b81487d8a__table_c5n_bth_ln" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="66.66666666666667%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="66.66666666666666%" id="d7656330e90">Steps</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d7656330e93">Tools</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e90 ">
+								<p class="p"><a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_prerequisites">Prerequisites</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e93 "> </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e90 ">
+								<p class="p"><a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_creating_database_cockpit">1. Create a Database in the Cockpit</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e93 ">
+								<p class="p"><span class="ph pname">SAP Cloud Platform</span> cockpit</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e90 ">
+								<p class="p"><a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_creating_database_user_addcloudsys">2. Create a Database User with Permissions for Working with Web IDE</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e93 ">
+								<p class="p">SAP HANA cockpit</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e90 ">
+								<p class="p"><a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_webide">3. Start and Work with the Web IDE</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e93 ">
+								<p class="p"><span class="ph pname">SAP Cloud Platform</span> cockpit</p>
+
+								<p class="p">SAP HANA Web-based Development Workbench</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e90 ">
+								<p class="p"><a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_deploying_javaapp_cockpit">4. Deploy the Persistence with JDBC Java Application</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e93 ">
+								<p class="p">Maven</p>
+
+								<p class="p">Console client, SDK</p>
+
+								<p class="p"><span class="ph pname">SAP Cloud Platform</span> cockpit</p>
+
+								<p class="p">Browser</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e90 "><a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_view_content_webide">5. View Table Content in Web IDE</a>
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e93 ">
+								<p class="p">SAP HANA Web-based Development Workbench</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loioa4b1a6abc13f45d58c9a156b81487d8a__section_prerequisites"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<ul class="ul" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ul_q4p_hrx_qr">
+				<li class="li">
+					<div class="p">You have downloaded and set up your Eclipse IDE, SAP HANA Tools for Eclipse, SAP Cloud
+						Platform Tools for Java, and SDK. For more information, see <a class="xref" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a> and <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a>.<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">The tutorial is based on the SDK for Java Web.</p>
+
+						</div>
+</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have installed an SAP HANA database system enabled for multitenant database container
+						support. This system must be assigned to an account.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have a user with the administrator role for
+						the
+						account.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have installed Maven.</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loioa4b1a6abc13f45d58c9a156b81487d8a__section_creating_database_cockpit"><div class="section_title">1. Create a Database in the Cockpit</div><div type="1. Create a Database in the Cockpit">
+			
+			<p class="p">You create a database in your account.</p>
+
+			<ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_xzv_ygq_qr">
+				<li class="li">
+					<p class="p">Log on to the cockpit on the productive landscape and select an account.</p>
+
+					<p class="p">Use the relevant URL for your account type and, if you are using a customer
+						or a partner account, the associated region. For more information, see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To create a database, choose <span class="ph uicontrol">New</span> on the
+							<span class="ph uicontrol">Databases &amp; Schemas</span> page.</p>
+
+					<p class="p">The <span class="ph uicontrol">New Database/Schema</span> screen is displayed.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Enter the required data:</p>
+
+					
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa4b1a6abc13f45d58c9a156b81487d8a__table_sb2_h4q_qr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="66.66666666666667%"/></colgroup>
+
+							
+							
+							<thead class="thead" align="left">
+								<tr class="row">
+									<th class="entry" valign="top" width="33.33333333333333%" id="d7656330e351">
+										<p class="p">Property</p>
+
+									</th>
+
+									<th class="entry" valign="top" width="66.66666666666666%" id="d7656330e357">
+										<p class="p">Value</p>
+
+									</th>
+
+								</tr>
+
+							</thead>
+
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e351 ">
+										<p class="p"><span class="ph uicontrol">Database ID</span></p>
+
+									</td>
+
+									<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e357 ">
+										<p class="p"><span class="ph uicontrol">Example:</span>
+											<kbd class="ph userinput">tutorial</kbd></p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e351 ">
+										<p class="p"><span class="ph uicontrol">Database System</span></p>
+
+									</td>
+
+									<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e357 ">
+										<p class="p">An example of a database system is an SAP HANA system
+											that has multitenant database container support enabled
+											(productive and trial).</p>
+
+										<p class="p"><span class="ph uicontrol">Example: Productive SAP HANA tenant
+												database</span></p>
+
+										<div class="p"><samp class="ph systemoutput">mdc1
+												(HANAMDC)</samp><div class="note note"><span class="notetitle">Note</span> <samp class="ph systemoutput">mdc1</samp>
+												corresponds to the database system on which you
+												create the database.</div>
+</div>
+
+										<p class="p"><span class="ph uicontrol">Example: Trial SAP HANA tenant
+												database</span></p>
+
+										<p class="p"><samp class="ph systemoutput">mdc2 (HANA MDC
+												(&lt;trial&gt;))</samp></p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d7656330e351 ">
+										<p class="p"><span class="ph uicontrol">SYSTEM User Password</span></p>
+
+									</td>
+
+									<td class="entry" valign="top" width="66.66666666666666%" headers="d7656330e357 ">
+										<p class="p">Provide the password for the SYSTEM user of the
+											database.</p>
+
+									</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Choose <span class="ph uicontrol">Save</span>.</p>
+
+					<p class="p">The <span class="ph uicontrol">Events</span> page is displayed. It shows the progress of
+						the database creation. Wait until the tenant database is in state
+							<span class="ph uicontrol">Started</span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">(Optional) To view the details of the new database, choose
+							<span class="ph uicontrol">Overview</span> in the navigation area and select the
+						database in the list. Verify that the status <span class="ph uicontrol">STARTED</span>
+						is displayed.</p>
+
+				</li>
+
+			</ol>
+
+			<span class="ph emphasis emphasis">Result</span>: You have created a database.<p class="p"><span class="ph emphasis emphasis">Next
+					step</span>: You can start the SAP HANA Web-based Development Workbench (Web
+				IDE) to work with the new database. To open the link to the Web IDE, you need a
+				database user with the required permissions to work with the Web IDE. To create the
+				user with the required permissions, proceed as described in <a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_creating_database_user_addcloudsys">2. Create a Database User with Permissions for Working with Web IDE</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loioa4b1a6abc13f45d58c9a156b81487d8a__section_creating_database_user_addcloudsys"><div class="section_title">2. Create a Database User with Permissions for Working with Web IDE</div><div type="2. Create a Database User with Permissions for Working with Web IDE">
+			
+			<p class="p">You want to connect to
+				the
+				Web IDE and work with it. First you need to create a new database
+				user in the SAP HANA cockpit and assign the user the required permissions. </p>
+
+			<ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_f4k_2qq_qr">
+				
+				<li class="li">
+					<p class="p">Go to the cockpit and log on to the <span class="ph uicontrol">SAP HANA cockpit</span>
+						with the <span class="ph sap-technical-name sap-technical-name">SYSTEM</span> user and
+						password.</p>
+
+					<p class="p">A message is displayed to inform you that at that point, you lack the roles
+						that you need to open the SAP HANA cockpit.</p>
+
+					<ol class="ol" type="a" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_xxt_zgx_3v">
+						<li class="li">
+							<p class="p">To open the <span class="ph uicontrol">SAP HANA cockpit</span>, go to the
+								database overview page in the <span class="ph pname">SAP Cloud Platform</span> cockpit.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area and select the relevant
+								database in the list.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">In the database overview, open the <span class="ph uicontrol">SAP HANA
+									cockpit</span> link under <span class="ph uicontrol">Development
+									Tools</span>.</p>
+
+						</li>
+
+					</ol>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Log on to the cockpit by entering <kbd class="ph userinput">SYSTEM</kbd> into the
+						first field and the password you created for the System user into the second
+						field. </p>
+
+				</li>
+
+				
+				
+				<li class="li">
+					<p class="p">To
+						confirm the message,
+						choose
+							<span class="ph uicontrol">OK</span>.</p>
+
+					<p class="p">You
+						receive a confirmation that
+						the
+						required
+						roles are assigned to you
+						automatically.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Choose <span class="ph uicontrol">Continue</span>.</p>
+
+					<p class="p">You are now logged on to the
+							<span class="ph uicontrol">SAP
+							HANA cockpit</span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Choose <span class="ph uicontrol">Manage Roles and Users</span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To create
+						database
+						users and assign them the required roles, expand the
+							<span class="ph uicontrol">Security</span> node. </p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Open the context menu for the <span class="ph uicontrol">Users</span> node and choose
+							<span class="ph uicontrol">New User</span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">On the <span class="ph uicontrol">User</span> tab, provide a name for the new user.</p>
+
+					<p class="p">The user name always appears in upper case letters.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">In the <span class="ph uicontrol">Authentication</span> section, make sure the
+							<span class="ph uicontrol">Password</span> checkbox is selected and enter a
+						password.</p>
+
+					<p class="p">The password must start with a letter and only contain uppercase and
+						lowercase letters ('a' - 'z', 'A' - 'Z'), and numbers ('0' - '9').</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To create the user, choose <span class="ph uicontrol">Save</span>.</p>
+
+					<p class="p">The new
+						database user is displayed as a new node
+						under
+						the <span class="ph uicontrol">Users</span> node.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To assign your user the roles with the required permissions for working with
+						SAP HANA Web-based Development Workbench, go to the <span class="ph uicontrol">Granted
+							Roles</span> section and choose the <span class="ph uicontrol">+ (Add
+							Role)</span> button.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Type <kbd class="ph userinput">ide</kbd> in the search field and select all roles in
+						the result list.</p>
+
+					<p class="p">The roles are added on the <span class="ph uicontrol">Granted Roles</span> tab.
+						</p>
+
+				</li>
+
+				
+				<li class="li">
+					<p class="p">Save your changes.</p>
+
+				</li>
+
+				
+				<li class="li">
+					<p class="p">To assign the <span class="ph sap-technical-name sap-technical-name">CONTENT_ADMIN</span> role to
+						the user, repeat the step.</p>
+
+				</li>
+
+				
+				<li class="li">
+					<p class="p">Make sure you save your changes.</p>
+
+					<p class="p">Before you continue to work with Web IDE, make sure you log out first and log
+						on again with your new database user.</p>
+
+				</li>
+
+				
+			</ol>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> 
+				<p class="p">At this point, you are still logged on with the SYSTEM user. You can only use
+					your new database user to work with SAP HANA Web-based Development Workbench by
+					logging out from SAP HANA cockpit first. Otherwise, you would automatically log
+					in to the SAP HANA Web-based Development Workbench with the SYSTEM user instead
+					of your new database user. Therefore, choose the <span class="ph uicontrol">Logout</span>
+					button before you continue to work with the SAP HANA Web-based Development
+					Workbench, where you need to log on again with the new database user.</p>
+
+			</div>
+
+			<p class="p"><span class="ph emphasis emphasis">Result</span>: You have created a database user and assigned the user
+				the required roles.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Next step</span>: You continue to work with the Web IDE.</p>
+
+		</div></div>
+
+		<div class="section" id="loioa4b1a6abc13f45d58c9a156b81487d8a__section_webide"><div class="section_title">3. Start and Work with the Web IDE</div><div type="3. Start and Work with the Web IDE">
+			
+			<p class="p">Start the SAP HANA Web-based Development Workbench (Web IDE) from the cockpit and log
+				on with your new database user and password. Use the <span class="ph uicontrol">Editor</span>
+				to create an SAP HANA XS project and start it.</p>
+
+			<ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_lks_nqq_qr">
+				<li class="li">
+					<p class="p">In the <span class="ph pname">SAP Cloud Platform</span> cockpit, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Select the relevant database in the list.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">In the overview that is shown in the lower part of the screen, click the
+							<span class="ph uicontrol">SAP HANA Web-based Development Workbench</span> link
+						under <span class="ph uicontrol">Development Tools</span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Log on to the Web IDE with your new database user and password.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Select the <span class="ph uicontrol">Editor</span>.</p>
+
+					<p class="p">The editor is displayed. The header shows details for your user and database.
+						Hover over the entry for the SID to view the details.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">Use the <span class="ph uicontrol">Logout</span> button in the header to log on with
+							a different user.</p>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To create a new package, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Package</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> from the context menu for the <span class="ph uicontrol">Content</span>
+						folder.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Enter a package name.</p>
+
+					<p class="p">The package appears under the <span class="ph uicontrol">Content</span> folder node.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">From the context menu for the new package node, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Create Application</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Select <span class="ph uicontrol">HANA XS Hello World</span> as template and choose
+							<span class="ph uicontrol">Create</span>.</p>
+
+					<p class="p">When you click the files under the new package in the hierarchy, they open in
+						the editor.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To deploy the program, select the <span class="ph filepath">logic.xsjs</span> file from
+						the new package and choose <span class="ph uicontrol">Run</span>.</p>
+
+					<p class="p">The program is deployed and displayed in the browser: <span class="ph uicontrol">Hello World
+							from User &lt;Your User&gt;</span>.</p>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioa4b1a6abc13f45d58c9a156b81487d8a__section_deploying_javaapp_cockpit"><div class="section_title">4. Deploy the Persistence with JDBC Java Application</div><div type="4. Deploy the Persistence with JDBC Java Application"><p class="p">You want to work with
+				the application. Deploy the Persistence with JDBC sample in the cockpit, create a
+				binding, and start the application.</p>
+<p class="p"/>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Build the War
+					File</span><p class="p">You have downloaded and set up your Eclipse IDE, SAP HANA
+					Tools for Eclipse, and SDK. </p>
+<p class="p">For more information, see <a class="xref" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a>.</p>
+<ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_k3g_grq_qr">
+					<li class="li">
+						<p class="p">Open the command window and navigate to the
+								<span class="ph filepath">&lt;SDK&gt;/samples/persistence-with-jdbc</span>
+							folder. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">To build the war file that you want to deploy with Maven, execute the
+								<span class="keyword cmdname">mvn clean install</span> command. </p>
+
+						<p class="p">The generated <span class="ph filepath">persistence-with-jdbc.war</span> file is
+							available in the target folder.</p>
+
+					</li>
+
+				</ol>
+</div><p class="p"/>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Deploy the Java File</span><ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_fvn_grq_qr">
+					<li class="li">
+						<p class="p">In the cockpit, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Choose <span class="ph uicontrol">Deploy Application</span>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Select the <span class="ph filepath">persistence-with-jdbc.war</span> file in the
+							target folder.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Enter a valid application name such as <span class="q">“javatest”</span>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Choose <span class="ph uicontrol">Java Web</span> as the runtime.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Select your installed version as the runtime version.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Choose <span class="ph uicontrol">Deploy</span>.</p>
+
+						<p class="p">A confirmation appears when the application has been deployed.</p>
+
+					</li>
+
+				</ol>
+<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">Do not choose <span class="ph uicontrol">Start</span>. If you choose
+							<span class="ph uicontrol">Start</span>, a default schema and binding will be
+						created for the database.</p>
+
+				</div>
+</div><p class="p"/>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Create a Binding for the
+					Database</span><p class="p">In the cockpit, you bind the database to a Java
+					application and start it.</p>
+<ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_yh4_grq_qr">
+					<li class="li">
+						<p class="p">In the cockpit, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Select the database in the list.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Choose <span class="ph uicontrol">New Binding</span>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Leave the default settings for the data source (&lt;DEFAULT&gt;).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Select your Java application.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Enter your user for the database and your password.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Save your entries.</p>
+
+						<p class="p">The binding appears in the list.</p>
+
+					</li>
+
+				</ol>
+</div><p class="p"/>
+<div class="sectiondiv"><span class="ph emphasis emphasis">Start the Application</span><ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_njg_qtl_yr">
+					<li class="li">
+						<p class="p">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">To start the application, choose <span class="ph uicontrol">Start</span>.</p>
+
+						<p class="p">The changed status is indicated by the <span class="ph uicontrol">State</span>
+							icon.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Select the link for the application name.</p>
+
+						<p class="p">The <span class="ph uicontrol">Application Details</span> overview appears.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Select the application URL in the <span class="ph uicontrol">Application URL</span>
+							panel.</p>
+
+						<p class="p">A browser window appears showing the Persistence with JDBC sample.</p>
+
+					</li>
+
+					<li class="li"><p class="p">To add persons to the table, provide the names and choose <span class="ph uicontrol">Add
+								Person</span>.</p>
+
+					</li>
+
+				</ol>
+</div></div></div>
+
+		<div class="section" id="loioa4b1a6abc13f45d58c9a156b81487d8a__section_view_content_webide"><div class="section_title">5. View Table Content in Web IDE</div><div type="5. View Table Content in Web IDE">
+			
+			<p class="p">To verify that the data you entered in the table is available, use the Web IDE.</p>
+
+			<ol class="ol" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ol_ghf_nsw_sr">
+				<li class="li">
+					<p class="p">To view the table in the Web IDE, you have the following options:</p>
+
+					<ul class="ul" id="loioa4b1a6abc13f45d58c9a156b81487d8a__ul_rn4_grq_qr">
+						<li class="li">
+							<p class="p">If the Web IDE is still open, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Navigation Links</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Catalog</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">If you need to reopen the Web IDE, proceed as described in <a class="xref" href="a4b1a6abc13f45d58c9a156b81487d8a.html#loioa4b1a6abc13f45d58c9a156b81487d8a__section_webide">3. Start and Work with the Web IDE</a>,
+								and on the entry page choose the <span class="ph uicontrol">Catalog</span>
+								entry point.</p>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="li">
+					<p class="p">In the tree, choose
+						<span class="ph filepath">Catalog/YourUser/Tables/T_PERSONS</span>.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">In the table view, choose <span class="ph uicontrol">Open Content</span> to view the
+						table entries.</p>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="8ed4a705efa0431b910056c0acdbf377.html" title="An account is a hosted environment on SAP Cloud Platform in which users deploy applications and connect them to services.">Accounts</a></div>
+<div><a class="link" href="920f2440fad245da93604c2623f0426a.html" title="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform.">Overview of Database Systems and Databases</a></div>
+<div><a class="link" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a></div>
+<div><a class="link" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></div>
+<div><a class="link" href="ee6ae2938cf54c46bd8996745dbc033c.html" title="This step-by-step tutorial shows how you create a database in an SAP HANA database system with multitenant database container support enabled, using SAP Cloud Platform Console Client commands.">Creating an SAP HANA Database Using Console Client</a></div>
+<div><a class="link" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

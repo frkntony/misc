@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Valid for SAP HANA instances running SP8 or lower only. Use this procedure to configure your HANA XS applications to use Security Assertion Markup Language (SAML) 2.0 authentication. This is necessary if you want to implement identity federation with your corporate identity providers."/>
+<meta name="description" content="Valid for SAP HANA instances running SP8 or lower only. Use this procedure to configure your HANA XS applications to use Security Assertion Markup Language (SAML) 2.0 authentication. This is necessary if you want to implement identity federation with your corporate identity providers."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring SAML 2.0 Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2a71022f17ee454586d753008f61885b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring SAML 2.0 Authentication</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Valid for SAP HANA instances running SP8 or lower only. Use this procedure to configure
+		your HANA XS applications to use Security Assertion Markup Language (SAML) 2.0
+		authentication. This is necessary if you want to implement identity federation with your
+		corporate identity providers.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio2a71022f17ee454586d753008f61885b__ul_mmx_45y_4n">
+				<li class="li">You have the SAP HANA Tools installed in your Eclipse IDE. See <a class="xref" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a>.</li>
+
+				<li class="li">You have a user on the productive landscape of <span class="ph pname">SAP Cloud Platform</span>. See
+						<a class="xref" href="a71a081b39e343e097046bf487f57af3.html" title="A customer account allows you to host productive, business-critical applications with 24x7 support.">Purchasing a Customer Account</a></li>
+
+				<li class="li">You have a SAP HANA database user on the productive landscape of <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="c0fce6f0322246daaf1e29a25414f15e.html" title="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database.">Creating a Database Administrator User</a>.</li>
+
+				<li class="li">You have a corporate identity provider (IdP) configured with its own trust
+					settings (key pair and certificates). See the identity provider vendor’s
+					documentation for more information. 
+					<div class="note note"><span class="notetitle">Note</span> <div class="p">To establish successful trust with SAP
+						HANA XS Engine on <span class="ph pname">SAP Cloud Platform</span>, the identity provider must have
+						the following features:
+						<ul class="ul" id="loio2a71022f17ee454586d753008f61885b__ul_hjg_qvy_4n">
+							<li class="li">Supports unsigned SAML requests</li>
+
+							<li class="li">Sends its signing certificate when sending a SAML response</li>
+
+						</ul>
+</div>
+</div>
+</li>
+
+				<li class="li">You have a SAP HANA XS engine configured with its key pair and certificates. See the <a class="xref" href="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" target="_blank" download="" alt="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" title="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf">SAP HANA Administration Guide</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="note restriction"><span class="restrictiontitle">Restriction</span> This procedure is valid for productive HANA instances running SAP HANA
+				SP8 or lower. For SAP HANA SP9 instances, see the<span class="ph uicontrol">Configure SSO with SAML
+					Authentication for SAP HANA XS Applications</span> section in the <a class="xref" href="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" target="_blank" download="" alt="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" title="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf">SAP HANA Administration Guide</a>.</div>
+
+			<p class="p">Use this procedure to configure your HANA XS applications to use Security Assertion Markup
+				Language (SAML) 2.0 authentication. This is necessary if you want to implement
+				identity federation with your corporate identity providers. See <a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html" title="SAP Cloud Platform supports identity federation and single sign-on with external identity providers. The current section provides an overview of the supported scenarios.">Identity and Access Management</a>.</p>
+
+		</div>
+	</div>
+
+	<div class="topic task nested1" id="task_i12_15y_4n">
+		<h2 class="title topictitle2">1. Upload the Certificates</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_i12_15y_4n__steps_v2g_cwy_4n"><li class="li step stepexpand">
+					<span class="ph cmd">Download the identity provider metadata. See the identity provider vendor’s
+						documentation for more information.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Store the IdP signing certificate in a valid PEM or DER file, enclosing the certificate
+						content in <samp class="ph codeph">-----BEGIN CERTIFICATE-----</samp> and <samp class="ph codeph">-----END
+							CERTIFICATE-----</samp>. </span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Upload the PEM or DER file to <span class="ph pname">SAP Cloud Platform</span> using the
+							<span class="keyword cmdname">upload-hanaxs-certificates</span> command.</span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-hanaxs-certificates --host hana.ondemand.com --account myacc --application myapp --user mymail@example.com --location C:\Certificates\myCert.pem</pre></div>
+
+					</div>
+					<div class="itemgroup info">See <a class="xref" href="f643179a0ed7417f9d6c3444960dd082.html" title="This command uploads and applies identity provider certificates to productive HANA instances running on SAP Cloud Platform.">upload-hanaxs-certificates</a>.<div class="note tip"><span class="tiptitle">Tip</span> : If you get
+							an error message while uploading the certificates, try to fix the
+							problem using the <span class="keyword cmdname">reconcile-hanaxs-certificates
+							</span>command. See <a class="xref" href="720bac4ceef3490ba9d0853c683806c2.html" title="This command re-applies all already uploaded certificates to all HANA instances. This command is useful if you already uploaded certificates to SAP Cloud Platform but uploading failed for some of the HANA instances.">reconcile-hanaxs-certificates</a></div>
+</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Restart the SAP HANA XS service so the upload takes effect. This is done
+						using the restart-hana console command. </span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo restart-hana --service-name xsengine --id myhanaid --account myaccount --host hana.ondemand.com --user mymail@example.com</pre></div>
+
+					</div>
+					<div class="itemgroup info">See <a class="xref" href="6b5dea07d9fe42b5b8e355f33a208bb0.html" title="Restarts an SAP HANA database or an SAP HANA service.">restart-hana</a>.</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">List the available HANA XS certificates to check if the certificates were
+						uploaded successfully. This is done using the<span class="keyword cmdname">
+							list-hanaxs-certificates</span> command.</span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-hanaxs-certificates --host hana.ondemand.com --account myaccount --application myapp --user mymail@example.com --contained-strng John Doe</pre></div>
+
+					</div>
+					<div class="itemgroup info">See <a class="xref" href="a905a6fe0a9d415bac9efebc95f39942.html" title="This command lists identity provider certificates available to productive HANA instances. Optionally, you can include a part of the certificate Subject CN as filter.">list-hanaxs-certificates</a>.</div>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_v1x_wsz_4n">
+		<h2 class="title topictitle2">2. Configure Trust on <span class="ph pname">SAP Cloud Platform</span></h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_v1x_wsz_4n__steps_dgt_zsz_4n"><li class="li step">
+					<span class="ph cmd">Open SAP HANA studio.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Connect to the SAP HANA instance.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Grant your database user the following roles:</span>
+					<ul class="ul choices" id="task_v1x_wsz_4n__choices_xgc_3tz_4n">
+						<li class="li choice"><span class="keyword">sap.hana.xs.admin.roles::HTTPDestAdministrator</span></li>
+
+						<li class="li choice"><span class="keyword">sap.hana.xs.admin.roles::HTTPDestViewer</span></li>
+
+						<li class="li choice"><span class="keyword">sap.hana.xs.admin.roles::RuntimeConfAdministrator</span></li>
+
+						<li class="li choice"><span class="keyword">sap.hana.xs.admin.roles::RuntimeConfViewer</span></li>
+
+						<li class="li choice"><span class="keyword">sap.hana.xs.admin.roles::SAMLAdministrator</span></li>
+
+						<li class="li choice"><span class="keyword">sap.hana.xs.admin.roles::SAMLViewer</span></li>
+
+					</ul>
+
+				</li>
+<li class="li step">
+					<span class="ph cmd">Open the SQL Console and execute the following set of statements:</span>
+					<ol type="a" class="ol substeps" id="task_v1x_wsz_4n__substeps_w1z_vtz_4n">
+						<li class="li substep substepexpand">
+							<span class="ph cmd">To create the SAML 2.0 identity provider:</span>
+							<div class="itemgroup info">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">CREATE SAML PROVIDER &lt;idp name&gt; WITH SUBJECT '&lt;certificate subject&gt;' ISSUER '&lt;certificate issuer&gt;' ENABLE USER CREATION;</pre></div>
+
+								<div class="note tip"><span class="tiptitle">Tip</span> Get the certificate subject and issuer from the IdP
+									certificate. If you don’t have direct access to the certificate,
+									use a proper file viewer tool to view the certificate contents
+									from the PEM or DER file.</div>
+
+								<div class="note note"><span class="notetitle">Note</span> With this statement, you also enable the automatic user
+									creation of a corresponding SAP HANA database user at first
+									login. Otherwise, you will have to do it manually if such does
+									not exist. See the <a class="xref" href="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" target="_blank" download="" alt="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" title="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf">SAP HANA Administration
+										Guide</a>.</div>
+
+							</div>
+							<div class="itemgroup stepxmp"/>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">To create a destination:</span>
+							<div class="itemgroup info">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">insert into _SYS_XS.HTTP_DESTINATIONS values('sap.hana.xs.samlProviders', '&lt;uppercase idp name&gt;', '&lt;idp description&gt;', '&lt;idp host&gt;', &lt;idp port&gt;, '&lt;path prefix&gt;', &lt;use proxy&gt;, '&lt;proxy host&gt;', &lt;proxy port&gt;, 0, &lt;use SSL&gt;, &lt;timeout&gt;, '', '');</pre></div>
+
+								<div class="table-wrapper"><table summary="" id="task_v1x_wsz_4n__simpletable_pvj_lvz_4n" border="1" class="simpletable"><tr class="sthead">
+										<th valign="bottom" align="left" id="d1927116e334" class="stentry">Parameter</th>
+
+										<th valign="bottom" align="left" id="d1927116e337" class="stentry">Description and Values</th>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;uppercase idp name&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">Create a short name for this IdP in
+											uppercase.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;idp description&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">A free-text description.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;idp host&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">The IdP host.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;idp port&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">The IdP port.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;path prefix&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">A path prefix to be used for all endpoint
+											URLs.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;use proxy&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">Values:<ul class="ul" id="task_v1x_wsz_4n__ul_db1_kwz_4n">
+												<li class="li">
+												<span class="keyword">1</span> - Yes</li>
+
+												<li class="li"><span class="keyword">0</span> - No</li>
+
+											</ul>
+</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;proxy host&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">The proxy host. Empty string if none.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;proxy port&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">The proxy port.</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;use SSL&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">Defines if the communication will be over HTTP(S). Values: <ul class="ul" id="task_v1x_wsz_4n__ul_qdc_rwz_4n">
+												<li class="li"><span class="keyword">0</span> - use HTTP</li>
+
+												<li class="li"><span class="keyword">1</span> - use HTTPS</li>
+
+											</ul>
+</td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e334" class="stentry">&lt;timeout&gt;</td>
+
+										<td valign="top" headers="d1927116e337" class="stentry">The timeout in milliseconds. If the value is <span class="keyword">-1</span>, then the
+											timeout is infinite.</td>
+
+									</tr>
+</table></div>
+
+							</div>
+							<div class="itemgroup stepxmp">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">insert into _SYS_XS.HTTP_DESTINATIONS values('sap.hana.xs.samlProviders', 'NOVO1', 'desc', 'idp4neo.dhcp.sofl.sap.corp', 443, '', 0, '', 0, 0, 1, -1, '', '');</pre></div>
+
+							</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">To configure the SAML 2.0 identity provider’s endpoints and bindings:</span>
+							<div class="itemgroup info">
+								<div class="table-wrapper"><table summary="" id="task_v1x_wsz_4n__simpletable_nq1_sxz_4n" border="1" class="simpletable"><tr class="sthead">
+										<th valign="bottom" align="left" id="d1927116e480" class="stentry">Configuration</th>
+
+										<th valign="bottom" align="left" id="d1927116e483" class="stentry">SQL Statement</th>
+
+										<th valign="bottom" align="left" id="d1927116e486" class="stentry">Example</th>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e480" class="stentry">SSO Redirect binding</td>
+
+										<td valign="top" headers="d1927116e483" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG values('&lt;uppercase idp
+												name&gt;', 0, 0, 'sap.hana.xs.samlProviders',
+												'&lt;uppercase idp name&gt;', '&lt;SSO redirect
+												endpoint URL&gt;');</samp></td>
+
+										<td valign="top" headers="d1927116e486" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG
+												values('NOVO1', 0, 0, 'sap.hana.xs.samlProviders',
+												'NOVO1', '/saml2/idp/sso/novo');</samp></td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e480" class="stentry">SSO POST binding</td>
+
+										<td valign="top" headers="d1927116e483" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG values('&lt;uppercase idp
+												name&gt;', 0, 1, 'sap.hana.xs.samlProviders',
+												'&lt;uppercase idp name&gt;', '&lt;SSO POST endpoint
+												URL&gt;);</samp></td>
+
+										<td valign="top" headers="d1927116e486" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG
+												values('NOVO1', 0, 1, 'sap.hana.xs.samlProviders',
+												'NOVO1', '/saml2/idp/sso/novo');</samp></td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e480" class="stentry">SLO Redirect binding</td>
+
+										<td valign="top" headers="d1927116e483" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG values('&lt;uppercase idp
+												name&gt;', 1, 0, 'sap.hana.xs.samlProviders',
+												'&lt;uppercase idp name&gt;', '&lt;SLO redirect
+												endpoint URL&gt;');</samp></td>
+
+										<td valign="top" headers="d1927116e486" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG
+												values('NOVO1', 1, 0, 'sap.hana.xs.samlProviders',
+												'NOVO1', '/saml2/idp/slo/novo');</samp></td>
+
+									</tr>
+<tr class="strow">
+										<td valign="top" headers="d1927116e480" class="stentry">SLO POST binding</td>
+
+										<td valign="top" headers="d1927116e483" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG values('&lt;uppercase idp
+												name&gt;', 1, 1, 'sap.hana.xs.samlProviders',
+												'&lt;uppercase idp name&gt;', '&lt;SLO POST endpoint
+												URL&gt;');</samp></td>
+
+										<td valign="top" headers="d1927116e486" class="stentry"><samp class="ph codeph">insert into _SYS_XS.SAML_PROVIDER_CONFIG
+												values('NOVO1', 1, 1, 'sap.hana.xs.samlProviders',
+												'NOVO1', '/saml2/idp/slo/novo');</samp></td>
+
+									</tr>
+</table></div>
+
+								<div class="note note"><span class="notetitle">Note</span> You need to configure all four endpoints, executing all four
+									statements.</div>
+
+							</div>
+						</li>
+
+					</ol>
+
+				</li>
+<li class="li step">
+					<span class="ph cmd">Open the SAP HANA XS Administation tool (see <a class="xref" href="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" target="_blank" download="" alt="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" title="https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf">SAP HANA Administration Guide</a>). For the required
+						applications, configure SAML authentication to be using this identity
+						provider:</span>
+					<ol type="a" class="ol substeps" id="task_v1x_wsz_4n__substeps_pjm_jyz_4n">
+						<li class="li substep">
+							<span class="ph cmd">Select the application.</span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">Go to the SAML section.</span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">Choose Identity Provider and set this identity provider as
+								value.</span>
+						</li>
+
+					</ol>
+
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_qnf_l5z_4n">
+		<h2 class="title topictitle2">3. Configure Trust on the Identity Provider Side</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_qnf_l5z_4n__steps_wnl_pyz_4n"><li class="li step stepexpand">
+					<span class="ph cmd">Download the SAP HANA service provider metadata from the following
+						URL:</span>
+					<div class="itemgroup info"><span class="ph filepath">https://&lt;SAP HANA
+							url&gt;/sap/hana/xs/saml/info.xscfunc</span><div class="note tip"><span class="tiptitle">Tip</span> You can
+							get the SAP HANA URL from the HANA XS Applications section in the
+							cockpit.</div>
+</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Import the SAP HANA service provider metadata in the identity provider. See
+						the identity provider vendor’s documentation for more information.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_rdf_xyz_4n">
+		<h2 class="title topictitle2">4. Test</h2>
+
+		<p class="shortdesc">Open the required application and check if SAML authentication with the required
+			identity provider works. You should be redirected to the identity provider and prompted
+			to log in. After successful login, you are shown the application.</p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

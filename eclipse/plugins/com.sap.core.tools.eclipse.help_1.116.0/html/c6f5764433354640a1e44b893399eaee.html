@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment."/>
+<meta name="description" content="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using a Productive SAP HANA Database System</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc6f5764433354640a1e44b893399eaee">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using a Productive SAP HANA Database System</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> provides SAP HANA database systems designed for developing with
+		SAP HANA in a productive environment.</p>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have an account on the productive landscape. For more information, see <a class="xref" href="a71a081b39e343e097046bf487f57af3.html" title="A customer account allows you to host productive, business-critical applications with 24x7 support.">Purchasing a Customer Account</a>. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Performance/Scalability Recommendation</div><div type="Performance/Scalability Recommendation">
+			
+			<p class="p">Before going live with an application for which a significant number of users and/or
+				significant load is expected, you should do a performance load test. This is best
+				practice in the industry and we strongly recommend it for HANA XS applications.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Administrative Database Users</div><div type="Administrative Database Users">
+			
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> creates four users that it requires to manage the database:
+					<span class="keyword">SYSTEM</span>, <span class="keyword">BKPMON</span>,
+				<span class="keyword">CERTADM</span>, and <span class="keyword">PSADBA</span>. These users are reserved
+				for use by <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<div class="p">
+				<div class="note caution"><span class="cautiontitle">Caution</span> Do not delete or deactivate these users or change their
+					passwords.</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Technical Database User</div><div type="Technical Database User">
+			
+			<p class="p">Each productive SAP HANA database system has a technical database user
+					<span class="ph filepath">NEO_&lt;guid&gt;</span>, which is created automatically when the
+				database system is assigned to an account. A technical database user is not the same
+				as a normal database user and is provided purely as a mechanism for enabling schema
+				access.</p>
+
+			<div class="p">
+				<div class="note caution"><span class="cautiontitle">Caution</span> Take care not to delete or change the technical database user in any way
+					(password, roles, permissions, and so on). </div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Features</div><div type="Features">
+			
+			<div class="p">A productive SAP HANA database system provides you with a database system reserved for your
+				exclusive use, allowing you to work with SAP HANA as with an on-premise system. You
+				have full control of user management and can use a range of tools. There are some
+				obvious restrictions, such as no access to the operating system. See the overview
+				below for details about available features:<div class="note note"><span class="notetitle">Note</span> Some of the links below point to
+					the Administration, Developer, or Security Guide for the latest release of SAP
+					HANA. Refer to the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833"><span class="ph pname">SAP Cloud Platform</span> Release Notes<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> to check which
+					HANA SPS is supported by <span class="ph pname">SAP Cloud Platform</span>. You can find the link to
+					Guides for earlier releases of SAP HANA in the Related Information section at
+					the bottom of the page. </div>
+</div>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc6f5764433354640a1e44b893399eaee__table_l5b_1lv_sm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="28.57142857142857%" id="d9254367e126">Feature</th>
+
+								<th class="entry" valign="top" width="71.42857142857143%" id="d9254367e129">Description</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Database users</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<p class="p">Specifics for <span class="ph pname">SAP Cloud Platform</span>:</p>
+
+									<div class="p">
+										<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_bxz_yx5_wm">
+											<li class="li"><a class="xref" href="a55b836f126b461a9999b56f3cd867d5.html" title="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team.">Guidelines for Creating Database Users</a></li>
+
+											<li class="li"><a class="xref" href="c0fce6f0322246daaf1e29a25414f15e.html" title="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database.">Creating a Database Administrator User</a></li>
+
+										</ul>
+
+									</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">User management</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<p class="p">You have full administration privileges to manage users</p>
+
+									<div class="p">See:<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_z22_cby_j4">
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm">Managing SAP HANA
+												Users</a></li>
+
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm">Setting Up Roles and
+												Authorizations</a></li>
+
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/a55d23bb571014bf25f6ed0d3b2b17/content.htm?frameset=/en/de/ec02ebbb57101483bdf3194c301d2e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/a55d23bb571014bf25f6ed0d3b2b17/content.htm?frameset=/en/de/ec02ebbb57101483bdf3194c301d2e/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/a55d23bb571014bf25f6ed0d3b2b17/content.htm?frameset=/en/de/ec02ebbb57101483bdf3194c301d2e/frameset.htm">SAP HANA User and
+												Role Management</a></li>
+
+										</ul>
+</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Web-based tools</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_ow1_5x4_3n">
+										<li class="li">SAP HANA Web-based Development Workbench</li>
+
+										<li class="li">SAP HANA Cockpit</li>
+
+										<li class="li">SAP HANA XS Administration Tool</li>
+
+									</ul>
+
+									<div class="p">See:<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_pw1_5x4_3n">
+											<li class="li"><a class="xref" href="ad3717d2c242436095fd12c158d7876f.html" title="SAP Cloud Platform supports the following Web-based tools: SAP HANA Web-based Development Workbench, SAP HANA Studio, and SAP HANA XS Administration Tool.">Supported SAP HANA Web-based Tools</a></li>
+
+											<li class="li"><a class="xref" href="d7c4ca5dac4f4dbbb47901eebe9ea0d1.html" title="To use the SAP HANA Web-based tools, you require specific roles.">Roles Required for Web-based Tools</a></li>
+
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/7f/99b0f952d04792912587c99e299ef5/content.htm?frameset=/en/5f/eb72f0511e43449f9ad79409a5d259/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/7f/99b0f952d04792912587c99e299ef5/content.htm?frameset=/en/5f/eb72f0511e43449f9ad79409a5d259/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/7f/99b0f952d04792912587c99e299ef5/content.htm?frameset=/en/5f/eb72f0511e43449f9ad79409a5d259/frameset.htm">Developing
+												Applications in Web-based Environments</a></li>
+
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm">SAP HANA XS
+												Administration Tools</a></li>
+
+										</ul>
+
+									</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Eclipse</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_okc_wx4_3n">
+										<li class="li"><a class="xref" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a></li>
+
+										<li class="li"><a class="xref" href="4efc124a0ccc42b3b502ad3a3908d23d.html" title="Connect to a dedicated SAP HANA database using SAP HANA Tools via the Eclipse IDE.">Connecting to SAP HANA Databases via the Eclipse IDE</a></li>
+
+									</ul>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Security</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<p class="p">Choice of authentication method</p>
+
+									<div class="p">See: <ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_b54_vf1_pn">
+											<li class="li"><a class="xref" href="2a71022f17ee454586d753008f61885b.html" title="Valid for SAP HANA instances running SP8 or lower only. Use this procedure to configure your HANA XS applications to use Security Assertion Markup Language (SAML) 2.0 authentication. This is necessary if you want to implement identity federation with your corporate identity providers.">Configuring SAML 2.0 Authentication</a></li>
+
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm">SAP HANA XS
+												Administration Tools</a></li>
+
+										</ul>
+</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Connectivity destinations </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<div class="p">
+										<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_zfq_pmv_sm">
+											<li class="li"><a class="xref" href="9d0e9e8397f544d9a5de5df52fd1e757.html">Connectivity for SAP HANA XS (Productive Version)</a></li>
+
+											<li class="li"><a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/340c09551c40b7837e773b9d051821/content.htm?frameset=/en/4f/ae6b385138476fa8f3f840240a5dd8/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/340c09551c40b7837e773b9d051821/content.htm?frameset=/en/4f/ae6b385138476fa8f3f840240a5dd8/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/340c09551c40b7837e773b9d051821/content.htm?frameset=/en/4f/ae6b385138476fa8f3f840240a5dd8/frameset.htm">Maintaining HTTP
+												Destinations</a></li>
+
+										</ul>
+
+									</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Monitoring</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<p class="p"><a class="xref" href="a6663f02b4f9467f921b21f364abda48.html" title="In the cockpit, you can configure availability checks for the SAP HANA XS applications running on your productive SAP HANA database system.">Configuring Availability Checks for SAP HANA XS Applications from the Cockpit</a></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Debugging</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<ul class="ul" id="loioc6f5764433354640a1e44b893399eaee__ul_fpt_jl1_pn">
+										<li class="li">SAP HANA Web-based Development Workbench<p class="p">See: <a class="xref" href="1beaa7aaadc743568c8144066d005dab.html" title="You can only debug SAP HANA server-side JavaScript with the SAP HANA Tools plugin for Eclipse as of release 7.4. If you are working with lower plugin versions, use the SAP HANA Web-based Development Workbench to perform your debugging tasks.">Debugging with SAP HANA Web-based Development Workbench</a></p>
+</li>
+
+										<li class="li">Supported by the SAP HANA Tools plugin for Eclipse as of
+											release 7.4.</li>
+
+									</ul>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Launch SAP HANA XS applications</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<p class="p"><a class="xref" href="0dd61c3e5d1d4d6cbea9aec94b7f4725.html" title="You can open your SAP HANA XS applications in a Web browser directly from the cockpit.">Launching SAP HANA XS Applications</a></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d9254367e126 ">
+									<p class="p">Java development</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d9254367e129 ">
+									<p class="p"><a class="xref" href="affa7822cef0400698c05d4f12f2e71f.html" title="This command binds a Java application to a productive SAP HANA database via a data source.">bind-hana-dbms</a></p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<div class="note note"><span class="notetitle">Note</span> For security reasons, some of the configuration properties of the SAP HANA database systems
+				running on the productive landscape are forbidden for configuration. </div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf">Developer Guide for SAP HANA Studio for the latest release of SAP
+				HANA</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf">Developer Guide for SAP HANA Web Workbench for the latest release of SAP
+				HANA</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf">Administration Guide for the latest release of SAP HANA</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Security_Guide_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Security_Guide_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Security_Guide_en.pdf">Security Guide for the latest release of SAP HANA</a></div>
+<div><a class="link" href="http://help.sap.com/hana_platform_earlier_releases" target="_blank" alt="http://help.sap.com/hana_platform_earlier_releases" title="http://help.sap.com/hana_platform_earlier_releases">Guides for earlier releases of SAP HANA</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

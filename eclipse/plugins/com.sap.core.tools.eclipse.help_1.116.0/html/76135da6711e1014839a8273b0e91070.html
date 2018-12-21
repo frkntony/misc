@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Access from External Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio76135da6711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+ 
+  <h1 class="title topictitle1">Access from External Applications</h1>
+ 
+  <div class="body conbody"> 
+	 <div class="section" id="loio76135da6711e1014839a8273b0e91070__section_79D0F58372DE42E8A5533621A481AC9B"><div class="section_title">Overview</div><div type="Overview"><p class="p">The services on <span class="ph pname">SAP Cloud Platform</span> can be consumed by applications that are deployed on <span class="ph pname">SAP Cloud Platform</span> but not from external applications. There are cases, however,
+				where applications want to access content in the cloud but cannot be deployed in the cloud.</p>
+<p class="p">The figure below describes a
+				mechanism with which this scenario can be supported and is followed by an explanation:</p>
+<img class="image" id="loio76135da6711e1014839a8273b0e91070__image_wf5_x41_4k" height="397" src="loio7611b207711e1014839a8273b0e91070_LowRes.png" width="768"/>
+			<p class="p">This can be addressed by deploying an application on <span class="ph pname">SAP Cloud Platform</span> that
+				accepts incoming requests from the Internet and forwards them to the document service. We refer to this type of application as a proxy
+				bridge. The proxy bridge is deployed on <span class="ph pname">SAP Cloud Platform</span> and runs in an
+				account using the common <span class="ph pname">SAP Cloud Platform</span> patterns. The proxy bridge is
+				responsible for user authentication. The resources consumed in the document service are billed to the <span class="ph pname">SAP Cloud Platform</span> account that deployed this application.</p>
+</div></div>
+ 
+  </div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ed1c6732d4214c68846ab9813b9df943.html">Building a Proxy Bridge</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

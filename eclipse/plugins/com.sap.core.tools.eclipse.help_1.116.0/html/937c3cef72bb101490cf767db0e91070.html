@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform."/>
+<meta name="description" content="Use the cockpit to manage users and their roles. You can add and remove users for an account and select and deselect roles. All members assigned to the selected account can use the functionality provided by SAP Cloud Platform in the scope of this account and as permitted by their assigned account member roles. These roles support typical tasks performed by users when interacting with the platform."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Members</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio937c3cef72bb101490cf767db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Managing Members</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Use the cockpit to manage users and their roles. You can add and remove users for an
+		account and select and deselect roles. All members assigned to the selected account can use
+		the functionality provided by <span class="ph pname">SAP Cloud Platform</span> in the scope of this
+		account and as permitted by their assigned account member roles. These roles support typical
+		tasks performed by users when interacting with the platform.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loio937c3cef72bb101490cf767db0e91070__ul_lgz_t5z_yn">
+					<li class="li">You have the Administrator role for the account.</li>
+
+					<li class="li">You have the user IDs of the members that you want to add.<div class="note tip"><span class="tiptitle">Tip</span> 
+							<p class="p">Users can request user IDs at the SAP Service Marketplace: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://service.sap.com/request-user" target="_blank" alt="http://service.sap.com/request-user" title="http://service.sap.com/request-user">http://service.sap.com/request-user<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+							<p class="p">SAP Service Marketplace users are automatically registered with the SAP ID service, which controls user access to
+									<span class="ph pname">SAP Cloud Platform</span>. </p>
+
+						</div>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Note the following:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio937c3cef72bb101490cf767db0e91070__ul_cz5_z2j_cl">
+					<li class="li">A user can be assigned to one or more accounts.</li>
+
+					<li class="li">A user can be assigned to one or more roles. The role assignment is account-specific.</li>
+
+					<li class="li">Roles apply to all operations associated with the account, irrespective of
+						the tool used (Eclipse-based tools, cockpit, and console client).</li>
+
+					<li class="li">Roles determine which panels are visible in the cockpit and which actions users can
+						initiate.</li>
+
+					<li class="li">As an administrator, you cannot remove your own administrator role. You can remove any
+						member except yourself.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio937c3cef72bb101490cf767db0e91070__steps_jrg_wt4_zl"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and go to the list of accounts available to you.</span>
+				<div class="itemgroup info">The accounts are displayed as tiles.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Members</span> in the navigation area.</span>
+				<div class="itemgroup stepresult">All members currently assigned to the account are displayed in a list.
+						<div class="note note"><span class="notetitle">Note</span> The name of a member is displayed only after the member visits the
+						account for the first time.</div>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Add Members</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter one or more user IDs.</span>
+				<div class="itemgroup info">There is currently no user validation. You can use commas, spaces, semicolons,
+					or line breaks to separate members.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the corresponding roles for the new members and save your changes.</span>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">You also have the following options:</p>
+
+			<ul class="ul">
+				<li class="li">To select or deselect roles for a member, choose <img class="image" id="loio937c3cef72bb101490cf767db0e91070__image_c5c_xx3_5v" src="loioabfe4243d43d42a2a59eb64733ac7a75_LowRes.png"/> (Edit). The changes you make
+					to the member's roles take effect immediately.</li>
+
+				<li class="li">You can enter a comment when editing user roles. This provides you with an
+					effective and simple way of tracking the reasons for account membership and
+					other important data. The comments are visible to all members.</li>
+
+				<li class="li">You can send an e-mail to a member. This option is displayed only after the
+					recipient visits the account for the first time.</li>
+
+				<li class="li">To remove all the roles of a member, choose <span class="ph uicontrol">Delete</span> (trashcan). This
+					removes the member from the account.</li>
+
+				<li class="li">To check the member history, choose the <span class="ph uicontrol">History</span> button to
+					view a list of changes to members (for example, added or removed members, or
+					changed role assignments).</li>
+
+				<li class="li">To filter the member list for a specific role,
+					use
+					the filter
+					to
+					show only the members with this role.</li>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

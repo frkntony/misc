@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP MaxDB database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel."/>
+<meta name="description" content="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP MaxDB database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connecting to the Remote SAP MaxDB Database</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4bb0e3ed9f1d4683beec800a230d9dda">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connecting to the Remote SAP MaxDB Database</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You use the Eclipse Data Tools Platform (DTP) to connect to the SAP MaxDB database in
+		the cloud. To do this, you require the connection details you obtained when you opened the
+		database tunnel.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>You have the connection details available that you obtained when you opened the
+			database tunnel.</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="note restriction"><span class="restrictiontitle">Restriction</span> For SAP MaxDB, this functionality is available on the trial landscape
+				only. Do not use it in productive scenarios and/or with any personal data.</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In Eclipse, open the <span class="ph uicontrol">Data Source Explorer</span> view. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the <span class="ph uicontrol">Database Connections</span> node and from the
+					context menu choose <span class="ph uicontrol">New</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the connection profile type <span class="ph uicontrol">MaxDB</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd"> Enter a connection name, for example, <span class="ph uicontrol">Database Tunnel to
+						MaxDB</span>, and choose <span class="ph uicontrol">Next</span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To define a driver, choose <img class="image" id="loio4bb0e3ed9f1d4683beec800a230d9dda__image_rvc_3rd_lw" src="loioe39b9abd157a4ed79e42fd9692266e94_LowRes.png" alt="New Driver Definition" title="New Driver Definition"/><span class="ph uicontrol">New Driver Definition</span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">As the driver template, select MaxDB JDBC Driver Version 7.7 from the
+						<span class="ph uicontrol">Name/Type</span> tab and enter a driver name, for example,
+						<kbd class="ph userinput">Database Tunnel JDBC Driver</kbd>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd"> Depending on your SDK version, do the following to add the driver JAR:</span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio4bb0e3ed9f1d4683beec800a230d9dda__choicetable_vck_fc4_tx">
+<thead><tr><th valign="bottom" align="left" id="d3419973e101-option">If you've installed...</th>
+<th valign="bottom" align="left" id="d3419973e101-desc">Do the following:</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d3419973e101-option" id="d3419973e114" class="stentry choption" width="21.008403361344538%"><strong>Java Web or Java EE 6 Web Profile</strong></td>
+
+						<td valign="top" headers="d3419973e101-desc d3419973e114" class="stentry chdesc" width="78.99159663865545%">
+							<ol class="ol" type="a" id="loio4bb0e3ed9f1d4683beec800a230d9dda__ol_kqp_zc4_tx">
+								<li class="li">
+									<p class="p">Open your locally saved SDK folder and extract
+											<span class="ph filepath">\repository\plugins\com.sap.core.persistence.osgi.dbtech&lt;version&gt;.jar</span>.
+										to a new folder within your SDK folder. </p>
+
+								</li>
+
+								<li class="li">In Eclipse, choose <span class="ph uicontrol">Add JAR/Zip...</span> on the
+										<span class="ph uicontrol">JAR list</span> tab and select the folder to
+									which you just extracted the JAR file. Select the driver JAR
+										<span class="ph filepath">lib\com.sap.dbtech-7.8.2.31.jar</span> and
+									open it. </li>
+
+								<li class="li">Remove the predefined driver JAR.</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3419973e101-option" id="d3419973e150" class="stentry choption" width="21.008403361344538%"><strong>Java Web Tomcat 7 or Java Web Tomcat 8</strong></td>
+
+						<td valign="top" headers="d3419973e101-desc d3419973e150" class="stentry chdesc" width="78.99159663865545%">
+							<ol class="ol" type="a" id="loio4bb0e3ed9f1d4683beec800a230d9dda__ol_syf_qd4_tx">
+								<li class="li">
+									<p class="p">Choose <span class="ph uicontrol">Add JAR/Zip…</span> and open
+											<span class="ph filepath">&lt;neo-sdk-&lt;version&gt;&gt;\repository\.archive\lib\com.sap.dbtech.jar</span>
+										to add it to the JAR list tab.</p>
+
+								</li>
+
+								<li class="li">Remove the predefined driver JAR.</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> For more information on SDKs for Java development offered by <span class="ph pname">SAP Cloud Platform</span>, see <a class="xref" href="7613843c711e1014839a8273b0e91070.html">Installing the SDK</a>.</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">OK</span> to confirm.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the URL field, enter the JDBC URL from your connection details.</span>
+				<div class="itemgroup info">These are the connection details you obtained when you opened the database tunnel.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the user name and password shown in your connection details. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Finish</span>. </span>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">The new database connection is now shown in the <span class="ph uicontrol">Data Source
+					Explorer</span> view. You can find your schema in the schema list under
+				your schema user name. </p>
+
+			<div class="p">
+				<div class="note tip"><span class="tiptitle">Tip</span> To locate your schema, filter the list:<ol class="ol" id="loio4bb0e3ed9f1d4683beec800a230d9dda__ol_zny_qpn_bm">
+						<li class="li">Select the database connection and from the context menu choose
+								<span class="ph uicontrol">Properties</span>.</li>
+
+						<li class="li">Select <span class="ph uicontrol">Default Schema Filter</span> and deselect the
+								<span class="ph uicontrol">Disable filter</span> checkbox.</li>
+
+						<li class="li">In the <span class="ph uicontrol">Name</span> field, enter your user
+								(<kbd class="ph userinput">NEO_&lt;string&gt;</kbd>) and choose
+								<span class="ph uicontrol">OK</span>.</li>
+
+					</ol>
+</div>
+
+			</div>
+
+			<p class="p">Open the schema and navigate down to your Web application’s database tables, where
+				you can display their properties and data and use the SQL Scrapbook editor.</p>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

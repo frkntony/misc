@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can choose the Java Runtime Environment (JRE) version used for an application."/>
+<meta name="description" content="You can choose the Java Runtime Environment (JRE) version used for an application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Choosing JRE Version</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioee71c1a4aea84558accb2524785b21bc">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Choosing JRE Version</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can choose the Java Runtime Environment (JRE) version used  for an
+		application.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have downloaded and configured <span class="ph pname">SAP Cloud Platform</span> console client. </p>
+
+			<p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a></p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">The JRE version depends on the type of <span class="ph pname">SAP Cloud Platform</span> SDK you are using. By default
+				the version is: <ul class="ul" id="loioee71c1a4aea84558accb2524785b21bc__ul_ddy_zsm_dl">
+					<li class="li">SDK for Java Web (1.x) - JRE 6</li>
+
+					<li class="li">SDK for Java EE 6 Web Profile (2.x) - JRE 7</li>
+
+					<li class="li">SDK for Java Web Tomcat 7 (2.X) – JRE 7</li>
+
+					<li class="li">SDK for Java Web Tomcat 8 (3.x) – JRE 8</li>
+
+				</ul>
+</div>
+
+			<p class="p"> If you want to change this default version, you need to specify the
+					<span class="ph uicontrol">--java-version</span> parameter when deploying the application
+				using the <span class="ph pname">SAP Cloud Platform</span> console client. Only the version number of the JVM
+				can be specified. </p>
+
+			<p class="p">You can use JRE 8 with the Java Web Tomcat 7 runtime (neo-java-web version 2.25 or higher) in
+				productive accounts.</p>
+
+			<p class="p">For applications developed using the SDK for Java Web Tomcat 7 (2.X), the default JRE
+				is 7. If you are developing a JSP application using JRE 8, you need to add a
+				configuration in the <span class="ph filepath">web.xml</span> that sets the compiler target VM
+				and compiler source VM versions to 1.8.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh
+						(<span class="ph filepath">&lt;SDK installation folder&gt;/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Deploy the application specifying <span class="ph uicontrol">--java-version</span>. For example, to
+					use JRE 7, execute the following command:</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --account &lt;account_name&gt; --application &lt;application_name&gt; --source &lt;file_location&gt; 
+--user &lt;e-mail_or_user&gt; --java-version 7</pre></div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="c4c25cc63ac845779f76202360f98694.html" title="You can manage accounts and assign the quota available for a global account to the accounts associated with this global account.">Managing Accounts and Quota</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

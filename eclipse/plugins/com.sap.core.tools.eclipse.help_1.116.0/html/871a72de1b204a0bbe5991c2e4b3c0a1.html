@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To bind a schema contained in another account to your application, you use a remote access token that indicates that access to this specific schema has been permitted."/>
+<meta name="description" content="To bind a schema contained in another account to your application, you use a remote access token that indicates that access to this specific schema has been permitted."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Binding External Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio871a72de1b204a0bbe5991c2e4b3c0a1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Binding External Schemas</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To bind a schema contained in another account to your application, you use a remote
+		access token that indicates that access to this specific schema has been
+		permitted.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To prevent misuse, the remote access token can be used once only and is not transferrable to
+				other applications in your account. Note that it is possible for the owner account
+				to revoke access to the schema at any point in time.</p>
+
+			<p class="p">The following example data is used in the procedure below:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio871a72de1b204a0bbe5991c2e4b3c0a1__ul_n5g_ccp_qm">
+					<li class="li"> Account (schema owner): <kbd class="ph userinput">owner</kbd></li>
+
+					<li class="li">Host: <kbd class="ph userinput">hanatrial.ondemand.com</kbd></li>
+
+					<li class="li">Schema: <kbd class="ph userinput">schema1</kbd></li>
+
+					<li class="li">Account (consumer): <kbd class="ph userinput">salescorp</kbd></li>
+
+					<li class="li">Application (consumer): <kbd class="ph userinput">salesapp</kbd></li>
+
+					<li class="li">Data source: <kbd class="ph userinput">jdbc/dshana</kbd></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder and
+					enter the following command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-schema --account salescorp --host hanatrial.ondemand.com --user salesuser --application salesapp --data-source jdbc/dshana --access-token vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z </pre></div>
+
+					<p class="p">Note that you use the <span class="keyword parmname">access-token</span> parameter instead of the schema ID
+						parameter.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optionally check that the schema has been successfully bound:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-datasources --account salescorp --host hanatrial.ondemand.com --user salesuser --application salesapp</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">Since the schema does not belong to your account, the schema ID is prefixed
+						with the owner account’s name (account:schemaID), as shown in the example
+						output below:</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Schema ID        DB Type    Data Source
+owner:schema1    hana       jdbc/dshana</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ce689b2f0d4c434cb820f945a0a3ae18.html" title="This command binds a schema to a Java application via a data source. If a data source name is not specified, the schema will be automatically bound to the default data source of the application.">bind-schema</a></div>
+<div><a class="link" href="9fe84fe6f68b41bb9bc2ed04e91283d2.html" title="This command lists all schemas and productive database instances bound to an application.">list-application-datasources</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

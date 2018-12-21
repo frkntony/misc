@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the first step of this tutorial, you will learn how to create and start a business service, and then register it in the YaaS Builder."/>
+<meta name="description" content="In the first step of this tutorial, you will learn how to create and start a business service, and then register it in the YaaS Builder."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Building the Wishlist Business Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio782ada6a18104ab2ad409302c0e5aefb">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Building the Wishlist Business Service</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the first step of this tutorial, you will learn how to create and start a business
+		service, and then register it in the YaaS Builder.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio782ada6a18104ab2ad409302c0e5aefb__ul_b51_jtl_mv">
+				<li class="li">
+					<p class="p">You have set up Maven in order to use the YaaS Service SDK.</p>
+
+					<p class="p">The YaaS Service SDK uses Maven to resolve all additional software
+						dependencies that are necessary to create, build, test, run, and debug your
+						new service. See <a class="extlink" href="http://help.sap.com/disclaimer?site=https://devportal.yaas.io/gettingstarted/setuptheenvironment/index.html" target="_blank" alt="https://devportal.yaas.io/gettingstarted/setuptheenvironment/index.html" title="https://devportal.yaas.io/gettingstarted/setuptheenvironment/index.html">Set up Maven<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">If you work in a proxy environment, make sure you set the proxy host and port correctly
+								using the following command:</p>
+
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">SET MAVEN_OPTS=-Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.nonProxyHosts=nexus</pre></div>
+
+						</div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You need Java 8 to create the Wishlist service.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div></div><div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Create the Wishlist service.</span>
+				<div class="itemgroup info">
+					<p class="p">Create the Wishlist service and test it locally using, for example, Jetty Web server. See
+							<a class="extlink" href="http://help.sap.com/disclaimer?site=https://devportal.yaas.io/gettingstarted/createaservice/index.html" target="_blank" alt="https://devportal.yaas.io/gettingstarted/createaservice/index.html" title="https://devportal.yaas.io/gettingstarted/createaservice/index.html">Create a Whishlist Service<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Import an existing Wishlist service.</span>
+				<div class="itemgroup info">
+					<p class="p">If you want to use existing <span class="ph pname">SAP Cloud Platform</span> services, you can import the Wishlist
+						service you have already created in Eclipse.</p>
+
+				</div>
+				<ol type="a" class="ol substeps" id="loio782ada6a18104ab2ad409302c0e5aefb__substeps_ngx_25t_lv">
+					<li class="li substep">
+						<span class="ph cmd"><span class="ph emphasis emphasis">Run the <samp class="ph codeph">mvn eclipse:m2eclipse</samp> command.</span> Before
+							importing the project, you can run the <samp class="ph codeph">mvn
+								eclipse:m2eclipse</samp> command.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd"><span class="ph emphasis emphasis">Import the project in Eclipse.</span> To do that, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Import</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Existing Maven Projects</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. In the <span class="ph uicontrol">Root Directory</span> field,
+							browse to your project and choose <span class="ph uicontrol">OK</span>. Then,
+							choose <span class="ph uicontrol">Finish</span>.</span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Use a HANA database on <span class="ph pname">SAP Cloud Platform</span> to persist the Wishlists service.</span>
+				<div class="itemgroup info">
+					<p class="p">You can use the persistence service to store data in the HANA database on <span class="ph pname">SAP Cloud Platform</span>, use the document service to store and retrieve BLOBs, or use the
+						connectivity service to fetch or push data to an on-premise system. You can
+						find an implementation of the Wishlist service that uses a HANA database on
+						<span class="ph pname">SAP Cloud Platform</span> at <a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist" title="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist">GitHub<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. The most important parts of the
+						implementation are the following:</p>
+
+				</div>
+				<ol type="a" class="ol substeps" id="loio782ada6a18104ab2ad409302c0e5aefb__substeps_xhr_w5t_lv">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Add dependencies to Eclipse Link and JPA persistence.</span>
+						<div class="itemgroup info">
+							<p class="p">Open the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/pom.xml" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/pom.xml" title="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/pom.xml">pom.xml<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> file, select all the code in the
+									<samp class="ph codeph">&lt;dependencies&gt;</samp> tags and replace it in the
+									<samp class="ph codeph">pom.xml</samp> file in your project in Eclipse. The
+								logging libraries are provided by default in the <span class="ph pname">SAP Cloud Platform</span> runtime environments. You also have to add the following
+								code in the <samp class="ph codeph">pom.xml</samp> filel:</p>
+
+							<div class="p">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;plugin&gt;
+  &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+  &lt;configuration&gt;
+    &lt;packagingExcludes&gt;
+      WEB-INF/lib/logback-classic-.jar,
+      WEB-INF/lib/logback-core-.jar,
+      WEB-INF/lib/slf4j-api-*.jar
+    &lt;/packagingExcludes&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</pre></div>
+
+							</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Configure the persistence using JPA, specify the database connection and the Wishlist and
+							Wishlist item entity classes.</span>
+						<div class="itemgroup info">
+							<p class="p">First you need to create a <samp class="ph codeph">persistence.xml</samp> file in your project. You can
+								automatically do that by adding the JPA 2.0 facet in the project
+								from <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Properties</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Project Facets</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. Then, open the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/persistence.xml" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/persistence.xml" title="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/persistence.xml">META-INF/persistence.xml<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> in GitHub and
+								copy and paste the code in your <samp class="ph codeph">persistence.xml</samp>
+								file in Eclipse.</p>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Configure the Spring framework that is used in the Wishlist service implementation.</span>
+						<div class="itemgroup info">
+							<p class="p">Open the<a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/applicationContext.xml" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/applicationContext.xml" title="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/applicationContext.xml">META-INF/applicationContext.xml<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> and
+									<a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/wishlist-spring.xml" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/wishlist-spring.xml" title="https://github.com/SAP/cloud-yaas-business-service/blob/master/wishlist/src/main/resources/META-INF/wishlist-spring.xml">META-INF/wishlist-spring.xml<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> and copy
+								and paste the code into the respective XML files.</p>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Prepare the JPA entity classes <samp class="ph codeph">WishlistEntity</samp> and
+								<samp class="ph codeph">WishlistItemEntity</samp> and their related DAO
+							objects.</span>
+						<div class="itemgroup info">
+							<p class="p">Create manually the <samp class="ph codeph">com.sample.wishlist.model</samp> package. Then, open the
+									<a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist/src/main/java/com/sample/wishlist/model" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist/src/main/java/com/sample/wishlist/model" title="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist/src/main/java/com/sample/wishlist/model">com.sample.wishlist.model package<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> and
+								copy and paste the code from each of the Java classes into that
+								package. This will automatically create these classes in the package
+								in Eclipse.</p>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Add the API implementation class that was generated by the YaaS Service SDK.</span>
+						<div class="itemgroup info">
+							<p class="p">For each of the RESTful resources, which have been defined in the RAML definition of the
+								service, a separate method has been generated into the API
+								implementation class. The implementation of the service, that is the
+								wiring with the persistence service in this example, goes in here.
+								Please note that the generated methods get a parameter of type
+									<samp class="ph codeph">YaasAwareParameters</samp> as input. This class
+								contains methods to retrieve information propagated from YaaS to the
+								service, such as <samp class="ph codeph">getHybrisTenant()</samp>, which is used
+								to provide a multitenant enabled service implementation. Open the
+									<a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist/src/main/java/com/sample/wishlist/api/generated" target="_blank" alt="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist/src/main/java/com/sample/wishlist/api/generated" title="https://github.com/SAP/cloud-yaas-business-service/tree/master/wishlist/src/main/java/com/sample/wishlist/api/generated">com.sample.wishlist.api.generated
+									package<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> and copy and paste the code into the respective
+								files.</p>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Build the project.</span>
+				<div class="itemgroup info">
+					<p class="p">Build the project using the <samp class="ph codeph">mvn clean install</samp> command in the
+						console client. This creates a WAR file in the <span class="ph uicontrol">target</span>
+						directory of the project.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Deploy the WAR file created in step 4.</span>
+				<div class="itemgroup info">
+					<p class="p">Deploy the WAR file into your <span class="ph pname">SAP Cloud Platform</span> account using the
+						deploy UI of the <span class="ph pname">SAP Cloud Platform</span> cockpit or the <samp class="ph codeph">neo</samp>
+						command in the console client. Choose <span class="ph uicontrol">Java Web Tomcat
+							7</span> as Java runtime for the service.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start the Wishlist service.</span>
+				<div class="itemgroup info">
+					<p class="p">Start the service in a Web browser via the application URL shown in the <span class="ph pname">SAP Cloud Platform</span> cockpit. This opens the built-in RAML API Console in a browser,
+						which shows the REST API documentation, and provides a console that allows
+						you to interact with your API from within that documentation.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Register the Wishlist service.</span>
+				<div class="itemgroup info">
+					<p class="p">Once the implementation is finished, register the service in the YaaS
+						Builder. See <a class="extlink" href="http://help.sap.com/disclaimer?site=https://devportal.yaas.io/gettingstarted/createaservice/index.html#6" target="_blank" alt="https://devportal.yaas.io/gettingstarted/createaservice/index.html#6" title="https://devportal.yaas.io/gettingstarted/createaservice/index.html#6">Register a Service in the Builder<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p"><a class="xref" href="3c345185b617471189467d056843f82c.html" title="In the second step of this tutorial, you will learn how to create a Builder module.">Building a Builder Module for the Wishlist Service</a></p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

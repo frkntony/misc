@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring a Service Channel for HANA Database</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3dc28b456bb64fad89084d2d10af602c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring a Service Channel for HANA Database</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You can establish a connection to the HANA Database in the <span class="ph pname">SAP Cloud Platform</span> that is not
+				directly exposed to external access. You can do this in section<span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">On-Premise to Cloud</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Service Channels</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> of the <span class="ph pname">Cloud connector</span>. </p>
+
+			<div class="p">The Service Channel for HANA Database allows accessing SAP HANA databases running on the cloud
+				via ODBC/JDBC. You can use the Service Channel to connect database tools, analytical
+				tools, BI tools, or replication tools to your HANA database in your <span class="ph pname">SAP Cloud Platform</span> account.
+					<div class="note note"><span class="notetitle">Note</span>  The following procedure requires a productive HANA instance to be
+					available in the respective account.</div>
+</div>
+
+			<p class="p">Follow the steps below to establish a Service Channel to a HANA instance of your account.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">On-Premise To Cloud</span> from your account menu. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Add</span>.</span>
+				<div class="itemgroup stepresult"><img class="image" id="loio3dc28b456bb64fad89084d2d10af602c__image_uz4_mgc_b5" width="1400px" src="loioa463cbcd57f04da6a44124c28443955c_HiRes.png"/></div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Add Service Channel</span> dialog, select <kbd class="ph userinput">HANA
+						Database</kbd> from the list of supported channel types. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Next</span>. The <span class="ph uicontrol">HANA Database</span> dialog
+					opens.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the HANA instance name from the list of available HANA instances. If fetching the
+					list failed, you need to specify the name yourself. It must match one of the
+					names shown under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the cockpit. </span>
+				<div class="itemgroup stepresult">
+					<div class="note note"><span class="notetitle">Note</span> The HANA instance name is case-sensitive.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the local instance number. This is a double-digit number which computes the local
+					port used to access the HANA instance in the cloud. The local port is derived
+					from the local instance number as <kbd class="ph userinput">3&lt;instance
+						number&gt;15</kbd>. For example, if the instance number is
+						<kbd class="ph userinput">22</kbd>, then the local port will be
+						<kbd class="ph userinput">32215</kbd>. </span>
+				<div class="itemgroup stepresult">
+					<div class="note note"><span class="notetitle">Note</span> The local port should not match the HANA port used in the cloud – they are mapped
+						transparently by the <span class="ph pname">Cloud connector</span>.</div>
+
+					<p class="p"><img class="image" id="loio3dc28b456bb64fad89084d2d10af602c__image_fnc_vff_hq" width="1400px" src="loiod75f0ff9d3af47f3932c98e5c61c557e_HiRes.png"/></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Leave the <span class="ph uicontrol">Enabled</span> option selected to establish the channel
+					immediately after clicking <span class="ph uicontrol">Save</span>, or deselect it if the
+					channel should not be established yet.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">When you are done, choose <span class="ph uicontrol">Finish</span>.</span>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">Once you have established a HANA Database Service Channel, you can connect on-premise database
+				or BI tools to the selected HANA database in the cloud by using
+					<kbd class="ph userinput">&lt;Cloud_connector_host&gt;:&lt;local_HANA_port&gt;</kbd> in
+				the JDBC/ODBC connect strings. </p>
+
+			<p class="p">For more information, see <a class="xref" href="64d6a510e98941d28dbff2fc8179f175.html">Connecting DB Tools to SAP HANA via Service Channels</a></p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

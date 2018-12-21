@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Configuration of custom domains has different setups related to the subscriptions of your account. Subscriptions represent applications that your account has purchased for use from an application provider."/>
+<meta name="description" content="Configuration of custom domains has different setups related to the subscriptions of your account. Subscriptions represent applications that your account has purchased for use from an application provider."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Custom Domains for Multitenant Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob2b5dcc4fd9842388bb047d2922be48c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Custom Domains for Multitenant Applications</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Configuration of custom domains has different setups related to the subscriptions of
+		your account. Subscriptions represent applications that your account has purchased for use
+		from an application provider. </p>
+
+		<p class="p">A subscription means that there is a contract between an application provider and a tenant that
+			authorizes the tenant to use the provider's application. As the consumer account, you do
+			not own, deploy, or operate these applications yourself. Subscriptions allow you to
+			configure certain features of the applications and launch them through consumer-specific
+			URLs.</p>
+
+		<p class="p">The default URL of a multitenant application is:
+				<span class="ph filepath">https://&lt;application_name&gt;&lt;provider_account&gt;-&lt;consumer_account&gt;.&lt;domain&gt;</span>.</p>
+
+		<div class="p">When you configure custom domains for such applications that are part of a subscription, the
+			following scenarios are possible:<ul class="ul" id="loiob2b5dcc4fd9842388bb047d2922be48c__ul_lwz_xly_qp">
+				<li class="li">The custom domain is owned by the application provider who uses an SSL host from their
+					account quota. The provider also does the configuration and assignment of the
+					custom domain. The provider can assign a subdomain of its own custom domain to a
+					particular subscription URL. To do this, the provider needs to have rights in
+					both the provider and consumer account. </li>
+
+				<li class="li">The customer (consumer) uses an SSL host from the consumer account quota. In this case, the
+					customer (consumer) owns the custom domain and the SSL host and is therefore
+					able do the necessary configuration on their own. </li>
+
+			</ul>
+</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

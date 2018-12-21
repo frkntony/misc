@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Creates a JMX check."/>
+<meta name="description" content="Creates a JMX check."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>create-jmx-check</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio298a207f33c4484b9894b7c4e2900566">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">create-jmx-check</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Creates a JMX check.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-jmx-check -a &lt;account_name&gt; -u &lt;e-mail_or_user&gt; -n &lt;JMX_check_name&gt; -O &lt;MBean_object_name&gt; -A &lt;MBean_object_attribute&gt;</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The JMX check settings support the JMX specification. For more information, see
+						<a class="extlink" href="http://help.sap.com/disclaimer?site=https://docs.oracle.com/javase/8/docs/technotes/guides/jmx/JMX_1_4_specification.pdf" target="_blank" download="" alt="https://docs.oracle.com/javase/8/docs/technotes/guides/jmx/JMX_1_4_specification.pdf" title="https://docs.oracle.com/javase/8/docs/technotes/guides/jmx/JMX_1_4_specification.pdf">Java Management Extensions (JMX)
+						Specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+			</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio298a207f33c4484b9894b7c4e2900566__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d1848114e49">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e49 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e49 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e49 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e49 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e49 "><span class="keyword parmname">-n</span>, <span class="keyword parmname">--name</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e49 ">Name of the JMX check<p class="p">The name must be up to 99 characters long
+									and must not contain the following symbols: ` ~ ! $ % ^ &amp; *
+									| ' " &lt; &gt; ? , ( ) =</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e49 "><span class="keyword parmname">-O</span>,
+								<span class="keyword parmname">--object-name</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e49 ">Object name of the MBean that you want to call<p class="p">If it contains
+									quotation marks, they should be escaped with
+										‘\’.</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e49 "><span class="keyword parmname">-A</span>, <span class="keyword parmname">--attribute</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e49 ">Name of the attribute inside the class with the specified object
+										name.<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio298a207f33c4484b9894b7c4e2900566__table_uws_n1l_rl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d1848114e160">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">If the parameter is not used, the JMX check will be on
+										account level for all running applications in the
+										account.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">If the parameter is not used, the default host is
+											<samp class="ph codeph">hana.ondemand.com</samp>.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-K</span>, <span class="keyword parmname">--key</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Attribute key<p class="p">It is needed only if the attribute is a composite data structure. This
+									key defines the item in the composite data structure. For more
+									information about the composite data structure, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/1.5.0/docs/api/javax/management/openmbean/CompositeDataSupport.html" target="_blank" alt="http://docs.oracle.com/javase/1.5.0/docs/api/javax/management/openmbean/CompositeDataSupport.html" title="http://docs.oracle.com/javase/1.5.0/docs/api/javax/management/openmbean/CompositeDataSupport.html">Class
+										CompositeDataSupport<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-o</span>, <span class="keyword parmname">--operation</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Operation that has to be called on the MBean after checking the attribute value.<p class="p">It
+									is useful for resetting statistical counters to restart an
+									operation on the same MBean.</p>
+<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-U</span>, <span class="keyword parmname">--unit</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Unit of measurement<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-W</span>, <span class="keyword parmname">--warning</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Warning threshold<p class="p">The threshold can be a regular expression in case of string values
+									or compliant with the official nagios threshold/ranges format.
+									For more information about the format in case it is a number,
+									see the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT" target="_blank" alt="https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT" title="https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT">official nagios
+								documentation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-C </span>, <span class="keyword parmname">--critical</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Critical threshold<p class="p">The threshold can be a regular expression in case of string
+									values or compliant with the official nagios threshold/ranges
+									format. For more information about the format in case it is a
+									number, see the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT" target="_blank" alt="https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT" title="https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT">official nagios
+								documentation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1848114e160 "><span class="keyword parmname">-w</span>, <span class="keyword parmname">--overwrite</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1848114e160 ">Overwrites an existing check.<p class="p"><span class="keyword cmdname">Default</span>: false
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: boolean</p>
+<div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">When you use this parameter, a new JMX check is
+											<span class="ph emphasis emphasis">not</span> created when the one you
+										specify does not exist.</p>
+
+								</div>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example 1: Configuring a JMX Check</div><div type="Example 1: Configuring a JMX Check">
+			
+			<p class="p">For a typical example how to configure a JMX check for your application and subscribe
+				recipients to receive notification alerts, see <a class="xref" href="21d734fa88f44298a8a9cb1f759f8fb9.html" title="This topic shows how you can configure a JMX check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring a JMX Check to Monitor Your Application</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example 2: Using Warning and Critical Thresholds</div><div type="Example 2: Using Warning and Critical Thresholds">
+			
+			<p class="p">The following example creates a JMX check that returns a warning state of the metric if the
+				value is between 10 and 100 bytes, and returns a critical state if the value is
+				greater than 100 bytes. If the value is less than 10 bytes, the returned state is
+				OK.</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-jmx-check -a myaccount -b demo -u p1234567 -n "JVM Heap Memory Used" -O java.lang:type=Memory -A HeapMemoryUsage -K used -U B -W 10 -C 100 -h hana.ondemand.com</pre></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example 3: Using an Operation on an MBean</div><div type="Example 3: Using an Operation on an MBean">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-jmx-check -a myaccount -b demo -u p1234567 -n "JVM Heap Memory Used" -O Catalina:type=GlobalRequestProcessor,name="http-bio-8041" -A HeapMemoryUsage –o resetCounters</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+<div><a class="link" href="7613a394711e1014839a8273b0e91070.html" title="To monitor whether your deployed application is up and running, you can register an availability check and JMX checks for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. You can also generate a report of metrics that shows performance statistics of the CPU, DB, and response times.">Monitoring Java Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

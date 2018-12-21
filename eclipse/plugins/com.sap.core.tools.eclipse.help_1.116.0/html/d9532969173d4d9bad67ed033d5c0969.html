@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Use the cockpit to create an SAP ASE database on an SAP ASE database management system in your account and assign properties like database size."/>
+<meta name="description" content="Use the cockpit to create an SAP ASE database on an SAP ASE database management system in your account and assign properties like database size."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating SAP ASE Databases</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod9532969173d4d9bad67ed033d5c0969">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating SAP ASE Databases</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Use the cockpit to create an SAP ASE database on an SAP ASE database management system
+		in your account and assign properties like database size.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The procedure below describes how to create a database at the account level.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loiod9532969173d4d9bad67ed033d5c0969__steps_tsv_2xb_gr"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				<div class="itemgroup stepresult">All databases available in the selected account are listed with their
+					ID, type, version, and related database system.<div class="note tip"><span class="tiptitle">Tip</span> To view the
+						details of a database, for example, its state and the number of existing
+						bindings, select a database in the list and click the link on its name. On
+						the overview of the database, you can perform further actions, for example,
+						delete the database.</div>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To create a database, choose <span class="ph uicontrol">New</span> on the
+						<span class="ph uicontrol">Databases &amp; Schemas</span> page.</span>
+				<div class="itemgroup stepresult">The <span class="ph uicontrol">New Database/Schema</span> screen is
+					displayed.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Specify a <span class="ph uicontrol">Database ID</span>.</span>
+				<div class="itemgroup info">A database ID is freely definable, but must start with a letter and include
+					lowercase letters ('a' - 'z'), numbers ('0' - '9'), and the special character
+					'.' only. Remember that the physical database name is not the same as the
+					database ID.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select a <span class="ph uicontrol">Database System</span> from the dropdown box, for
+					example <span class="ph uicontrol">name (ASE)</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Specify the size of the database in MB.</span>
+				<div class="itemgroup info">
+					<p class="p">This parameter sets the maximum database size. The minimum database size is
+						24 MB. An error message appears if you enter a database size that exceeds
+						the quota for this database system.</p>
+
+					<p class="p">The size of the transaction log will be at least 25% of the database size you
+						specify. </p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Specify a database user.</span>
+				<div class="itemgroup info">
+					<p class="p">The user is created for you on the database and enables you to access the
+						database.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Specify the database user password to access the database.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">The number of databases you can create is limited. You receive an error
+							message once the maximum number of databases is reached. For more
+							information on user database limits, see <a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>. </p>
+
+					</div>
+
+				</div>
+				
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>The
+				<span class="ph uicontrol">Events</span> page is displayed. It shows the progress of the
+			database creation. Wait until the database is in state
+			<span class="ph uicontrol">Started</span>.</div>
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">You can perform further actions for the newly created database, for example,
+				configure, or delete it. Proceed as follows:</p>
+
+			<ul class="ul" id="loiod9532969173d4d9bad67ed033d5c0969__ul_hzn_1jk_g5">
+				<li class="li">To create bindings for the database, choose <span class="ph uicontrol">Data Source
+						Bindings</span> in the navigation area.</li>
+
+				<li class="li">To monitor the progress of the database creation in detail, choose
+						<span class="ph uicontrol">Events</span> in the navigation area.</li>
+
+				<li class="li">To delete a database, first delete all existing bindings to the database. In the
+					overview of the database, choose the <span class="ph uicontrol">Delete</span> button. It is
+					only enabled if a database does not have any bindings.</li>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a></div>
+<div><a class="link" href="369214b650b941b9b4bc48fdc6ec8097.html" title="The persistence service provides a set of console client commands for managing databases. These allow you to create databases with specific properties, bind and unbind databases, delete databases, and display information about databases.">Database Commands</a></div>
+<div><a class="link" href="920f2440fad245da93604c2623f0426a.html" title="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform.">Overview of Database Systems and Databases</a></div>
+<div><a class="link" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></div>
+<div><a class="link" href="216cef2158cc419fade9a8247d5008fa.html" title="Bind databases to your applications running on SAP Cloud Platform.">Binding Databases</a></div>
+<div><a class="link" href="01a21776a8dc498397b8435fd185c574.html" title="This command creates an ASE database with the specified ID and settings on an ASE database system.">create-db-ase</a></div>
+<div><a class="link" href="487b85d51994405d8198f8690c0be504.html" title="This command creates a user for an ASE database.">create-db-user-ase</a></div>
+<div><a class="link" href="9f0785db4cbf4712a6ecfae5b3ae1055.html" title="This command deletes the ASE database with the specified ID.">delete-db-ase</a></div>
+<div><a class="link" href="b280fa0fcc974ba5a65c83b7a265341e.html" title="This command deletes a user from an ASE database.">delete-db-user-ase</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

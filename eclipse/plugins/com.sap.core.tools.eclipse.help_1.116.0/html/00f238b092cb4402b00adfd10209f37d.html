@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To test the role assignments you first start the deployed extension application to make it available for requests, and then try to access it with the users with different level of granted access to the application."/>
+<meta name="description" content="To test the role assignments you first start the deployed extension application to make it available for requests, and then try to access it with the users with different level of granted access to the application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Test the Role Assignments</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio00f238b092cb4402b00adfd10209f37d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Test the Role Assignments</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To test the role assignments you first start the deployed extension application to
+		make it available for requests, and then try to access it with the users with different
+		level of granted access to the application.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio00f238b092cb4402b00adfd10209f37d__ul_ztr_n3g_dq">
+				<li class="li">
+					<p class="p">You have downloaded and configured <span class="ph pname">SAP Cloud Platform</span> console client.
+						For more information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+
+				<li class="li">You have made yourself familiar with the <span class="ph pname">SAP Cloud Platform</span> cockpit
+					concepts. For more information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?e47748b5bb571014afedc70595804f3e.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?e47748b5bb571014afedc70595804f3e.html" title="https://help.hana.ondemand.com/help/frameset.htm?e47748b5bb571014afedc70595804f3e.html">Cockpit</a></li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio00f238b092cb4402b00adfd10209f37d__steps_mns_hgg_dq"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing
+						<span class="keyword cmdname">neo.bat/sh</span> (<span class="ph filepath"><var class="keyword varname">&lt;SDK installation
+							folder&gt;</var>/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start the deployed application using the following command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo start --account <var class="keyword varname">&lt;account_name&gt;</var> --application <var class="keyword varname">&lt;application_name&gt;</var> --user <var class="keyword varname">&lt;e-mail_or_user&gt;</var> --host <var class="keyword varname">&lt;landscape_host&gt;</var></pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Access the application using users with different roles assigned to them. </span>
+				<div class="itemgroup info">To access the application, use the application URL. To get the login URL of an application
+					deployed in your extension account, open the <span class="ph pname">SAP Cloud Platform</span> cockpit,
+					and navigate to<span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Account</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"><var class="keyword varname">&lt;account_name&gt;</var></span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"><var class="keyword varname">&lt;name_of_your_extension_application&gt;</var></span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application URLs</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</div>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

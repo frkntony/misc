@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Use these best practices to get started with Git and to avoid common pitfalls."/>
+<meta name="description" content="Use these best practices to get started with Git and to avoid common pitfalls."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Best Practices</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7032e96e47954e068c2f3714ed1884c8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Best Practices</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Use these best practices to get started with Git and to avoid common pitfalls.</p>
+
+		<p class="p">If you are new to Git, we strongly recommend reading a text book about Git, search the Internet for documentation and guides available online, or
+			get in touch with the large worldwide community of developers working with Git.</p>
+
+		<div class="p">
+			<ul class="ul" id="loio7032e96e47954e068c2f3714ed1884c8__ul_jvm_l1r_g5">
+				<li class="li">
+					<p class="p">Perform a fetch or pull command before creating a new branch.</p>
+
+					<p class="p">In general, base your work on the most recent changes of your co-workers. Otherwise, you might have to resolve conflicts before the changes
+						can be pushed.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Create a new local branch for every new feature or bug-fix you want to start.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Derive new local branches from <span class="ph sap-technical-name sap-technical-name">origin/master</span></p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Write meaningful commit messages.</p>
+
+					<p class="p">A commit message should describe <span class="ph emphasis emphasis">why</span> you are doing a particular change rather than describing <span class="ph emphasis emphasis">what</span>
+						you did. The <span class="ph emphasis emphasis">why</span> helps your co-workers to understand the intention and consequences of your change. The
+							<span class="ph emphasis emphasis">what</span> on the other side can easily be deduced from the source code, that is, from the difference
+						between the old and new version.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Commit early and often.</p>
+
+					<p class="p">While developing larger features, create periodic checkpoints in form of commits, for example when you are experimenting with different
+						possible solutions. If you did something wrong, you can easily go back to the last known good commit and start over. Before
+						pushing the feature, squeeze the checkpoints into one final commit.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Create small, easy to digest commits.</p>
+
+					<p class="p">A commit that touches thousands of lines of code is likely to be much more difficult to understand and integrate than a commit that changes
+						only a tiny piece of code. For example, it is usually considered bad practice to refactor your code and implement a new
+						feature in one and the same commit.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Avoid pushing patches that break your code.</p>
+
+					<p class="p">Git supports amendments to commits that have not yet been pushed to the Git service. This means you can  correct and improve your changes
+						incrementally before pushing them.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Never rewrite a commit that has already been pushed to the Git service.</p>
+
+					<div class="p">Your co-workers might already have fetched that commit to their local repositories and based their work on it. Instead push a new commit.<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">The only valid exception to this rule is if you accidentally pushed a secret, for example a password, to the Git service.</p>
+
+						</div>
+</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Avoid dependencies on changes that have not been pushed yet.</p>
+
+					<p class="p">While Git provides some powerful mechanisms for handling chains of commits, for example interactive rebasing, these are usually considered to
+						be for experienced users only.</p>
+
+				</li>
+
+				<li class="li"><p class="p">Do not push binary files.</p>
+Git is very efficient in calculating differences in text files, but not in binary files. Pushing binary files
+					bloats your repository size and affects performance, for example in clone operations.</li>
+
+				<li class="li">
+					<p class="p">Store source code, not generated files and build artifacts.</p>
+
+					<p class="p">Keep build artifacts in a separate artifact repository because they tend to change frequently and bloat your commit history. Furthermore,
+						build artifacts  are usually stored in some sort of binary or archive format that Git cannot handle efficiently.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Run garbage collection periodically.</p>
+
+					<p class="p">Trigger a garbage collection in the <span class="ph pname">SAP Cloud Platform</span> cockpit from time to time to
+						compact and clean up your repository. Also run garbage collection regularly for repositories cloned to your workplace. This
+						will minimize the disk usage and improve the performance of common Git commands.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

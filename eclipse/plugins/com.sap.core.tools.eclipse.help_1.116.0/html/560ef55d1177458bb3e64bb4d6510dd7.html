@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If you have SAP Cloud Platform extension package for SAP SuccessFactors configured for your account, you can change the default SAP Cloud Platform role provider of your Java application to the SAP SuccessFactors role provider."/>
+<meta name="description" content="If you have SAP Cloud Platform extension package for SAP SuccessFactors configured for your account, you can change the default SAP Cloud Platform role provider of your Java application to the SAP SuccessFactors role provider."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Enable SAP SuccessFactors Role Provider</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio560ef55d1177458bb3e64bb4d6510dd7">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Enable <span class="ph pname">SAP SuccessFactors</span> Role
+		Provider</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">If you have <span class="ph pname">SAP Cloud Platform</span>
+		extension package for <span class="ph pname">SAP SuccessFactors</span>
+		configured for your account, you can change the default <span class="ph pname">SAP Cloud Platform</span> role provider of your
+		Java application to the <span class="ph pname">SAP SuccessFactors</span>
+		role provider.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			<ul class="ul" id="loio560ef55d1177458bb3e64bb4d6510dd7__ul_yjc_xdj_jq">
+				<li class="li">You have an <span class="ph pname">SAP Cloud Platform</span> extension account. For more information
+					about extension accounts, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html" title="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html">Basic Concepts</a></li>
+
+				<li class="li">You are an administrator of your <span class="ph pname">SAP Cloud Platform</span> account</li>
+
+				<li class="li">You have configured the Java extension application's connectivity to the <span class="ph pname">SAP SuccessFactors</span> sytem
+					associated with the extension account. For more information, see <a class="xref" href="ebb281b1246d4ca18a363682eff3475d.html" title="Use this procedure to configure the connectivity between your Java extension application and the SuccessFactors system associated with your SAP Cloud Platform extension account.">Configure the Extension Applications's Connectivity to SAP SuccessFactors</a>.</li>
+
+				<li class="li">In the <span class="ph pname">SAP SuccessFactors</span> system, you have
+					created or imported roles with the required permissions and these roles are with
+					the same names as those defined in the <samp class="ph codeph">web.xml</samp> file of the
+					extension application. <p class="p">For more information about importing roles, see <a class="xref" href="f0ed89f98d894f9591d9bad20c68cf5f.html" title="To complete the authorization configuration of your extension application, you import the application-specific roles into to the SAP SuccessFactors company instance connected to your extension account.">Import the Extension Application Roles in the SAP SuccessFactors System</a>. </p>
+<p class="p">For more
+						information about creating permission roles in <span class="ph pname">SAP SuccessFactors</span>, see the
+							<cite class="cite">How do you create a permission role?</cite> section in <a class="xref" href="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf" target="_blank" download="" alt="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf" title="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_RBP_Admin_en.pdf">Role-Based Permissions Administration
+					Guide</a>.</p>
+</li>
+
+				<li class="li">In the <span class="ph pname">SAP SuccessFactors</span> system, you have
+					assigned the required roles to the corresponding users and groups. For more
+					information, see <a class="xref" href="d838fff69c8e4c1ab7e84ed2794f2b1e.html" title="To complete the authorization configuration for your extension application, you assign the extension application roles you have imported in the SAP SuccessFactors systems to the user to whom you want to grant access to your application.">Assign the Extension Application Roles to Users</a>.</li>
+
+				<li class="li">When creating the extension application, you have defined the required roles in the web.xml
+					file of the application and these roles are the same as the ones you have for
+					the application in the <span class="ph pname">SAP SuccessFactors</span> system. For
+					more information about how to define roles in the web.xml file of the
+					application, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="https://help.hana.ondemand.com/help/frameset.htm?e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7">Enabling Authentication</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>A role provider is the component that retrieves the roles for a particular user. By
+			default, the role provider used for <span class="ph pname">SAP Cloud Platform</span> applications and
+			services is the <span class="ph pname">SAP Cloud Platform</span> role provider. For Java extension applications, however, you have to change the
+			default role provider to the provider of the corresponding system. For Java extension
+			applications for <span class="ph pname">SAP SuccessFactors</span> you
+			change the default role provider to the <span class="ph pname">SAP SuccessFactors</span> role provider. To
+			change the role provider for a Java exetension application for <span class="ph pname">SAP SuccessFactors</span> automatically, use the
+				<span class="keyword cmdname">hcmcloud-enable-role-provider</span> console client command.<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Currently, the automated change of the role provider is available only for Java
+					extension applications for <span class="ph pname">SAP SuccessFactors</span>.</p>
+
+			</div>
+</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio560ef55d1177458bb3e64bb4d6510dd7__steps_b5d_h2k_lt"><li class="li step">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Enable the <span class="ph pname">SAP SuccessFactors</span> role
+					provider for your Java extension application. Execute:
+						<kbd class="ph userinput">hcmcloud-enable-role-provider</kbd>, as follows:</span>
+				<ul class="ul choices" id="loio560ef55d1177458bb3e64bb4d6510dd7__choices_ln1_fdw_3t">
+					<li class="li choice">For an application deployed in your account, specify the name of your extension
+						application for the <span class="keyword parmname">application</span> parameter.<div class="p">For
+							example, to enable the <span class="ph pname">SAP SuccessFactors</span> role
+							provider for a Java extension application running in your account in the
+							US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-enable-role-provider --application <var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For
+							example, to enable the <span class="ph pname">SAP SuccessFactors</span> role
+							provider for a Java extension application to which your account in the
+							US East data center is subscribed,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo  hcmcloud-enable-role-provider --application <var class="keyword varname">&lt;application_provider_account:my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> -- host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+				</ul>
+
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e263f8ec85ad4c6e869c094b44c0084c.html" title="This command enables the SAP SuccessFactors role provider for the specified Java application.">hcmcloud-enable-role-provider (Beta)</a></div>
+<div><a class="link" href="22bda078a05b4ec99c89df5fba8fc5ca.html" title="If you have SAP Cloud Platform extension package for SuccessFactors configured for your account, you can change the default SAP Cloud Platform role provider to another one.">Changing the Default Role Provider</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

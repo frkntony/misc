@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ide.ui5.app.feature"
+      label="SAPUI5 Application Development (Developer Edition)"
+      version="1.56.1"
+      provider-name="SAP"
+      plugin="com.sap.ide.ui5.app.plugin">
+
+   <description>
+      Tools for developing SAPUI5 applications. Offers easy-to-use wizards for creating and maintaining SAPUI5 applications and supports the SAPUI5 MVC concept. This feature is supported in Eclipse Package, Eclipse IDE for Java EE Developers based on Eclipse 3.6 and above.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <includes
+         id="com.sap.ide.ui5.app.feature.external"
+         version="1.56.1"/>
+
+   <requires>
+      <import feature="org.eclipse.jst.web_ui.feature" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.jsdt.feature" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.platform" version="4.4.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jdt" version="3.5.0" match="compatible"/>
+      <import feature="org.eclipse.jst.enterprise_ui.feature" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.common_core.feature" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.jst.common.fproj.enablement.jdt" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.common.fproj" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.server_adapters.feature" version="3.1.0" match="compatible"/>
+   </requires>
+
+</feature>

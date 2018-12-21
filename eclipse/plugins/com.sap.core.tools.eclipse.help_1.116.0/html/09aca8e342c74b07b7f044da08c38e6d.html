@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Deletes a solution resource file from the system repository of a specified extension account."/>
+<meta name="description" content="Deletes a solution resource file from the system repository of a specified extension account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>delete-resource (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio09aca8e342c74b07b7f044da08c38e6d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">delete-resource (Beta)</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Deletes a solution resource file from the system repository of a specified extension
+		account.</p>
+
+		<div class="section">
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			</div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo delete-resource --name &lt;resource_name&gt; --account &lt;account_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --silent</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loio09aca8e342c74b07b7f044da08c38e6d__section_N1001E_N10012_N10001">To list all parameters available for this command,
+			execute <kbd class="ph userinput">neo help delete-resource</kbd> in the command line. 
+<div class="table-wrapper tablenoborder"><table summary="" id="loio09aca8e342c74b07b7f044da08c38e6d__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d361888e64">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d361888e64 "><span class="keyword parmname">-n</span>, <span class="keyword parmname">--name</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d361888e64 ">Name of the resource to be deleted<p class="p"><span class="keyword cmdname">Type</span>:
+									string</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d361888e64 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d361888e64 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d361888e64 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d361888e64 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html" title="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html">Landscape
+								Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d361888e64 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d361888e64 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d361888e64 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d361888e64 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio09aca8e342c74b07b7f044da08c38e6d__table_hbv_n53_jl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d361888e173">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d361888e173 "><span class="keyword parmname">-s</span>, <span class="keyword parmname">--silent</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d361888e173 ">Suppresses the command-line confirmation prompt</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">To delete a solution resource from the system repository for your extension account,
+				execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo delete-resource --name myresourcename --account myextensionacc --user mymail@example.com --host hana.ondemand.com</pre></div>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

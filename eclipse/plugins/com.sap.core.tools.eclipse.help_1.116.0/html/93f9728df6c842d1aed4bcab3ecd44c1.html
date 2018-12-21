@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Learn about the activities that you need to perform to update your SAP HANA database systems."/>
+<meta name="description" content="Learn about the activities that you need to perform to update your SAP HANA database systems."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating Database Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio93f9728df6c842d1aed4bcab3ecd44c1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Updating
+		Database
+		Systems</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Learn about the activities that you need to perform to update your SAP HANA
+		database
+		systems.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">Basic authentication must be enabled for SAP HANA Application Lifecycle Management to
+				be able to update SAP HANA XS-based components. You can check and enable basic
+				authentication using the SAP HANA XS Administration Tool. Navigate to the
+					<span class="ph filepath">sap/hana/xs/lm</span> package and add <span class="ph uicontrol">Basic</span>
+				in the <span class="ph uicontrol">Authentication</span> section.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="sectiondiv">To update your SAP HANA
+				database
+				systems, you have the following options:<ul class="ul" id="loio93f9728df6c842d1aed4bcab3ecd44c1__ul_uhg_xtf_kr">
+					<li class="li">Update the software components installed on your SAP HANA
+						database
+						system to a higher version</li>
+
+					<li class="li">Apply a single Support Package on top of an existing SAP HANA
+						database
+						system</li>
+
+				</ul>
+<div class="note remember"><span class="remembertitle">Remember</span> Make sure that you read the SAP Notes listed in the UI
+					before the update. Apply all the steps required before or after the
+					update.</div>
+<div class="note sap-recommendation recommendation"><span class="recommendationtitle">Recommendation</span> We recommend always using the latest available
+					version. For more information about the availability of new HANA revisions for
+					the update, please refer to the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833">release
+						notes<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> of <span class="ph pname">SAP Cloud Platform</span>. To ensure that you can use a new
+					HANA revision for productive use, check whether it is marked as production-ready
+					in SAP Note <a class="extlink" href="http://help.sap.com/disclaimer?site=http://service.sap.com/sap/support/notes/2021789" target="_blank" alt="http://service.sap.com/sap/support/notes/2021789" title="http://service.sap.com/sap/support/notes/2021789">2021789<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> - SAP HANA Revision and Maintenance
+					Strategy.</div>
+<p class="p">Please expect a temporary downtime for the SAP
+					HANA database or SAP HANA XS Engine when updating SAP HANA. You might not be
+					able to work with SAP HANA studio, SAP HANA Web-based Development Workbench, and
+					cockpit UIs that depend on SAP HANA XS.</p>
+
+			</div></div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit with the administrator role on the productive
+					landscape.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Database Systems</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				<div class="itemgroup info">
+					<p class="p">All database systems available in the  account are listed with their
+            details, including the database type, version, memory size, state, and the number of
+            associated databases.</p>
+
+					<div class="note tip"><span class="tiptitle">Tip</span> To view the details of a database, for example, its state and
+						the number of existing bindings, select a database in the list and click the
+						link on its name. On the overview of the database, you can perform further
+						actions, for example, delete the database.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To select the entry for the relevant database system in the list, click the
+					link on its name.</span>
+				<div class="itemgroup info">The overview of the database system shows details, including the database
+					version and state, and the number of associated databases.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To update an SAP HANA
+					database
+					system, choose <span class="ph uicontrol">Check for updates</span>.</span>
+				<div class="itemgroup info">All versions available for the specified productive SAP HANA
+					database
+					system are listed.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select a version to update.</span>
+				<div class="itemgroup info">Remember to read the corresponding release note if you select the option to
+					update to a higher version.<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">You can select SAP HANA revisions approved for use in <span class="ph pname">SAP Cloud Platform</span>
+							only. If you want to update to another revision, please contact SAP
+							Support.</p>
+
+						<p class="p">Updating a SAP HANA
+							database
+							system to a maintenance revision can result in upgrade
+							path limitations. See SAP Note <a href="http://help.sap.com/disclaimer?site=https://launchpad.support.sap.com/#/notes/1948334" target="_blank">1948334 <img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> for
+							details.</p>
+
+					</div>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Specify if you would like the update process to stop and prompt for confirmation
+					before the update of the SAP HANA
+					database
+					system is applied and the system downtime is started.</span>
+				<div class="itemgroup info">This option is selected by default. If you deselect it, the update is
+					performed without any user interaction.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Continue/Update</span>.</span>
+				<div class="itemgroup info">The system begins preparing to update. The update process will take some time
+					and is executed asynchronously. The update dialog box remains on the screen
+					while the update is in progress. It is safe to close the dialog box and reopen
+					it later.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) If you chose to be prompted for confirmation after preparation of
+					the update, the update process will stop and prompt for your confirmation to
+					start the update.</span>
+				<div class="itemgroup info">While preparing the update, the SAP HANA
+					database
+					system is not modified, so it is safe to cancel the update
+					process.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Update</span>.</span>
+				<div class="itemgroup info">The update starts and takes about 20 minutes.</div>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>Your SAP HANA database system has been updated. <div class="note note"><span class="notetitle">Note</span> For more information, see the SAP
+				HANA Developer Guides listed below. Refer to the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833"><span class="ph pname">SAP Cloud Platform</span> Release Notes<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> to find out which HANA SPS is currently supported
+				by <span class="ph pname">SAP Cloud Platform</span>.</div>
+</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm">SAP HANA XS Administration Tools</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf">Developer Guide for SAP HANA Studio for the latest release of SAP
+				HANA → section "Set up Application Authentication"</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf">Developer Guide for SAP HANA Web Workbench for the latest release of SAP
+				HANA → section "Set up Application Authentication"</a></div>
+<div><a class="link" href="http://help.sap.com/hana_platform_earlier_releases" target="_blank" alt="http://help.sap.com/hana_platform_earlier_releases" title="http://help.sap.com/hana_platform_earlier_releases">Developer Guides for earlier releases of SAP HANA → section "Set up Application Authentication"</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://service.sap.com/sap/support/notes/1948334" target="_blank" alt="http://service.sap.com/sap/support/notes/1948334" title="http://service.sap.com/sap/support/notes/1948334">SAP Note 1948334 - SAP HANA Database Update Paths for Maintenance
+				Revisions<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://service.sap.com/sap/support/notes/2021789" target="_blank" alt="http://service.sap.com/sap/support/notes/2021789" title="http://service.sap.com/sap/support/notes/2021789">SAP Note 2021789 - SAP HANA Revision and Maintenance Strategy<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

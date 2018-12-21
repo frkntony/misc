@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Access Control (RFC)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioca5868997e48468395cf0ca4882f5783">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Access Control (RFC)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loioca5868997e48468395cf0ca4882f5783__section_N1001A_N10011_N10001"><div class="section_title">Exposing Intranet Systems</div><div type="Exposing Intranet Systems">
+			
+			<p class="p">To allow your on-demand applications to access a certain back-end system on the intranet, you
+				need to insert an extra line within the <span class="ph pname">Cloud connector</span>
+				<span class="ph uicontrol">Access Control</span> management. </p>
+
+			<ol class="ol" id="loioca5868997e48468395cf0ca4882f5783__ol_bcj_j5y_hk">
+				<li class="li">Choose <span class="ph uicontrol">Clout To On Premise</span> from your <span class="ph uicontrol">Account</span>
+					menu and go to tab <span class="ph uicontrol">Access Control</span>.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Add</span>.</li>
+
+				<li class="li"><span class="ph uicontrol">Back-end Type</span>: You need to select the description that
+					best matches the addressed back-end system. In case of RFC, only <kbd class="ph userinput">ABAP
+						System</kbd> and <kbd class="ph userinput">SAP Gateway</kbd> are fitting
+					values, which means usage of RFC is free of charge.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_e5z_4lc_b5" width="1400px" src="loio756de88279474ddeb72ed518d5b11dd6_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Next</span>.</li>
+
+				<li class="li"><span class="ph uicontrol">Protocol</span>: You need to choose whether the <span class="ph pname">Cloud connector</span>
+					should use RFC or RFC with SNC for connecting to the back-end system. This is
+					completely independent from the settings on cloud side. This way, you are
+					ensured that the entire connection from the on-demand application to the actual
+					back-end system (provided through the SSL tunnel) is secured, partly with SSL
+					and partly with SNC. For more information, see <a class="xref" href="f09eefe71d1e4d4484e1dd4b121585fb.html">Initial Configuration (RFC)</a>.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_utd_1mc_b5" width="1400px" src="loio41370c70b07649089a2f9ee32cd68046_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+<p class="p"/>
+<div class="note note"><span class="notetitle">Note</span> 
+						<ul class="ul" id="loioca5868997e48468395cf0ca4882f5783__ul_gj2_mxc_2s">
+							<li class="li">The back end needs to be properly configured to support SNC
+								connections. </li>
+
+							<li class="li">SNC configuration has to be provided in the <span class="ph pname">Cloud connector</span>.</li>
+
+						</ul>
+
+					</div>
+</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Next</span>.</li>
+
+				<li class="li">Choose whether you want to configure a load balancing logon or whether to
+					connect to a concrete application server.<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_a3w_hzc_2s" width="1400px" src="loio9b53fd96751442c5a3f3ce4504929e9c_HiRes.png"/></p>
+</li>
+
+				<li class="li">Specify the parameters of the back-end system. It needs to be an existing network address
+					that can be resolved on the intranet and has network visibility for the <span class="ph pname">Cloud connector</span>. If
+					this is only possible using a valid <a class="xref" href="http://help.sap.com/saphelp_nw75/helpdata/en/48/6a169d31c34e6ee10000000a421937/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_nw75/helpdata/en/48/6a169d31c34e6ee10000000a421937/frameset.htm" title="http://help.sap.com/saphelp_nw75/helpdata/en/48/6a169d31c34e6ee10000000a421937/frameset.htm">SAProuter</a>, specify the router in the respective
+					field. The <span class="ph pname">Cloud connector</span>
+					will try to establish a connection to this system, so the address has to be
+						real.<ul class="ul" id="loioca5868997e48468395cf0ca4882f5783__ul_phy_mzc_2s">
+						<li class="li">When using a load-balancing configuration, the <span class="ph uicontrol">Message
+								Server</span> specifies the message server of the ABAP system.
+							The system ID is a three-char identifier that is also found in the SAP
+							Logon configuration. Alternatively, it's possible to directly specify
+							the message server port in the <span class="ph uicontrol">System ID</span>
+									field.<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_njh_b1d_2s" width="1400px" src="loio6abe59dedbfc4fb3b209eb9d7ae82e29_LowRes.png"/></p>
+</li>
+
+						<li class="li">When using direct logon, the <span class="ph uicontrol">Application Server</span>
+							specifies one application server of the ABAP system. The instance number
+							is a two-digit number that is also found in in the SAP Logon
+							configuration. Alternatively, it's possible to directly specify the
+							gateway port in the <span class="ph uicontrol">Instance Number</span>
+									field.<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_kqb_41d_2s" width="1400px" src="loio2ac399d79a614434882864dcd79799d8_LowRes.png"/></p>
+</li>
+
+					</ul>
+</li>
+
+				<li class="li">Optional: You can virtualize the system information in case you like to hide your internal
+					host names from the cloud. The virtual information can be a fake name which does
+					not need to exist. The fields will be pre-populated with the values of the
+					configuration provided in <span class="ph uicontrol">Message Server</span> and
+						<span class="ph uicontrol">System ID</span>, or <span class="ph uicontrol">Application
+						Server</span> and <span class="ph uicontrol">Instance Number</span>. <p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_qdr_qbd_2s" width="1400px" src="loiofd5bae9ce02b46cfa6b26f7ac52cf49e_HiRes.png"/></p>
+<ul class="ul" id="loioca5868997e48468395cf0ca4882f5783__ul_obj_x1d_2s">
+						<li class="li"><span class="ph uicontrol">Virtual Message Server</span> - specifies the host name
+							exactly as specified as the <span class="keyword parmname">jco.client.mshost</span>
+							property in the RFC destination configuration in the cloud. The
+								<span class="ph uicontrol">Virtual System ID</span> allows you to distinguish
+							between different entry points of your back-end system that have
+							different sets of access control settings. The value needs to be the
+							same like for the <span class="keyword parmname">jco.client.r3name</span> property in the
+							RFC destination configuration in the cloud.</li>
+
+						<li class="li"><span class="ph uicontrol">Virtual Application Server</span> - it specifies the
+							host name exactly as specified as the
+								<span class="keyword parmname">jco.client.ashost</span> property in the RFC
+							destination configuration in the cloud. The <span class="ph uicontrol">Virtual Instance
+								Number</span> allows you to distinguish between different entry
+							points of your back-end system that have different sets of access
+							control settings. The value needs to be the same like for the
+								<span class="keyword parmname">jco.client.sysnr</span> property in the RFC
+							destination configuration in the cloud. </li>
+
+					</ul>
+<p class="p"/>
+</li>
+
+				<li class="li">This step will only come up, if you have chosen RFC SNC, not for plain RFC. The
+						<var class="keyword varname field">&lt;Principal Type&gt;</var> field defines what kind of principal is used
+					when configuring a destination on the cloud side using this system mapping with
+					authentication type <span class="ph uicontrol">Principal Propagation</span>. No matter what
+					you choose, you need to make sure that the general configuration for the
+						<var class="keyword varname field">&lt;Principal Type&gt;</var> has been done to make it work correctly. For
+					destinations using different authentication types, this setting is ignored. In
+					case you choose <kbd class="ph userinput">None</kbd> as <var class="keyword varname field">&lt;Principal Type&gt;</var>, it
+					is not possible to apply Principal Propagation to this system.<div class="note note"><span class="notetitle">Note</span> In the case
+						of RFC, it is not possible to choose between different principal types. The
+						only supported one is <kbd class="ph userinput">X.509</kbd> certificate, which can be
+						applied only when using an SNC-enabled back-end connection.</div>
+<div class="p">
+						<div class="fig fignone" id="loioca5868997e48468395cf0ca4882f5783__fig_kmh_vsp_dw"><div class="figcontainer">
+							<img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_k3h_rrp_dw" width="1400px" src="loio0250df00e7994c1cac7a49f687cc8b40_LowRes.png"/>
+						</div></div>
+
+					</div>
+<p class="p"/>
+</li>
+
+				<li class="li"><span class="ph uicontrol">SNC Partner Name</span>: This step will only come up if you have
+					chosen <kbd class="ph userinput">RFC SNC</kbd>. The SNC partner name needs to contain the
+					correct SNC identification of the target system.<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_bbb_ccd_2s" width="1400px" src="loio3d86f55367524d6cb3a553f3fbac5e22_HiRes.png"/></p>
+</li>
+
+				<li class="li">You can enter an optional description at this stage. The respective description
+					will be shown as a rich tooltip when the mouse hovers over the entries of the
+					virtual host column (table <span class="ph uicontrol">Mapping Virtual to Internal
+						System</span>).<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_hh1_nnc_b5" width="1400px" src="loioe38fd87732cd493ba52acad3a325cdc5_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+<p class="p"/>
+</li>
+
+				<li class="li">The summary shows information about the system to be stored. When saving the system mapping,
+					you can trigger a ping from the <span class="ph pname">Cloud connector</span> to
+					the internal host, using the <span class="ph uicontrol">Check availability of internal
+						host</span> check box. This allows you to make sure the <span class="ph pname">Cloud connector</span> can
+					indeed access the internal system, and allows you to catch basic things, such as
+					spelling mistakes or firewall problems between the <span class="ph pname">Cloud connector</span> and
+					the internal host. If the ping to the internal host is successful, the <span class="ph pname">Cloud connector</span>
+					saves the mapping without any remark. If it fails, a warning will pop up, that
+					the host is not reachable. Details for the reason are available in the log
+					files. You can execute such a check at any time later for all selected systems
+					in the <span class="ph uicontrol">Access Control</span> overview.<p class="p"/>
+<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_p2v_b4c_b5" width="1400px" src="loio0ac09aa4ceb44253a839bc31a5c19e3a_HiRes.png"/></p>
+</li>
+
+				<li class="li">Optional: You can later edit a system mapping (choose <span class="ph uicontrol">Edit</span>) to make
+					the <span class="ph pname">Cloud connector</span>
+					route the requests for <kbd class="ph userinput">sales-system.cloud:sapgw42</kbd> to a
+					different back-end system. This can be useful if the system is currently down
+					and there is a back-up system that can serve these requests in the meantime.
+					However, you cannot edit the virtual name of this system mapping. If you want to
+					use a different fictional host name in your on-demand application, you need to
+					delete the mapping and create a new one. Here, you can also change the
+						<span class="ph uicontrol">Principal Type</span> to <kbd class="ph userinput">None</kbd> in case
+					you don't want to allow principal propagation to a certain system.<p class="p"/>
+<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_st4_v4c_b5" width="1400px" src="loio054980afbb41439d8f2321e131640c39_HiRes.png"/></p>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioca5868997e48468395cf0ca4882f5783__section_N100BF_N10011_N10001"><div class="section_title">Limiting the Accessible Resources for RFC</div><div type="Limiting the Accessible Resources for RFC">
+			
+			<p class="p">In addition to allowing access to a particular host and port, you also need to specify which
+				function modules (<span class="ph uicontrol">Resources</span>) are allowed to be invoked on
+				that host. The <span class="ph pname">Cloud connector</span> uses
+				very strict white lists for its access control, so allowed are only function modules
+				for which you explicitly granted access. All other RFC requests are denied by the
+					<span class="ph pname">Cloud connector</span>.</p>
+
+			<ol class="ol" id="loioca5868997e48468395cf0ca4882f5783__ol_jfw_xvy_hk">
+				<li class="li">To define the permitted function modules (<span class="ph uicontrol">Resources</span>) for a particular
+					back-end system, choose the row corresponding to that back-end system and press
+						<span class="ph uicontrol">Add</span> in section <span class="ph uicontrol">Resources Accessible
+						On...</span> below. A dialog appears, prompting you to enter the
+					specific function module name whose invoking you want to allow. <p class="p"/>
+<p class="p"><img class="image" id="loioca5868997e48468395cf0ca4882f5783__image_iv3_4pc_b5" width="1400px" src="loioe20dafb54f264611b0bf7e574b93e298_HiRes.png"/></p>
+</li>
+
+				<li class="li">The <span class="ph pname">Cloud connector</span> checks
+					that the function module name of an incoming request is exactly as specified in
+					the configuration. If it is not, the request is denied.</li>
+
+				<li class="li">If you select the <span class="ph uicontrol">Prefix</span> option, the <span class="ph pname">Cloud connector</span>
+					allows all incoming requests, for which the function module name begins with the
+					specified string.</li>
+
+				<li class="li">The <span class="ph uicontrol">Enabled</span> checkbox allows you to specify whether that resource
+					should be initially enabled or disabled.</li>
+
+			</ol>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="0a238b915b3a48adb950e5807654226c.html">Tutorial: Invoking ABAP Function Modules in On-Premise ABAP Systems</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

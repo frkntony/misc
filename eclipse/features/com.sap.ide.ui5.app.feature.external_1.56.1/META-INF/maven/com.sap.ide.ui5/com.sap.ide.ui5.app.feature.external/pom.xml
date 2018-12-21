@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+  <!--**************************************************************************
+  * POM SECTION: Maven Model Version Settings
+  ***************************************************************************-->
+
+  <modelVersion>4.0.0</modelVersion>
+  
+  
+  <!--**************************************************************************
+  * POM SECTION: Parent POM Settings
+  ***************************************************************************-->
+
+  <parent>
+  	<artifactId>com.sap.ide.ui5.build.tools</artifactId>
+  	<groupId>com.sap.ide.ui5</groupId>
+    <version>1.56.1</version>
+    <relativePath>../com.sap.ide.ui5.parent/separateBuilds/build.tools/pom.xml</relativePath>
+  </parent>
+
+
+  <!--**************************************************************************
+  * POM SECTION: Maven Settings
+  ***************************************************************************-->
+
+  <artifactId>com.sap.ide.ui5.app.feature.external</artifactId>
+  <packaging>eclipse-feature</packaging>
+  
+
+  <!--**************************************************************************
+  * POM SECTION: Project Settings
+  ***************************************************************************-->
+
+  <name>com.sap.ide.ui5.app.feature.external</name>
+  <description>UI5 Application Development - Feature used by external customers</description>
+  
+  <build>
+	  <plugins>
+	    <!-- Code signing -->
+	    <plugin>
+	        <groupId>com.sap.prd.codesign</groupId>
+	        <artifactId>com.sap.prd.codesign.maven-jarsigner-plugin</artifactId>
+	    </plugin>
+
+	  </plugins>
+  </build>
+   
+</project>

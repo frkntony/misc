@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming Internet Services (Java Web or Java EE 6 Web Profile)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe592cf6cbb57101495d3c28507d20f1b">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Consuming Internet Services (Java Web or Java EE 6 Web Profile)</h1>
+<div class="body conbody"><div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__section_69D9D4B87A8546C7A1FC1F3612C4E0A1"><div class="section_title">Context</div><div type="Context"> 
+		 
+		<p class="p">This step-by-step tutorial demonstrates consumption of Internet services using <a class="extlink" href="http://help.sap.com/disclaimer?site=http://hc.apache.org/httpcomponents-client-ga/index.html" target="_blank" alt="http://hc.apache.org/httpcomponents-client-ga/index.html" title="http://hc.apache.org/httpcomponents-client-ga/index.html">Apache HTTP Client<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. The tutorial also shows how a
+				connectivity-enabled Web application can be deployed on a local server and on the
+				cloud. </p>
+
+			<p class="p">The servlet code, the <span class="ph filepath">web.xml</span> content, and the destination file
+					(<kbd class="ph userinput">outbound-internet-destination</kbd>) used in this tutorial are
+				mapped to the connectivity sample project located in
+					<span class="ph filepath">&lt;SDK_location&gt;/samples/connectivity</span>. You can directly
+				import this sample in your Eclipse IDE. For more information, see <a class="xref" href="e8001e24bb571014946684289214ba84.html" title="To get a sample application up and running, import it as an Eclipse project into your Eclipse IDE and then deploy it on the local runtime and SAP Cloud Platform.">Importing Samples as Eclipse Projects</a>.</p>
+
+			<p class="p">Go through the relevant steps:</p>
+
+			<ol class="ol" id="loioe592cf6cbb57101495d3c28507d20f1b__ol_mww_s4q_24">
+				<li class="li"><a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html#loioe592cf6cbb57101495d3c28507d20f1b__create_web_project">Create
+						a Dynamic Web Project</a></li>
+
+				<li class="li"><a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html#loioe592cf6cbb57101495d3c28507d20f1b__create_servlet">Create a
+						Sample Servlet</a></li>
+
+				<li class="li"><a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html#loioe592cf6cbb57101495d3c28507d20f1b__local_testing">Test the
+						Connectivity-Enabled Web Application Locally</a></li>
+
+				<li class="li"><a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html#loioe592cf6cbb57101495d3c28507d20f1b__deploy_on_cloud">Deploy
+						the Connectivity-Enabled Web Application on the Cloud</a></li>
+
+			</ol>
+ 
+	 </div></div>
+<div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__prerequisites"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have downloaded and set up your Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span> Tools for
+				Java, and SDK. </p>
+
+			<p class="p">For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> You need to install <kbd class="ph userinput">SDK for Java Web</kbd> or <kbd class="ph userinput">SDK for
+					Java EE 6 Web Profile</kbd>.</div>
+
+			<p class="p">
+			</p>
+
+		</div></div>
+<div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__create_web_project"><div class="section_title">1. Create a Dynamic Web Project</div><div type="1. Create a Dynamic Web Project">
+			
+			<ol class="ol">
+				<li class="li">Open the <span class="ph uicontrol">Java EE</span> perspective of the Eclipse IDE. </li>
+
+				<li class="li">From the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Project name</span>  field, enter
+						<kbd class="ph userinput">ConnectivityHelloWorld </kbd>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Target Runtime</span> pane, select the runtime you want to use to
+					deploy the application. In this tutorial, we choose <kbd class="ph userinput">Java
+						Web</kbd>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Configuration</span> pane, leave the default configuration.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span> to finalize the creation of your project. <p class="p"><img class="image" id="loioe592cf6cbb57101495d3c28507d20f1b__image_l2h_gjb_gp" src="loiob2388fbabb571014880689f5d8e655e4_LowRes.png"/></p>
+
+				</li>
+
+			</ol>
+
+			<p class="p">
+			</p>
+
+			<p class="p"> </p>
+
+		</div></div>
+
+		<div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__create_servlet"><div class="section_title">2. Create a Sample Servlet</div><div type="2. Create a Sample Servlet">
+			
+			<ol class="ol" id="loioe592cf6cbb57101495d3c28507d20f1b__ol_gl5_sfd_mj">
+				<li class="li">From the <span class="ph uicontrol">ConnectivityHelloWorld </span> context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">Enter <kbd class="ph userinput">hello</kbd> as the Java package and
+						<kbd class="ph userinput">ConnectivityServlet </kbd> as the <span class="ph uicontrol">Class
+						name</span> and choose <span class="ph uicontrol">Next</span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">URL mappings</span> field, select
+						<span class="ph uicontrol">/ConnectivityServlet </span> and choose
+						<span class="ph uicontrol">Edit</span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Pattern</span> field, replace the current value with just
+						"<kbd class="ph userinput">/</kbd>". In this way, the servlet will be mapped as a
+					welcome page for the application. <p class="p"><img class="image" id="loioe592cf6cbb57101495d3c28507d20f1b__image_bn5_sfd_mj" height="120" src="loio7612b41e711e1014839a8273b0e91070_LowRes.png" width="316"/>
+					</p>
+
+				</li>
+
+				<li class="li"> Choose <span class="ph uicontrol">Finish</span> so that the
+						<span class="keyword parmname">ConnectivityServlet.java</span> servlet is created and opened
+					in the Java editor. </li>
+
+				<li class="li">Go to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">ConnectivityHelloWorld</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">WebContent</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">WEB-INF</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and open the <span class="ph filepath">web.xml</span> file. </li>
+
+				<li class="li">Choose the <span class="ph uicontrol">Source</span> tab page.</li>
+
+				<li class="li">Add the following code block to the <span class="keyword parmname">&lt;web-app&gt;</span> element: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;resource-ref&gt;
+      &lt;res-ref-name&gt;outbound-internet-destination&lt;/res-ref-name&gt;
+      &lt;res-type&gt;com.sap.core.connectivity.api.http.HttpDestination&lt;/res-type&gt;
+&lt;/resource-ref&gt;
+</pre></div>
+
+					<div class="note note" id="loioe592cf6cbb57101495d3c28507d20f1b__note_N10129_N1011D_N100BF_N1005B_N10013_N10001"><span class="notetitle">Note</span> The value of the
+							<span class="keyword parmname">&lt;res-ref-name&gt;</span> element in the
+							<span class="ph filepath">web.xml</span> file should match the name of the
+						destination that you want to be retrieved at runtime. In this case, the
+						destination name is <kbd class="ph userinput">outbound-internet-destination</kbd>.
+					</div>
+
+				</li>
+
+				<li class="li">Replace the entire servlet class with the following one to make use of the destination API.
+					The destination API is visible by default for cloud applications and must not be
+					added explicitly to the application class path. <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.connectivity;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static java.net.HttpURLConnection.HTTP_OK;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sap.core.connectivity.api.DestinationFactory;
+import com.sap.core.connectivity.api.http.HttpDestination;
+
+
+/**
+ * Servlet class making HTTP calls to specified HTTP destinations.
+ * Destinations are used in the following exemplary connectivity scenarios:&lt;br&gt;
+ * - Connecting to an outbound Internet resource using HTTP destinations&lt;br&gt;
+ * - Connecting to an on-premise backend using on-premise HTTP destinations,&lt;br&gt;
+ *   where the destinations could have no authentication or basic authentication.&lt;br&gt;
+ *
+ * * NOTE: The <span class="ph pname">connectivity
+                            service</span> API is located under
+ * &lt;code&gt;com.sap.core.connectivity.api&lt;/code&gt;. The old API under
+ * &lt;code&gt;com.sap.core.connectivity.httpdestination.api&lt;/code&gt; has been deprecated.
+ */
+public class ConnectivityServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private static final int COPY_CONTENT_BUFFER_SIZE = 1024;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectivityServlet.class);
+
+    /** {@inheritDoc} */
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpClient httpClient = null;
+        String destinationName = request.getParameter("destname");
+        try {
+            // Get HTTP destination
+            Context ctx = new InitialContext();
+            HttpDestination destination = null;
+            if (destinationName != null) {
+                DestinationFactory destinationFactory = (DestinationFactory) ctx.lookup(DestinationFactory.JNDI_NAME);
+                destination = (HttpDestination) destinationFactory.getDestination(destinationName);
+            } else {
+                // The default request to the Servlet will use outbound-internet-destination
+                destinationName = "outbound-internet-destination";
+                destination = (HttpDestination) ctx.lookup("java:comp/env/" +  destinationName);
+            }
+
+            // Create HTTP client
+            httpClient = destination.createHttpClient();
+
+            // Execute HTTP request
+            HttpGet httpGet = new HttpGet();
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+
+            // Check response status code
+            int statusCode = httpResponse.getStatusLine().getStatusCode();
+            if (statusCode != HTTP_OK) {
+                throw new ServletException("Expected response status code is 200 but it is " + statusCode + " .");
+            }
+
+            // Copy content from the incoming response to the outgoing response
+            HttpEntity entity = httpResponse.getEntity();
+            if (entity != null) {
+                InputStream instream = entity.getContent();
+                try {
+                    byte[] buffer = new byte[COPY_CONTENT_BUFFER_SIZE];
+                    int len;
+                    while ((len = instream.read(buffer)) != -1) {
+                        response.getOutputStream().write(buffer, 0, len);
+                    }
+                } catch (IOException e) {
+                    // In case of an IOException the connection will be released
+                    // back to the connection manager automatically
+                    throw e;
+                } catch (RuntimeException e) {
+                    // In case of an unexpected exception you may want to abort
+                    // the HTTP request in order to shut down the underlying
+                    // connection immediately.
+                    httpGet.abort();
+                    throw e;
+                } finally {
+                    // Closing the input stream will trigger connection release
+                    try {
+                        instream.close();
+                    } catch (Exception e) {
+                    // Ignore
+                    }
+                }
+            }
+        } catch (NamingException e) {
+            // Lookup of destination failed
+            String errorMessage = "Lookup of destination failed with reason: "
+                    + e.getMessage()
+                    + ". See "
+                    + "logs for details. Hint: Make sure to have the destination "
+                    + destinationName + " configured.";
+            LOGGER.error("Lookup of destination failed", e);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    errorMessage);
+        } catch (Exception e) {
+            // Connectivity operation failed
+            String errorMessage = "Connectivity operation failed with reason: "
+                    + e.getMessage()
+                    + ". See "
+                    + "logs for details. Hint: Make sure to have an HTTP proxy configured in your "
+                    + "local Eclipse environment in case your environment uses "
+                    + "an HTTP proxy for the outbound Internet "
+                    + "communication.";
+            LOGGER.error("Connectivity operation failed", e);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    errorMessage);
+        } finally {
+            // When HttpClient instance is no longer needed, shut down the connection manager to ensure immediate
+            // deallocation of all system resources
+            if (httpClient != null) {
+                httpClient.getConnectionManager().shutdown();
+            }
+        }
+    }
+}	
+</pre></div>
+
+					<div class="note note"><span class="notetitle">Note</span> The given servlet can run with different destination scenarios, for which
+						user should specify the destination name as a requested parameter in the
+						calling URL. In this case, the destination name should be
+							<span class="keyword parmname">&lt;applicationURL&gt;/?destname=outbound-internet-destination</span>.
+						Nevertheless, your servlet can still run even without specifying the
+						destination name for this outbound scenario.</div>
+</li>
+
+				<li class="li">Save the Java editor and make sure the project compiles without errors. </li>
+
+			</ol>
+
+		</div></div>
+<div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__local_testing"><div class="section_title">3. Test the Connectivity-Enabled Web Application Locally</div><div type="3. Test the Connectivity-Enabled Web Application Locally">
+			
+			<div class="note caution"><span class="cautiontitle">Caution</span> 
+				<ul class="ul" id="loioe592cf6cbb57101495d3c28507d20f1b__ul_h4c_p4p_nm">
+					<li class="li">If you use SDK for Java Web, we only recommend that you create a destination
+						before deploying the application.</li>
+
+					<li class="li">If you use SDK for Java EE 6 Web Profile, you must create a destination
+						before deploying the application.</li>
+
+				</ul>
+
+			</div>
+
+			<ol class="ol">
+				<li class="li">In the context menu of the <span class="ph uicontrol">Servers</span> view, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">Expand the <span class="ph uicontrol">SAP</span> node, select <span class="ph uicontrol">Java Web Server</span>
+					and choose <span class="ph uicontrol">Finish</span>. </li>
+
+				<li class="li">A new server <span class="keyword parmname">Java Web Server [Stopped, Synchronized]</span> appears on the
+						<span class="ph uicontrol">Servers</span> tab page. <p class="p">Also, a
+							<span class="ph uicontrol">Servers</span> folder is created and appears in the
+						navigation tree of the IDE. It contains configurable folders and files you
+						can use, for example, to change your HTTP or JMX ports. </p>
+
+				</li>
+
+				<li class="li">If you work behind a proxy server, you need to configure your proxy setting as
+					follows: <ul class="ul">
+						<li class="li"> In the <span class="ph uicontrol">Servers</span> view, double-click the added
+							server to open the editor. </li>
+
+						<li class="li"> Click the <span class="ph uicontrol">Open Launch Configuration</span> link. </li>
+
+						<li class="li"> Choose the <span class="ph uicontrol">(x)=Arguments</span> tab page. </li>
+
+						<li class="li"> In the <span class="ph uicontrol">VM Arguments</span> box, add the following row:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">-Dhttp.proxyHost=&lt;your_proxy_host&gt; -Dhttp.proxyPort=&lt;your_proxy_port&gt; -Dhttps.proxyHost=&lt;your_proxy_host&gt; -Dhttps.proxyPort=&lt;your_proxy_port&gt;
+</pre></div>
+
+						</li>
+
+						<li class="li"> Choose <span class="ph uicontrol">OK</span>. </li>
+
+					</ul>
+
+				</li>
+
+				<li class="li">Go to the <span class="ph uicontrol">Connectivity</span> tab page of your local server,
+					create a destination with the name
+						<kbd class="ph userinput">outbound-internet-destination</kbd>, and configure it so it
+					can be consumed by the application at runtime. For more information, see <a class="xref" href="e520383cbb571014858bc5d52295f433.html">Configuring Destinations from the Eclipse IDE</a>. <p class="p">For the sample
+						destination to work properly, the following properties need to be
+						configured: </p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=outbound-internet-destination
+Type=HTTP
+URL=http://sap.com/index.html
+Authentication=NoAuthentication
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">From the <span class="ph uicontrol">ConnectivityServlet.java</span> editor's context menu,
+					choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run As</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run on Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li"> Make sure that the <span class="ph uicontrol">Choose an existing server</span> option is selected and
+					choose <span class="ph uicontrol">Java Web Server</span>. </li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span>. <p class="p">The server is now started, displayed as
+							<span class="keyword parmname">Java Web Server [Started, Synchronized]</span> in the
+							<span class="ph uicontrol">Servers</span> view. </p>
+</li>
+
+			</ol>
+
+			<p class="p"><span class="ph emphasis emphasis">Result:</span></p>
+
+			<p class="p">The internal Web browser opens with the expected output of the connectivity-enabled Web
+				application. </p>
+
+			<p class="p">
+			</p>
+
+		</div></div>
+<div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__deploy_on_cloud"><div class="section_title">4. Deploy the Connectivity-Enabled Web Application on the Cloud</div><div type="4. Deploy the Connectivity-Enabled Web Application on the Cloud">
+			
+			<ol class="ol" id="loioe592cf6cbb57101495d3c28507d20f1b__ol_ykn_hc3_jj">
+				<li class="li">In the context menu of the <span class="ph uicontrol">Servers</span> view, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Choose <span class="ph pname">SAP Cloud Platform</span> as the type
+					of server you want to create and choose <span class="ph uicontrol">Next</span>.</li>
+
+				<li class="li">For <span class="ph uicontrol">Server's host name</span>, specify the landscape host
+					depending on your account type. For more information, see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>.</li>
+
+				<li class="li"> Choose <span class="ph uicontrol">Next</span>. </li>
+
+				<li class="li">On the <span class="ph uicontrol">New Server</span> wizard page, enter your application and
+					account name. Note that only lowercase Latin letters and digits are allowed.
+						<div class="note note" id="loioe592cf6cbb57101495d3c28507d20f1b__note_N10276_N1026F_N10236_N1022E_N10013_N10001"><span class="notetitle">Note</span> 
+						<p class="p"> The application name should be unique enough to allow your deployed application to be
+							easily identified in <span class="ph pname">SAP Cloud Platform</span>
+							cockpit. </p>
+
+					</div>
+
+				</li>
+
+				<li class="li"> Enter your account name, e-mail or user name, and password. <p class="p"><img class="image" id="loioe592cf6cbb57101495d3c28507d20f1b__image_nhn_mdq_nm" src="loio4ae68d0e00944b488bf05b9370b32669_HiRes.png" alt="Run on Server (cloud)" title="Run on Server (cloud)"/></p>
+
+				</li>
+
+				<li class="li"> Choose <span class="ph uicontrol">Finish</span>. </li>
+
+				<li class="li">A new server <var class="keyword varname">&lt;application&gt;.&lt;account&gt; [Stopped]&gt;</var>
+					appears in the <span class="ph uicontrol">Servers</span> view.</li>
+
+				<li class="li">Go to the <span class="ph uicontrol">Connectivity</span> tab page of the server, create a
+					destination with the name <kbd class="ph userinput">outbound-internet-destination</kbd>,
+					and configure it using the following properties: <div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=outbound-internet-destination
+Type=HTTP
+URL=http://sap.com/index.html
+Authentication=NoAuthentication
+ProxyType=Internet
+</pre></div>
+
+					</div>
+</li>
+
+				<li class="li">From the <span class="ph uicontrol">ConnectivityServlet.java</span> editor's context menu,
+					choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run As</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run on Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">Make sure that the <span class="ph uicontrol">Choose an existing server</span> option is
+					selected and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">&lt;Server_host_name&gt;</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">&lt;Server_name&gt;</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span>.</li>
+
+			</ol>
+
+			<p class="p"><span class="ph emphasis emphasis">Result:</span></p>
+
+			<p class="p"> The internal Web browser opens with the URL pointing to <span class="ph pname">SAP Cloud Platform</span> and
+				displaying the expected output of the connectivity-enabled Web application.</p>
+
+		</div></div>
+<div class="section" id="loioe592cf6cbb57101495d3c28507d20f1b__section_CB29FE6123274A808074CFF393FA90E4"><div class="section_title">Next Step</div><div type="Next Step"> 
+		 
+		<p class="p">You can monitor the state and logs of your Web application deployed on <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<p class="p">For more information, see <a class="xref" href="db01af2fd976101493f9b90b81cd791f.html">Using Logs in the Eclipse IDE</a>. </p>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

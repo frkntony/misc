@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Viewing the Default Trace</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio1b651b3aa5f54538a8f452f6fda0f5c3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Viewing the Default Trace</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">This page describes the format of the <span class="ph filepath">Default Trace</span> file. You
+				can view this file for your Web applications via the cockpit and the Eclipse IDE. </p>
+
+			<p class="p">For more information, see <a class="xref" href="e820e184bb5710149196a0f47db853cd.html" title="The SQL trace provides a log of selected SQL statements with details about when a statement was executed and its duration, allowing you to identify inefficient SQL statements used in your applications and investigate performance issues. SQL trace records are integrated in the standard trace log files written at runtime.">Investigating Performance Issues Using the SQL Trace</a> and
+					<a class="xref" href="db01af2fd976101493f9b90b81cd791f.html">Using Logs in the Eclipse IDE</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Default Trace Header</div><div type="Default Trace Header">
+			
+			<div class="table-wrapper"><table summary="" id="loio1b651b3aa5f54538a8f452f6fda0f5c3__simpletable_kmx_rc1_dn" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d1171726e49" class="stentry" width="50%">Parameter</th>
+
+					<th valign="bottom" align="left" id="d1171726e52" class="stentry" width="50%">Description</th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">FILE_TYPE</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">The type of the <span class="ph filepath">Default Trace</span></td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">FILE_ID</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">The identifier of the <span class="ph filepath">Default Trace</span></td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">ENCODING</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">The encoding type used in the cloud database</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">RECORD_SEPARATOR</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">ASCII symbol for separating the log records. In our case, it is
+							"<span class="ph emphasis emphasis">|</span>" (ASCII code:
+						<span class="ph emphasis emphasis">124</span>)</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">COLUMN_SEPARATOR</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">ASCII symbol for separating the columns in the <span class="ph filepath">Default
+							Trace</span>. In our case, it is "<span class="ph emphasis emphasis">#</span>" (ASCII
+						code: <span class="ph emphasis emphasis">35</span>)</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">ESC_CHARACTER</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">ASCII symbol for escape. In our case, it is "<span class="ph emphasis emphasis">\</span>"
+						(ASCII code: <span class="ph emphasis emphasis">92</span>)</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">COLUMNS</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">Each log record contains the following information in the order
+						displayed in the log file header: <span class="ph uicontrol">Time</span>,
+							<span class="ph uicontrol">TZone</span>, <span class="ph uicontrol">Severity</span>,
+							<span class="ph uicontrol">Logger</span>, <span class="ph uicontrol">ACH</span>,
+							<span class="ph uicontrol">User</span>, <span class="ph uicontrol">Thread</span>,
+							<span class="ph uicontrol">Bundle name</span>, <span class="ph uicontrol">JPSpace</span>,
+							<span class="ph uicontrol">JPAppliance</span>, <span class="ph uicontrol">JPComponent</span>,
+							<span class="ph uicontrol">Tenant Alias</span>, and
+						<span class="ph uicontrol">Text</span>.</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">SEVERITY_MAP</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry">The severity map represents the following severity levels order:
+							<p class="p">FINEST|Information|FINER|Information|FINE|Information|CONFIG|Information|DEBUG|Information|PATH|Information|INFO|Information|WARNING|Warning|ERROR|Error|SEVERE|Error|FATAL|Error</p>
+</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1171726e49" class="stentry"><span class="keyword parmname">HEADER_END</span></td>
+
+					<td valign="top" headers="d1171726e52" class="stentry"> </td>
+
+				</tr>
+</table></div>
+
+			<p class="p">Besides the main log information, the <span class="ph filepath">Default Trace</span> logs
+				information about the tenant users that have accessed a relevant Web application.
+				This information is provided in the new <span class="ph uicontrol">Tenant Alias</span> column
+				parameter, which is automatically logged by the runtime. The <span class="ph uicontrol">Tenant
+					Alias</span> is:</p>
+
+			<ul class="ul" id="loio1b651b3aa5f54538a8f452f6fda0f5c3__ul_w51_5zx_2n">
+				<li class="li">A human-readable string; </li>
+
+				<li class="li">For new accounts, it is shorter than the tenant ID (8-30 characters); </li>
+
+				<li class="li">Unique for the relevant <span class="ph pname">SAP Cloud Platform</span> landscape; </li>
+
+				<li class="li">Equal to the account name (for new accounts); might be equal to the tenant ID
+					(for old accounts).</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">In this example, the application has been accessed on behalf of two tenants - with
+				identifiers <span class="ph emphasis emphasis">42e00744-bf57-40b1-b3b7-04d1ca585ee3</span> and
+					<span class="ph emphasis emphasis">5c42eee4-d5ad-494e-9afb-2be7e55d0f9c</span>.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">FILE_TYPE:DAAA96DE-B0FB-4c6e-AF7B-A445F5BF9BE2
+FILE_ID:1391169413918
+ENCODING:[UTF8|NWCJS:ASCII]
+RECORD_SEPARATOR:124
+COLUMN_SEPARATOR:35
+ESC_CHARACTER:92
+COLUMNS:Time|TZone|Severity|Logger|ACH|User|Thread|Bundle name|JPSpace|JPAppliance|JPComponent|Tenant Alias|Text|
+SEVERITY_MAP:FINEST|Information|FINER|Information|FINE|Information|CONFIG|Information|DEBUG|Information|PATH|Information|INFO|Information|WARNING|Warning|ERROR|Error|SEVERE|Error|FATAL|Error
+HEADER_END
+
+2014 01 31 12:07:09#+00#INFO#com.sap.demo.tenant.context.TenantContextServlet##anonymous#http-bio-8041-exec-1##myaccount#myapplication#web#null#null#myaccount#The app was accessed on behalf of tenant with ID: '42e00744-bf57-40b1-b3b7-04d1ca585ee3'|
+2014 01 31 12:08:30#+00#INFO#com.sap.demo.tenant.context.TenantContextServlet##anonymous#http-bio-8041-exec-3##myaccount#myapplication#web#null#null#subscriberaccount#The app was accessed on behalf of tenant with ID: '5c42eee4-d5ad-494e-9afb-2be7e55d0f9c'|
+
+</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e6e8ccd3bb571014b6afdc54744eef4d.html">Logging in Applications</a></div>
+<div><a class="link" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

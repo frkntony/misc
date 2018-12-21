@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Cloud Configuration of the Keystore</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob3ffae761a984f5f8d629d0faaa9d032">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Cloud Configuration of the Keystore</h1>
+
+	<div class="body taskbody">
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loiob3ffae761a984f5f8d629d0faaa9d032__steps_msd_tq1_xj"><li class="li step stepexpand" id="loiob3ffae761a984f5f8d629d0faaa9d032__step_N10064_N10060_N1005D_N10052_N10001">
+				<span class="ph cmd">To deploy your Web application on the cloud, follow the steps for deploying a Web
+					application to <span class="ph pname">SAP Cloud Platform</span> as described in <a class="xref" href="030863cd5d0d4dd3b742957970f8eec9.html" title="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters.">Deploying on the Cloud with the Console Client</a>.</span>
+			</li>
+<li class="li step stepexpand" id="loiob3ffae761a984f5f8d629d0faaa9d032__step_N10071_N10060_N1005D_N10052_N10001">
+				<span class="ph cmd">To upload the required keystores, execute <samp class="ph codeph">upload-keystore</samp> console command
+					with the prepared <span class="ph uicontrol">.jks</span> files. For more information, see
+					the <span class="ph uicontrol">Cloud Configuration</span> section in <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</span>
+				<div class="itemgroup info">
+					<div class="note sap-example example" id="loiob3ffae761a984f5f8d629d0faaa9d032__sap-example_N10140_N1012D_N10121_N100E6_N1000E_N10001"><span class="exampletitle">Example</span> Assuming you have
+							<cite class="cite">myAccount</cite> account, <cite class="cite">myApplication</cite> application,
+							<cite class="cite">myUser</cite> user, and the keystore files in folder
+							<span class="ph filepath">C:\Keystores</span>, you need to execute the following
+						commands in your local <span class="ph filepath">&lt;SDK root&gt;\tools</span>
+						folder:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-keystore --account myAccount --user myUser --location C:\Keystores\client.jks --host hana.ondemand.com
+neo upload-keystore --account myAccount --user myUser --location C:\Keystores\cacerts.jks
+ --host hana.ondemand.com</pre></div>
+For
+						more information about the keystore console commands, see <a class="xref" href="20b6fbde34b1438dbceb83e1c5e42411.html">Keystore Console Commands</a>.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loiob3ffae761a984f5f8d629d0faaa9d032__step_N100B2_N10060_N1005D_N10052_N10001">
+				<span class="ph cmd">To test the functionality, open the application URL shown by <span class="ph pname">SAP Cloud Platform</span>
+					cockpit with the following options:<samp class="ph codeph">&lt;<span class="ph pname">SAP Cloud Platform</span>
+						Application URL&gt;/SSLExampleServlet?host=&lt;remote HTTPS server host
+						name&gt;&amp;port=&lt;remote HTTPS server port
+						number&gt;&amp;path=&lt;remote HTTPS server resource&gt;&amp;
+						client.keystore.password=&lt;client identity keystore
+					password&gt;</samp>.</span>
+				<div class="itemgroup info">
+					<p class="p">For more information, see <a class="xref" href="7612f03c711e1014839a8273b0e91070.html" title="You can directly start, stop, and undeploy applications, as well as start, stop, and disable individual application processes.">Starting and Stopping Applications</a>.</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="030863cd5d0d4dd3b742957970f8eec9.html" title="Deploying an application publishes it to SAP Cloud Platform. During deploy, you can define various specifics of the deployed application using the deploy command optional parameters.">Deploying on the Cloud with the Console Client</a></div>
+<div><a class="link" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a></div>
+<div><a class="link" href="20b6fbde34b1438dbceb83e1c5e42411.html">Keystore Console Commands</a></div>
+<div><a class="link" href="7612f03c711e1014839a8273b0e91070.html" title="You can directly start, stop, and undeploy applications, as well as start, stop, and disable individual application processes.">Starting and Stopping Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

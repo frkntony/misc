@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database."/>
+<meta name="description" content="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Database Administrator User</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc0fce6f0322246daaf1e29a25414f15e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating a Database Administrator User</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">As an account administrator, you can use the database user feature provided in the
+		cockpit to create your own database user for your
+		SAP
+		HANA
+		database.</p>
+
+            <div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioc0fce6f0322246daaf1e29a25414f15e__d5239e15"><li class="li step stepexpand">
+                    <span class="ph cmd">Log on to the cockpit on the productive landscape and select an
+                        account.</span>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Database Systems</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+                    <div class="itemgroup info">
+                        <p class="p">All database systems available in the  account are listed with their
+            details, including the database type, version, memory size, state, and the number of
+            associated databases.</p>
+
+                    </div>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">To select a database system, in the list, click the link on its name.</span>
+                    <div class="itemgroup info">The overview of the database system shows details, including the database
+                        version and state, and the number of associated databases.</div>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">Choose <span class="ph uicontrol">Databases</span> in the navigation area.</span>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">To go to the overview for a database, click the link on its name.</span>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">In the <span class="ph uicontrol">Development Tools</span> section, click
+                            <span class="ph uicontrol">Database User</span>.</span>
+                    <div class="itemgroup stepresult">A message confirms that you do not yet have a database
+                        user.</div>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">Choose <span class="ph uicontrol">Create User</span>.</span>
+                    <div class="itemgroup stepresult">Your user (identical to your SCN user) and initial password are
+                        displayed. Change the initial password when you first log on to an SAP HANA
+                        system, for example the SAP HANA Web-based Development Workbench.<div class="note note"><span class="notetitle">Note</span> Your
+                            database user is assigned a set of permissions for administering the
+                            HANA database system including user and role administration. For
+                            security reasons, only the role that provides access to the SAP HANA
+                            Web-based Development Workbench is assigned as default. To be able to
+                            use other HANA tools like HANA Cockpit or HANA XS Administration tool,
+                            you must assign yourself access to these before you can start using
+                            them.</div>
+</div>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">To log on to the SAP HANA Web-based Development Workbench and change your
+                        initial password now (recommended), copy your initial password and then
+                        close the dialog box.</span>
+                    <div class="itemgroup info">You do not have to change your initial password immediately. You can open
+                        the dialog box again later to display both your database user and initial
+                        password. Since this poses a potential security risk, however, you are
+                        strongly advised to change your password as soon as possible.</div>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">In the <span class="ph uicontrol">Development Tools</span> section, click
+                            <span class="ph uicontrol">SAP HANA Web-based Development Workbench</span>.</span>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">On the SAP HANA logon screen, enter your database user and initial
+                        password.</span>
+                </li>
+<li class="li step stepexpand">
+                    <span class="ph cmd">Change your password when prompted. You are responsible for choosing a
+                        strong password and keeping it secure. SAP cannot provide forgotten
+                        passwords.</span>
+                </li>
+</ol>
+
+            <div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+                <p class="p">In the SAP HANA system, you can now create database users for the members of your
+                    account and assign them the required developer roles.</p>
+
+            </div>
+        </div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d7c4ca5dac4f4dbbb47901eebe9ea0d1.html" title="To use the SAP HANA Web-based tools, you require specific roles.">Roles Required for Web-based Tools</a></div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm">Managing SAP HANA Users</a></div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm">Setting Up Roles and Authorizations</a></div>
+<div><a class="link" href="a4b1a6abc13f45d58c9a156b81487d8a.html" title="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit.">Creating an SAP HANA Database from the Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

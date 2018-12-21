@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Building a Proxy Bridge</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioed1c6732d4214c68846ab9813b9df943">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Building a Proxy Bridge</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context" id="loioed1c6732d4214c68846ab9813b9df943__context_N10014_N10011_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">All the standard mechanisms of the document service apply. The <span class="ph pname">SAP Cloud Platform</span> SDK
+				provides a base class (a Java servlet) that provides the proxy functionality
+				out-of-the-box. This can easily be extended to customize its behavior. The proxy
+				bridge performs a 1:1 mapping from source CMIS calls to target CMIS calls. CMIS
+				bindings can be enabled or disabled. Further modifications of the incoming requests,
+				such as allowing only certain operations or modifying parameters, are not supported.
+				The Apache OpenCMIS project contains a bridge module that supports advanced
+				scenarios of this type.</p>
+
+			<p class="p">The proxy bridge allows you to use standard CMIS clients to connect to the document service of
+				<span class="ph pname">SAP Cloud Platform</span>. An example is the Apache Chemistry Workbench, which can be
+				useful for development and testing.</p>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> Note that the proxy bridge opens your repository to the public Internet and should always be secured appropriately.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> For historic reasons, <span class="ph sap-technical-name sap-technical-name">ecm</span> is used to refer to the document service in the coding and the coding
+				samples.</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N10020_N1001D_N10011_N10001">
+				<span class="ph cmd">Create an <span class="ph pname">SAP Cloud Platform</span> application as described in <a class="xref" href="e5b39a5bbb571014a0cc9ab03ec94ebb.html">Using Java EE 6 Web Profile</a>.</span>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N1002D_N1001D_N10011_N10001">
+				<span class="ph cmd">Create a <span class="ph filepath">web.xml</span> file and a servlet class.</span>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N1003A_N1001D_N10011_N10001">
+				<span class="ph cmd">Derive your servlet from the class
+						<span class="keyword apiname">com.sap.ecm.api.AbstractCmisProxyServlet</span>.</span>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N10047_N1001D_N10011_N10001">
+				<span class="ph cmd">Add a servlet mapping to your <span class="ph filepath">web.xml</span> file using a URL pattern that
+					contains a wildcard. See the following example.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="note sap-example example"><span class="exampletitle">Example</span> 
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;servlet&gt;
+  &lt;servlet-name&gt;cmisproxy&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;my.app.CMISProxyServlet&lt;/servlet-class&gt; 
+&lt;/servlet&gt; 
+
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;cmisproxy&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/cmis/*&lt;/url-pattern&gt; 
+&lt;/servlet-mapping&gt;</pre></div>
+
+						</div>
+
+					</div>
+
+				</div>
+				<div class="itemgroup info">
+					<p class="p">You can use prefixes other than <samp class="ph codeph">/cmis</samp> and you can add more servlets in
+						accordance with your needs. The URL pattern for your servlet derived from
+						the class <span class="keyword apiname">AbstractCmisProxyServlet</span> must contain a
+							<samp class="ph codeph">/*</samp> suffix.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N1006D_N1001D_N10011_N10001">
+				<span class="ph cmd">Override the two abstract methods provided by the
+						<span class="keyword apiname">AbstractCmisProxyServlet</span> class:
+						<span class="keyword apiname">getRepositoryUniqueName()</span> and
+						<span class="keyword apiname">getRepositoryKey()</span>.</span>
+				<div class="itemgroup info">
+					<p class="p">These methods return a string containing the unique name and the secret key of the repository to be accessed. You can override a third method
+							<span class="keyword apiname">getDestinationName()</span>, which also returns a string. If this method is overridden, it should return the
+						name of a destination deployed for this application to connect to the service. This is useful if a service user is used, for
+						example. Ensure that there is a valid custom destination.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N1008A_N1001D_N10011_N10001">
+				<span class="ph cmd">If you override the <span class="keyword apiname">getServletConfig()</span> method ensure that you call the superclass in your method.</span>
+				<div class="itemgroup info">
+					<p class="p">Do <span class="ph emphasis emphasis">not</span> override the following methods:</p>
+
+					<ul class="ul" id="loioed1c6732d4214c68846ab9813b9df943__ul_cp4_223_xj">
+						<li class="li">
+							<p class="p"><span class="keyword apiname">service()</span></p>
+
+						</li>
+
+						<li class="li">
+							<p class="p"><span class="keyword apiname">doGet()</span></p>
+
+						</li>
+
+						<li class="li">
+							<p class="p"><span class="keyword apiname">doPost()</span></p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">and so on</p>
+
+						</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N100BA_N1001D_N10011_N10001">
+				<span class="ph cmd">Optionally, you can restrict the proxy bridge to restrict the exposed bindings
+					by overriding one or more of the following methods:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<ul class="ul" id="loioed1c6732d4214c68846ab9813b9df943__ul_m34_n3x_vl">
+							<li class="li">
+								<p class="p"><span class="keyword apiname">supportAtomPubBinding()</span></p>
+
+							</li>
+
+							<li class="li">
+								<p class="p"><span class="keyword apiname">supportBrowserBinding()</span></p>
+
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+				<div class="itemgroup info">
+					<p class="p">At least one of the methods must return true.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Add the following code snippet to your <span class="ph filepath">web.xml</span> and assign the role
+						<span class="keyword cmdname">EcmDeveloper</span> to the users in your account who require
+					external access to the repository.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;security-constraint&gt;
+  &lt;web-resource-collection&gt;
+    &lt;web-resource-name&gt;Proxy&lt;/web-resource-name&gt;
+    &lt;url-pattern&gt;/cmis/*&lt;/url-pattern&gt;
+  &lt;/web-resource-collection&gt;
+  &lt;auth-constraint&gt;
+    &lt;role-name&gt;EcmDeveloper&lt;/role-name&gt;
+  &lt;/auth-constraint&gt;
+&lt;/security-constraint&gt;
+</pre></div>
+
+					</div>
+
+					<p class="p">In some cases it might be useful to grant public access for reading content but not for modifying, creating or deleting it. For example, a Web
+						content management application might embed pictures into a public Web site but store them in the document service. For a
+						scenario of this type, override the method <span class="ph sap-technical-name sap-technical-name">readOnlyMode()</span> so that it returns true.
+						This means that only read requests are forwarded to the repository and all other requests are rejected. The read-only mode
+						only works with the JSON binding. The other bindings are disabled in this case.</p>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> If you need finer control or dynamic permissions you can override the <span class="ph sap-technical-name sap-technical-name">requireAuthentication()</span> and
+								<span class="ph sap-technical-name sap-technical-name">authenticate()</span> methods in the
+								<span class="ph sap-technical-name sap-technical-name">AbstractCmisProxyServlet</span>.</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loioed1c6732d4214c68846ab9813b9df943__step_N100DE_N1001D_N10011_N10001">
+				<span class="ph cmd">Optionally, you can override two more methods to customize timeout values for
+					reading and connecting: <span class="keyword apiname">getConnectTimeout()</span> and
+						<span class="keyword apiname">getReadTimeout()</span>.</span>
+				<div class="itemgroup info">
+					<p class="p">It should only be necessary to use these methods if
+							<span class="ph emphasis emphasis">frequent</span> timeout errors occur.</p>
+
+					<p class="p">The following code is an example of a proxy servlet.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">package my.app;
+
+import com.sap.ecm.api.AbstractCmisProxyServlet;
+
+public class CMISProxyServlet extends AbstractCmisProxyServlet {
+
+   @Override
+   protected String getRepositoryUniqueName() {
+       return "MySampleRepository";
+   }
+
+   @Override
+   //For productive applications, use a secure location to store the secret key.
+   protected String getRepositoryKey() {
+       return "abcdef0123456789";
+   }
+
+}
+</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To access the proxy brigde from an external application you need the correct
+					URL.</span>
+				<div class="itemgroup info">
+					<p class="p">The URL is composed of the following elements:</p>
+
+					<div class="p">
+						<ul class="ul" id="loioed1c6732d4214c68846ab9813b9df943__ul_ecm_kp2_fn">
+							<li class="li">
+								<p class="p">The URL of your deployed application (displayed in the
+									cockpit)</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">The name of your Web application</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">The path configured in <span class="ph filepath">web.xml</span> in the
+									servlet mapping of the proxy bridge (in the example below:
+										<span class="ph sap-technical-name sap-technical-name">/cmis</span>)</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">An extension for the CMIS binding type (<span class="ph sap-technical-name sap-technical-name">/atom</span> for AtomPub or
+										<span class="ph sap-technical-name sap-technical-name">/json</span> for browser binding)</p>
+
+							</li>
+
+						</ul>
+
+					</div>
+
+					<div class="p">
+						<div class="note sap-example example"><span class="exampletitle">Example</span> Your proxy bridge application is deployed as <span class="ph sap-technical-name sap-technical-name">cmisproxy.war</span> on the landscape. The cockpit
+							shows the following URL for your app:
+								<span class="ph sap-technical-name sap-technical-name">https://cmisproxysap.hana.ondemand.com/cmisproxy</span> and the
+								<span class="ph filepath">web.xml</span> is as shown above. Then the URLs is as follows:<div class="p">
+								<ul class="ul" id="loioed1c6732d4214c68846ab9813b9df943__ul_km3_s2z_kn">
+									<li class="li">
+										<p class="p">CMIS 1.1:</p>
+
+										<p class="p">AtomPub:
+												<span class="ph sap-technical-name sap-technical-name">https://cmisproxysap.hana.ondemand.com/cmisproxy/cmis/1.1/atom</span></p>
+
+										<p class="p">Browser:
+												<span class="ph sap-technical-name sap-technical-name">https://cmisproxysap.hana.ondemand.com/cmisproxy/cmis/json</span></p>
+
+									</li>
+
+									<li class="li">
+										<p class="p">CMIS 1.0:</p>
+
+										<p class="p">AtomPub:
+												<span class="ph sap-technical-name sap-technical-name">https://cmisproxysap.hana.ondemand.com/cmisproxy/cmis/atom</span></p>
+
+										<p class="p">Browser: (not available)</p>
+
+									</li>
+
+								</ul>
+
+							</div>
+<p class="p">These URLs can be passed to the CMIS Workbench from Apache Chemistry, for example.</p>
+<div class="p">The workbench requires
+								basic authentication. Please add the following code to your <span class="ph sap-technical-name sap-technical-name">web.xml</span>:<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+									<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;login-config&gt;
+&lt;auth-method&gt;BASIC&lt;/auth-method&gt;
+&lt;/login-config&gt;</pre></div>
+
+								</div>
+</div>
+</div>
+
+						<div class="note sap-example example"><span class="exampletitle">Example</span> A full example that can be deployed consists of two files: a <span class="ph filepath">web.xml</span> and a servlet class.
+							This example only exposes the CMIS browser binding (JSON) using the prefix <span class="ph sap-technical-name sap-technical-name">/cmis</span>
+							in the URL.</div>
+
+						<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> <span class="ph filepath">web.xml</span><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0"&gt;
+  &lt;display-name&gt;cmisproxy&lt;/display-name&gt;
+
+&lt;servlet&gt;
+  &lt;servlet-name&gt;cmisproxy&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;com.sap.ecm.proxy.CMISProxyServlet&lt;/servlet-class&gt; 
+&lt;/servlet&gt; 
+
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;cmisproxy&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/cmis/*&lt;/url-pattern&gt; 
+&lt;/servlet-mapping&gt;
+
+&lt;security-constraint&gt;
+  &lt;web-resource-collection&gt;
+    &lt;web-resource-name&gt;Proxy&lt;/web-resource-name&gt;
+    &lt;url-pattern&gt;/cmis/*&lt;/url-pattern&gt;
+  &lt;/web-resource-collection&gt;
+  &lt;auth-constraint&gt;
+    &lt;role-name&gt;EcmDeveloper&lt;/role-name&gt;
+  &lt;/auth-constraint&gt;
+
+&lt;/security-constraint&gt;
+&lt;login-config&gt;
+	&lt;auth-method&gt;BASIC&lt;/auth-method&gt;
+&lt;/login-config&gt;
+
+&lt;/web-app&gt;
+</pre></div>
+</div>
+
+						<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> Servlet<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+package my.app;
+
+import com.sap.ecm.api.AbstractCmisProxyServlet;
+
+
+public class CMISProxyServlet extends AbstractCmisProxyServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected boolean supportAtomPubBinding() {
+		return false;
+	}
+
+	@Override
+	protected boolean supportBrowserBinding() {
+		return true;
+	}
+
+       
+    public CMISProxyServlet() {
+        super();
+    }
+
+    @Override
+    protected String getRepositoryUniqueName() {
+        return "MySampleRepository";
+    }
+
+    @Override
+    // For productive applications, use a secure location to store the secret key.
+    protected String getRepositoryKey() {
+        return "abcdef0123456789";
+    }
+
+}
+</pre></div>
+</div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform is the extension platform for SAP. It enables developers to develop loosely coupled extension applications securely, thus implementing additional workflows or modules on top of the existing SAP cloud solution they already have."/>
+<meta name="description" content="SAP Cloud Platform is the extension platform for SAP. It enables developers to develop loosely coupled extension applications securely, thus implementing additional workflows or modules on top of the existing SAP cloud solution they already have."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Extend SAP Cloud Solutions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio08b1effc53634890a525f945017e2edc">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Extend SAP Cloud Solutions </h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> is the extension platform for SAP. It enables developers to
+		develop loosely coupled extension applications securely, thus implementing additional
+		workflows or modules on top of the existing SAP cloud solution they already have. </p>
+
+		<p class="p"><span class="ph pname">SAP Cloud Platform</span> provides a secure application container which decouples the extension
+			applications from the extended SAP solution via a public API layer. This container
+			ensures that extension applications have no impact on the stability of the extended
+			solutions. It also ensures that data access is governed through the same roles and
+			permission checks as those of any other SAP interface. <span class="ph pname">SAP Cloud Platform</span>
+			simplifies many of the system integration challenges, handling aspects such as identity
+			propagation, account onboarding, dynamic theming and branding and installation
+			automation and provisioning.</p>
+
+		<div class="section"><div class="section_title">Technical aspects</div><div type="Technical aspects">
+			
+			<ul class="ul" id="loio08b1effc53634890a525f945017e2edc__ul_kbf_wcd_xq">
+				<li class="li">Extensions and extended SAP cloud solutions co-located in the same data center, where
+						possible<p class="p">In most of the cases the extensions that are being developed are
+						co-located in the same data center as the SAP product that is being
+						extended. The co-location ensures that the complete solution is using one
+						infrastructure and is operated by one and the same team on this
+						infrastructure. It also improves the response time for API calls.</p>
+</li>
+
+				<li class="li"> Integration with SAP Cloud product toolset<p class="p">This integration allows SAP solution
+						administrators to have a consistent experience in managing extensions as an
+						integral part of the product they are responsible for, including but not
+						limited to software lifecycle management, administration of roles,
+						permissions and visibility groups.</p>
+</li>
+
+				<li class="li">Dynamic UI branding and theming<p class="p">The tight integration between the SAP product
+						and <span class="ph pname">SAP Cloud Platform</span> allows extension users to get the same seamless
+						user experience as the native product modules. It also allows the delivery
+						of SAP solution-specific artifacts, such as navigation exit points, tiles,
+						widgets or external business objects. </p>
+</li>
+
+				<li class="li">Security integration<p class="p">The integration between the SAP product and <span class="ph pname">SAP Cloud Platform</span> also allows you to manage the extension you are building by
+						using all the authentication and authorization capabilities of the SAP
+						product you want to extend.</p>
+</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Development options</div><div type="Development options">
+			
+			<ul class="ul" id="loio08b1effc53634890a525f945017e2edc__ul_jqm_bfd_xq">
+				<li class="li">Custom development<p class="p">As a customer of an SAP cloud solution, you can create your own
+						extension applications using <span class="ph pname">SAP Cloud Platform</span>. SAP provides access to
+						all the required integration and implementation materials describing how <span class="ph pname">SAP Cloud Platform</span> is connected to the corresponding SAP cloud solution.
+						Furthermore, for some of the SAP cloud solutions (for example
+						SuccessFactors), <span class="ph pname">SAP Cloud Platform</span> offers out-of-the box and
+						pre-integrated extension accounts. You can leverage all the <span class="ph pname">SAP Cloud Platform</span> tools for the implementation of those extension
+					applications.</p>
+</li>
+
+				<li class="li">Certified partner applications<p class="p">As a customer of an SAP cloud solution, you can also use an
+						existing extension application provided by one of the SAP certified
+						partners. Depending on the extension, it can be provided free of charge or
+						for a certain fee. </p>
+<p class="p">This option does not require own development.
+						Depending on the delivery model of the partner extension, you may require
+						<span class="ph pname">SAP Cloud Platform</span> resources for running the extension in your <span class="ph pname">SAP Cloud Platform</span> account or alternatively, you can consume the extension as a
+						service for a monthly fee.</p>
+</li>
+
+				<li class="li">Extension customization<p class="p">You can also have a mixed scenario where you first obtain and then
+						further customize a partner extension application to best meet your
+						needs.</p>
+</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Extension concept</div><div type="Extension concept">
+			
+			<div class="p"><span class="ph pname">SAP Cloud Platform</span> serves as a dedicated and isolated secure application container
+				(hosting Java or HTML5 applications, or both). On one hand, it provides the
+				API-level access to the extended SAP solution. On the other hand, it takes care of
+				the lifecycle management and the initial configuration of the extension
+				applications. There are several levels of extension integration:<ul class="ul" id="loio08b1effc53634890a525f945017e2edc__ul_unr_5xz_fs">
+					<li class="li">
+						<p class="p">Application customization</p>
+
+						<p class="p">Usually, every SAP cloud solution comes with certain customization
+							capabilities. Depending on the technology stack, this might vary from a
+							fully fledged customization for existing business objects, through
+							creating custom business objects, and up to generating native user
+							interfaces based on the customized objects. Some of the SAP technology
+							stacks allow implementation teams to even do some simple coding, which
+							is then executed natively as part of the customized product. Regardless
+							of how feature-rich the extended solution is, <span class="ph pname">SAP Cloud Platform</span>
+							adds much more to the extension capabilities and enables you to build a
+							large number of extension scenarios and interact with on-premise and
+							cloud systems.</p>
+
+					</li>
+
+					<li class="li">Loosely coupled applications<p class="p">As a minimum, extension application need a configured Single
+							Sign-On (SSO) with the extended SAP solution. All the SAP cloud
+							solutions provide the means for such configuration - you can either
+							leverage the solution local integrated SAML 2.0-compliant identity
+							provider, or by using the <span class="ph pname">SAP Cloud Platform Identity Authentication
+                                service</span> as
+							a central trust point in the landscape. As a rule of thumb, if you want
+							to integrate a number of different SAML 2.0-compliant solutions in your
+							landscape, a central trust management point such as <span class="ph pname">Identity Authentication</span>
+							will significantly simplify the management of additional trusts.
+							Furthermore, <span class="ph pname">SAP Cloud Platform</span>
+							comes pre-integrated with <span class="ph pname">Identity Authentication</span>.</p>
+<p class="p">Another aspect of the loosely coupled applications is that you
+							have to ensure the end-to-end user identity propagation going across all
+							the extension application layers. This means that if, for example, a
+							user has logged on to an HTML5 application, it has to be the same user
+							on behalf of which all the underlying backend calls are performed. To
+							achieve this, you leveraging the SAML 2.0 bearer assertion
+							authentication flow, which is the default way for accesing any SAP cloud
+							solution API from <span class="ph pname">SAP Cloud Platform</span>.
+							You use the same approach for Java applications.</p>
+</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="5bc52f4cca9a4fdc97f0e01016aef25f.html">Basic Concepts</a></div>
+<div><a class="link" href="a2b686177f2e4942b5b3e66d9eb0e875.html" title="You can extend the scope ofSAP SuccessFactors HCM Suite using SAP Cloud Platform extension applications.">Extending SAP SuccessFactors</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

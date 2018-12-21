@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Logs in the Eclipse IDE</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodb01af2fd976101493f9b90b81cd791f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Logs in the Eclipse IDE</h1>
+<div class="body conbody"><div class="section" id="loiodb01af2fd976101493f9b90b81cd791f__section_00A09CD6BBC048C188854647101D518D"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">After deploying your Web applications, you can check their logs as well as configure
+				their loggers settings. This section describes the following logging tasks you can
+				perform in the Eclipse IDE: </p>
+
+			<ul class="ul" id="loiodb01af2fd976101493f9b90b81cd791f__ul_ebb_zl3_4k">
+				<li class="li">Changing the effective level of a particular logger</li>
+
+				<li class="li">Setting an effective level simultaneously for all the currently displayed
+					loggers </li>
+
+				<li class="li">Viewing logs and log files</li>
+
+				<li class="li">Sorting loggers and log files</li>
+
+			</ul>
+
+			<p class="p"/>
+
+			<p class="p">You can perform these operations both in the cloud and on a local server.</p>
+
+			<p class="p">Also, persistence for loggers is enabled both on the cloud and on a local server level. Logger
+				level settings are kept and restored on a server restart, so you do not need to set
+				them over again.</p>
+
+		</div></div>
+<div class="section" id="loiodb01af2fd976101493f9b90b81cd791f__section_FB837F126E624BE882EA2018EFFFC6B4"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		 
+		<ul class="ul"><li class="li"> You have downloaded and set up your Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span> Tools for Java, and
+					SDK. <p class="p"> For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>. </p>
+
+				</li>
+<li class="li"> You have created and deployed a Web application that uses logging functionality on <span class="ph pname">SAP Cloud Platform</span>. <p class="p"> For more information, see <a class="xref" href="e6e8ccd3bb571014b6afdc54744eef4d.html">Logging in Applications</a>.</p>
+</li>
+
+				<li class="li">
+					<p class="p">You are assigned a <span class="ph uicontrol">Developer</span> or
+							<span class="ph uicontrol">Administrator</span> role. For more information about
+						the roles, see <a class="xref" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a>.</p>
+
+				</li>
+</ul>
+ 
+	 </div></div>
+<div class="section" id="loiodb01af2fd976101493f9b90b81cd791f__section_D3C654D549AA4004B0D074541F0FA08C"><div class="section_title">Setting Log Levels</div><div type="Setting Log Levels"> 
+		 
+		<ol class="ol"><li class="li">After deploying an application in the Eclipse IDE on <span class="ph pname">SAP Cloud Platform</span> or <span class="ph pname">SAP Cloud Platform</span> local runtime, open the <span class="ph uicontrol">Servers</span> view and
+					double-click the server. </li>
+<li class="li">Choose the <span class="ph uicontrol">Loggers</span> tab. </li>
+<li class="li"> When the server is in <span class="keyword parmname">[Started]</span> state, all the available loggers are
+					listed in the <span class="ph uicontrol">Loggers</span> table. If the server is in
+						<span class="keyword parmname">[Starting]</span>, <span class="keyword parmname">[Stopping]</span>, or
+						<span class="keyword parmname">[Stopped]</span> state, the table is empty. <ul class="ul">
+						<li class="li">You can use the filter field to find particular loggers you need. You
+							can filter by both the <span class="ph uicontrol">Name</span> and the
+								<span class="ph uicontrol">Level</span> columns. </li>
+
+						<li class="li">You can also sort the loggers table by both the
+								<span class="ph uicontrol">Name</span> and the <span class="ph uicontrol">Level</span>
+							column. The <span class="ph uicontrol">Level</span> column sorts the fields by
+							effective level, not alphabetically. </li>
+
+					</ul>
+
+						<p class="p"><img class="image" id="loiodb01af2fd976101493f9b90b81cd791f__image_wwd_rbn_54" src="loio937b533072bb101490cf767db0e91070_LowRes.png"/></p>
+
+				</li>
+<li class="li">To change a logger level, go to the relevant row in the table and select the new log level from
+					the <span class="ph uicontrol">Level</span> column. <p class="p">You can configure as many loggers as
+						you need. </p>
+
+				</li>
+<li class="li">If you need to simultaneously set a log level for all the currently displayed loggers, go to
+						<span class="ph uicontrol">Set the shown loggers to level</span> and select the desired
+					one. <p class="p">Besides for all available server loggers in the table, this feature is
+						also applicable for a list of loggers displayed after filtering. </p>
+
+				</li>
+<li class="li">Save your changes using the <span class="ph uicontrol">Save</span> button from the main menu or by pressing
+						<kbd class="key">Ctrl</kbd> + <kbd class="key">S</kbd>. </li>
+<li class="li">To refresh the loggers table, choose the <img class="image" height="19" src="loio76123da4711e1014839a8273b0e91070_LowRes.png" width="21"/> button. <p class="p">If you try to refresh your loggers before saving your changes, a
+						dialog appears warning you that your changes will be lost. </p>
+
+				</li>
+</ol>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<ul class="ul" id="loiodb01af2fd976101493f9b90b81cd791f__ul_uh5_5rz_t4">
+					<li class="li">You can only set log levels when an application is running. Loggers are not
+						listed if the relevant application code has not been executed.</li>
+
+					<li class="li">If you set a new log level for a parent logger, such as
+							<kbd class="ph userinput">com.sap.core.js.admin.operations</kbd>, the child
+						loggers, for example,
+							<kbd class="ph userinput">com.sap.core.js.admin.operations.AdminOperations</kbd>
+						and
+							<kbd class="ph userinput">com.sap.core.js.admin.operations.internal.ErrorQueueHandler</kbd>,
+						automatically inherit the same log level. Override this mechanism, if
+						necessary, by explicitly assigning a new log level to the child
+						loggers.</li>
+
+				</ul>
+
+			</div>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">Resetting Log Levels</div><div type="Resetting Log Levels">
+			
+			<p class="p">If you have changed the effective level of some or all loggers of an application,
+				running on a particular server, you have the option to reset the logger levels.</p>
+
+			<ol class="ol" id="loiodb01af2fd976101493f9b90b81cd791f__ol_hms_bnq_zp">
+				<li class="li">Make sure you can restart your server without causing data loss.</li>
+
+				<li class="li"> Click the <span class="ph uicontrol">Reset all loggers</span> link. A dialog box appears,
+					warning you that the resetting operation requires server restart.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Reset and Restart</span>.</li>
+
+			</ol>
+
+		</div></div>
+<div class="section" id="loiodb01af2fd976101493f9b90b81cd791f__section_F3720E380BA14CF2A6221C3C7983EC9D"><div class="section_title">Listing Available Log Files</div><div type="Listing Available Log Files"> 
+		 
+		<ol class="ol"><li class="li">In the <span class="ph uicontrol">Servers</span> view, go to the context menu of your server and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Show In</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server Logs</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. <div class="note note" id="loiodb01af2fd976101493f9b90b81cd791f__note_N10138_N10111_N10100_N100F8_N10013_N10001"><span class="notetitle">Note</span> If the
+						server has never been started, no logs are available and the
+							<span class="ph uicontrol">Server Logs</span> view is empty. </div>
+
+				</li>
+<li class="li">When the server is started, the <span class="ph uicontrol">Server Logs</span> view displays all available
+						<span class="keyword parmname">Default Trace</span> and <span class="keyword parmname">HTTP Access</span> logs
+					of the applications that you are running on this server. <div class="note note" id="loiodb01af2fd976101493f9b90b81cd791f__note_N10120_N10111_N10100_N100F8_N10013_N10001"><span class="notetitle">Note</span> You can also reach the
+							<span class="ph uicontrol">Server Logs</span> view if you expand the server and
+						double-click on the <span class="ph uicontrol">Server Logs</span> node. </div>
+
+					<p class="p"> </p>
+</li>
+
+				<li class="li"> If you have more than one running servers, from the <span class="ph uicontrol">Server</span> dropdown
+					box, select the one you need to view its logs. <p class="p"><img class="image" id="loiodb01af2fd976101493f9b90b81cd791f__image_mxd_jzj_mj" src="loio5d895a2ebd1b40b9a3b199849fe1f057_HiRes.png" alt="Multiple Server Logs" title="Multiple Server Logs"/></p>
+
+				</li>
+<li class="li">You can sort your log files by all columns. 
+		  </li>
+<li class="li">To refresh the log files table, choose the 
+			 <img class="image" height="19" src="loio76123da4711e1014839a8273b0e91070_LowRes.png" width="21"/> button. 
+		  </li>
+<li class="li">Double-click on a log to see its details in the <span class="ph uicontrol">Console</span>. You can then: <ul class="ul">
+						<li class="li">Open the log in an editor, choosing the <img class="image" height="18" src="loio761225a0711e1014839a8273b0e91070_LowRes.png" width="14"/> button. </li>
+
+						<li class="li">Clear the log console, choosing the <img class="image" height="18" src="loio76114a06711e1014839a8273b0e91070_LowRes.png" width="18"/> button. </li>
+
+						<li class="li">Close the log console, choosing the <img class="image" height="16" src="loio76114f4c711e1014839a8273b0e91070_LowRes.png" width="15"/> button. </li>
+
+					</ul>
+
+				</li>
+</ol>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

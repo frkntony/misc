@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connectivity and Destination APIs</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe69bc863bb571014b358e2947e36d475">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Connectivity and Destination APIs</h1>
+<div class="body conbody"><p class="p">
+	 </p>
+<div class="section" id="loioe69bc863bb571014b358e2947e36d475__section_0E77748EB8BB456297E7FE00CE1C0393"><div class="section_title">Destinations</div><div type="Destinations"> 
+		 
+		<p class="p">Destinations are part of <span class="ph pname">SAP Cloud Platform
+                                    Connectivity</span> and
+				are used for the outbound communication from a cloud application to a remote system.
+				They contain the connection details for the remote communication of an application,
+				which can be configured for each customer to accommodate the specific customer
+				back-end systems and authentication requirements. For more information, see <a class="xref" href="e4f1d97cbb571014a247d10f9f9a685d.html">Destinations</a>. </p>
+ 
+		<p class="p">Destinations should be used by application
+		  developers when they aim to provide applications that: 
+		</p>
+ 
+		<ul class="ul"><li class="li">Integrate with remote services or
+			 back-end systems that need to be configured by customers 
+		  </li>
+<li class="li">Integrate with remote services or
+			 back-end systems that are located in a fenced environment (that is, behind
+			 firewalls and not publicly accessible) 
+		  </li>
+</ul>
+
+			<p class="p"/>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> HTTP clients created by destination APIs allow parallel usage of HTTP
+				client instances (via class
+				<span class="keyword parmname">ThreadSafeClientConnManager</span>).</div>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">Connectivity APIs</div><div type="Connectivity APIs">
+			
+			<div class="p">
+				<div class="table-wrapper"><table summary="" id="loioe69bc863bb571014b358e2947e36d475__simpletable_ogd_jkq_24" border="1" class="simpletable"><tr class="sthead">
+						<th valign="bottom" align="left" id="d11651660e59" class="stentry"> Package </th>
+
+						<th valign="bottom" align="left" id="d11651660e62" class="stentry">Description</th>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d11651660e59" class="stentry"><span class="keyword parmname">org.apache.http</span></td>
+
+						<td valign="top" headers="d11651660e62" class="stentry"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://hc.apache.org" target="_blank" alt="http://hc.apache.org" title="http://hc.apache.org">http://hc.apache.org<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d11651660e59" class="stentry"><span class="keyword parmname">org.apache.http.client</span></td>
+
+						<td valign="top" headers="d11651660e62" class="stentry"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/package-summary.html" target="_blank" alt="http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/package-summary.html" title="http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/package-summary.html">http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/package-summary.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d11651660e59" class="stentry"><span class="keyword parmname">org.apache.http.util</span></td>
+
+						<td valign="top" headers="d11651660e62" class="stentry"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/util/package-summary.html" target="_blank" alt="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/util/package-summary.html" title="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/util/package-summary.html">http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/util/package-summary.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d11651660e59" class="stentry"><span class="keyword parmname">javax.mail</span></td>
+
+						<td valign="top" headers="d11651660e62" class="stentry"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://javamail.java.net/nonav/docs/api/" target="_blank" alt="https://javamail.java.net/nonav/docs/api/" title="https://javamail.java.net/nonav/docs/api/">https://javamail.java.net/nonav/docs/api/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a><p class="p">The <span class="ph pname">SAP Cloud Platform</span> SDK for Java Web uses version 1.4.1 of
+									<span class="keyword parmname">javax.mail</span>, the SDK for Java EE 6 Web
+								Profile uses version 1.4.5 of <span class="keyword parmname">javax.mail</span>, and
+								the SDK for Java Web Tomcat 7 uses version 1.4.7 of
+									<span class="keyword parmname">javax.mail</span>.</p>
+</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d11651660e59" class="stentry"><span class="keyword parmname">com.sap.core.connectivity.api</span></td>
+
+						<td valign="top" headers="d11651660e62" class="stentry">You can find the <span class="ph pname">connectivity
+                            service</span> API in directory
+								<var class="keyword varname">&lt;SDK_location&gt;/javadoc/com/sap/core/connectivity/api&gt;</var>.<p class="p">You
+								can also access it on the following URL: <a class="xref" href="https://help.hana.ondemand.com/javadoc/index.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/index.html" title="https://help.hana.ondemand.com/javadoc/index.html">https://help.hana.ondemand.com/javadoc/index.html</a></p>
+</td>
+
+					</tr>
+</table></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Destination APIs</div><div type="Destination APIs">
+			
+			<ul class="ul" id="loioe69bc863bb571014b358e2947e36d475__ul_mw4_4sd_sn">
+				<li class="li"><a class="xref" href="90a27db17f8b49459a4e57c0ddec2e7a.html" title="In your Web application, you use the JavaMail API (javax.mail) to create and send a MimeMessage object or retrieve e-mails from a message store.">JavaMail API</a></li>
+
+				<li class="li"><a class="xref" href="c9bb25f2c35e4fddb8c86382cb87ce7a.html">DestinationFactory API</a></li>
+
+				<li class="li"><a class="xref" href="d917276b236f45f9960442bebf262dab.html">SAP Java Connector API</a></li>
+
+				<li class="li"><a class="xref" href="4da3b13c88ce4220bbd56a4361799668.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the connectivity configuration via a JNDI lookup.">ConnectivityConfiguration API</a></li>
+
+				<li class="li"><a class="xref" href="df6c1ffd39f0451594d737cf7638ce00.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup.">AuthenticationHeaderProvider API</a></li>
+
+				<li class="li"><a class="xref" href="622f1bf248634206bb35afdb5106dba4.html">Principal Propagation Using HTTP Proxy</a></li>
+
+				<li class="li"><a class="xref" href="462dbffef4614044b5c727c9de37672e.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the destinations via a JNDI lookup.">HttpDestination API and DestinationFactory</a></li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Destination Configuration Tasks</div><div type="Destination Configuration Tasks">
+			
+			<ul class="ul" id="loioe69bc863bb571014b358e2947e36d475__ul_rf5_ksd_sn">
+				<li class="li"><a class="xref" href="e520383cbb571014858bc5d52295f433.html">Configuring Destinations from the Eclipse IDE</a></li>
+
+				<li class="li"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></li>
+
+				<li class="li"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></li>
+
+			</ul>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

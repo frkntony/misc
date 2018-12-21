@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring a CA Certificate for Principal Propagation</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod0c4d5675d4f4bc78a5b7a7b8687c841">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring a CA Certificate for Principal Propagation </h1>
+
+	
+	<div class="body"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Supported CA Mechanisms</div><div type="Supported CA Mechanisms">
+			
+			<p class="p">You can enable support for Principal Propagation with X.509 certificates in two ways:</p>
+
+			<div class="p">
+				<ul class="ul" id="loiod0c4d5675d4f4bc78a5b7a7b8687c841__ul_ajr_ffl_c5">
+					<li class="li">Using a <em class="ph i">Local CA</em> in the <span class="ph pname">Cloud connector</span>. Prior to version 2.7.0, this was the only option and the system
+						certificate was acting both as client certificate and CA certificate in the
+						context of Principal Propagation.</li>
+
+					<li class="li">Using a <em class="ph i">Secure Login Server</em> and delegate the CA functionality to it. </li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">The <span class="ph pname">Cloud connector</span> will then
+				use the configured CA approach for issuing short-living certificates for logging on
+				the same identity in the back-end that is logged on in the cloud. For establishing
+				trust with the back-end, the respective configuration steps are independent from the
+				approach chosen for the CA. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Installing a local CA Certificate</div><div type="Installing a local CA Certificate"><p class="p">In order to issue short-living
+				certificates used for principal propagation to a back-end system, you can import an
+				X.509 client certificate into the <span class="ph pname">Cloud connector</span>. This
+				CA certificate needs to be provided as <em class="ph i">PKCS#12</em> file containing the
+				(intermediate) certificate, the corresponding private key and the CA root
+				certificate that signed the intermediate certificate (plus potentially the
+				certificates of any intermediate CAs, if the certificate chain is longer than 2).
+				Via the file upload dialog, this PKCS#12 file can be chosen from the file system,
+				and its password also needs to be supplied for the import process. As a second
+				option, you can start a <em class="ph i">Certificate Signing Request</em> procedure like for the UI
+				certificate - described in <a class="xref" href="b70bf164a6e6498b8bf1f459554609f5.html" title="By default, the Cloud connector comes with a self-signed default certificate, which is used to encrypt the communication between the browser-based user interface and the Cloud connector itself. For security reasons, however, you should replace this certificate with your own one so that the browser accepts the certificate without security warnings.">Exchanging UI Certificates in the Administration UI</a>.</p>
+<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> The CA certificate should have the <span class="keyword parmname">KeyUsage</span> attribute
+						<span class="keyword parmname">keyCertSign</span>. Many systems verify that the issuer of a
+					certificate has this attribute and deny a client certificate, if it is not the
+					case. When using the Certificate Signing Request procedure, the attribute will
+					be requested for the CA certificate.</div>
+
+			</div>
+<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loiod0c4d5675d4f4bc78a5b7a7b8687c841__image_mcw_wdl_c5" width="1400px" src="loiobba36da98ba04c97b9d791bec2b0e968_HiRes.png"/>
+			</div></div>
+<p class="p"/>
+If a CA certificate has been imported successfully, its distinguished name,
+			the name of the issuer, and the validity dates are displayed:<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loiod0c4d5675d4f4bc78a5b7a7b8687c841__image_wyj_12l_c5" width="1400px" src="loio1903299772f1412b9137d4fe8fb0af96_HiRes.png"/>
+			</div></div>
+<p class="p"/>
+<p class="p">If a CA certificate is no longer required, you can delete it. To do this,
+				use the respective button and confirm deletion. </p>
+</div></div>
+
+		<div class="section"><div class="section_title">Configuration of a CA Hosted by a Secure Login Server</div><div type="Configuration of a CA Hosted by a Secure Login Server">
+			
+			<p class="p">If you like to delegate the CA functionality to a Secure Login Server, choose the CA via
+					<span class="ph uicontrol">Secure Login Server</span> option and configure the Secure Login
+				Server as follows, after having configured the Secure Login server as described in
+					<a class="xref" href="de5bbf9a92ce402cb0e21952c37b146d.html" title="Configuration steps for Java SLS support.">Configuring a Secure Login Server for the Cloud Connector</a>.</p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loiod0c4d5675d4f4bc78a5b7a7b8687c841__image_ixt_cfl_c5" width="1400px" src="loio616cd1eabd884dbf928c459494bee808_HiRes.png"/>
+			</div></div>
+<p class="p"/>
+
+			<p class="p">The fields need to be filled in in the order on the screen: </p>
+
+			<div class="p">
+				<ul class="ul" id="loiod0c4d5675d4f4bc78a5b7a7b8687c841__ul_cw3_hfl_c5">
+					<li class="li"><var class="keyword varname field">&lt;Host Name&gt;</var>: The host, on which your Secure Login Server (SLS) is
+						installed.</li>
+
+					<li class="li"><var class="keyword varname field">&lt;Authentication Port&gt;</var>: The port, over which the <span class="ph pname">Cloud connector</span>
+						is requesting the short-living certificates from SLS. <div class="note note"><span class="notetitle">Note</span> For this
+							privileged port a client certificate authentication is required, for
+							which the <span class="ph pname">Cloud connector</span> system certificate will be used.</div>
+</li>
+
+					<li class="li"><var class="keyword varname field">&lt;Profile&gt;</var>: The Secure Login Server Profile that will allow to issue
+						certificates as needed for Principal Propagation with the <span class="ph pname">Cloud connector</span>.  </li>
+
+					<li class="li"><var class="keyword varname field">&lt;Profiles Port&gt;</var>: The profiles port needs to be provided only when your Secure
+						Login Server is configured to not allow to fetch profiles via the privileged
+						authentication port. If this is the case, you can provide here the port that
+						is configured for that functionality.</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p"/>
+
+			<p class="p">Press <span class="ph uicontrol">Save</span> to store the configuration. </p>
+
+			<p class="p"/>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="de5bbf9a92ce402cb0e21952c37b146d.html" title="Configuration steps for Java SLS support.">Configuring a Secure Login Server for the Cloud Connector</a></div>
+<div><a class="link" href="3f974eae3cba4dafa274ec59f69daba6.html">Initial Configuration (HTTP)</a></div>
+<div><a class="link" href="f09eefe71d1e4d4484e1dd4b121585fb.html">Initial Configuration (RFC)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In this section, you can learn how to debug a Web application on SAP Cloud Platform depending on whether you have deployed it in the Eclipse IDE or in the console client."/>
+<meta name="description" content="In this section, you can learn how to debug a Web application on SAP Cloud Platform depending on whether you have deployed it in the Eclipse IDE or in the console client."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Debugging Applications on the Cloud</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio10b63fe6c3bb41bdb7986c3cebfd140e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Debugging Applications on the Cloud </h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In this section, you can learn how to debug a Web application on <span class="ph pname">SAP Cloud Platform</span> depending on whether you have deployed it in the Eclipse IDE or in the
+		console client. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio10b63fe6c3bb41bdb7986c3cebfd140e__ul_fth_vd5_rn">
+				<li class="li">You have developed a Web application using the Eclipse IDE. For more
+					information, see <a class="xref" href="ac36e1fc0f634c0caa99916b3bd6b446.html">Developing Java Applications</a>.</li>
+
+				<li class="li">You have deployed your Web application either using the Eclipse IDE or via the
+					console client. For more information, see <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> Debugging can be enabled if there is only one VM started for the requested account
+				or application.</div>
+
+		</div>
+
+	</div>
+
+	<div class="topic concept nested1" id="concept_pmx_g25_rn">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Applications Deployed from the IDE</div><div type="Applications Deployed from the IDE">
+				
+				<p class="p"/>
+
+				<ol class="ol" id="concept_pmx_g25_rn__ol_d1s_325_rn">
+					<li class="li">Deploy your Web application in the Eclipse IDE.</li>
+
+					<li class="li">Run your Web application on <span class="ph pname">SAP Cloud Platform</span>.</li>
+
+					<li class="li">Set breakpoints in your applications.</li>
+
+					<li class="li">From the application's context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Debug As</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Debug on Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+					<li class="li">The <span class="ph uicontrol">Debug</span> perspective is opened.<div class="note note"><span class="notetitle">Note</span> Since cloud servers are
+							running on SAP JVM, switching modes does not require restart and happens
+							in real time.</div>
+</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Applications Deployed with the Console Client</div><div type="Applications Deployed with the Console Client">
+				
+				<p class="p"/>
+
+				<ol class="ol" id="concept_pmx_g25_rn__ol_imk_r25_rn">
+					<li class="li">Deploy your Web application in the console client and start it.</li>
+
+					<li class="li">Go to the Eclipse IDE, open the <span class="ph uicontrol">Servers</span> view and
+						choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+					<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">SAP</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAP Cloud Platform</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+					<li class="li">Enter the correct landscape host, according to your location. (For more
+						information, see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>.)</li>
+
+					<li class="li">Edit the server name, if necessary, and choose <span class="ph uicontrol">Next</span>.<p class="p"><img class="image" id="concept_pmx_g25_rn__image_fbk_5g1_3w" src="loio27192bc0b13844be991e37d78a488191_HiRes.png"/></p>
+</li>
+
+					<li class="li">On page <span class="ph uicontrol">SAP Cloud Platform Application</span> in the wizard, provide
+						the same application data which you have previously entered in the console
+						client.</li>
+
+					<li class="li">Choose <span class="ph uicontrol">Finish</span>.</li>
+
+					<li class="li">A new server is created and attached to your application. It should be in
+							<span class="keyword parmname">Started</span> mode if your application is started.</li>
+
+					<li class="li">From the server's context menu, choose <span class="ph uicontrol">Restart in Debug</span>. (This
+						should not restart the application.)</li>
+
+					<li class="li">Request your application.</li>
+
+					<li class="li">Open the <span class="ph uicontrol">Debug</span> perspective for your server.</li>
+
+					<li class="li">Set breakpoints in your application.</li>
+
+				</ol>
+
+				<div class="note note"><span class="notetitle">Note</span> 
+					<ul class="ul" id="concept_pmx_g25_rn__ul_a54_3f5_rn">
+						<li class="li">If you have deployed an application on a running server, we recommend that you do not use
+								<span class="ph uicontrol">Debug on Server</span> or <span class="ph uicontrol">Run on
+								Server</span> for this will republish (redeploy) your
+							application.</li>
+
+						<li class="li">Also, bear in mind that if you have deployed two or more WAR files, only
+							the debugged one will remain after that.</li>
+
+						<li class="li">If the sources are not attached (Example: The application is deployed
+							from CLI or you need to attach additional sources), you may attach them
+							as described <a class="extlink" href="http://help.sap.com/disclaimer?site=http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fviews%2Fdebug%2Fref-editsourcelookup.htm" target="_blank" alt="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fviews%2Fdebug%2Fref-editsourcelookup.htm" title="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fviews%2Fdebug%2Fref-editsourcelookup.htm">here<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</li>
+
+					</ul>
+
+				</div>
+
+			</div></div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://help.eclipse.org/luna/topic/org.eclipse.wst.server.ui.doc.user/topics/tservlet.html" target="_blank" alt="http://help.eclipse.org/luna/topic/org.eclipse.wst.server.ui.doc.user/topics/tservlet.html" title="http://help.eclipse.org/luna/topic/org.eclipse.wst.server.ui.doc.user/topics/tservlet.html">Eclipse: Debugging a servlet on a server<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://help.eclipse.org/luna/topic/org.eclipse.wst.server.ui.doc.user/topics/tdbgjsp.html" target="_blank" alt="http://help.eclipse.org/luna/topic/org.eclipse.wst.server.ui.doc.user/topics/tdbgjsp.html" title="http://help.eclipse.org/luna/topic/org.eclipse.wst.server.ui.doc.user/topics/tdbgjsp.html">Eclipse: Debugging a JSP file on a server<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

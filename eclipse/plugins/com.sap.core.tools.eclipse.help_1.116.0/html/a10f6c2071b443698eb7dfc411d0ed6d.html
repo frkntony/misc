@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The platform allows you to update an application in a manner in which the application remains operable all the time and your users do not experience downtime."/>
+<meta name="description" content="The platform allows you to update an application in a manner in which the application remains operable all the time and your users do not experience downtime."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating Applications with Zero Downtime</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa10f6c2071b443698eb7dfc411d0ed6d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Updating Applications with Zero Downtime</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">The platform allows you to update an application in a manner in which the application
+		remains operable all the time and your users do not experience downtime.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loioa10f6c2071b443698eb7dfc411d0ed6d__ul_nnq_wvh_2l">
+					<li class="li">You have application deployment permissions for the account. </li>
+
+					<li class="li">You have at least one application process that is not in use, see your
+						compute unit quota.</li>
+
+					<li class="li">You have downloaded and configured the <span class="ph pname">SAP Cloud Platform</span> console client. We recommend
+						that you use the latest SDK. <p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>Each application runs on one or more dedicated application processes. You can start one
+			or many application processes at any given time, according to the compute unit quota
+			that you have. Each process has a unique process ID that you can use to stop it. To
+			update an application non-disruptively for users, you handle individual processes rather
+			than the application as a whole. The procedure below describes the manual steps to
+			execute a zero downtime update. Use it if you want to have more control on the
+			respective steps, for example to have a different timeout for the different application
+			processes before stopping them. For an automated execution of the same procedure, use
+			the rolling-update command. For more information, see <a class="xref" href="3f5d41207b6a4d0b9ad2e46dc6f27e69.html" title="The rolling-update command performs update of an application without downtime in one go.">rolling-update</a>.<div class="note note"><span class="notetitle">Note</span> Not applicable to
+					<span class="ph uicontrol">hanatrial.ondemand.com</span>.</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (<span class="ph filepath">&lt;SDK
+						installation folder&gt;/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">List the status of the application which shows all its processes with their attributes (ID,
+					status, last change date) by executing <var class="keyword varname">&lt;neo status&gt;</var>. Identify
+					and make a note of the application process IDs, which you will need to stop in
+					the following steps. Application processes are listed chronologically by their
+					last change date.</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo status --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Deploy the new version of your application on <span class="ph pname">SAP Cloud Platform</span> by executing
+						<var class="keyword varname">&lt;neo deploy&gt;</var> with the appropriate parameters.</span>
+				<div class="itemgroup info">Note that to execute the update, you need to start one additional application process with
+					the new version. Therefore, make sure you have configured a high enough number
+					of maximum processes for the application (at least one higher than the number of
+					old processes that are running). In case you have already reached the quota for
+					your account, stop one of the already running processes, before
+					proceeding.</div>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --source &lt;file_location&gt;
+ --user &lt;e-mail_or_user&gt; --maximum-processes &lt;number of maximum processes that can be started for the application&gt; </pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start a new application process which is running the new version of the application by
+					executing <var class="keyword varname">&lt;neo start&gt;</var>.</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo start --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Use soft shutdown for the application process running the old version of the application: </span>
+				<ol type="a" class="ol substeps" id="loioa10f6c2071b443698eb7dfc411d0ed6d__substeps_mnb_dfn_pl">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Execute <var class="keyword varname">&lt;neo disable&gt;</var> using the ID you identified in
+							Step 2. This command stops the creation of new connections to the
+							application from new end users, but keeps the already running ones
+							alive.</span>
+						<div class="itemgroup stepxmp">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo disable --host &lt;landscape_host&gt; --user &lt;email_or_user&gt; --application-process-id &lt;ID&gt;  </pre></div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Wait for some time so that all working sessions finish. You can monitor
+							user requests and used resources by configuring JMX checks, or, you can
+							just wait for a given time period that should be enough for most of the
+							sessions to finish.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Stop the application process by executing <var class="keyword varname">&lt;neo stop&gt;</var>
+							using the <var class="keyword varname">&lt;application-process-id&gt;</var> parameter. </span>
+						<div class="itemgroup stepxmp">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo stop --host &lt;landscape_host&gt; --user &lt;email_or_user&gt; --application-process-id &lt;ID&gt;</pre></div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Make sure the application process is stopped by checking its status using the
+						<var class="keyword varname">&lt;application-process-id&gt;</var> parameter. </span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo status --host &lt;landscape_host&gt; --user &lt;email_or_user&gt; --application-process-id &lt;ID&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">If the application is running on more than one application processes, repeat steps 4 and 5
+					until all the processes running the old version are stopped and the
+					corresponding number of processes running the new version are started.</span>
+			</li>
+</ol>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>For example, if your application runs on two application processes, you need to perform
+			the following steps: <ol class="ol" id="loioa10f6c2071b443698eb7dfc411d0ed6d__ol_p3v_fff_wk">
+				<li class="li">List the application processes running the old version:<p class="p">application
+						process(old); application process (old)</p>
+</li>
+
+				<li class="li">Deploy the new version of the application. As you will need to start one
+					additional application process later, make sure you have another available
+					application process by specifying <span class="ph uicontrol">--maximum-processes 3</span>.
+					Since the newly deployed version does not start automatically, the running
+					application processes remain unchanged:<p class="p">application process (old); application
+						process (old)</p>
+</li>
+
+				<li class="li"> Start a new application process that will use the newly deployed
+						version:<p class="p">application process (old); application process (old); application
+						process (new)</p>
+</li>
+
+				<li class="li">Using soft shutdown, disable and stop one of the application processes running
+					the old version so that you have one application process with the old version
+					and one with the new version: <p class="p"> application process (new); application process
+						(old)</p>
+</li>
+
+				<li class="li"> Repeat steps 3 and 4 so that the remainng application process running the old version gets
+					stopped and a new application process with the new application version is
+					started instead.<p class="p">application process (new); application process (new)</p>
+</li>
+
+			</ol>
+</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3f5d41207b6a4d0b9ad2e46dc6f27e69.html" title="The rolling-update command performs update of an application without downtime in one go.">rolling-update</a></div>
+<div><a class="link" href="17e8e9622e63434a880f322f75db3e8e.html" title="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs.">Soft Shutdown</a></div>
+<div><a class="link" href="59fedc12d81b4801aa24c3b12414e382.html" title="This command stops the creation of new connections to an application or application process, but keeps the already running sessions alive. You can check if an application or application process has been disabled by executing the status command.">disable</a></div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a></div>
+<div><a class="link" href="d4f6592584464cc6a5c3c0b6fc88abf9.html" title="You can check the current status of an application or application process. The command lists all application processes with their IDs, state, last change date sorted chronologically, and runtime information.">status</a></div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

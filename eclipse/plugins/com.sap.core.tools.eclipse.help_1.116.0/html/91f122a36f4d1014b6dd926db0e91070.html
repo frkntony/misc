@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The resource model is used as a wrapper for resource bundles. In data binding you use the resource model instance, for example, to bind texts of a control to language-dependent resource bundle properties."/>
+<meta name="description" content="The resource model is used as a wrapper for resource bundles. In data binding you use the resource model instance, for example, to bind texts of a control to language-dependent resource bundle properties."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Instantiating a Resource Model</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio91f122a36f4d1014b6dd926db0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Instantiating a Resource Model</h1>
+<div class="body taskbody"><p class="shortdesc">The resource model is used as a wrapper for resource bundles. In data binding you use
+		the resource model instance, for example, to bind texts of a control to language-dependent
+		resource bundle properties.</p>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">A resource model is instantiated with a <samp class="ph codeph">bundleName</samp> or a
+						<samp class="ph codeph">bundleURL</samp>. The bundle name is the name of the resource
+					bundle and equals a <span class="ph"><span class="ph pname">SAPUI5</span></span> module name within the require/declare concept. The
+					bundle URL points to a resource bundle. If you use the bundle name, the file
+					must have the <samp class="ph codeph">.properties</samp> suffix. If you do not specify a
+						<samp class="ph codeph">locale</samp>, the system uses the login language: <samp class="ph codeph">var
+						oModel = new
+						sap.ui.model.resource.ResourceModel({bundleName:"myBundle",locale:"en"});</samp></span><div class="itemgroup info">In this resource model implementation you cannot pass parameters to your texts
+					within the resource bundle. If you have to pass parameters, you must do this on
+					your own. Therefore, you can load the bundle yourself or retrieve it from the
+					model. <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+var myBundle = oModel.getResourceBundle();</pre></div>
+</div><div class="itemgroup stepresult">
+					<p class="p">After the resource model has been instantiated, you have a model containing the resource
+						bundle texts as data.</p>
+
+				</div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="91f23a736f4d1014b6dd926db0e91070.html">Modularization and Dependency Management</a></div>
+<div><a class="link" href="91f217c46f4d1014b6dd926db0e91070.html">Localization</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

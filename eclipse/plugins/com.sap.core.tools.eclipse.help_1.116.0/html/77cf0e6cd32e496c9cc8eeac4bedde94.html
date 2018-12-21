@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To make sure your domain is trusted and all application data is protected, you need to first set up secure SSL communication. The next step will then be to make your application accessible via the custom domain and route traffic to it."/>
+<meta name="description" content="To make sure your domain is trusted and all application data is protected, you need to first set up secure SSL communication. The next step will then be to make your application accessible via the custom domain and route traffic to it."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Custom Domains</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loio77cf0e6cd32e496c9cc8eeac4bedde94">
+	<h1 class="title topictitle1">Configuring Custom Domains</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To make sure your domain is trusted and all application data is protected, you need to
+		first set up secure SSL communication. The next step will then be to make your application
+		accessible via the custom domain and route traffic to it.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">Perform the following steps:<ul class="ul" id="loio77cf0e6cd32e496c9cc8eeac4bedde94__ul_zkj_sbx_zp">
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio70f4d19d3dbd434aa9aa165d53e2896c" title="You have to create an SSL host that will serve your custom domain. This host holds the mapping between your chosen custom domain and the application on SAP Cloud Platform as well as the SSL configuration for secure communication through this custom domain.">Create an SSL Host</a></li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio55120d899d314e23ab8e33b4b388cea6" title="You need an SSL certificate to allow secure communication with your application. Once installed, the SSL certificate is used to identify the client/individual and to authenticate the owner of the site.">Upload a Certificate</a></li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio1d4248f3582a40cdb6f4a2439a55fb65" title="You need to bind the uploaded certificate to the created SSL host so that it can be used as SSL certificate for requests to this SSL host.">Bind the Certificate to the SSL Host</a></li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loiobf395cf25683491eabefadb4383ed7ff" title="To make your application on the SAP Cloud Platform accessible via the custom domain, you need to map the custom domain to the application URL.">Add the Custom Domain</a></li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio004406e1c9a8441fb05a25f5f87d45b7" title="To route the traffic for your custom domain to your application on SAP Cloud Platform, you also need to configure it in the Domain Name System (DNS) that you use.">Configure DNS</a></li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loioc990788e18c2412281a2abd9c41ad766" title="To enable single logout, you need to configure the Custom Domain URLs, and, optionally, the Central Redirect URL for the SAML single sign-on flow. Even if single sign-on works successfully with your application at the custom domain, you will need to follow the current procedure to enable single logout.">Configure Single Logout</a></li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio6b671d39f46c41d1bbd89b7e698fe384" title="After you configure the custom domain, make sure that the setup is correct and your application is accessible on the new domain.">Test the Custom Domain</a></li>
+
+				</ul>
+</div>
+
+		</div>
+	</div>
+
+<div class="topic task nested1" lang="en-US" id="loio70f4d19d3dbd434aa9aa165d53e2896c">
+	<h2 class="title topictitle2">Create an SSL Host</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You have to create an SSL host that will serve your custom domain. This host holds the
+		mapping between your chosen custom domain and the application on <span class="ph pname">SAP Cloud Platform</span> as
+		well as the SSL configuration for secure communication through this custom
+		domain.</p>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing <span class="keyword cmdname">neo.bat/neo.sh
+						</span>(<span class="ph filepath">&lt;SDK installation
+					folder&gt;/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create an SSL host. In the console client command line, execute <kbd class="ph userinput">neo
+						create-ssl-host</kbd>. For example: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-ssl-host --account myaccount --user mymail@example.com --host hana.ondemand.com --name mysslhost
+ </pre></div>
+
+				</div>
+				<div class="itemgroup info"><div class="note note"><span class="notetitle">Note</span> In the command output, you get the SSL host. For example, <span class="keyword cmdname">"A new SSL host
+							[mysslhost] was created and is now accessible on
+							123456.ssl.ondemand.com"</span>. Write this SSL host down as you will
+						need it in the following steps.</div>
+For more information, see <a class="xref" href="3c890d5a4dfc44dab970d9a29b443ca7.html" title="Creates an SSL host for configuration of custom domains. This SSL host will be serving your custom domain.">create-ssl-host</a>.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optional: Check all the SSL hosts created for your account using the
+						<kbd class="ph userinput">list-ssl-hosts</kbd> command.</span>
+				<div class="itemgroup info"><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-ssl-hosts --account myaccount --user mymail@example.com --host hana.ondemand.com</pre></div>
+For
+					more information, see <a class="xref" href="e8fc50cc0c0f410a8d8ec54f391d01dc.html" title="Lists SSL hosts for a given account.">list-ssl-hosts</a>.</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio55120d899d314e23ab8e33b4b388cea6">
+	<h2 class="title topictitle2">Upload a Certificate</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You need an SSL certificate to allow secure communication with your application. Once
+		installed, the SSL certificate is used to identify the client/individual and to authenticate
+		the owner of the site.</p>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">The certificate generation process starts with certificate signing request (CSR) generation. A
+				CSR is an encoded file containing your public key and specific information that
+				identifies your company and domain name.</p>
+
+			<p class="p">The next step is
+				to use
+				the CSR to get a server certificate signed by a certificate authority (CA) chosen by
+				you. Before buying, carefully consider the appropriate type of SSL certificate you
+				need. For more information, see <a class="xref" href="cde25474fcc1424db48ad86eb2ba9502.html" title="Before configuring SAP Cloud Platform custom domains, you need to make some preliminary steps and fulfil a number of prerequisites.">Prerequisites</a>.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Generate a CSR. </span>
+				<div class="itemgroup info">
+					<p class="p">The <span class="keyword parmname">--name</span> parameter is the unique identifier of the certificate within
+						your account on <span class="ph pname">SAP Cloud Platform</span> and will be used later. It can
+						contain alphanumeric symbols, '.', '-' and '_'.</p>
+
+					<p class="p">The <span class="keyword parmname">--certificate-distinguished-name</span> contains the attributes of the CSR
+						formatted as type0=value0,type1=value1,type2=..., characters may be escaped
+						by \ (backslash), no spaces are skipped. Here you need to provide the
+						following information: </p>
+
+					<ul class="ul" id="loio55120d899d314e23ab8e33b4b388cea6__ul_arp_nzh_z4">
+						<li class="li">CN = Common Name – the domain name(s) for which you are requesting the
+							certificate - for example ‘example.com’</li>
+
+						<li class="li">C = Country - two-digit code - for example, ‘GB’ </li>
+
+						<li class="li">ST = State - state or province name - for example, ‘Hampshire’</li>
+
+						<li class="li">L = Locality – city full name - for example ‘Portsmouth’</li>
+
+						<li class="li">O = Organization – company name</li>
+
+						<li class="li">OU = Organizational Unit – for example ‘IT Department’</li>
+
+					</ul>
+
+					<p class="p">In the console client command line, execute <span class="keyword cmdname">neo
+							generate-csr</span>: </p>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo generate-csr --account myaccount --user mymail@example.com --host hana.ondemand.com
+--name myfirstcert --certificate-distinguished-name "C=GB,O=MyCompany,CN=example.com"</pre></div>
+
+					<p class="p">For more information, see <a class="xref" href="f02258d98b0246cc84a9dfdfe3642b83.html" title="Generates and returns a certificate signing request (CSR).">generate-csr</a>.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> For security reasons, you can only upload certificates that are generated using the
+							<span class="keyword cmdname">generate-csr</span> command.</div>
+
+				</div>
+				<div class="itemgroup stepresult">In the command line output, you get the generated CSR.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Send the CSR to a CA. Copy and send the CSR you got in the previous step to your trusted CA
+					who will sign the certificate.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">When sending the CSR to be signed by a CA, keep the following requirements in mind:</p>
+
+						<p class="p">For server type, choose F5 BigIP. </p>
+
+						<p class="p">The certificate must be in Privacy-enhanced Electronic Mail (PEM) format
+							(128 or 256 bits) with private key (2048-4096 bits).</p>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Upload the SSL certificate you received from the CA to <span class="ph pname">SAP Cloud Platform</span>: </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-domain-certificate --account myaccount --user mymail@example.com --host hana.ondemand.com --name myfirstcert --location ./certificate.pub
+</pre></div>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> Note that some CAs issue chained root certificates that contain an
+							intermediate certificate. In such cases, put all certificates in the
+							file for upload starting with the signed SSL certificate.</div>
+
+					</div>
+
+					<div class="note caution"><span class="cautiontitle">Caution</span> Once uploaded, the domain certificate (including the
+						private key) is securely stored on <span class="ph pname">SAP Cloud Platform</span> and cannot be
+						downloaded for security reasons.</div>
+
+					<p class="p">For more information, see <a class="xref" href="bb54abf8453b437c848ece7269cbe28f.html" title="Uploads an SSL certificate to SAP Cloud Platform. The certificate must be signed using the previously generated CSR via the generate-csr command.">upload-domain-certificate</a>.</p>
+
+				</div>
+				<div class="itemgroup info">
+					<p class="p">Note that when the certificate expires, you will receive a notification from your CA. You
+						need to take care of the certificate update. For more information, see <a class="xref" href="11da7c3a91f24206a68f70b5d6cb3d88.html" title="When the SSL certificate you configured for the custom domain expires, you have to perform the same procedure with the new certificate and remove the old one.">Updating an Expired Certificate</a></p>
+
+					<div class="note tip"><span class="tiptitle">Tip</span> The number of certificates you can have is limited and is calculated based on
+						the number of custom domains you have multiplied by 3. For example, if you
+						have one custom domain, you can have 3 certificates. <p class="p">To free up some
+							space for new certificates, execute
+								<samp class="ph codeph">list-domain-certificates</samp> to get the names of the
+							created ones and then <samp class="ph codeph">delete-domain-certificate</samp> for
+							each certificate you do not need.</p>
+</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio1d4248f3582a40cdb6f4a2439a55fb65">
+	<h2 class="title topictitle2">Bind the Certificate to the SSL Host</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You need to bind the uploaded certificate to the created SSL host so that it can be used
+		as SSL certificate for requests to this SSL host.</p>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Bind the certificate by executing <kbd class="ph userinput">neo bind-domain-certificate</kbd> : </span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-domain-certificate --account myaccount --user mymail@example.com --host hana.ondemand.com --ssl-host mysslhostname --certificate myfirstcert
+</pre></div>
+
+					<p class="p">For more information, see <a class="xref" href="8722bcb71cda48498330957cc96e72de.html" title="Binds a certificate to an SSL host. The certificate must already be uploaded.">bind-domain-certificate</a>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optional: If you want to list your custom domain certificates, execute: <kbd class="ph userinput">neo
+						list-domain-certificates</kbd> .</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-domain-certificates --account myaccount --user mymail@example.com --host hana.ondemand.com 
+</pre></div>
+
+					<p class="p">For more information, see <a class="xref" href="dfb8438c1fbc42d394890d452b9f73ef.html" title="Use this command to list certificates available for a custom domain.">list-domain-certificates</a>.</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loiobf395cf25683491eabefadb4383ed7ff">
+	<h2 class="title topictitle2">Add the Custom Domain</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To make your application on the <span class="ph pname">SAP Cloud Platform</span> accessible via the custom
+		domain, you need to map the custom domain to the application URL.</p>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> After you configure an application to be accessed over a custom domain, its default URL
+						<span class="ph uicontrol">hana.ondemand.com</span> will no longer be accessible. It
+					will only remain accessible for applications that are part of a subscription -
+						<span class="ph uicontrol">https://&lt;application_name&gt;&lt;provider_account&gt;-&lt;consumer_account&gt;.&lt;domain&gt;</span>.</div>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the console client command line, execute <kbd class="ph userinput">neo add-custom-domain</kbd>
+					with the appropriate parameters. Note that you can only do this for a started
+					application.</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo add-custom-domain --account myacc --user mymail@example.com --host hana.ondemand.com
+--custom-domain www.example.com --application-url myaccountmyapp.hana.ondemand.com --ssl-host mysslhostname
+</pre></div>
+
+					<p class="p">For more information, see <a class="xref" href="ebc5269d0df34330b9a68fe1b8adc3ef.html" title="Use this command to add a custom domain to an application URL. This will route the traffic for the custom domain to your application on SAP Cloud Platform.">add-custom-domain</a></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optional: If you want to list all custom domains configured as access points for
+					applications in your account, execute <kbd class="ph userinput">neo
+						list-custom-domain-mappings</kbd>. </span>
+				<div class="itemgroup info">For more information, see <a class="xref" href="7dfeeb267c874472ae4280d838a5779e.html" title="Lists custom domains configured as access points for applications in an account.">list-custom-domain-mappings</a></div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio004406e1c9a8441fb05a25f5f87d45b7">
+	<h2 class="title topictitle2">Configure DNS</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To route the traffic for your custom domain to your application on <span class="ph pname">SAP Cloud Platform</span>, you also need to configure it in the Domain Name System (DNS) that you
+		use.</p>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">You need to make a CNAME mapping from your custom domain to the created SSL host for each
+				custom domain you want to use. This mapping is specific for the domain name provider
+				you are using. Usually, you can modify CNAME records using the administration tools
+				available from your domain name registrar. </p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Sign in to the domain name registrar's administrative tool and find the place where you can
+					update the domain DNS records.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Locate and update the CNAME records for your domain to point to the DNS entry you received
+					from us (*.ssl.ondemand.com) - the one that you got as a result when you created
+					the SSL host using the <span class="keyword cmdname">create-ssl-host</span> command. For example,
+					123456.ssl.ondemand.com. You can check the SSL host by executing the
+						<kbd class="ph userinput">list-ssl-hosts</kbd> command.</span>
+				<div class="itemgroup info">
+					<p class="p">For example, if you have two DNS records : <span class="ph filepath">myhost.com</span>
+						and <span class="ph filepath">www.myhost.com</span>, you need to configure them both to
+						point to the SSL host <span class="ph filepath">123456.ssl.ondemand.com</span>.</p>
+
+					<p class="p">It may take some time for the configuration to take effect.</p>
+
+					<p class="p">For further details, consult your domain name registrar documentation.</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio6b671d39f46c41d1bbd89b7e698fe384">
+	<h2 class="title topictitle2">Test the Custom Domain </h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">After you configure the custom domain, make sure that the setup is correct and your
+		application is accessible on the new domain.</p>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step">
+				<span class="ph cmd">Log on to the cockpit, select an account and go to your <span class="ph uicontrol">Application
+						Dashboard</span>. In <span class="ph uicontrol">Application URLs</span>, check if
+					the new custom URL has replaced the default one.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Open the new application URL in a browser. Make sure that your application responds as
+					expected.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Check that there are no security warnings in the browser. View the certificate in the
+					browser. Check the <span class="ph uicontrol">Subject</span> and <span class="ph uicontrol">Subject
+						Alternative Name</span> fields - the domain names there must match the
+					custom domain.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Perform a small load test - request the application from different browser sessions making
+					at least 15 different requests.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>After this procedure, your application will be accessible on the custom domain, and you
+			will be able to log on (single sign-on) successfully. Single logout, however, may not
+			work yet. If you have a custom trust configuration in your account, you will need to
+			perform an additional configuration to enable single logout. </div>
+		<div class="section postreq"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Next Steps</h3></div>
+			<p class="p">Configure single logout. For more information, see <a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loioc990788e18c2412281a2abd9c41ad766" title="To enable single logout, you need to configure the Custom Domain URLs, and, optionally, the Central Redirect URL for the SAML single sign-on flow. Even if single sign-on works successfully with your application at the custom domain, you will need to follow the current procedure to enable single logout.">Configure Single Logout</a>
+			</p>
+
+		</div>
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loioc990788e18c2412281a2abd9c41ad766">
+	<h2 class="title topictitle2">Configure Single Logout</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To enable single logout, you need to configure the <span class="ph uicontrol">Custom Domain
+			URLs</span>, and, optionally, the <span class="ph uicontrol">Central Redirect URL</span> for
+		the SAML single sign-on flow. Even if single sign-on works successfully with your
+		application at the custom domain, you will need to follow the current procedure to enable
+		single logout.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Prerequisites</h3></div>
+			<ul class="ul" id="loioc990788e18c2412281a2abd9c41ad766__ul_tjd_tzb_cr">
+				<li class="li">You are logged on with a user with administrator role. See <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?a1ab5c4cc117455392cd0a512c7f890d.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?a1ab5c4cc117455392cd0a512c7f890d.html" title="https://help.hana.ondemand.com/help/frameset.htm?a1ab5c4cc117455392cd0a512c7f890d.html">Account Member Roles</a>.</li>
+
+				<li class="li">You are aware of the productive landscape that hosts your account. See <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html" title="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html">Landscape Hosts</a>. </li>
+
+				<li class="li">You are using a custom trust configuration for your account. See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodcdfe339f94947bc96508daa686cc56d">Configure SAP Cloud Platform as a Local Service Provider</a>.</li>
+
+				<li class="li">
+					<p class="p">You have configured the required trust settings for your account. See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiob6cfc4bb4bff4ace90afc71b0962fcb5">Configure Trust to the SAML Identity Provider</a>.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<span class="ph uicontrol">Central Redirect URL</span> is the central node that facilitates
+			assertion consumer service (ACS) and single logout (SLO) service. By default, this node
+			provided by <span class="ph pname">SAP Cloud Platform</span>, and has the <samp class="ph codeph">authn.&lt;productive landscape
+				host&gt;.com</samp> URL (for example, <samp class="ph codeph">authn.hana.ondemand.com</samp>).
+			If you want to use your application’s root URL as the ACS, instead of the central node,
+			you will need to maintain the <span class="ph uicontrol">Central Redirect URL</span>. <p class="p">For Java
+				applications, you can follow the procedure described in the current document. For
+				HANA XS applications, create an incident in component BC-IAM-IDS. </p>
+</div>
+		
+	
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, open the <span class="ph pname">SAP Cloud Platform</span> cockpit and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the <span class="ph uicontrol">Custom Application Domains Settings</span> subtab.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Edit</span>. The custom domains properties become editable.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the <span class="ph uicontrol">Use Custom Application Domains</span> option.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In <span class="ph uicontrol">Central Redirect URL</span>, enter the URL of your application process
+					that will serve as the central node. </span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="note tip"><span class="tiptitle">Tip</span> The <span class="ph uicontrol">Central Redirect URL</span> value has to be the same as
+							the ACS endpoint value in the metadata of the service provider.</div>
+
+					</div>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> Make sure you do not stop the application VM specified as the <span class="ph uicontrol">Central
+								Redirect URL</span>. Otherwise, SAML authentication will fail
+							for all applications in your account.</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">The values in <span class="ph uicontrol">Custom Domain URLs</span> are used for SLO. Enter the
+					required values (all custom domain URLs) in <span class="ph uicontrol">Custom Domain
+						URLs</span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save your changes. The system generates the respective SLO endpoints. Test them in your Web
+					browser and make sure they are accessible from there.</span>
+				<div class="itemgroup stepresult">
+					<p class="p"><img class="image" id="loioc990788e18c2412281a2abd9c41ad766__image_bwh_ff5_kn" src="loio99e15a55497849bab34be47e0113074b_LowRes.png"/></p>
+
+					<div class="p">
+						<div class="note tip"><span class="tiptitle">Tip</span> 
+							<p class="p">The system will accept URL values with or without
+									<samp class="ph codeph">https://</samp>. Either way, the system will generate
+								the correct ACS and SLO endpoint URLs.</p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

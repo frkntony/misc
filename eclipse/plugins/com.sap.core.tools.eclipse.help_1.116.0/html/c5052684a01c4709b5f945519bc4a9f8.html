@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Closes the ssh-tunnel to the specified virtual machine. If no virtual machine ID is specified, closes all tunnels."/>
+<meta name="description" content="Closes the ssh-tunnel to the specified virtual machine. If no virtual machine ID is specified, closes all tunnels."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>close-ssh-tunnel</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc5052684a01c4709b5f945519bc4a9f8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">close-ssh-tunnel</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Closes the ssh-tunnel to the specified virtual machine. If no virtual machine ID is
+		specified, closes all tunnels.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo close-ssh-tunnel --vm-id &lt;vm_id&gt; </pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loioc5052684a01c4709b5f945519bc4a9f8__section_N1001E_N10012_N10001">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc5052684a01c4709b5f945519bc4a9f8__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d9218021e42">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9218021e42 ">
+								<p class="p"><span class="keyword parmname">-i </span>,<span class="keyword parmname">--vm-id</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9218021e42 ">ID of the virtual machine <p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d9218021e81">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d9218021e81 "><span class="keyword parmname">-r</span>, <span class="keyword parmname">--port</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d9218021e81 ">Port on which you want to close the SSH tunnel</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo close-ssh-tunnel --vm-id myvmid --port xxx</pre></div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

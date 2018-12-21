@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connecting and Disconnecting a Cloud Account</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe8f055e712434c90a4747c8f4d7ba2a4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connecting and Disconnecting a Cloud Account</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">The major principle for the connectivity established by the <span class="ph pname">Cloud connector</span> is that the
+				<span class="ph pname">Cloud connector</span>
+			administrator should have full control over the connection to the cloud, i.e. they
+			should be able to decide if and when the <span class="ph pname">Cloud connector</span> need to be
+			connected to the cloud at all, to which accounts it shall be connected, and which
+			on-premise systems and resources shall be accessible to applications of the connected
+			account.</p>
+
+		<p class="p">Using the administration UI, the <span class="ph pname">Cloud connector</span>
+			administrator can connect and disconnect the <span class="ph pname">Cloud connector</span> to the
+			configured cloud account. Once disconnected, there is no communication possible –
+			neither between the cloud account and the <span class="ph pname">Cloud connector</span> nor to the
+			internal systems. The connection state can be verified and changed by the <span class="ph pname">Cloud connector</span>
+			administrator on the Account Dashboard tab of the UI as shown in the following screen
+			shot:</p>
+
+		<p class="p">
+			<img class="image" id="loioe8f055e712434c90a4747c8f4d7ba2a4__image_dpn_j5c_sn" width="1400px" src="loio69b7935368f147b69fb2109734abee40_HiRes.png"/>
+		</p>
+
+		<div class="note note"><span class="notetitle">Note</span> Bear in mind that once the <span class="ph pname">Cloud connector</span> is freshly
+			installed and connected to a cloud account, still none of the systems available in the
+			customer network will be accessible to the applications of the related cloud account.
+			The systems and resources that shall be made accessible must be configured explicitly in
+			the <span class="ph pname">Cloud connector</span> one
+			by one. For more information, see <a class="xref" href="0c48337629d3494888f7b9d06855ba6e.html">Configuring Trust between Cloud Connector and On-Premise Systems</a></div>
+
+		<p class="p"> Effective <span class="ph pname">Cloud connector</span>
+			version <kbd class="ph userinput">2.2.0</kbd>, a single <span class="ph pname">Cloud connector</span> instance
+			can be connected to multiple accounts in the cloud. This is useful especially for
+			customers who need multiple accounts to structure their development or to stage their
+			cloud landscape into development, test, and production. These customers have the option
+			to use a single <span class="ph pname">Cloud connector</span> instance
+			for multiple accounts of theirs. Nevertheless, it is recommended to not use accounts
+			running productive scenarios and accounts used for development or test purposes within
+			the same <span class="ph pname">Cloud connector</span>. A cloud account can be added to or deleted from a <span class="ph pname">Cloud connector</span>
+				via<span class="ph uicontrol">Account Dashboard</span>, using the <span class="ph uicontrol">Add</span>
+			and <span class="ph uicontrol">Delete</span> buttons (see screenshot above). </p>
+
+		<p class="p">A detailed description on how to add, delete, connect or disconnect accounts can be also
+			found here: <a class="xref" href="f16df12fab9f4fe1b8a4122f0fd54b6e.html">Managing Accounts</a></p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

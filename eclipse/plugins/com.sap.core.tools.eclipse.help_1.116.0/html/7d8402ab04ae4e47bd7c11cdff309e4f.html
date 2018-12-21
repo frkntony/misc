@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You create schemas for a selected account. Schemas have properties, such as a database type and database version, and are identified by an ID that is unique within the account. The schema is independent of any application."/>
+<meta name="description" content="You create schemas for a selected account. Schemas have properties, such as a database type and database version, and are identified by an ID that is unique within the account. The schema is independent of any application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7d8402ab04ae4e47bd7c11cdff309e4f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating Schemas</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You create schemas for a selected account. Schemas have properties, such as a database
+		type and database version, and are identified by an ID that is unique within the account.
+		The schema is independent of any application.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You can create schemas using the cockpit and the console client. The procedure below describes
+				schema creation using the cockpit.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				<div class="itemgroup stepresult"> All schemas available in the selected account are listed with their  ID, type,
+					version, and related database system.<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">To display a schema’s details, for example, its state and the number of
+							existing bindings,select the relevant schema in the list and click the
+							link on its name. On the overview of the schema, you can perform further
+							actions, for example, delete the schema.</p>
+
+					</div>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To create a new schema, choose <span class="ph uicontrol">New</span> on the <span class="ph uicontrol">Databases &amp;
+						Schemas</span> page.</span>
+				<div class="itemgroup stepresult">An empty <span class="ph uicontrol">New Database/Schema</span> screen is
+					displayed.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following schema details:</span>
+				<ul class="ul choices" id="loio7d8402ab04ae4e47bd7c11cdff309e4f__choices_fph_2bs_hl">
+					<li class="li choice">
+						<p class="p">Schema ID: A schema ID is freely definable but must start with a letter and contain only
+							uppercase and lowercase letters ('a' - 'z', 'A' - 'Z'), numbers ('0' -
+							'9'), and the special characters '.' and '-'. Note that the actual
+							schema ID assigned in the database will be different to this version. </p>
+
+					</li>
+
+					<li class="li choice">
+						<p class="p">Database System: Select an available database (<span class="ph uicontrol">HANA
+								(&lt;shared&gt;)</span>
+							or <span class="ph uicontrol">MaxDB (&lt;shared&gt;)</span>) from the dropdown
+							box.</p>
+
+					</li>
+
+				</ul>
+
+				<div class="itemgroup info">To create schemas on your productive HANA instances, you have to use the HANA-specific
+					tools.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save your entries.</span>
+				<div class="itemgroup stepresult">The overview of the new schema is displayed with details about its state, quota
+					used, and the number of existing bindings. You can perform further actions for
+					the newly created schema, for example, delete it.<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> To delete a schema, first delete all existing bindings to the schema.
+							The <span class="ph uicontrol">Delete</span> button is only enabled if a schema has
+							no bindings.</div>
+
+					</div>
+</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="d531b2dd49904927a0327c9479edd2b7.html" title="Database schemas contain a database property, which determines on which database an application will run. Each account has a default database system.">Changing the Default Database System</a></div>
+<div><a class="link" href="05ebe394ab3f491380209e4df3713662.html" title="This command creates a HANA database or schema with the specified ID on a shared or dedicated database.">create-schema</a></div>
+<div><a class="link" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

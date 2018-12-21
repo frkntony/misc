@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This service enables you to translate English short texts into the languages that SAP Translation Hub supports."/>
+<meta name="description" content="This service enables you to translate English short texts into the languages that SAP Translation Hub supports."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Translation Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9d0dee4adf014a71b0e531c6026ff132">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Translation Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This service enables you to translate English short texts into the languages that SAP
+		Translation Hub supports.</p>
+
+		<div class="section"><div class="section_title">Usage</div><div type="Usage">
+			
+			<p class="p">Provides translations of English short texts based
+					on existing texts and their translations that are used in SAP products. The
+					service first looks for suitable translations in the multilingual text
+					repository; if no suitable translation is available, the service calls machine
+					translation.
+				</p>
+
+			<p class="p">Each record in the multilingual text repository comprises the source language in
+				English plus translations for a combination of domain and text type, which you can
+				enter as additional request parameters.</p>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">Request</div><div type="Request">
+			
+			<div class="p"><span class="ph emphasis emphasis">URL:</span>
+				<span class="ph filepath"><var class="keyword varname">&lt;base URL of SAP Translation
+					Hub&gt;</var>/translationhub/api/v1/translate</span><div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">For information about the base URL, see <cite class="cite">Building
+                                Base URL of SAP Translation Hub</cite> in the <cite class="cite">Related
+                                Information</cite> section.</p>
+
+				</div>
+</div>
+
+			<p class="p"><span class="ph emphasis emphasis">HTTP Method: </span>
+				<span class="keyword">POST</span></p>
+
+			<p class="p"><span class="ph emphasis emphasis">Request Parameters</span></p>
+
+			<p class="p">The service requires a JSON request payload and the request content type:
+					<kbd class="ph userinput">application/json; charset=utf-8</kbd>. If you do not use this
+				content type, the service call fails.</p>
+
+			<div class="p">The JSON request contains an array of bundle JSON objects. A bundle represents a single
+				localization object, for example, a Java property file or an Android XML file. The
+				following tables below show the different key-value pairs in the JSON request:<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">To better understand the keys of the JSON request shown in the following
+						tables, see the sample code for the request body below the tables.</p>
+
+				</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_iyn_gtc_hr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d7059167e96">Root Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d7059167e99">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d7059167e102">Type</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e96 "><span class="ph uicontrol">targetLanguages</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e99 ">The IDs of the target languages in which you want the service to return translations
+									of texts. To view the IDs of the supported languages, call the
+									SAP Translation Hub language service. If you do not specify any
+									target languages, the service returns the texts in all available
+									target languages.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e102 ">Optional</td>
+
+							</tr>
+
+							
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e96 "><span class="ph uicontrol">enableMT</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e99 ">Determines whether SAP Translation Hub translates texts using
+									machine translation providers in addition to the multilingual
+									text repository. <p class="p">If you set the value to
+											<span class="ph uicontrol">false</span> or you do not use this key,
+										SAP Translation Hub uses the multilingual text repository as
+										the only source for translations.</p>
+</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e102 ">Optional</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e96 "><span class="ph uicontrol">bundles</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e99 ">Represents a single localization object (for example, a Java
+									property file or an Android XML file). Each bundle comprises one
+									or more bundles keys - see the next table. </td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e102 ">Mandatory</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_kbf_jfb_gr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d7059167e169">Bundles Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d7059167e172">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d7059167e175">Type</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e169 "><span class="ph uicontrol">domain</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e172 ">The ID of a translation domain, for example, BC. If you do
+									not specify a domain, the service searches for translations in
+									all available domains.<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">It is not possible to enter multiple domains.</p>
+
+									</div>
+</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e175 ">Optional</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e169 "><span class="ph uicontrol">units</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e172 ">Describes a single text that you want to translate. The
+										<span class="ph uicontrol">units</span> key comprises multiple property
+									keys - see the next table.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e175 ">Mandatory</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_axs_mf5_3q" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d7059167e233">Units Key</th>
+
+							<th class="entry" valign="top" width="50%" id="d7059167e236">Description</th>
+
+							<th class="entry" valign="top" width="25%" id="d7059167e239">Type</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d7059167e233 "><span class="ph uicontrol">value</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d7059167e236 ">The text to be translated.</td>
+
+							<td class="entry" valign="top" width="25%" headers="d7059167e239 ">Mandatory</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d7059167e233 "><span class="ph uicontrol">textType</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d7059167e236 ">The ID of a text type, for example, XFLD for a field label.<div class="note note"><span class="notetitle">Note</span> It is not possible to
+									enter multiple text types.</div>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d7059167e239 ">Optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d7059167e233 "><span class="ph uicontrol">key</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d7059167e236 ">A key that helps you to uniquely identify a particular text and its subsequent
+								translations in the bundle. SAP Translation Hub stores this key with
+								the text in the service request to make it easier to identify
+								specific texts and their translations than by using the texts alone.
+								For example, if you specify a key for each text in a properties file
+								that you want to translate, you can use the key to identify the
+								translations for each text in the target properties files.<div class="note note"><span class="notetitle">Note</span> The
+									key is stored only to make it easier to identify the text in the
+									bundle; it is not stored for future reference in the
+									multilingual text repository.</div>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d7059167e239 ">Optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d7059167e233 "><span class="ph uicontrol">searchData</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d7059167e236 ">A parameter that allows you to specify the translation of a UI text in a language
+								other than English. You use this parameter if you know that there
+								are multiple possible translations for a given source text, and you
+								want to restrict the results to a specific translation. For example,
+								take the text 'Cancel'. The German translation could be 'Abbrechen'
+								or 'Stornieren'. If you know that the German translation in a given
+								instance should be 'Abbrechen', you can specify 'Abbrechen' so that
+								the correct translation in German (and in other languages) is
+								returned. This parameter has two mandatory properties:
+									<span class="ph uicontrol">language</span> (the language ID provided by the
+								language service) and <span class="ph uicontrol">value</span> (the UI text in
+								the required target language, that is, a language other than
+								English).</td>
+
+							<td class="entry" valign="top" width="25%" headers="d7059167e239 ">Optional</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"><span class="ph emphasis emphasis">Request Body Example</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+        "targetLanguages" : ["en", "de", "fr", "bg", "ru"],
+        "enableMT" : true,
+        "bundles" : [
+                        {
+                        "domain" : "B2",
+                        "units" : [
+                        			{
+                                     "textType" : "XFLD",
+                                     "key" : "LOGIN_USERNAME_FIELD",
+                                     "value" : "User Name",
+                                     "searchData" :
+                                     	{
+                                        "language" : "de",
+                                        "value" : "Benutzername"
+                                        }  
+                                      }
+                                      	]
+                                }
+        	        ]
+			}
+</pre></div>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">Response</div><div type="Response">
+			
+			<div class="p">The translation response is in JSON format. The response contains an array of
+					<span class="ph uicontrol">bundles</span> keys; each <span class="ph uicontrol">bundles</span> key in
+				the response corresponds to a <span class="ph uicontrol">bundles</span> key in the request. If
+				there is more than one <span class="ph uicontrol">bundles</span> key, the sequence of these
+				keys from the request is retained. The response contains the following key-value
+					pairs:
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_okf_k22_hr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d7059167e352">Root Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d7059167e355">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d7059167e358">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e352 "><span class="ph uicontrol">bundles</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e355 ">Represents a single localization object (for example, a Java property file or an
+									Android XML file). Each <span class="ph uicontrol">bundles</span> key can
+									comprise multiple keys - see the next table. </td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e358 ">Always in response</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<div class="p">Each <span class="ph uicontrol">bundles</span> key in the response corresponds to a
+					<span class="ph uicontrol">bundles</span> key in the request, and contains the following
+					keys:
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_td5_p22_hr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d7059167e406">Bundles Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d7059167e409">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d7059167e412">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e406 "><span class="ph uicontrol">domain</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e409 ">The ID of the translation domain specified in the response,
+									for example, BC.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e412 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e406 "><span class="ph uicontrol">units</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e409 ">Describes a single text that you want to translate and
+									additional context information. The <span class="ph uicontrol">units</span>
+									key comprises multiple keys - see the next table.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e412 ">Always in response</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<div class="p">Each <span class="ph uicontrol">units</span> key in the response corresponds to a
+					<span class="ph uicontrol">units</span> key in the request, and contains the following
+					keys:
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_jqs_4yb_lq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d7059167e473">Units Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d7059167e476">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d7059167e479">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e473 "><span class="ph uicontrol">value</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e476 ">The text to be translated.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e479 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e473 "><span class="ph uicontrol">textType</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e476 ">The ID of the text type, for example, XFLD.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e479 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e473 "><span class="ph uicontrol">key</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e476 ">A key that uniquely identifies a text in the bundle.<div class="note note"><span class="notetitle">Note</span> The key is stored only to
+										make it easier to identify the text in the bundle; it is not
+										stored for future reference in the multilingual text
+										repository.</div>
+</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e479 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e473 "><span class="ph uicontrol">translations</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e476 ">Describes the translated text. The
+										<span class="ph uicontrol">translations</span> key comprises multiple
+									keys - see the next table.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e479 ">Always in response</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<div class="p">For each target language that is specified in the <span class="ph uicontrol">targetLanguages</span> key
+				in the request, there is a set of <span class="ph uicontrol">translations</span> keys in the
+				response. If you specify a value for the <span class="ph uicontrol">searchData</span> key in
+				the request, the translation is based on the text in the
+					<span class="ph uicontrol">value</span> parameter that you specify in the request.<div class="note note"><span class="notetitle">Note</span> If
+					a translation does not exist in one of the target languages specified in the
+					request, the set of <span class="ph uicontrol">translations</span> keys for that target
+					language is not part of the response. If there are <strong class="ph b">no</strong> translations of the
+					text, the <span class="ph uicontrol">translations</span> key is part of the response, but
+					is empty.</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9d0dee4adf014a71b0e531c6026ff132__table_vg2_cdf_hr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d7059167e585">Translations Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d7059167e588">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d7059167e591">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e585 "><span class="ph uicontrol">language</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e588 ">The ID of the target language in which the text is
+									translated.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e591 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								
+								<td class="entry" valign="top" width="25%" headers="d7059167e585 "><span class="ph uicontrol">value</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e588 ">The translation of the text.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e591 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d7059167e585 "><span class="ph uicontrol">translationProvider</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d7059167e588 ">The source of the translated texts:<ul class="ul" id="loio9d0dee4adf014a71b0e531c6026ff132__ul_ck2_k1n_mv">
+										<li class="li">0 = multilingual text repository (MLTR)</li>
+
+										<li class="li">1 = SAP-internal machine translation solution based on
+											Moses open source toolkit (SAP machine translation)</li>
+
+									</ul>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d7059167e591 ">Always in response</td>
+
+							</tr>
+
+							
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<p class="p"><span class="ph emphasis emphasis">Response Body Example</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+ "bundles" : [
+     {
+      "domain":"B2",
+      "units" : [
+          {
+           "textType" : "XFLD",
+           "key" : "LOGIN_USERNAME_FIELD",
+           "value" : "User Name",
+           "translations" : [
+                 {
+                  "language":"de",
+                  "value":"Benutzername",
+                  "translationProvider": 0
+				},
+                 {
+                  "language":"fr",
+                  "value":"Nom utilisateur",
+                  "translationProvider": 0
+                    },
+                 {
+                  "language":"en",
+                  "value":"User Name",
+                  "translationProvider": 0
+			 	},
+                 {
+                  "language":"ru",
+                  "value":"Имя пользователя",
+                  "translationProvider": 0
+			     }
+                             ]
+                 }
+                 ]
+            }
+          ]
+}
+</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3a011fba82644259a2cc3c919863f4b4.html" title="The base URL is main part of the complete URL that you need to access the services of SAP Translation Hub.">Building Base URL of SAP Translation Hub</a></div>
+<div><a class="link" href="ca7053f6e50e44298e5c6821033c569a.html" title="This service enables you to view the languages that SAP Translation Hub supports.">Language Service</a></div>
+<div><a class="link" href="6c3c36be001949e889c17e9bbeac8941.html" title="SAP Translation Hub supports a number of different languages. The following table shows the languages into which you can translate texts using the multilingual text repository (MLTR) and machine translation.">Supported Languages</a></div>
+<div><a class="link" href="5cc08779546b4bcf9f5155b8029ee4bf.html" title="To test the individual Web services, for example, the translation service, you can use a REST service client.">Testing the Services</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Created-By: Apache Maven 3.0.4
+Build-Jdk: 1.8.0_66
+
+Name: META-INF/maven/com.sap.ide.ui5/com.sap.ide.ui5.cloud.feature/pom
+ .properties
+SHA-256-Digest: Qz0ilnpovw17dltyGxxujFy4P8sQsPl0djqHzX2YLeY=
+
+Name: feature.xml
+SHA-256-Digest: QZGwJueLxlzSCE8rxcOp2/qa4ZhI7+VCnvcVbMVw2yk=
+
+Name: feature.properties
+SHA-256-Digest: A6AnobCaWkcePGSJd/yQQ4iOe+eYQcUiEb38sWEXA0g=
+
+Name: META-INF/maven/com.sap.ide.ui5/com.sap.ide.ui5.cloud.feature/pom
+ .xml
+SHA-256-Digest: KzMQjPP0jqv8dzvUh5MD9bKrA+f7RPf9nfiodOoTcl8=
+

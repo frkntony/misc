@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Database schemas contain a database property, which determines on which database an application will run. Each account has a default database system."/>
+<meta name="description" content="Database schemas contain a database property, which determines on which database an application will run. Each account has a default database system."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Changing the Default Database System</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod531b2dd49904927a0327c9479edd2b7">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Changing the Default Database System</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Database schemas contain a database property, which determines on which database an
+		application will run. Each account has a default database system.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The default database system is used when schemas are created automatically. This occurs if an
+				application is started but has not yet been assigned a schema.</p>
+
+			<p class="p">You can change the default database system at any point in time, however, bear in mind the
+				following:</p>
+
+			<div class="p">
+				<ul class="ul" id="loiod531b2dd49904927a0327c9479edd2b7__ul_wy1_n2m_pl">
+					<li class="li">A new application that has not been explicitly assigned a schema will use whichever default
+						database system is effective when automatic schema creation is triggered,
+						that is, when the application is started for the first time.</li>
+
+					<li class="li">When deploying an application from the Eclipse IDE, in contrast to the
+						console client, an application is deployed and started in one step.</li>
+
+					<li class="li">An application that is already using a default database system will not be affected by any
+						changes. Its schema remains associated with the default database system
+						effective at the time when it was created.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and go to the list of accounts available to you.</span>
+				<div class="itemgroup info">The accounts are displayed as tiles.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the <img class="image" id="loiod531b2dd49904927a0327c9479edd2b7__image_c5c_xx3_5v" src="loioabfe4243d43d42a2a59eb64733ac7a75_LowRes.png"/> (edit) icon on the tile for
+					the account in question.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the new default database system from the dropdown box and save your
+					changes.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="c4c25cc63ac845779f76202360f98694.html" title="You can manage accounts and assign the quota available for a global account to the accounts associated with this global account.">Managing Accounts and Quota</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Custom Header Protection</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3756f3fc7b4342d39db1bbe57d1b2d57">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using Custom Header Protection</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Custom header protection is one of the possible approaches for CSRF protection. It is
+				based on adding a servlet filter that inspects state modifying requests for the
+				presence of valid CSRF token. The CSRF token is transferred as a custom header and
+				is valid during the user session. This kind of protection specifically addresses the
+				protection of REST APIs, which are normally not accessed from entry point pages.
+				Note that the CSRF protection is performed only for modifying HTTP requests
+				(different from GET|HEAD or OPTIONS).</p>
+
+			<div class="p">In a nutshell, the REST CSRF protection mechanism consists of the following
+				communication steps:<ol class="ol" id="loio3756f3fc7b4342d39db1bbe57d1b2d57__ol_d2f_vzw_sn">
+					<li class="li">The REST CLIENT obtains a valid CSRF token with an initial non-modifying
+						"Fetch" request to the application.</li>
+
+					<li class="li">The SERVER responds with the valid CSRF token mapped to the current user
+						session.</li>
+
+					<li class="li">The REST CLIENT includes the valid CSRF token in the subsequent modifying
+						REST requests in the frame of the same user session.</li>
+
+					<li class="li">The SERVER rejects all modifying requests to protected resources that do not
+						contain the valid CSRF token.</li>
+
+				</ol>
+</div>
+
+			<p class="p">Custom header CSRF protection mechanism requires adoption both in the client (JavaScript) and
+				server (REST) parts of the Web applications.</p>
+
+			<div class="p">To better illustrate the mechanism we’ll use an example web application exposing the following
+				REST APIs. We’ll use the same example application throughout the document.
+<div class="table-wrapper tablenoborder"><table summary="" id="loio3756f3fc7b4342d39db1bbe57d1b2d57__table_wt5_zcx_sn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/></colgroup>
+
+						
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" id="d2493666e61">Number</th>
+
+								<th class="entry" valign="top" id="d2493666e64">Exposed with HTTP methods</th>
+
+								<th class="entry" valign="top" id="d2493666e67">REST API</th>
+
+								<th class="entry" valign="top" id="d2493666e70">Description</th>
+
+								<th class="entry" valign="top" id="d2493666e73">Type</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" headers="d2493666e61 ">1</td>
+
+								<td class="entry" valign="top" headers="d2493666e64 ">GET</td>
+
+								<td class="entry" valign="top" headers="d2493666e67 ">/services/list</td>
+
+								<td class="entry" valign="top" headers="d2493666e70 ">Prints customers list in the output.</td>
+
+								<td class="entry" valign="top" headers="d2493666e73 ">non-modifying</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" headers="d2493666e61 ">2</td>
+
+								<td class="entry" valign="top" headers="d2493666e64 ">POST</td>
+
+								<td class="entry" valign="top" headers="d2493666e67 ">/services/customers/removeCustomer</td>
+
+								<td class="entry" valign="top" headers="d2493666e70 ">Removes the first item from the customers list.</td>
+
+								<td class="entry" valign="top" headers="d2493666e73 ">modifying</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" headers="d2493666e61 ">3</td>
+
+								<td class="entry" valign="top" headers="d2493666e64 ">POST</td>
+
+								<td class="entry" valign="top" headers="d2493666e67 ">/services/customers/addCustomer</td>
+
+								<td class="entry" valign="top" headers="d2493666e70 ">Adds a customer to the customers list.</td>
+
+								<td class="entry" valign="top" headers="d2493666e73 ">modifying</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div>
+	</div>
+
+	<div class="topic task nested1" id="task_nlp_13d_tn">
+		<h2 class="title topictitle2">1. In the REST Service</h2>
+
+		<div class="body taskbody">
+			<div class="section prereq p"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Prerequisites</h3></div>
+				<p class="p">You have created a working Web application and have enforced authentication for
+					it, as described in <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a>. All
+					CSRF protected resources should be protected with an authentication
+					mechanism.</p>
+
+			</div>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><div class="li step p">
+					<span class="ph cmd">In the application's <samp class="ph codeph">web.xml</samp>, protect all REST APIs using the
+						out-of-the-box CSRF filter available with the <span class="ph pname">SAP Cloud Platform</span>
+						SDK.</span>
+					<div class="itemgroup info">
+						<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">You must have at least one non-modifying REST operation listed. </p>
+
+						</div>
+
+						<p class="p">Identify all web application resources that have to be CSRF protected and
+							map them to
+								<samp class="ph codeph">org.apache.catalina.filters.RestCsrfPreventionFilter</samp>
+							(this class represents the out-of-the-box CSRF filter available with the
+							<span class="ph pname">SAP Cloud Platform</span> SDK, so you do not need to instantiate/implement
+							it) in the <samp class="ph codeph">web.xml</samp>. </p>
+
+						<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">If you are using an older version of the <span class="ph pname">SAP Cloud Platform</span>
+								rutime for Java, use the
+									<samp class="ph codeph">com.sap.core.js.csrf.RestCsrfPreventionFilter</samp>
+								class instead. It delivers the same implementation as the other one.
+								Namely, use that class with the following runtime versions:</p>
+
+							<div class="p">
+								<ul class="ul" id="task_nlp_13d_tn__ul_xzg_d3v_fv">
+									<li class="li">Java Web 1.x lower than 1.98.22</li>
+
+									<li class="li">Java EE Web Profile lower than 2.80.14</li>
+
+									<li class="li">Java Web Tomcat 7 lower than 2.45.16</li>
+
+								</ul>
+
+							</div>
+
+						</div>
+
+						<p class="p">As a result, all modifying HTTP requests matching the given
+								<samp class="ph codeph">url-pattern</samp> would be CSRF validated, i.e. checked
+							for the presence of the valid CSRF token. </p>
+
+						<p class="p">Applications should expose at least one non-modifying REST operation to
+							enable CSRF token fetch mechanism. In order to obtain the valid CSRF
+							token, the clients need to make an initial fetch requests. That is why
+							the non-modifying REST API is necessary. Requirements for the
+							non-modifying REST API:</p>
+
+						<div class="p">
+							<ul class="ul" id="task_nlp_13d_tn__ul_asx_rhc_tn">
+								<li class="li">Any GET/HEAD/OPTIONS requests to the URL shall not cause state
+									modification. </li>
+
+								<li class="li">The URL should be mapped to the
+										<samp class="ph codeph">RestCsrfPreventionFilter</samp>
+								</li>
+
+								<li class="li">The URL should be protected with authentication mechanism. </li>
+
+							</ul>
+
+						</div>
+
+					</div>
+				</div>
+
+			<div class="example"><h2 class="exampletitle">Example</h2>
+				<div class="p">The following example illustrates mapping a set of modifying REST APIs and one
+					non-modifying REST API to the CSRF protection filter in the application’s
+						<samp class="ph codeph">web.xml</samp> deployment
+					descriptor:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;filter&gt;
+   &lt;filter-name&gt;RestCSRF&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.apache.catalina.filters.RestCsrfPreventionFilter&lt;/filter-class&gt;
+ &lt;/filter&gt;
+ &lt;filter-mapping&gt;
+   &lt;filter-name&gt;RestCSRF&lt;/filter-name&gt;
+    &lt;!— modifying REST APIs--&gt;
+    &lt;url-pattern&gt;/services/customers/removeCustomer&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;/services/customers/addCustomer&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;/services/customers/initCustomers&lt;/url-pattern&gt;
+    &lt;!— non-modifying REST API--&gt;
+    &lt;url-pattern&gt;/services/customers/list&lt;/url-pattern&gt;
+ &lt;/filter-mapping&gt;
+</pre></div>
+</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_frp_gjd_tn">
+		<h2 class="title topictitle2">2. In REST Clients</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_frp_gjd_tn__steps_o2g_kjd_tn"><li class="li step stepexpand">
+					<span class="ph cmd">Make a fetch request.</span>
+					<div class="itemgroup info">
+						<p class="p">As a first step, the REST client should obtain the valid CSRF token for the current
+							session. For this it makes a non-modifying request and includes a custom
+							header <samp class="ph codeph">"X-CSRF-Token: Fetch"</samp>. The returned
+								<samp class="ph codeph">[sessionid – csrf token]</samp> pair should be cached and
+							used in subsequent REST requests by the client. Another option is to
+							send Fetch request before every REST request and thus to use the
+								<samp class="ph codeph">[sessionid – csrf token]</samp> pair only once.</p>
+
+					</div>
+					<div class="itemgroup stepxmp">
+						<div class="p">Example HTTP Request-Response
+							flow:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Client Request:
+GET /restDemo/services/customers/list HTTP/1.1
+X-CSRF-Token: Fetch
+Authorization: Basic dG9tY2F0OnRvbWNhdA==
+Host: localhost:8080
+ 
+Server Response:
+HTTP/1.1 200 OK
+Set-Cookie: JSESSIONID=4BA3D75B73B8C4591F1D915BA9C2B660; Path=/restDemo/; HttpOnly
+X-CSRF-Token: 5A44B387B75E54417F6C64FF3D485141
+..
+</pre></div>
+</div>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Use the cached <samp class="ph codeph">[sessionid – csrf token]</samp> pair for subsequent REST
+						requests.</span>
+					<div class="itemgroup info">
+						<p class="p">Subsequent modifying REST requests to the same application should include the valid
+							jsessionid cookie and the valid <samp class="ph codeph">X-CSRF-Token</samp>
+							header.</p>
+
+					</div>
+					<div class="itemgroup stepxmp">
+						<div class="p">Example HTTP Request -Response
+							flow:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Client Request:
+POST /restDemo/services/customers/removeCustomer HTTP/1.1
+Cookie: JSESSIONID=4BA3D75B73B8C4591F1D915BA9C2B660
+X-CSRF-Token: 5A44B387B75E54417F6C64FF3D485141
+Authorization: Basic dG9tY2F0OnRvbWNhdA==
+Host: localhost:8080
+ 
+Server Response:
+HTTP/1.1 200 OK
+..
+</pre></div>
+</div>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Handling error server responses</span>
+					<div class="itemgroup info">
+						<div class="p">The client should be prepared for the following server
+							response:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">403 Forbidden
+X-CSRF-Token: Required
+</pre></div>
+</div>
+
+						<div class="p">It may occur in one of these cases:<ul class="ul" id="task_frp_gjd_tn__ul_jxc_43c_tn">
+								<li class="li">Invalid or missing CSRF token in the request.</li>
+
+								<li class="li">Expired session - after session expiration the <samp class="ph codeph">[sessionid – csrf token]</samp>
+									pair is no longer valid and it should be reinitialized by the
+									client. </li>
+
+								<li class="li">There are cases when the sessionid is changed by the server and
+									the client should take into account such changes. </li>
+
+							</ul>
+</div>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_lm2_dkd_tn">
+		<h2 class="title topictitle2">Exceptional Cases</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">In small number of use cases the client is not able to insert custom headers in its calls to
+					a REST API. For example file uploads via POST HTML FORM consuming a REST API.
+					Only for such use-cases there is an additional capability to configure REST APIs
+					for which the valid CSRF token will be accepted as request parameter (not only
+					header). If there is a <samp class="ph codeph">X-CSRF-Token</samp> header, it will be taken
+					with preference over any parameter with the same name in the request. </p>
+
+				<div class="note tip"><span class="tiptitle">Tip</span> 
+					<div class="p">For security reasons we strongly recommend  the following:<ul class="ul" id="task_lm2_dkd_tn__ul_msz_v3c_tn">
+							<li class="li">Use this approach only when the header approach cannot be
+								applied.</li>
+
+							<li class="li">Use only hidden post parameter with name
+									<samp class="ph codeph">X-CSRF-Token</samp>, and not query parameters.</li>
+
+						</ul>
+</div>
+
+				</div>
+
+				<div class="p">Example configuration in the <samp class="ph codeph">web.xml</samp> deployment
+					descriptor:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;filter&gt;  
+    &lt;filter-name&gt;CSRF&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.catalina.filters.RestCsrfPreventionFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;pathsAcceptingParams&lt;/param-name&gt;
+        &lt;param-value&gt;/services/customers/acceptedPath1.jsp,/services/customers/acceptedPath2.jsp
+&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;CSRF&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/services/customers/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</pre></div>
+</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

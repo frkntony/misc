@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources."/>
+<meta name="description" content="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Roles</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodb8175b9d976101484e6fa303b108acd">
+<div id="wrapper"><div id="container">
+	<h1 class="title topictitle1">Managing Roles</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In <span class="ph pname">SAP Cloud Platform</span>, you can use Java EE roles to define access to the
+		application resources.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiodb8175b9d976101484e6fa303b108acd__table_kcj_hd1_sn" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: Terms</span></caption>
+<colgroup><col width="18.484288354898336%"/><col width="81.51571164510166%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="18.484288354898336%" id="d10129105e36">Term</th>
+
+							<th class="entry" valign="top" width="81.51571164510166%" id="d10129105e39">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="18.484288354898336%" headers="d10129105e36 ">Role</td>
+
+							<td class="entry" valign="top" width="81.51571164510166%" headers="d10129105e39 ">
+								<div class="p">Roles allow you to diversify user access to application resources
+									(role-based authorizations). <div class="note note"><span class="notetitle">Note</span> Role names are case
+										sensitive.</div>
+</div>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="18.484288354898336%" headers="d10129105e36 ">Predefined roles</td>
+
+							<td class="entry" valign="top" width="81.51571164510166%" headers="d10129105e39 ">
+								<p class="p">Predefined roles are ones defined in the <span class="ph uicontrol">web.xml
+									</span>of an application. </p>
+
+								<p class="p">See <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a>. </p>
+
+								<p class="p">After you deploy the application to <span class="ph pname">SAP Cloud Platform</span>, the role becomes visible in the Cockpit,
+									and you can assign groups or individual users to that role. If
+									you undeploy your application, these roles are removed.</p>
+
+								<div class="p">Predefined roles can be:<ul class="ul" id="loiodb8175b9d976101484e6fa303b108acd__ul_ezc_ck4_5n">
+										<li class="li">Shared - they are shared by default. A shared role is
+											visible and accessible within all accounts subscribed to
+											this application.</li>
+
+										<li class="li">Restricted - an application administrator could restrict
+											a shared role. A restricted role is visible and
+											accessible only within the account that deployed the
+											application, and not to accounts subscribed to the
+											application.</li>
+
+									</ul>
+
+								</div>
+
+								<div class="p">
+									<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">If you restrict a shared role, you hide it from
+											visibility for new assignments from subscribed accounts
+											but all existing assignments will continue to take
+											effect. </p>
+
+									</div>
+
+								</div>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="18.484288354898336%" headers="d10129105e36 ">Custom roles</td>
+
+							<td class="entry" valign="top" width="81.51571164510166%" headers="d10129105e39 ">
+								<p class="p">Custom roles are ones defined using the Cockpit. Custom roles are
+									interpreted in the same way as predefined roles at <span class="ph pname">SAP Cloud Platform</span>: they differ only in the way they are created,
+									and in their scope. </p>
+
+								<p class="p">You can add custom roles to an application to configure
+									additional access permissions to it without modifying the
+									application's source code.</p>
+
+								<p class="p">Custom roles are visible and accessible only within the account
+									where they are created. That’s why different accounts subscribed
+									to the same application could have different custom roles.</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="18.484288354898336%" headers="d10129105e36 ">User</td>
+
+							<td class="entry" valign="top" width="81.51571164510166%" headers="d10129105e39 ">Users are principals managed by identity providers (SAP ID service or others).
+									<div class="note note"><span class="notetitle">Note</span> <span class="ph pname">SAP Cloud Platform</span> does not have a user database on
+									its own. It cares to map the users authorized by identity
+									providers to groups, and groups to roles.</div>
+<div class="note note" id="loiodb8175b9d976101484e6fa303b108acd__note_N10059_N10015_N10013_N10001"><span class="notetitle">Note</span> When a user logs in, its
+									roles are stored in the user's current browser session. They are
+										<span class="ph emphasis emphasis">not</span> updated dynamically, and removed
+									from there only if the session is terminated or invalidated.
+									This means if you change the set of roles for a user currently
+									logged, they will take effect only after logout or session
+									invalidation.</div>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="18.484288354898336%" headers="d10129105e36 ">Group</td>
+
+							<td class="entry" valign="top" width="81.51571164510166%" headers="d10129105e39 ">Groups are collections of roles that allow the definition of
+								business-level functions within your account. They are similar to
+								the actual business roles existing in an organization, such as
+								"manager", "employee", "external" and so on. They help you to get
+								better alignment between technical Java EE roles and organizational
+									roles.<div class="note note"><span class="notetitle">Note</span> Group names are case insensitive. </div>
+<p class="p">For each
+									identity provider (IdP) for your account, you define a set of
+									rules specifying the groups a user for this IdP belongs to.
+									</p>
+<p class="p">See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">Using a Custom Identity Provider</a>.
+								</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+	</div>
+
+	<div class="topic task nested1" id="task_hky_cs1_sn">
+		<h2 class="title topictitle2">1. Define the Roles</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>This can be done in two ways: using <span class="keyword">predefined roles</span> in the web.xml
+				at development time, or using <span class="keyword">custom roles</span> in the UI. <div class="note tip"><span class="tiptitle">Tip</span> 
+					<p class="p">If you need to do mass role or group assignment, to a very large number of
+						users simultaneously, we recommend using the Authorization Management API
+						instead of the cockpit UI. See <a class="xref" href="392af9d162694d6595499f1549978aa6.html" title="The Authorization Management API is a REST API that allows you to manage role and group assignments of users for Java and HTML5 applications and subscriptions.">Using the Authorization Management API</a>.</p>
+
+					<p class="p"/>
+
+				</div>
+<p class="p"><img class="image" id="task_hky_cs1_sn__image_pxs_tn4_5n" src="loio65d96be5ce904427843addafa244c121_LowRes.png"/></p>
+</div>
+			<div class="ul steps-unordered tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ul class="ul steps-unordered" id="task_hky_cs1_sn__steps-unordered_gww_4dr_j4"><li class="li step">
+					<span class="ph cmd">Predefined Roles</span>
+					<ol class="ol substeps" id="task_hky_cs1_sn__substeps_qlq_5dr_j4">
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the <span class="ph uicontrol">web.xml</span> of the required application,
+								define the roles authorized to access the application resources.</span>
+							<div class="itemgroup info">See <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a>.</div>
+							
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Deploy the application to <span class="ph pname">SAP Cloud Platform</span>.</span>
+							<div class="itemgroup info">See <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Optionally, if you want to restrict the roles to the current
+								application only, deselect the <span class="ph uicontrol">Share</span> option for
+								them in the Cockpit.</span>
+						</li>
+
+					</ol>
+
+				</li>
+<li class="li step">
+					<span class="ph cmd">Custom roles with applications from the same account</span>
+					<ol class="ol substeps" id="task_hky_cs1_sn__substeps_emj_32r_j4">
+						
+							<li class="li substep">
+								<span class="ph cmd">In the cockpit, go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+							</li>
+
+							<li class="li substep">
+								<span class="ph cmd">Click the required application link.</span>
+							</li>
+
+							<li class="li substep">
+								<span class="ph cmd">Enter the <span class="ph uicontrol">Roles</span> section. </span>
+							</li>
+
+							<li class="li substep">
+								<span class="ph cmd">Choose <span class="ph uicontrol">New Role</span>.</span>
+							</li>
+
+							<li class="li substep">
+								<span class="ph cmd">Type the role name and choose <span class="ph uicontrol">OK</span>.</span>
+							</li>
+
+						
+					</ol>
+
+				</li>
+<li class="li step">
+					<span class="ph cmd">Custom roles with applications subscribed from other accounts</span>
+					<ol class="ol substeps" id="task_hky_cs1_sn__substeps_z1t_lml_m4">
+						<li class="li substep">
+							<span class="ph cmd">In the cockpit, go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Subscriptions</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">In the list of subscribed aplications, click the required
+								application link.</span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">Enter the <span class="ph uicontrol">Roles</span> section. </span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">Choose <span class="ph uicontrol">New Role</span>.</span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">Type the role name and choose <span class="ph uicontrol">OK</span>.</span>
+						</li>
+
+					</ol>
+
+				</li>
+</ul>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_aqq_xzd_mr">
+		<h2 class="title topictitle2">2. (Optional) Create Groups</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">Groups allow you to easily manage the role assignments to collections of users
+					instead of individual users.</p>
+
+			</div>
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_aqq_xzd_mr__steps_zht_m12_mr"><li class="li step">
+					<span class="ph cmd">In the cockpit, go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authorizations</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section for the account.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Enter the <span class="ph uicontrol">Groups</span> tab.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Choose <span class="ph uicontrol">New Group</span>.</span>
+				</li>
+<li class="li step">
+					<span class="ph cmd">Enter the group name and choose <span class="ph uicontrol">Save</span>.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_n24_4s1_sn">
+		<h2 class="title topictitle2">3. Assign Users or Groups to the Roles</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">You can assign individual users to the roles or, more conveniently, assign groups
+					for collective role management.</p>
+
+				<p class="p">You can do it in either of the two ways: using the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Roles</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section for the application, or using the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authorizations</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section for the account.</p>
+
+			</div>
+			<div class="ul steps-unordered tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ul class="ul steps-unordered" id="task_n24_4s1_sn__steps-unordered_odm_khy_j4"><li class="li step">
+					<span class="ph cmd">Using the <span class="ph uicontrol">Roles</span> section</span>
+					<ol class="ol substeps" id="task_n24_4s1_sn__steps_g3p_jsg_5n">
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the cockpit, go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Click the required application link.</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Enter the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Roles</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section. </span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Select the role you want to manage assignments for.</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">To assign a new user or group, choose <span class="ph uicontrol">Assign</span> for the
+								<span class="ph uicontrol">Users</span> or <span class="ph uicontrol">Groups</span>
+								section respectively. </span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Enter the user or group name.</span>
+							<div class="itemgroup info">
+								<p class="p"><img class="image" id="task_n24_4s1_sn__image_izw_l44_5n" src="loio08648dc971f24e21a60d96ddaa636e95_LowRes.png"/></p>
+</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Save the changes.</span>
+							<div class="itemgroup info">
+								<p class="p"><img class="image" id="task_n24_4s1_sn__image_upg_r44_5n" src="loiob6ea5703564e4b5cb376d591293a0eb9_LowRes.png"/></p>
+</div>
+						</li>
+
+					</ol>
+
+				</li>
+<li class="li step">
+					<span class="ph cmd">Alternatively, you can do it using the <span class="ph uicontrol">Authorizations</span> section for
+						the account.</span>
+					<ol class="ol substeps" id="task_n24_4s1_sn__steps_xkf_2vg_5n">
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the cockpit, go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authorizations</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section for the account.</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Enter the <span class="ph uicontrol">Users</span> or <span class="ph uicontrol">Groups</span>
+								tab respectively. </span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the <span class="ph uicontrol">User</span> or <span class="ph uicontrol">Group</span>
+								field respectively, enter the name of the required user or group. If you
+								want to create a new user or group, simply assign the required roles
+								from here.</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Choose <span class="ph uicontrol">Show Assignments</span>. The table below shows
+								all roles that are already assigned to this user or group. </span>
+							<div class="itemgroup info">
+								<p class="p"><img class="image" id="task_n24_4s1_sn__image_bvg_4tg_5n" src="loio7611b6f6711e1014839a8273b0e91070_LowRes.png"/>
+								</p>
+
+							</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">If you are adding an individual user, choose the required application and the role the
+								user will have. If you are adding a group, select the existing group
+								from the list.</span>
+							<div class="itemgroup info">
+								<p class="p"><img class="image" id="task_n24_4s1_sn__image_rvg_4tg_5n" src="loio7611375a711e1014839a8273b0e91070_LowRes.png"/>
+								</p>
+
+								<div class="note tip"><span class="tiptitle">Tip</span> You can use regular expressions to narrow the
+									groups found.</div>
+
+							</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Save the changes.</span>
+						</li>
+
+					</ol>
+
+				</li>
+</ul>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_lbt_xs1_sn">
+		<h2 class="title topictitle2">4. (If Using an Identity Provider) Define the Group-to-Role Mapping</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p"> For each different IdP, you then define a set of rules specifying to which groups a user
+					logged by this IdP belongs. </p>
+
+				<div class="note note" id="task_lbt_xs1_sn__note_N102FF_N1019C_N10013_N10001"><span class="notetitle">Note</span> You must have defined groups in advance
+					before you define default or assertion-based groups for this IdP. </div>
+
+				<p class="p">Default groups are the groups all users logged by this IdP will have. For
+					example, all users logged by the company IdP can belong to the group
+						"<span class="ph uicontrol">Internal</span>". </p>
+
+				<p class="p">Assertion-based groups are groups determined by values of attributes in the SAML
+					2.0 assertion. For example, if the assertion contains the attribute
+						"<kbd class="ph userinput">contract=temporary</kbd>", you may want all such users to
+					be added to the group "<span class="ph uicontrol">TEMPORARY</span>". </p>
+
+			</div>
+			<div class="ul steps-unordered tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ul class="ul steps-unordered" id="task_lbt_xs1_sn__steps-unordered_hsg_43y_j4"><li class="li step">
+					<span class="ph cmd">Defining Default Groups</span>
+					<ol class="ol substeps" id="task_lbt_xs1_sn__steps_c2w_zvg_5n">
+						<li class="li substep">
+							<span class="ph cmd">In the cockpit, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authorizations</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Groups</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and choose <span class="ph uicontrol">Add Default
+								Group</span>.</span>
+						</li>
+
+						<li class="li substep">
+							<span class="ph cmd">From the dropdown list that appears, choose the required group. </span>
+						</li>
+
+					</ol>
+
+				</li>
+<li class="li step">
+					<span class="ph cmd">Defining Assertion-Based Groups</span>
+					<ol class="ol substeps" id="task_lbt_xs1_sn__steps_jtk_4wg_5n">
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the cockpit, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authorizations</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Groups</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and choose <span class="ph uicontrol">Add Assertion-Based
+									Group</span>. A new row appears and a new mapping rule is
+								now being created.</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Enter the name of the group to which users will be mapped. Then define
+								the rule for this mapping. </span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the first field of the <span class="ph uicontrol">Mapping Rules</span> section,
+								enter the SAML 2.0 assertion attribute name to be used as the mapping
+								source. In other words, the value of this attribute will be compared
+								with the value you specify (in the last field of <span class="ph uicontrol">Mapping
+									Rules</span>).</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">Choose the comparison operator.</span>
+							<div class="itemgroup info">
+								
+<div class="table-wrapper tablenoborder"><table summary="" id="task_lbt_xs1_sn__table_g21_2ky_j4" class="table" frame="border" border="1" rules="all">
+										<tbody class="tbody">
+											<tr class="row">
+												<td class="entry" valign="top">Equals</td>
+
+												<td class="entry" valign="top">Choose <span class="ph uicontrol">Equals</span> if you
+												want the value of the SAML 2.0 assertion attribute
+												to match exactly the string you specify. Note that
+												if you want to use more sophisticated relations,
+												such as "starts with" or "contains", you need to
+												use the <span class="ph uicontrol">Regular expression</span>
+												option.</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top">Regular expression</td>
+
+												<td class="entry" valign="top">Choose <span class="ph uicontrol">Regular
+												expression</span> if you want to specify more
+												sophisticated matching rules. You can use all
+												regular expression rules described in the<a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html" target="_blank" alt="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html" title="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html"> Java RegEx
+												API<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.<p class="p"><span class="ph emphasis emphasis">Example 1</span>: You
+												want to add authenticated SAP employees to group
+												<span class="keyword uilabel">Employees</span>. And SAP employees
+												are users with e-mail address ending with
+												<span class="keyword uilabel">sap.com</span>. Hence, you choose the
+												mapping rule to be <span class="ph uicontrol">email</span>,
+												matched using the following regular
+												expression:</p>
+<p class="p"><span class="ph uicontrol">.*@sap.com$</span></p>
+<p class="p"><span class="ph emphasis emphasis">Example
+												2</span>: You want all users with name
+												starting with admin to be added to group
+												<span class="keyword uilabel">Administrators</span>. Hence, you
+												choose the mapping rule to be userid, matched
+												using the following regular
+												expression:</p>
+<p class="p"><span class="ph uicontrol">^(admin).*</span>
+												</p>
+</td>
+
+											</tr>
+
+										</tbody>
+
+									</table>
+</div>
+
+							</div>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">In the last field of <span class="ph uicontrol">Mapping Rules</span>, enter the
+								value with which you compare the specified SAML 2.0 assertion attribute.
+							</span>
+						</li>
+
+						<li class="li substep substepexpand">
+							<span class="ph cmd">You can specify more than one mapping rule for a specific group. Use
+								the plus button to add as many rules as required. In this case, mapping
+								is based on a logical OR operation for all rules, that is, if one of
+								your rules applies, the user is added to the group</span>
+							<div class="itemgroup info">
+								<p class="p">In the image below, all users logged by this IdP are added to the group
+										<span class="ph uicontrol">Government</span>. The users that have an
+									arrtibute corresponding to their department name will also be
+									assigned to the respective department groups. </p>
+
+								<p class="p"><img class="image" id="task_lbt_xs1_sn__image_u2w_jxg_5n" src="loioc2432795d9761014ad0af2665da87b6f_LowRes.png"/>
+								</p>
+
+								<p class="p">When you open the <span class="ph uicontrol">Groups</span> tab page of the
+										<span class="ph uicontrol">Authorizations</span> section, you can see
+									the identity provider mappings for this group.</p>
+
+							</div>
+						</li>
+
+					</ol>
+
+				</li>
+</ul>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="task_tmp_4t1_sn">
+		<h2 class="title topictitle2">5. Test</h2>
+
+		<p class="shortdesc">Try to access the required application logging on with users with and without the
+			required roles respectively. </p>
+
+	</div>
+
+	<div class="topic task nested1" id="task_wjs_jct_qx">
+		<h2 class="title topictitle2">(Optional) Configure Role Caching</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">You may use the following steps to configure default role caching settings. This
+					may be required if you have automated test procedures for role assignments in
+					your applications. Tests may not work properly with the default account
+					settings. </p>
+
+				<p class="p">The default role caching behavior is as follows: </p>
+
+				<p class="p">If there are more than
+						<samp class="ph codeph">com.sap.security.um.ratelimiter.cache.maximum_requests_per_user</samp>
+					(default is <samp class="ph codeph">20</samp>) stateless requests within
+						<samp class="ph codeph">com.sap.security.um.ratelimiter.cache.time_period</samp> (default
+					is <samp class="ph codeph">2 minutes</samp>) with the same user to check the user permission,
+					we cache hers roles for
+						<samp class="ph codeph">com.sap.security.um.ratelimiter.cache.validity</samp> (default is
+						<samp class="ph codeph">5 minutes</samp>). This means that new assignments/unassignments
+					will not work for 5 minutes. </p>
+
+				<div class="note tip"><span class="tiptitle">Tip</span> 
+					<div class="p">You can take one of the following approaches:<ul class="ul" id="task_wjs_jct_qx__ul_t4w_dht_qx">
+							<li class="li">Increase the time in which the requests are counted to more than the default 2
+								minutes</li>
+
+							<li class="li">Increase the number of requests – instead of the default 20, set 100 or 200, for
+								example.</li>
+
+						</ul>
+</div>
+
+				</div>
+
+				<p class="p">The table below shows the VM system properties available for configuring role
+					caching:</p>
+
+				<div class="p">
+					
+<div class="table-wrapper tablenoborder"><table summary="" id="task_wjs_jct_qx__table_q3w_2dt_qx" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+							
+							
+							
+							<thead class="thead" align="left">
+								<tr class="row">
+									<th class="entry" valign="top" width="33.33333333333333%" id="d10129105e981">
+										<p class="p">VM Property</p>
+
+									</th>
+
+									<th class="entry" valign="top" width="33.33333333333333%" id="d10129105e987">
+										<p class="p">Description</p>
+
+									</th>
+
+									<th class="entry" valign="top" width="33.33333333333333%" id="d10129105e993">
+										<p class="p">Default Value</p>
+
+									</th>
+
+								</tr>
+
+							</thead>
+
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e981 ">
+										<p class="p">com.sap.security.um.ratelimiter.cache.maximum_user_entries</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e987 ">
+										<p class="p">The maximum user entries stored in the role cache.</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e993 ">
+										<p class="p">1000</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e981 ">
+										<p class="p">com.sap.security.um.ratelimiter.cache.validity</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e987 ">
+										<p class="p">The cache validity in time.</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e993 ">
+										<p class="p">5 (in minutes)</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e981 ">
+										<p class="p">com.sap.security.um.ratelimiter.cache.time_period </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e987 ">
+										<p class="p">The time period for role caching. </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e993 ">
+										<p class="p">2 (in minutes)</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e981 ">
+										<p class="p">com.sap.security.um.ratelimiter.cache.maximum_requests_per_user</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e987 ">
+										<p class="p">The maximum requests per user stored in the role
+											cache.</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="33.33333333333333%" headers="d10129105e993 ">
+										<p class="p">20</p>
+
+									</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+
+				</div>
+
+			</div>
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><div class="li step p">
+					<span class="ph cmd">Set the required values to the required VM system properties as described
+						in <a class="xref" href="b82d3929218a42558146c58d2f68121e.html" title="Using SAP Cloud Platform console client, you can configure the JRE by specifying custom VM arguments.">Configuring VM Arguments</a>.</span>
+				</div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.admin.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.lcm.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.admin"
+         download-size="3189"
+         install-size="7018"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+        id="com.sap.ndb.studio.xs.admin"
+        download-size="31"
+        install-size="58"
+        version="2.3.39"
+        unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.backup"
+         download-size="936"
+         install-size="2069"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.admin.help"
+         download-size="12350"
+         install-size="20565"
+         version="1.6.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.troubleshoot.performance.help"
+         download-size="8331"
+         install-size="11820"
+         version="1.6.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.authorization"
+         download-size="1022"
+         install-size="2363"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.authdepviewer"
+         download-size="116"
+         install-size="216"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.federation.admin"
+         download-size="48"
+         install-size="92"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

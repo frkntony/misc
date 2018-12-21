@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Exit Codes</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7886796eb9b9419fa6cecf1d215c38d8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Exit Codes</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">The exit code is a number that indicates the outcome of a command execution. It shows
+				whether the command completes successfully or defines an error if something goes
+				wrong during the execution. </p>
+
+			<p class="p">When commands are executed as part of automated scripts, the exit codes provide
+				feedback to the scripts, which allows the script to bypass known errors that can be
+				met during execution. A script can also interact with the user in order to request
+				additional information required for the script to complete. </p>
+
+			<p class="p">All exit codes in <span class="ph pname">SAP Cloud Platform</span> are aligned to the Bash-Scripting Guide. For more
+				information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tldp.org/LDP/abs/html/exitcodes.html#EXITCODESREF" target="_blank" alt="http://tldp.org/LDP/abs/html/exitcodes.html#EXITCODESREF" title="http://tldp.org/LDP/abs/html/exitcodes.html#EXITCODESREF">Exit Codes With Special Meanings<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Ranges</div><div type="Ranges">
+			
+			<p class="p">The set of exit codes is divided into ranges, based on the error type and the
+				reason.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7886796eb9b9419fa6cecf1d215c38d8__table_sqx_nmd_1l" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d5551949e63">Error Type</th>
+
+							<th class="entry" valign="top" width="25%" id="d5551949e66">Start Number</th>
+
+							<th class="entry" valign="top" width="25%" id="d5551949e69">End Number</th>
+
+							<th class="entry" valign="top" width="25%" id="d5551949e72">Count</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">No error</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">0</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">0</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">1</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Common errors</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">1</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">9</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">9</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Missing parameters </td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">10</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">39</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">30</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Parameter validation errors</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">40</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">109</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">70</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Authentication and Authorization Errors </td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">110</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">126</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">17</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Reserved space for system errors </td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">127</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">165</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">39</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Command-specific errors: frontend </td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">166</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">209</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">44</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Command-specific errors: backend </td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">210</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">254</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">45</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d5551949e63 ">Reserved space for system errors </td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e66 ">255</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e69 ">255</td>
+
+							<td class="entry" valign="top" width="25%" headers="d5551949e72 ">1</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Exit Codes</div><div type="Exit Codes">
+			
+			<p class="p">Exit codes can be defined as <span class="ph uicontrol">general</span> (common for all commands)
+				and <span class="ph uicontrol">command-specific</span> (cover different cases via different
+				commands).</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7886796eb9b9419fa6cecf1d215c38d8__table_cqg_3nd_1l" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d5551949e248">Code</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d5551949e251">Meaning</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d5551949e254">Type/Reason</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">0</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">OK</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">1</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">General error </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Error during execution of command </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Command not found </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Misspelled or missing command </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">3</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Unsupported/Incompatible SDK version </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">SDK is not compatible with the runtime </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">4</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Network error</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Network problem or missing proxy configuration</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">5-9</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Currently not used </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Common errors</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">10</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">General missing parameter </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">11</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Missing host name</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">12</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Missing account name </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">13</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Missing application name </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">14</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Missing user name </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">15-19</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Currently not used </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">20-39</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Available for use by commands </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Missing parameters</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">40</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">General parameter is invalid or empty </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Validation errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">41</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Host name parameter is invalid or empty </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Validation errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">42</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Account name parameter is invalid or empty </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Validation errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">43</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Application name parameter is invalid or empty </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Validation errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">44-49</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Currently not used</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Validation errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">50-109</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Available for use by commands </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> Validation errors</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">110</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Wrong user or password </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Authentication and authorization errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">111</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">General authentication and authorization error </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Authentication and authorization errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">112-114</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Currently not used </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Authentication and authorization errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">115-126</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Available for use by commands </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Authentication and authorization errors </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">127-165</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Special exit codes</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 "> System-dependent errors</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">166</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">General frontend error </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Frontend </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">167 - 209</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Available for use by commands </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Frontend</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">210</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">General backend error </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Backend</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">211 - 254</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 "> Available for use by commands</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">Backend</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e248 ">255</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e251 ">Special exit codes</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d5551949e254 ">System-dependent errors</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="76132306711e1014839a8273b0e91070.html">Console Client</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

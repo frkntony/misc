@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can create a repository with the createRepository(repositoryOptions) method of the EcmService."/>
+<meta name="description" content="You can create a repository with the createRepository(repositoryOptions) method of the EcmService."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Repository Programmatically</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4428e6bb64f34cd98e76d75eaafb5f52">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Repository Programmatically</h1>
+<div class="body taskbody"><p class="shortdesc">You can create a repository with the createRepository(repositoryOptions) method of the
+		EcmService.</p>
+<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To create a repository, you can use he following code snippet shows how to create a repository
+				where uploaded files are scanned for viruses:</p>
+
+		</div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p"><span class="ph cmd">Use the createRepository(repositoryOptions) method and define the properties of the
+					repository.</span><div class="itemgroup info">
+					<div class="p">The following code snippet shows how to create a repository where uploaded
+						files are scanned for
+						viruses:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+RepositoryOptions options = new RepositoryOptions();
+options.setUniqueName("myrepository");
+options.setRepositoryKey("1234567890");
+options.setVirusScannerEnabled(true);
+EcmService.createRepository(options);</pre></div>
+</div>
+
+				</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+</body>
+</html>

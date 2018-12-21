@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Create and test a simple SAP HANA XS application that displays the &#34;Hello World&#34; message."/>
+<meta name="description" content="Create and test a simple SAP HANA XS application that displays the &#34;Hello World&#34; message."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating an SAP HANA XS Hello World Application Using SAP HANA Studio</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loio3762b229a4074fc59ac6a9ee7404f8c9">
+	<h1 class="title topictitle1">Creating an SAP HANA XS Hello World Application Using SAP HANA Studio</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Create and test a simple SAP HANA XS application that displays the "Hello World"
+		message.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">Make sure the database you want to use is deployed in your account before you begin with this
+				tutorial. You can create SAP HANA XS applications using one of the following
+					databases:<ul class="ul" id="loio3762b229a4074fc59ac6a9ee7404f8c9__ul_jrv_1z1_rx">
+					<li class="li">
+						<p class="p">SAP HANA XS database in your productive account</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">SAP HANA MDC database in your productive account</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">SAP HANA MDC database in your trial account.</p>
+
+					</li>
+
+				</ul>
+<div class="note note"><span class="notetitle">Note</span> Learn more about the steps that are needed for <a class="xref" href="46af2934d19343ca8250ce288d27ea41.html" title="Use the cockpit to create an SAP HANA database enabled for multitenant database container support (beta) on an SAP HANA database management system in your account.">Creating SAP HANA MDC Databases</a>. For more information on
+					purchasing a larger SAP HANA database for development or productive purposes,
+					see <a class="extlink" href="http://help.sap.com/disclaimer?site=https://hcp.sap.com/pricing.html" target="_blank" alt="https://hcp.sap.com/pricing.html" title="https://hcp.sap.com/pricing.html"><span class="ph pname">SAP Cloud Platform</span> Pricing and Packaging<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</div>
+</div>
+
+			<p class="p">You also need to install the tools as described in <a class="xref" href="b0e351ada628458cb8906f55bcac4755.html" title="Before developing your SAP HANA XS application, you need to download and set up the necessary tools.">Installing SAP HANA Tools for Eclipse</a> to follow the steps described in
+				this tutorial. </p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">In this tutorial, you complete the following steps:<ol class="ol" id="loio3762b229a4074fc59ac6a9ee7404f8c9__ol_zb5_rz1_rx">
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loioa9d9d44ef8ff423fbe848e80cd383054">Create a Database User</a></li>
+
+				<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loiobe8fca942395497c95b9c8c055157799">Connect to your SAP HANA Database via the Eclipse IDE</a></li>
+
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loiod694ddc1e41d4c84b60708137b35b9c7">Add a Repository Workspace</a></li>
+
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loio93cfb85816144ec292bf115b6c8bb190">Add an XS Application Project</a></li>
+
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loio08cf4a2c726a46b192cd72e57a3e1218">Write Server-Side JavaScript</a></li>
+
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loiod405d990fe634a0e8ba47baca7fb26bd">Test Your Application</a></li>
+
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loio2642959ddda14ab6b4145ced47507fad">Retrieve Data from SAP HANA</a></li>
+
+					<li class="li"><a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html#loio0d3002f953ec4a1190ac5b7ba019f16c">Test Your Application Again</a></li>
+
+				</ol>
+</div>
+
+		</div>
+	</div>
+
+<div class="topic task nested1" lang="en-US" id="loioa9d9d44ef8ff423fbe848e80cd383054">
+	<h2 class="title topictitle2">Create a Database User</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">You will perform all subsequent activities with this new user.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loioa9d9d44ef8ff423fbe848e80cd383054__steps_create_db_user_hana_mdc"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the <span class="ph pname">SAP Cloud Platform</span> cockpit and select
+					an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				<div class="itemgroup stepresult">
+					<div class="p">All databases available in the selected account are listed with their ID,
+						type, version, and related database system.<div class="note tip"><span class="tiptitle">Tip</span> 
+							<p class="p">To view the details of a database, for example, its state and the
+								number of existing bindings, select a database in the list and click
+								the link on its name. On the overview of the database, you can
+								perform further actions, for example, delete the database.</p>
+
+						</div>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Depending on the database you are using, choose one of the following
+					options:</span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loioa9d9d44ef8ff423fbe848e80cd383054__choicetable_jrd_zbb_rx">
+<thead><tr><th valign="bottom" align="left" id="d2525718e196-option">If you want to create your application using...</th>
+<th valign="bottom" align="left" id="d2525718e196-desc">Do the following:</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d2525718e196-option" id="d2525718e209" class="stentry choption" width="16.920473773265652%"><strong>A productive SAP HANA XS database</strong></td>
+
+						<td valign="top" headers="d2525718e196-desc d2525718e209" class="stentry chdesc" width="83.07952622673436%">Follow the steps described in <a class="xref" href="c0fce6f0322246daaf1e29a25414f15e.html" title="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database.">Creating a Database Administrator User</a>.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d2525718e196-option" id="d2525718e225" class="stentry choption" width="16.920473773265652%"><strong>A productive or trial SAP HANA MDC database</strong></td>
+
+						<td valign="top" headers="d2525718e196-desc d2525718e225" class="stentry chdesc" width="83.07952622673436%">
+							<ol class="ol" type="a" id="loioa9d9d44ef8ff423fbe848e80cd383054__ol_ikt_45f_rx">
+								<li class="li">
+									<p class="p">Select the relevant SAP HANA MDC database in the list.</p>
+
+								</li>
+
+								<li class="li">In the overview that is shown in the lower part of the screen, open the <span class="ph uicontrol">SAP
+										HANA cockpit</span> link under
+										<span class="ph uicontrol">Administration Tools</span>.</li>
+
+								<li class="li">In the <span class="ph uicontrol">Enter Username</span> field, enter <kbd class="ph userinput">SYSTEM</kbd>,
+									then enter the password you determined for the SYSTEM user in
+									the <span class="ph uicontrol">Enter Password</span> field. <p class="p">A message is
+										displayed to inform you that at that point, you lack the
+										roles that you need to open the SAP HANA cockpit.</p>
+</li>
+
+								<li class="li">To confirm the message, choose <span class="ph uicontrol">OK</span>.<p class="p">You
+										receive a confirmation that the required roles are assigned
+										to you automatically.</p>
+</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Continue.</span><p class="p">You are now logged on to the SAP HANA
+										cockpit.</p>
+</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Manage Roles and Users</span>. </li>
+
+								<li class="li">To create database users and assign them the required roles,
+									expand the <span class="ph uicontrol">Security</span> node.</li>
+
+								<li class="li">Open the context menu for the <span class="ph uicontrol">Users</span> node
+									and choose <span class="ph uicontrol">New User</span>. </li>
+
+								<li class="li">On the <span class="ph uicontrol">User</span> tab, provide a name for the
+									new user.<p class="p">The user name always appears in upper case letters.
+									</p>
+</li>
+
+								<li class="li">In the <span class="ph uicontrol">Authentication</span> section, make sure
+									the <span class="ph uicontrol">Password</span> checkbox is selected and
+									enter a password.<div class="note note"><span class="notetitle">Note</span> The password must start with a letter and
+										only contain uppercase and lowercase letters ('a' - 'z', 'A'
+										- 'Z'), and numbers ('0' - '9'). </div>
+</li>
+
+								<li class="li">To create the user, choose <span class="ph uicontrol">Save</span>. <p class="p">The
+										new database user is displayed as a new node under the
+											<span class="ph uicontrol">Users</span> node.</p>
+</li>
+
+								<li class="li">To assign your user the roles with the required permissions for working with SAP HANA
+									Web-based Development Workbench, go to the <span class="ph uicontrol">Granted
+										Roles</span> section and choose the <span class="ph uicontrol">+ (Add
+										Role)</span> button.</li>
+
+								<li class="li">Type <kbd class="ph userinput">xs.ide</kbd> in the search field and
+									select all roles in the result list.</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Ok</span>.<p class="p">The roles are added on the
+											<span class="ph uicontrol">Granted Roles</span> tab.</p>
+</li>
+
+								<li class="li">Repeat the last two steps to assign the
+										<kbd class="ph userinput">CONTENT_ADMIN</kbd> role to the
+										user.<div class="note note"><span class="notetitle">Note</span> For more information on the CONTENT_ADMIN role,
+										see <a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/421861bb571014846288086be76719/content.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/421861bb571014846288086be76719/content.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/421861bb571014846288086be76719/content.htm">Predefined Database
+										Roles</a>.</div>
+</li>
+
+								<li class="li">Save your changes. </li>
+
+							</ol>
+
+							<div class="note caution"><span class="cautiontitle">Caution</span> At this point, you are still logged on with the
+								SYSTEM user. You can only use your new database user to work with
+								SAP HANA Web-based Development Workbench by logging out from SAP
+								HANA Cockpit first. Otherwise, you would automatically log in to the
+								SAP HANA Web-based Development Workbench with the SYSTEM user
+								instead of your new database user. Therefore, choose the
+									<span class="ph uicontrol">Logout</span> button before you continue to work
+								with the SAP HANA Web-based Development Workbench, where you need to
+								log on again with the new database user.</div>
+
+						</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loiobe8fca942395497c95b9c8c055157799">
+	<h2 class="title topictitle2">Connect to your SAP HANA Database via the Eclipse IDE</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">Connect to a dedicated SAP HANA database using SAP HANA Tools via the Eclipse IDE. </p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loiobe8fca942395497c95b9c8c055157799__steps_fdh_ntd_jy"><li class="li step">
+                    <span class="ph cmd">Go to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Perspective</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Open Perspective</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+                </li>
+<li class="li step">
+                    <span class="ph cmd">Select <span class="ph uicontrol">SAP HANA Administration Console</span> and choose
+                            <span class="ph uicontrol">OK</span>.</span>
+                </li>
+<li class="li step">
+                    <span class="ph cmd">From the <span class="ph uicontrol">Systems</span> context menu, choose <img class="image" id="loiobe8fca942395497c95b9c8c055157799__d9052e57" src="loio328fdf31e9e74d5ea62818a61f6745bf_HiRes.png"/>
+                        <span class="ph uicontrol">Add Cloud System</span>.</span>
+                </li>
+<li class="li step">
+                    <span class="ph cmd">In the dialog that appears, provide the landscape host and account
+                        information:</span>
+                    <ol type="a" class="ol substeps" id="loiobe8fca942395497c95b9c8c055157799__d9052e69">
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">For the landscape host, the default landscape host is displayed.
+                                Specify the productive or trial landscape to which your account is
+                                assigned.</span>
+                            <div class="itemgroup info">A dropdown list is displayed for previously entered landscapes
+                                hosts. For more information about landscapes, see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>.<div class="note note"><span class="notetitle">Note</span> Make sure
+                                    that you specify the landscape host correctly.</div>
+</div>
+                        </li>
+
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">Specify the account name, e-mail or SCN user name, and your SCN
+                                password.</span>
+                            <div class="itemgroup info">If you have previously entered an account and user name for the
+                                selected landscape host, the names are prompted to you in dropdown
+                                lists.</div>
+                            <div class="itemgroup stepresult">
+                                <p class="p"><img class="image" id="loiobe8fca942395497c95b9c8c055157799__d9052e95" src="loiod21ed0c0589c4ba18ef5e4375bf957e2_HiRes.png"/></p>
+
+                            </div>
+                        </li>
+
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">Choose<span class="ph uicontrol"> Next</span>.</span>
+                        </li>
+
+                    </ol>
+
+                </li>
+<li class="li step">
+                    <span class="ph cmd">Select a database and provide your credentials:</span>
+                    <ol type="a" class="ol substeps" id="loiobe8fca942395497c95b9c8c055157799__d9052e115">
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">Select the <span class="ph uicontrol">Databases</span> radio button.</span>
+                        </li>
+
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">From the dropdown menu, select the database you want to work
+                                with.</span>
+                        </li>
+
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">Enter your database user and password.</span>
+                            <div class="itemgroup info">For more information, see <a class="xref" href="c0fce6f0322246daaf1e29a25414f15e.html" title="As an account administrator, you can use the database user feature provided in the cockpit to create your own database user for your SAP HANA database.">Creating a Database Administrator User</a>.<div class="note note"><span class="notetitle">Note</span> Make sure
+                                    that you specify the database user and password
+                                    correctly.</div>
+</div>
+                            <div class="itemgroup info">
+                                <p class="p">If you select the <span class="ph uicontrol">Save password</span> box, the
+                                    entered password for a given user name is remembered and kept in
+                                    the secure store.</p>
+
+                                <p class="p">A dropdown list is displayed for previously entered database user
+                                    names. Database passwords can be remembered and stored in the
+                                    principle mentioned above.</p>
+
+                            </div>
+                            <div class="itemgroup stepresult">
+                                <p class="p"><img class="image" id="loiobe8fca942395497c95b9c8c055157799__d9052e159" src="loiod28c30ce73ec45b6bb8a49b7e2d70d1c_LowRes.png"/></p>
+
+                            </div>
+                        </li>
+
+                        <li class="li substep substepexpand">
+                            <span class="ph cmd">Choose <span class="ph uicontrol">Finish</span>.</span>
+                        </li>
+
+                    </ol>
+
+                </li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>You are now connected to a dedicated SAP HANA database.</div>
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loiod694ddc1e41d4c84b60708137b35b9c7">
+	<h2 class="title topictitle2">Add a Repository Workspace</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">After you add the SAP HANA system hosting the repository that stores your
+				application-development files, you must specify a repository workspace, which is the
+				location in your file system where you save and work on the development files.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loiod694ddc1e41d4c84b60708137b35b9c7__steps_oz2_hkk_5x"><li class="li step stepexpand">
+				<span class="ph cmd">In the Eclipse IDE, go to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Perspective</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Open Perspective</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select <span class="ph uicontrol">SAP HANA Development</span> and choose
+						<span class="ph uicontrol">OK</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Repositories</span> view, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Repository Workspace</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+				<div class="itemgroup info">
+					<ul class="ul" id="loiod694ddc1e41d4c84b60708137b35b9c7__ul_glf_hlk_5x">
+						<li class="li">
+							<p class="p">SAP HANA system:</p>
+
+							<p class="p">Choose the same system you just added for this tutorial.</p>
+
+						</li>
+
+						<li class="li">Workspace Name:<p class="p">If a default workspace exists, uncheck the
+									<span class="ph uicontrol">Default workspace</span> option and enter a
+								workspace name.</p>
+<p class="p">A folder with the name you type is created
+								below the <span class="ph uicontrol">Workspace Root</span>.</p>
+</li>
+
+						<li class="li">Workspace root:<p class="p">The <span class="ph uicontrol">Workspace Root</span> is a folder
+								that contains the workspace you create in this step. The
+									<span class="ph uicontrol">Workspace Root</span> can be anywhere on your
+								local file system.</p>
+</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Click <span class="ph uicontrol">Finish. </span></span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>
+			<p class="p">In the <span class="ph uicontrol">Repositories</span> view, you see your workspace, which
+				enables you to browse the repository of the system tied to this workspace. The
+				repository packages are displayed as folders.</p>
+
+			<p class="p">At the same time, a folder will be added to your file system to hold all your
+				development files.</p>
+
+		</div>
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio93cfb85816144ec292bf115b6c8bb190">
+	<h2 class="title topictitle2">Add an XS Application Project</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">After you set up a development environment for the chosen SAP HANA system, you can
+				add a project to contain all the development objects you want to create as part of
+				the application-development process. There are a variety of project types for
+				different types of development objects. Generally, a project type ensures that only
+				the necessary libraries are imported to enable you to work with development objects
+				that are specific to a project type. In this tutorial, you create an XS Project.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio93cfb85816144ec292bf115b6c8bb190__steps_y4k_zlk_5x"><li class="li step">
+				<span class="ph cmd">In the <span class="ph uicontrol">SAP HANA Development</span> perspective in the Eclipse
+					IDE, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">XS Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Make sure the <span class="ph uicontrol">Share project in SAP repository</span> option is
+					selected and enter a project name.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Next</span>.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Select the repository workspace you created in the previous step and choose
+						<span class="ph uicontrol">Next</span>.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Finish</span> without doing any further changes.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>
+			<p class="p">The <span class="ph uicontrol">Project Explorer</span> view in the <span class="ph uicontrol">SAP HANA
+					Development</span> perspective in Eclipse displays the new project. The
+				system information in brackets to the right of the project node name in the
+					<span class="ph uicontrol">Project Explorer</span> view indicates that the project has been
+				shared; shared projects are regularly synchronized with the Repository hosted on the
+				SAP HANA system you are connected to. </p>
+
+		</div>
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio08cf4a2c726a46b192cd72e57a3e1218">
+	<h2 class="title topictitle2">Write Server-Side JavaScript</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">SAP HANA Extended Application Services (SAP HANA XS) supports server-side application
+				programming in JavaScript. In this step, you add some simple JavaScript code that
+				generates a page which displays the words<samp class="ph codeph">Hello, World!</samp></p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio08cf4a2c726a46b192cd72e57a3e1218__steps_m1b_x52_vx"><li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view in the <span class="ph uicontrol">SAP HANA
+						Development</span> perspective in Eclipse, right-click your XS project,
+					and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the context-sensitive popup menu.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Select a wizard</span> dialog, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">SAP HANA</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Development</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">XS JavaScript File</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">New XS JavaScript File</span> dialog, enter
+						<kbd class="ph userinput">MyFirstSourceFile.xsjs</kbd> in the <span class="ph uicontrol">File
+						name</span> text box and choose <span class="ph uicontrol">Next</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Finish</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <samp class="ph codeph">MyFirstSourceFile.xsjs</samp> file, enter the following code
+					and save the file:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$.response.contentType = "text/html";
+$.response.setBody( "Hello, World !");</pre></div>
+
+					</div>
+
+					<div class="note note"><span class="notetitle">Note</span> By default, saving the file automatically commits the saved version of the
+						file to the repository.</div>
+
+					<p class="p">The example code shows how to use the SAP HANA XS JavaScript API's
+							<samp class="ph codeph">response</samp> object to write HTML. By typing
+							<samp class="ph codeph">$.</samp> you have access to the API's objects.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check that the application descriptor files (<samp class="ph codeph">xs.app</samp> and
+						<samp class="ph codeph">xs.access</samp>) are present in the root package of your new XS
+					JavaScript application.</span>
+				<div class="itemgroup info">
+					<p class="p">The application descriptors are mandatory and describe the framework in which
+						an SAP HANA XS application runs. The <samp class="ph codeph">.xsapp</samp> file indicates
+						the root pont in the package hierarchy where content is to be served to
+						client requests; the <samp class="ph codeph">.xsaccess</samp> file defines who has access
+						to the exposed content and how. </p>
+
+					<div class="note note"><span class="notetitle">Note</span> By default, the project-creation Wizard creates the
+						application descriptors automatically. If they are not present, you will see
+						a 404 error message in the Web Browser when you call the XS JavaScript
+						service. In this case, you will need to create the application descriptors
+						manually. See the <a class="xref" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/4e/102295434d45b1b5b5e7cea036aab9/content.htm?frameset=/en/80/b052e7c2c54a358a1a675d3bd5c3b8/frameset.htm&amp;current_toc=/en/34/29fc63a1de4cd6876ea211dc86ee54/plain.htm&amp;node_id=42" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/4e/102295434d45b1b5b5e7cea036aab9/content.htm?frameset=/en/80/b052e7c2c54a358a1a675d3bd5c3b8/frameset.htm&amp;current_toc=/en/34/29fc63a1de4cd6876ea211dc86ee54/plain.htm&amp;node_id=42" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/4e/102295434d45b1b5b5e7cea036aab9/content.htm?frameset=/en/80/b052e7c2c54a358a1a675d3bd5c3b8/frameset.htm&amp;current_toc=/en/34/29fc63a1de4cd6876ea211dc86ee54/plain.htm&amp;node_id=42">SAP HANA Developer Guide for SAP HANA Studio</a> for
+						instructions. </div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the context menu for the new files (or the folder/package containing the
+					files) and select <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Team</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Activate All</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. The activate operation publishes your work and creates the
+					corresponding catalog objects; you can now test it. </span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loiod405d990fe634a0e8ba47baca7fb26bd">
+	<h2 class="title topictitle2">Test Your Application</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">Check if your application is working and if the <samp class="ph codeph">Hello, World!</samp>
+				message is displayed.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><div class="li step p">
+				<span class="ph cmd">In the <span class="ph uicontrol">SAP HANA Development</span> perspective in the Eclipse
+					IDE, open the context menu of the <samp class="ph codeph">MyFirstSourceFile.xsjs</samp> file
+					and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run As</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">1 XS Service</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> You might need to enter the credentials of the database user you created
+						in this tutorial again.</div>
+
+					<div class="note note"><span class="notetitle">Note</span> If you have used an SAP HANA XS database for creating your SAP HANA XS
+						application, you can also launch your application from the <span class="ph pname">SAP Cloud Platform</span> cockpit by choosing the application URL
+						after navigating to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">HANA XS Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. For more information, see <a class="xref" href="0dd61c3e5d1d4d6cbea9aec94b7f4725.html" title="You can open your SAP HANA XS applications in a Web browser directly from the cockpit.">Launching SAP HANA XS Applications</a>.</div>
+
+				</div>
+			</div>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>The following text should be displayed:<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Hello, World !</pre></div>
+
+			</div>
+</div>
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio2642959ddda14ab6b4145ced47507fad">
+	<h2 class="title topictitle2">Retrieve Data from SAP HANA</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<div class="p">To extract data from the database, you use your JavaScript code to open a connection
+				to the database and then prepare and run an SQL statement. The results are added to
+				the <samp class="ph codeph">Hello, World!</samp> response. You use the following SQL statement to
+				extract data from the database: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">select * from DUMMY </pre></div>
+The SQL
+				statement returns one row with one field called <span class="ph uicontrol">DUMMY</span>, whose
+				value is <span class="ph uicontrol">X</span>.</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio2642959ddda14ab6b4145ced47507fad__steps_yrg_srf_vx"><li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view in the <span class="ph uicontrol">SAP HANA
+						Development</span> perspective in Eclipse, open the
+						<samp class="ph codeph">MyFirstSourceFile.xsjs</samp> file in the embedded JavaScript
+					editor. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <samp class="ph codeph">MyFirstSourceFile.xsjs</samp> file, replace your existing code
+					with the following code:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$.response.contentType = "text/html";
+var output = "Hello, World !"; 
+
+var conn = $.db.getConnection();
+var pstmt = conn.prepareStatement( "select * from DUMMY" );
+var rs = pstmt.executeQuery();
+
+if (!rs.next()) {
+    $.response.setBody( "Failed to retrieve data" );
+    $.response.status =  $.net.http.INTERNAL_SERVER_ERROR;
+} else {
+    output = output + "This is the response from my SQL: " + rs.getString(1);
+}
+rs.close();
+pstmt.close();
+conn.close();
+
+$.response.setBody(output);</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the file <samp class="ph codeph">MyFirstSourceFile.xsjs</samp>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the context menu of the <samp class="ph codeph">MyFirstSourceFile.xsjs</samp> file and
+					choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Team</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Activate All</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio0d3002f953ec4a1190ac5b7ba019f16c">
+	<h2 class="title topictitle2">Test Your Application Again</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">Check if your application is retrieving data from your SAP HANA database.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><div class="li step p">
+				<span class="ph cmd">In the <span class="ph uicontrol">SAP HANA Development</span> perspective in the Eclipse
+					IDE, open the context menu of the <samp class="ph codeph">MyFirstSourceFile.xsjs</samp> file
+					and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run as</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">XS Service</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> If you have used an SAP HANA XS database for creating your SAP HANA XS
+						application, you can also launch your application from the <span class="ph pname">SAP Cloud Platform</span> cockpit by choosing the application URL
+						after navigating to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">HANA XS Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. For more information, see <a class="xref" href="0dd61c3e5d1d4d6cbea9aec94b7f4725.html" title="You can open your SAP HANA XS applications in a Web browser directly from the cockpit.">Launching SAP HANA XS Applications</a>.</div>
+
+				</div>
+			</div>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>The following text should be displayed:<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Hello, World!This is the reponse from my SQL: X</pre></div>
+
+			</div>
+</div>
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

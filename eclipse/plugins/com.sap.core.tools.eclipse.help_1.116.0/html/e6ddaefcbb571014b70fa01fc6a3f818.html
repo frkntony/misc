@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Product Prerequisites and Restrictions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe6ddaefcbb571014b70fa01fc6a3f818">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Product Prerequisites and Restrictions</h1>
+<div class="body conbody"><p class="p">
+	 </p>
+<div class="section" id="loioe6ddaefcbb571014b70fa01fc6a3f818__section_EE6558EE0B104EF49C81123E4689AB01"><div class="section_title">General Constraints</div><div type="General Constraints"> 
+		 
+		<ul class="ul" id="loioe6ddaefcbb571014b70fa01fc6a3f818__ul_C2A3F370DE3D4C409709210B3F539D58">
+				<li class="li" id="loioe6ddaefcbb571014b70fa01fc6a3f818__li_E1EDAEB1FF7144EBAC15D34C92221778">Upload limit: the size of an application deployed
+					on <span class="ph pname">SAP Cloud Platform</span> can be up to 1.5 GB. If the
+					application is packaged as a WAR file, the size of the unzipped content is taken
+					into account. </li>
+
+				<li class="li"><span class="ph pname">SAP Cloud Platform</span> exposes applications only via HTTPS. For security
+					reasons, applications cannot be accessed via HTTP.</li>
+
+			</ul>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">SAP Cloud Platform Tools</div><div type="SAP Cloud Platform Tools">
+			
+			<ul class="ul" id="loioe6ddaefcbb571014b70fa01fc6a3f818__ul_q1x_dnx_cn">
+				<li class="li"><span class="ph pname">SAP Cloud Platform</span> Tools for Java and SDK have been tested with Java 7
+					and Java 8. </li>
+
+				<li class="li"><span class="ph pname">SAP Cloud Platform</span> Tools for Java and SDK run fine in many operating
+					environments with Java 7 and Java 8 that are supported by Eclipse. However, we
+					do not systematically test all platforms. </li>
+
+				<li class="li">
+					<span class="ph pname">SAP Cloud Platform</span> Tools for Java must be installed on
+					Eclipse IDE for Java EE developers.</li>
+
+			</ul>
+
+			<p class="p">For the platform development tools, SDK, Cloud connector, SAP JVM, see <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud </a></p>
+
+		</div></div>
+<div class="section" id="loioe6ddaefcbb571014b70fa01fc6a3f818__section_1C5DFC4FEB8C4608B6E7C659D1B4BFD4"><div class="section_title">Browser Support</div><div type="Browser Support">
+			
+			<p class="p">For UIs of the platform itself, such as the <span class="ph pname">SAP Cloud Platform</span> Cockpit, the
+				following browsers are supported on Microsoft Windows PCs and where mentioned below
+				on Mac OS X:</p>
+
+			
+			<div class="table-wrapper"><table summary="" id="loioe6ddaefcbb571014b70fa01fc6a3f818__simpletable_kbh_w3d_hm" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d11742515e82" class="stentry" width="50%">Browser</th>
+
+					<th valign="bottom" align="left" id="d11742515e85" class="stentry" width="50%">Versions</th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11742515e82" class="stentry">Microsoft Internet Explorer</td>
+
+					<td valign="top" headers="d11742515e85" class="stentry">11</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11742515e82" class="stentry">Mozilla Firefox</td>
+
+					<td valign="top" headers="d11742515e85" class="stentry">Extended Support Release (ESR) and latest version</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11742515e82" class="stentry">Google Chrome</td>
+
+					<td valign="top" headers="d11742515e85" class="stentry">Latest version</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d11742515e82" class="stentry">Safari </td>
+
+					<td valign="top" headers="d11742515e85" class="stentry">7.0 and upwards (for Mac OS X only)</td>
+
+				</tr>
+</table></div>
+
+			<p class="p">If you are developing an SAPUI5 application, for the list of supported browsers see <a class="xref" href="https://sapui5.hana.ondemand.com/sdk/#docs/guide/74b59efa0eef48988d3b716bd0ecc933.html" target="_blank" alt="https://sapui5.hana.ondemand.com/sdk/#docs/guide/74b59efa0eef48988d3b716bd0ecc933.html" title="https://sapui5.hana.ondemand.com/sdk/#docs/guide/74b59efa0eef48988d3b716bd0ecc933.html">Browser and Platform Matrixes</a>.</p>
+
+			<p class="p">For security reasons, <span class="ph pname">SAP Cloud Platform</span> does not support TLS1.0, SSL 3.0 and older, and
+				RC4 based cipher suites. Make sure your browser supports at least TLS1.1 and modern
+				ciphers (for example, AES).</p>
+
+		</div></div>
+<div class="section" id="loioe6ddaefcbb571014b70fa01fc6a3f818__section_3CC8D1C345494638918F69562B63C6C3"><div class="section_title">Services</div><div type="Services"> 
+		
+			<p class="p">You can find the restrictions related to each <span class="ph pname">SAP Cloud Platform</span> service in the respective service documentation. For more information, see
+					<a class="xref" href="7613d9ce711e1014839a8273b0e91070.html">Services</a>.</p>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">Accounts</div><div type="Accounts">
+			
+			<p class="p">For more information about the limitations of each type of account (developer, customer,
+				partner), see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a>.</p>
+
+		</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

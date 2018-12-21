@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To monitor whether your deployed SAP HANA XS application is up and running, you can register an availability check for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. Furthermore, you can just view the metrics of a database system of any type."/>
+<meta name="description" content="To monitor whether your deployed SAP HANA XS application is up and running, you can register an availability check for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. Furthermore, you can just view the metrics of a database system of any type."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Monitoring Database Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc2be87607f4e4016ad30d4bad4c08ea1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Monitoring Database Systems</h1>
+
+	
+	
+	<div class="body refbody"><p class="shortdesc">To monitor whether your deployed SAP HANA XS application is up and running, you can
+		register an availability check for it and configure email recipients who will receive
+		notification if the application goes down. For the email recipients configuration, you use
+		the <span class="ph pname">SAP Cloud Platform</span> console client. Furthermore, you can just view
+		the metrics of a database system of any type.</p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc2be87607f4e4016ad30d4bad4c08ea1__table_hpd_mtn_wr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="100%" id="d9159255e34">Content</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="100%" headers="d9159255e34 ">
+							<p class="p"><a class="xref" href="c2be87607f4e4016ad30d4bad4c08ea1.html#loioc2be87607f4e4016ad30d4bad4c08ea1__video">Introductory Video</a></p>
+
+							<p class="p"><a class="xref" href="c2be87607f4e4016ad30d4bad4c08ea1.html#loioc2be87607f4e4016ad30d4bad4c08ea1__availability_checks">Availability Checks</a></p>
+
+							<p class="p"><a class="xref" href="c2be87607f4e4016ad30d4bad4c08ea1.html#loioc2be87607f4e4016ad30d4bad4c08ea1__alert_recipients">Alert Recipients Commands</a></p>
+
+							<p class="p"><a class="xref" href="c2be87607f4e4016ad30d4bad4c08ea1.html#loioc2be87607f4e4016ad30d4bad4c08ea1__monitoring">Monitoring Metrics</a></p>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<div class="section" id="loioc2be87607f4e4016ad30d4bad4c08ea1__video"><div class="section_title">Introductory Video</div><div type="Introductory Video">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc2be87607f4e4016ad30d4bad4c08ea1__table_lfy_bj5_4y" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e87">
+								<p class="p">Monitoring Overview</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e87 ">
+								<ul class="ul" id="loioc2be87607f4e4016ad30d4bad4c08ea1__ul_sv3_fj5_4y">
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://video.sap.com/media/t/1_b950cag8" target="_blank" alt="https://video.sap.com/media/t/1_b950cag8" title="https://video.sap.com/media/t/1_b950cag8">Watch the video on
+												SAP Media Share<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+									</li>
+
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://youtu.be/qw8kdeEsi-s" target="_blank" alt="https://youtu.be/qw8kdeEsi-s" title="https://youtu.be/qw8kdeEsi-s">Watch the
+												video on YouTube<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+									</li>
+
+								</ul>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loioc2be87607f4e4016ad30d4bad4c08ea1__availability_checks"><div class="section_title">Availability Checks</div><div type="Availability Checks">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc2be87607f4e4016ad30d4bad4c08ea1__table_cfv_nm2_rq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e137">
+								<p class="p">Concept</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e137 ">
+								<p class="p"><a class="xref" href="68f46b7fea21462b9c1c345b75524bec.html">Availability Checks</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e155">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e155 ">
+								<p class="p"><a class="xref" href="a6663f02b4f9467f921b21f364abda48.html" title="In the cockpit, you can configure availability checks for the SAP HANA XS applications running on your productive SAP HANA database system.">Configuring Availability Checks for SAP HANA XS Applications from the Cockpit</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e175">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e175 ">
+								<p class="p"><a class="xref" href="951d9b8728384e4f80ad3ddfa4d18267.html" title="In the console client you can configure an availability check for your SAP HANA XS application and subscribe recipients to receive alert e-mail notifications when it is down or responds slowly.">Configuring Availability Checks for SAP HANA XS Applications from the Console Client</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e195">
+								<p class="p">Commands</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e195 ">
+								<p class="p"><a class="xref" href="d37bcfc3460e497cad80338192833fc5.html" title="Lists the availability checks.">list-availability-check</a></p>
+
+								<p class="p"><a class="xref" href="83d45827519b413bb98c4e2aaf9b3752.html" title="Creates an availability check.">create-availability-check</a>
+								</p>
+
+								<p class="p"><a class="xref" href="2a387e4e5faa4e35939ba472b33cb74a.html" title="Deletes an availability check.">delete-availability-check</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loioc2be87607f4e4016ad30d4bad4c08ea1__alert_recipients"><div class="section_title">Alert Recipients Commands</div><div type="Alert Recipients Commands">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc2be87607f4e4016ad30d4bad4c08ea1__table_hqm_ttn_wr" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e251">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e251 ">
+								<p class="p"><a class="xref" href="f326f9df2f5246bbb1878b01cfdbc0ba.html" title="Lists alert recipients.">list-alert-recipients</a></p>
+
+								<p class="p"><a class="xref" href="6dae74f3792446b7be65f5d8187c2425.html" title="Sets alert recipients.">set-alert-recipients</a></p>
+
+								<p class="p"><a class="xref" href="0f2b2cda9d844939bad3cbda32c167d8.html" title="Clears alert recipients.">clear-alert-recipients</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loioc2be87607f4e4016ad30d4bad4c08ea1__monitoring"><div class="section_title">Monitoring Metrics</div><div type="Monitoring Metrics">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioc2be87607f4e4016ad30d4bad4c08ea1__table_kph_q5n_wr" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d9159255e306">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d9159255e306 ">
+								<p class="p"><a class="xref" href="b02814df3acf42d3b41c18c99ad35c27.html" title="In the cockpit, you can view the current metrics of a selected database system to get information about its health state. You can also view the metrics history of a productive database to examine the performance trends of your database over different intervals of time or investigate the reasons that have led to problems with it. You can view the metrics for all types of databases.">Viewing Monitoring Metrics of a Database System</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7613a394711e1014839a8273b0e91070.html" title="To monitor whether your deployed application is up and running, you can register an availability check and JMX checks for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. You can also generate a report of metrics that shows performance statistics of the CPU, DB, and response times.">Monitoring Java Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

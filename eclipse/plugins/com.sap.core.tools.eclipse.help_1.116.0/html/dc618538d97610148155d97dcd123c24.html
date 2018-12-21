@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation."/>
+<meta name="description" content="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>ID Federation with the Corporate Identity Provider</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loiodc618538d97610148155d97dcd123c24"><h1 class="title topictitle1">ID Federation with the Corporate Identity Provider</h1>
+
+	
+
+	<div class="body conbody"><p class="shortdesc">You can delegate user authentication for your applications to your corporate identity
+		provider. This is called identity federation. <span class="ph pname">SAP Cloud Platform</span> supports Security
+		Assertion Markup Language (SAML) 2.0 for identity federation.</p>
+
+		<div class="section"><div class="section_title">Contents</div><div type="Contents">
+			
+			<ul class="ul" id="loiodc618538d97610148155d97dcd123c24__ul_mw4_brh_pt">
+				<li class="li"><a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24__prereq">Prerequisites</a></li>
+
+				<li class="li"><a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodcdfe339f94947bc96508daa686cc56d">Configure SAP Cloud Platform as a Local Service Provider</a></li>
+
+				<li class="li"><a class="xref" href="dc618538d97610148155d97dcd123c24.html#loio53aaeda0568e44928c5def2e2930ebc0">(Optional) Guidelines for Using External Key and Certificate</a></li>
+
+				<li class="li"><a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiob6cfc4bb4bff4ace90afc71b0962fcb5">Configure Trust to the SAML Identity Provider</a></li>
+
+				<li class="li"><a class="xref" href="dc618538d97610148155d97dcd123c24.html#loioade5359a931b45b680301ebc3b6f3cb3">Using an IdP Different from the Default</a></li>
+
+			</ul>
+
+		</div></div>
+<div class="section" id="loiodc618538d97610148155d97dcd123c24__prereq"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		 
+		<ul class="ul"><li class="li"> 
+			 <p class="p">You have a key pair and certificate for signing the information you exchange with the IdP on
+						behalf of <span class="ph pname">SAP Cloud Platform</span>. This ensures the privacy
+						and integrity of the data exchanged. You can use your pre-generated ones or
+						use the generation option in the cockpit.</p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">You have provided the IdP with the above
+				certificate. This allows the IdP administrator to configure its trust settings.
+				
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">You have the IdP signing certificate to enable you to configure the cloud trust settings. </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">You have negotiated with the IdP administrator
+				which information the SAML 2.0 assertion will contain for each user. For
+				example, this could be a first name, last name, company, position, or an
+				e-mail. 
+			 </p>
+ 
+		  </li>
+<li class="li"> 
+			 <p class="p">You know the authorizations and attributes the users logged by this IdP need to have on
+							<span class="ph pname">SAP Cloud Platform</span>. </p>
+ 
+		  </li>
+</ul>
+
+			<div class="p">
+				<div class="note tip"><span class="tiptitle">Tip</span> You can configure your <span class="ph pname">SAP Cloud Platform</span> account for identity
+					federation with more than one identity provider. In such case, make sure all
+					user identities are unique across all identity providers, and no user is
+					available in more than one identity provider. Otherwise, this could lead to
+					wrong assignment of security roles at <span class="ph pname">SAP Cloud Platform</span>.</div>
+
+			</div>
+ 
+	 </div></div>
+</div>
+<div class="topic task nested1" lang="en-US" id="loiodcdfe339f94947bc96508daa686cc56d">
+	<h2 class="title topictitle2">Configure <span class="ph pname">SAP Cloud Platform</span> as a Local Service Provider</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">In the SAML 2.0 communication, each <span class="ph pname">SAP Cloud Platform</span> account acts as a
+					<span class="ph uicontrol">service provider</span>. For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://en.wikipedia.org/wiki/SAML_2.0" target="_blank" alt="http://en.wikipedia.org/wiki/SAML_2.0" title="http://en.wikipedia.org/wiki/SAML_2.0">Security Assertion Markup Language (SAML) 2.0<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> protocol specification. </p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> Each <span class="ph pname">SAP Cloud Platform</span> account is a separate service provider. If you need
+				each of your applications to be represented by its own service provider, you must
+				create and use a separate account for each application. See <a class="xref" href="d60337b3631540c6aea5908f6248bbcd.html" title="You can create accounts and use a copy function to copy settings from other accounts.">Creating Accounts</a>.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> In this documentation and <span class="ph pname">SAP Cloud Platform</span> user interface, we use the term
+					<span class="ph emphasis emphasis">local service provider</span> to describe the <span class="ph pname">SAP Cloud Platform</span> account as a service provider in the SAML 2.0 communication.</div>
+
+			<p class="p">You need to configure how the local service provider communicates with the identity provider.
+				This includes, for example, setting a signing key and certificate to verify the
+				service provider’s identity and encrypt data. You can use the configuration settings
+				described in the table that follows. </p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loiodcdfe339f94947bc96508daa686cc56d__table_fyv_zfg_pt" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="33.33333333333333%" id="d10257329e191">
+									<p class="p">Local Service Provider Configuration</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="33.33333333333333%" id="d10257329e197">
+									<p class="p">Description</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="33.33333333333333%" id="d10257329e203">
+									<p class="p">When to Use</p>
+
+								</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e191 ">
+									<p class="p">Default</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e197 ">
+									<p class="p">The local provider's own trust settings will inherit the <span class="ph pname">SAP Cloud Platform</span> default configuration (which is trust to
+											<span class="ph emphasis emphasis">SAP ID service</span>).</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e203 ">
+									<p class="p">For testing and exploring the scenario </p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e191 ">
+									<p class="p">None</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e197 ">
+									<p class="p">The local provider will have no trust settings, and it will
+										not participate in any identity federation scenario.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e203 ">
+									<p class="p">For disabling identity federation for your account</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e191 ">
+									<p class="p">Custom</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e197 ">
+									<p class="p">The local provider settings will have a specific
+										configuration, different from the default configuration for
+										<span class="ph pname">SAP Cloud Platform</span>.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d10257329e203 ">
+									<p class="p">For identity federation with a corporate identity provider or <span class="ph pname">Identity Authentication</span> tenant</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p">In addition, you can configure the following local service provider settings:</p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loiodcdfe339f94947bc96508daa686cc56d__table_shv_kgg_pt" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="50%" id="d10257329e310">
+									<p class="p">Local Service Provider Configuration (Additional)</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="50%" id="d10257329e316">
+									<p class="p">Description</p>
+
+								</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d10257329e310 ">
+									<p class="p">Principal Propagation</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d10257329e316 ">
+									<p class="p">If you set it to <span class="ph uicontrol">Enabled</span>, you enable
+										applications to propagate principal information to each
+										other. Choose this value if you want to enable
+										application-to-application single sign-on. Otherwise, set
+										this option to <span class="ph uicontrol">Disabled</span>.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d10257329e310 ">
+									<p class="p">Force authentication</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d10257329e316 ">
+									<p class="p">. If you set it to <span class="ph uicontrol">Enabled</span>, you enable
+										force authentication for your application (despite SSO,
+										users will have to re-authenticate each time they access
+										it). Otherwise, set this option to
+											<span class="ph uicontrol">Disabled</span>.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+				<div class="itemgroup info">
+					<p class="p">Make sure that you have selected the relevant global account to be able to
+						select the right account.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the <span class="ph uicontrol">Local Service Provider</span> tab.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Edit</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Custom</span> as <span class="ph uicontrol">Configuration
+						Type</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the local provider name.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> It is recommended to use a URI as the local provider name. </div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In <span class="ph uicontrol">Signing Key</span> and <span class="ph uicontrol">Signing Certificate</span>, place
+					the Base64-encoded signing key and certificate. You can use one generated with
+					the cockpit (using the <span class="ph uicontrol">Generate Key Pair</span> button) or
+					externally generated one.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> Certificates generated using the cockpit have validity of 10 years. If you want your
+						identifying certificate to have different validity, generate the key and
+						certificate pair using an external tool, and copy the contents in the
+							<span class="ph uicontrol">Signing Key</span> and <span class="ph uicontrol">Signing
+							Certificate</span> fields respectively in the cockpit. </div>
+
+					<div class="note note"><span class="notetitle">Note</span> For more information how to use an externally generated key and
+						certificate pair, see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loio53aaeda0568e44928c5def2e2930ebc0">(Optional) Guidelines for Using External Key and Certificate</a>.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the required value of the <span class="ph uicontrol">Principal Propagation</span>
+					and <span class="ph uicontrol">Force authentication</span> option.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the changes.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Get Metadata</span> to download the SAML 2.0 metadata
+					describing <span class="ph pname">SAP Cloud Platform</span> as a service provider. You will have to
+					import this metadata into the IdP to configure trust to <span class="ph pname">SAP Cloud Platform</span>.</span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loiodcdfe339f94947bc96508daa686cc56d__image_bdv_wms_kk" src="loio3d3826de9c404d1fb99d7b4873c525e1_HiRes.png" alt="Configure SP" title="Configure SP"/>
+					</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic concept nested1" lang="en-US" id="loio53aaeda0568e44928c5def2e2930ebc0">
+	<h2 class="title topictitle2">(Optional) Guidelines for Using External Key and Certificate </h2>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">Use the following guidelines if you want to use for the local service provider a signing
+			key and certificate generated using an external tool (such as OpenSSL):</p>
+
+		<ul class="ul" id="loio53aaeda0568e44928c5def2e2930ebc0__ul_vcs_dwz_qx">
+			<li class="li">Use RSA as a signing algorithm for the private key</li>
+
+			<li class="li">Convert the private key file into the unencrypted PKCS#8 format</li>
+
+			<li class="li">Strip off the tags <samp class="ph codeph">—–BEGIN PRIVATE KEY—–</samp> and <samp class="ph codeph">—–END PRIVATE
+					KEY—–</samp> from the private key</li>
+
+			<li class="li">Strip off the tags <samp class="ph codeph">—–BEGIN CERTIFICATE—–</samp> and <samp class="ph codeph">—–END
+					CERTIFICATE—–</samp> from the certificate.</li>
+
+		</ul>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">You want to use OpenSSL as a tool for key pair generation.</p>
+
+			<p class="p"> First, create the key pair using the following command:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">openssl req -x509 -nodes -days 365 -sha256 -subj 
+“/CN=https:\/\/hanatrial.ondemand.com\/&lt;your account name&gt;” -newkey rsa:2048 
+-keyout spkey.pem -out spcert.pem</pre></div>
+
+			</div>
+
+			<p class="p">Replace <samp class="ph codeph">&lt;your account name&gt;</samp> in the command with your <span class="ph pname">SAP Cloud Platform</span> account name. As a result, two files are generated:
+					<samp class="ph codeph">spkey.pem</samp> and <samp class="ph codeph">spcert.pem</samp>. </p>
+
+			<p class="p">Convert the private key file <samp class="ph codeph">spkey.pem</samp> into the unencrypted PKCS#8
+				format using the following command:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">openssl pkcs8 -nocrypt -topk8 -inform PEM -outform PEM -in spkey.pem -out spkey.pk8</pre></div>
+
+			</div>
+
+			<p class="p">Now open the file <samp class="ph codeph">spkey.pk8</samp> in a text editor and copy all contents except for
+				the tags <samp class="ph codeph">—–BEGIN PRIVATE KEY—–</samp>, <samp class="ph codeph">—–END PRIVATE
+					KEY—–</samp> into the <span class="ph uicontrol">Signing Key</span> text field in the
+				cockpit. Then open the file <samp class="ph codeph">spcert.pem</samp> in a text editor and copy
+				all contents except for the tags <samp class="ph codeph">—–BEGIN CERTIFICATE—–</samp> and
+					<samp class="ph codeph">—–END CERTIFICATE—–</samp> into the <span class="ph uicontrol">Signing
+					Certificate</span> text field in the cockpit. </p>
+
+			<p class="p">After clicking <span class="ph uicontrol">Save</span> you should get a message that you can proceed with
+				the configuring of your trusted identity provider settings.</p>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5">
+	<h2 class="title topictitle2">Configure Trust to the SAML Identity Provider</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">To benefit from fully-featured identity federation with SAML identity providers,
+					you need to have chosen the <span class="ph uicontrol">Custom</span> configuration type in
+					the <span class="ph uicontrol">Local Service Provider</span> section. </p>
+
+				<p class="p">For <span class="ph uicontrol">Default</span> configuration type, you have non-editable
+					trust to <span class="ph emphasis emphasis">SAP ID Service as default identity provider</span>. You
+					can add other identity providers but they can be used for<span class="ph emphasis emphasis">
+						IdP-initiated single sign-on (SSO)</span> only. </p>
+
+				<p class="p">For <span class="ph uicontrol">None</span>, you don't have any trust settings.</p>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+				<div class="itemgroup info">
+					<p class="p">Make sure that you have selected the relevant global account to be able to
+						select the right account.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Identity Provider</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Click <span class="ph uicontrol">Add Trusted Identity Provider</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">General</span> tab, upload the IdP metadata xml file or manually
+					enter he communication settings negotiated between <span class="ph pname">SAP Cloud Platform</span> and the IdP. On IdP metadata upload, the fields are
+					populated with the parsed data from the XML file. The minimum configuration is
+					to complete all required fields. </span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__image_mr4_543_jj" src="loioed96eda0eda14e408e75b0d06a632a6e_HiRes.png" alt="Metadata File" title="Metadata File"/></p>
+
+					<div class="p">
+						<div class="table-wrapper"><table summary="" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__simpletable_cxn_lmg_pt" border="1" class="simpletable"><tr class="sthead">
+								<th valign="bottom" align="left" id="d10257329e773" class="stentry">Field </th>
+
+								<th valign="bottom" align="left" id="d10257329e776" class="stentry">Description</th>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry"> Metadata File </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry"> The metadata XML file of the identity provider .</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Name </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The entity ID of the IdP, also known as the
+									issuer.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Description </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">A short description of the IdP.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Assertion Consumer Service </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The <span class="ph pname">SAP Cloud Platform</span> endpoint type (application root
+									or assertion consumer service). The IdP will send the SAML
+									assertion to that endpoint. <p class="p">In the common case, select
+											<span class="ph uicontrol">Application Root</span> as value.
+										</p>
+<p class="p">If you have an identity provider that would not send
+										the SAML assertion to unknown URLs to them, select the
+											<span class="ph uicontrol">Assertion Consumer Service</span>
+										option. This is the case with Microsoft ADFS, for
+										example.</p>
+</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Single Sign-on URL </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The IdP's endpoint (URL) to which the SP's authentication
+									request will be sent.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Single Sign-on Binding </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The SAML-specified HTTP binding used by the SP to send the
+									authentication request. </td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Single Logout URL </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The IdP's endpoint (URL) to which the SP's logout request will be sent. <div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">If there is no single logout (SLO) end point specified,
+											no request to the IdP SLO point will be sent, and only
+											the local session will be invalidated.</p>
+
+									</div>
+</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Signature Algorithm </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The cryptographic algorithm used to compute the digest of
+									the digital signatures in the SAML protocol messages.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Signing Certificate </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">The X.509 certificate used by the IdP to digitally sign the
+									SAML protocol messages. </td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">User ID Source </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">Location in the SAML assertion from where the user's unique
+									name (ID) is taken when logging into the Cloud. If you choose
+									subject, this is taken from the name identifier in the
+									assertions's subject (&lt;saml:Subject&gt;) element. If you
+									choose attribute, the user's name is taken from an SAML
+									attribute in the assertion. </td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Source Value </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">Name of the SAML attribute that defines the user ID on the
+									cloud.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">User ID Prefix </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">An optional prefix added to the user ID on the cloud.
+								</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">User ID Suffix </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">An optional suffix appended to the user ID on the cloud.
+								</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">Enabled </td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">
+									<p class="p">If an IdP is enabled, it can be used for authentication by
+										the applications in this account. Otherwise, it cannot be
+										used. Only the SAML assertions coming from it will be
+										validated by <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+									<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">If nothing else is specified, the default IdP is used for
+											authentication. Alternatively, you can use a different
+											IdP using a URL parameter. See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loioade5359a931b45b680301ebc3b6f3cb3">Using an IdP Different from the Default</a>.</p>
+
+									</div>
+
+								</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d10257329e773" class="stentry">
+									<p class="p">Only for IDP-initiated SSO</p>
+
+								</td>
+
+								<td valign="top" headers="d10257329e776" class="stentry">
+									<p class="p">If this checkbox is marked, this identity provider can be
+										used only for IdP-initiated single sign-on scenarios. The
+										applications deployed at <span class="ph pname">SAP Cloud Platform</span> cannot use
+										it for user authentication from their login pages, for
+										example. Only users coming from links to the application at
+										the IdP side will be able to authenticate.</p>
+
+									<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">This checkbox is always marked if you have selected
+												<span class="ph uicontrol">Default</span>  configuration type
+											in the <span class="ph uicontrol">Local Service Provider</span>
+											section.</p>
+
+									</div>
+
+								</td>
+
+							</tr>
+</table></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__configure_attributes">
+				<span class="ph cmd">In the <span class="ph uicontrol">Attributes</span> tab, configure the user attribute mappings for this identity provider.</span>
+				<div class="itemgroup info">
+					<p class="p">User attributes can contain any other information in addition to the user ID. </p>
+
+					<p class="p">Default attributes are user attributes that all users logged by this IdP will have. For example, if we know that "<span class="ph uicontrol">My
+							IdP</span>" is used to authenticate users from <span class="ph uicontrol">MyCompany</span>, we can set a default user attribute
+						for that IdP "<kbd class="ph userinput">company=MyCompany</kbd>". </p>
+
+					<p class="p">To add a default attribute, proceed as follows: </p>
+
+					<ol class="ol" type="a" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__ol_jkl_cng_pt">
+						<li class="li"> On the <span class="ph uicontrol">Attributes</span> tab page, choose <span class="ph uicontrol">Add Default Attribute</span>. </li>
+
+						<li class="li"> Enter the attribute name and attribute value in the respective fields. </li>
+
+					</ol>
+
+					<p class="p"><span class="ph emphasis emphasis">Assertion-based attributes</span> define a mapping between user attributes sent by the identity provider (in the
+						SAML assertion) and user attributes consumed by applications on <span class="ph pname">SAP Cloud Platform</span> (<span class="ph emphasis emphasis">principal
+							attributes</span>). This allows you to easily map the user information sent by the IdP to the format required by your
+						application without having to change your application code. For example, the IdP sends the first name and last name user
+						information in attributes named <samp class="ph codeph">first_name</samp> and <samp class="ph codeph">last_name</samp>. You, on the other hand, have a
+						cloud application that retrieves user attributes named <samp class="ph codeph">firstName</samp> and <samp class="ph codeph">lastName</samp>. You need to
+						define the relevant mapping in the <span class="ph uicontrol">Assertion-Based Attributes</span> section so the application uses the
+						information from that identity provider properly.</p>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> 
+							<ul class="ul" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__ul_xbh_x4g_rt">
+								<li class="li">
+									<p class="p">There are no default mappings of assertion attributes to principal attributes. You need to define those if you
+										need them.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">The attributes are case sensitive. </p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">You can specify that all assertion attributes will be mapped
+										to the corresponding principal attributes without a change,
+										by specifying mapping <samp class="ph codeph">*</samp> to
+											<samp class="ph codeph">*</samp>.</p>
+
+								</li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+					<p class="p">To add an assertion-based attribute, proceed as follows: </p>
+
+					<ol class="ol" type="a" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__ol_zql_cng_pt">
+						<li class="li">On the <span class="ph uicontrol">Attributes</span> tab page, choose <span class="ph uicontrol">Add Assertion-Based Attribute</span>. </li>
+
+						<li class="li">In <span class="ph uicontrol">Assertion Attribute</span>, enter the name of the attribute contained in the SAML 2.0 assertion issued
+							by the IdP. When this IdP logs a user on <span class="ph pname">SAP Cloud Platform</span>, the value of this attribute is mapped as
+							the value for the specified user attribute (<span class="ph uicontrol">Principal Attribute</span>). </li>
+
+						<li class="li"> In <span class="ph uicontrol">Principal Attribute</span>, enter the name of the user attribute on <span class="ph pname">SAP Cloud Platform</span>. </li>
+
+					</ol>
+
+					<p class="p"><img class="image" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__image_pxl_cng_pt" src="loioc238403dd97610149b12ddeb78f14cea_LowRes.png"/>
+					</p>
+
+					<p class="p">In the screenshot above, all users authenticated by this IdP will have an attribute <span class="ph uicontrol">company="ITelO
+							Corp."</span>. In addition, several attributes from the SAML assertion will also be added to authenticated users. For
+						some of these, the attribute name on the cloud is the same as the name provided by the IdP. Others are mapped to a different
+						name. </p>
+
+					<p class="p">For more information about using user attributes in your application, see <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a>. </p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Groups</span> tab, configure the groups associated with
+					this IdP's users.</span>
+				<div class="itemgroup info">
+					<p class="p">Groups that you define on the cloud are later mapped to Java EE application
+							<span class="ph uicontrol">roles</span>. As specified in Java EE, in the
+							<span class="ph uicontrol">web.xml</span>, you define the roles authorized to
+						access a protected resource in your application. You therefore define the
+						groups that exist there and the roles to which each group is mapped via the
+							<span class="ph uicontrol">Groups</span> tab in the cockpit. For each different
+						IdP, you then define a set of rules specifying to which groups a user logged
+						by this IdP belongs. </p>
+
+					<p class="p">For more information about configuring groups, see <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Groups and Roles</a>. </p>
+
+					<div class="note note" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__note_N102FF_N1019C_N10013_N10001"><span class="notetitle">Note</span> You must have defined groups in
+						advance before you define default or assertion-based groups for this IdP. </div>
+
+					<p class="p">Default groups are the groups all users logged by this IdP will have. For
+						example, all users logged by the company IdP can belong to the group
+							"<span class="ph uicontrol">Internal</span>". </p>
+
+					<p class="p">To add a default group, proceed as follows: </p>
+
+					<ol class="ol" type="a" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__ol_nsd_34g_pt">
+						<li class="li">On the <span class="ph uicontrol">Groups</span> tab page, choose <span class="ph uicontrol">Add
+								Default Group</span>. </li>
+
+						<li class="li">
+							<p class="p">From the dropdown list that appears, choose the required group. </p>
+
+						</li>
+
+					</ol>
+
+					<p class="p">Assertion-based groups are groups determined by values of attributes in the
+						SAML 2.0 assertion. For example, if the assertion contains the attribute
+							"<kbd class="ph userinput">contract=temporary</kbd>", you may want all such users
+						to be added to the group "<span class="ph uicontrol">TEMPORARY</span>". </p>
+
+					<p class="p" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__assertion-based_groups">To add an assertion-based group, proceed as follows: </p>
+
+					<ol class="ol" type="a" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__ol_tc2_34g_pt">
+						<li class="li">On the <span class="ph uicontrol">GROUPS</span> tab page, choose <span class="ph uicontrol">Add
+								Assertion-Based Group</span>. A new row appears and a new
+							mapping rule is now being created. </li>
+
+						<li class="li">
+							<p class="p">Enter the name of the group to which users will be mapped. Then
+								define the rule for this mapping. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">In the first field of the <span class="ph uicontrol">Mapping Rules</span>
+								section, enter the SAML 2.0 assertion attribute name to be used as
+								the mapping source. In other words, the value of this attribute will
+								be compared with the value you specify (in the last field of
+									<span class="ph uicontrol">Mapping Rules</span>). </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Choose the comparison operator. </p>
+
+							<ul class="ul" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__ul_dyl_r3p_4k">
+								<li class="li">Choose <span class="ph uicontrol">Equals</span> if you want the value of
+									the SAML 2.0 assertion attribute to match exactly the string you
+									specify. Note that if you want to use more sophisticated
+									relations, such as "starts with" or "contains", you need to use
+									the <span class="ph uicontrol">Regular expression</span> option. </li>
+
+								<li class="li">Choose <span class="ph uicontrol">Regular expression</span> if you want to
+									specify more sophisticated matching rules. You can use all
+									regular expression rules described in the<a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html" target="_blank" alt="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html" title="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html"> Java RegEx API<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.<p class="p"><span class="ph emphasis emphasis">Example
+											1</span>: You want to add authenticated SAP
+										employees to group <span class="keyword uilabel">Employees</span>. And SAP
+										employees are users with e-mail address ending with
+											<span class="keyword uilabel">sap.com</span>. Hence, you choose the
+										mapping rule to be <span class="ph uicontrol">email</span>, matched
+										using the following regular
+											expression:</p>
+<p class="p"><span class="ph uicontrol">.*@sap.com$</span></p>
+<p class="p"><span class="ph emphasis emphasis">Example
+											2</span>: You want all users with name starting with
+										admin to be added to group
+										<span class="keyword uilabel">Administrators</span>. Hence, you choose the
+										mapping rule to be userid, matched using the following
+										regular expression:</p>
+<p class="p"><span class="ph uicontrol">^(admin).*</span>
+									</p>
+</li>
+
+							</ul>
+
+						</li>
+
+						<li class="li">
+							<p class="p">In the last field of <span class="ph uicontrol">Mapping Rules</span>, enter the
+								value with which you compare the specified SAML 2.0 assertion
+								attribute. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">You can specify more than one mapping rule for a specific group. Use
+								the plus button to add as many rules as required. In this case,
+								mapping is based on a logical AND operation for all rules, that is,
+								if one of your rules applies, the user is added to the group. </p>
+
+						</li>
+
+					</ol>
+
+					<p class="p"><img class="image" id="loiob6cfc4bb4bff4ace90afc71b0962fcb5__image_ym2_34g_pt" src="loioc2432795d9761014ad0af2665da87b6f_LowRes.png"/>
+					</p>
+
+					<p class="p">In the image above, all users logged by this IdP are added to the group
+							<span class="ph uicontrol">Citizens</span>. All users from the
+							<span class="ph uicontrol">ITSupport</span> department and the user with e-mail
+							<span class="ph uicontrol">admin@mokmunicipality.org</span> are added to group
+							<span class="ph uicontrol">MOKMunicipalityAdmins</span> for this account. The rest
+						of the employees at MOKMunicipality (having an e-mail address in the
+						mokmunicipality.org domain) are assigned to group
+							<span class="ph uicontrol">Government</span>.</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loioade5359a931b45b680301ebc3b6f3cb3">
+	<h2 class="title topictitle2">Using an IdP Different from the Default</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">You can define more than one identity provider for your account. There is always the
+				default IdP. Initially, SAP ID service is the default IdP but you can change that
+				after you add another IdP.</p>
+
+			<p class="p">If you want to use an IdP different from the default one, you can do so by requesting
+				your application with a special request parameter <kbd class="ph userinput">saml2idp</kbd>
+				with value the desired IdP name. For example:</p>
+
+			<p class="p">
+				<kbd class="ph userinput">https://&lt;app name&gt;.hana.ondemand.com/index.jsp?saml2idp=&lt;idp
+					name&gt;</kbd></p>
+
+		</div>
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

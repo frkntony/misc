@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Bind databases to your applications running on SAP Cloud Platform."/>
+<meta name="description" content="Bind databases to your applications running on SAP Cloud Platform."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Binding Databases</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio216cef2158cc419fade9a8247d5008fa">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Binding Databases</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Bind databases to your applications running on <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>If you want to bind your application to a database that is owned by another account
+			of your global account, you need permission to use the database. See <a class="xref" href="d848edea0e4f4136922d7edcb47a7b7a.html" title="You use the cockpit or the console client to create a new cross-account permission, allowing an account to use a database that is owned by another account.">Adding New Cross-Account Permissions</a>. </div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">You can bind your applications to databases that are owned by your own account or by other
+				accounts of your global account. <div class="note note"><span class="notetitle">Note</span> To bind your databases to accounts that do
+					not belong to your global account, see <a class="xref" href="322080db84734e9b8812ede13703b83c.html" title="You can share a productive SAP HANA or SAP ASE database that is owned by an account with other accounts.">Sharing Databases with Other Accounts</a>.</div>
+ In the cockpit, you
+				can create and delete database bindings at both the database and application
+				level:</div>
+
+			<div class="p">
+				<ul class="ul" id="loio216cef2158cc419fade9a8247d5008fa__ul_jbq_s4s_v4">
+					<li class="li">To create bindings by database, use the <span class="ph uicontrol">Data Source Bindings</span> panel
+						at the database level.</li>
+
+					<li class="li">To create bindings by application, use the <span class="ph uicontrol">Data Source Bindings</span>
+						panel at
+						the
+						application level.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio216cef2158cc419fade9a8247d5008fa__steps_df1_hbj_44"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit
+					and select an account. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose one of the following options:</span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio216cef2158cc419fade9a8247d5008fa__choicetable_y3j_ttn_54">
+<thead><tr><th valign="bottom" align="left" id="d1455267e76-option">To create bindings...</th>
+<th valign="bottom" align="left" id="d1455267e76-desc">Do the following</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d1455267e76-option" id="d1455267e89" class="stentry choption" width="25%"><strong>
+							<p class="p">By database </p>
+
+						</strong></td>
+
+						<td valign="top" headers="d1455267e76-desc d1455267e89" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loio216cef2158cc419fade9a8247d5008fa__ol_jx5_wtn_54">
+								<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.<p class="p">All databases available
+										in the selected account are listed with their ID, type,
+										version, and related database system.</p>
+</li>
+
+								<li class="li">Select
+									the database that you want to create a binding for.
+										<p class="p">The
+										overview shows the database details, for example, its state,
+										and the number of existing bindings, and provides access to
+										further actions.</p>
+</li>
+
+								<li class="li">Choose
+										<span class="ph uicontrol">Data Source Bindings</span> in the
+									navigation
+										area.<p class="p">The
+										overview shows the bindings available for the specific
+										database.</p>
+</li>
+
+								
+								<li class="li">Choose the <span class="ph uicontrol">New Binding</span> button.</li>
+
+								
+								<li class="li">In the <span class="ph uicontrol">New Binding</span> screen, enter the
+									following details:<ol class="ol" type="i" id="loio216cef2158cc419fade9a8247d5008fa__ol_j51_qrp_gr">
+										<li class="li">Enter a data source name.
+											</li>
+
+										
+										<li class="li">Select the application that you want the database to be
+											bound to.<div class="note note"><span class="notetitle">Note</span> The application must be deployed in the
+												selected account.</div>
+</li>
+
+										
+										<li class="li">Enter a database user name and a password in the <span class="ph uicontrol">Custom Logon</span>
+												section.<div class="note caution"><span class="cautiontitle">Caution</span> 
+												<p class="p">The initial password of this database user needs
+												to be changed before binding the application to an
+												SAP HANA database, since the application will
+												otherwise throw an exception.  </p>
+
+											</div>
+</li>
+
+										<li class="li">Select the checkbox <span class="ph uicontrol">Verify
+												credentials</span> to verify the validity of
+											the custom logon data.</li>
+
+										<li class="li">Save your entries. </li>
+
+									</ol>
+</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d1455267e76-option" id="d1455267e173" class="stentry choption" width="25%"><strong>
+							<p class="p">By application</p>
+
+						</strong></td>
+
+						<td valign="top" headers="d1455267e76-desc d1455267e173" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loio216cef2158cc419fade9a8247d5008fa__ol_eyk_h5n_54">
+								<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area and select the relevant
+									application in the application list.</li>
+
+								<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Configuration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Data Source Bindings</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.<p class="p">The overview shows the
+										bindings available for the specific application.</p>
+</li>
+
+								<li class="li">Choose the <span class="ph uicontrol">New Binding</span> button.</li>
+
+								<li class="li">In the <span class="ph uicontrol">New Binding</span> screen, enter the
+									following details:<ol class="ol" type="i" id="loio216cef2158cc419fade9a8247d5008fa__ol_pww_z2f_tw">
+										<li class="li">Enter a data source name.</li>
+
+										<li class="li">Select the database that you want the application to be
+											bound to.</li>
+
+										<li class="li">(optional) If the database does not already exist,
+											create it first. For more information, see <a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>.</li>
+
+										<li class="li">Enter a database user name and a password in the <span class="ph uicontrol">Custom Logon</span>
+												section.<div class="note caution"><span class="cautiontitle">Caution</span> 
+												<p class="p">The initial password of this database user needs
+												to be changed before binding the application to an
+												SAP HANA database, since the application will
+												otherwise throw an exception.  </p>
+
+											</div>
+</li>
+
+										<li class="li">Select the checkbox <span class="ph uicontrol">Verify
+												credentials</span> to verify the validity of
+											the custom logon data.</li>
+
+										<li class="li">Save your entries</li>
+
+									</ol>
+</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<ul class="ul" id="loio216cef2158cc419fade9a8247d5008fa__ul_ygd_y5n_54">
+							<li class="li"> The <span class="ph uicontrol">Custom Logon</span> consists of a database user name and password
+								used specifically to bind databases to Java applications. The
+								specified database user, in effect a schema owner, determines which
+								schemas the Java application can access.</li>
+
+							<li class="li">To create a binding to the default data source, enter the data
+								source name <kbd class="ph userinput">&lt;DEFAULT&gt;</kbd>. </li>
+
+							<li class="li">An application that is bound to the default data source (shown as
+									<samp class="ph systemoutput">&lt;DEFAULT&gt;</samp>) cannot be bound to
+								any other databases. To use other databases, first rebind the
+								application using a named data source. </li>
+
+							<li class="li">Data source names are freely definable but need to match the JNDI data source names used
+								in the corresponding applications, as defined in the
+									<span class="ph filepath">web.xml</span> or
+									<span class="ph filepath">persistence.xml</span> file. For more information,
+								see the example scenarios. </li>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">The state of an application decides when a newly bound database will become effective. If an
+				application is already running (<span class="keyword">Started</span> state), it will continue
+				using the old database until restarted. A restart is also required if additional
+				databases have been bound to the application. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> To unbind a database from an application, simply delete the binding. The
+				application will maintain access to the database until restarted.</div>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a></div>
+<div><a class="link" href="a4b1a6abc13f45d58c9a156b81487d8a.html" title="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit.">Creating an SAP HANA Database from the Cockpit</a></div>
+<div><a class="link" href="ee6ae2938cf54c46bd8996745dbc033c.html" title="This step-by-step tutorial shows how you create a database in an SAP HANA database system with multitenant database container support enabled, using SAP Cloud Platform Console Client commands.">Creating an SAP HANA Database Using Console Client</a></div>
+<div><a class="link" href="01a21776a8dc498397b8435fd185c574.html" title="This command creates an ASE database with the specified ID and settings on an ASE database system.">create-db-ase</a></div>
+<div><a class="link" href="f64390e250cc4dcf8d9046192957d26a.html" title="This command creates a SAP HANA database with the specified ID and settings, on a SAP HANA database system enabled for multitenant database containers.">create-db-hana</a></div>
+<div><a class="link" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></div>
+<div><a class="link" href="46e24bb9d5ef4c2cb5cfdde8ed751e28.html" title="This command unbinds a database from a Java application for a particular data source.">unbind-db</a></div>
+</div>
+</div>
+	<div class="topic task nested1" id="task_fzm_v3w_g4">
+		<h2 class="title topictitle2"> Create an SAP HANA Database User</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_fzm_v3w_g4__steps_s2x_x3w_g4"><li class="li step stepexpand">
+					<span class="ph cmd">Open the SAP HANA Administration Console in Eclipse.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">In the <span class="ph uicontrol">Systems</span> view, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Users</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">From the context menu, choose <span class="ph uicontrol">New User</span>. </span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">On the <span class="ph uicontrol">New User</span> screen, enter a unique user name and
+						password. Enter the password a second time to confirm and then save your
+						entries.</span>
+					<div class="itemgroup stepresult">The new user now appears in the <span class="ph uicontrol">Users</span> folder.
+						A new schema has been automatically created in the catalog with an identical
+						name, but is not visible under your current logon. <div class="note note"><span class="notetitle">Note</span> By default, the
+							user has the permissions required to use the new schema. You can assign
+							the user additional permissions or remove permissions, as
+							necessary.</div>
+</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Log off and then reconnect to the SAP HANA system using the database user
+						and password you just created. </span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Change the initial password when prompted.</span>
+					<div class="itemgroup info">
+						<div class="note caution"><span class="cautiontitle">Caution</span> Make sure you change the initial password when prompted and before
+							binding the HANA database to the application, since the application will
+							otherwise throw an exception.</div>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">In the <span class="ph uicontrol">Systems</span> view, expand the
+							<span class="ph uicontrol">Catalog</span> node. You should see a schema with the
+						same name as your database user.</span>
+				</li>
+</ol>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/ed/7af17e5ae14de694d9bee5f35098f4/content.htm?frameset=/en/c0/555f0bbb5710148faabb0a6e35c457/frameset.htm">Managing SAP HANA Users</a></div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/8f/f545995b594245b2508a380457fbc8/content.htm?frameset=/en/9a/b0b327addd411ab6eadeba205a889e/frameset.htm">Setting Up Roles and Authorizations</a></div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/a55d23bb571014bf25f6ed0d3b2b17/content.htm?frameset=/en/de/ec02ebbb57101483bdf3194c301d2e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/a55d23bb571014bf25f6ed0d3b2b17/content.htm?frameset=/en/de/ec02ebbb57101483bdf3194c301d2e/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/de/a55d23bb571014bf25f6ed0d3b2b17/content.htm?frameset=/en/de/ec02ebbb57101483bdf3194c301d2e/frameset.htm">SAP HANA User and Role Management</a></div>
+<div><a class="link" href="c6f5764433354640a1e44b893399eaee.html" title="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment.">Using a Productive SAP HANA Database System</a></div>
+</div>
+</div>
+	</div>
+
+	<div class="topic task nested1" id="task_tlz_wwk_cs">
+		<h2 class="title topictitle2"> Create an SAP ASE Database User</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><div class="li step p">
+					<span class="ph cmd">In the console client command line, execute the <samp class="ph codeph">create-db-user-ase</samp>
+						command. This command creates a user for an SAP ASE database.</span>
+				</div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="76132306711e1014839a8273b0e91070.html">Console Client</a></div>
+<div><a class="link" href="487b85d51994405d8198f8690c0be504.html" title="This command creates a user for an ASE database.">create-db-user-ase</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

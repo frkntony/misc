@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.dwb.dt.roles.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.dwb.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.codegen" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.codegen.ecore" version="2.8.2" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.converter" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore" version="2.8.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore.editor" version="2.8.0" match="greaterOrEqual"/>
+<!--
+      <import feature="org.eclipse.emf.mwe.core.feature" version="1.2.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mwe.ui.feature" version="1.2.1" match="greaterOrEqual"/>
+-->
+      <import feature="org.eclipse.xpand" version="1.2.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend" version="1.2.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.ui" version="1.2.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.3.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.ui" version="2.3.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.3.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.xtext.ui" version="2.3.1" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.runtime.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.dt.roles"
+         download-size="352"
+         install-size="968"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.dt.roles.ui"
+         download-size="140"
+         install-size="559"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

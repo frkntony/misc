@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.conn.jco.eclipse.feature"
+      label="%featureName"
+      version="1.6.1"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.conn.jco"
+         download-size="1155"
+         install-size="2305"
+         version="3.1.0.13"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.linux.x86"
+         os="linux"
+         arch="x86"
+         download-size="2013"
+         install-size="5009"
+         version="3.1.0.13"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.linux.x86_64"
+         os="linux"
+         arch="x86_64"
+         download-size="2198"
+         install-size="5203"
+         version="3.1.0.13"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.win32.x86"
+         os="win32"
+         arch="x86"
+         download-size="3617"
+         install-size="11835"
+         version="3.1.0.13"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.win32.x86_64"
+         os="win32"
+         arch="x86_64"
+         download-size="3672"
+         install-size="12249"
+         version="3.1.0.13"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.macosx.x86_64"
+         os="macosx"
+         arch="x86_64"
+         download-size="1967"
+         install-size="4726"
+         version="3.1.0.13"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.js.tc.logging"
+         download-size="23"
+         install-size="51"
+         version="1.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.js.passport.api"
+         download-size="33"
+         install-size="64"
+         version="1.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.eclipse"
+         download-size="39"
+         install-size="69"
+         version="1.6.1"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.conn.jco.eclipse.ui"
+         download-size="27"
+         install-size="40"
+         version="1.6.1"
+         unpack="false"/>
+
+</feature>

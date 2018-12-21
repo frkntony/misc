@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform supports identity federation and single sign-on with external identity providers. The current section provides an overview of the supported scenarios."/>
+<meta name="description" content="SAP Cloud Platform supports identity federation and single sign-on with external identity providers. The current section provides an overview of the supported scenarios."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Identity and Access Management</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe6b196abbb5710148c8ec6a698441b1e">
+<div id="wrapper"><div id="container">
+	<h1 class="title topictitle1">Identity and Access Management</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> supports identity federation and single sign-on with external
+		identity providers. The current section provides an overview of the supported
+		scenarios.</p>
+
+		<div class="section"><div class="section_title">Contents</div><div type="Contents">
+			
+			<ul class="ul" id="loioe6b196abbb5710148c8ec6a698441b1e__ul_lvw_ghv_3q">
+				<li class="li"><a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html#loioe6b196abbb5710148c8ec6a698441b1e__overview">Overview</a></li>
+
+				<li class="li"><a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html#loioe6b196abbb5710148c8ec6a698441b1e__IdP">Identity Federation with a Corporate Identity Provider</a></li>
+
+				<li class="li"><a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html#loioe6b196abbb5710148c8ec6a698441b1e__SCI">Identity Federation with an Identity Authentication Tenant</a></li>
+
+				<li class="li"><a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html#loioe6b196abbb5710148c8ec6a698441b1e__IDS">Default Identity Federation with SAP ID Service</a></li>
+
+				<li class="li"><a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html#loioe6b196abbb5710148c8ec6a698441b1e__roles">Managing Roles</a></li>
+
+				<li class="li"><a class="xref" href="e6b196abbb5710148c8ec6a698441b1e.html#loioe6b196abbb5710148c8ec6a698441b1e__OAuth">Protecting Applications with OAuth 2.0</a></li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loioe6b196abbb5710148c8ec6a698441b1e__overview"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">To enable you to seamlessly integrate <span class="ph pname">SAP Cloud Platform</span> applications with
+				existing on-premise identity management infrastructures, <span class="ph pname">SAP Cloud Platform</span>
+				introduces single sign-on (SSO) and identity federation features. In <span class="ph pname">SAP Cloud Platform</span>, identity information is provided by identity providers (IdP), and not
+				stored on <span class="ph pname">SAP Cloud Platform</span> itself. You can have a different IdP for each
+				account you own, and this is configurable using the Cockpit. </p>
+
+			<p class="p">The following graphic illustrates the high-level architecture of identity management
+				in <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+			<p class="p"><img class="image" id="loioe6b196abbb5710148c8ec6a698441b1e__image_dbh_qbc_py" src="loio0e35049c788f4cd5b91e5af4585eeb28_LowRes.png"/></p>
+
+			<p class="p">If you don't have a corporate identity management infrastructure, you can use SAP ID
+				Service. It is the default identity provider for <span class="ph pname">SAP Cloud Platform</span>, and you
+				can use it out of the box, without having to configure SSO and identity
+				federation.</p>
+
+			<p class="p"> <span class="ph pname">SAP Cloud Platform</span> also allows you to implement applications protected with the
+				OAuth protocol.  </p>
+
+			<p class="p"/>
+
+		</div></div>
+
+		
+		<div class="section" id="loioe6b196abbb5710148c8ec6a698441b1e__IdP"><div class="section_title">Identity Federation with a Corporate Identity Provider</div><div type="Identity Federation with a Corporate Identity Provider"><p class="p"><span class="ph pname">SAP Cloud Platform</span> applications can delegate authentication and identity management to
+				an existing corporate IdP that can, for example, authenticate your company's
+				employees. It aims at providing a simple and flexible solution: your employees (or
+				customers, partners, and so on) can single sign-on with their corporate user
+				credentials, without a separate user store and account in <span class="ph pname">SAP Cloud Platform</span>.
+				All information required by <span class="ph pname">SAP Cloud Platform</span> about the employee can be passed
+				securely with the logon process, based on a proven and standardized security
+				protocol. There is no need to manage additional systems that take care for complex
+				user account synchronization or provisioning between the corporate network and <span class="ph pname">SAP Cloud Platform</span>. Only the configuration of already existing components on both
+				sides is needed, which simplifies administration and lowers total cost of ownership
+				significantly. Even existing applications can be "federation-enabled" without
+				changing a single line of code. </p>
+<p class="p">The following graphic illustrates this
+				scenario.</p>
+<img class="image" id="loioe6b196abbb5710148c8ec6a698441b1e__image_wtj_fcc_py" src="loio523113e1e7a74092bf3c1f77602a618a_LowRes.png"/><div class="p">You need to configure trust at several levels: <ul class="ul" id="loioe6b196abbb5710148c8ec6a698441b1e__ul_mjt_d1x_ll">
+					<li class="li">At the service provider of your account in <span class="ph pname">SAP Cloud Platform</span></li>
+
+					<li class="li">Configuring trust on <span class="ph pname">SAP Cloud Platform</span> to the corporate IdP</li>
+
+					<li class="li">Configuring trust on the corporate IdP to <span class="ph pname">SAP Cloud Platform</span></li>
+
+				</ul>
+</div>
+<p class="p">See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a>.</p>
+</div></div>
+
+		<div class="section" id="loioe6b196abbb5710148c8ec6a698441b1e__SCI"><div class="section_title">Identity Federation with an Identity Authentication Tenant</div><div type="Identity Federation with an Identity Authentication Tenant">
+			
+			<p class="p">You can use <span class="ph pname">Identity Authentication</span> as an
+				identity provider for your applications.  is a cloud solution for identity lifecycle
+				management. Using it, you can benefit from features such as user base, user
+				provisioning, corporate branding or logo, and social IdP integration. See <a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?d17a116432d24470930ebea41977a888.html" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?d17a116432d24470930ebea41977a888.html" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?d17a116432d24470930ebea41977a888.html"><span class="ph pname">Identity Authentication</span></a>. </p>
+
+			<p class="p"><span class="ph pname">Identity Authentication</span> provides an easy way
+				for your applications to delegate authentication and identity management and keep
+				developers focused on the business logic. It allows authentication decisions to be
+				removed from the application and handled in a central service.</p>
+
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> offers solid
+				integration with <span class="ph pname">Identity Authentication</span>. When you
+				request an <span class="ph pname">Identity Authentication</span>
+				tenant for your <span class="ph pname">SAP Cloud Platform</span> account, you
+				can automatically use it as a trusted IdP. </p>
+
+			<p class="p"><img class="image" id="loioe6b196abbb5710148c8ec6a698441b1e__image_g4l_bvq_hq" src="loio8c4c9b0c3ea24e359d22bbe16ef95ebd_LowRes.png"/></p>
+
+			<p class="p">See <a class="xref" href="d3df5b457d0c43fca117da0dc14e2f0d.html" title="You can register a tenant for Identity Authentication service as an identity provider for your account.">ID Federation with an Identity Authentication Tenant</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loioe6b196abbb5710148c8ec6a698441b1e__IDS"><div class="section_title">Default Identity Federation with SAP ID Service</div><div type="Default Identity Federation with SAP ID Service"><p class="p">SAP ID service
+				is the place where you have to register to get initial access to <span class="ph pname">SAP Cloud Platform</span>. If you are a new user, you can use the self-service registration option at
+				the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://www.sap.com" target="_blank" alt="https://www.sap.com" title="https://www.sap.com">SAP Web
+					site<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> or <a class="extlink" href="http://help.sap.com/disclaimer?site=https://accounts.sap.com" target="_blank" alt="https://accounts.sap.com" title="https://accounts.sap.com">SAP ID Service<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>. SAP ID Service manages the users of
+				official SAP sites, including the SAP developer and partner community. If you
+				already have such a user, then you are already registered with SAP ID Service.
+				</p>
+<p class="p">In addition, you can use SAP ID Service as an identity provider for your
+				identity federation scenario, or if you do not want to use identity federation.
+				Trust to SAP ID Service is pre-configured on <span class="ph pname">SAP Cloud Platform</span> by default, so
+				you can start using it without further configuration. Optionally, on <span class="ph pname">SAP Cloud Platform</span> you can configure additional trust settings, such as service provider
+				registration, role assignments to users and groups, and so on. </p>
+<div class="p">SAP ID service
+				consists of the following main components: <ul class="ul" id="loioe6b196abbb5710148c8ec6a698441b1e__ul_grf_n1x_ll">
+					<li class="li">A central user store for all your identities that require access to
+						protected resources of your application(s) </li>
+
+					<li class="li">A standards-based Single Sign-On (SSO) service that enables users to log on
+						only once and get seamless access to all your applications deployed using
+						<span class="ph pname">SAP Cloud Platform</span></li>
+
+				</ul>
+ The following graphic illustrates the identity federation with SAP ID Service
+				scenario.</div>
+<img class="image" id="loioe6b196abbb5710148c8ec6a698441b1e__image_l4n_nqw_ll" src="loiod0e803333eb749f7a5afa4cf2d2d6f26_LowRes.png" alt="ID Service" title="ID Service"/></div></div>
+
+		<div class="section" id="loioe6b196abbb5710148c8ec6a698441b1e__roles"><div class="section_title">Managing Roles</div><div type="Managing Roles"><p class="p">Roles allow you to control the access to
+				application resources in <span class="ph pname">SAP Cloud Platform</span>, as specified in Java EE. In <span class="ph pname">SAP Cloud Platform</span>, you can assign groups or individual users to a role. Groups are
+				collections of roles that allow the definition of business-level functions within
+				your account. They are similar to the actual business roles existing in an
+				organization. </p>
+<p class="p">The following graphic illustrates a sample scenario for role,
+				user and group management in <span class="ph pname">SAP Cloud Platform</span>. It shows a person, John Doe,
+				with corporate role: sales representative. On <span class="ph pname">SAP Cloud Platform</span>, all sales
+				representatives belong to group Sales, which has two roles: CRM User and Account
+				Owner. On <span class="ph pname">SAP Cloud Platform</span>, John Doe inherits all roles of the Sales group, and has an
+				additional role: Administrator.</p>
+
+			<p class="p"><img class="image" id="loioe6b196abbb5710148c8ec6a698441b1e__image_lsh_nww_py" src="loio8d5bf827cfd14bf4a674c44e199209d5_LowRes.png"/></p>
+<p class="p">See <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a>.</p>
+</div></div>
+
+		<div class="section" id="loioe6b196abbb5710148c8ec6a698441b1e__OAuth"><div class="section_title">Protecting Applications with OAuth 2.0</div><div type="Protecting Applications with OAuth 2.0">
+			
+			<p class="p">OAuth 2.0 is a widely adopted security protocol for protection of resources over the Internet.
+				It is used by many social network providers and by corporate networks. It allows an
+				application to request authentication on behalf of users with third-party user
+				accounts, without the user having to grant its credentials to the application. <span class="ph pname">SAP Cloud Platform</span> provides an API for developing OAuth-protected applications. You
+				can configure the required scopes and clients using the Cockpit.</p>
+
+			<p class="p">The following graphic illustrates protecting applications with OAuth on <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+			<p class="p"><img class="image" id="loioe6b196abbb5710148c8ec6a698441b1e__image_esy_2dc_py" src="loiod0aee8bdccc84275a00c47c2935a7413_LowRes.png"/></p>
+
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> supports two basic OAuth 2.0 flows: </p>
+
+			<ul class="ul" id="loioe6b196abbb5710148c8ec6a698441b1e__ul_qtj_wkl_4r">
+				<li class="li">
+					<p class="p">Authorization code grant - there is a human user who authorizes a mobile application to
+						access resources on his or her behalf. See <a class="xref" href="b7b589334d444293a2a91e0ef4234136.html" title="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform.">Protecting Applications with OAuth 2.0</a></p>
+
+				</li>
+
+				<li class="li">Client credentials grant - there is no human user but a device instead. In such case, the
+					access token is granted on the basis of client credentials only. See <a class="xref" href="f69fa8762d2a44aab2a22ea7214fb3ff.html" title="SAP Cloud Platform supports the client credentials grant flow from the OAuth 2.0 specfication. This flow enables grant of an OAuth access token based on the client credentials only, without user interaction. You can use this flow for enabling system-to-system communication (with a service user), for example, in device communication in an Internet of things scenario.">Enabling OAuth 2.0 Client Credentials Grant</a></li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Using an On-Premise User Store</div><div type="Using an On-Premise User Store">
+			
+			<p class="p">You can use a user store from an on-premise system for user authentication scenarios.
+				<span class="ph pname">SAP Cloud Platform</span> supports two types of on-premise user stores:</p>
+
+			<ul class="ul" id="loioe6b196abbb5710148c8ec6a698441b1e__ul_ylh_rxs_4r">
+				<li class="li">
+					<p class="p">SAP Single Sign-On</p>
+
+				</li>
+
+				<li class="li">Microsoft Active Directory</li>
+
+			</ul>
+
+			<p class="p">See <a class="xref" href="04cbd0f30d524612aa438ed0b0eed217.html" title="If you already have an existing on-premise system with a populated user store, you can configure SAP Cloud Platform applications to use that on-premise user store. This approach is similar to implementing identity federation with a corporate identity provider. In that way, applications do not need to keep the whole user database, but request the necessary information from the on-premise system.">Using an On-Premise User Store</a>.</p>
+
+		</div></div>
+
+	</div>
+
+	</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

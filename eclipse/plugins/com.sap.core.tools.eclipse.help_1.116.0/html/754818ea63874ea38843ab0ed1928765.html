@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can use a local test identity provider (IdP) to test single sign on (SSO) and identity federation of an SAP Cloud Platform application end-to-end."/>
+<meta name="description" content="You can use a local test identity provider (IdP) to test single sign on (SSO) and identity federation of an SAP Cloud Platform application end-to-end."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Security Testing on the Cloud (with a Local Identity Provider)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio754818ea63874ea38843ab0ed1928765">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Security Testing on the Cloud (with a Local Identity Provider)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"> You can use a local test identity provider (IdP) to test single sign on (SSO) and
+		identity federation of an <span class="ph pname">SAP Cloud Platform</span> application end-to-end. </p>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__section_N10015_N10012_N10001">
+			<p class="p">This scenario offers simplified testing in which developers establish trust to an application
+				deployed in the cloud with an easy-to-use local test identity provider .</p>
+
+			<p class="p">For more information about the identity provider concept in <span class="ph pname">SAP Cloud Platform</span>, see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a>.</p>
+
+			<div class="p"><span class="ph emphasis emphasis">Contents</span>:<ul class="ul" id="loio754818ea63874ea38843ab0ed1928765__ul_bhd_ch3_24">
+					<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__prereq">Prerequisites</a></li>
+
+				<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__section_N1005F_N10012_N10001">Procedure</a><ul class="ul" id="loio754818ea63874ea38843ab0ed1928765__ul_i5k_kh3_24">						
+						<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__setup">1. Set up the local test IdP</a></li>
+
+						<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__configure">2. Configure the service provider of your account in SAP Cloud Platform</a></li>
+
+						<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__localidpname">3. (Optional ) Configure the local IdP name</a></li>
+
+						<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__trust">4. Configure trust on SAP Cloud Platform to the local test IdP</a></li>
+
+						<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__generate">5. Generate self sign-key pair and certificate for the local test IdP (optional)</a></li>
+
+						<li class="li"><a class="xref" href="754818ea63874ea38843ab0ed1928765.html#loio754818ea63874ea38843ab0ed1928765__test">6. Configure trust on the local test IdP to SAP Cloud Platform</a></li>
+						
+						</ul>
+</li>
+
+				</ul>
+</div>
+
+		</div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__prereq"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<div class="p">
+				<ul class="ul" id="loio754818ea63874ea38843ab0ed1928765__ul_x25_krc_hj">
+					<li class="li">
+						<p class="p">You have set up and configured the Eclipse IDE for Java EE Developers and <span class="ph pname">SAP Cloud Platform</span> Tools for Java. For more information, see
+								<a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the
+								Tools and SDK</a>. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">You have developed and deployed your application on <span class="ph pname">SAP Cloud Platform</span>.
+							For more information, see <a class="xref" href="e5b39a5bbb571014a0cc9ab03ec94ebb.html">Creating an <span class="ph pname">SAP Cloud Platform</span> Application</a>. </p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__section_N1005F_N10012_N10001"><div class="section_title">Procedure</div><div type="Procedure">
+			
+			<p class="p">The usage of the local test identity provider involves the following steps:</p>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__setup"><div class="section_title">1. Set up the local test IdP</div><div type="1. Set up the local test IdP">
+			
+			<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_emm_ndv_gj">
+				<li class="li">Open the Eclipse IDE.</li>
+
+				<li class="li">Go to the <span class="ph uicontrol">Servers</span> view.</li>
+
+				<li class="li">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Define a new server</span> wizard, select <span class="ph uicontrol">Java
+						Web Server</span>, <span class="ph uicontrol">Java Web Tomcat 7 Server</span>, or
+						<span class="ph uicontrol">Java EE 6 Web Profile Server</span> (depending on the SDK
+					you use). </li>
+
+				<li class="li">Start the server. The local test IdP is packaged within the SDK, so when you
+					start the server, it will start as well.</li>
+
+				<li class="li">Double-click the server and open the <span class="ph uicontrol">Users</span> tab page.</li>
+
+				<li class="li">Define local test IdP users and their attributes. Exemplary data:<p class="p"><img class="image" id="loio754818ea63874ea38843ab0ed1928765__image_d3s_kdz_xr" src="loiob1d5d123bb5710148ec0f64c6570b5bb_LowRes.png"/></p>
+</li>
+
+			</ol>
+
+			<p class="p">For more information about the Users editor, see <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Testing User Authentication on the
+					Local Server</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__configure"><div class="section_title">2. Configure the service provider of your account in SAP Cloud Platform</div><div type="2. Configure the service provider of your account in SAP Cloud Platform">
+			
+			<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_avj_s5b_hj">
+				<li class="li">In a Web browser, open the cockpit and navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Local Service Provider</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Edit</span>.</li>
+
+				<li class="li">For <span class="ph uicontrol">Configuration Type</span>, choose <span class="ph uicontrol">Custom</span>. </li>
+
+				<li class="li">Choose <span class="ph uicontrol">Generate Key Pair</span> to generate a new signing key and
+					self-signed certificate.</li>
+
+				<li class="li">For the rest of the fields, leave the default values.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Save</span>.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Get Metadata</span> to download and save the SAML 2.0 metadata
+					identifying your <span class="ph pname">SAP Cloud Platform</span> account as a service
+					provider. You will have to import this metadata into the local test IdP to
+					configure trust to <span class="ph pname">SAP Cloud Platform</span> in the procedure that
+					follows. <p class="p"><img class="image" id="loio754818ea63874ea38843ab0ed1928765__image_jvc_5pc_hj" src="loio3d3826de9c404d1fb99d7b4873c525e1_HiRes.png" alt="Configure SP" title="Configure SP"/></p>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__localidpname"><div class="section_title">3. (Optional ) Configure the local IdP name</div><div type="3. (Optional ) Configure the local IdP name">
+			
+			<p class="p">You need to configure your local IdP name if you want to use more than one local IdP.
+				Default local IdP name:<samp class="ph codeph"> localidp</samp>.</p>
+
+			<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_rcj_ss3_24">
+				<li class="li">In the Eclipse IDE, go to the already set up local server that will be used as
+					local IdP. </li>
+
+				<li class="li">In the <span class="ph filepath">config_master/com.sap.core.jpaas.security.saml2.cfg/</span> folder,
+					create a file named <span class="ph filepath">local_idp.cfg</span>.</li>
+
+				<li class="li">In the file, add a property:<p class="p"><samp class="ph codeph">localidp_name=&lt;idpname you want to
+							use&gt;</samp></p>
+</li>
+
+				<li class="li">Restart the local server.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__trust"><div class="section_title">4. Configure trust on SAP Cloud Platform to the local test IdP</div><div type="4. Configure trust on SAP Cloud Platform to the local test IdP"><p class="p">The trust settings on <span class="ph pname">SAP Cloud Platform</span> for the
+				local test IdP are configured in the same way as with any other productive IdP.
+				</p>
+<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_anp_kqc_hj">
+				<li class="li">During the configuration, use the local test IdP metadata that can be requested under the
+					following link:
+						<kbd class="ph userinput">http://&lt;idp_host&gt;:&lt;idp_port&gt;/saml2/localidp/metadata</kbd>,<p class="p">where
+							<var class="keyword varname">&lt;idp_host&gt;</var> and <var class="keyword varname">&lt;idp_port&gt;</var>
+						are the local server host and port.</p>
+<p class="p">To find the
+							<var class="keyword varname">&lt;idp_port&gt;</var>, go to <span class="ph uicontrol">Servers</span>,
+						double click on the local server and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Overview</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> Ports Configuration</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+<p class="p"><img class="image" id="loio754818ea63874ea38843ab0ed1928765__image_ebf_dqc_hj" src="loio3a844b2db6f64233ba2c0890c0199c99_HiRes.png" alt="Configure Trust" title="Configure Trust"/></p>
+</li>
+
+				<li class="li">Configure trust on the cloud to the local test IdP.<ol class="ol" type="a" id="loio754818ea63874ea38843ab0ed1928765__ol_qqs_vg5_3j">
+						<li class="li">Open the cockpit in a Web browser, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Identity Provider</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and then click <span class="ph uicontrol">Add Trusted Identity
+								Provider</span>.</li>
+
+						<li class="li">In <span class="ph uicontrol">General</span> tab page, use the <span class="ph uicontrol">Metadata File</span>
+							<span class="ph uicontrol">Browse</span> button to add the local test IdP
+								metadata.<p class="p">All the needed values are filled in
+							automatically.</p>
+</li>
+
+						<li class="li">Choose <span class="ph uicontrol">Save &amp; Close</span>.</li>
+
+					</ol>
+<p class="p"><img class="image" id="loio754818ea63874ea38843ab0ed1928765__image_wxt_sq5_3j" src="loio812f95fb30d540bcbed5b529d2d66275_HiRes.png" alt="Browse Metadata" title="Browse Metadata"/></p>
+<p class="p">For more
+						information, see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a></p>
+</li>
+
+				<li class="li">Configure the<span class="ph uicontrol"> User Attributes</span>. </li>
+
+			</ol>
+<p class="p">Assertion-based attributes are used to define a mapping between attributes in
+				the SAML assertion issued by the local test IdP and user attributes on the Cloud.
+				</p>
+<p class="p">This allows you to essentially pass any attribute exposed by the local test
+				IdP to an attribute used in your application in the cloud.</p>
+<p class="p">Define user
+				attributes in the local test IdP by using the Eclipse IDE Users editor for
+					<span class="ph pname">SAP Cloud Platform</span> as is described in Setting up the local
+				test IdP.</p>
+ To add an assertion-based attribute, proceed as follows:<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_uzx_cwb_hj">
+				<li class="li">Open the cockpit in a Web browser, navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Identity Provider</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">From the table, choose the entry <span class="ph uicontrol">localidp</span>, open the
+						<span class="ph uicontrol">Attributes</span> tab page, and click on <span class="keyword uilabel">Add
+						Assertion-Based Attribute</span>. </li>
+
+				<li class="li">In Assertion <span class="ph uicontrol">Attribute</span>, enter the name of the attribute
+					contained in the SAML 2.0 assertion issued by the local test IdP. These are the
+					same user attributes you defined in the Eclipse IDE Users editor when setting
+					the local test IdP.</li>
+
+				<li class="li">In <span class="ph uicontrol">Principal Attribute</span>, enter the name of the user
+					attribute as referred in the tested application. <p class="p"><img class="image" id="loio754818ea63874ea38843ab0ed1928765__image_o2c_wqc_hj" src="loioa428364494b4494292f6bf016ed8b545_HiRes.png" alt="Attributes" title="Attributes"/></p>
+</li>
+
+				<li class="li"> Choose <span class="ph uicontrol">Save &amp; Close</span>.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__generate"><div class="section_title">5. Generate self sign-key pair and certificate for the local test IdP (optional)</div><div type="5. Generate self sign-key pair and certificate for the local test IdP (optional)">
+			
+			<p class="p">If an error occurs while requesting the IdP metadata and the metadata cannot be generated, you
+				can do the following:</p>
+
+			<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_lh3_nwb_hj">
+				<li class="li">Generate a <span class="ph uicontrol">localidp.jks</span> keyfile manually. The key and certificate are
+					needed for signing the information that the local test IdP will exchange with
+						<span class="ph pname">SAP Cloud Platform</span>. </li>
+
+				<li class="li">Open the directory <span class="ph filepath">&lt;JAVA_HOME&gt;/jre/bin/keytool</span></li>
+
+				<li class="li">Open a command line and execute the following command:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">keytool -genkeypair -dname "CN=localidp" -keyalg "RSA" -validity 3650 -alias localidp -storepass localidp -keypass localidp -keystore &lt;fullpath_dir_name&gt;\localidp.jks</pre></div>
+where
+					&lt;fullpath_dir_name&gt; is the directory path where the jks will be saved
+					after the creation.</li>
+
+				<li class="li">Under the <span class="ph uicontrol">Server</span> directory, go to
+						<span class="ph filepath">config_master\com.sap.core.jpaas.security.saml2.cfg</span> and
+					create a directory with name <span class="ph uicontrol">localidp</span>.</li>
+
+				<li class="li">Copy the <span class="ph uicontrol">localidp.jks</span> file under <span class="ph uicontrol">localidp</span>
+					directory.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loio754818ea63874ea38843ab0ed1928765__test"><div class="section_title">6. Configure trust on the local test IdP to SAP Cloud Platform</div><div type="6. Configure trust on the local test IdP to SAP Cloud Platform">
+			
+			<ol class="ol" id="loio754818ea63874ea38843ab0ed1928765__ol_xwz_twb_hj">
+				<li class="li">In the Eclipse IDE, go to the already set up local test IdP Server. </li>
+
+				<li class="li">Copy the file with the metadata describing <span class="ph pname">SAP Cloud Platform</span> as a
+					service provider under the local server directory
+						<span class="ph filepath">config_master/com.sap.core.jpaas.security.saml2.cfg/localidp</span>.
+					To get this metadata, in the cockpit, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Local Service Provider</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Get Metadata</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.<p class="p"><img class="image" id="loio754818ea63874ea38843ab0ed1928765__image_cjt_tqc_hj" src="loio9e88c0e1a79c4b2080624719a64ba128_HiRes.png" alt="Configure Trust last" title="Configure Trust last"/></p>
+</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Result</div><div type="Result">
+			
+			<p class="p">You can now access your application, deployed on the cloud,  and test it against the
+				local test IdP and its defined users and attributes.</p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

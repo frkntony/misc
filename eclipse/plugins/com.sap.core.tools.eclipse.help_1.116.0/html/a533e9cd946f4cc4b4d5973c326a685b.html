@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="A volume is the persistent storage that is created automatically when a virtual machine is created."/>
+<meta name="description" content="A volume is the persistent storage that is created automatically when a virtual machine is created."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Managing Volumes</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa533e9cd946f4cc4b4d5973c326a685b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Managing Volumes</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">A volume is the persistent storage that is created automatically when a virtual machine
+		is created.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Each virtual machine has a volume that stores the file system and all software installed on
+				it. You can create a new virtual machine with the same volume; delete a volume;
+				create a snapshot of a volume.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">List volumes in your account.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo list-volumes --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+					<p class="p">The output shows all volumes with their ID, status, size as well as ID of the
+						virtual machine they are attached to. You can choose a volume from which you
+						want to create another virtual machine and take its ID. The volume must be
+						in status <span class="ph cmdtext">available</span>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create a new virtual machine from the volume.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo create-vm --volume-id myvolumeid --size x-small --name myvm --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Delete a volume when you no longer need it to free some resources. </span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">neo delete-volume --volume-id myvolumeid --account myaccount --host hana.ondemand.com --user myemail@example.com</pre></div>
+
+					</div>
+
+					<p class="p">You cannot delete a volume that has snapshots or is in use by a virtual
+						machine. </p>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">You can create a snapshot of the volume of a virtual machine. This snapshot contains
+				everything that was installed on the file system, but does not keep any running
+				processes and runtime configurations. See <a class="xref" href="93dd4760f72f42f6a668c903030272a4.html" title="You can take a snapshot of an existing virtual machine volume in your account and use it to create a new virtual machine with the same file system thus saving any manual installation.">Managing Volume Snapshots</a>.</p>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="14270511f8d7474f8de6d8d4a453685f.html" title="Lists all volumes in the specified account. Use display-volume to get information about a specific volume.">list-volumes</a></div>
+<div><a class="link" href="16f9fab6ae2d40fda106cc7b469d484b.html" title="Creates a new virtual machine and starts it.">create-vm</a></div>
+<div><a class="link" href="850e9350422848ce86b3e080dafb7bf3.html" title="Deletes a specified virtual machine volume.">delete-volume</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

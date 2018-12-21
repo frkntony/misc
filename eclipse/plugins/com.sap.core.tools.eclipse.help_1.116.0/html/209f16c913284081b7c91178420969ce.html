@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Sending Gamification Events</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio209f16c913284081b7c91178420969ce">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Sending Gamification Events</h1>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">If the user performs actions in the application that are relevant to gamification, the <span class="ph pname">gamification service</span>
+				has to be informed by invoking the corresponding API method. To prevent cheating
+				this should be done in the application back end using the technical endpoint offered
+				by the API. </p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Create a destination to the technical endpoint</span>
+				<ol type="a" class="ol substeps" id="loio209f16c913284081b7c91178420969ce__substeps_yhc_13z_4r">
+					<li class="li substep">
+						<span class="ph cmd">Type: “HTTP”.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">URL: https://&lt;Subscription URL&gt;/gamification/api/tech/JsonRPC .
+						</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">Authentication: “Basic Authentication”.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">User: Technical user ID. The technical user must have roles
+								<span class="ph sap-technical-name sap-technical-name">AppStandard</span> and
+								<span class="ph sap-technical-name sap-technical-name">AppAdmin</span>.</span>
+					</li>
+
+					<li class="li substep">
+						<span class="ph cmd">Password: The technical user's password.</span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Invoke method "handleEvent" in the appropriate place in the back end, for example after
+					user action has been executed. </span>
+				<div class="itemgroup stepresult">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">http:// &lt;Subscription URL&gt;/gamification/api/tech/JsonRPC?
+json={"method":"handleEvent","id":1,"params":[{"siteId":"HelpDesk","type":"solvedProblem","playerid":"abc@abc.com"}]}</pre></div>
+
+					</div>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> See also: <ul class="ul" id="loio209f16c913284081b7c91178420969ce__ul_s31_v4y_js">
+								<li class="li">Demo application source code: <a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/gamification-demo-app" target="_blank" alt="https://github.com/SAP/gamification-demo-app" title="https://github.com/SAP/gamification-demo-app">https://github.com/SAP/gamification-demo-app<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></li>
+
+								<li class="li">API Documentation: <span class="ph pname">SAP Cloud Platform, gamification service</span> subscription, under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Help</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">API Documentation</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+							</ul>
+</div>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="68231e0cd13b4c5a9aedbfdea1eb75d2.html">Exchanging Data via HTTP Protocol</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

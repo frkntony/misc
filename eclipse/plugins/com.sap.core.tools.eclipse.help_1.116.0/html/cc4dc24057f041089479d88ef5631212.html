@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming Notifications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocc4dc24057f041089479d88ef5631212">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Consuming Notifications</h1>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Notifications are strictly defined as "see and forget". The <span class="ph pname">gamification service</span>
+				will only store the last 25 notifications for each player (currently "X" defaults to
+				25). The show notifications to players a polling-based approach has to be
+				implemented using the following API methods:</p>
+
+			<ul class="ul" id="loiocc4dc24057f041089479d88ef5631212__ul_p51_nb2_45">
+				<li class="li">
+					<p class="p"><samp class="ph codeph">getNotificationsForPlayer(playerId,
+							timestamp)&amp;app=APPNAME</samp></p>
+
+					<p class="p">Returns the latest notifications for a player starting from the timestamp.
+						This mechanism allows other applications to better track which notifications
+						have been requested or displayed already. This is the current approach for
+						"user2service" communication. It works well with the user endpoint using
+						JavaScript.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p"><samp class="ph codeph">getAllNotifications(timestamp)&amp;app=APPNAME</samp></p>
+
+					<p class="p">Returns all generated notifications for all players within one app starting
+						from the provided timestamp. This is the current approach for
+						"application2service" communication. An application can query all
+						notifications for the app using the tech endpoint and forward the
+						information to the user using custom events or communication channels. This
+						avoids having all clients in parallel polling for notifications.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><p class="li stepsection">You can see the Notification Widget in the Helpdesk Scenario
+				(sap_gs_notifications.js) for more information on how the polling of notifications
+				can be implemented at the client side. The notification polling is handled as
+				follows:</p><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Retrieve the <span class="ph pname">gamification service</span> server time on initialization, using the method
+						<samp class="ph codeph">getServerTime</samp>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Use this server time to initially poll for notifications.</span>
+				<div class="itemgroup info">
+					<p class="p">For example <samp class="ph codeph">getNotificationsForPlayer(playerId, servertime)</samp>
+						or <samp class="ph codeph">getAllNotifications(servertime)</samp>.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">When new notifications are received from the service, replace the polling
+					timestamp with the <samp class="ph codeph">dateCreated</samp> timestamp from the youngest
+					notification received.</span>
+				<div class="itemgroup info">
+					<p class="p">For example <samp class="ph codeph">getNotificationsForPlayer(playerId,
+							youngestNotificationDateCreated)</samp> or
+							<samp class="ph codeph">getAllNotifications(youngestNotificationDateCreated).</samp></p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

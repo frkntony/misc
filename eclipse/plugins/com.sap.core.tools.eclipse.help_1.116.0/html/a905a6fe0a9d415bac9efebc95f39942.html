@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command lists identity provider certificates available to productive HANA instances. Optionally, you can include a part of the certificate Subject CN as filter."/>
+<meta name="description" content="This command lists identity provider certificates available to productive HANA instances. Optionally, you can include a part of the certificate Subject CN as filter."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>list-hanaxs-certificates</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa905a6fe0a9d415bac9efebc95f39942">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">list-hanaxs-certificates</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command lists identity provider certificates available to productive HANA
+		instances. Optionally, you can include a part of the certificate <var class="keyword varname field">&lt;Subject CN&gt;</var>
+		as filter.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-hanaxs-certificates --host &lt;landscape_host&gt; --account &lt;account_name&gt; --user &lt;e-mail_or_user&gt;</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> Use this command for SAP HANA version SPS09 or lower SPs only.</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loioa905a6fe0a9d415bac9efebc95f39942__section_N1001E_N10012_N10001">To list all parameters available for this command,
+			execute <kbd class="ph userinput">neo help list-hanaxs-certificates</kbd> in the command line.
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa905a6fe0a9d415bac9efebc95f39942__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d7928158e51">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7928158e51 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7928158e51 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+<p class="p"><span class="keyword cmdname">Condition</span>: Not required if
+									using <span class="keyword parmname">--application-process-id</span></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7928158e51 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7928158e51 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7928158e51 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7928158e51 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7928158e51 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7928158e51 ">Your email, SAP ID, or SCN user name<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa905a6fe0a9d415bac9efebc95f39942__table_hbv_n53_jl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d7928158e158">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7928158e158 "><span class="keyword parmname">-cn-string</span>,
+									<span class="keyword parmname">--contained-string</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7928158e158 "> A part of the certificate CN. If more than one certificate contain this string, all
+								shall be listed. <p class="p"><span class="keyword cmdname">Default</span>: none
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string (hexadecimal sequence
+									of 2 to 40 characters)</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">To list all identity provider certificates that contain <var class="keyword varname">&lt;John Smith&gt;</var> in their
+					<var class="keyword varname field">&lt;Subject CN&gt;</var>,
+				execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-hanaxs-certificates --host hana.ondemand.com --account myaccount --user mymail@example.com --contained-string John Smith</pre></div>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account."/>
+<meta name="description" content="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Giving Other Accounts Permission to Open a Database Tunnel</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="copyb3133bcb38094c9890645d30d705b5a4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Giving Other Accounts Permission to Open a Database Tunnel</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA
+		database in your account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul">
+				<li class="li">The database you would like to share has been provisioned in an account. See
+						<a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>.</li>
+
+				<li class="li">You have the administrator role in that account.</li>
+
+				<li class="li">You have set up the console client. See <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a> and <a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To give another account permission to open a tunnel to your database, you create a database
+				user for that account and provide these credentials, together with an access token,
+				to a member of the account that requested permission to open a database tunnel. This
+				allows this account member to open a database tunnel to the database in your
+				account. All members of the account receiving the permission can access the database
+				in your account.</p>
+
+			<p class="p">Provide the following information to a member of the account that requested permission to open
+				a database tunnel:</p>
+
+			<ul class="ul" id="copyb3133bcb38094c9890645d30d705b5a4__ul_i3z_f4d_jq">
+				<li class="li">
+					<p class="p">Access token to open the database tunnel</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Database user</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Password</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">In addition, you have the following options:</p>
+
+			<ul class="ul" id="copyb3133bcb38094c9890645d30d705b5a4__ul_trx_mx3_jq">
+				<li class="li">
+					<p class="p">To check if the database access has been given successfully, you can view a list of all
+						currently active database access permissions to other accounts, which exist
+						for a specified account, by using the
+							The token is simply a random string, for example,
+							31t0dpim6rtxa00wx5483vqe7in8i3c1phv759w9oqrutf638l, which remains valid
+							until the provider account revokes it again.<samp class="ph codeph">list-db-tunnel-access-grants</samp> command.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">The token is simply a random string, for example,You can revoke the database access permission at any point in time using the
+							<samp class="ph codeph">revoke-db-tunnel-access</samp> command. See <a class="xref" href="a583f98202c44c408646f9885b45752a.html" title="You can revoke the permission to open database tunnels to a productive SAP HANA adatabase in your account for other accounts.">Revoking Tunnel Access to Databases for Other Accounts</a>.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> Only the provider account can revoke the access permission. When you revoke the access
+						permission, we highly recommend that you disable the database user and
+						password created for the access permission on the database itself and that
+						you close any open sessions on the SAP HANA database.</div>
+
+				</li>
+
+			</ul>
+
+			<p class="p">If an account member has already used the access token and there are open database
+				tunnels, they remain open until they are closed, even though the user has been
+				disabled.</p>
+
+			<p class="p">We highly recommend that you create a dedicated database user on the database for each access
+				permission.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the following command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo grant-db-tunnel-access -h &lt;host&gt; -u &lt;user&gt; -a &lt;provider account&gt; -i &lt;database ID&gt; --to-account &lt;consumer account&gt;</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">If the permission has been given successfully, the access token is displayed. As a
+					database administrator, you create a database user with the needed permissions.
+					Provide the database user and password together with the access token to a
+					member of the account that has requested permission to open a tunnel to your
+					database.</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="458c8d753494434c8940c22bef21a8a6.html" title="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account.">Opening Tunnels to Databases in Other Accounts</a></div>
+<div><a class="link" href="a583f98202c44c408646f9885b45752a.html" title="You can revoke the permission to open database tunnels to a productive SAP HANA adatabase in your account for other accounts.">Revoking Tunnel Access to Databases for Other Accounts</a></div>
+<div><a class="link" href="a55b836f126b461a9999b56f3cd867d5.html" title="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team.">Guidelines for Creating Database Users</a></div>
+<div><a class="link" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></div>
+<div><a class="link" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a></div>
+<div><a class="link" href="21e4be85b52448d0ad259a93fd6f51fd.html" title="This command lists all current database access permissions for databases in other accounts.">list-db-tunnel-access-grants</a></div>
+<div><a class="link" href="616309ea0ce64065813d1400a70de402.html" title="This command revokes database access that has been given to another account.">revoke-db-tunnel-access</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

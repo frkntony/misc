@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Propagate users from external applications with SAML identity federation to OAuth-protected applications running on SAP Cloud Platform. Exchange the user ID and attributes from a SAML assertion for an OAuth access token, and use the access token to access the OAuth-protected application."/>
+<meta name="description" content="Propagate users from external applications with SAML identity federation to OAuth-protected applications running on SAP Cloud Platform. Exchange the user ID and attributes from a SAML assertion for an OAuth access token, and use the access token to access the OAuth-protected application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Principal Propagation to OAuth-Protected Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio310f39e504024079933066db8b6c6d00">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Principal Propagation to OAuth-Protected Applications</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Propagate users from external applications with SAML identity federation to
+		OAuth-protected applications running on <span class="ph pname">SAP Cloud Platform</span>. Exchange the user ID and
+		attributes from a SAML assertion for an OAuth access token, and use the access token to
+		access the OAuth-protected application.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loio310f39e504024079933066db8b6c6d00__ul_dt3_txz_x5">
+					<li class="li">
+						<div class="p">You have an application external to <span class="ph pname">SAP Cloud Platform</span>. The application is integrated
+							with a third-party library or system functioning as a SAML identity
+							provider. That application has a SAML assertion for each authenticated user.<div class="note note"><span class="notetitle">Note</span> 
+								<p class="p">How the external application and its SAML identity provider work
+									together and communicate is outside the scope of this
+									documentation. They can be separate applications, or the
+									external application may be using a library integrated in
+									it.</p>
+
+							</div>
+<div class="note note"><span class="notetitle">Note</span> 
+								<p class="p">If you are using a separate third-party identity provider system
+									for this scenario, make sure you have configured correctly trust
+									between the external application and the identity provider
+									system. Refer to the identity provider vendor's documentation
+									for details.</p>
+
+							</div>
+</div>
+
+					</li>
+
+					<li class="li">You have configured <span class="ph pname">SAP Cloud Platform</span> for identity federation. See
+							<a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodcdfe339f94947bc96508daa686cc56d">Configure SAP Cloud Platform as a Local Service Provider</a>.</li>
+
+					<li class="li">You have developed an OAuth-protected application. See <a class="xref" href="b7b589334d444293a2a91e0ef4234136.html" title="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform.">Protecting Applications with OAuth 2.0</a>.</li>
+
+					<li class="li">You have deployed the OAuth-protected application at <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This scenario follows the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://tools.ietf.org/html/rfc7522" target="_blank" alt="https://tools.ietf.org/html/rfc7522" title="https://tools.ietf.org/html/rfc7522">SAML 2.0 Profile for OAuth 2.0 Client Authentication and
+					Authorization Grants<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> specification. The scenario is based on exchanging
+				the <span class="ph emphasis emphasis">SAML (bearer) assertion</span> from the third-party identity
+				provider for an <span class="ph emphasis emphasis">OAuth access token</span> from the <span class="ph pname">SAP Cloud Platform</span> authorization server. Using the access token, the external application can
+				access the OAuth-protected application.</p>
+
+			<p class="p">The graphic below illustrates the scenario implemented in terms of <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+			<p class="p"><img class="image" id="loio310f39e504024079933066db8b6c6d00__image_ond_4qz_x5" src="loioe32704631b5c4614b70800d6ed699df0_LowRes.png"/></p>
+
+			<div class="p">
+				<ol class="ol" id="loio310f39e504024079933066db8b6c6d00__ol_q2z_sqz_x5">
+					<li class="li">
+						<p class="p"> An external application has a SAML assertion on behalf of a successfully logged user. The
+							application needs to proparate that user and its relevant information
+							(attributes, privileges, and so on) to the OAuth-protected application
+							running at <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">The external application passes the SAML assertion to <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+						<p class="p"> To access the OAuth-protected application at <span class="ph pname">SAP Cloud Platform</span>, however, the
+							external application needs an OAuth 2.0 access token, not a SAML
+							assertion. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">If the SAML assertion contains all required information (see the procedure below) <span class="ph pname">SAP Cloud Platform</span> generates the corresponding access token. In this way,
+							the external application can act on behalf of the user authenticated by
+							the identity provider, within its granted privileges at <span class="ph pname">SAP Cloud Platform</span>, and within the time limits of the access token.</p>
+
+					</li>
+
+					<li class="li">The external application passes the received access token to the
+						OAuth-protected application at <span class="ph pname">SAP Cloud Platform</span>.</li>
+
+					<li class="li">If the access token is correct and the user has the required privileges, the
+						OAuth-protected application returns the requested resources.</li>
+
+				</ol>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Configure <span class="ph pname">SAP Cloud Platform</span> for trust with the SAML identity provider. See <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiob6cfc4bb4bff4ace90afc71b0962fcb5">Configure Trust to the SAML Identity Provider</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Register the external application as an OAuth client in <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio61d8095aa39547c7b30d9aeda771497f" title="To authorize a device to access an OAuth-protected application, you need to register it as a client.">Registering an OAuth Client</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Make sure the SAML (bearer) assertion that the external application presents
+					contains the following information: </span>
+				<div class="itemgroup info">
+					<div class="p">
+						
+<div class="table-wrapper tablenoborder"><table summary="" id="loio310f39e504024079933066db8b6c6d00__table_jrk_m1g_y5" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+								
+								
+								
+								<thead class="thead" align="left">
+									<tr class="row">
+										<th class="entry" valign="top" width="33.33333333333333%" id="d2312981e219">
+											<p class="p">SAML Assertion Element</p>
+
+										</th>
+
+										<th class="entry" valign="top" width="33.33333333333333%" id="d2312981e225">
+											<p class="p">Value Description</p>
+
+										</th>
+
+										<th class="entry" valign="top" width="33.33333333333333%" id="d2312981e231">
+											<p class="p">Example</p>
+
+										</th>
+
+									</tr>
+
+								</thead>
+
+								<tbody class="tbody">
+									<tr class="row">
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e219 ">
+											<p class="p">Name ID</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e225 ">
+											<p class="p">The authenticated user ID.</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e231 ">
+											<div class="p">
+												
+													<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;saml:NameID 
+         Format="urn:oasis:names:tc:SAML:1.1:nameid format:unspecified"
+         xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"&gt;p12356789
+&lt;/saml:NameID&gt;</pre></div>
+
+												
+											</div>
+
+										</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e219 ">
+											<p class="p">Audience</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e225 ">
+											<p class="p">The local service provider name for your <span class="ph pname">SAP Cloud Platform</span> account (in <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Cockpit</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Local Service Provider</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Local Provider Name</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>).</p>
+
+											<div class="p">If you are using the default identity provider
+												configuration for your account, take the audience
+												value from the table below.
+<div class="table-wrapper tablenoborder"><table summary="" id="loio310f39e504024079933066db8b6c6d00__table_kbr_scl_qv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+												
+												
+												
+												<thead class="thead" align="left">
+												<tr class="row">
+												<th class="entry" valign="top" width="33.33333333333333%" id="d2312981e315">
+												<p class="p">Landscape Host</p>
+
+												</th>
+
+												<th class="entry" valign="top" width="33.33333333333333%" id="d2312981e321">
+												<p class="p">Description</p>
+
+												</th>
+
+												<th class="entry" valign="top" width="33.33333333333333%" id="d2312981e327">
+												<p class="p">Required Audience Value</p>
+
+												</th>
+
+												</tr>
+
+												</thead>
+
+												<tbody class="tbody">
+												<tr class="row">
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e315 ">
+												<p class="p">hana.ondemand.com</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e321 ">
+												<p class="p">Productive landscape, data center Europe</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e327 ">
+												<p class="p">https://netweaver.ondemand.com</p>
+
+												</td>
+
+												</tr>
+
+												<tr class="row">
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e315 ">
+												<p class="p">ap1.hana.ondemand.com</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e321 ">
+												<p class="p">Productive landscape, data center Asia-Pasific
+												(Australia)</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e327 ">
+												<p class="p">ap1.hana.ondemand.com</p>
+
+												</td>
+
+												</tr>
+
+												<tr class="row">
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e315 ">
+												<p class="p">https://us1.hana.ondemand.com</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e321 ">
+												<p class="p">Productive landscape, data center United States
+												(US East)</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e327 ">
+												<p class="p">https://us1.hana.ondemand.com/</p>
+
+												</td>
+
+												</tr>
+
+												<tr class="row">
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e315 ">
+												<p class="p">hanatrial.ondemand.com</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e321 ">
+												<p class="p">Trial landscape</p>
+
+												</td>
+
+												<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e327 ">
+												<p class="p">https://nwtrial.ondemand.com</p>
+
+												</td>
+
+												</tr>
+
+												</tbody>
+
+												</table>
+</div>
+</div>
+
+											<p class="p">See <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>.</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e231 ">
+											<div class="p">
+												
+												<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;saml:Audience&gt;myLocalProvider&lt;/saml:Audience&gt;</pre></div>
+
+												
+											</div>
+
+											<div class="p">
+												<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;saml:Audience&gt;https://us1.hana.ondemand.com/&lt;/saml:Audience&gt;</pre></div>
+
+											</div>
+
+											<div class="p">
+												<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;saml:Audience&gt;ap1.hana.ondemand.com&lt;/saml:Audience&gt;</pre></div>
+
+											</div>
+
+										</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e219 ">
+											<p class="p">Issuer ID</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e225 ">
+											<p class="p">The issuer must have as value the OAuth client ID registered at <span class="ph pname">SAP Cloud Platform</span> (in <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Cockpit</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">OAuth</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Clients</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">&lt;your client&gt;</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Client ID</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>).</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e231 ">
+											<div class="p">
+												
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;saml:Issuer 
+         Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+         xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"&gt;myClientID 
+&lt;/saml:Issuer&gt;</pre></div>
+
+												
+											</div>
+
+										</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e219 ">
+											<p class="p">Issuer Certificate</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e225 ">
+											<p class="p">The identity provider signing certificate stored in the trust configuration of <span class="ph pname">SAP Cloud Platform</span> for
+												this identity provider (in <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Cockpit</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Application Identity Provider</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">&lt;your identity provider</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">General</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Signing Certificate</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>).</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e231 ">
+											<div class="p">
+												<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+												<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;ds:X509Certificate&gt; …… &lt;/ds:X509Certificate&gt;</pre></div>
+
+												</div>
+
+											</div>
+
+										</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e219 ">
+											<p class="p">(Optional) User Attributes</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e225 ">
+											<p class="p">The attributes that will be assigned to the <span class="ph pname">SAP Cloud Platform</span> user.</p>
+
+										</td>
+
+										<td class="entry" valign="top" width="33.33333333333333%" headers="d2312981e231 ">
+											<div class="p">
+												<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;Attribute Name="mail"&gt;
+    &lt;AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:type="xs:string"&gt;test@sap.com
+    &lt;/AttributeValue&gt;
+&lt;/Attribute&gt;
+
+&lt;Attribute Name="first_name"&gt;
+    &lt;AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:type="xs:string"&gt;Jon
+    &lt;/AttributeValue&gt;
+&lt;/Attribute&gt;
+</pre></div>
+
+											</div>
+
+										</td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+</div>
+
+					</div>
+
+					<p class="p">See the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://tools.ietf.org/html/draft-ietf-oauth-saml2-bearer-23#page-6" target="_blank" alt="https://tools.ietf.org/html/draft-ietf-oauth-saml2-bearer-23#page-6" title="https://tools.ietf.org/html/draft-ietf-oauth-saml2-bearer-23#page-6">SAML Assertion Format<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>
+						specification for more information.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the code of the OAuth-protected application, you can retrieve the user attributes using
+					the relevant <span class="ph pname">SAP Cloud Platform</span> API. See <a class="xref" href="9e2e0d7e91cc44e79901a756bf7b2d88.html" title="You can access user attributes using the User Management Java API (com.sap.security.um.user). It can be used to get and create users or to read and update their information.">Working with User Attributes</a>.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

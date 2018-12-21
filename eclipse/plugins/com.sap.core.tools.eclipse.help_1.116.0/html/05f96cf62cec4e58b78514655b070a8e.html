@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Creates a new account with an automatically generated unique ID as account name and the specified display name and assigns the user as an account owner. The user is authorized against the existing account passed as --account parameter. Optionally, you can clone an existing account configuration to save time and effort."/>
+<meta name="description" content="Creates a new account with an automatically generated unique ID as account name and the specified display name and assigns the user as an account owner. The user is authorized against the existing account passed as --account parameter. Optionally, you can clone an existing account configuration to save time and effort."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>create-account</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio05f96cf62cec4e58b78514655b070a8e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">create-account</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">Creates a new account with an automatically generated unique ID as account name and the
+		specified display name and assigns the user as an account owner. The user is authorized
+		against the existing account passed as --account parameter. Optionally, you can clone an
+		existing account configuration to save time and effort.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-account --display-name &lt;account_display_name&gt; --account &lt;account_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --clone &lt;cloning_options&gt;</pre></div>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">If you clone an existing <a class="xref" href="5bc52f4cca9a4fdc97f0e01016aef25f.html">extension
+							account</a>, the new account will <span class="ph emphasis emphasis">not</span> be an
+						extension account but a regular one. The new account will
+							<span class="ph emphasis emphasis">not</span> have the trust and destination settings typical
+						for extension accounts.</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">To list all parameters available for this command, execute
+				<kbd class="ph userinput">neo help create-account</kbd> in the command line.
+<div class="table-wrapper tablenoborder"><table summary="" id="loio05f96cf62cec4e58b78514655b070a8e__table_qj5_x3q_cl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d216172e62">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d216172e62 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d216172e62 ">Account name<p class="p">Specify an existing account of which you are
+									already a member. </p>
+<p class="p"><span class="keyword cmdname">Type</span>: string (up to
+									30 characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d216172e62 "><span class="keyword parmname">-n</span>,
+								<span class="keyword parmname">--display-name</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d216172e62 ">Account display name<p class="p">If you want to create an account whose
+									display name has intervals, use quotes when executing the
+									command. For example: neo ... --display-name "Display Name with
+									Intervals"</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string (up to 255
+									characters)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d216172e62 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d216172e62 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d216172e62 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d216172e62 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d216172e62 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d216172e62 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d216172e62 ">
+								<p class="p">--clone</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d216172e62 ">
+								<p class="p">(Optional) List of settings that will be copied (re-created) from the existing account
+									into the new account. A comma separated list of values, which
+									are as follows: </p>
+
+								<div class="p">
+									<ul class="ul" id="loio05f96cf62cec4e58b78514655b070a8e__ul_thz_ygf_h5">
+										<li class="li"><samp class="ph codeph">trust</samp></li>
+
+										<li class="li"><samp class="ph codeph">members</samp></li>
+
+										<li class="li"><samp class="ph codeph">destinations</samp></li>
+
+										<li class="li"><samp class="ph codeph">all</samp></li>
+
+									</ul>
+
+								</div>
+
+								<p class="p">Each value combination is acceptable, for example,
+										<samp class="ph codeph">trust,members</samp> or <samp class="ph codeph">all</samp>. If
+									specified, all the configurations of the passed type(s) will be
+									cloned to the newly created account.</p>
+
+								<div class="p">
+									<div class="note tip"><span class="tiptitle">Tip</span> 
+										<p class="p">We recommend listing explicitly the required cloning
+											options instead of using <samp class="ph codeph">--clone all</samp> in
+											automated scripts. This will ensure backward
+											compatibility in case the available cloning options,
+											enveloped by <samp class="ph codeph">all</samp>, change in future
+											releases.</p>
+
+									</div>
+
+								</div>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-account --account myaccount --display-name mynewaccount --user myuser --host hana.ondemand.com</pre></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Cloning Existing Accounts</div><div type="Cloning Existing Accounts">
+			
+			<p class="p">You may choose among the following cloning options:</p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio05f96cf62cec4e58b78514655b070a8e__table_bls_1qx_nv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="50%" id="d216172e269">
+									<p class="p">Cloning Option</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="50%" id="d216172e275">
+									<p class="p">Description</p>
+
+								</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d216172e269 ">
+									<p class="p"><samp class="ph codeph">all</samp></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d216172e275 ">
+									<p class="p">All settings (trust, members and destinations) from the
+										existing account will be copied into the new one.</p>
+
+									<div class="p">
+										<div class="note caution"><span class="cautiontitle">Caution</span> 
+											<p class="p">The list of cloned configurations might be extended
+												in the future.</p>
+
+										</div>
+
+									</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d216172e269 ">
+									<p class="p"><samp class="ph codeph">trust</samp></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d216172e275 ">
+									<div class="p">The following trust settings will be re-created in the new account similarly to the
+										relevant settings in the existing account:<ul class="ul" id="loio05f96cf62cec4e58b78514655b070a8e__ul_amb_yqx_nv">
+											<li class="li">
+												<p class="p">Trusted <span class="ph pname">Identity Authentication</span>
+												tenants - the new account will have trust to the
+												<span class="ph pname">Identity Authentication</span> tenants registered in the exisitng account. The
+												respective <span class="ph pname">Identity Authentication</span> tenants, in turn, will automatically register a
+												new service provider corresponding to the new
+												<span class="ph pname">SAP Cloud Platform</span> account. </p>
+
+											
+												<div class="p">
+												<div class="note note"><span class="notetitle">Note</span> <span class="ph pname">SAP Cloud Platform</span> will generate a new
+												pair of key and certificate on behalf of the new
+												account. Remember to replace them with your
+												proprietary key and certificate when using the
+												account for productive purposes.</div>
+
+												</div>
+
+											</li>
+
+										</ul>
+</div>
+
+									<div class="p">All other trust settings (for example, trusted on-premise identity providers) from the
+										existing account will <span class="ph emphasis emphasis">not</span> be copied
+										into the new account.<div class="note note"><span class="notetitle">Note</span> 
+											<p class="p">If you do not have any trusted <span class="ph pname">Identity Authentication</span> tenants in the existing account, cloning the
+												trust settings will result in trust with SAP ID
+												Service (as default identity provider) in the new
+												account.</p>
+
+										</div>
+</div>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d216172e269 ">
+									<p class="p"><samp class="ph codeph">members</samp></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d216172e275 ">
+									<p class="p">All members with their roles from the existing account will
+										be copied into the new one. </p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d216172e269 ">
+									<p class="p"><samp class="ph codeph">destinations</samp></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="50%" headers="d216172e275 ">
+									<p class="p">All destinations from the existing account will be created into the new one. In
+										addition, the relevant certificates and  passwords for the
+										destinations will also be cloned so the destination
+										configurations will be fully functional in the new
+										account.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p">Example of cloning an existing account to create a new account with the same trust settings
+				and existing destinations:</p>
+
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-account --account myaccount --display-name mynewaccount --user myuser --host hana.ondemand.com --clone trust,destinations</pre></div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

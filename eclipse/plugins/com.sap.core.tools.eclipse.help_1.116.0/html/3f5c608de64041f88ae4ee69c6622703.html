@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css?x=06005033421400352"/>
+<title>General Coding Guidelines (internal)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"> </script>
+</head>
+<body class="" id="loio3f5c608de64041f88ae4ee69c6622703">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">General Coding Guidelines (internal)</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following guidelines are valid in SAPUI5 and apply controls that are shipped with
+			SAPUI5:</p>
+<ul class="ul" id="loio3f5c608de64041f88ae4ee69c6622703__ul_t33_t1l_fp"><li class="li">
+				<p class="p">The naming conventions for SAPUI5 controls are mandatory for SAP internal
+					development, see <a class="xref" href="91f299336f4d1014b6dd926db0e91070.html" title="Introduces the naming conventions for SAPUI5 control and application development">Naming Conventions for Control and Application Development</a></p>
+
+			</li>
+<li class="li">
+				<p class="p">Adhere to the JavaScript development guidelines for SAPUI5 development available
+					in Trac, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://vesapui5.dhcp.wdf.sap.corp:1080/trac/sapui5/wiki/InternalDocumentation/DevelopmentGuidelines" target="_blank">Development Guidelines<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Do <span class="ph emphasis emphasis">not</span> create global variables; in control behavior you
+					always use this variable for storing instance data or
+						<samp class="ph codeph">sap.ui.&lt;libname&gt;.&lt;controlname&gt;</samp> for storing static
+					data for the control class.</p>
+
+			</li>
+<li class="li">
+				<p class="p">If you need a DOM element, use <samp class="ph codeph">jQuery.sap.domById(id)</samp> instead of
+						<samp class="ph codeph">document.getElementById(id)</samp>; this fixes some browser
+					bugs.</p>
+
+			</li>
+<li class="li">
+				<p class="p">Use <samp class="ph codeph">jQuery.sap.byId(id)</samp> instead of <samp class="ph codeph">jQuery("#" +
+						id)</samp> if you need a jQuery object (because this also does the
+					necessary escaping of the ID).</p>
+
+			</li>
+</ul>
+</div>
+</div></div>
+</body>
+</html>

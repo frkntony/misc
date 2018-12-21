@@ -1,0 +1,20 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: H1sdxbSsoFdj0oWLQ0qi+QHN99QmR
+ YwZB4KTEwepGl4=
+SHA-256-Digest-Manifest: CQCq3+Fgjca+AFUP/bsXvFNZ+h0h/yWFLVhJZXLQFOY=
+Created-By: 1.8.0_121 (Oracle Corporation)
+
+Name: fragment.properties
+SHA-256-Digest: KYvit0expg8zI+9XxiDkzjfOwammEVlPNd3oLmdUQU8=
+
+Name: META-INF/maven/com.sap.ndb.studio/com.sap.ndb.studio.jdbc.win32.
+ x86_64/pom.xml
+SHA-256-Digest: 8GUYjRWngXAP0CuQHv7pcC2pdCxR4/SboSjW/17l+R0=
+
+Name: jniauthentication.dll
+SHA-256-Digest: ENFWVzoBijdRDiLeCkz+ClG0Ihkg+cEDsA1irCVbPPc=
+
+Name: META-INF/maven/com.sap.ndb.studio/com.sap.ndb.studio.jdbc.win32.
+ x86_64/pom.properties
+SHA-256-Digest: Q3PFf8wjQl99R6sV5/Eff+8UZO758VZZ97N2iEaR84o=
+

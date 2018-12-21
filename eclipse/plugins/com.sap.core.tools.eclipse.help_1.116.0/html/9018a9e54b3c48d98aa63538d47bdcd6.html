@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Client Authentication Types for HTTP Destinations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9018a9e54b3c48d98aa63538d47bdcd6">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Client Authentication Types for HTTP Destinations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loio9018a9e54b3c48d98aa63538d47bdcd6__section_N10017_N10011_N10001"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">This section lists the supported client authentication types and the relevant
+				supported properties.</p>
+
+		</div></div>
+
+		<div class="section" id="loio9018a9e54b3c48d98aa63538d47bdcd6__section_EB93679A17BA40F4A1E1023D10A27D04"><div class="section_title">No Authentication</div><div type="No Authentication">
+			
+			<p class="p">This is used for destinations that refer to a service on the Internet or an
+				on-premise system that does not require authentication. The relevant property value
+				is: </p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9018a9e54b3c48d98aa63538d47bdcd6__table_gr1_1xf_pj" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+						
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="100%"><span class="keyword parmname">Authentication</span>=<kbd class="ph userinput">NoAuthentication</kbd></td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p"> </p>
+
+			<div class="note note" id="loio9018a9e54b3c48d98aa63538d47bdcd6__note_N101FA_N101EE_N10013_N10001"><span class="notetitle">Note</span> When a destination is using HTTPS protocol
+				to connect to a Web resource, the JDK truststore is used as truststore for the
+				destination. </div>
+
+		</div></div>
+
+		<div class="section" id="loio9018a9e54b3c48d98aa63538d47bdcd6__section_0DE472D20F72416BAC5DEEDE623FE331"><div class="section_title">Basic Authentication</div><div type="Basic Authentication">
+			
+			<p class="p">This is used for destinations that refer to a service on the Internet or an
+				on-premise system that requires basic authentication. The relevant property value
+				is:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9018a9e54b3c48d98aa63538d47bdcd6__table_mpp_hxf_pj" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="100%"><span class="keyword parmname">Authentication</span>=<kbd class="ph userinput">BasicAuthentication</kbd></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"> </p>
+
+			<p class="p">The following credentials need to be specified: </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9018a9e54b3c48d98aa63538d47bdcd6__table_ca_types" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="66.66666666666667%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d6583650e113">Property</th>
+
+							<th class="entry" valign="top" width="66.66666666666666%" id="d6583650e116">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d6583650e113 "><span class="keyword parmname">User</span>
+					</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d6583650e116 ">User name </td>
+
+				</tr>
+
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d6583650e113 "><span class="keyword parmname">Password</span>
+					</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d6583650e116 ">Password </td>
+
+				</tr>
+
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d6583650e113 "><span class="keyword parmname">Preemptive</span>
+					</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d6583650e116 ">If this property is not set or is set to <kbd class="ph userinput">TRUE</kbd>
+						(that is, the default behavior is to use preemptive sending), the
+						authentication token is sent preemptively. Otherwise, it relies on the
+						challenge from the server (401 HTTP code). The default value (used if no
+						value is explicitly specified) is <kbd class="ph userinput">TRUE</kbd>. For more
+						information about preemptiveness, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tools.ietf.org/html/rfc2617#section-3.3" target="_blank" alt="http://tools.ietf.org/html/rfc2617#section-3.3" title="http://tools.ietf.org/html/rfc2617#section-3.3">http://tools.ietf.org/html/rfc2617#section-3.3<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </td>
+
+				</tr>
+
+				</tbody>
+
+				</table>
+</div>
+
+			<div class="note note" id="loio9018a9e54b3c48d98aa63538d47bdcd6__note_N10259_N101FF_N10013_N10001"><span class="notetitle">Note</span> When a destination is using the HTTPS protocol to
+				connect to a Web resource, the JDK truststore is used as truststore for the
+				destination. </div>
+
+			<div class="note note"><span class="notetitle">Note</span> <kbd class="ph userinput">Basic Authentication</kbd> and <kbd class="ph userinput">No Authentication</kbd>
+				can be used in combination with
+					<span class="keyword parmname">ProxyType</span>=<kbd class="ph userinput">OnPremise</kbd>. In this case,
+				also the <span class="keyword parmname">CloudConnectorLocationId</span> property can be specified.
+				Starting with SAP HANA <span class="ph pname">Cloud connector</span> 2.9.0,
+				it is possible to connect multiple cloud connectors to an account as long as their
+				location ID is different. The value defines the location ID identifying the <span class="ph pname">Cloud connector</span> over
+				which the connection shall be opened. The default value is the empty string
+				identifying the <span class="ph pname">Cloud connector</span> that is
+				connected without any location ID, which is also the case for all <span class="ph pname">Cloud connector</span>
+				versions prior to 2.9.0. </div>
+
+		</div></div>
+
+		<div class="section" id="loio9018a9e54b3c48d98aa63538d47bdcd6__section_6322C0B494984DAF869405DC314CAF49"><div class="section_title">Client Certificate Authentication</div><div type="Client Certificate Authentication">
+			
+			<p class="p">This is used for destinations that refer to a service on the Internet. The relevant property
+				value is:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9018a9e54b3c48d98aa63538d47bdcd6__table_lzc_kxf_pj" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="100%"><span class="keyword parmname">Authentication</span>=<kbd class="ph userinput">ClientCertificateAuthentication</kbd></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"/>
+
+			<p class="p">The following credentials need to be specified: </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9018a9e54b3c48d98aa63538d47bdcd6__table_client_ca" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="66.66666666666667%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d6583650e250">Property</th>
+
+							<th class="entry" valign="top" width="66.66666666666666%" id="d6583650e253">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d6583650e250 "><span class="keyword parmname">KeyStoreLocation</span>
+						<ol class="ol" id="loio9018a9e54b3c48d98aa63538d47bdcd6__ul_crp_2wf_pj">
+							<li class="li">When used in local environment</li>
+
+							<li class="li">When used in cloud environment</li>
+
+						</ol>
+
+					</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d6583650e253 ">
+						<p class="p">Path to the JKS file that contains the client certificate(s) for  authentication against a
+							remote server. </p>
+
+						<ol class="ol" id="loio9018a9e54b3c48d98aa63538d47bdcd6__ul_dct_tvq_qj">
+							<li class="li">The relative path to the JKS file. The root path is the server's
+								location on the file system. </li>
+
+							<li class="li">The name of the JKS file. </li>
+
+						</ol>
+
+					</td>
+
+				</tr>
+
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d6583650e250 "><span class="keyword parmname">KeyStorePassword</span>
+					</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d6583650e253 ">The password for the key storage. This property is mandatory in case
+							<span class="keyword parmname">KeyStoreLocation</span> is used.</td>
+
+				</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"/>
+
+			<div class="note note" id="loio9018a9e54b3c48d98aa63538d47bdcd6__note_N1038C_N1025E_N10013_N10001"><span class="notetitle">Note</span> You can upload <span class="keyword parmname">KeyStore</span> JKS
+				files using the same command for uploading destination configuration property file -
+				you only need to specify the JKS file instead of the destination configuration file. </div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configuration</div><div type="Configuration">
+			
+			<ul class="ul" id="loio9018a9e54b3c48d98aa63538d47bdcd6__ul_ncw_s5l_m4">
+				<li class="li"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></li>
+
+				<li class="li"><a class="xref" href="e520383cbb571014858bc5d52295f433.html">Configuring Destinations from the Eclipse IDE</a></li>
+
+				<li class="li"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3f1247537c1a4f069235ee63633659c5.html">Server Certificate Authentication</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

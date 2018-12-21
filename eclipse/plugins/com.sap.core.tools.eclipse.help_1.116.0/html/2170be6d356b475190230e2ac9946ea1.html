@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Although the streaming analytics server is located on the SAP Cloud Platform, you need to download and install some on-premise components to connect to the server from the client side."/>
+<meta name="description" content="Although the streaming analytics server is located on the SAP Cloud Platform, you need to download and install some on-premise components to connect to the server from the client side."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Downloading and Installing Smart Data Streaming Components</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2170be6d356b475190230e2ac9946ea1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Downloading and Installing Smart Data Streaming Components</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Although the <span class="ph pname">streaming analytics</span> server is
+		located on the <span class="ph pname">SAP Cloud Platform</span>,
+		you need to download and install some on-premise components to connect to the server from
+		the client side.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio2170be6d356b475190230e2ac9946ea1__ul_lxp_2lk_35">
+				<li class="li">You have created an <span class="ph pname">SAP Cloud Platform</span> account. See <a class="xref" href="868d804efd0b4eb788bdebd7b36a57a4.html" title="Set up your SAP HANA development environment and run your first application in the cloud.">SAP HANA: Getting Started</a>.</li>
+
+				
+				<li class="li">You have enabled the<span class="ph pname">streaming analytics</span>
+					component on your <span class="ph pname">SAP Cloud Platform</span> account.
+					See <a class="xref" href="3051402fa9204288b8401ecdac65ccfd.html">Enabling Streaming Analytics as an SAP HANA Component</a></li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>To use <span class="ph pname">SAP Cloud Platform, streaming analytics</span>,
+			you need to download two installation packages: <ul class="ul" id="loio2170be6d356b475190230e2ac9946ea1__ol_vyv_pkk_35">
+				<li class="li">The smart data streaming client package, which contains the set of provided
+					adapters for connecting to other data sources, the SDK, the streaming ODBC
+					driver and driver manager, and the streaming command-line tools.</li>
+
+				<li class="li">The smart data streaming studio package, which contains the smart data streaming
+					plugin for the SAP HANA studio. This plugin lets you develop streaming projects
+					visually, or through a CCL editor.</li>
+
+			</ul>
+If you do not already have SAP HANA studio installed, you need to download that as
+			well. All of these packages must correspond to the SAP HANA instance version.</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">From the  <a class="extlink" href="http://help.sap.com/disclaimer?site=https://support.sap.com/software/patches.html" target="_blank" alt="https://support.sap.com/software/patches.html" title="https://support.sap.com/software/patches.html">SAP Service Marketplace: Support Packages and Patches<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> page,
+					download:</span>
+				<div class="itemgroup info"><ul class="ul" id="loio2170be6d356b475190230e2ac9946ea1__ul_ecz_gnw_fv">
+						<li class="li">The SAP HANA smart data streaming studio package</li>
+
+						<li class="li">The SAP HANA smart data streaming client package</li>
+
+						<li class="li">The SAP HANA studio package</li>
+
+						<li class="li">The SAPCAR utility</li>
+
+					</ul>
+Save all of these downloads in the same folder.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Unzip all packages using the SAPCAR utility:</span>
+				<ol type="a" class="ol substeps" id="loio2170be6d356b475190230e2ac9946ea1__substeps_r5t_j4w_fv">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">From the command line, navigate to the location of the downloaded files.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Run the utility once for each package you are unzipping. For example,
+							to unzip the streaming client package:</span>
+						<div class="itemgroup info"><samp class="ph codeph"><var class="keyword varname">&lt;download-directory-filepath&gt;</var> sapcar xvf-
+								streaming_client_1.0.112.07_winx64.sar</samp></div>
+					</li>
+
+				</ol>
+
+				<div class="itemgroup info">There are no further steps for the client package; you only need to unzip it. For the
+					studio packages, go on to the next step.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Install the streaming studio plugin. This procedure may be different depending on whether
+					or not you have SAP HANA studio installed.</span>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>Next, <a class="xref" href="d64dc37ae36e4632b08c9b698bdccc6c.html" title="Set the STREAMING_HOME environment variable so that you can use smart data streaming utilities, and run streaming projects from SAP HANA studio.">set the STREAMING_HOME
+				environment variable</a>.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://uacp2.hana.ondemand.com/viewer/9cca8e6289ce4d9495a6012d32f3b7d1/1.0.12/en-US/042cb2520f1e4146a0527fe636032e15.html" target="_blank" alt="https://uacp2.hana.ondemand.com/viewer/9cca8e6289ce4d9495a6012d32f3b7d1/1.0.12/en-US/042cb2520f1e4146a0527fe636032e15.html" title="https://uacp2.hana.ondemand.com/viewer/9cca8e6289ce4d9495a6012d32f3b7d1/1.0.12/en-US/042cb2520f1e4146a0527fe636032e15.html">Installing the Streaming Studio Plugin</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

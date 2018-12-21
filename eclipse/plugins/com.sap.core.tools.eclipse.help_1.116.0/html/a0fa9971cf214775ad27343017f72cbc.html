@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Local Server Configuration of the Keystore</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa0fa9971cf214775ad27343017f72cbc">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Local Server Configuration of the Keystore</h1>
+
+	<div class="body taskbody">
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loioa0fa9971cf214775ad27343017f72cbc__steps_frg_nq1_xj"><li class="li step" id="loioa0fa9971cf214775ad27343017f72cbc__step_N10020_N1001C_N10019_N1000E_N10001">
+				<span class="ph cmd">To deploy your Web application on the local server, follow the steps for deploying a Web
+					application locally as described in <a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a>.</span>
+			</li>
+<li class="li step" id="loioa0fa9971cf214775ad27343017f72cbc__step_N1002D_N1001C_N10019_N1000E_N10001">
+				<span class="ph cmd">To upload the required keystores, copy the prepared
+						<span class="ph filepath">client.jks</span> and <span class="ph filepath">cacerts.jks</span> files
+					into <span class="ph filepath">&lt;local server
+						root&gt;\config_master\com.sap.cloud.crypto.keystore</span>
+					subfolder.</span>
+			</li>
+<li class="li step" id="loioa0fa9971cf214775ad27343017f72cbc__step_N10042_N1001C_N10019_N1000E_N10001">
+				<span class="ph cmd">To test the functionality, open the following URL in your Web browser:
+						<samp class="ph codeph">http://localhost:&lt;local server HTTP
+						port&gt;/HelloWorld/SSLExampleServlet?host=&lt;remote HTTPS server host
+						name&gt;&amp;port=&lt;remote HTTPS server port
+						number&gt;&amp;path=&lt;remote HTTPS server
+						resource&gt;&amp;client.keystore.password=&lt;client identity keystore
+						password&gt;</samp>.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

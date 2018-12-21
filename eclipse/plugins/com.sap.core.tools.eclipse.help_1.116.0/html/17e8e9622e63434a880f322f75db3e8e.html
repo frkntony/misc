@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs."/>
+<meta name="description" content="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Soft Shutdown</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio17e8e9622e63434a880f322f75db3e8e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Soft Shutdown</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Soft shutdown enables an operator to stop an application or application process in a way
+		that no data is lost. Using soft shutdown gives sufficient time to finish serving end user
+		requests or background jobs. </p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have application deployment permissions for the account.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Using soft shutdown, an operator can restart the application (for example, in order to update
+				it) in a way that end users are not disturbed. First, the application process is
+				disabled. This means that requests by users that already have open connections to
+				this process will be processed, but new requests will not reach this application
+				process anymore. After the application process is disabled and remaining sessions
+				processed, it can be stopped by the operator.</p>
+
+		</div>
+	</div>
+
+	<div class="topic task nested1" id="task_wxl_w4g_nn">
+		<h2 class="title topictitle2">Cockpit</h2>
+
+		<div class="body taskbody">
+			<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+				<p class="p">You can disable application processes in the <span class="ph uicontrol">Processes</span>
+					panel on the application dashboard or the <span class="ph uicontrol">State</span> panel on
+					the process dashboard.</p>
+
+			</div>
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_wxl_w4g_nn__steps_w2n_cc5_kn"><li class="li step stepexpand">
+					<span class="ph cmd">Log on to the cockpit, select an account and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Select an application in the application list.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">In the <span class="ph uicontrol">Processes</span> panel, choose <img class="image" id="task_wxl_w4g_nn__image_stl_cd5_kn" src="loio5a8e63613c4a42d197f6473ca5178e36_LowRes.png"/> (<span class="ph uicontrol">Disable
+							process</span>) in the relevant row. The process state changes to
+							<span class="ph uicontrol">Started (disabled)</span>.</span>
+					<div class="itemgroup info">
+						<div class="note note"><span class="notetitle">Note</span> You can also select the process and disable it from the process
+							dashboard.</div>
+
+					</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Wait for some time so that all working sessions finish and then stop the
+						process.</span>
+				</li>
+</ol>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7612f03c711e1014839a8273b0e91070.html" title="You can directly start, stop, and undeploy applications, as well as start, stop, and disable individual application processes.">Starting and Stopping Applications</a></div>
+</div>
+</div>
+	</div>
+
+	<div class="topic task nested1" id="task_rn4_5sx_4n">
+		<h2 class="title topictitle2">Console Client</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_rn4_5sx_4n__steps_x44_5sx_4n"><li class="li step stepexpand">
+					<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh
+							<span class="ph filepath">(&lt;SDK installation folder&gt;/tools)</span>.</span>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Disable processing of requests from new users to the application by
+						executing <var class="keyword varname">&lt;neo disable&gt;</var> with the appropriate parameters. If
+						you want to stop requests to a specific application process only and not to
+						the whole application, add the <var class="keyword varname">&lt;--application-process-id&gt;</var>
+						parameter. </span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo disable --host &lt;landscape_host&gt; --user &lt;e-mail_or_user&gt; --application-process-id &lt;ID&gt;</pre></div>
+
+					</div>
+					<div class="itemgroup info">If you disable the entire application, or all processes of the
+						application, then new users requesting the application will not be able to
+						access it and will get an error.</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Wait for some time so that all working sessions finish.</span>
+					<div class="itemgroup info"> You can monitor user requests and used resources by configuring JMX
+						checks, or, you can just wait for a given time period that should be enough
+						for most of the sessions to finish.</div>
+				</li>
+<li class="li step stepexpand">
+					<span class="ph cmd">Stop the application by executing <var class="keyword varname">&lt;neo stop&gt;</var> with the
+						appropriate parameters. If you want to terminate a specific application
+						process only and not the whole application, add the
+							<var class="keyword varname">&lt;--application-process-id &gt;</var>parameter. </span>
+					<div class="itemgroup stepxmp">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo stop --host &lt;landscape_host&gt; --user &lt;e-mail_or_user&gt; --application-process-id &lt;ID&gt; </pre></div>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="59fedc12d81b4801aa24c3b12414e382.html" title="This command stops the creation of new connections to an application or application process, but keeps the already running sessions alive. You can check if an application or application process has been disabled by executing the status command.">disable</a></div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connectivity via Reverse Proxy</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodde01af51ddc49758dbbb03afcb075e5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connectivity via Reverse Proxy</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loiodde01af51ddc49758dbbb03afcb075e5__section_N1001A_N10011_N10001"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">This section outlines an alternative approach for technical connectivity between the cloud and
+				on-premise, using a reverse proxy. It also discusses the pros and cons of this
+				method compared to when you use the <span class="ph pname">Cloud connector</span>.</p>
+
+		</div></div>
+
+		<div class="section" id="loiodde01af51ddc49758dbbb03afcb075e5__section_N10027_N10011_N10001"><div class="section_title">Features</div><div type="Features">
+			
+			<p class="p">An alternative approach compared to the SSL VPN solution that is provided by the <span class="ph pname">Cloud connector</span> is to
+				expose on-premise services and applications via a reverse proxy to the Internet. For
+				this method, there is typically a reverse proxy setup in the "demilitarized zone"
+				(DMZ) subnetwork of a customer, which: </p>
+
+			<ul class="ul" id="loiodde01af51ddc49758dbbb03afcb075e5__ul_rb3_xch_gk">
+				<li class="li">Acts as a mediator between <span class="ph pname">SAP Cloud Platform</span> and the
+					on-premise services; </li>
+
+				<li class="li">Provides the services of an Application Delivery Controller (ADC) in order, for
+					example, to encrypt, filter, route, or introspect the inbound traffic. </li>
+
+			</ul>
+
+			<p class="p">The figure below shows the minimal overall network topology of this approach. For
+				more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=https://websmp201.sap-ag.de/%7Esapidb/011000358700000723732012E/SAP_OD_TCG_FINAL_V12.pdf" target="_blank" download="" alt="https://websmp201.sap-ag.de/%7Esapidb/011000358700000723732012E/SAP_OD_TCG_FINAL_V12.pdf" title="https://websmp201.sap-ag.de/%7Esapidb/011000358700000723732012E/SAP_OD_TCG_FINAL_V12.pdf">Technical Connectivity Guide<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>. </p>
+
+			<p class="p">On-premise services accessible via a reverse proxy are then callable from <span class="ph pname">SAP Cloud Platform</span> like other
+				HTTP services available on the Internet. When you use destinations to call those
+				services, make sure that the configuration of the <span class="keyword parmname">ProxyType</span>
+				parameter is set to <kbd class="ph userinput">Internet</kbd>.</p>
+
+			<p class="p"><img class="image" id="loiodde01af51ddc49758dbbb03afcb075e5__image_opq_d3d_vy" src="loio294a85b20b49432c8bd2d02dc391713e_LowRes.png"/></p>
+
+		</div></div>
+
+		<div class="section" id="loiodde01af51ddc49758dbbb03afcb075e5__section_N10049_N10011_N10001"><div class="section_title">Advantages</div><div type="Advantages">
+			
+			<p class="p">Depending on your scenario, you can benefit from the reverse proxy. An example is the required
+				network infrastructure (such as a reverse proxy and ADC services): since it already
+				exists in your network landscape, you can reuse it to connect to <span class="ph pname">SAP Cloud Platform</span>. In this
+				case, there would be no need to set up and operate new components on your (customer)
+				side.</p>
+
+		</div></div>
+
+		<div class="section" id="loiodde01af51ddc49758dbbb03afcb075e5__section_N10056_N10011_N10001"><div class="section_title">Disadvantages</div><div type="Disadvantages">
+			
+			<ul class="ul" id="loiodde01af51ddc49758dbbb03afcb075e5__ul_i5f_5ch_gk">
+				<li class="li">The reverse proxy approach does not prevent the exposed services from being
+					generally accessible via the Internet, which makes them vulnerable to attacks
+					from anywhere in the world. <span class="ph uicontrol">Denial-of-Service</span> attacks in
+					particular are possible and difficult to protect against. Therefore, protection
+					against potential attacks requires the highest security standards to be
+					implemented in the DMZ and reverse proxy. For the productive deployment of a
+					hybrid cloud/on-premise application, this approach usually requires intense
+					involvement of the customer's IT department and a longer period of
+					implementation.</li>
+
+				<li class="li">If the reverse proxy is set to allow filtering or restriction of accepted source IP
+					addresses, you can only set one single IP address to be used for all <span class="ph pname">SAP Cloud Platform</span> outbound
+					communications. <p class="p">Although it filters any callers that are not running on the
+						cloud, the reverse proxy does not exclusively restrict the access to cloud
+						applications belonging to the related customer. Basically, any application
+						running on the cloud would pass this filter.</p>
+</li>
+
+				<li class="li">SAP-proprietary RFC protocol is not supported, so that a cloud application
+					cannot directly call an on-premise ABAP system without having application
+					proxies on top of ABAP.</li>
+
+			</ul>
+
+			<div class="note note" id="loiodde01af51ddc49758dbbb03afcb075e5__note_N10071_N10056_N10011_N10001"><span class="notetitle">Note</span> These demerits do not exist when using the <span class="ph pname">Cloud connector</span>. As it
+				establishes the SSL VPN tunnel to <span class="ph pname">SAP Cloud Platform</span> via a reverse
+				invoke approach, there is no need to configure the DMZ or external firewall of a
+				customer network for inbound traffic. Attacks from the Internet are not possible.
+				With its simple setup and fine-grained access control of exposed systems and
+				resources, the <span class="ph pname">Cloud connector</span> allows
+				a high level of security and fast productive implementation of hybrid applications.
+				It also supports multiple application protocols such as <span class="ph uicontrol">HTTP</span>
+				and <span class="ph uicontrol">RFC</span>.</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

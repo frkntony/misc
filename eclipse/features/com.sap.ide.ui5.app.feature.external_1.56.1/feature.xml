@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ide.ui5.app.feature.external"
+      label="SAPUI5 Application Development"
+      version="1.56.1"
+      provider-name="%providerName"
+      plugin="com.sap.ide.ui5.app.plugin">
+
+   <description>
+      Tools for developing SAPUI5 applications. Offers easy-to-use wizards for creating and maintaining SAPUI5 applications and supports the SAPUI5 MVC concept. This feature is supported in Eclipse Package, Eclipse IDE for Java EE Developers based on Eclipse 3.6 and above.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jst.web_ui.feature" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.jsdt.feature" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="com.sap.ui5.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.platform" version="4.4.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jdt" version="3.5.0" match="compatible"/>
+      <import feature="org.eclipse.jst.enterprise_ui.feature" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.common_core.feature" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.jst.common.fproj.enablement.jdt" version="3.1.0" match="compatible"/>
+      <import feature="org.eclipse.wst.common.fproj" version="3.1.0" match="compatible"/>
+      <import feature="com.sap.ui5.uilib.feature" version="0.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ide.ui5.app.plugin"
+         download-size="138"
+         install-size="286"
+         version="1.56.1"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ide.ui5.services"
+         download-size="423"
+         install-size="869"
+         version="1.56.1"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ide.ui5.common"
+         download-size="41"
+         install-size="70"
+         version="1.56.1"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ide.ui5.ctrl.metamodel"
+         download-size="183"
+         install-size="641"
+         version="1.56.1"
+         unpack="false"/>
+
+</feature>

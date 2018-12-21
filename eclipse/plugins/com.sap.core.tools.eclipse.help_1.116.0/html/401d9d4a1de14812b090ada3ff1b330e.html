@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Undeploying Solutions Using the Cockpit (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio401d9d4a1de14812b090ada3ff1b330e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Undeploying Solutions Using the Cockpit (Beta)</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">Еnsure that the related HTML5 or Java applications is started, if your solution contains one
+				or more of the following components:</p>
+
+			<ul class="ul" id="loio401d9d4a1de14812b090ada3ff1b330e__ul_h5t_nny_5x">
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">SuccessFactors Connection</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">SuccessFactors Homepage Tile</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">SuccessFactors Application Access</span></li>
+
+			</ul>
+
+			<p class="p"/>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for all <span class="ph pname">SAP Cloud Platform</span>
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+<p class="p">To undeploy a solution from your account, proceed as described:</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the cockpit, choose <span class="ph uicontrol">Solutions (BETA)</span> in the navigation
+					area.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the solutuion list, select the tile of the solution you want to updeploy. The
+						<span class="ph uicontrol">Delete a Solution</span> dialog appears.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optionally, perform the following: </span>
+				<div class="itemgroup info">
+					<ol class="ol" type="a" id="loio401d9d4a1de14812b090ada3ff1b330e__ol_m24_123_yy">
+						<li class="li">Deselect the <span class="ph uicontrol">Delete data source bindings</span>
+							checkbox.</li>
+
+						<li class="li">Select the <span class="ph uicontrol">Clean-up on error</span> checkbox. If set,
+							any errors during deletion that are external to <span class="ph pname">SAP Cloud Platform</span>
+							are ignored. External systems might still contain components that are
+							not deleted.</li>
+
+					</ol>
+
+				</div>
+			</li>
+<li class="li step stepexpand"><span class="ph cmd">Select the <span class="ph uicontrol">Confirm solution deletion</span> checkbox, and choose
+						<span class="ph uicontrol">Delete</span>.</span>
+				<div class="itemgroup info">
+					<p class="p">The solution undeployment dialog remains on the screen during the process. А
+						confirmation appears when the undeployment is completed. </p>
+
+					<p class="p">If you close the dialog while the process is running, you can open it again
+						by choosing <span class="ph uicontrol">Check Progress</span> of the corresponding
+						operation, located in the <span class="ph uicontrol">Ongoing Operations</span> table in
+						the solution overview page.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<ul class="ul" id="loio401d9d4a1de14812b090ada3ff1b330e__ul_qx3_kmg_tx">
+							<li class="li">SFSF Roles are not deleted.</li>
+
+							<li class="li">Custom application destinations and account destinations are also deleted.</li>
+
+							<li class="li">Deleted solutions and their components cannot be restored.</li>
+
+						</ul>
+
+					</div>
+
+				</div></li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

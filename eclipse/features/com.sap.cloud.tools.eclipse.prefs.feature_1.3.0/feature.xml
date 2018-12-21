@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.cloud.tools.eclipse.prefs.feature"
+      label="%featureName"
+      version="1.3.0"
+      provider-name="%providerName"
+      plugin="com.sap.cloud.tools.eclipse.prefs">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.jface"/>
+   </requires>
+
+   <plugin
+         id="com.sap.cloud.tools.eclipse.prefs"
+         download-size="19"
+         install-size="29"
+         version="1.3.0"
+         unpack="false"/>
+
+</feature>

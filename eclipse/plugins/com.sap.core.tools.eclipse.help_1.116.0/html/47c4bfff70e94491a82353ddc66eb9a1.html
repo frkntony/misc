@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Register the extension application as an authorized assertion consumer service to configure its access to the SAP SuccessFactors system through the SAP SuccessFactors identity provider (IdP)."/>
+<meta name="description" content="Register the extension application as an authorized assertion consumer service to configure its access to the SAP SuccessFactors system through the SAP SuccessFactors identity provider (IdP)."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Register the Extension Application as an Authorized Assertion Consumer Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio47c4bfff70e94491a82353ddc66eb9a1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Register the Extension Application as an Authorized Assertion Consumer Service</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Register the extension application as an authorized assertion consumer service to
+		configure its access to the <span class="ph pname">SAP SuccessFactors</span> system through the <span class="ph pname">SAP SuccessFactors</span> identity provider
+		(IdP).</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			<ul class="ul" id="loio47c4bfff70e94491a82353ddc66eb9a1__ul_vdt_xsz_4n">
+				<li class="li">You have made yourself familiar with the <span class="ph pname">SAP Cloud Platform</span> console client.
+					For more information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?76132306711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?76132306711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?76132306711e1014839a8273b0e91070.html">Console Client</a></li>
+
+				<li class="li">The extension application is started. For more information about starting an
+					application deployed in an <span class="ph pname">SAP Cloud Platform</span> account, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?cc417d7ac1284f9e903fd89613b08b27.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?cc417d7ac1284f9e903fd89613b08b27.html" title="https://help.hana.ondemand.com/help/frameset.htm?cc417d7ac1284f9e903fd89613b08b27.html">start</a></li>
+
+				<li class="li">The <span class="ph pname">SAP Cloud Platform</span> account in
+					which you configure the connectivity to the <span class="ph pname">SAP SuccessFactors</span> system is an
+					extension account. For more information about extension accounts, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html" title="https://help.hana.ondemand.com/help/frameset.htm?5bc52f4cca9a4fdc97f0e01016aef25f.html">Basic Concepts</a></li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Extension applications deployed in an <span class="ph pname">SAP Cloud Platform</span> extension
+				account are authenticated against the <span class="ph pname">SAP SuccessFactors</span> (IdP). To ensure
+				that only approved applications are using the <span class="ph pname">SAP SuccessFactors</span> IdP for
+				authentication, you need to register the extension application as an authorized
+				assertion consumer service, configure the application URL, the service provider
+				audience URL and the service provider logout URL of the extension application in
+					<span class="ph pname">SAP SuccessFactors</span>
+				Provisioning. To do so you use the
+					<span class="keyword cmdname">hcmcloud-enable-application-access</span> console client
+				command.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Register the extension application as an authorized assertion consumer service. In the
+					console client command line, execute:
+						<kbd class="ph userinput">hcmcloud-enable-application-access</kbd>, as follows:</span>
+				<ul class="ul choices" id="loio47c4bfff70e94491a82353ddc66eb9a1__choices_ln1_fdw_3t">
+					<li class="li choice">For an application deployed in your account, specify the name of your extension
+						application for the <span class="keyword parmname">application</span> parameter.<div class="p">For example, to register a Java extension application running in your account in the
+							US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-enable-application-access --application <var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For example, to register a Java extension application to which your account in the US East data
+							center is subscribed,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-enable-application-access --application <var class="keyword varname">&lt;application_provider_account:my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+				</ul>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">(Optional) Display the status of an application entry in the list of authorized assertion
+					consumer services for the <span class="ph pname">SAP SuccessFactors</span> system
+					associated with an extension account. In the console client command line,
+					execute <kbd class="ph userinput">hcmcloud-display-application-access</kbd>, as
+					follows:</span>
+				<ul class="ul choices" id="loio47c4bfff70e94491a82353ddc66eb9a1__choices_kgf_32m_ht">
+					<li class="li choice">For an application deployed in your account, specify the name of your extension
+						application for the <span class="keyword parmname">application</span> parameter. <div class="p">For
+							example, to display the status of the authorized assertion consumer
+							service entry for an application deployed in your account in the US East
+							data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-display-application-access-status --application <var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_acc&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For
+							example, to display the status of the authorized assertion consumer
+							service entry for an application to which your account in the US East
+							data center is subscribed, execute:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-display-application-access-status --application <var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var> --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+				</ul>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">(Optional) If your scenario requires it, remove the entry of the exetsnion application from
+					the list of authorized assertion consumer services for the <span class="ph pname">SAP SuccessFactors</span> system
+					associated with the extension account. In the console client command line,
+					execute <kbd class="ph userinput">hcmcloud-disable-application-access</kbd>, as
+					follows:</span>
+				<ul class="ul choices" id="loio47c4bfff70e94491a82353ddc66eb9a1__choices_wkl_llw_3t">
+					<li class="li choice">For an application deployed in your account, specify the name of your extension
+						application for the <span class="keyword parmname">application</span> parameter. <div class="p">For
+							example, to remove the authorized assertion consumer service entry for a
+							Java application deployed in your account in the US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-disable-application-access --application <var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_acc&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For
+							example, to remove the authorized assertion consumer service entry for a
+							Java application to which your account in the US East data center is
+							subscribed, execute:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo  hcmcloud-disable-application-access --application <var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+				</ul>
+
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="da0e8ba8a1c84432a2b85238dcc60ef5.html" title="This command registers an extension application as an authorized assertion consumer service for the SAP SuccessFactors system associated with the specified account to enable the application to use the SAP SuccessFactors identity provider (IdP) for authentication.">hcmcloud-enable-application-access (Beta)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

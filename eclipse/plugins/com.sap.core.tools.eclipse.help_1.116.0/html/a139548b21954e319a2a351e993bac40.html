@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To enforce authorization for an HTML5 application, permissions can be added to application paths."/>
+<meta name="description" content="To enforce authorization for an HTML5 application, permissions can be added to application paths."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Authorization</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa139548b21954e319a2a351e993bac40">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Authorization</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">To enforce authorization for an HTML5 application, permissions can be added to
+		application paths.</p>
+
+		<p class="p">In the cockpit, you can create custom roles and assign them to the defined permissions. If a
+			user accesses an application path that starts with a path defined for a permission, the
+			system checks if the current user is a member of the assigned role. If no role is
+			assigned to a defined permission only account members with developer permission or
+			administrator permission have access to the protected resource.</p>
+
+		<p class="p">Permissions are only effective for the active application version. To protect non-active
+			application versions, the default permission
+				<span class="ph sap-technical-name sap-technical-name">NonActiveApplicationPermission</span> is defined
+			by the system for every HTML5 application. This default permission must not be defined
+			in the <span class="ph filepath">neo-app.json</span> file but is available automatically for each
+			HTML5 application.</p>
+
+		<p class="p">If only authentication is required for a path, but no authorization, a security constraint can be added without a permission.</p>
+
+		<p class="p">A security constraint applies to the directory and its sub-directories defined in the
+				<span class="ph sap-technical-name sap-technical-name">protectedPaths</span> field, except for paths that are explicitly excluded in the
+				<span class="ph sap-technical-name sap-technical-name">excludedPaths</span> field. The <span class="ph sap-technical-name sap-technical-name">excludedPath</span> field supports
+			pattern matching. If a path specified ends with a slash character (/) all resources in the given directory and its sub-directories are
+			excluded. You can also specify the path to be excluded using wildcards, for example, the path <span class="ph filepath">**.html</span> excludes all
+			resources ending with <span class="ph filepath">.html</span> from the security constraint.</p>
+
+		<div class="p">To define a security constraint, use the following format in the
+				<span class="ph filepath">neo-app.json</span>
+				file:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+...
+    "securityConstraints": [
+        {
+            "permission": "&lt;permission name&gt;",
+            "description": "&lt;permission description&gt;",
+            "protectedPaths": [
+                "&lt;path to be secured&gt;"
+            ],
+            "excludedPaths": [
+                "&lt;path to be excluded&gt;",
+                 ...
+            ]
+        }
+    ]
+...
+</pre></div>
+<div class="note sap-example example"><span class="exampletitle">Example</span> An
+				example configuration that restricts a complete application to the
+					<span class="ph sap-technical-name sap-technical-name">accessUserData</span> permission, with the
+				exception of all paths starting with
+					<span class="ph sap-technical-name sap-technical-name">"/logout"</span>, looks like
+				this:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+...
+    "securityConstraints": [
+        {
+            "permission": "accessUserData",
+            "description": "Access User Data",
+            "protectedPaths": [
+                "/"
+            ],
+            "excludedPaths": [
+                "/logout/**"
+            ]
+        }
+    ]
+...
+</pre></div>
+</div>
+</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d128e6796cf94bb187d4bbf69419e2f5.html" title="Resources of an HTML5 application can be protected by permissions. The application developer defines the permissions in the application descriptor file.">Managing Roles and Permissions</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

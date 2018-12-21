@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The status of an individual process is based on values that reflect the process run state and its monitoring metrics."/>
+<meta name="description" content="The status of an individual process is based on values that reflect the process run state and its monitoring metrics."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Checking the Process Status</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio499992d9c31648b0afdae88c463ba9b4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Checking the Process Status</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">The status of an individual process is based on values that reflect the process run state and its monitoring metrics. </p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the cockpit, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area and then select an application in the application list.</span>
+				<div class="itemgroup info">
+					<p class="p">The <span class="ph uicontrol">Processes</span> panel shows a status value about the current state of the available processes and the
+						overall state for the metrics as follows:</p>
+
+					<p class="p"><span class="ph uicontrol">State</span></p>
+
+					<ul class="ul" id="loio499992d9c31648b0afdae88c463ba9b4__ul_rpd_qwv_1y">
+						<li class="li">Started</li>
+
+						<li class="li">Started (Disabled)</li>
+
+						<li class="li">Starting</li>
+
+						<li class="li">Stopping</li>
+
+						<li class="li">Application Error</li>
+
+						<li class="li">Infrastructure Error</li>
+
+					</ul>
+
+					<p class="p"><span class="ph uicontrol">Metric</span></p>
+
+					<ul class="ul" id="loio499992d9c31648b0afdae88c463ba9b4__ul_adc_ngp_zl">
+						<li class="li">OK</li>
+
+						<li class="li">Warning (also shown for intermediate states)</li>
+
+						<li class="li">Critical</li>
+
+						<li class="li">Pending</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the relevant process to go to the process overview to view the status summary and further details:</span>
+				<div class="itemgroup info">
+					<div class="p">
+						
+<div class="table-wrapper tablenoborder"><table summary="" id="loio499992d9c31648b0afdae88c463ba9b4__table_ilr_sr2_vm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="20.491803278688526%"/><col width="79.50819672131148%"/></colgroup>
+
+								
+								
+								<thead class="thead" align="left">
+									<tr class="row">
+										<th class="entry" valign="top" width="20.491803278688526%" id="d3370225e108">Panel</th>
+
+										<th class="entry" valign="top" width="79.50819672131148%" id="d3370225e111">Description</th>
+
+									</tr>
+
+								</thead>
+
+								<tbody class="tbody">
+									<tr class="row">
+										<td class="entry" valign="top" width="20.491803278688526%" headers="d3370225e108 ">Status Summary</td>
+
+										<td class="entry" valign="top" width="79.50819672131148%" headers="d3370225e111 ">Displays the current values of the two status categories and the runtime version. A short text
+											summarizes any problems that have been detected. </td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20.491803278688526%" headers="d3370225e108 ">State</td>
+
+										<td class="entry" valign="top" width="79.50819672131148%" headers="d3370225e111 ">Indicates whether the process has been started or is transitioning between the
+												<span class="keyword">Started</span> and <span class="keyword">Stopped</span> states. The <span class="keyword">Error</span> state
+											indicates a fault, such as server unavailability, timeout, or VM failure.</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20.491803278688526%" headers="d3370225e108 ">Runtime</td>
+
+										<td class="entry" valign="top" width="79.50819672131148%" headers="d3370225e111 ">Shows the runtime version on which the application process is running and its current status:<div class="p">
+												<ul class="ul" id="loio499992d9c31648b0afdae88c463ba9b4__ul_irj_xr2_vm">
+													<li class="li">OK: Still within the first three months since it was released</li>
+
+													<li class="li">No longer recommended: Has exceeded the initial three-month period</li>
+
+													<li class="li">Expired: 15 months since its release date</li>
+
+												</ul>
+
+											</div>
+</td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+</div>
+
+					</div>
+
+					<p class="p">To display the metrics, choose <span class="ph uicontrol">Monitoring</span> in the navigation area.</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

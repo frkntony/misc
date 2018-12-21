@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Defining Schedules for Rules</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocc21f91549234332a2f4945c415bb73b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Defining Schedules for Rules</h1>
+
+	<div class="body taskbody">
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have logged on to the gamification workbench with the role
+					<span class="ph sap-technical-name sap-technical-name">GamificationDesigner</span> and you have
+				opened the <span class="ph uicontrol">Rules</span> tab.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Drools allows the specification of timer or scheduling constraints for rules using Java
+				interval expression or cron expressions. If the WHEN-part of such a rule is
+				satisfied this results in a scheduled activation, which is put on the Drools agenda.
+				Unlike normal activations, these scheduled activations are not executed as part of a
+				fireAllRules. Instead, a scheduler executes these activations according to the
+				specified timer or scheduling expression.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> As soon as the rule condition (WHEN-part) is not satisfied anymore, all scheduled
+				activations are canceled. If for instance a rule is triggered based on a certain
+				event type, the scheduled activations are canceled as soon as the corresponding
+				event that activated the rule is retracted. </div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Create a rule just as described in <a class="xref" href="55b37ab40abe4d19aa325fdf1707bcfb.html">Creating Rules</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the rule details screen, switch to <span class="ph uicontrol">Edit</span> mode and navigate to
+					the <span class="ph uicontrol">Scheduling</span> tab.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Use the radio buttons to select between Cron Job, Interval or Expression.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Define schedule or timer.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<ul class="ul" id="loiocc21f91549234332a2f4945c415bb73b__ul_sqt_drg_m5">
+							<li class="li">
+								<p class="p"><span class="ph uicontrol">Cron Job</span>: Specify a schedule based on a
+									valid cron expression. A simple wizard appears that helps to
+									create simple expressions. For more advanced expressions: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger" target="_blank" alt="http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger" title="http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger">http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p"><span class="ph uicontrol">Interval</span>: Use a Java interval expression.
+									The first parameter specifies the initial delay. The second
+									parameter specifies the interval. For example:. "0 3m", "10h
+									10s", "3h". For more information refer to the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html" target="_blank" alt="http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html" title="http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html">Drools language
+										documentation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+							</li>
+
+							<li class="li">
+								<p class="p"><span class="ph uicontrol">Expression</span>: Provide a valid Drools
+									expression - either a delay in ms or a variable from the drools
+									when statement. The variable has to contain the delay in ms.</p>
+
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

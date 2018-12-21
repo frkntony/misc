@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Connectivity service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>SAP Cloud Platform Connectivity</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe54cc8fbbb571014beb5caaf6aa31280">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1"><span class="ph pname">SAP Cloud Platform
+                                    Connectivity</span></h1>
+<div class="body conbody"><div class="section" id="loioe54cc8fbbb571014beb5caaf6aa31280__section_C96CA2131E2C4CF7B3CD7CCBCF505ECC"><div class="section_title">Overview</div><div type="Overview"> 
+		 
+		<p class="p"><span class="ph pname">SAP Cloud Platform
+                                    Connectivity</span> allows
+					<span class="ph pname">SAP Cloud Platform</span>
+				applications to access securely remote services that run on the Internet or
+				on-premise. This service: </p>
+ 
+		<ul class="ul"><li class="li">Consists of a Java API that application developers can use to consume remote services. </li>
+<li class="li">Allows account-specific configuration of application connections via HTTP and Mail destinations. </li>
+<li class="li">Offers a technical connectivity solution, which can be used to establish a secure tunnel from
+					the customer network to an on-demand application in <span class="ph pname">SAP Cloud Platform</span>. At the
+					same time, the customer IT department has full control and auditability of what
+					is technically exposed to the on-demand world. </li>
+
+				<li class="li">Allows you to make connections to both Java and ABAP on-premise systems.</li>
+</ul>
+ 
+		<p class="p"> </p>
+
+			<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioe54cc8fbbb571014beb5caaf6aa31280__image_gdd_zwy_zw" src="loio5eeeafdb46c84ae2b55f2da4285eef87_LowRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+ 
+		<p class="p">A company that uses <span class="ph pname">SAP Cloud Platform</span>
+				has been granted an account on the platform to which only authorized users of the
+				company have access. The company can subscribe applications to its account or deploy
+				its own applications, and those applications can then be used in this account. The
+				administrator of the <span class="ph pname">Cloud connector</span> can set
+				up a secure tunnel from the customer network to his or her account. The platform
+				ensures that the tunnel can be only used by the account applications. This means
+				that applications of other accounts have no access to the tunnel. The tunnel itself
+				is encrypted via transport layer security so that connection privacy can be
+				guaranteed. </p>
+ 
+		<p class="p"> </p>
+ 
+	 </div></div>
+<div class="section" id="loioe54cc8fbbb571014beb5caaf6aa31280__section_D80CCD3F0FAE481592731F79046FD1FE"><div class="section_title">Features</div><div type="Features"> 
+		 
+		<p class="p">The <span class="ph pname">connectivity
+                            service</span>
+				supports the following protocols relevant for both Java and SAP HANA
+				development:</p>
+
+			<ul class="ul" id="loioe54cc8fbbb571014beb5caaf6aa31280__ul_s5s_dpq_qj">
+				<li class="li"><span class="ph uicontrol">HTTP Protocol</span> - this protocol enables you to exchange data between
+					your on-demand application and on-premise systems or internet services. For this
+					aim, you can create and configure HTTP destinations to make the needed Web
+					connections. For on-premise connectivity, you can reach backend systems using
+					the <span class="ph pname">Cloud connector</span> via
+					HTTP. </li>
+
+				<li class="li"><span class="ph uicontrol">Mail Protocols</span> - the <span class="ph uicontrol">SMTP</span> protocol allows you
+					to send electronic mail messages from your Web applications using e-mail
+					providers that are accessible on the Internet, such as Google Mail (Gmail). The
+						<span class="ph uicontrol">IMAP</span> and <span class="ph uicontrol">POP3</span> allow you to
+					retrieve e-mails from the mailbox of your e-mail account. Applications use the
+					standard <span class="keyword apiname">javax.mail</span> API. The e-mail provider and e-mail
+					account are configured using mail destinations.</li>
+
+				<li class="li"><span class="ph uicontrol">RFC Protocol </span>- this protocol enables you to invoke ABAP function
+					modules. You can create and configure RFC destinations as well as make
+					connections to back-end systems using the <span class="ph pname">Cloud connector</span> via
+					RFC.</li>
+
+			</ul>
+
+			<p class="p"/>
+ 
+		<p class="p"> 
+		</p>
+ 
+	 </div></div>
+
+	<div class="section"><div class="section_title">SAP HANA Development</div><div type="SAP HANA Development">
+		
+		<p class="p">You can create XS destinations for connecting your HANA XS applications to Internet and
+				on-premise services. For more information, see <a class="xref" href="5c0c9c90b1b546bcba8de180f14f0722.html" title="This section is dedicated to the connectivity service in the HANA technology.">Consuming SAP Cloud Platform Connectivity (HANA XS)</a>. </p>
+
+	</div></div>
+
+			<div class="section"><div class="section_title">Java Development</div><div type="Java Development">
+			
+			<p class="p">Use the <span class="ph pname">connectivity
+                            service</span>
+				for the following Java scenarios:</p>
+
+			<ul class="ul" id="loioe54cc8fbbb571014beb5caaf6aa31280__ul_fwp_sw4_nm">
+				<li class="li">Consume a service from the Internet. More information: <a class="xref" href="e592cf6cbb57101495d3c28507d20f1b.html">Consuming Internet Services (Java Web or Java EE 6 Web Profile)</a>
+				</li>
+
+				<li class="li">Make connections between Web applications and on-premise backend services via
+					HTTP protocol. More information: <a class="xref" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a></li>
+
+				<li class="li">Make connections between Web applications and on-premise backend services via
+					RFC protocol. More information: <a class="xref" href="0a238b915b3a48adb950e5807654226c.html">Tutorial: Invoking ABAP Function Modules in On-Premise ABAP Systems</a></li>
+
+				<li class="li">Establish connections from on-premise systems to <span class="ph pname">SAP Cloud Platform</span>, using
+					the <span class="ph pname">Cloud connector</span>.
+					More information: <a class="xref" href="e6c7616abb5710148cfcf3e75d96d596.html">SAP Cloud Platform Cloud Connector</a></li>
+
+				<li class="li">Send and fetch e-mails. More information: <a class="xref" href="e6ff28a3bb571014b89ad0fa2f410a1f.html" title="The e-mail connectivity functionality allows you to send electronic mail messages from your Web applications using e-mail providers that are accessible on the Internet, such as Google Mail (Gmail). It also allows you to retrieve e-mails from the mailbox of your e-mail account.">Sending and Fetching E-Mail</a></li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loioe54cc8fbbb571014beb5caaf6aa31280__section_N100DE_N10013_N10001"><div class="section_title">Restrictions</div><div type="Restrictions">
+			
+			<ul class="ul" id="loioe54cc8fbbb571014beb5caaf6aa31280__ul_xns_m5x_cn">
+				<li class="li">For the on-demand to on-premise connectivity scenario, the currently supported protocols are
+					HTTP(S), LDAP, and RFC. </li>
+
+				<li class="li">For Internet connections, you are allowed to use any port &gt; <kbd class="ph userinput">1024</kbd>.
+					For on-demand to on-premise solutions there are no port limitations.  </li>
+
+				<li class="li">You can use destination configuration files with extension
+						<kbd class="ph userinput">.props</kbd>, <kbd class="ph userinput">.properties</kbd>,
+						<kbd class="ph userinput">.jks</kbd>, and <kbd class="ph userinput">.txt</kbd>, as well as
+					files with no extension.</li>
+
+				<li class="li">If a destination configuration consists of a key store or trust store, it must
+					be stored in JKS files with a standard <kbd class="ph userinput">.jks</kbd> extension. </li>
+
+				<li class="li">To develop a JCo application, your SDK local runtime needs to be hosted by a 64-bit JVM, on
+					a x86_64 operating system (Microsoft Windows OS, Linux OS, or Mac OS X).<p class="p">On
+						Windows platforms, you need to install <span class="ph uicontrol">Microsoft Visual C++ 2010
+							Redistributable Package (x64)</span>. To download this package, go
+						to <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.microsoft.com/en-us/download/details.aspx?id=14632" target="_blank" alt="http://www.microsoft.com/en-us/download/details.aspx?id=14632" title="http://www.microsoft.com/en-us/download/details.aspx?id=14632">http://www.microsoft.com/en-us/download/details.aspx?id=14632<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+</li>
+
+				<li class="li">To check all software and hardware prerequisites for working with <span class="ph pname">Cloud connector</span>
+					2.x, see <a class="xref" href="e23f776e4d594fdbaeeb1196d47bbcc0.html">Prerequisites</a>. </li>
+
+				<li class="li">You cannot communicate with an e-mail provider via an unencrypted SMTP protocol
+					on port 25.</li>
+
+				<li class="li">Fetched e-mail is not scanned for viruses.</li>
+
+				<li class="li">Sending e-mail with attachments using <span class="keyword apiname">javax.activation.DataHandler</span> works
+					with <span class="ph pname">SAP Cloud Platform</span>
+					SDK for Java EE 6 Web Profile.</li>
+
+				<li class="li">Mail destinations can only be configured on application level. That is, configuration on a
+					subscription or customer account level is not supported.</li>
+
+				<li class="li">For <span class="ph pname">SAP Cloud Platform</span> SDK for Java
+					Web and <span class="ph pname">SAP Cloud Platform</span> SDK for Java EE 6 Web Profile: Applications must use the
+						<span class="keyword apiname">javax.mail</span> version that is provisioned by the <span class="ph pname">SAP Cloud Platform</span> runtime
+					(see <a class="xref" href="e69bc863bb571014b358e2947e36d475.html">Connectivity and Destination APIs</a>). Applications must
+					not include the <span class="keyword apiname">javax.mail</span> library as part of the web
+					archive.</li>
+
+			</ul>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e5c9867dbb571014957ef9d7a8846b1c.html">Consuming SAP Cloud Platform Connectivity (Java)</a></div>
+<div><a class="link" href="5c0c9c90b1b546bcba8de180f14f0722.html" title="This section is dedicated to the connectivity service in the HANA technology.">Consuming SAP Cloud Platform Connectivity (HANA XS)</a></div>
+<div><a class="link" href="e6c7616abb5710148cfcf3e75d96d596.html">SAP Cloud Platform Cloud Connector</a></div>
+<div><a class="link" href="e6ff28a3bb571014b89ad0fa2f410a1f.html" title="The e-mail connectivity functionality allows you to send electronic mail messages from your Web applications using e-mail providers that are accessible on the Internet, such as Google Mail (Gmail). It also allows you to retrieve e-mails from the mailbox of your e-mail account.">Sending and Fetching E-Mail</a></div>
+<div><a class="link" href="e5580c5dbb5710149e53c6013301a9f2.html">Connectivity Support</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

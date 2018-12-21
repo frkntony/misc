@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css?x=24065258694969982"/>
+<title>Writing a Control: FAQ (internal)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"> </script>
+</head>
+<body class="" id="loio3f472df7cb364ab48541566d5cb1821e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Writing a Control: FAQ (internal)</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p"><span class="ph emphasis emphasis">Why does <samp class="ph codeph">onmousemove</samp> not work in my control?</span></p>
+<p class="p">SAPUI5 does not by default register an event handler for this event because of
+			performance reasons. For an example, how to register this event, see the
+				<samp class="ph codeph">Dialog</samp> control.</p>
+<p class="p"><span class="ph emphasis emphasis">How can my control remember a state?</span></p>
+<p class="p">This can either be done in public properties, or in private member variables. The latter is
+			usually defined in the <samp class="ph codeph">init()</samp> method of the control and start with an
+			underscore.</p>
+<p class="p"><span class="ph emphasis emphasis">Why is my control renderer called while the control is already on the
+				screen?</span></p>
+<p class="p">Whenever the control state changes because, for example, a property is changed, the default
+			behavior is to rerender the control. SAPUI5 calls the control renderer with the updated
+			state and takes care of replacing the HTML in the page. It is also possible to implement
+			the control change exlicitly in the control, which then adapts the HTML to represent the
+			new state. In this case, the default rerendering can be suppressed (see below).</p>
+<p class="p"><span class="ph emphasis emphasis">How can I avoid rerendering of my control when a property is changed?</span></p>
+<p class="p">If you call the property setter in your own code, like <samp class="ph codeph">this.setText("xy")</samp>, you
+			can instead use the generic setter defined in <samp class="ph codeph">Element.js</samp> which also has
+			the optional parameter <samp class="ph codeph">"bSuppressRerendering": this.setProperty("text", "xy",
+				true)</samp>. If the property change is done from the application, but you still
+			want to avoid rerendering, for example, because you only need to toggle one CSS class or
+			because the control DOM elements may not be removed and replaced, you need to overwrite
+			the generated setter method. The generated method looks like this:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.commons.Button.prototype.setText = function(sText) {
+         this.setProperty("text", sText);
+};</pre></div>
+<p class="p">You also need to add the flag in your overwriting implementation:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">sap.ui.commons.Button.prototype.setText = function(sText) {
+	this.setProperty("text", sText, true);
+};
+</pre></div>
+<p class="p">Usually you then need to handle the visualization of the change yourself; in this case
+			you might want to find the DOM element where your control text is located and exchange
+			the text.</p>
+<p class="p"><span class="ph emphasis emphasis">Create/store/read configuration</span></p>
+<p class="p"><span class="ph emphasis emphasis">React on theme change</span></p>
+<p class="p">Controls can, like applications, register for the <samp class="ph codeph">themeChanged</samp> event of
+			the SAPUI5 core.</p>
+</div>
+</div></div>
+</body>
+</html>

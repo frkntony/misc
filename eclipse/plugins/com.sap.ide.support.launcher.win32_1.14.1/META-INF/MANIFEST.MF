@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.sap.ide.support.launcher.win32;singleton:=tru
+ e
+Archiver-Version: Plexus Archiver
+Built-By: ppurple
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-PlatformFilter: (osgi.os=win32)
+Bundle-ManifestVersion: 2
+Bundle-Vendor: %Bundle-Vendor_xtxt
+Fragment-Host: com.sap.ide.support.ui
+Bundle-Name: %Bundle-Name_xgrp
+Bundle-Version: 1.14.1
+Bundle-Localization: plugin
+Created-By: Apache Maven 3.0.4
+Build-Jdk: 1.7.0_80
+Eclipse-BundleShape: dir
+
+Name: collectSupportInformation.bat
+SHA-256-Digest: x9s+1YskGqpTzjEo7RPBAeMrcdf7hjWkr8AK18W3euE=
+
+Name: META-INF/maven/com.sap.ide.support/com.sap.ide.support.launcher.
+ win32/pom.xml
+SHA-256-Digest: yRX3FTUu4VB3QxTlNq/W+pLFhGQW3W+x1y+87l4jvpM=
+
+Name: plugin.properties
+SHA-256-Digest: ODqROVuO0DQOBCiWgSHZdGik08RbJQd8YoGnAOJ6xLs=
+
+Name: META-INF/maven/com.sap.ide.support/com.sap.ide.support.launcher.
+ win32/pom.properties
+SHA-256-Digest: QeFmPy9WvY7M30XRaBwJkPqdpUFN6df28jgnqo57oG8=
+

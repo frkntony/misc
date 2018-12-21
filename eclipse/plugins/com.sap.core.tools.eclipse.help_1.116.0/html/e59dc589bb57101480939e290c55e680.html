@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Setting Up an Application as a Sample Back-End System</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe59dc589bb57101480939e290c55e680">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Setting Up an Application as a Sample Back-End System</h1>
+<div class="body conbody"><div class="section" id="loioe59dc589bb57101480939e290c55e680__section_A4854C809AF147FD99207FE26F4FA309"><div class="section_title">Overview</div><div type="Overview"> 
+		 
+		<p class="p">
+		</p>
+ 
+		<p class="p">This section describes how you set up a simple ping Web application that is used as a back-end
+				system. </p>
+ 
+	 </div></div>
+
+		<div class="section" id="loioe59dc589bb57101480939e290c55e680__section_N10027_N10013_N10001"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have downloaded <span class="ph pname">SAP Cloud Platform</span>
+				SDK on your local file system.</p>
+
+		</div></div>
+<div class="section" id="loioe59dc589bb57101480939e290c55e680__section_E7204D344E514FC8A35A9253A2EA8DFC"><div class="section_title">Procedure</div><div type="Procedure"> 
+		 
+		<p class="p">
+		</p>
+ 
+		<ol class="ol"><li class="li">Set up
+			 a servlet container such as 
+			 <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tomcat.apache.org/tomcat-7.0-doc/setup.html" target="_blank" alt="http://tomcat.apache.org/tomcat-7.0-doc/setup.html" title="http://tomcat.apache.org/tomcat-7.0-doc/setup.html">Tomcat<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. 
+		  </li>
+<li class="li">Add a user and role for basic authentication by adding the following lines to
+						the<span class="ph uicontrol">tomcat-users.xml</span> file in directory <span class="ph filepath">
+						&lt;TOMCAT_HOME&gt;/conf</span> file:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  
+&lt;role rolename="pingrole"/&gt;
+&lt;user name="pinguser" password="pingpassword" roles="pingrole" /&gt;
+</pre></div>
+
+				</li>
+<li class="li">From the SDK location, go to <span class="ph filepath">/samples/connectivity/onpremise</span>, copy files
+						<span class="ph uicontrol">BackendAppHttpNoAuth.war</span> and
+						<span class="ph uicontrol">BackendAppHttpBasicAuth.war</span> and paste them into the
+						<span class="ph filepath">&lt;TOMCAT_HOME&gt;/webapps</span> directory. </li>
+<li class="li">Start Tomcat and access the on-premise applications at the URLs below. Use
+						<kbd class="ph userinput">pinguser</kbd> / <kbd class="ph userinput">pingpassword</kbd> as the
+					credentials. <ul class="ul" id="loioe59dc589bb57101480939e290c55e680__ul_on1_blz_1n">
+						<li class="li"><span class="ph filepath">http://localhost:8080/BackendAppHttpNoAuth/noauth</span></li>
+
+						<li class="li"><span class="ph filepath">http://localhost:8080/BackendAppHttpBasicAuth/basic</span></li>
+
+					</ul>
+</li>
+</ol>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">In case you use SDK with version equal to or lower than, respectively,
+						<kbd class="ph userinput">1.44.0.1</kbd> (Java Web) and
+						<kbd class="ph userinput">2.24.13</kbd> (Java EE 6 Web Profile), you should find the
+					WAR files in directory
+						<span class="ph filepath">&lt;SDK_location&gt;/tools/samples/connectivity/onpremise</span>,
+					under the names <span class="ph emphasis emphasis">PingAppHttpNoAuth.war</span> and
+						<span class="ph emphasis emphasis">PingAppHttpBasicAuth.war</span>. Also, you should access the
+					applications at the relevant URLs: </p>
+
+				<ul class="ul" id="loioe59dc589bb57101480939e290c55e680__ul_ttr_vkz_1n">
+					<li class="li"><span class="ph filepath">http://localhost:8080/PingAppHttpNoAuth/pingnoauth</span></li>
+
+					<li class="li"><span class="ph filepath">http://localhost:8080/PingAppHttpBasicAuth/pingbasic</span></li>
+
+				</ul>
+
+			</div>
+ 
+	 </div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

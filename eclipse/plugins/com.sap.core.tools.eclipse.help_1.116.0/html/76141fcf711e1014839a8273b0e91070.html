@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a HelloWorld Application with SAPUI5</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio76141fcf711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a HelloWorld Application with SAPUI5</h1>
+<div class="body taskbody"><div class="section prereq p" id="loio76141fcf711e1014839a8273b0e91070__prereq_N10015_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div> 
+		<p class="p">The SAPUI5 tools are installed in your eclipse environment. </p>
+ 
+	 </div>
+<div class="section context" id="loio76141fcf711e1014839a8273b0e91070__context_N1001D_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Instead of creating a HelloWorld Servlet, you can directly go for the UI part and
+				create an SAPUI5 application. </p>
+ 
+		<p class="p">Using the tools SAPUI5 provides, you create application projects and views according to the
+				Model View Controller concept with a clear separation between the user interface and
+				the controller logic. </p>
+ 
+		<p class="p">For SAPUI5 applications the following development
+		  paradigms are supported: 
+		</p>
+ 
+		<ul class="ul"><li class="li">JavaScript (file extension: js) </li>
+<li class="li">XML (file extension: xml) </li>
+<li class="li">JSON (file extension: json) </li>
+<li class="li">HTML (file extension: html)</li>
+</ul>
+ 
+		<p class="p">In the following steps you will create a JavaScript
+		  example. 
+		</p>
+ 
+	 </div><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loio76141fcf711e1014839a8273b0e91070__step_N10044_N10042_N10013_N10001"><span class="ph cmd">To open the wizard for creating an SAPUI5 application, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other...</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAPUI5 Application Development</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> Application Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>
+				</span></li>
+<li class="li step stepexpand" id="loio76141fcf711e1014839a8273b0e91070__step_N1005C_N10042_N10013_N10001"><span class="ph cmd">Specify the name and location for your project. Select the checkbox for <span class="ph uicontrol">Create an
+						initial View </span>. </span></li>
+<li class="li step stepexpand" id="loio76141fcf711e1014839a8273b0e91070__step_N1006D_N10042_N10013_N10001"><span class="ph cmd">In the next wizard step: 
+		  </span><ol type="a" class="ol substeps"><li class="li substep"><span class="ph cmd">Enter a name for the initial view in the <span class="ph uicontrol">Name</span> field, e. g.
+								<kbd class="ph userinput">helloworld</kbd>. Don't add a file extension, this
+							is done automatically based on the development paradigm. </span></li>
+</ol>
+<ol type="a" class="ol substeps"><li class="li substep"><span class="ph cmd">Choose <span class="ph uicontrol">JavaScript</span> as Development Paradigm and finish the wizard. </span></li>
+</ol>
+<div class="itemgroup info">If you want to use XML or
+			 JSON, just proceed accordingly. 
+		  </div></li>
+<li class="li step stepexpand" id="loio76141fcf711e1014839a8273b0e91070__step_N10090_N10042_N10013_N10001"><span class="ph cmd">To add a control to your view (in this example: <samp class="ph codeph">helloworld.view.js</samp>), insert
+					the following coding: </span><div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">createContent : function(oController) { 
+  var aControls = []; 
+  var oButton = new sap.ui.commons.Button({ 
+    id : this.createId("MyButton"), 
+    text : "Hello World" 
+  }); 
+  aControls.push(oButton.attachPress(oController.doIt)); 
+  return aControls;
+}
+</pre></div>
+
+					<p class="p">For your convenience the coding is put into a separate method called
+							<samp class="ph codeph">createContent</samp>
+					</p>
+
+				</div></li>
+<li class="li step stepexpand" id="loio76141fcf711e1014839a8273b0e91070__step_N100AA_N10042_N10013_N10001"><span class="ph cmd">To implement the doIt method for the button's press event, insert the following coding into the
+					controller (in this example: <samp class="ph codeph">helloworld.controller.js</samp>) </span><div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">doIt : function(oEvent) { alert(oEvent.getSource().getId() + " does it!"); }</pre></div>
+
+				</div></li>
+<li class="li step stepexpand" id="loio76141fcf711e1014839a8273b0e91070__step_N100BC_N10042_N10013_N10001"><span class="ph cmd">That's it! To test your application, open the context menu of your project, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run As </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run on Server </span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>and select your local test server. </span><div class="itemgroup stepresult">Your SAPUI5 application is started in a browser.</div></li>
+</ol>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e8fdaa44bb5710148368de02b150bce3.html">UI Development with SAPUI5</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command opens a database tunnel to the database system associated with the specified schema or database."/>
+<meta name="description" content="This command opens a database tunnel to the database system associated with the specified schema or database."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>open-db-tunnel</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9e3f90f2ead74229ac5c8848ed5bf292">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">open-db-tunnel</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command opens a database tunnel to the database system associated with the
+		specified schema or database.</p>
+
+		<div class="section">
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Make sure that you have installed the required tools correctly.</p>
+
+				<p class="p">If you face trouble using this command, please check that your installation is
+					correct.</p>
+
+				<p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>
+					and <a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</p>
+
+			</div>
+
+		</div>
+
+		<div class="section">
+			<p class="p">The command has two modes:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio9e3f90f2ead74229ac5c8848ed5bf292__ul_gs3_2fj_14">
+					<li class="li">Default mode: The tunnel remains open until you explicitly close it by pressing
+							<kbd class="key">ENTER</kbd> in the command line. It is closed automatically after
+						24 hours or if the command window is
+						closed.<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo open-db-tunnel -a &lt;account_name&gt; -h &lt;landscape_host&gt; -u &lt;user&gt; -i &lt;schema_ID&gt;</pre></div>
+</li>
+
+					<li class="li">Background mode: The database tunnel is opened in a separate process. Use the
+							<samp class="ph codeph">close-db-tunnel</samp> command to close the tunnel once you
+						are done, or it is closed automatically after one
+						hour.<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo open-db-tunnel -a &lt;account_name&gt; -h &lt;landscape_host&gt; -u &lt;user&gt; -i &lt;schema_ID&gt; --background</pre></div>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9e3f90f2ead74229ac5c8848ed5bf292__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d7418189e95">Required</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e95 "><span class="keyword parmname">-a</span>,
+									<span class="keyword parmname">--account</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e95 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+										characters; lowercase letters and numbers, starting with a
+										letter)</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e95 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e95 ">Use the respective landscape host for your account type.
+											<p class="p"><span class="keyword cmdname">Type</span>: URL, for acceptable values
+										see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e95 "><span class="keyword parmname">-i</span>, <span class="keyword parmname">--id</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e95 ">ASE database, HANA database or schema ID<p class="p"><span class="keyword cmdname">Type</span>:
+									string</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e95 "><span class="keyword parmname">--access-token</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e95 ">Identifies a database access permission. The access token and
+									database ID parameters are mutually exclusive.</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e95 "><span class="keyword parmname">-p</span>,
+									<span class="keyword parmname">--password</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e95 ">To protect your password, enter it only when prompted by the
+									console client and not explicitly as a parameter in the
+									properties file or the command line.<p class="p"><span class="keyword cmdname">Type</span>:
+										string </p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e95 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e95 ">Use your e-mail, SAP ID, or user
+											name<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9e3f90f2ead74229ac5c8848ed5bf292__table_hbv_n53_jl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d7418189e225">Optional</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e225 "><span class="keyword parmname">--background</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e225 ">Opens the tunnel session in a background
+											process<p class="p"><span class="keyword cmdname">Type</span>: switch, takes no
+										value</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7418189e225 "><span class="keyword parmname">--output</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7418189e225 ">Prints information about the tunnel in a special output
+											format.<p class="p"><span class="keyword cmdname">Acceptable values</span>:
+										'json'</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo open-db-tunnel -a myaccount -h hanatrial.ondemand.com -u mymail@example.com -i myschema</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="2a795b95e44c42d08c446893a07921db.html" title="Database instances in the cloud are protected by a firewall, in other words, they are not directly accessible. Access to remote database instances is therefore only possible through a database tunnel, which provides a secure connection from your local machine and bypasses the firewall.">Accessing Databases Remotely</a></div>
+<div><a class="link" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></div>
+<div><a class="link" href="4efc124a0ccc42b3b502ad3a3908d23d.html" title="Connect to a dedicated SAP HANA database using SAP HANA Tools via the Eclipse IDE.">Connecting to SAP HANA Databases via the Eclipse IDE</a></div>
+<div><a class="link" href="c597f8231b4e463da0dcc3095ea139b7.html" title="Follow the procedure below to make a direct connection to a shared SAP HANA schema via the Eclipse IDE, using SAP HANA Tools.">Connecting to SAP HANA Schemas via the Eclipse IDE</a></div>
+<div><a class="link" href="c7c36e6d97764822bd86be07bfe84090.html" title="This command closes one or all database tunnel sessions that have been opened in a background process using the open-db-tunnel --background command.">close-db-tunnel</a></div>
+<div><a class="link" href="107ffdb907334d97be99fdcb7aad8961.html" title="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel.">Connecting to the Remote SAP ASE Database</a></div>
+<div><a class="link" href="49626c9474584bbfa4a936975b851326.html" title="For the purposes of continuous delivery and automated tests, the open-db-tunnel command supports a background mode, which allows a database tunnel to be opened by automated scripts or as part of a Maven build.">Automating the Use of Database Tunnels</a></div>
+<div><a class="link" href="b35e1e92ceb647daac49098b828dac92.html">Machine-Readable Command Output</a></div>
+<div><a class="link" href="64d6a510e98941d28dbff2fc8179f175.html">Connecting DB Tools to SAP HANA via Service Channels</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

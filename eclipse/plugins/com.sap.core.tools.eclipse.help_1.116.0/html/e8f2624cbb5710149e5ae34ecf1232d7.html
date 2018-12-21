@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Unsuccessful Connection to SAP Cloud Platform</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe8f2624cbb5710149e5ae34ecf1232d7">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Unsuccessful Connection to SAP Cloud Platform</h1>
+<div class="body conbody"><div class="section" id="loioe8f2624cbb5710149e5ae34ecf1232d7__section_0C42C806794A461DBF1BECFF8FE931D0"><div class="section_title">Symptom</div><div type="Symptom"> 
+		 
+		<p class="p">SAP Cloud Platform connector cannot connect to  <span class="ph pname">SAP Cloud Platform</span>. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe8f2624cbb5710149e5ae34ecf1232d7__section_55A383E7C0AA4DA6B4C9D8F496AC59E3"><div class="section_title">Problem</div><div type="Problem"> 
+		 
+		<p class="p">The Cloud connector UI returns the following error message: </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Communication failure - see log for details
+Error message in /opt/sap/scc/log/lgs_trace.log
+Testing tunnel connection failed: Connection to &lt;host:port&gt; refused
+org.apache.http.conn.HttpHostConnectException: Connection to &lt;host:port&gt; refused
+</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loioe8f2624cbb5710149e5ae34ecf1232d7__section_5FF835E328DD479B8F445D480B75A7A2"><div class="section_title">Keywords</div><div type="Keywords"> 
+		 
+		<p class="p">SAP Cloud Platform connector, SCC, initial connection </p>
+ 
+	 </div></div>
+<div class="section" id="loioe8f2624cbb5710149e5ae34ecf1232d7__section_A2CFB45002BB4233977E3E14802874EA"><div class="section_title">Solution</div><div type="Solution"> 
+		 
+		<ul class="ul"><li class="li">The HTTPS proxy settings may be incorrect. Check the proxy settings from the
+						<span class="ph uicontrol">Settings</span> tab page in your  Cloud connector. </li>
+<li class="li">If the
+			 problem persists, create a ticket in the SAP customer support system to
+			 describe your problem. For more information, see 
+			 <a class="xref" href="e5580c5dbb5710149e53c6013301a9f2.html">Connectivity Troubleshooting Guide</a>
+			 → 
+			 <span class="ph uicontrol">SAP Support
+				Information</span>. 
+		  </li>
+</ul>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+<script type="text/javascript">
+			$(document).ready(function (){
+			$('.collapsible').collapsify({expandText:"Display Content",collapseText:"Hide Content",imagePath:"../images/"});
+			}); 
+			</script>
+</body>
+</html>

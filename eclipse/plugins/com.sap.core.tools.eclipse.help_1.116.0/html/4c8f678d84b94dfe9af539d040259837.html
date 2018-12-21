@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Securing the Activation of Traffic Traces</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4c8f678d84b94dfe9af539d040259837">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Securing the Activation of Traffic Traces</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">The <span class="ph pname">Cloud connector</span> provides
+				the possibility to trace all network traffic going through it (HTTP/RFC requests and
+				responses) for support purposes. This traffic data may contain business critical
+				information or security sensitive data, such as usernames, passwords, address data,
+				credit card numbers, and so on. Thus, by activating the corresponding trace level, a
+					<span class="ph pname">Cloud connector</span>
+				administrator could see business data that he/she is not supposed to see. If you
+				want to prevent this behavior from occurring, you need to implement the following
+				four-eyes principle. This principle is supported by the <span class="ph pname">Cloud connector</span> release
+					<span class="ph emphasis emphasis">1.3.2</span> and higher.</p>
+
+			<p class="p">Once the four-eyes principle is applied, activating a trace level that dumps traffic
+				data will require two separate users:</p>
+
+			<ul class="ul" id="loio4c8f678d84b94dfe9af539d040259837__ul_fbj_bgk_vm">
+				<li class="li">An operating system user on the machine where the <span class="ph pname">Cloud connector</span> is
+					installed;</li>
+
+				<li class="li">An <span class="ph uicontrol">Administrator</span> user of the <span class="ph pname">Cloud connector</span>
+					user interface.</li>
+
+			</ul>
+
+			<p class="p">By assigning these two users to two different persons, it can be ensured that both
+				persons are needed to activate a traffic dump (that is, when a certain problem needs
+				to be troubleshot) but neither of them can do this on their own.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Four-Eyes Principle for Microsoft Windows OS</div><div type="Four-Eyes Principle for Microsoft Windows OS">
+			
+			<p class="p"/>
+
+			<ol class="ol" id="loio4c8f678d84b94dfe9af539d040259837__ol_w55_zv1_dn">
+				<li class="li">Go to directory <span class="ph filepath">&lt;scc_install_dir&gt;\scc_config</span> and create a file
+					with name <span class="ph emphasis emphasis">writeHexDump</span>. The owner of this file needs to be
+					different from the operating system user that runs the <span class="ph pname">Cloud connector</span>
+					process. <div class="note note"><span class="notetitle">Note</span> Usually, this is the user which is specified in the
+							<span class="ph uicontrol">Log On</span> tab in the properties of the <span class="ph pname">Cloud connector</span>
+						service (in the Windows <span class="ph uicontrol">Services</span> console). Note that
+						the <span class="keyword cmdname">Local System</span> user should not be used in this case.
+						You shall better have a dedicated OS user for the <span class="keyword cmdname">cloud
+							connector</span> service.</div>
+<ul class="ul" id="loio4c8f678d84b94dfe9af539d040259837__ul_lv5_zv1_dn">
+						<li class="li">Only the owner of the file and no other user shall have write permission
+							for the file.</li>
+
+						<li class="li">The OS user that runs the <span class="ph pname">Cloud connector</span> process needs read-only permissions for this file.</li>
+
+						<li class="li">Initially, the file should contain a line like
+								<span class="keyword parmname">allowed=false</span>.</li>
+
+						<li class="li">In the security properties of the file <span class="ph filepath">scc_config.ini
+							</span>(same directory), make sure that only the OS user that runs
+							the <span class="ph pname">Cloud connector</span> process has write/modify permissions for this file. The best way to
+							achieve this is by just removing all other users from the list.</li>
+
+					</ul>
+</li>
+
+				<li class="li">Once this file is located there, the <span class="ph pname">Cloud connector</span>
+					will refuse any attempt at activating the <span class="ph uicontrol">Payload Trace</span>
+					flag.</li>
+
+				<li class="li">In order to activate the payload trace, first the owner of the
+						<span class="ph filepath">writeHexDump</span> file mentioned above needs to change the
+					file content from <span class="keyword parmname">allowed=false</span> to
+						<span class="keyword parmname">allowed=true</span>. Then, the
+						<span class="ph uicontrol">Administrator</span> user can activate the payload trace
+					from the <span class="ph pname">Cloud connector</span>
+					administration screens.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Four-Eyes Principle for Linux OS/Mac OS X</div><div type="Four-Eyes Principle for Linux OS/Mac OS X">
+			
+			<p class="p"/>
+
+			<ol class="ol" id="loio4c8f678d84b94dfe9af539d040259837__ol_dm1_fgk_vm">
+				<li class="li">Go to directory <span class="ph filepath">/usr/local/vl/base/cfg</span> (<span class="ph pname">Cloud connector</span>
+					1.3.2) or <span class="ph filepath">/opt/sap/scc/scc_config</span> (<span class="ph pname">Cloud connector</span>
+					2.x) and create a file with name <span class="ph emphasis emphasis">writeHexDump</span>. The owner of
+					this file needs to be different from the <kbd class="ph userinput">scctunnel</kbd> user
+					(that is, the operating system user under which the <span class="ph pname">Cloud connector</span>
+					processes run) and not a member of the operating system user group
+						<kbd class="ph userinput">sccgroup</kbd>.<ul class="ul" id="loio4c8f678d84b94dfe9af539d040259837__ul_h3q_4gk_vm">
+						<li class="li">Only the owner of the file and no other user shall have write permission
+							for the file.</li>
+
+						<li class="li">The <kbd class="ph userinput">scctunnel</kbd> user needs read-only permissions
+							for this file.</li>
+
+						<li class="li">Initially, the file should contain a line like
+								<span class="keyword parmname">allowed=false</span>.</li>
+
+					</ul>
+</li>
+
+				<li class="li">Once this file is located there, the <span class="ph pname">Cloud connector</span>
+					will refuse any attempt at setting the trace level higher than
+						<span class="keyword parmname">Runtime</span> (<span class="ph pname">Cloud connector</span>
+					1.3.2) or at activating the <span class="ph uicontrol">Payload Trace</span> flag (<span class="ph pname">Cloud connector</span>
+					2.x).</li>
+
+				<li class="li">In order to set a higher trace level, which includes traffic Hex-dumps (<span class="ph pname">Cloud connector</span>
+					1.3.2), or to activate the payload trace (<span class="ph pname">Cloud connector</span>
+					2.x), first the owner of the file mentioned above needs to change the file
+					content from <span class="keyword parmname">allowed=false</span> to
+						<span class="keyword parmname">allowed=true</span>. Then, the
+						<span class="ph uicontrol">Administrator</span> user can activate one of the higher
+					trace levels (<span class="ph pname">Cloud connector</span>
+					1.3.2) or the payload trace (<span class="ph pname">Cloud connector</span>
+					2.x) from the <span class="ph pname">Cloud connector</span>
+					administration screens.</li>
+
+			</ol>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command sets a log level for one or multiple loggers."/>
+<meta name="description" content="This command sets a log level for one or multiple loggers."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>set-log-level</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio1b495d7580c7404db42c9da996b50a93">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">set-log-level</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command sets a log level for one or multiple loggers.</p>
+
+		<div class="section">
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-log-level  --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --loggers &lt;logger_name1&gt;,&lt;logger_name2&gt;,... --level &lt;log_level&gt;</pre></div>
+
+			</div>
+
+		</div>
+
+		<div class="section" id="loio1b495d7580c7404db42c9da996b50a93__section_N100AF_N10013_N10001"><div class="section_title">Log Level Mapping</div><div type="Log Level Mapping">
+			
+			<p class="p">Simple Logging Facade for Java (SLF4J) uses the following log levels: </p>
+
+			<div class="table-wrapper"><table summary="" id="loio1b495d7580c7404db42c9da996b50a93__simpletable_pwg_mrk_kj" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d1143585e37" class="stentry">Level</th>
+
+					<th valign="bottom" align="left" id="d1143585e40" class="stentry">Description</th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">ALL</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level has the lowest possible rank and is intended to turn on all
+							logging.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">TRACE</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level designates finer-grained informational events than DEBUG.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">DEBUG</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level designates fine-grained informational events that are most
+							useful to debug an application.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">INFO</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level designates informational messages that highlight the progress
+							of the application at coarse-grained level.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">WARN</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level designates potentially harmful situations.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">ERROR</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level designates error events that might still allow the application
+							to continue running. </p>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d1143585e37" class="stentry">
+						<p class="p">OFF</p>
+
+					</td>
+
+					<td valign="top" headers="d1143585e40" class="stentry">
+						<p class="p">This level has the highest possible rank and is intended to turn off
+							logging.</p>
+
+					</td>
+
+				</tr>
+<tr class="strow"/>
+</table></div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loio1b495d7580c7404db42c9da996b50a93__section_N1001E_N10012_N10001">To list all parameters available for this command,
+			execute <kbd class="ph userinput">neo help set-log-level</kbd> in the command line.
+<div class="table-wrapper tablenoborder"><table summary="" id="loio1b495d7580c7404db42c9da996b50a93__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d1143585e177">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-a</span>,  <span class="keyword parmname">--account</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-b</span>,  <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-g</span>,  <span class="keyword parmname">--loggers</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">Single or multiple comma-separated logger names
+										<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-h</span>,  <span class="keyword parmname">--host</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">The respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>: URL,
+									for acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-l</span>,   <span class="keyword parmname">--level</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">The log level you want to set for the
+										logger(s)<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">Password for the specified user. To protect your password, enter
+								it only when prompted by the console client and not explicitly as a
+								parameter in the properties file or the command
+										line.<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d1143585e177 "><span class="keyword parmname">-u</span>,  <span class="keyword parmname">--user</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d1143585e177 ">Your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-log-level --account myaccount --application demo --user p1234567890 --host hanatrial.ondemand.com --loggers com.acme.foo,com.acme.bar --level ERROR</pre></div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e4fd83c5bb5710149b1e94f127f108e4.html">Using Logs in the Console Client</a></div>
+<div><a class="link" href="7886796eb9b9419fa6cecf1d215c38d8.html">Exit Codes</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

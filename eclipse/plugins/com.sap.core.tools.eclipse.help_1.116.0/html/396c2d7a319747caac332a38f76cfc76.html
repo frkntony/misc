@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can enable the SAP HANA Interactive Education (SHINE) demo application for a new or existing SAP HANA MDC database in your trial account."/>
+<meta name="description" content="You can enable the SAP HANA Interactive Education (SHINE) demo application for a new or existing SAP HANA MDC database in your trial account."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Enabling SAP HANA Interactive Education (SHINE)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio396c2d7a319747caac332a38f76cfc76">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Enabling SAP HANA Interactive Education (SHINE)</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can enable the SAP HANA Interactive Education (SHINE) demo application for a new or
+		existing SAP HANA MDC database in your trial account.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">SAP HANA Interactive Education (SHINE) demonstrates how to build native SAP HANA applications.
+				The demo application comes with sample data and design-time developer objects for
+				the application's database tables, data views, stored procedures, OData, and user
+				interface. For more information, see the <a class="xref" href="http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf" target="_blank" download="" alt="http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf">SAP HANA Interactive Education (SHINE)
+				documentation</a>.</p>
+
+			<p class="p">By default, SHINE is available for all SAP HANA MDC databases on <span class="ph pname">SAP Cloud Platform</span>'s trial
+				landscape.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log in to the <span class="ph pname">SAP Cloud Platform</span>
+					cockpit and select an account.</span>
+				<div class="itemgroup info">
+					<div class="note restriction"><span class="restrictiontitle">Restriction</span> You can enable SHINE only in your trial account.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the navigation area, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To enable SHINE for an SAP HANA MDC database, you must first create a SHINE user. If you
+					are enabling SHINE for a new SAP HANA MDC database, a SHINE user can be
+					automatically created during the database creation. If you are enabling SHINE
+					for an existing SAP HANA MDC, you must manually create the SHINE user. </span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio396c2d7a319747caac332a38f76cfc76__choicetable_f1g_vf3_by">
+<thead><tr><th valign="bottom" align="left" id="d2680986e76-option">To...</th>
+<th valign="bottom" align="left" id="d2680986e76-desc">Do the following:</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d2680986e76-option" id="d2680986e89" class="stentry choption" width="19.011406844106464%"><strong>Enable SHINE for a new SAP HANA MDC database </strong></td>
+
+						<td valign="top" headers="d2680986e76-desc d2680986e89" class="stentry chdesc" width="80.98859315589353%">
+							<ol class="ol" type="a" id="loio396c2d7a319747caac332a38f76cfc76__ol_kcn_fg3_by">
+								<li class="li">Follow the steps described in <a class="xref" href="46af2934d19343ca8250ce288d27ea41.html" title="Use the cockpit to create an SAP HANA database enabled for multitenant database container support (beta) on an SAP HANA database management system in your account.">Creating SAP HANA MDC Databases</a>.</li>
+
+								<li class="li">From the list of all databases and schemas, choose the SAP HANA
+									MDC database you just created.</li>
+
+								<li class="li">In the overview  in the lower part of the screen, choose the <span class="ph uicontrol">SAP HANA
+										Interactive Education (SHINE)</span> link under
+										<span class="ph uicontrol">Education Tools</span>.</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d2680986e76-option" id="d2680986e123" class="stentry choption" width="19.011406844106464%"><strong>Enable SHINE for an existing SAP HANA MDC database</strong></td>
+
+						<td valign="top" headers="d2680986e76-desc d2680986e123" class="stentry chdesc" width="80.98859315589353%">
+							<ol class="ol" type="a" id="loio396c2d7a319747caac332a38f76cfc76__ol_wsc_pvd_cy">
+								<li class="li">From the list of all databases and schemas, choose the SAP HANA
+									MDC database for which you want to enable SHINE.</li>
+
+								<li class="li">In the overview  in the lower part of the screen, open the <span class="ph uicontrol">SAP HANA
+										Cockpit</span> link under <span class="ph uicontrol">Administration
+										Tools</span>.</li>
+
+								<li class="li">In the <span class="ph uicontrol">Enter Username</span> field, enter <kbd class="ph userinput">SYSTEM</kbd>,
+									then enter the password you determined for the SYSTEM user.
+										<p class="p">The first time you log in to the <span class="ph uicontrol">SAP HANA
+											Cockpit</span>, you are informed that you don't
+										have theroles that you need to open the <span class="ph pname">SAP Cloud Platform</span> cockpit.</p>
+</li>
+
+								<li class="li">Choose <span class="ph uicontrol">OK</span>. The required roles are assigned to you
+									automatically.<p class="p"/>
+</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Continue.</span><p class="p">You are now logged in to the <span class="ph uicontrol">SAP
+											HANA Cockpit</span>.</p>
+</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Manage Roles and Users</span>. </li>
+
+								<li class="li">To create database users and assign them the required roles,
+									expand the <span class="ph uicontrol">Security</span> node.</li>
+
+								<li class="li">Open the context menu for the <span class="ph uicontrol">Users</span> node
+									and choose <span class="ph uicontrol">New User</span>. </li>
+
+								<li class="li">On the <span class="ph uicontrol">User</span> tab, provide a name for the new SHINE user.<div class="note note"><span class="notetitle">Note</span> The
+										user name can contain only uppercase and lowercase letters
+										('a' - 'z', 'A' - 'Z'), numbers ('0' - '9'), and underscores
+										('_'). </div>
+<p class="p">The user name always appears in uppercase
+										letters. </p>
+</li>
+
+								<li class="li">In the <span class="ph uicontrol">Authentication</span> section, make sure the
+										<span class="ph uicontrol">Password</span> option is selected and enter
+									a password.<div class="note note"><span class="notetitle">Note</span> The password must contain at least one
+										uppercase and one lowercase letter ('a' - 'z', 'A' - 'Z')
+										and one number ('0' - '9'). It can also contain special
+										characters (except ", ' and \). </div>
+</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Save</span>. <p class="p">The new database user appears as a new node under
+										the <span class="ph uicontrol">Users</span> node.</p>
+</li>
+
+								<li class="li">In the <span class="ph uicontrol">Granted Roles</span> section, select <span class="ph uicontrol">+ (Add
+										Role)</span>.</li>
+
+								<li class="li">Enter  <kbd class="ph userinput">democontent</kbd> in the search field and select all roles in
+									the result list.</li>
+
+								<li class="li">Choose <span class="ph uicontrol">Ok</span>.<p class="p">The roles are added to the <span class="ph uicontrol">Granted
+											Roles</span> tab.</p>
+</li>
+
+								<li class="li">Save your changes. </li>
+
+								<li class="li">On the <span class="ph uicontrol">Overview</span> page of your SAP HANA MDC database in the
+										<span class="ph uicontrol">cockpit</span>, choose the <span class="ph uicontrol">SAP
+										HANA Interactive Education (SHINE)</span> link under
+										<span class="ph uicontrol">Education Tools</span> in the lower part of
+									the screen.</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+				<div class="itemgroup stepresult">
+					<p class="p">A login screen for the SHINE demo application is shown in a new browser window. </p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the credentials of the SHINE user you created and choose
+						<span class="ph uicontrol">Login</span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> The first time you log in to the SHINE demo application, you are prompted to change your
+						initial password. </div>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>
+			<p class="p">You see the SHINE demo application for your SAP HANA MDC database. Consult the <a class="xref" href="http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf" target="_blank" download="" alt="http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_en.pdf">SAP HANA Interactive Education (SHINE) documentation</a> for
+				detailed information about using the application.</p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

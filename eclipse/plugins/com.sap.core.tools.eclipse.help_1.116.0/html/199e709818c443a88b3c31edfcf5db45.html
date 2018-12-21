@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>MTA Archive Structure</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio199e709818c443a88b3c31edfcf5db45">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">MTA Archive Structure</h1>
+
+	<div class="body conbody">
+		<p class="p">MTA archives are created in a way compatible with the JAR specification. This allows reusing
+			common tools (for creating, manipulating, signing and handling such archives). As the
+			deployment descriptor does not contain any information concerning the location of
+			modules within the archive, this aspect is added by an archive manifest. The archive
+			descriptor (<span class="ph sap-technical-name sap-technical-name">MANIFEST.MF</span>) has to be located
+			within the <span class="ph sap-technical-name sap-technical-name">META-INF</span> folder of the archive.</p>
+
+		<div class="p">The file <span class="ph sap-technical-name sap-technical-name">MANIFEST.MF</span> has to contain a name section for
+			each MTA module contained in the archive that has a file content. In the name section
+			the following information has to be added:<ul class="ul" id="loio199e709818c443a88b3c31edfcf5db45__ul_zck_dvc_bx">
+				<li class="li">
+					<p class="p"><span class="ph sap-technical-name sap-technical-name">Name</span> - the path within the MTA
+						archive, where the corresponding module can be found</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p"><span class="ph sap-technical-name sap-technical-name">Content-Type</span> - the type of the file
+						that is used to deploy the corresponding module</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p"><span class="ph sap-technical-name sap-technical-name">MTA-module</span> - the name of the module
+						as it has been defined in the deployment descriptor</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="p">Sample content of the META-INF/MANIFEST.MF
+			file:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">Manifest-Version: 1.0
+ 
+Name: examplejava.war
+Content-Type: application/zip
+MTA-Module: java-module
+ 
+Name: examplehtml5.zip
+Content-Type: application/zip
+MTA-Module: html5-module 
+
+Name: resources/roles.json
+Content-Type: application/json
+MTA-Module: benefits-roles
+</pre></div>
+</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html" target="_blank" alt="http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html" title="http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html">The Multi-Target Application Model<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html" target="_blank" alt="http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html" title="http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html">JAR File Specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

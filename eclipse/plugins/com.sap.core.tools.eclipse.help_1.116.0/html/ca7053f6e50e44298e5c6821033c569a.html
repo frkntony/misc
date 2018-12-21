@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This service enables you to view the languages that SAP Translation Hub supports."/>
+<meta name="description" content="This service enables you to view the languages that SAP Translation Hub supports."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Language Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioca7053f6e50e44298e5c6821033c569a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Language Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This service enables you to view the languages that SAP Translation Hub
+		supports.</p>
+
+		<div class="section"><div class="section_title">Usage</div><div type="Usage">
+			
+			<p class="p">Returns a list of the languages that are available as target languages in SAP Translation
+				Hub.</p>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">Request</div><div type="Request"><div class="p"><span class="ph emphasis emphasis">URL:</span>
+				<span class="ph filepath"><var class="keyword varname">&lt;base URL of SAP Translation
+					Hub&gt;</var>/translationhub/api/v1/languages</span><div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">For information about the base URL, see <cite class="cite">Building
+                                Base URL of SAP Translation Hub</cite> in the <cite class="cite">Related
+                                Information</cite> section.</p>
+
+				</div>
+</div>
+<p class="p"><span class="ph emphasis emphasis">HTTP Method: </span>
+				<span class="keyword">GET</span></p>
+<p class="p"><span class="ph emphasis emphasis">Request Parameters</span></p>
+<p class="p">The
+				service requires a JSON request payload and the request content type:
+					<kbd class="ph userinput">application/json; charset=utf-8</kbd>. If you do not use this
+				content type, the service call fails.</p>
+<p class="p">To check whether a specific language is
+				available, you can add the following parameter to the URL:</p>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loioca7053f6e50e44298e5c6821033c569a__table_rxl_wmc_lq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d9110617e81">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d9110617e84">Description</th>
+
+							<th class="entry" valign="top" width="25%" id="d9110617e87">Type</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d9110617e81 "><span class="ph uicontrol">search</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d9110617e84 ">Determines whether a particular language is available in SAP
+								Translation Hub. For example: <span class="ph filepath"><var class="keyword varname">&lt;base URL of SAP
+										Translation
+										Hub&gt;</var>/translationhub/api/v1/languages?search=<var class="keyword varname">&lt;language_name&gt;</var></span><div class="note note"><span class="notetitle">Note</span> 
+									<p class="p">You enter the name of the language, for example,
+											<span class="ph uicontrol">Chinese</span>, not the ID for
+										Chinese.</p>
+
+								</div>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9110617e87 ">Optional</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+<p class="p"><span class="ph emphasis emphasis">Request Body Example</span></p>
+<var class="keyword varname">&lt;base URL of SAP
+				Translation Hub&gt;</var><samp class="ph codeph">/translationhub/api/v1/languages?search=Bulgarian
+			</samp></div></div>
+
+		<div class="section collapsible"><div class="section_title">Response</div><div type="Response">
+			
+			<div class="p">The result is a JSON object, and contains the following key-value pairs:
+<div class="table-wrapper tablenoborder"><table summary="" id="loioca7053f6e50e44298e5c6821033c569a__table_axs_mf5_3q" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d9110617e152">Languages Key</th>
+
+								<th class="entry" valign="top" width="50%" id="d9110617e155">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d9110617e158">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d9110617e152 "><span class="ph uicontrol">id</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d9110617e155 ">The ID of a language.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d9110617e158 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d9110617e152 "><span class="ph uicontrol">name</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d9110617e155 ">The name of the language.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d9110617e158 ">Always in response</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<p class="p"><span class="ph emphasis emphasis">Response Body Example</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{	"languages":[
+			{
+				"id":"bg",
+				"name":"Bulgarian"
+			}
+		]
+	}
+</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3a011fba82644259a2cc3c919863f4b4.html" title="The base URL is main part of the complete URL that you need to access the services of SAP Translation Hub.">Building Base URL of SAP Translation Hub</a></div>
+<div><a class="link" href="5cc08779546b4bcf9f5155b8029ee4bf.html" title="To test the individual Web services, for example, the translation service, you can use a REST service client.">Testing the Services</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

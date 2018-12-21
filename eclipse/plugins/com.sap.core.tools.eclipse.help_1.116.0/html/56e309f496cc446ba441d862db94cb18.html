@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Console Client Commands</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio56e309f496cc446ba441d862db94cb18">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Console Client Commands</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"/>
+
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio56e309f496cc446ba441d862db94cb18__table_hfv_sls_fl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="41.32231404958678%"/><col width="58.67768595041323%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="41.32231404958678%" id="d3838250e29">Group</th>
+
+							<th class="entry" valign="top" width="58.67768595041321%" id="d3838250e32">Commands</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Local Server</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="85279476e13c4f178087952d8fc0980d.html" title="This command installs a server runtime in a local folder, by default &lt;SDK installation folder&gt;/server.">install-local</a>; <a class="xref" href="8fdc143303d2456a84cd660eb7277a6a.html" title="This command deploys WAR files on a local server instance.">deploy-local</a>; <a class="xref" href="cd54325ba712483489ab93eb1864af57.html" title="This command starts a local server instance.">start-local</a>; <a class="xref" href="ee02d4dd64464c6199de07322926d8cd.html" title="This command stops a local server instance.">stop-local</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Deployment</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><p class="p"><a class="xref" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a>; <a class="xref" href="cc417d7ac1284f9e903fd89613b08b27.html" title="Starts a deployed application in order to make it available for customers. In case the application is already started, the command starts an additional application process if the quota for maximum allowed number of application processes is not exceeded.">start</a>;
+										<a class="xref" href="d4f6592584464cc6a5c3c0b6fc88abf9.html" title="You can check the current status of an application or application process. The command lists all application processes with their IDs, state, last change date sorted chronologically, and runtime information.">status</a></p>
+<p class="p"><a class="xref" href="b5bfcbf682684129b142606e1d4ca5cb.html" title="Use this command to stop your deployed and started application or application process.">stop</a>; <a class="xref" href="7c0f7a18a4564e0e8b6f997d230285ff.html" title="Use this command to restart your application or a single application process. The effect of the restart command is the same as executing the stop command first and when the application is stopped, starting it with the start command.">restart</a>; <a class="xref" href="7e09b85c9710481884e5bc3609a38bb0.html" title="Undeploying an application removes it from SAP Cloud Platform. To undeploy an application, you have to stop it first.">undeploy</a></p>
+<p class="p"><a class="xref" href="59fedc12d81b4801aa24c3b12414e382.html" title="This command stops the creation of new connections to an application or application process, but keeps the already running sessions alive. You can check if an application or application process has been disabled by executing the status command.">disable</a>; <a class="xref" href="13a70e053b984202982161d2a551bb0e.html" title="This command enables new connection requests to a disabled application or application process. The enable command cannot be used for an application that is in maintenance mode.">enable</a>;
+										</p>
+<p class="p"><a class="xref" href="49bb2011da2b439d87a382ed923f5d8c.html" title="The command displays all available application runtime containers.">list-runtimes</a>; <a class="xref" href="20e08d390fcf4d4a97e847c7343ea679.html" title="The command displays the supported application runtime container versions for your SAP Cloud Platform SDK. Only recommended versions are shown by default. You can also list supported version for a particular runtime container.">list-runtime-versions</a>;
+										</p>
+<p class="p"><a class="xref" href="7ed175c7acb5410d8a1151290238ce77.html" title="The command displays the set of properties of a deployed application, such as runtime version, minimum and maximum processes, Java version.">display-application-properties</a>; <a class="xref" href="113e95746d63472a801ba8339a67b021.html" title="Use this command to change the value of a single property of a deployed application without the need to redeploy it. Execute the command separately for each property that you want to set. For the changes to take effect, restart the application.">set-application-property</a>; <a class="xref" href="f42be92739bf483fa930a9caa7efaf13.html" title="This command starts the planned downtime of an application, during which it no longer receives requests and a custom maintenance page for that application is shown to the user. All active connections will still be handled until the application is stopped.">start
+										maintenance</a>; <a class="xref" href="3fbd6fed625945db8d02ed24276872a9.html" title="This command stops the planned downtime of an application, starts traffic to it and deregisters the maintenance application page.">stop
+										maintenance</a>; </p>
+<p class="p"><a class="xref" href="3f5d41207b6a4d0b9ad2e46dc6f27e69.html" title="The rolling-update command performs update of an application without downtime in one go.">rolling-update</a>; <a class="xref" href="7ae6493455844b4ab993c1a1b69595fa.html" title="The hot-update command enables a developer to redeploy and update the binaries of an application started on one process faster than the normal deploy and restart. Use it to apply and activate your changes during development and not for updating productive applications.">hot-update</a>;</p>
+<p class="p">
+									<a class="xref" href="c9ae25ad31e14d0a9ec18f4d50304aaf.html" title="The command deregisters a previously configured downtime page for an application. After you execute the command, the default HTTP error will be shown to the user in the event of unplanned downtime.">clear-downtime-app</a>; <a class="xref" href="1672997f41f74cd79761291ff7ece0b5.html" title="This command configures a custom downtime page (downtime application) for an application. The downtime page is shown to the user in the event of unplanned downtime of the original application.">set-downtime-app</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Logging</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><p class="p"><a class="xref" href="1f6a77c98a1e45118021d57996cfb9df.html" title="This command lists all log files of your application sorted by date in a table format, starting with the latest modified.">list-logs</a>; <a class="xref" href="d35f392ff9504c8793df5feee18054ca.html" title="This command downloads a particular log file.">get-log</a>
+								</p>
+<p class="p"><a class="xref" href="9033ddcb45ef4a1c8ba0b505110d10c2.html" title="This command lists all available loggers with their log levels for your application.">list-loggers</a>; <a class="xref" href="1b495d7580c7404db42c9da996b50a93.html" title="This command sets a log level for one or multiple loggers.">set-log-level</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Monitoring</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><p class="p"><a class="xref" href="d37bcfc3460e497cad80338192833fc5.html" title="Lists the availability checks.">list-availability-check</a>; <a class="xref" href="83d45827519b413bb98c4e2aaf9b3752.html" title="Creates an availability check.">create-availability-check</a>; <a class="xref" href="2a387e4e5faa4e35939ba472b33cb74a.html" title="Deletes an availability check.">delete-availability-check</a>
+								</p>
+<p class="p"><a class="xref" href="c6fedee0a1394991a913ec94fb654826.html" title="Lists JMX checks.">list-jmx-checks</a>; <a class="xref" href="298a207f33c4484b9894b7c4e2900566.html" title="Creates a JMX check.">create-jmx-check</a>; <a class="xref" href="75a0058e5c304243be91e4d2b7b04611.html" title="Deletes the specified JMX check or all JMX checks.">delete-jmx-check</a></p>
+<p class="p"><a class="xref" href="f326f9df2f5246bbb1878b01cfdbc0ba.html" title="Lists alert recipients.">list-alert-recipients</a>; <a class="xref" href="6dae74f3792446b7be65f5d8187c2425.html" title="Sets alert recipients.">set-alert-recipients</a>; <a class="xref" href="0f2b2cda9d844939bad3cbda32c167d8.html" title="Clears alert recipients.">clear-alert-recipients</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Keystore</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><p class="p">
+									<a class="xref" href="fa3c4af9bd0e4ca6a66a44e7d65d4bcd.html" title="This command is used to list the available keystores. You can list keystores on account, application, and subscription levels.">list-keystores</a>; <a class="xref" href="dea2506fb892403781e7720b0e292810.html" title="This command is used to upload a keystore by uploading the keystore file. You can upload keystores on account, application, and subscription levels.">upload-keystore</a>; <a class="xref" href="b45597c856244a55addd232386c7201b.html" title="This command is used to download a keystore by downloading the keystore file. You can download keystores on account, application, and subscription levels.">download-keystore</a>; <a class="xref" href="0c8539c2e39e482c883aaeae649d191b.html" title="This command is used to delete a keystore by deleting the keystore file. You can delete keystores on account, application, and subscription levels.">delete-keystore</a>;</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Connectivity</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><p class="p"><a class="xref" href="9b9f742a1b904a9f9e271ba21c788561.html" title="This command uploads destination configuration properties files and JKS files. You can upload them on account, application or subscribed application level.">put-destination</a></p>
+<p class="p"><a class="xref" href="bc623358916d47b48077b0e25b626a62.html" title="This command downloads (reads) destination configuration properties files and JDK files. You can download them on account, application or subscribed application level.">get-destination</a></p>
+<p class="p"><a class="xref" href="b5ccd2f213e44bca97795ac01f699dba.html" title="This command deletes destination configuration properties files and JDK files. You can delete them on account, application or subscribed application level.">delete-destination</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Persistence</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="9fe84fe6f68b41bb9bc2ed04e91283d2.html" title="This command lists all schemas and productive database instances bound to an application.">list-application-datasources</a>; <a class="xref" href="1ea177113f694bfab1529214d307edda.html" title="This command lists the dedicated and shared database management systems available for the specified account with the following details: database system (for dedicated databases), database type, and database version.">list-dbms</a>; <a class="xref" href="f94d5a21f99049f5985a9ecfd73e8f46.html" title="This command lists all databases for the specified account.">list-dbs</a>; <a class="xref" href="548e187740914d36820c38e4de346845.html" title="This command lists all schemas contained in the specified account.">list-schemas</a>
+								<p class="p"><a class="xref" href="05ebe394ab3f491380209e4df3713662.html" title="This command creates a HANA database or schema with the specified ID on a shared or dedicated database.">create-schema</a>; <a class="xref" href="ce689b2f0d4c434cb820f945a0a3ae18.html" title="This command binds a schema to a Java application via a data source. If a data source name is not specified, the schema will be automatically bound to the default data source of the application.">bind-schema</a>; <a class="xref" href="41e70ab3109a44fd836cfaa460a6598e.html" title="This command unbinds a schema from an application for a particular data source.">unbind-schema</a>; <a class="xref" href="82a99117f07d4147b4041e645eb1e6b7.html" title="This command deletes the specified schema, including all data it contains. A schema cannot be deleted if it is still bound to an application. To enforce the deletion, use the force parameter but bear in mind that this will also delete all bindings that still exist.">delete-schema</a>; <a class="xref" href="0a8638de7a2f4f1e8c8610df6e349e86.html" title="This command displays detailed information about the selected schema. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-schema-info</a></p>
+<p class="p"><a class="xref" href="affa7822cef0400698c05d4f12f2e71f.html" title="This command binds a Java application to a productive SAP HANA database via a data source.">bind-hana-dbms</a>; <a class="xref" href="de4022e60c2d4875a4e75f8ffe0bc6a0.html" title="This command unbinds a productive SAP HANA database system from a Java application for a particular data source.">unbind-hana-dbms</a></p>
+<p class="p"><a class="xref" href="f94d5a21f99049f5985a9ecfd73e8f46.html" title="This command lists all databases for the specified account.">list-dbs</a>; <a class="xref" href="01a21776a8dc498397b8435fd185c574.html" title="This command creates an ASE database with the specified ID and settings on an ASE database system.">create-db-ase</a>; <a class="xref" href="487b85d51994405d8198f8690c0be504.html" title="This command creates a user for an ASE database.">create-db-user-ase</a>; <a class="xref" href="064d3013cf584a3b8be59d396e027929.html" title="This command displays detailed information about the selected database. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-db-info</a>; <a class="xref" href="5b6f21011d074043a8e1c697e0129678.html" title="This command changes the properties for an ASE database.">set-db-properties-ase</a>; <a class="xref" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a>; <a class="xref" href="46e24bb9d5ef4c2cb5cfdde8ed751e28.html" title="This command unbinds a database from a Java application for a particular data source.">unbind-db</a>; <a class="xref" href="9f0785db4cbf4712a6ecfae5b3ae1055.html" title="This command deletes the ASE database with the specified ID.">delete-db-ase</a>; <a class="xref" href="b280fa0fcc974ba5a65c83b7a265341e.html" title="This command deletes a user from an ASE database.">delete-db-user-ase</a></p>
+<p class="p"><a class="xref" href="f64390e250cc4dcf8d9046192957d26a.html" title="This command creates a SAP HANA database with the specified ID and settings, on a SAP HANA database system enabled for multitenant database containers.">create-db-hana</a>; <a class="xref" href="a1c73b15d03d4e2fa05d43f0080ec316.html" title="This command changes the properties for a SAP HANA database enabled for multitenant database container support.">set-db-properties-hana</a>; <a class="xref" href="bf6020d733d84a19bbae2ae018783ced.html" title="This command starts the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">start-db-hana</a>; <a class="xref" href="c76fc39276dd47dc8d9c6d8bbfc6834a.html" title="This command stops the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">stop-db-hana</a>; <a class="xref" href="628ae80589f247f59b227e63f9b0d02e.html" title="This command deletes the SAP HANA database with the specified ID on a SAP HANA database system enabled for multitenant database container support.">delete-db-hana</a></p>
+<p class="p"><a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a>; <a class="xref" href="a92c08adc7b54370a309c140fa174d54.html" title="This command revokes the schema access granted to an application in another account.">revoke-schema-access</a>; <a class="xref" href="371711d0c46347429a6aa69147e892fc.html" title="This command lists all current schema access grants for a specified account.">list-schema-access-grants</a></p>
+<p class="p"><a class="xref" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a>; <a class="xref" href="c7c36e6d97764822bd86be07bfe84090.html" title="This command closes one or all database tunnel sessions that have been opened in a background process using the open-db-tunnel --background command.">close-db-tunnel</a></p>
+<p class="p"><a class="xref" href="6b5dea07d9fe42b5b8e355f33a208bb0.html" title="Restarts an SAP HANA database or an SAP HANA service.">restart-hana</a></p>
+<p class="p"><a class="xref" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a>; <a class="xref" href="616309ea0ce64065813d1400a70de402.html" title="This command revokes database access that has been given to another account.">revoke-db-tunnel-access</a>; <a class="xref" href="21e4be85b52448d0ad259a93fd6f51fd.html" title="This command lists all current database access permissions for databases in other accounts.">list-db-tunnel-access-grants</a></p>
+<p class="p"><a class="xref" href="e7d72bf3da2e45cfb135b2feed3a58d0.html" title="This command gives another account permission to access a database. The account providing the permission and the account receiving the permission must be part of the same global account.">grant-db-access</a>; <a class="xref" href="28a621871d5b49ddb03fd7748e6c49f9.html" title="This command lists the permissions that other accounts have for accessing databases in the specified account.">list-db-access-permissions</a>; <a class="xref" href="a0265c4b575843e9904056c8a1cda28d.html" title="This command revokes the database access permissions given to another account.">revoke-db-access</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Document Service</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="8b08f499fbe648b39d384b4a80a7b374.html" title="Adds a new tenant to a repository.">add-ecm-tenant</a>; <a class="xref" href="acf1b72fd1b646ef90f23983690d52df.html" title="Creates a new repository in the specified account.">create-ecm-repository</a>; <a class="xref" href="fb098118e1f14622852aabcb8d0f1915.html" title="This command deletes a repository including the data of any tenants in the repository, unless you restrict the command to a specific tenant.">delete-ecm-repository</a>; <a class="xref" href="ed676ca458db4738b0be86628c890275.html" title="Returns details and settings of one repository, including tenant details.">display-ecm-repository</a>; <a class="xref" href="279edd108d4247d997bd932759f72b8d.html" title="Changes the name, key, or virus scan settings of a repository. You cannot change the display name or the description.">edit-ecm-repository</a>; <a class="xref" href="169e3ae4fe6c4f85994a14c46bdc4988.html" title="Returns details and settings of all repositories in the specified account.">list-ecm-repositories</a>; <a class="xref" href="5434b2d2eaa34d0e8e0addc52f39343d.html" title="If you have forgotten the repository key, use this command to request a new repository key.">reset-ecm-key</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Account and Quota Management</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="05f96cf62cec4e58b78514655b070a8e.html" title="Creates a new account with an automatically generated unique ID as account name and the specified display name and assigns the user as an account owner. The user is authorized against the existing account passed as --account parameter. Optionally, you can clone an existing account configuration to save time and effort.">create-account</a>; <a class="xref" href="8bd95529c8ae4ccf883095c5f43e38e1.html" title="Deletes a particular account. Only the user who has created the account is allowed to delete it.">delete-account</a>; <a class="xref" href="2abad162138e41bc843c7de93e162d28.html" title="Lists all accounts that a customer has. Authorization is performed against the account passed as --account parameter.">list-accounts</a>; <a class="xref" href="4108f0f0680446a39db27f624c0e8b6a.html" title="Sets compute unit quotas for a given account.">set-quota</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Subscription Management</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="4c6203d2a0cd470eb72b48c100b26cd2.html" title="Subscribes the account of the consumer to a provider Java application. Once the command is executed successfully, the subscription is visible in the Subscriptions panel of the cockpit in the consumer account.">subscribe</a>; <a class="xref" href="862d00e98d364543a180e42b06114110.html" title="Removes the subscription to a provider Java application from a consumer account.">unsubscribe</a>; <a class="xref" href="034244c2a3dd4e069258df638c9f5d70.html" title="Lists all accounts subscribed to a given Java application.">list-subscribed-accounts</a>; <a class="xref" href="67d5c6f1141a4c298886b150b2d8a232.html" title="Lists all Java applications to which a given account is subscribed">list-subscribed-applications</a></td>
+
+						</tr>
+
+						
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">HANA XS SAML2</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="7ee09b096e5b45c29c719e26a1c69d79.html" title="This command deletes certificates that contain a specified string in the Subject CN.">delete-hanaxs-certificates</a>;<a class="xref" href="a905a6fe0a9d415bac9efebc95f39942.html" title="This command lists identity provider certificates available to productive HANA instances. Optionally, you can include a part of the certificate Subject CN as filter.">list-hanaxs-certificates</a>;<a class="xref" href="720bac4ceef3490ba9d0853c683806c2.html" title="This command re-applies all already uploaded certificates to all HANA instances. This command is useful if you already uploaded certificates to SAP Cloud Platform but uploading failed for some of the HANA instances.">reconcile-hanaxs-certificates</a>;<a class="xref" href="f643179a0ed7417f9d6c3444960dd082.html" title="This command uploads and applies identity provider certificates to productive HANA instances running on SAP Cloud Platform.">upload-hanaxs-certificates</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Application Domains</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="ebc5269d0df34330b9a68fe1b8adc3ef.html" title="Use this command to add a custom domain to an application URL. This will route the traffic for the custom domain to your application on SAP Cloud Platform.">add-custom-domain</a>; <a class="xref" href="7afd450f4dec43dd94542f196c32df37.html" title="Adds a platform domain (under hana.ondemand.com) on which the application will be accessed.">add-platform-domain</a>; <a class="xref" href="51f8bd8586554b65b8bd0476f5bbf2c0.html" title="Lists all domain names on which an application can be accessed.">list-application-domains</a>; <a class="xref" href="de15ca85ffab4301986c89e7ed239ece.html" title="Removes a custom domain as an access point of an application. Use this command if you no longer want an application to be accessible on the configured custom domain.">remove-custom-domain</a>; <a class="xref" href="96c6d247f64c4fbb849bb80640a146d9.html" title="Removes a platform domain (under hana.ondemand.com) as an access point for an application.">remove-platform-domain</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Custom SSL</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="3c890d5a4dfc44dab970d9a29b443ca7.html" title="Creates an SSL host for configuration of custom domains. This SSL host will be serving your custom domain.">create-ssl-host</a>; <a class="xref" href="f7241b71da0b4643971bcf6102366ba9.html" title="Deletes an SSL host.">delete-ssl-host</a>; <a class="xref" href="e8fc50cc0c0f410a8d8ec54f391d01dc.html" title="Lists SSL hosts for a given account.">list-ssl-hosts</a>; <a class="xref" href="d261cd11bb7547faba74f0857b46666b.html" title="Returns the certificate signing request (CSR) of the specified certificate.">display-csr</a>; <a class="xref" href="f02258d98b0246cc84a9dfdfe3642b83.html" title="Generates and returns a certificate signing request (CSR).">generate-csr</a>; <a class="xref" href="8722bcb71cda48498330957cc96e72de.html" title="Binds a certificate to an SSL host. The certificate must already be uploaded.">bind-domain-certificate</a>; <a class="xref" href="c3076ccbad214c129b056778c33bcd3e.html" title="Deletes a certificate.">delete-domain-certificate</a>; <a class="xref" href="bb54abf8453b437c848ece7269cbe28f.html" title="Uploads an SSL certificate to SAP Cloud Platform. The certificate must be signed using the previously generated CSR via the generate-csr command.">upload-domain-certificate</a>; <a class="xref" href="dfb8438c1fbc42d394890d452b9f73ef.html" title="Use this command to list certificates available for a custom domain.">list-domain-certificates</a>; <a class="xref" href="f8d24b6a1c4e4cec841b3ee1118189bb.html" title="Unbinds a certificate from an SSL host. The certificate will not be deleted from SAP Cloud Platform storage.">unbind-domain-certificate</a>; </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">System</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="7f6d7860c67e4870a5538b1af4cdfee5.html" title="This command is used to list the SDK version and the runtime. It also lists the command versions and the JAR files in the SDK and checks whether the SDK is up to date.">version</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Extensions</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 "><a class="xref" href="ba4e8bbf0ec4409fae7064bcbbe07e49.html" title="This command configures the connectivity of an extension application to a SAP SuccessFactors system associated with a specified SAP Cloud Platform account. The command creates the required HTTP destination and registers an OAuth client for the extension application in SAP SuccessFactors. The command is relevant for Java extension applications.">hcmcloud-create-connection (Beta)</a>; <a class="xref" href="1445cb5e66ed40728c1bbfd44c81d0c9.html" title="This command removes the specified connection configured between an extension application and a SAP SuccessFactors system associated with the specified SAP Cloud Platform account.">hcmcloud-delete-connection (Beta)</a>; <a class="xref" href="99e867418a624dd7a7ffca6a82078bee.html" title="This command removes an extension application from the list of authorized assertion consumer services for the SAP SuccessFactors system associated with the specified account.">hcmcloud-disable-application-access (Beta)</a>; <a class="xref" href="75eac93993004ed281e37decc9a7e7ca.html" title="This command displays the status of an extension application entry in the list of assertion consumer services for the SAP SuccessFactors system associated with the specified account. The returned results contain the extension application URL.">hcmcloud-display-application-access-status (Beta)</a>; <a class="xref" href="da0e8ba8a1c84432a2b85238dcc60ef5.html" title="This command registers an extension application as an authorized assertion consumer service for the SAP SuccessFactors system associated with the specified account to enable the application to use the SAP SuccessFactors identity provider (IdP) for authentication.">hcmcloud-enable-application-access (Beta)</a>; <a class="xref" href="e263f8ec85ad4c6e869c094b44c0084c.html" title="This command enables the SAP SuccessFactors role provider for the specified Java application.">hcmcloud-enable-role-provider (Beta)</a>; <a class="xref" href="ba8768339dad4260b0641e4f36d26394.html" title="This command lists the SAP SuccessFactors Employee Central (EC) home page tiles registered in the SAP SuccessFactors company instance associated with the extension account.">hcmcloud-get-registered-home-page-tiles (Beta)</a>; <a class="xref" href="d3dd77e6d8454bd2a9cbeb6c747c8135.html" title="This command imports SAP SuccessFactors HCM suite roles into the SAP SuccessFactors customer instance linked to an extension account.">hcmcloud-import-roles (Beta)</a>; <a class="xref" href="38f9af2d384e47cd95e5b2f81a641654.html" title="This command lists the connections configured for the specified extension application.">hcmcloud-list-connections (Beta)</a>; <a class="xref" href="d274421269594bc4b8b917d488412bd6.html" title="This command registers the SAP SuccessFactors Employee Central (EC) home page tiles in the SAP SuccessFactors company instance associated with the extension account. The home page tiles must be described in a tile descriptor file for the extension application in JSON format.">hcmcloud-register-home-page-tiles (Beta)</a>; <a class="xref" href="60b45a9efa4347ab8276fdb405d1247e.html" title="This command removes the SAP SuccessFactors EC home page tiles registered for the extension application in the SAP SuccessFactors company instance associated with the specified extension account.">hcmcloud-unregister-home-page-tiles (Beta)</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">MTA</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 ">
+								<p class="p"><a class="xref" href="1e12331df5e144c7b2cfa9f5db85d065.html" title="This command deploys Multi-Target Application (MTA) archives. One or more than one MTA archives can be deployed to your account in one go.">deploy-mta</a>; <a class="xref" href="8029e1a15ad948d2a2387266fb31c9ba.html" title="This command shows the MTA operation status with a given ID.">list-mta-operations</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="41.32231404958678%" headers="d3838250e29 ">Virtual Machines</td>
+
+							<td class="entry" valign="top" width="58.67768595041321%" headers="d3838250e32 ">
+								<p class="p"><a class="xref" href="16f9fab6ae2d40fda106cc7b469d484b.html" title="Creates a new virtual machine and starts it.">create-vm</a>; <a class="xref" href="9adf1b0d48d84c32893196003a695cc3.html" title="Stops and deletes a virtual machine by name or by ID.">delete-vm</a>; <a class="xref" href="962ccbbd5f634f918bbea9c1bf4273c3.html" title="Lists all virtual machines in the specified account. You can get information for a concrete virtual machine by name. The command output lists information about the virtual machine, such as size; status; SSH key; floating IP (if assigned); volume IDs.">list-vms</a></p>
+
+								<p class="p"><a class="xref" href="6f8924a89b06426ea4aeac2042cd9acc.html" title="Opens a secure tunnel to a specific virtual machine.">open-ssh-tunnel</a>; <a class="xref" href="da73699a95284846a5f375a383b2b9fd.html" title="Lists the currently opened SSH tunnels on the user's machine.">list-ssh-tunnels</a>; <a class="xref" href="c5052684a01c4709b5f945519bc4a9f8.html" title="Closes the ssh-tunnel to the specified virtual machine. If no virtual machine ID is specified, closes all tunnels.">close-ssh-tunnel</a></p>
+
+								<p class="p"><a class="xref" href="b140be7514b240f9b7a0106651cc8eac.html" title="This console client command creates a security group rule for a virtual machine.">create-security-rule</a>; <a class="xref" href="64ecd69a56e2429b86286bc0e96fb9f2.html" title="This console client command lists the security rules configured for a virtual machine.">list-security-rules</a>; <a class="xref" href="4ffac63a8a724cd4a14ef803eb54f8f5.html" title="This console client command deletes a security rule configured for a virtual machine.">delete-security-rule</a></p>
+
+								<p class="p"><a class="xref" href="125cba59e7c14ecbac3d43c118cf570e.html" title="Registers an access point URL for a virtual machine specified by name or ID.">register-access-point</a>; <a class="xref" href="462a3d2ed57a487b954f1a05305e4eb2.html" title="Unregisters all access point URLs registered for a virtual machine specified by name or ID.">unregister-access-point</a></p>
+
+								<p class="p"><a class="xref" href="04b5e0273c9645dbb59a4554bde5251b.html" title="Takes a snapshot of the file system of the specified virtual machine volume. The operation is asynchronous.">create-volume-snapshot</a>; <a class="xref" href="8536a2224146415bb30373c0c94e41fa.html" title="Deletes a specified virtual machine volume snapshot.">delete-volume-snapshot</a>; <a class="xref" href="a96f2697efa445a1bdd2cd8cdbff964c.html" title="Shows details about the specified virtual machine volume snapshot.">display-volume-snapshot</a>; <a class="xref" href="b076212f1c484b98a3f659f5063bfd81.html" title="Lists all volume snapshots in the specified account. Use display-volume-snapshot to get information about a specific volume snapshot.">list-volume-snapshots</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Application Runtime Container</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7613bd28711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Application Runtime Container</h1>
+<div class="body conbody"><div class="section" id="loio7613bd28711e1014839a8273b0e91070__section_7D4CD361BA4147F5971EFB3C2F8BB1D4"> 
+		<p class="p"><span class="ph pname">SAP Cloud Platform</span> applications run on a modular and lightweight
+				application runtime container where they can use the platform services APIs and Java
+				EE APIs according to standard patterns.</p>
+
+			<div class="p">Depending on the runtime type and corresponding SDK you are using, <span class="ph pname">SAP Cloud Platform</span>
+				provides the following profiles of the application runtime container: 
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613bd28711e1014839a8273b0e91070__table_sgn_4fw_5r" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="14.285714285714286%"/><col width="28.571428571428573%"/><col width="14.285714285714286%"/><col width="42.857142857142854%"/></colgroup>
+
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="14.285714285714285%" id="d5205108e40">Profile</th>
+
+								<th class="entry" valign="top" width="28.57142857142857%" id="d5205108e43">Provides support for</th>
+
+								<th class="entry" valign="top" width="14.285714285714285%" id="d5205108e46">Supported Java versions</th>
+
+								<th class="entry" valign="top" width="42.857142857142854%" id="d5205108e49">Use</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e40 ">
+									<p class="p"><kbd class="ph userinput">Java Web</kbd></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d5205108e43 ">
+									<p class="p">Some of the standard Java EE 6 APIs (Servlet, JSP, EL,
+										Websocket)</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e46 ">
+									<p class="p">7 (default); 6</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="42.857142857142854%" headers="d5205108e49 ">
+									<p class="p">If you need a small standalone Java Web container.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e40 ">
+									<p class="p"><kbd class="ph userinput">Java Web Tomcat 7</kbd></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d5205108e43 ">
+									<p class="p">Some of the standard Java EE 6 APIs (Servlet, JSP, EL,
+										Websocket)</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e46 ">
+									<p class="p">7 (default); 8</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="42.857142857142854%" headers="d5205108e49 ">
+									<p class="p">If you need a simplified Java Web application runtime
+										container based on Apache Tomcat 7.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e40 ">
+									<p class="p"><kbd class="ph userinput">Java EE 6 Web Profile</kbd>
+									</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d5205108e43 ">
+									<p class="p">Java EE 6 Web Profile APIs</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e46 ">
+									<p class="p">7 (default); 6</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="42.857142857142854%" headers="d5205108e49 ">
+									<p class="p">If you need an application runtime container together with
+										all containers defined by the Java EE 6 Web Profile
+										specification. </p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e40 ">
+									<p class="p"><kbd class="ph userinput">Java Web Tomcat 8</kbd></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d5205108e43 ">
+									<p class="p">Some of the standard Java EE 7 APIs (Servlet, JSP, EL,
+										Websocket)</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="14.285714285714285%" headers="d5205108e46 ">
+									<p class="p">8 (default); 7</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="42.857142857142854%" headers="d5205108e49 ">
+									<p class="p">If you need a simplified Java Web application runtime
+										container based on Apache Tomcat 8.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p"> For the complete list of supported APIs, see <a class="xref" href="e836a95cbb571014b3c4c422837fcde4.html">Supported Java APIs</a></p>
+ 
+	 </div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="0cd13b65789e46a49c9ece74636a934c.html" title="Java Web is a minimalistic application runtime container in SAP Cloud Platform that offers a subset of Java EE standard APIs typical for a standalone Java Web Container.">Java Web</a></div>
+<div><a class="link" href="0009b930ede54f388c88592a6828abc3.html" title="Java Web Apache Tomcat 7 (Java Web Tomcat 7) is the next simplified edition of Java Web application runtime container providing optimized performance particularly in the area of startup time and memory footprint.">Java Web Tomcat 7</a></div>
+<div><a class="link" href="be583e0a135640bcb06ef2db6a6ff51a.html" title="The Java EE 6 Web Profile application runtime container of SAP Cloud Platform is Java EE 6 Web Profile certified.">Java EE 6 Web Profile</a></div>
+<div><a class="link" href="fd6b72f17a11478e87fefe3f6ad2e30d.html" title="Java Web Apache Tomcat 8 (Java Web Tomcat 8) is the next edition of the Java Web application runtime container that has all characteristics and features of its predecessor Java Web Tomcat 7.">Java Web Tomcat 8</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

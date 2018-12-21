@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The component.js file is the component controller and provides the runtime metadata and the component methods."/>
+<meta name="description" content="The component.js file is the component controller and provides the runtime metadata and the component methods."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>component.js File</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio27ce0e4987cd426f8fa3e60836316428">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">component.js File</h1>
+<div class="body"><p class="shortdesc">The <samp class="ph codeph">component.js</samp> file is the component controller and provides the
+		runtime metadata and the component methods.</p>
+<p class="p">A component can depend on the entire <span class="ph"><span class="ph pname">SAPUI5</span></span> library. If you only require particular controls,
+			you can also start with the corresponding <samp class="ph codeph">require</samp> statements directly.
+			The following code snippet is an example for a declaration statement:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+jQuery.sap.declare ("samples.Components.shell.Component");</pre></div>
+<p class="p">To create a UI component, you extend the UI component's base class and pass to it the name of
+			the new component and its package path as shown in the following code snippet:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+// Shell Component
+sap.ui.core.UIComponent.extent("samples.components.shell.Component", {
+[...]</pre></div>
+<p class="p">The metadata provide the information to ensure the completeness of the elements of which the
+			component consists of. This facilitates the decoupling of the application logic as much
+			as possible from the logic within a particular component.</p>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="182ab413eb54433eb16f1ecf15a00651.html">Using UI Components in Applications</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

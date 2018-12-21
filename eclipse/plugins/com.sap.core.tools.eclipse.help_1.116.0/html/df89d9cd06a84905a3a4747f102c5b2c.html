@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="For security reasons not all HTTP headers are forwarded from the application to a backend or from the backend to the application."/>
+<meta name="description" content="For security reasons not all HTTP headers are forwarded from the application to a backend or from the backend to the application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Header Whitelisting</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodf89d9cd06a84905a3a4747f102c5b2c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Header Whitelisting</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">For security reasons not all HTTP headers are forwarded from the application to a backend or from the backend to the
+		application.</p>
+
+		<div class="section"><div class="section_title">Default Header Whitelisting</div><div type="Default Header Whitelisting">
+			
+			<p class="p">The following HTTP headers are forwarded automatically without any additional configuration because they are part of the HTTP
+				standard:</p>
+
+			<div class="p">
+				<ul class="ul" id="loiodf89d9cd06a84905a3a4747f102c5b2c__ul_mhc_ll4_sn">
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Accept</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Accept-Charset</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Accept-Encoding</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Accept-Language</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Accept-Range</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Age</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Allow</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Authorization</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Cache-Control</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-Language</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-Location</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-Range</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-Type</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Date</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">ETag</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Expires</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">From</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">If-Match</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">If-Modified-Since</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">If-None-Match</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">If-Range</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">If-Unmodified-Since</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Last-Modified</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Link</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Location</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Max-Forwards</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Pragma</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Range</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Referer</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Retry-After</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">User-Agent</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Vary</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Via</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Warning</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">WWW-Authenticate</span></li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section">Additionally the following HTTP headers are transferred automatically because they are frequently used by Web applications and (SAP)
+				servers:<ul class="ul" id="loiodf89d9cd06a84905a3a4747f102c5b2c__ul_d33_24l_4v">
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-Disposition</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-MD5</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">DataServiceVersion</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">DNT</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">MaxDataServiceVersion</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Origin</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">RequestID</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Sap-ContextId</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Sap-Message</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Sap-Metadata-Last-Modified</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">SAP-PASSPORT</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">Slug</span>: For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=https://tools.ietf.org/html/rfc5023#section-9.7" target="_blank" alt="https://tools.ietf.org/html/rfc5023#section-9.7" title="https://tools.ietf.org/html/rfc5023#section-9.7">Atom
+						Publishing Protocol<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">X-CorrelationID</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">X-CSRF-TOKEN</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">X-Forwarded-For</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">X-HTTP-Method</span></li>
+
+				<li class="li"><span class="ph sap-technical-name sap-technical-name">X-Requested-With</span></li>
+
+			</ul>
+</div>
+
+		<div class="section"><div class="section_title">Custom Header Whitelisting</div><div type="Custom Header Whitelisting">
+			
+			<p class="p">If you need additional HTTP headers to be forwarded to or from a backend request or backend response, add the header names in the
+				following format to the <span class="ph filepath">neo-app.json</span> file:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">"headerWhiteList": [&lt;header1&gt; (, &lt;header2&gt;, ...)]</pre></div>
+
+			<div class="note sap-example example"><span class="exampletitle">Example</span> An example configuration that forwards the additional headers <span class="ph sap-technical-name sap-technical-name">X-Custom1</span> and
+					<span class="ph sap-technical-name sap-technical-name">X-Custom2</span> looks like
+				this:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">"headerWhiteList": ["X-Custom1 "," X-Custom2"]</pre></div>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Excluded Headers</div><div type="Excluded Headers">
+			
+			<div class="p">The following headers are never forwarded:<ul class="ul" id="loiodf89d9cd06a84905a3a4747f102c5b2c__ul_ppk_z4l_4v">
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Cookie</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Cookie2</span></li>
+
+					<li class="li"><span class="ph sap-technical-name sap-technical-name">Content-Length</span></li>
+
+				</ul>
+</div>
+
+			<p class="p">Cookies are used for user session identification and therefore should not be shared. The system stores cookies sent by a backend in the session
+				and removes them from the response before forwarding to the user. With the next request to the backend the stored cookies are added
+				again.</p>
+
+			<p class="p">The <span class="ph sap-technical-name sap-technical-name">Content-Length</span> header cannot be whitelisted as the value is re-calculated on demand
+				matching the content of the given request or response.</p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

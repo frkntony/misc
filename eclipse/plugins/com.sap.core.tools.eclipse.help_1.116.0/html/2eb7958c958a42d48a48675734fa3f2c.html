@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This service enables you to get suggestions for short texts during the development process."/>
+<meta name="description" content="This service enables you to get suggestions for short texts during the development process."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Suggestion Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2eb7958c958a42d48a48675734fa3f2c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Suggestion Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">This service enables you to get suggestions for short texts during the development
+		process.</p>
+
+		<div class="section"><div class="section_title">Usage</div><div type="Usage">
+			
+			<p class="p">Provides suggestions for short texts based on complete or partial texts and their
+				translations. You can, for example, use the suggestion service to propose texts
+				while you type in a development environment. The texts that the service proposes are
+				already available in additional languages in the multilingual text repository
+				(MLTR).</p>
+
+		</div></div>
+
+		<div class="section collapsible"><div class="section_title">Request</div><div type="Request"><div class="p"><span class="ph emphasis emphasis">URL:</span>
+				<span class="ph filepath"><var class="keyword varname">&lt;base URL of SAP Translation
+					Hub&gt;</var>/translationhub/api/v1/suggestions</span><div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">For information about the base URL, see <cite class="cite">Building
+                                Base URL of SAP Translation Hub</cite> in the <cite class="cite">Related
+                                Information</cite> section.</p>
+
+				</div>
+</div>
+<p class="p"><span class="ph emphasis emphasis">HTTP Method: </span>
+				<span class="keyword">GET</span></p>
+<p class="p"><span class="ph emphasis emphasis">Request Parameters</span></p>
+<p class="p">The
+				service requires a JSON request payload and the request content type:
+					<kbd class="ph userinput">application/json; charset=utf-8</kbd>. If you so not use this
+				content type, the service call fails.</p>
+<div class="p">You can use the following parameters by
+				adding them to the URL:<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">If you want to use multiple parameters, prefix each parameter name with an
+						ampersand (&amp;). If you want to enter multiple parameter values for a
+						given parameter, enter a comma between each parameter value.</p>
+
+				</div>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio2eb7958c958a42d48a48675734fa3f2c__table_rxl_wmc_lq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d1995728e86">Parameter</th>
+
+							<th class="entry" valign="top" width="50%" id="d1995728e89">Description</th>
+
+							<th class="entry" valign="top" width="25%" id="d1995728e92">Type</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1995728e86 "><span class="ph uicontrol">search</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d1995728e89 ">Searches for a text in SAP Translation Hub. For example:
+									<var class="keyword varname">&lt;base URL of SAP Translation
+									Hub&gt;</var>/translationhub/api/v1/suggestions?search=<var class="keyword varname">&lt;text&gt;</var>.
+								If you want to enter a text in a language other than English, use
+								the <span class="ph uicontrol">searchLanguage</span> parameter.<div class="note note"><span class="notetitle">Note</span> You can
+									enter a complete text or part of a text.</div>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1995728e92 ">Mandatory</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1995728e86 "><span class="ph uicontrol">searchLanguage</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d1995728e89 ">Determines the language of the text that you search for in SAP
+								Translation Hub. This parameter enables you to search for a text in
+								any of the languages that SAP Translation Hub supports. Specify the
+								language using the language ID, for example,
+									<span class="ph uicontrol">de</span>.</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1995728e92 ">Optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1995728e86 "><span class="ph uicontrol">language</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d1995728e89 ">Searches for a text that has translations in the specified
+								language(s). For example, you can search for texts that have
+								translations in German (<span class="ph uicontrol">DE</span>) and French
+									(<span class="ph uicontrol">FR</span>).</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1995728e92 ">Optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1995728e86 "><span class="ph uicontrol">domain</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d1995728e89 ">Searches for texts in the specified domain(s). For example, you
+								can search for terms that are assigned to the domain for Customer
+								Relationship Management (<span class="ph uicontrol">B2</span>).</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1995728e92 ">Optional</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1995728e86 "><span class="ph uicontrol">texttype</span></td>
+
+							<td class="entry" valign="top" width="50%" headers="d1995728e89 ">Searches for texts assigned to the specified text type(s). For
+								example, you can search for terms that are assigned to the text type
+								field label (<span class="ph uicontrol">XFLD</span>).</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1995728e92 ">Optional</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+<p class="p"><span class="ph emphasis emphasis">Request Body Example</span></p>
+<var class="keyword varname">&lt;base URL of SAP
+				Translation
+				Hub&gt;</var><samp class="ph codeph">/translationhub/api/v1/suggestions?search=Benutz&amp;texttype=XFLD&amp;domain=B2&amp;language=en,fr&amp;searchLanguage=de</samp></div></div>
+
+		<div class="section collapsible"><div class="section_title">Response</div><div type="Response">
+			
+			<div class="p">The suggestion service response has a JSON root object with a single property suggestion. The
+				response contains the following key-value pairs:
+<div class="table-wrapper tablenoborder"><table summary="" id="loio2eb7958c958a42d48a48675734fa3f2c__table_wn2_zfp_ps" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d1995728e221">Parameter</th>
+
+								<th class="entry" valign="top" width="50%" id="d1995728e224">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d1995728e227">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">id</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">A key that uniquely identifies the text's entry in the
+									database.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">value</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">The text that the suggestion service looks for in the MLTR based on the text that you
+									enter in the <span class="ph uicontrol">search</span> parameter in the request.<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">If you want to search for <span class="ph uicontrol">cancel</span>
+											by entering part of that word, for example,
+												<span class="ph uicontrol">canc</span>, in the request, the
+												<span class="ph uicontrol">value</span> parameter in the
+											response contains the full text,
+												<span class="ph uicontrol">cancel</span>. </p>
+
+									</div>
+</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">domainId</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">The ID of the domain assigned to the translations of the text
+									entered in the request.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">domainName</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">The name of the domain assigned to the translations of the
+									text entered in the request.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">texttypeId</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">The ID of the text type assigned to the text entered in the
+									request.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">texttypeName</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">The name of the text type assigned to the text entered in the
+									request.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">englishValue</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 "><ul class="ul" id="loio2eb7958c958a42d48a48675734fa3f2c__ul_fpm_zss_2y">
+										<li class="li">
+											<p class="p">If you search for a text in English, the content of
+												this parameter is the same as the
+												<span class="ph uicontrol">value</span> parameter.</p>
+
+										</li>
+
+										<li class="li">If you search for a text in a language other than
+											English, this parameter contains the English translation
+											of the text in the <span class="ph uicontrol">value</span>
+											parameter.</li>
+
+									</ul>
+The English translation of the text - in English - entered
+									in the request.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">availableLanguages</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">The total number of languages, including English, in which
+									there are translations of the requested text in SAP Translation
+									Hub.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">availableFilteredLanguages</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">If you use the <span class="ph uicontrol">language</span> parameter in the request, this
+									parameter shows the number of languages in that parameter in
+									which translations of the text was found. For example, if you
+									specify French (<span class="ph uicontrol">FR</span>) and German
+										(<span class="ph uicontrol">DE</span>) in the
+										<span class="ph uicontrol">language</span> parameter of the request,
+									but there are translations of the requested text only in French,
+									the value of this key is <span class="ph uicontrol">1</span>. If there are
+									translations in both French and German, the value of this key is
+										<span class="ph uicontrol">2</span>. </td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Depends on request</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e221 "><span class="ph uicontrol">textSpace</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e224 ">Indicates length specifications of the text entered in the request.
+										<span class="ph uicontrol">textSpace</span> comprises multiple
+									parameters – see next table.<div class="note note"><span class="notetitle">Note</span> This parameter is supported
+										only for texts that you search for in English or German.
+										This means the <span class="ph uicontrol">searchLanguage</span>
+										parameter is English or German, or you do not enter the
+											<span class="ph uicontrol">searchLanguage</span> parameter in the
+										request.</div>
+</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e227 ">Depends on request</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio2eb7958c958a42d48a48675734fa3f2c__table_wn3_zfp_ps" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="50%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="25%" id="d1995728e448">textSpace Parameter</th>
+
+								<th class="entry" valign="top" width="50%" id="d1995728e451">Description</th>
+
+								<th class="entry" valign="top" width="25%" id="d1995728e454">Part of Response?</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e448 "><span class="ph uicontrol">inputChars</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e451 ">The number of characters contained in the text entered in the request.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e454 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e448 "><span class="ph uicontrol">minRecChars</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e451 ">The minimum recommended number of characters to set aside in the UI to accommodate a
+									potential length increase in translations.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e454 ">Always in response</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="25%" headers="d1995728e448 "><span class="ph uicontrol">minRecEm</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1995728e451 ">The minimum recommended length to set aside in the UI to accommodate a potential
+									length increase in translations. It is measured in em.</td>
+
+								<td class="entry" valign="top" width="25%" headers="d1995728e454 ">Always in response</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+			<p class="p"><span class="ph emphasis emphasis">Response Body Example</span></p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+    "suggestions" : [
+	    {
+			"id": 6260958,
+			"value": "Benutzer",
+			"domainID": "B2",
+			"domainName": "Customer Relationship Management",
+			"texttypeId": "XFLD",
+			"texttypeName": "Label",
+			"englishValue": "User",
+			"availableLanguages": 30,
+			"availableFilteredLanguages": "2",
+			"textSpace": 
+			{
+				"inputChars": 8,
+				"minRecEm": 13,
+				"minRecChars": 20
+			}
+		}
+	]
+}</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6c3c36be001949e889c17e9bbeac8941.html" title="SAP Translation Hub supports a number of different languages. The following table shows the languages into which you can translate texts using the multilingual text repository (MLTR) and machine translation.">Supported Languages</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

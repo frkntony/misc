@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Tutorial: Invoking ABAP Function Modules in On-Premise ABAP Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0a238b915b3a48adb950e5807654226c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Tutorial: Invoking ABAP Function Modules in On-Premise ABAP Systems</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context" id="loio0a238b915b3a48adb950e5807654226c__context_N10014_N10011_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This step-by-step tutorial shows how a sample Web application invokes a function module in an
+				on-premise ABAP system via RFC by using the<span class="ph pname">connectivity
+                            service</span>. </p>
+
+			<p class="p">The tutorial contains the following sections: </p>
+
+			<ul class="ul" id="loio0a238b915b3a48adb950e5807654226c__ul_spl_m4f_rn">
+				<li class="li">Presenting the user roles</li>
+
+				<li class="li">Defining the installation prerequisites</li>
+
+				<li class="li">Developing a sample Web application that uses the<span class="ph pname">connectivity
+                            service</span> to consume the simple function module
+					<span class="keyword parmname">STFC_CONNECTION</span>.</li>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="user_roles">
+		<h2 class="title topictitle2">Connectivity User Roles</h2>
+
+		<div class="body conbody">
+			<p class="p">Different user roles are involved in the on-demand to on-premise connectivity
+				end-to-end scenario. The particular steps for the relevant roles are described
+				below: </p>
+
+			<div class="section" id="user_roles__section_N1004C_N10045_N1003A_N10001"><div class="section_title">IT Administrator</div><div type="IT Administrator">
+				
+				<p class="p"> This role sets up and configures the <span class="ph pname">Cloud connector</span>.
+					Scenario steps: </p>
+
+				<ol class="ol" id="user_roles__ol_w1t_xn4_gk">
+					<li class="li">
+						<p class="p">Downloads the <span class="ph pname">Cloud connector</span> from <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Installs the <span class="ph pname">Cloud connector</span>. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Establishes an SSL tunnel from the connector to an <span class="ph pname">SAP Cloud Platform</span>
+							account. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Configures the exposed back-end systems and resources. </p>
+
+					</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section" id="user_roles__section_N10084_N10045_N1003A_N10001"><div class="section_title">Application Developer</div><div type="Application Developer">
+				
+				<p class="p">This role develops Web applications using destinations. Scenario steps:</p>
+
+				<ol class="ol" id="user_roles__ol_x1t_xn4_gk">
+					<li class="li">
+						<p class="p">Installs the Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span>
+							Tools for Java, and SDK. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Develops a Java EE application using the destination API. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Configures connectivity destinations as resources in the
+								<span class="ph uicontrol">web.xml</span> file. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Configures connectivity destinations via the <span class="ph pname">SAP Cloud Platform</span>
+							server adapter in Eclipse IDE. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Deploys the Java EE application locally and on the cloud. </p>
+
+					</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section" id="user_roles__section_N100C2_N10045_N1003A_N10001"><div class="section_title">Account Operator</div><div type="Account Operator">
+				
+				<p class="p">This role deploys Web applications, configures their destinations, and conducts
+					tests. Scenario steps: </p>
+
+				<ol class="ol" id="user_roles__ol_lbt_xn4_gk">
+					<li class="li">
+						<p class="p">Obtains a ready Java EE application WAR file. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Deploys the Java EE application in an <span class="ph pname">SAP Cloud Platform</span>
+							account. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Uploads the connectivity destination configuration via the console
+							client. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Tests the Java EE application on a local server and deploys it again to a <span class="ph pname">SAP Cloud Platform</span>
+							account. </p>
+
+					</li>
+
+				</ol>
+
+			</div></div>
+
+		</div>
+
+	</div>
+
+	<div class="topic concept nested1" id="prerequisites">
+		<h2 class="title topictitle2">Installation Prerequisites</h2>
+
+		<div class="body conbody">
+			<ul class="ul" id="prerequisites__ul_kdd_344_gk">
+				<li class="li">You have downloaded and set up your Eclipse IDE and <span class="ph pname">SAP Cloud Platform</span> Tools for
+					Java. </li>
+
+				<li class="li">You have downloaded the SDK. Its version needs to be at least <kbd class="ph userinput">1.29.18</kbd>
+						(<span class="ph uicontrol">SDK for Java Web</span>), <kbd class="ph userinput">2.11.6</kbd>
+						(<span class="ph uicontrol">SDK for Java EE 6 Web Profile</span>), or
+						<kbd class="ph userinput">2.9.1</kbd> (<span class="ph uicontrol">SDK for Java Web Tomcat
+						7</span>), respectively. </li>
+
+				<li class="li">Your local runtime needs to be hosted by a 64-bit JVM. On Windows platforms, you
+					need to install <span class="ph uicontrol">Microsoft Visual C++ 2010 Redistributable Package
+						(x64)</span>.</li>
+
+				<li class="li">You have downloaded and configured your <span class="ph pname">Cloud connector</span>.
+					Its version needs to be at least <kbd class="ph userinput">1.3.0</kbd>.</li>
+
+			</ul>
+
+			<p class="p"/>
+
+			<p class="p">To download the SAP tools, go to <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a>.</p>
+
+			<p class="p">To download the Microsoft Visual C++ package, go to <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.microsoft.com/en-us/download/details.aspx?id=14632" target="_blank" alt="http://www.microsoft.com/en-us/download/details.aspx?id=14632" title="http://www.microsoft.com/en-us/download/details.aspx?id=14632">http://www.microsoft.com/en-us/download/details.aspx?id=14632<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+			<p class="p">To read the installation documentation, go to <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a> and <a class="xref" href="57ae3d62f63440f7952e57bfcef948d3.html">Installing the Cloud Connector</a>. </p>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="create_web_project">
+		<h2 class="title topictitle2">Creating a Dynamic Web Project</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="create_web_project__steps_h35_w4x_jk"><li class="li step stepexpand" id="create_web_project__step_N1016A_N10166_N10163_N10158_N10001">
+					<span class="ph cmd">In the Eclipse IDE, open the <span class="ph uicontrol">Java EE</span> perspective. </span>
+				</li>
+<li class="li step stepexpand" id="create_web_project__step_N10177_N10166_N10163_N10158_N10001">
+					<span class="ph cmd">From the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+				</li>
+<li class="li step stepexpand" id="create_web_project__step_N10190_N10166_N10163_N10158_N10001">
+					<span class="ph cmd">In the <span class="ph uicontrol">Project name</span> field, enter <kbd class="ph userinput">jco_demo</kbd> . </span>
+				</li>
+<li class="li step stepexpand" id="create_web_project__step_N101A1_N10166_N10163_N10158_N10001">
+					<span class="ph cmd">In the <span class="ph uicontrol">Target Runtime</span> pane, select the runtime you want to use to
+						deploy the HelloWorld application. In this tutorial, we choose
+							<kbd class="ph userinput">Java Web</kbd>. </span>
+				</li>
+<li class="li step stepexpand" id="create_web_project__step_N101AE_N10166_N10163_N10158_N10001">
+					<span class="ph cmd">In the <span class="ph uicontrol">Configuration</span> pane, leave the default configuration.</span>
+				</li>
+<li class="li step stepexpand" id="create_web_project__step_N101BF_N10166_N10163_N10158_N10001">
+					<span class="ph cmd">Choose <span class="ph uicontrol">Finish</span> to complete the creation of your
+						project. </span>
+					<div class="itemgroup stepresult">
+						<p class="p"><img class="image" id="create_web_project__image_kq1_kmb_gp" src="loiobd4fd80a70d848dba4683b64ba2c4cd8_HiRes.png"/></p>
+
+					</div>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="create_servlet">
+		<h2 class="title topictitle2">Creating a Sample Servlet</h2>
+
+		
+		<div class="body taskbody"><p class="shortdesc"/>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="create_servlet__steps_a5q_2px_jk"><li class="li step stepexpand" id="create_servlet__step_N101E4_N101E0_N101DD_N101CF_N10001">
+					<span class="ph cmd">From the <span class="ph uicontrol">jco_demo</span> context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+				</li>
+<li class="li step stepexpand" id="create_servlet__step_N101FD_N101E0_N101DD_N101CF_N10001">
+					<span class="ph cmd">Enter <kbd class="ph userinput">com.sap.demo.jco</kbd> as the <span class="ph uicontrol">Java
+							package</span> and <kbd class="ph userinput">ConnectivityRFCExample</kbd> as
+						the <span class="ph uicontrol">Class name</span> and choose
+						<span class="ph uicontrol">Next</span>. </span>
+				</li>
+<li class="li step stepexpand" id="create_servlet__step_N1021A_N101E0_N101DD_N101CF_N10001">
+					<span class="ph cmd">Choose <span class="ph uicontrol">Finish</span> so that the
+							<span class="ph uicontrol">ConnectivityRFCExample.java</span> servlet is created
+						and opened in the Java editor. </span>
+				</li>
+<li class="li step stepexpand" id="create_servlet__step_N10248_N101E0_N101DD_N101CF_N10001">
+					<span class="ph cmd">Replace the entire servlet class to make use of the JCo API. The JCo API is
+						visible by default for cloud applications and must not be added explicitly
+						to the application class path. </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.demo.jco;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sap.conn.jco.AbapException;
+import com.sap.conn.jco.JCoDestination;
+import com.sap.conn.jco.JCoDestinationManager;
+import com.sap.conn.jco.JCoException;
+import com.sap.conn.jco.JCoFunction;
+import com.sap.conn.jco.JCoParameterList;
+import com.sap.conn.jco.JCoRepository;
+
+/**
+ * Sample application that uses the <span class="ph pname">connectivity
+                            service</span>. In particular,
+ * it makes use of the capability to invoke a function module in an ABAP system
+ * via RFC
+ *
+ * Note: The JCo APIs are available under &lt;code&gt;com.sap.conn.jco&lt;/code&gt;.
+ */
+public class ConnectivityRFCExample extends HttpServlet
+{
+    private static final long serialVersionUID = 1L;
+
+    public ConnectivityRFCExample()
+    {
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException
+    {
+        PrintWriter responseWriter = response.getWriter();
+        try
+        {
+            // access the RFC Destination "JCoDemoSystem"
+            JCoDestination destination=JCoDestinationManager.getDestination("JCoDemoSystem");
+
+            // make an invocation of STFC_CONNECTION in the backend;
+            JCoRepository repo=destination.getRepository();
+            JCoFunction stfcConnection=repo.getFunction("STFC_CONNECTION");
+
+            JCoParameterList imports=stfcConnection.getImportParameterList();
+            imports.setValue("REQUTEXT", "SAP HANA Cloud connectivity runs with JCo");
+            stfcConnection.execute(destination);
+            JCoParameterList exports=stfcConnection.getExportParameterList();
+            String echotext=exports.getString("ECHOTEXT");
+            String resptext=exports.getString("RESPTEXT");
+            response.addHeader("Content-type", "text/html");
+            responseWriter.println("&lt;html&gt;&lt;body&gt;");
+            responseWriter.println("&lt;h1&gt;Executed STFC_CONNECTION in system JCoDemoSystem&lt;/h1&gt;");
+            responseWriter.println("&lt;p&gt;Export parameter ECHOTEXT of STFC_CONNECTION:&lt;br&gt;");
+            responseWriter.println(echotext);
+            responseWriter.println("&lt;p&gt;Export parameter RESPTEXT of STFC_CONNECTION:&lt;br&gt;");
+            responseWriter.println(resptext);
+            responseWriter.println("&lt;/body&gt;&lt;/html&gt;");
+        }
+        catch (AbapException ae)
+        {
+            //just for completeness: As this function module does not have an exception
+            //in its signature, this exception cannot occur. However,you should always
+            //take care of AbapExceptions
+        }
+        catch (JCoException e)
+        {
+            response.addHeader("Content-type", "text/html");
+            responseWriter.println("&lt;html&gt;&lt;body&gt;");
+            responseWriter.println("&lt;h1&gt;Exception occurred while executing STFC_CONNECTION in system JCoDemoSystem&lt;/h1&gt;");
+            responseWriter.println("&lt;pre&gt;");
+            e.printStackTrace(responseWriter);
+            responseWriter.println("&lt;/pre&gt;");
+            responseWriter.println("&lt;/body&gt;&lt;/html&gt;");
+        }
+    }
+}
+</pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="create_servlet__step_N1025A_N101E0_N101DD_N101CF_N10001">
+					<span class="ph cmd">Save the Java editor and make sure that the project compiles without
+						errors.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="deploy">
+		<h2 class="title topictitle2">Deploying the Application</h2>
+
+		<div class="body taskbody">
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="deploy__steps_osr_npx_jk"><li class="li step stepexpand" id="deploy__step_N10278_N10274_N10271_N10266_N10001">
+					<span class="ph cmd">To deploy your Web application locally or on the cloud, see the following
+						two procedures, respectively: </span>
+					<ul class="ul choices" id="deploy__choices_z5x_pnd_wl">
+						<li class="li choice"><a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a></li>
+
+						<li class="li choice"><a class="xref" href="60ab35d9edde43a1b38cf48174a3dca2.html" title="Follow the steps below to deploy an application on SAP Cloud Platform.">Deploying on the Cloud from Eclipse IDE</a></li>
+
+					</ul>
+
+				</li>
+<li class="li step stepexpand" id="deploy__step_N10289_N10274_N10271_N10266_N10001">
+					<span class="ph cmd">Once the application is successfully deployed on the cloud and you execute it, the
+						application throws an exception saying that the
+							<span class="ph uicontrol">JCoDemoSystem</span> destination has not been specified
+						yet: </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Exception occurred while executing STFC_CONNECTION in system JCoDemoSystem
+
+com.sap.conn.jco.JCoException: (106) JCO_ERROR_RESOURCE: Destination JCoDemoSystem does not exist
+	at com.sap.conn.jco.rt.DefaultDestinationManager.update(DefaultDestinationManager.java:223)
+	at com.sap.conn.jco.rt.DefaultDestinationManager.searchDestination(DefaultDestinationManager.java:377)
+	at com.sap.conn.jco.rt.DefaultDestinationManager.getDestinationInstance(DefaultDestinationManager.java:96)
+	at com.sap.conn.jco.JCoDestinationManager.getDestination(JCoDestinationManager.java:52)
+	at com.sap.demo.jco.ConnectivityRFCExample.doGet(ConnectivityRFCExample.java:47)
+        ..... (cut rest of the call stack)
+</pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="deploy__step_N1029F_N10274_N10271_N10266_N10001">
+					<span class="ph cmd">As a next step, you need to configure the
+							<span class="ph uicontrol">JCoDemoSystem</span> destination. </span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="configure_rfc_destination">
+		<h2 class="title topictitle2">Configuring the RFC Destination on the Cloud</h2>
+
+		
+		<div class="body taskbody"><p class="shortdesc">To configure the destination on <span class="ph pname">SAP Cloud Platform</span>, you need to use
+			a virtual application server host name (<kbd class="ph userinput">abapserver.hana.cloud</kbd>)
+			and a virtual system number (<kbd class="ph userinput">42</kbd>) that you will expose later in
+			the <span class="ph pname">Cloud connector</span>.
+			Alternatively, you could use a load balancing configuration with a message server host
+			and a system ID.</p>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="configure_rfc_destination__steps_lrc_spx_jk"><li class="li step stepexpand" id="configure_rfc_destination__step_N102CD_N102C9_N102C6_N102AF_N10001">
+					<span class="ph cmd">Create a properties file with the following settings: </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">
+Name=JCoDemoSystem
+Type=RFC
+jco.client.ashost=abapserver.hana.cloud
+jco.client.cloud_connector_version=2
+jco.client.sysnr=42
+jco.client.user=DEMOUSER
+jco.client.passwd=&lt;password&gt;
+jco.client.client=000
+jco.client.lang=EN
+jco.destination.pool_capacity=5 </pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_rfc_destination__step_N102DF_N102C9_N102C6_N102AF_N10001">
+					<span class="ph cmd">Upload this file to your Web application in <span class="ph pname">SAP Cloud Platform</span>. For
+						more information, see <a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a>.</span>
+				</li>
+<li class="li step stepexpand" id="configure_rfc_destination__step_N102EC_N102C9_N102C6_N102AF_N10001">
+					<span class="ph cmd">Call the URL that references the cloud application again in the Web browser. The
+						application should now return a different exception: </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+Exception occurred while executing STFC_CONNECTION in system JCoDemoSystem
+
+com.sap.conn.jco.JCoException: (102) JCO_ERROR_COMMUNICATION: Opening connection to backend failed: Opening connection denied
+	at com.sap.conn.jco.rt.MiddlewareJavaRfc.generateJCoException(MiddlewareJavaRfc.java:632)
+	at com.sap.conn.jco.rt.MiddlewareJavaRfc$JavaRfcClient.connect(MiddlewareJavaRfc.java:1307)
+	at com.sap.conn.jco.rt.ClientConnection.connect(ClientConnection.java:726)
+	at com.sap.conn.jco.rt.PoolingFactory.init(PoolingFactory.java:107)
+	at com.sap.conn.jco.rt.ConnectionManager.createFactory(ConnectionManager.java:316)
+	at com.sap.conn.jco.rt.DefaultConnectionManager.createFactory(DefaultConnectionManager.java:46)
+	at com.sap.conn.jco.rt.ConnectionManager.getFactory(ConnectionManager.java:290)
+	at com.sap.conn.jco.rt.ConnectionManager.getClient(ConnectionManager.java:83)
+	at com.sap.conn.jco.rt.Context.getConnection(Context.java:216)
+	at com.sap.conn.jco.rt.RfcDestination.execute(RfcDestination.java:1306)
+	at com.sap.conn.jco.rt.RfcDestination.execute(RfcDestination.java:1278)
+	at com.sap.conn.jco.rt.AbapFunction.execute(AbapFunction.java:295)
+	at com.sap.demo.jco.ConnectivityRFCExample.doGet(ConnectivityRFCExample.java:55)
+        ..... (cut rest of the call stack)</pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_rfc_destination__step_N102FE_N102C9_N102C6_N102AF_N10001">
+					<span class="ph cmd">This means the <span class="ph pname">Cloud connector</span>
+						denied opening a connection to this system. As a next step, you need to
+						configure the system in your installed <span class="ph pname">Cloud connector</span>.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="configure_host_mapping">
+		<h2 class="title topictitle2">Configuring the Host Mapping in the <span class="ph pname">Cloud Connector</span></h2>
+
+		
+		<div class="body taskbody"><p class="shortdesc">This is required since the <span class="ph pname">Cloud connector</span> only allows
+			access to white-listed back-end systems. To do this, follow the steps below:</p>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="configure_host_mapping__steps_j4t_2qx_jk"><li class="li step stepexpand" id="configure_host_mapping__step_N10320_N1031C_N10319_N1030A_N10001">
+					<span class="ph cmd">Optional: In the <span class="ph pname">Cloud connector</span>
+						administration UI, you can check under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Monitor</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Audit</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> whether access has been denied: </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">OP_ACCESS_DENIED, Denying access to system abapserver.hana.cloud:sapgw42</pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_host_mapping__step_N1033E_N1031C_N10319_N1030A_N10001">
+					<span class="ph cmd">In the <span class="ph pname">Cloud connector</span>
+						administration UI and choose <span class="ph uicontrol">Cloud To On-Premise</span> from
+						your <span class="ph uicontrol">Account</span> menu, tab <span class="ph uicontrol">Access
+							Control</span>.</span>
+				</li>
+<li class="li step stepexpand" id="configure_host_mapping__step_N1034B_N1031C_N10319_N1030A_N10001">
+					<span class="ph cmd">In section <span class="ph uicontrol">Mapping Virtual To Internal System</span> choose
+							<span class="ph uicontrol">Add</span> to define a new system. </span>
+					<div class="itemgroup stepresult">
+						<ol class="ol" type="a" id="configure_host_mapping__ol_ugh_vwd_2s">
+							<li class="li">For <span class="ph uicontrol">Back-end Type</span>, select <kbd class="ph userinput">ABAP System</kbd> and
+								choose <span class="ph uicontrol">Next</span>.</li>
+
+							<li class="li">For <span class="ph uicontrol">Protocol</span>, select <kbd class="ph userinput">RFC</kbd> and choose
+									<span class="ph uicontrol">Next</span>.</li>
+
+							<li class="li">Choose option <span class="ph uicontrol">Without load balancing</span>.</li>
+
+							<li class="li">Enter application server and instance number. The <span class="ph uicontrol">Application
+									Server</span> entry must be the physical host name of the
+								machine on which the ABAP application server is running. Choose
+									<span class="ph uicontrol">Next</span>.
+										<p class="p"/>
+<span class="ph emphasis emphasis">Example:</span><p class="p"><img class="image" id="configure_host_mapping__image_zcd_wxd_2s" width="1400px" src="loio2eb3507111f947498a87f9eefea2eec4_HiRes.png"/></p>
+</li>
+
+							<li class="li">Enter server and instance number for virtual mapping.
+										<span class="ph emphasis emphasis">Example:</span><p class="p"><img class="image" id="configure_host_mapping__image_rwm_myd_2s" width="1400px" src="loioc3a365fefa0d40eea302ed324645964d_HiRes.png"/></p>
+</li>
+
+							<li class="li">Summary (example):<p class="p"><img class="image" id="configure_host_mapping__image_axg_tyd_2s" width="1400px" src="loiocaf6a54afe6d4225b46a79a231e3ef85_HiRes.png"/></p>
+</li>
+
+						</ol>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_host_mapping__step_N10369_N1031C_N10319_N1030A_N10001">
+					<span class="ph cmd">Call the URL that references the cloud application again in the Web browser. The
+						application should now throw a different exception: </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+com.sap.conn.jco.JCoException: (102) JCO_ERROR_COMMUNICATION: Access denied for STFC_CONNECTION
+	at com.sap.conn.jco.rt.MiddlewareJavaRfc.generateJCoException(MiddlewareJavaRfc.java:632)
+	at com.sap.conn.jco.rt.MiddlewareJavaRfc$JavaRfcClient.execute(MiddlewareJavaRfc.java:1764)
+	at com.sap.conn.jco.rt.ClientConnection.execute(ClientConnection.java:1110)
+	at com.sap.conn.jco.rt.ClientConnection.execute(ClientConnection.java:943)
+	at com.sap.conn.jco.rt.RfcDestination.execute(RfcDestination.java:1307)
+	at com.sap.conn.jco.rt.RfcDestination.execute(RfcDestination.java:1278)
+	at com.sap.conn.jco.rt.AbapFunction.execute(AbapFunction.java:295)
+	at com.sap.demo.jco.ConnectivityRFCExample.doGet(ConnectivityRFCExample.java:55)
+        ..... (cut rest of the call stack)</pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_host_mapping__step_N1037B_N1031C_N10319_N1030A_N10001">
+					<span class="ph cmd">This means the <span class="ph pname">Cloud connector</span>
+						denied invoking STFC_CONNECTION in this system. As a final step, you need to
+						provide access to this function module in your installed <span class="ph pname">Cloud connector</span>.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic task nested1" id="configure_function_module">
+		<h2 class="title topictitle2">Configuring the Function Module in the <span class="ph pname">Cloud Connector</span></h2>
+
+		
+		<div class="body taskbody"><p class="shortdesc">This is required since the <span class="ph pname">Cloud connector</span> only allows
+			access to white-listed resources (which are defined on the basis of function module
+			names with RFC). To do this, follow the steps below:</p>
+
+			<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="configure_function_module__steps_wbd_qqx_jk"><li class="li step stepexpand" id="configure_function_module__step_N1039D_N10399_N10396_N10387_N10001">
+					<span class="ph cmd">Optional: In the <span class="ph pname">Cloud connector</span>
+						administration UI, you can check under <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Monitor</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Audit</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> whether access has been denied: </span>
+					<div class="itemgroup stepresult">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">OP_ACCESS_DENIED, Denying access for user DEMOUSER to resource STFC_CONNECTION on system abapserver.hana.cloud:sapgw42</pre></div>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_function_module__step_N103BB_N10399_N10396_N10387_N10001">
+					<span class="ph cmd">In the <span class="ph pname">Cloud connector</span>
+						administration UI, go to the <span class="ph uicontrol">Access Control</span> tab
+						page.</span>
+				</li>
+<li class="li step stepexpand" id="configure_function_module__step_N103C8_N10399_N10396_N10387_N10001">
+					<span class="ph cmd">For the specified internal system referring to
+							<span class="ph uicontrol">abapserver.hana.cloud</span>, add a new resource. Select
+						the system in the table.</span>
+				</li>
+<li class="li step stepexpand" id="configure_function_module__step_N103D1_N10399_N10396_N10387_N10001">
+					<span class="ph cmd">Add a new function name under the list of exposed resources. In section
+							<span class="ph uicontrol">Resources Accessible On...</span>, choose the
+							<span class="ph uicontrol">Add</span> button and specify STFC_CONNECTION as the
+						accessible resource as shown in the screenshot below. Make sure that you
+						have selected the <span class="ph uicontrol">Exact Name</span> option to only expose
+						this single function module.</span>
+					<div class="itemgroup stepresult">
+						<p class="p"><img class="image" id="configure_function_module__image_nlp_rtx_jk" width="1400px" src="loioa38632ea52474c84b7f3da261df1dcec_HiRes.png" alt="RFC example - resource access" title="RFC example - resource access"/></p>
+
+					</div>
+				</li>
+<li class="li step stepexpand" id="configure_function_module__step_N103EF_N10399_N10396_N10387_N10001">
+					<span class="ph cmd">Call the URL that references the cloud application again in the Web browser. The
+						application should now return with a message showing the export parameters
+						of the function module after a successful invocation.</span>
+				</li>
+</ol>
+
+		</div>
+
+	</div>
+
+	<div class="topic reference nested1" id="reference_w52_drx_jk">
+		<h2 class="title topictitle2">Related Information</h2>
+
+		<div class="body refbody">
+			<div class="section" id="reference_w52_drx_jk__section_N103EC_N103E9_N103DE_N10001">
+				<p class="p">You can monitor the state and logs of your Web application deployed on <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+				<p class="p">For more information, see <a class="xref" href="db01af2fd976101493f9b90b81cd791f.html">Using Logs in the Eclipse IDE</a>. </p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

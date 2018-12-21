@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="By default, all applications running on SAP Cloud Platform are accessed on the hana.ondemand.com domain."/>
+<meta name="description" content="By default, all applications running on SAP Cloud Platform are accessed on the hana.ondemand.com domain."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Application URLs</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7ceeaa5e528140c48ae53b68433293ba">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Application URLs</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">By default, all applications running on <span class="ph pname">SAP Cloud Platform</span> are accessed on the
+			<span class="ph uicontrol">hana.ondemand.com</span> domain.</p>
+
+		<p class="p">The URL of an application deployed on <span class="ph pname">SAP Cloud Platform</span> is
+				<span class="ph filepath">https://&lt;application&gt;&lt;account&gt;.&lt;domain&gt;</span>. For example,
+			if you deploy application 'demo' in account 'myshop', the application URL will be:
+				<span class="ph filepath">https://demomyshop.hana.ondemand.com</span> .</p>
+
+		<p class="p">According to your needs, you can change the default application URL by configuring application
+			domains different from the default one: custom or platform domains. </p>
+
+		<p class="p">You can configure application domains using <span class="ph pname">SAP Cloud Platform</span> console client.</p>
+
+		<p class="p">Note that you can use either platform domains or custom domains.</p>
+
+		<div class="section"><div class="section_title">Custom Domains</div><div type="Custom Domains">
+			
+			<p class="p">Use custom domains if you want to make your applications accessible on your own domain
+				different from <span class="ph uicontrol">hana.ondemand.com</span> - for example,<span class="ph uicontrol">
+					www.myshop.com</span>. When a custom domain is used, the domain name as
+				well as the server certificate for this domain are owned by the customer.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Platform Domains</div><div type="Platform Domains">
+			
+			<div class="note caution"><span class="cautiontitle">Caution</span>  You can configure different platform domains only for Java
+				applications.</div>
+
+			<p class="p">By default, applications accessible on <span class="ph uicontrol">hana.ondemand.com</span> are
+				available on the Internet. Platform domains enable you to use additional features by
+				using a platform URL different from the default one. </p>
+
+			<p class="p">For example, you can use <span class="ph uicontrol">svc.hana.ondemand.com</span> to hide the application
+				from the Internet and access it only from other applications running on <span class="ph pname">SAP Cloud Platform</span>, or, <span class="ph uicontrol">cert.hana.ondemand.com</span> if you want an
+				application to use client-certificate authentication with the relevant SSL
+				connection settings. The application URLs will be
+					<span class="ph filepath">https://demomyshop.svc.hana.ondemand.com</span> or,
+					<span class="ph filepath">https://demomyshop.cert.hana.ondemand.com</span>,
+				respectively.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="98e655aacd1d4fc6a6ab23475b1afcd9.html" title="SAP Cloud Platform allows account owners to make their SAP Cloud Platform applications accessible via a custom domain that is different from the default one (hana.ondemand.com) - for example www.myshop.com.">Custom Domains</a></div>
+<div><a class="link" href="a32d4cd65be344439d9ed752f182e609.html#loioa32d4cd65be344439d9ed752f182e609" title="Using platform domains, you can configure the application network availability or authentication policy. You can achieve that by configuring the appropriate platform domain which will change the URL on which your application will be accessible.">Platform Domains</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

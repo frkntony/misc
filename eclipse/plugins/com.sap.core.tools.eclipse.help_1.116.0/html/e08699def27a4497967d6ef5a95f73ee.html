@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="New events can be created in the consequences part. They can be used for more complex game mechanics (cascading rules), changing the state of facts or even for temporal triggers."/>
+<meta name="description" content="New events can be created in the consequences part. They can be used for more complex game mechanics (cascading rules), changing the state of facts or even for temporal triggers."/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating New Events</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe08699def27a4497967d6ef5a95f73ee">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating New Events</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">New events can be created in the consequences part. They can be used for more complex
+		game mechanics (cascading rules), changing the state of facts or even for temporal
+		triggers.</p>
+
+		<p class="p">Declaration of a new event:</p>
+
+		<p class="p">The player ID has to be declared in the trigger part.</p>
+
+		<div class="p">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject obj = new EventObject();
+obj.setType(&lt;TYPE&gt;);
+obj.setPlayerid(&lt;PLAYER_ID&gt;);
+entryPoints["eventstream"].insert(obj); 
+</pre></div>
+
+		</div>
+
+		<div class="p">Examples for creating new events:<ul class="ul" id="loioe08699def27a4497967d6ef5a95f73ee__ul_ohj_khz_4t">
+				<li class="li">
+					<p class="p">New event of type “solvedProblemCriticalTwice”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject obj = new EventObject();
+obj.setType("solvedProblemTwice");
+obj.setPlayerid($playerid);
+entryPoints["eventstream"].insert(obj);
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">New event of type “solvedProblemCriticalTwice” with a parameter
+						“relevance”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject obj = new EventObject();
+obj.setType("solvedProblemTwice");
+obj.setPlayerid($playerid);
+obj.put("relevance", "critical");
+entryPoints["eventstream"].insert(obj);
+</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<div class="p">Examples for creating new events which is executed delayed:<ul class="ul" id="loioe08699def27a4497967d6ef5a95f73ee__ul_fny_rhz_4t">
+				<li class="li">
+					<p class="p">New event of type “solvedProblemDelayed” which is executed with a delay of 1
+						hour.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">EventObject obj = new EventObject();
+obj.setType("solvedProblemTwice");
+obj.setPlayerid($playerid);
+obj.setEventDuration(60 *60*1000);
+entryPoints["eventstream"].insert(obj);
+</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

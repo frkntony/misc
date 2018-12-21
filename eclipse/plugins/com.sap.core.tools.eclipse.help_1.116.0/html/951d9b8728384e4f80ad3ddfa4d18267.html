@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the console client you can configure an availability check for your SAP HANA XS application and subscribe recipients to receive alert e-mail notifications when it is down or responds slowly."/>
+<meta name="description" content="In the console client you can configure an availability check for your SAP HANA XS application and subscribe recipients to receive alert e-mail notifications when it is down or responds slowly."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Availability Checks for SAP HANA XS Applications from the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio951d9b8728384e4f80ad3ddfa4d18267">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Availability Checks for SAP HANA XS Applications from the Console Client</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the console client you can configure an availability check for your  SAP HANA XS
+		application and subscribe recipients to receive alert e-mail notifications when it is down
+		or responds slowly.</p>
+
+		<div class="section prereq p" id="loio951d9b8728384e4f80ad3ddfa4d18267__prereq_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio951d9b8728384e4f80ad3ddfa4d18267__ul_dpr_tzs_rk">
+				<li class="li">You have a productive SAP HANA database on the platform.<p class="p">For more information, see <a class="xref" href="c6f5764433354640a1e44b893399eaee.html" title="SAP Cloud Platform provides SAP HANA database systems designed for developing with SAP HANA in a productive environment.">Using a Productive SAP HANA Database System</a>.</p>
+</li>
+
+				<li class="li">You have set up the console client. <p class="p">For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+</li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio951d9b8728384e4f80ad3ddfa4d18267__steps_bhy_5gv_bm"><li class="li step stepexpand" id="loio951d9b8728384e4f80ad3ddfa4d18267__step_N10024_N10021_N10012_N10001">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing
+						<span class="ph filepath">neo.bat/sh (&lt;SDK installation
+					folder&gt;/tools)</span>.</span>
+			</li>
+<li class="li step stepexpand" id="loio951d9b8728384e4f80ad3ddfa4d18267__step_N10031_N10021_N10012_N10001">
+				<span class="ph cmd">Create the availability check.</span>
+				<div class="itemgroup info">
+					<p class="p">Execute:</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-availability-check -a myaccount -b myhana:myhanaxsapp -u myuser -U /heartbeat.xsjs -C 6 -W 4 --host hana.ondemand.com</pre></div>
+
+					</div>
+
+					<ul class="ul" id="loio951d9b8728384e4f80ad3ddfa4d18267__ul_zpr_ndt_rk">
+						<li class="li">Replace <span class="ph emphasis emphasis">"myaccount"</span>, <span class="ph emphasis emphasis">"myhana:myhanaxsapp"</span> and
+								<span class="ph emphasis emphasis">"myuser"</span> with the names of your account,
+							productive SAP HANA database name and application, and user
+							respectively.</li>
+
+						<li class="li">The availability URL (<span class="ph emphasis emphasis">/heartbeat.xsjs</span> in this case) is not provided
+							by default by the platform. Replace it with a suitable URL that is
+							already exposed by your SAP HANA XS application or create it. Keep in
+							mind the limitations for availability URLs. For more information, see
+								<a class="xref" href="68f46b7fea21462b9c1c345b75524bec.html">Availability Checks</a>.<div class="note note"><span class="notetitle">Note</span> 
+								<div class="p">In case you want to create an availability check for a protected
+									SAP HANA XS application, you need to create a sub-package, in
+									which to create an <span class="ph filepath">.xsaccess</span> file with the
+									following content:
+									<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+	"exposed": true,
+	"authentication": null,
+	"authorization": null
+}
+</pre></div>
+In
+									the SAP HANA XS Administration Tool (https://&lt;productive SAP
+									HANA name&gt;&lt;account&gt;.&lt;host&gt;/sap/hana/xs/admin/),
+									find the sub-package and activate public access to it. After
+									this, you will be able to monitor the resources on and under the
+									sub-package level, that is, you will be able to create an
+									availability check for your protected application. Note that in
+									the availability URL, you have to provide the path to the
+									resource in the sub-package that you will be monitoring, for
+									example <span class="ph emphasis emphasis">/heartbeat.xsjs</span>.</div>
+
+							</div>
+</li>
+
+						<li class="li">The check will trigger warnings <span class="ph emphasis emphasis">"-W 4"</span> if the
+							response time is above <span class="ph emphasis emphasis">4</span> seconds and critical
+							alerts <span class="ph emphasis emphasis">"-C 6"</span> if the response time is above 6
+							seconds or the application is not available. </li>
+
+						<li class="li">Use the respective landscape host for your account type.</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loio951d9b8728384e4f80ad3ddfa4d18267__step_N10042_N10021_N10012_N10001">
+				<span class="ph cmd">Subscribe recipients to notification alerts. </span>
+				<div class="itemgroup info">
+					<p class="p">Execute:</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-alert-recipients -a myaccount -b myhana:myhanaxsapp -u myuser -e alert_recipients@example.com --host hana.ondemand.com</pre></div>
+
+					</div>
+
+					<ul class="ul" id="loio951d9b8728384e4f80ad3ddfa4d18267__ul_trl_5mt_rk">
+						<li class="li">Replace <span class="ph emphasis emphasis">"myaccount"</span>, <span class="ph emphasis emphasis">"myhana"</span> and
+								<span class="ph emphasis emphasis">"myuser"</span> with the names of your account,
+							productive SAP HANA database name, and user respectively.</li>
+
+						<li class="li">Replace <span class="ph emphasis emphasis">"alert-recipients@example.com"</span> with the
+							email addresses that you want to receive alerts. Separate email
+							addresses with commas. We recommend that you use distribution lists
+							rather than personal email addresses. Keep in mind that you will remain
+							responsible for handling of personal email addresses with respect to
+							data privacy regulations applicable.</li>
+
+						<li class="li">Use the respective landscape host for your account type.</li>
+
+					</ul>
+
+					<div class="note note"><span class="notetitle">Note</span> Setting an alert recipient for an application will trigger sending all
+						alerts for this application to the configured email(s). Once the recipients
+						are subscribed, you do not need to subscribe them again after every new
+						check you configure. You can also set the recipients on account level if you
+						skip the <span class="keyword parmname">-b</span> parameter so that they receive alerts for
+						all applications and for all the metrics you are monitoring.</div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="a6663f02b4f9467f921b21f364abda48.html" title="In the cockpit, you can configure availability checks for the SAP HANA XS applications running on your productive SAP HANA database system.">Configuring Availability Checks for SAP HANA XS Applications from the Cockpit</a></div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+</div>
+
+<div class="linklist linklist">Availability Checks Commands<br/>
+
+<div><a class="link" href="d37bcfc3460e497cad80338192833fc5.html" title="Lists the availability checks.">list-availability-check</a></div>
+<div><a class="link" href="83d45827519b413bb98c4e2aaf9b3752.html" title="Creates an availability check.">create-availability-check</a></div>
+<div><a class="link" href="2a387e4e5faa4e35939ba472b33cb74a.html" title="Deletes an availability check.">delete-availability-check</a></div></div>
+
+<div class="linklist linklist">Alert Recipients Commands<br/>
+
+<div><a class="link" href="f326f9df2f5246bbb1878b01cfdbc0ba.html" title="Lists alert recipients.">list-alert-recipients</a></div>
+<div><a class="link" href="6dae74f3792446b7be65f5d8187c2425.html" title="Sets alert recipients.">set-alert-recipients</a></div>
+<div><a class="link" href="0f2b2cda9d844939bad3cbda32c167d8.html" title="Clears alert recipients.">clear-alert-recipients</a></div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

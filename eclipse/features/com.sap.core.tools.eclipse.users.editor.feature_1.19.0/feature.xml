@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.core.tools.eclipse.users.editor.feature"
+      label="%featureName"
+      version="1.19.0"
+      provider-name="%providerName"
+      plugin="com.sap.core.tools.eclipse.users.editor">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.core.tools.eclipse.users.editor"
+         download-size="165"
+         install-size="302"
+         version="1.19.0"
+         unpack="false"/>
+
+</feature>

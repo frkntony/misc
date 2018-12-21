@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Enable user authentication for access to your applications."/>
+<meta name="description" content="Enable user authentication for access to your applications."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Enabling Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loioe637f62abb571014857cb0232adc43a7"><h1 class="title topictitle1">Enabling Authentication</h1>
+
+	<div class="body taskbody"><p class="shortdesc">Enable user authentication for access to your applications.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loioe637f62abb571014857cb0232adc43a7__ul_gq4_35p_ns">
+					<li class="li">You have installed the <span class="ph pname">SAP Cloud Platform</span> Tools for
+						Java. See <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>. </li>
+
+					<li class="li">You have created a simple HelloWorld application. See <a class="xref" href="e5a8b1d3bb571014a0f89bb4706d4e0b.html">Creating a HelloWorld Application</a>. </li>
+
+					<li class="li">If you want to use Java EE 6 Web Profile features in your application, you
+						have downloaded the <span class="ph pname">SAP Cloud Platform</span> SDK for Java EE 6 Web Profile. See <a class="xref" href="e5b39a5bbb571014a0cc9ab03ec94ebb.html">Using Java EE 6 Web Profile</a>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">
+				<ul class="ul" id="loioe637f62abb571014857cb0232adc43a7__ul_s5d_j5p_ns">
+					<li class="li">
+						<p class="p"><a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe36c712efa844e8199a9c4bd681cb4e0">Declarative Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loio778d8987e7714376977c190f6df379ad">Programmatic Authentication</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loio6ad764f643bb401d8a50529afb1d17b3">Handling Session Timeout</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loio4ac91c9b213e4b67bba550d02991b49e">Troubleshooting</a></p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<div class="note note"><span class="notetitle">Note</span> User names in <span class="ph pname">SAP Cloud Platform</span> are case insensitive.</div>
+
+		</div></div>
+<div class="topic task nested1" lang="en-US" id="loioe36c712efa844e8199a9c4bd681cb4e0">
+	<h2 class="title topictitle2">Declarative Authentication</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">The Java EE servlet specification allows the security mechanisms for an application
+				to be declared in the <samp class="ph codeph">web.xml</samp> deployment descriptor. </p>
+
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> supports the following default authentication methods: </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe36c712efa844e8199a9c4bd681cb4e0__table_edd_xrr_v4" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: Authentication Methods</span></caption>
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d11509160e146">Authentication Method</th>
+
+							<th class="entry" valign="top" width="25%" id="d11509160e149">Default Options</th>
+
+							<th class="entry" valign="top" width="25%" id="d11509160e152">Description</th>
+
+							<th class="entry" valign="top" width="25%" id="d11509160e155">Sample Usecase</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d11509160e146 ">FORM</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e149 ">Trusted SAML 2.0 identity provider<p class="p">Application-to-Application
+									SSO</p>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e152 ">
+								<p class="p">FORM authentication implemented over the Security Assertion
+									Markup Language (SAML) 2.0 protocol. Authentication is delegated
+									to SAP ID service or custom identity provider.</p>
+
+								<p class="p">(Optional) If you configure a connection with an on-premise user
+									store, the existence of the user is also verified in the
+									on-premise SAP NetWeaver AS Java system. See <a class="xref" href="71fdf1c0aaf141d18dd5ae2b41c86da3.html">Using an SAP System as an On-Premise User Store</a>.</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e155 ">You want to delegate authentication to your corporate identity
+								provider.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d11509160e146 ">BASIC</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e149 ">User name and password</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e152 ">HTTP BASIC authentication delegated to SAP ID service or an
+								on-premise SAP NetWeaver AS Java system. Web browsers prompt users
+								to enter a user name and password. <p class="p">By default, SAP ID service is
+									used. (Optional) If you configure a connection with an
+									on-premise user store, the authentication is delegated to an
+									on-premise SAP NetWeaver AS Java system. See <a class="xref" href="71fdf1c0aaf141d18dd5ae2b41c86da3.html">Using an SAP System as an On-Premise User Store</a>.</p>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e155 ">Example 1: You want to delegate authentication to SAP ID service.
+								Users will log in with their SCN user name and password.<p class="p">Example
+									2: You have an on-premise SAP NetWeaver AS Java system used as a
+									user store. You want users to log in using the user name and
+									password stored in AS Java.</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d11509160e146 ">CERT</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e149 ">Client certificate</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e152 ">Used for authentication only with client certificate. See <a class="xref" href="0d7cf63b75a94f869895186a2d38db41.html" title="You can enable the users for your Web application to authenticate using client certificates. This corresponds to the CERT and BASICCERT authentication methods supported in Java EE.">Enabling Client Certificate Authentication</a>.</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e155 ">Users log in using their corporate client certificates.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d11509160e146 ">BASICCERT</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e149 ">User name and password<p class="p">Client certificate</p>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e152 ">Used for authentication either with client certificate or with
+								user name and password. See <a class="xref" href="0d7cf63b75a94f869895186a2d38db41.html" title="You can enable the users for your Web application to authenticate using client certificates. This corresponds to the CERT and BASICCERT authentication methods supported in Java EE.">Enabling Client Certificate Authentication</a>.</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e155 ">Within the corporate network, users log in using their client
+								certificates. Outside that network, users log in using user name and
+								password.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d11509160e146 ">OAUTH</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e149 ">OAuth 2.0 token</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e152 ">Authentication according to the OAuth 2.0 protocol with an OAuth
+								access token. See <a class="xref" href="b7b589334d444293a2a91e0ef4234136.html" title="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform.">Protecting Applications with OAuth 2.0</a>
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e155 ">You have a mobile application consuming REST APIs using the OAuth
+								2.0 protocol. Users log in using an OAuth access token.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d11509160e146 ">SAML2</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e149 ">Trusted SAML 2.0 identity provider<p class="p">Application-to-Application
+									SSO</p>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e152 ">See FORM.</td>
+
+							<td class="entry" valign="top" width="25%" headers="d11509160e155 ">See FORM.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p">If you need to configure the default options of an authentication method, or define
+				new methods, see <a class="xref" href="4a467239658c437b9e2de6c9ddfd93fb.html" title="This is an optional procedure that you can perform to configure the options for the authentication methods you defined for your application.">Configuring Authentication for Your Application</a></p>
+
+			<div class="p">
+				<div class="note tip"><span class="tiptitle">Tip</span> We recommend using FORM authentication method.</div>
+
+			</div>
+
+			<div class="p">
+				<div class="note note" id="loioe36c712efa844e8199a9c4bd681cb4e0__note_N100A2_N1009F_N10072_N10013_N10001"><span class="notetitle">Note</span> By default, any other methods (DIGEST,
+					CLIENT-CERT, or custom) that you specify in the <span class="ph uicontrol">web.xml</span>
+					are executed as FORM. You can configure those methods using the
+						<span class="ph uicontrol">Authentication Configuration</span> section at Java
+					application level in the Cockpit. See <a class="xref" href="4a467239658c437b9e2de6c9ddfd93fb.html" title="This is an optional procedure that you can perform to configure the options for the authentication methods you defined for your application.">Configuring Authentication for Your Application</a>.</div>
+
+			</div>
+
+		</div>
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>
+			<ul class="ul" id="loioe36c712efa844e8199a9c4bd681cb4e0__ul_j2v_hp1_vj">
+				<li class="li">When FORM authentication is used, you are redirected to SAP ID service or another identity
+					provider, where you are authenticated with your user name and password. The
+					servlet content is then displayed. </li>
+
+				<li class="li">When BASIC authentication is used, you see a popup window and are prompted to
+					enter your credentials. The servlet content is then displayed. </li>
+
+			</ul>
+
+		</div>
+		<div class="example"><h2 class="exampletitle">Example</h2><span class="ph uicontrol">Example 1: Using FORM Authentication</span><p class="p">The following example
+				illustrates using FORM authentication. It requires all users to authenticate before
+				accessing the protected resource. It does not, however, manage authorizations
+				according to the user roles - it authorizes all authenticated users. </p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;login-config&gt;
+  &lt;auth-method&gt;FORM&lt;/auth-method&gt;
+&lt;/login-config&gt;
+&lt;security-constraint&gt;
+  &lt;web-resource-collection&gt;
+    &lt;web-resource-name&gt;Protected Area&lt;/web-resource-name&gt;
+    &lt;url-pattern&gt;/index.jsp&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;/a2asso.jsp&lt;/url-pattern&gt;
+  &lt;/web-resource-collection&gt;
+  &lt;auth-constraint&gt;
+    &lt;!-- Role Everyone will not be assignable --&gt;
+    &lt;role-name&gt;Everyone&lt;/role-name&gt;
+    &lt;/auth-constraint&gt;
+&lt;/security-constraint&gt;
+&lt;security-role&gt;
+  &lt;description&gt;All <span class="ph pname">SAP Cloud Platform</span> users&lt;/description&gt;
+  &lt;role-name&gt;Everyone&lt;/role-name&gt;
+&lt;/security-role&gt;
+</pre></div>
+<div class="p">
+				<div class="note note" id="loioe36c712efa844e8199a9c4bd681cb4e0__note_N100E4_N100E1_N100D1_N10013_N10001"><span class="notetitle">Note</span> All authenticated users
+					implicitly have the Everyone role. You cannot remove or edit this role. In the
+					<span class="ph pname">SAP Cloud Platform</span> Cockipt, the Everyone role is not listed in role mapping
+					(see <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a> ).</div>
+
+			</div>
+<p class="p"><span class="ph uicontrol">Example 2: Using FORM Authentication with Roles</span></p>
+<p class="p">If
+				you want to manage authorizations according to user roles, you should define the
+				corresponding constraints in the <span class="ph uicontrol">web.xml</span>. The following
+				example defines a resource available for users with role Developer, and another
+				resource for users with role Manager:</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">  &lt;security-constraint&gt;
+    &lt;web-resource-collection&gt;
+      &lt;web-resource-name&gt;Developer Page&lt;/web-resource-name&gt;
+      &lt;url-pattern&gt;/developer.jsp&lt;/url-pattern&gt;
+    &lt;/web-resource-collection&gt;
+    &lt;auth-constraint&gt;
+      &lt;role-name&gt;Developer&lt;/role-name&gt;
+    &lt;/auth-constraint&gt;
+  &lt;/security-constraint&gt;
+  &lt;security-constraint&gt;
+    &lt;web-resource-collection&gt;
+      &lt;web-resource-name&gt;Manager Page&lt;/web-resource-name&gt;
+      &lt;url-pattern&gt;/manager.jsp&lt;/url-pattern&gt;
+    &lt;/web-resource-collection&gt;
+    &lt;auth-constraint&gt;
+      &lt;role-name&gt;Manager&lt;/role-name&gt;
+    &lt;/auth-constraint&gt;
+  &lt;/security-constraint&gt;
+  &lt;login-config&gt;
+    &lt;auth-method&gt;FORM&lt;/auth-method&gt;
+  &lt;/login-config&gt;
+</pre></div>
+<div class="p">
+				<div class="note remember"><span class="remembertitle">Remember</span> 
+					<p class="p">If you define roles in the <span class="ph uicontrol">web.xml</span>, you need to manage
+						the role assignments of users after you deploy your application on <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a></p>
+
+				</div>
+
+			</div>
+</div>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio778d8987e7714376977c190f6df379ad">
+	<h2 class="title topictitle2">Programmatic Authentication</h2>
+
+	<div class="body taskbody">
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">With programmatic authentication, you do not need to declare constrained resources in
+				the <span class="ph uicontrol">web.xml</span> file of your application. Instead, you declare
+				the resources as public, and you decide in the application logic when to trigger
+				authentication. In this case, you have to invoke the authentication API explicitly
+				before executing any application code that should be protected. You also need to
+				check whether the user is already authenticated, and should not trigger
+				authentication if the user is logged on, except for certain scenarios where explicit
+				re-authentication is required. </p>
+
+			<p class="p">If you trigger authentication in an <span class="ph pname">SAP Cloud Platform</span>
+				application protected with FORM, the user is redirected to SAP ID service or custom
+				identity provider for authentication, and is then returned to the original
+				application that triggered authentication. </p>
+
+			<p class="p">If you trigger authentication in an <span class="ph pname">SAP Cloud Platform</span>
+				application protected with BASIC, the Web browser displays a popup window to the
+				user, prompting him or her to provide a user name and password. </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package hello;
+
+import java.io.IOException;
+
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sap.security.auth.login.LoginContextFactory;
+
+public class HelloWorldServlet extends HttpServlet {
+		
+... 
+
+  protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+    String user = request.getRemoteUser();
+    if (user != null) {
+      response.getWriter().println("Hello, " + user);
+    } else {
+      LoginContext loginContext;
+      try {
+        loginContext = LoginContextFactory.createLoginContext("FORM");
+        loginContext.login();
+        response.getWriter().println("Hello, " + request.getRemoteUser());
+
+      } catch (LoginException e) {
+        e.printStackTrace();
+      }
+    }
+    ...
+  }
+  
+  protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+    doGet(request, response);
+  }
+  ...
+}
+</pre></div>
+
+			<p class="p">In the example above, you create <span class="ph uicontrol">LoginContext</span> and call its
+					<samp class="ph codeph">login()</samp> method. </p>
+
+			<div class="p">
+				<div class="note note" id="loio778d8987e7714376977c190f6df379ad__note_N10148_N10145_N10114_N10013_N10001"><span class="notetitle">Note</span> All the steps below are described
+					using the FORM authentication method, but they can also be applied to BASIC.
+				</div>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the source code of your HelloWorldServlet class. Add the code for programmatic
+					authentication to the <samp class="ph codeph">doGet()</samp> method.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Make the <samp class="ph codeph">doPost()</samp> method invoke programmatic authentication.
+					This is necessary because the SAP ID service always returns the SAML2 response
+					over an HTTP POST binding, and in order to be processed correctly, the
+						<span class="ph uicontrol">LoginContext</span> login must be called during the
+						<samp class="ph codeph">doPost()</samp> method. The authentication framework is
+					responsible for restoring the original request using GET after successful
+					authentication. Another alternative is that your <samp class="ph codeph">doPost()</samp>
+					method simply calls your <samp class="ph codeph">doGet()</samp> method.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Test your application on the local server. It does not need to be connected to
+					the SAP ID service, and authentication is done against local users. For more
+					information, see Testing User Authentication on the Local Server.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Deploy the application to <span class="ph pname">SAP Cloud Platform</span>. You are
+					redirected to the SAP ID service or another identity provider, where you are
+					authenticated with your user account. The servlet content is then displayed and
+					you should be able to see the content returned by the hello servlet.</span>
+				<div class="itemgroup info">
+					<p class="p">When BASIC authentication is used, you should see a popup window prompting
+						you to provide credentials to authenticate. Once these are entered
+						successfully, the servlet content is displayed. </p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio6ad764f643bb401d8a50529afb1d17b3">
+	<h2 class="title topictitle2">Handling Session Timeout</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			<div class="p">You can configure session timeout using the<span class="ph uicontrol"> web.xml</span>. Default
+				value: 20 minutes. For
+				example:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;session-config&gt;
+    &lt;session-timeout&gt;15&lt;/session-timeout&gt; &lt;!-- in minutes --&gt;
+  &lt;/session-config&gt;
+</pre></div>
+</div>
+
+			<div class="p">After the specified timeout, user sessions are invalidated. If the user tries to
+				access an invalidated session, <span class="ph pname">SAP Cloud Platform</span> will return a login page in
+				its response, so the user can enter credentials again. . If you are using SAML as
+				login protocol, you cannot rely on the response code to find out the your session is
+				expired because it will be 200 or 302. To check whether the response is for
+				triggering new login, get the <samp class="ph codeph">com.sap.cloud.security.login</samp> HTTP
+				header, and reload the page. For
+				example:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">jQuery(document).ajaxComplete(function(e, jqXHR){
+                if(jqXHR.getResponseHeader("com.sap.cloud.security.login")){
+                                                alert("Session is expired, page shall be reloaded.");
+                                                window.location.reload();
+                }
+}
+</pre></div>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio4ac91c9b213e4b67bba550d02991b49e">
+	<h2 class="title topictitle2">Troubleshooting</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			<p class="p"> When testing in the local scenario, and your application has <samp class="ph codeph">Web-ContextPath:
+					/</samp>, you might experience the following problem with Microsoft Internet
+				Explorer: </p>
+
+			<p class="p">After authentication you see: </p>
+
+			<div class="p">
+				<div class="note sap-outputcodeblock outputcodeblock"><span class="outputcodeblocktitle">Output Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">HTTP Status 405 - HTTP method POST is not supported by this URL</pre></div>
+
+				</div>
+
+			</div>
+
+			<p class="p"> </p>
+
+			<div class="p">If you see such issues, you will have to add the following code into your protected
+				resource:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+throws ServletException, IOException { doGet(req, resp); }</pre></div>
+
+			</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Tips and Best Practices</div><div type="Tips and Best Practices">
+			
+			<p class="p"><span class="ph emphasis emphasis">Basic Authentication</span></p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> Even though basic authentication is usually used for technical users to
+				consume REST services (stateless communication) we recommend that the client
+				leverages the security session instead of sending credentials with every call. This
+				means the client needs to make sure it preserves and re-sends all HTTP cookies it
+				receives. Thus, authentication will happen only once and this could improve
+				performance. </div>
+
+		</div></div>
+
+		<div class="section" id="loio4ac91c9b213e4b67bba550d02991b49e__next"><div class="section_title">Next Steps</div><div type="Next Steps">
+			
+			<p class="p">You can now test the application locally. See <a class="xref" href="fe47e02fd9514ab889c37250ed771c0c.html">Security Testing Locally</a>.</p>
+
+			<p class="p">After testing, you can proceed with deploying the application to <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</p>
+
+			<p class="p">After deploying on <span class="ph pname">SAP Cloud Platform</span>, you need to configure the role
+				assignments users and groups will have for this application. See <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a>.</p>
+
+			<p class="p">Optionally, you can configure the authentication options applied in the
+				authentication method that you defined in the <span class="ph uicontrol">web.xml</span> or
+				programmatically. See <a class="xref" href="4a467239658c437b9e2de6c9ddfd93fb.html" title="This is an optional procedure that you can perform to configure the options for the authentication methods you defined for your application.">Configuring Authentication for Your Application</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio4ac91c9b213e4b67bba550d02991b49e__example"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">To see the end-to-end scenario of managing roles on <span class="ph pname">SAP Cloud Platform</span>, watch
+				the complete video tutorial <a class="extlink" href="http://help.sap.com/disclaimer?site=http://youtu.be/KVLcVyz8GpM" target="_blank" alt="http://youtu.be/KVLcVyz8GpM" title="http://youtu.be/KVLcVyz8GpM">Managing Roles in <span class="ph pname">SAP Cloud Platform</span><img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+		</div></div>
+
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

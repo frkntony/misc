@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.cds.diagram"
+      label="%featureName"
+      version="1.75.0"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.cds" version="1.5.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.cds.diagram.definition"
+         download-size="86"
+         install-size="188"
+         version="1.75.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.cds.diagram.generic"
+         download-size="234"
+         install-size="504"
+         version="1.75.0"
+         unpack="false"/>
+		 
+ <plugin	
+         id="com.sap.cds.ddl.diagram"
+         download-size="99"	
+         install-size="243"	
+         version="1.75.0"	
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.cds.ddl.diagram.ui"
+         download-size="186"
+         install-size="381"
+         version="1.75.0"
+         unpack="false"/>
+
+</feature>

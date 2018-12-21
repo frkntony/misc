@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can create a repository with the createRepository(repositoryOptions) method of the EcmService (document service)."/>
+<meta name="description" content="You can create a repository with the createRepository(repositoryOptions) method of the EcmService (document service)."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Repository Programmatically (Java)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio08bfeb0e20a04276a2b5a939d58566bd">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating a Repository Programmatically (Java)</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can create a repository with the <span class="ph sap-technical-name sap-technical-name">createRepository(repositoryOptions)</span> method of the
+			<span class="ph sap-technical-name sap-technical-name">EcmService</span> (document service).</p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p">
+				<span class="ph cmd">Use the <span class="ph sap-technical-name sap-technical-name">createRepository(repositoryOptions)</span> method
+					and define the properties of the repository.</span>
+				<div class="itemgroup info">
+					<div class="p">The following code snippet shows how to create a repository where uploaded
+						files are scanned for
+						viruses:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+RepositoryOptions options = new RepositoryOptions();
+options.setUniqueName("myrepository");
+options.setRepositoryKey("1234567890");
+options.setVirusScannerEnabled(true);
+EcmService.createRepository(options);</pre></div>
+</div>
+
+				</div>
+			</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+</div>
+
+<div class="linklist linklist"><strong>Alternative Ways to Create Repositories</strong><br/>
+
+<div><a class="link" href="acf1b72fd1b646ef90f23983690d52df.html" title="Creates a new repository in the specified account.">create-ecm-repository</a></div>
+<div><a class="link" href="6a79939e98354243b708d35a6d9203d3.html" title="In the cockpit, you can create document service repositories for your accounts.">Creating a Repository (Cockpit)</a></div></div>
+
+<div class="linklist linklist"><strong>Connecting Your Repository to an Application</strong><br/>
+
+<div><a class="link" href="e62cd24abb571014b73792d85402f104.html">Creating a Sample Application (Java)</a></div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

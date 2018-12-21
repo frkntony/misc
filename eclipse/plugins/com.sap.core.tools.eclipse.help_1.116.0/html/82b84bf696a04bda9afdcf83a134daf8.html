@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Introduction</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio82b84bf696a04bda9afdcf83a134daf8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Introduction</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">The <span class="ph pname">Cloud connector</span> is an
+			on-premise agent that runs in the customer network and takes care of securely connecting
+			cloud applications, running on <span class="ph pname">SAP Cloud Platform</span>, with services
+			and systems of the customer network. It is used to implement hybrid scenarios, in which
+			cloud applications require point-to-point integration with existing services or
+			applications in the customer network. The following diagram shows a high-level picture
+			of the landscape:</p>
+
+		<p class="p"><img class="image" id="loio82b84bf696a04bda9afdcf83a134daf8__image_gxw_whd_vy" src="loio29d6ced23f864f4eb803e99d6ca10b94_LowRes.png"/></p>
+
+		<p class="p">This document provides a guide for IT administrators how to setup, configure, securely operate
+			and protect the <span class="ph pname">Cloud connector</span>, version
+			2.x, in productive scenarios. </p>
+
+		<div class="section"><div class="section_title">Sections</div><div type="Sections">
+			
+			<p class="p">This Operator’s guide is structured as follows: </p>
+
+			<ul class="ul" id="loio82b84bf696a04bda9afdcf83a134daf8__ul_zrz_ysv_rn">
+				<li class="li"><span class="ph emphasis emphasis">System requirements for the <span class="ph pname">Cloud connector</span></span>
+					<p class="p">This section provides an overview on the minimal and recommended system
+						requirements needed to install and run the <span class="ph pname">Cloud connector</span>.</p>
+
+				</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Installation, upgrade, and uninstallation of the <span class="ph pname">Cloud connector</span>
+					</span>(on Windows or Linux operating systems)<p class="p">This section describes the
+						lifecycle management operations of the <span class="ph pname">Cloud connector</span>, i.e. how to install, upgrade and uninstall it, as well as how to start
+						the <span class="ph pname">Cloud connector</span>
+						process after installation. </p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">High Availability</span><p class="p">This section provides information on how to install
+						a shadow instance, which needs to be reachable in case the master instance
+						of the <span class="ph pname">Cloud connector</span>
+						goes down.</p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Administration and configuration of the <span class="ph pname">Cloud connector</span></span><p class="p">This section provides an overview on how to administrate and
+						configure the <span class="ph pname">Cloud connector</span>
+						and how to securely operate it. For example: how to configure on-premise
+						resources which shall be accessible to the related cloud account; how to
+						configure trust between the <span class="ph pname">Cloud connector</span>
+						and an on-premise system; how to configure named administrator users for the
+							<span class="ph pname">Cloud connector</span>
+						administration; and so on.</p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Guidelines for secure operation of the <span class="ph pname">Cloud connector</span></span><p class="p">This section summarizes briefly all guidelines and
+						recommendations for a secure setup of the <span class="ph pname">Cloud connector</span>
+						as they are relevant for productive scenarios. It also provides references
+						to the single sections of this operator’s guide where the related topics are
+						described in more detail.</p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Monitoring</span><p class="p">This section provides an overview on how to monitor the
+							<span class="ph pname">Cloud connector</span>-based connectivity to the cloud, and describes high-availability features
+						of the <span class="ph pname">Cloud connector</span>.</p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Supportability</span><p class="p">This section provides an overview on supportability in
+						case of issues with the <span class="ph pname">Cloud connector</span>. </p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Maintenance and release strategy</span><p class="p">This section describes the
+						maintenance and release strategy of the <span class="ph pname">Cloud connector</span>, how new patches or new versions are released, and where to find
+						information about new releases. </p>
+</li>
+
+				<li class="li"><span class="ph emphasis emphasis">Process guidelines for hybrid scenarios</span><p class="p">This section
+						provides process guidelines which help to manage and operate hybrid
+						scenarios.</p>
+</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Target Audience</div><div type="Target Audience">
+			
+			<p class="p">System administrators, IT administrators, cloud account administrators</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Additional Information</div><div type="Additional Information">
+			
+			<p class="p">This document focuses on the operation aspects of the <span class="ph pname">Cloud connector</span>. It
+				does not cover a general overview of the <span class="ph pname">SAP Cloud Platform</span> and its
+					<span class="ph pname">connectivity
+                            service</span>,
+				neither does it address development related questions, such as how to implement
+				connectivity-enabled applications. </p>
+
+			<p class="p">For additional information on specific topics, see the following online resources: </p>
+
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio82b84bf696a04bda9afdcf83a134daf8__table_jps_5gk_sn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d6064745e192">Resource</th>
+
+							<th class="entry" valign="top" width="50%" id="d6064745e195">Link</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 "><span class="ph pname">SAP Cloud Platform</span>
+								documentation</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="xref" href="https://help.hana.ondemand.com/" target="_blank" alt="https://help.hana.ondemand.com/" title="https://help.hana.ondemand.com/">https://help.hana.ondemand.com/</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 "><span class="ph pname">SAP Cloud Platform
+                                    Connectivity</span>
+								documentation</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?e54cc8fbbb571014beb5caaf6aa31280.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?e54cc8fbbb571014beb5caaf6aa31280.html" title="https://help.hana.ondemand.com/help/frameset.htm?e54cc8fbbb571014beb5caaf6aa31280.html">https://help.hana.ondemand.com/help/frameset.htm?e54cc8fbbb571014beb5caaf6aa31280.html
+								</a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 ">SAP HANA <span class="ph pname">Cloud connector</span> documentation</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?e6c7616abb5710148cfcf3e75d96d596.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?e6c7616abb5710148cfcf3e75d96d596.html" title="https://help.hana.ondemand.com/help/frameset.htm?e6c7616abb5710148cfcf3e75d96d596.html">https://help.hana.ondemand.com/help/frameset.htm?e6c7616abb5710148cfcf3e75d96d596.html</a>
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 "><span class="ph pname">SAP Cloud Platform</span> Release
+								Notes</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833">http://scn.sap.com/docs/DOC-28833<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 ">SAP Community Network</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/community/developer-center/cloud-platform" target="_blank" alt="http://scn.sap.com/community/developer-center/cloud-platform" title="http://scn.sap.com/community/developer-center/cloud-platform">http://scn.sap.com/community/developer-center/cloud-platform<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 ">SAP security</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="extlink" href="http://help.sap.com/disclaimer?site=https://service.sap.com/security" target="_blank" alt="https://service.sap.com/security" title="https://service.sap.com/security">https://service.sap.com/security
+								<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 ">SAP security guides, network security</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="extlink" href="http://help.sap.com/disclaimer?site=https://service.sap.com/securityguide" target="_blank" alt="https://service.sap.com/securityguide" title="https://service.sap.com/securityguide">https://service.sap.com/securityguide<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 "><span class="ph pname">SAP Cloud Platform</span> openSAP
+								course</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 ">
+								<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://open.sap.com/course/hanacloud1" target="_blank" alt="https://open.sap.com/course/hanacloud1" title="https://open.sap.com/course/hanacloud1">https://open.sap.com/course/hanacloud1<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+								<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/community/developer-center/cloud-platform/blog/2014/01/08/videos-of-opensap-course-introduction-to-sap-hana-cloud-platform" target="_blank" alt="http://scn.sap.com/community/developer-center/cloud-platform/blog/2014/01/08/videos-of-opensap-course-introduction-to-sap-hana-cloud-platform" title="http://scn.sap.com/community/developer-center/cloud-platform/blog/2014/01/08/videos-of-opensap-course-introduction-to-sap-hana-cloud-platform">Videos of openSAP course
+										"Introduction to <span class="ph pname">SAP Cloud Platform</span>"<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d6064745e192 ">Registration for free <span class="ph pname">SAP Cloud Platform</span> account</td>
+
+							<td class="entry" valign="top" width="50%" headers="d6064745e195 "><a class="xref" href="https://account.hanatrial.ondemand.com/" target="_blank" alt="https://account.hanatrial.ondemand.com/" title="https://account.hanatrial.ondemand.com/">https://account.hanatrial.ondemand.com/</a></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

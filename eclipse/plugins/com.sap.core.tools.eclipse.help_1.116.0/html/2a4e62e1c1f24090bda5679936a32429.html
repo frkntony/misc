@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command binds a database to a Java application using a data source."/>
+<meta name="description" content="This command binds a database to a Java application using a data source."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>bind-db</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2a4e62e1c1f24090bda5679936a32429">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">bind-db</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command binds a database to a Java application using a data source.</p>
+
+		<div class="section">
+			<p class="p">You can only bind an application to a  database if the application is deployed.</p>
+
+			<ul class="ul" id="loio2a4e62e1c1f24090bda5679936a32429__ul_jsb_m1t_cr">
+				<li class="li">Database in the same account:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db -a &lt;account_name&gt; -b &lt;application_name&gt; -h &lt;landscape_host&gt; -u &lt;e-mail_or_user&gt; -i &lt;database_ID&gt; --db-user &lt;database_user&gt; --db-password &lt;database_user_password&gt;</pre></div>
+</li>
+
+				<li class="li">Database in another accout (same global account):<div class="note note"><span class="notetitle">Note</span> To bind your application
+						to a database that is owned by another account of your global account, you
+						need permission to use it. See <a class="xref" href="1cc5e1efb7f640329f419b53f21c0906.html" title="You can share productive SAP HANA or SAP ASE databases that have been provisioned in an account with other accounts of your global account.">Sharing Databases in the Same Global Account</a>.</div>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db -a &lt;account_name&gt; -b &lt;application_name&gt; -h &lt;landscape_host&gt; -u &lt;e-mail_or_user&gt; -i &lt;owner_account&gt;:&lt;database_ID&gt; --db-user &lt;database_user&gt; --db-password &lt;database_user_password&gt;</pre></div>
+</li>
+
+				<li class="li">Database in another account:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db -a &lt;account_name&gt; -b &lt;application_name&gt; -h &lt;landscape_host&gt; -u &lt;e-mail_or_user&gt; --access-token vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z --db-user &lt;database_user&gt; --db-password &lt;database_user_password&gt;</pre></div>
+</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio2a4e62e1c1f24090bda5679936a32429__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d1901586e68">Required</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">-a</span>,
+									<span class="keyword parmname">--account</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+										characters; lowercase letters and numbers, starting with a
+										letter)</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Application name<p class="p">
+										<span class="keyword cmdname">Type</span>: string (up to 30 characters;
+										lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Use the respective landscape host for your account type.
+											<p class="p"><span class="keyword cmdname">Type</span>: URL, for acceptable values
+										see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">-i</span>, <span class="keyword parmname">--id</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Database ID<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">--access-token</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Identifies a database access permission. The access token and
+									database ID parameters are mutually exclusive.</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">-p</span>,
+									<span class="keyword parmname">--password</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">To protect your password, enter it only when prompted by the
+									console client and not explicitly as a parameter in the
+									properties file or the command line.<p class="p"><span class="keyword cmdname">Type</span>:
+										string </p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Use your e-mail, SAP ID, or user
+											name<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">--db-password</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Password of the database user used to access the database </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e68 "><span class="keyword parmname">--db-user</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e68 ">Name of the database user used to access the database</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio2a4e62e1c1f24090bda5679936a32429__table_hbv_n53_jl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d1901586e237">Optional</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d1901586e237 "><span class="keyword parmname">-s</span>,
+									<span class="keyword parmname">--data-source</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d1901586e237 ">Data source name<p class="p">Default: &lt;DEFAULT&gt;</p>
+<p class="p">Type: string (uppercase and
+										lowercase letters, numbers, and the following special
+										characters: `/`, `_`, `-`, `@`. Do not use special
+										characters as first or last charachters of the data source
+										name.)</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<ul class="ul" id="loio2a4e62e1c1f24090bda5679936a32429__ul_s3b_3xs_cr">
+				<li class="li">Database in the same account:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db -a myaccount -b myapp -h hana.ondemand.com -u mymail@example.com -i mydb --db-user MYDBUSER --db-password SECRET</pre></div>
+</li>
+
+				<li class="li">Database in another account (same global
+					account):<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db -a myaccount -b myapp -h hana.ondemand.com -u mymail@example.com -i anotheraccount:anotheraccountsdb --db-user MYDBUSER --db-password SECRET</pre></div>
+</li>
+
+				<li class="li">Database in another account:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db -a myaccount -b myapp -h hana.ondemand.com -u mymail@example.com --access-token 120579jy40i15v1dqv3n3fsw40ug52m6re9fzqxg46l3fah0w0 --db-user MYDBUSER --db-password SECRET</pre></div>
+</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="46e24bb9d5ef4c2cb5cfdde8ed751e28.html" title="This command unbinds a database from a Java application for a particular data source.">unbind-db</a></div>
+<div><a class="link" href="216cef2158cc419fade9a8247d5008fa.html" title="Bind databases to your applications running on SAP Cloud Platform.">Binding Databases</a></div>
+<div><a class="link" href="1742986c3cfa47099442aee0cf8df5e9.html" title="Java applications deployed on the SAP Cloud Platform can be assigned one or more database schemas. For developing Java applications on productive SAP HANA databases, custom logons allow you to control which schemas an application is able to access.">Binding SAP HANA Databases to Java Applications</a></div>
+<div><a class="link" href="907b1707dec64bd9bfcc85333ab4b65d.html" title="You use the cockpit or the console client to bind a Java application that you deployed in one account to a productive SAP HANA and SAP ASE database that is owned by another account.">Binding Applications to Databases in the Same Global Account</a></div>
+<div><a class="link" href="667d7a43e38843988516e46923129b32.html" title="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted.">Binding Applications to Databases in Other Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

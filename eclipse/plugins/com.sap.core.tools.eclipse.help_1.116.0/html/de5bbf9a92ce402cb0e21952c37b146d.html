@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Configuration steps for Java SLS support."/>
+<meta name="description" content="Configuration steps for Java SLS support."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring a Secure Login Server for the Cloud Connector</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiode5bbf9a92ce402cb0e21952c37b146d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring a Secure Login Server for the <span class="ph pname">Cloud Connector</span>
+	</h1>
+
+	
+	<div class="body"><p class="shortdesc">Configuration steps for Java SLS support.</p>
+
+		<p class="p">The <span class="ph pname">Cloud connector</span> is able to
+			use on-the-fly generated X.509 user certificates to log in to on-premise systems if the
+			external user session is authenticated (for example by means of SAML). If you do not
+			want to use the built-in certification authority (CA) functionality of the <span class="ph pname">Cloud connector</span> (for
+			example because of security considerations), you can connect SAP SSO 2.0 Secure Login
+			Server (SLS). </p>
+
+		<p class="p">SLS is a Java application running on AS JAVA 7.20 or higher, which provides interfaces
+			for certificate enrollment. </p>
+
+		<p class="p">The protocol is using the formats:</p>
+
+		<div class="p">
+			<ul class="ul" id="loiode5bbf9a92ce402cb0e21952c37b146d__ul_ijp_4y1_b5">
+				<li class="li">HTTPS</li>
+
+				<li class="li">REST</li>
+
+				<li class="li">JSON and </li>
+
+				<li class="li">PKCS#10/PKCS#7</li>
+
+			</ul>
+
+		</div>
+
+		<div class="p">
+			<div class="note note"><span class="notetitle">Note</span> Any enrollment requires a successful user or client authentication, which can be a
+				single, multiple or even a multi factor authentication. </div>
+
+		</div>
+
+		<p class="p">The following schemes are supported: </p>
+
+		<div class="p">
+			<ul class="ul" id="loiode5bbf9a92ce402cb0e21952c37b146d__ul_dqc_ky1_b5">
+				<li class="li">LDAP/ADS</li>
+
+				<li class="li">RADIUS</li>
+
+				<li class="li">SAP SSO OTP</li>
+
+				<li class="li">ABAP RFC</li>
+
+				<li class="li">Kerberos/SPNego and </li>
+
+				<li class="li">X.509 TLS Client Authentication</li>
+
+			</ul>
+
+		</div>
+
+		<p class="p">SLS allows you to define arbitrary enrollment profiles, each with a unique profile UID in
+			its URL, and with a configurable authentication and certificate generation. </p>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Requirements</div><div type="Requirements">
+			
+			<p class="p">For the purpose of user certification, SLS has to provide a profile with the
+				following properties: </p>
+
+			<div class="p">
+				<ul class="ul" id="loiode5bbf9a92ce402cb0e21952c37b146d__ul_ifk_h51_b5">
+					<li class="li">
+						<p class="p"><span class="ph pname">Cloud connector</span> client
+							authentication by its X.509 service certificate</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><span class="ph pname">Cloud connector</span> service
+							certificate and SLS may live in different PKIs</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><span class="ph pname">Cloud connector</span> hands over
+							the full user´s certificate subject name </p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">SLS provides all required features with SAP SSO 2.0 SP06: </p>
+
+			<div class="p">
+				<ul class="ul" id="loiode5bbf9a92ce402cb0e21952c37b146d__ul_isy_j51_b5">
+					<li class="li">
+						<p class="p">TLS Client Authentication-based enrollment with
+								<span class="keyword apiname">SecureLoginModuleUserDelegationWithSSL</span> (available
+							since SP04) </p>
+
+					</li>
+
+					<li class="li">multi PKI support is implemented by all standard components of AS JAVA, AS
+						ABAP, HANA, by importing trusted Root CA certificates </li>
+
+					<li class="li">SLS allows to configure <span class="keyword apiname">PKCS10:SUBJECT</span> in a profile´s
+						certificate configuration (SP06) </li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Implementation</div><div type="Implementation">
+			
+			<p class="p"><strong class="ph b">INSTALLATION</strong>
+			</p>
+
+			<p class="p">Follow the standard installation procedures for SLS. This includes the initial setup
+				of a PKI (public key infrastructure). </p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> SLS allows you to set up one or more own PKIs with Root CA, User CA etc. You
+					can also import CAs as PKCS#12 file or use a hardware security module (HSM) as
+					"External User CA". </div>
+
+				<div class="note note"><span class="notetitle">Note</span> You should only use HTTPS connections for any communication with SLS. AS JAVA
+					/ ICM supports TLS, and the default configuration comes with a self-signed sever
+					certificate. You may use SLS to replace this certificate by a PKI certificate.
+				</div>
+
+			</div>
+
+			<p class="p"/>
+
+			<p class="p"><strong class="ph b">CONFIGURATION</strong>
+			</p>
+
+			<p class="p"><strong class="ph b">SSL Ports</strong>
+			</p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_n1r_wv1_b5">
+					<li class="li">Open the NetWeaver Administrator, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Configuration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SSL</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and define a new port with <kbd class="ph userinput">Client Authentication
+							Mode = REQUIRED</kbd>. <div class="note note"><span class="notetitle">Note</span> You may also define another port with
+								<kbd class="ph userinput">Client Authentication Mode = Do not request</kbd>
+							if you did not do so yet.</div>
+</li>
+
+					<li class="li">Import the Root CA of the PKI that issued your <span class="ph pname">Cloud connector</span>
+						service certificate.</li>
+
+					<li class="li">Save and restart the Internet Communication Manager (ICM). <p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"><strong class="ph b">Authentication Policy </strong></p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_zlp_dw1_b5">
+					<li class="li">Open the NetWeaver Administrator (NWA, https://&lt;host:port&gt;/nwa). </li>
+
+					<li class="li">Go to the top level menu and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Configuration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authentication and Single Sign-On</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> .  </li>
+
+					<li class="li">In the <span class="ph uicontrol">Policy Configuration</span> table, switch to
+							<kbd class="ph userinput">Type = Custom</kbd>.   </li>
+
+					<li class="li">Press <span class="ph uicontrol">Add</span> to create a new policy, e.g. with name
+							<kbd class="ph userinput">SecureLoginCloudConnector</kbd>.   </li>
+
+					<li class="li">Open <span class="ph uicontrol">Edit</span> mode.   </li>
+
+					<li class="li">In <span class="ph uicontrol">Details</span> of authentication configuration choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Authentication Stack</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Login Modules</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and add
+							<kbd class="ph userinput">SecureLoginModuleUserDelegationWithSSL</kbd>.   </li>
+
+					<li class="li">In <var class="keyword varname field">&lt;Rule1.subjectName&gt;</var> and <var class="keyword varname field">&lt;Rule1.issuerName&gt;</var>, enter the
+						respective certificate names of your <span class="ph pname">Cloud connector</span>
+						service certificate. </li>
+
+					<li class="li">In <span class="ph uicontrol">Details</span> of authentication configuration choose
+							<span class="ph uicontrol">Properties</span>  and add the property
+							<span class="keyword parmname">UserNameMapping</span> with value
+							<kbd class="ph userinput">VirtualUser</kbd>.   </li>
+
+					<li class="li">Save the policy.<p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"><strong class="ph b">Client Authentication Profile </strong></p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_z5w_nw1_b5">
+					<li class="li">Open the SLS Administration Console (SLAC, https://host:port/slac).</li>
+
+					<li class="li">Go to the top level menu and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Profile Management</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authentication Profiles</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> .</li>
+
+					<li class="li">Create a new profile with <span class="keyword parmname">Client Type = Secure Login
+							Client</span>, for example with name <kbd class="ph userinput">Cloud Connector User
+							Certificates</kbd>.</li>
+
+					<li class="li">Choose  <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">User Authentication</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Use Policy Configuration</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and select from the drop down list <span class="keyword parmname">Policy
+							Configuration Name = SecureLoginCloudConnector</span>.</li>
+
+					<li class="li">Edit all required fields in the wizard according to your requirements.</li>
+
+					<li class="li">Save your entries.</li>
+
+					<li class="li">Select the new profile and open <span class="ph uicontrol">Edit</span> mode.</li>
+
+					<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Certificate Configuration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Certificate Name and Alternative Names</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and set <span class="keyword parmname">Appendix Subject Name =
+							(PKCS10:SUBJECT)</span>.</li>
+
+					<li class="li">Keep all other fields in <span class="ph uicontrol">Certificate Name and Alternative
+							Names</span> empty.</li>
+
+					<li class="li">In page <span class="ph uicontrol">Enrollment Configuration</span>, make sure that the
+							<var class="keyword varname field">&lt;Enrollment URL&gt;</var> has the correct value, otherwise edit and
+						fix it: <ol class="ol" type="a" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_icv_1db_b5">
+							<li class="li">full DNS name </li>
+
+							<li class="li">port <em class="ph i">with</em> TLS Client Authentication (see port number in NWA
+								SSL Configuration).</li>
+
+						</ol>
+</li>
+
+					<li class="li">Save your entries. <p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"><strong class="ph b">User Profile Group </strong></p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_anl_ww1_b5">
+					<li class="li">Open the SLS  Administration Console (SLAC, https://host:port/slac).   </li>
+
+					<li class="li">Go to the top level menu and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Profile Management</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">User Profile Groups</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.  </li>
+
+					<li class="li">Create a new profile group, make sure that the <var class="keyword varname field">&lt;Policy URL&gt;</var> has
+						the correct value, otherwise edit and fix it:<ol class="ol" type="a" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_ogn_4db_b5">
+							<li class="li">full DNS name </li>
+
+							<li class="li">port <em class="ph i">without</em> TLS Client Authentication (see port number in
+								NWA SSL Configuration).   </li>
+
+						</ol>
+</li>
+
+					<li class="li">In tab <span class="ph uicontrol">Profiles</span>, add the profile <span class="keyword parmname">Cloud
+							Connector User Certificates</span>.   </li>
+
+					<li class="li">Save your entries. <p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"><strong class="ph b">Root CA Certificate </strong></p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_bzz_1x1_b5">
+					<li class="li">Open SLS Administration Console (SLAC, https://host:port/slac).   </li>
+
+					<li class="li">Go to the top level menu and choose <span class="ph uicontrol">Certificate
+							Management</span>. </li>
+
+					<li class="li">Select the Root CA certificate you are using in your profile. </li>
+
+					<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Export entry</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">X.509 Certificate</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and download the certificate file. <p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"><strong class="ph b">SAP <span class="ph pname">Cloud Connector</span>
+				</strong></p>
+
+			<p class="p">Follow the standard installation procedure of the <span class="ph pname">Cloud connector</span> and
+				configure SLS support: </p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_z3f_fx1_b5">
+					<li class="li">Enter the Policy URL pointing to the SLS User Profile Group.  </li>
+
+					<li class="li">Select the profile, e.g. <kbd class="ph userinput">Cloud Connector User
+							Certificates</kbd>.   </li>
+
+					<li class="li">Import the Root CA certificate of SLS into the <span class="ph pname">Cloud connector</span>´s trust store. <p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"><strong class="ph b">On-Premise Target Systems </strong></p>
+
+			<p class="p">Follow the standard configuration procedure for <span class="ph pname">Cloud connector</span>
+				support, and configure SLS support: </p>
+
+			<div class="p">
+				<ol class="ol" id="loiode5bbf9a92ce402cb0e21952c37b146d__ol_ust_nx1_b5">
+					<li class="li">Import the Root CA certificate of  SLS into the system´s trust store <ul class="ul" id="loiode5bbf9a92ce402cb0e21952c37b146d__ul_hls_h2b_b5">
+							<li class="li">AS ABAP: transaction <dfn class="term">STRUST</dfn></li>
+
+							<li class="li">AS Java: <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">NWA</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Configuration</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SSL</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>
+							</li>
+
+						</ul>
+</li>
+
+					<li class="li"> (...) <p class="p"/>
+</li>
+
+				</ol>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"/>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

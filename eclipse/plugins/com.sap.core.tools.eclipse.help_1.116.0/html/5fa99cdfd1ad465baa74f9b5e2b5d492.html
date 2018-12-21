@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Translation Hub uses translation projects to manage the translation workflow of short texts from object lists that are generated in ABAP systems. SAP Translation Hub communicates directly with the ABAP system using a remote function call (RFC)."/>
+<meta name="description" content="SAP Translation Hub uses translation projects to manage the translation workflow of short texts from object lists that are generated in ABAP systems. SAP Translation Hub communicates directly with the ABAP system using a remote function call (RFC)."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating Translation Projects for ABAP Short Texts Using an RFC</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio5fa99cdfd1ad465baa74f9b5e2b5d492">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating Translation Projects for ABAP Short Texts Using an RFC</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">SAP Translation Hub uses translation projects to manage the translation workflow of
+		short texts from object lists that are generated in ABAP systems. SAP Translation Hub
+		communicates directly with the ABAP system using a remote function call (RFC).</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>See <a class="xref" href="95a8c9c4bb19413b96f27f0324add565.html" title="To use SAP Translation Hub to translate short texts that you create in ABAP systems, several prerequisites are required.">Prerequisites for Translating ABAP Short Texts Using an RFC</a>.<div class="note note"><span class="notetitle">Note</span> This feature is available
+				to pilot customers only. To request access, drop us a line at <a class="xref" href="mailto:translationhub@sap.com" target="_blank" alt="mailto:translationhub@sap.com" title="mailto:translationhub@sap.com">mailto:translationhub@sap.com</a>.</div>
+</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>To translate short texts created in ABAP systems, SAP Translation Hub requires some
+			details, such as the object list that contains the texts in your ABAP system and the
+			required target languages.</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio5fa99cdfd1ad465baa74f9b5e2b5d492__steps_eqw_s25_tw"><li class="li step">
+				<span class="ph cmd">Create an ABAP translation project.</span>
+			</li>
+<li class="li step">
+				<span class="ph cmd">Enter the following data:</span>
+				
+<table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio5fa99cdfd1ad465baa74f9b5e2b5d492__choicetable_wrr_g4z_jt">
+<thead><tr><th valign="bottom" align="left" id="d3906717e52-option">
+							<p class="p">Field</p>
+
+						</th>
+<th valign="bottom" align="left" id="d3906717e52-desc">
+							<p class="p">Entry</p>
+
+						</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d3906717e52-option" id="d3906717e71" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Project Name</span></strong></td>
+
+						<td valign="top" headers="d3906717e52-desc d3906717e71" class="stentry chdesc" width="80%">Enter your project name, for example, <kbd class="ph userinput">objectlist01</kbd>. To make it
+							easier to relate to a translation project to an object list in the ABAP
+							system, we recommend that you choose a name that corresponds to the
+							object list in the ABAP system.</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3906717e52-option" id="d3906717e84" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Object List</span></strong></td>
+
+						<td valign="top" headers="d3906717e52-desc d3906717e84" class="stentry chdesc" width="80%">Select the object list that contains your source texts to be
+							translated. To select an object list, proceed as follows:<ol class="ol" type="a" id="loio5fa99cdfd1ad465baa74f9b5e2b5d492__ol_rnd_kf5_tw">
+								<li class="li">
+									<p class="p">Open the value help of this field</p>
+
+								</li>
+
+								<li class="li">Search for the description of an object list using wildcards (*). The search is
+									case-sensitive.</li>
+
+							</ol>
+</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3906717e52-option" id="d3906717e105" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Domain</span></strong></td>
+
+						<td valign="top" headers="d3906717e52-desc d3906717e105" class="stentry chdesc" width="80%">Select the translation domain that most closely matches the
+							application area of your source texts, for example,
+								<kbd class="ph userinput">Controlling</kbd> or <kbd class="ph userinput">Personnel
+								Management</kbd>. </td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d3906717e52-option" id="d3906717e121" class="stentry choption" width="20%"><strong><span class="ph uicontrol">Target Languages</span></strong></td>
+
+						<td valign="top" headers="d3906717e52-desc d3906717e121" class="stentry chdesc" width="80%">Choose the target languages into which you want to translate the texts in the object
+							list.</td>
+
+					</tr>
+
+				</tbody></table>
+
+			</li>
+<li class="li step">
+				<span class="ph cmd">Save the translation project.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>Your translation project contains the data required to translate the texts from the object
+			list in your ABAP system. <div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Once you have created your project, you can edit the project to add more target
+					languages. If you add more target languages after you have translated the texts
+					in a translation project, the translations of existing target languages are kept
+					(even if you remove a language and add it back later).</p>
+
+				<p class="p">You can also change the object list as many times you want. If you change the
+					object list, you replace your project’s source texts with the source texts from
+					the new object list. As a consequence, any translations that you have entered in
+					the translation project will be deleted. To avoid losing your work, push back
+					your translations to the ABAP system. For more details, see <cite class="cite">Translating
+						ABAP Texts</cite> and <cite class="cite">Updating Translations in ABAP System</cite> in
+					the <cite class="cite">Related Information</cite> section.</p>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3a011fba82644259a2cc3c919863f4b4.html" title="The base URL is main part of the complete URL that you need to access the services of SAP Translation Hub.">Building Base URL of SAP Translation Hub</a></div>
+<div><a class="link" href="27ce9c5dde2c43fcae30984ac638726b.html" title="SAP Translation Hub provides a special user interface (UI) that you can use to create translation projects.">Accessing SAP Translation Hub User Interface</a></div>
+<div><a class="link" href="4f4e3206aa524307bb6a7f351542e11d.html" title="You use translation projects to translate short texts created in ABAP systems as part of the translation workflow of SAP Translation Hub.">Translating ABAP Short Texts Using an RFC</a></div>
+<div><a class="link" href="0366049eb94641deacbd0bc517b20e60.html" title="You can use the SAP Translation Hub UI to add or change translations created by SAP Translation Hub during the translation workflow and to push the translations directly to an ABAP system.">Updating Translations in ABAP Systems Using an RFC</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

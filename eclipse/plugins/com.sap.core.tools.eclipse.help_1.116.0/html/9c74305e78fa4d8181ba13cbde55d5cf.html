@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This tutorial will help you configure an example notification scenario. The scenario includes a custom application that notifies you of critical metrics via e-mail or SMS. The application also performs actions to fix issues based on these critical metrics."/>
+<meta name="description" content="This tutorial will help you configure an example notification scenario. The scenario includes a custom application that notifies you of critical metrics via e-mail or SMS. The application also performs actions to fix issues based on these critical metrics."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Tutorial: Implementing a Notification Application</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9c74305e78fa4d8181ba13cbde55d5cf">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Tutorial: Implementing a Notification Application</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">This tutorial will help you configure an example notification scenario. The scenario
+		includes a custom application that notifies you of critical metrics via e-mail or SMS. The
+		application also performs actions to fix issues based on these critical metrics.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio9c74305e78fa4d8181ba13cbde55d5cf__ul_ahf_zxc_gv">
+				<li class="li">
+					<p class="p">To test the whole scenario, you need accounts on <span class="ph pname">SAP Cloud Platform</span> in
+						two data centers (EU and US East).</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">To retrieve the metrics of Java applications as shown in this scenario, you need two
+						deployed and running Java applications.</p>
+
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">If a Java application is not started yet, the notification application
+							will trigger the start process.</p>
+
+					</div>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">In this tutorial, you will implement a notification application that requests the metrics of
+				the following Java applications (running on <span class="ph pname">SAP Cloud Platform</span>):</p>
+
+			<ul class="ul" id="loio9c74305e78fa4d8181ba13cbde55d5cf__ul_m2x_45c_gv">
+				<li class="li">
+					<p class="p"><span class="keyword">app1</span> located in <span class="keyword">a1</span> account and
+							<span class="keyword">EU</span> data center</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p"><span class="keyword">app2</span> located in <span class="keyword">a2</span> account and <span class="keyword">US
+							East</span> data center</p>
+
+				</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Since the requests are only sent to two applications, the Maven project that you import in
+					Eclipse only spawns two threads. However, you can change this number in the
+						<span class="keyword apiname">MetricsWatcher</span> class, where the
+						<span class="keyword apiname">ScheduledThreadPoolExecutor(2)</span> method is called.
+					Furthermore, if you decide to change the list of applications, you also need to
+					correct the list in the <span class="keyword apiname">Demo</span> class of the imported
+					project.</p>
+
+			</div>
+
+			<p class="p">When the notification application receives the Java application metrics, it checks for
+				critical metrics. The application then sends an e-mail or SMS depending on whether
+				the metrics are received as critical once or three times. In addition, the
+				application restarts the Java application when the metrics are detected as critical
+				three times.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio9c74305e78fa4d8181ba13cbde55d5cf__steps_tm5_mbd_gv"><li class="li step stepexpand">
+				<span class="ph cmd">Download the <span class="keyword">cloud-metricswatcher</span> project as a ZIP file from <a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-metricswatcher" target="_blank" alt="https://github.com/SAP/cloud-metricswatcher" title="https://github.com/SAP/cloud-metricswatcher">https://github.com/SAP/cloud-metricswatcher<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Extract the files into a local folder and import the folder in Eclipse as an existing Maven
+					project.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">You can also upload your project by copying the URL from GitHub and pasting it as a Git
+							repository path or URI after you switch to the Git perspective. Remember
+							to switch back to a Java perspective afterward.</p>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the <span class="keyword apiname">Demo.java</span> class and update the following information: your
+					e-mail and SMS addresses, your logon credentials, your Java applications and
+					their accounts and data centers.</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">...
+String mail_to = "my_email@email.com";
+String mail_to_sms = "my_email@sms-service.com";
+
+
+private final String auth_user = "my_user";
+private final String auth_pass = "my_password";
+
+
+String landscapeFqdn1 = "api.hana.ondemand.com";
+String account1 = "a1";
+String application1 = "app1";
+
+String landscapeFqdn2 = "api.us1.hana.ondemand.com";
+String account2 = "a2";
+String application2 = "app2";
+
+...</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Open the <span class="keyword apiname">Mailsender.java</span> class and update your e-mail account
+					settings.</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">...
+private static final String FROM = "my_email_account@email.com";
+final String userName = "my_email_account";
+final String password = "my_email_password";
+...
+public static void sendEmail(String to, String subject, String body) throws AddressException, MessagingException {
+            // Set up the mail server
+            Properties properties = new Properties();
+            properties.setProperty("mail.transport.protocol", "smtp");
+            properties.setProperty("mail.smtp.auth", "true");
+            properties.setProperty("mail.smtp.starttls.enable", "true");
+            properties.setProperty("mail.smtp.port", "587");
+            properties.setProperty("mail.smtp.host", "smtp.email.com");
+            properties.setProperty("mail.smtp.host", "mail.email.com");
+...</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Test your scenario.</span>
+				<ol type="a" class="ol substeps" id="loio9c74305e78fa4d8181ba13cbde55d5cf__substeps_gpk_qhd_gv">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Open <span class="ph pname">SAP Cloud Platform</span> cockpit
+							and find your Java applications.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Configure your Java applications to return critical metrics.</span>
+						<div class="itemgroup info">
+							<p class="p">To do this, you can create a JMX check with a very low critical threshold for
+									<span class="keyword">HeapMemoryUsage</span> so that the check will always
+								be received in a critical state.</p>
+
+							<div class="note sap-example example"><span class="exampletitle">Example</span> 
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-jmx-check -a myaccount -b demo -u p1234567 -n "JMX Check Test - Heap Memory" -O java.lang:type=Memory -A HeapMemoryUsage -K used -U B -C 20000000 -h hana.ondemand.com</pre></div>
+
+								<p class="p">To use the console commands, you need to set up the console
+									client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+							</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Run your notification application in Eclipse and check the following:</span>
+						<div class="itemgroup info">
+							<ul class="ul" id="loio9c74305e78fa4d8181ba13cbde55d5cf__ul_zyf_3nd_gv">
+								<li class="li">
+									<p class="p">You receive an e-mail with subject <samp class="ph msgph">A metric has reached a critical state.</samp>
+										and body <samp class="ph msgph">Metric HeapMemoryUsage for application app1
+											has reached а critical state.</samp> when a critical
+										metric is received.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">You receive an SMS with text <samp class="ph msgph">Metric HeapMemoryUsage for application app1 has
+											reached critical state 3 times. The application will be
+											restarted.</samp> when a critical metric is received
+										three times.</p>
+
+								</li>
+
+								<li class="li">
+									<p class="p">Your Java application is restarted when its critical metric
+										is received three times.</p>
+
+									<p class="p">You can follow the status of your Java applications in the <span class="ph pname">SAP Cloud Platform</span> cockpit.</p>
+
+								</li>
+
+							</ul>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="298a207f33c4484b9894b7c4e2900566.html" title="Creates a JMX check.">create-jmx-check</a></div>
+<div><a class="link" href="2dacf6f12dd047efad9bc8929ff1759d.html" title="You can use the monitoring service to receive the metrics of your Java applications running on SAP Cloud Platform.">Monitoring Service</a></div>
+<div><a class="link" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/03/09/use-the-monitoring-service-for-critical-notifications-and-self-healing-of-hcp-java-applications" target="_blank" alt="http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/03/09/use-the-monitoring-service-for-critical-notifications-and-self-healing-of-hcp-java-applications" title="http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/03/09/use-the-monitoring-service-for-critical-notifications-and-self-healing-of-hcp-java-applications">Use the Monitoring Service for Critical Notifications and Self-Healing of <span class="ph pname">SAP Cloud Platform</span>
+				Java Applications<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

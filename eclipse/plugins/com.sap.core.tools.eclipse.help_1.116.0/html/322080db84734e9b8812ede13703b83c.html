@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can share a productive SAP HANA or SAP ASE database that is owned by an account with other accounts."/>
+<meta name="description" content="You can share a productive SAP HANA or SAP ASE database that is owned by an account with other accounts."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Sharing Databases with Other Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio322080db84734e9b8812ede13703b83c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Sharing Databases with Other Accounts</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can share a productive SAP HANA or SAP ASE database that is owned by an account with
+		other accounts.</p>
+
+		<div class="note note"><span class="notetitle">Note</span> We recommend using this method if you want to share your database with accounts that
+			do not belong to your global account. To share your database in the same global account,
+			see <a class="xref" href="1cc5e1efb7f640329f419b53f21c0906.html" title="You can share productive SAP HANA or SAP ASE databases that have been provisioned in an account with other accounts of your global account.">Sharing Databases in the Same Global Account</a>.</div>
+
+		<p class="p">You can allow an account to access a database that is owned by another account by
+			generating an access token with the console client. A member of the account requesting
+			access to the database can use the access token <a class="xref" href="667d7a43e38843988516e46923129b32.html" title="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted.">to bind a Java application</a>
+			and/or <a class="xref" href="458c8d753494434c8940c22bef21a8a6.html" title="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account.">to open a tunnel</a> to
+			the database in question. </p>
+
+		<div class="note note"><span class="notetitle">Note</span> Sharing databases with other accounts is only possible on the productive landscape,
+			not on the trial landscape. </div>
+
+		<p class="p">The access token uniquely identifies the access permission based on the following:</p>
+
+		<div class="p">
+			<ul class="ul" id="loio322080db84734e9b8812ede13703b83c__ul_k4y_xkt_2y">
+				<li class="li">Account giving the access permission</li>
+
+				<li class="li">Database ID</li>
+
+				<li class="li">Account receiving the access permission and application</li>
+
+			</ul>
+
+		</div>
+
+		<p class="p">The following applies for an access token:</p>
+
+		<div class="p">
+			<ul class="ul" id="loio322080db84734e9b8812ede13703b83c__ul_l4y_xkt_2y">
+				<li class="li">It always applies to one database (and one application,  if the permission allows for a data
+					source binding) and is not transferrable.</li>
+
+				<li class="li">It has an unlimited validity period.</li>
+
+				<li class="li">(For application bindings only) It can be used for as long as application
+					bindings exist or until the permission is revoked. It can be revoked whenever
+					you wish, irrespective of whether the target application has already been bound
+					to the database.</li>
+
+			</ul>
+
+		</div>
+
+		<p class="p">The table below lists the tasks and the person responsible for sharing databases with
+			other accounts:</p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loio322080db84734e9b8812ede13703b83c__table_frj_blh_fy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="33.33333333333333%" id="d2364000e100">
+							<p class="p">Task</p>
+
+						</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d2364000e106">
+							<p class="p">Responsible</p>
+
+						</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d2364000e112">
+							<p class="p">Commands used</p>
+
+						</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e100 "><a class="xref" href="470750b4042f4b47b133637c0c522a1c.html" title="You can give a Java application in another account permission to access a productive SAP HANA and SAP ASE database in your account.">Giving Applications in Other Accounts Permission to Access a Database</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e106 ">
+							<p class="p">Administrator in the account that owns the database </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e112 "><a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e100 "><a class="xref" href="6e94fa2412ae42d2925edf8f940206aa.html" title="You can revoke the permission to access a productive SAP HANA and SAP ASE database in your account for applications in other accounts.">Revoking Database Access Permissions for Applications in Other Accounts</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e106 ">
+							<p class="p">Administrator in the account that owns the database </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e112 "><a class="xref" href="a92c08adc7b54370a309c140fa174d54.html" title="This command revokes the schema access granted to an application in another account.">revoke-schema-access</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e100 "><a class="xref" href="b3133bcb38094c9890645d30d705b5a4.html" title="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account.">Giving Other Accounts Permission to Open a Database Tunnel</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e106 ">
+							<p class="p">Administrator in the account that owns the database </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e112 "><a class="xref" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e100 "><a class="xref" href="a583f98202c44c408646f9885b45752a.html" title="You can revoke the permission to open database tunnels to a productive SAP HANA adatabase in your account for other accounts.">Revoking Tunnel Access to Databases for Other Accounts</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e106 ">
+							<p class="p">Administrator in the account that owns the database </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e112 "><a class="xref" href="616309ea0ce64065813d1400a70de402.html" title="This command revokes database access that has been given to another account.">revoke-db-tunnel-access</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e100 "><a class="xref" href="667d7a43e38843988516e46923129b32.html" title="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted.">Binding Applications to Databases in Other Accounts</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e106 ">
+							<p class="p">Member of the account that has requested permission to use a database
+								owned by another account</p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e112 ">
+							<p class="p"><a class="xref" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a> (for SAP HANA
+								MDC and SAP ASE databases)</p>
+
+							<p class="p"><a class="xref" href="affa7822cef0400698c05d4f12f2e71f.html" title="This command binds a Java application to a productive SAP HANA database via a data source.">bind-hana-dbms</a> (for productive
+								SAP HANA database systems)</p>
+
+						</td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e100 "><a class="xref" href="458c8d753494434c8940c22bef21a8a6.html" title="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account.">Opening Tunnels to Databases in Other Accounts</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e106 ">
+							<p class="p">Member of the account that has requested permission to use a database
+								owned by another account</p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d2364000e112 "><a class="xref" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<p class="p">The picture below shows an example scenario and is followed by an explanation. </p>
+
+		<img class="image" id="loio322080db84734e9b8812ede13703b83c__image_thg_clt_2y" src="loioa24addf033d84b2da616d1667307b8e4_LowRes.png"/>
+		<p class="p">Account A, B, and C are not part of the same global account. An SAP HANA or SAP ASE
+			database is provisioned in all three accounts. Three Java applications have been
+			deployed in account C. Java application 3 is bound to the database in account C. To bind
+			Java application 1 to the database in account A, a member of account C requests access
+			permission to the database in account A for Java application 1. An administrator in
+			account A generates a unique access token for binding Java application 1 to the database
+			in account A. The administrator also creates a database user with appropriate roles and
+			privileges and provides the credentials of that user together with the access token to a
+			member of account C.</p>
+
+		<p class="p"> In addition, a member of account C has requested to open a tunnel to a database in account B.
+			An administrator in account B hence generates an access token and creates a database
+			user with the appropriate roles and privileges. The administrator provides the
+			credentials of that user together with the access token to at least one member of
+			account C.</p>
+
+		<p class="p">As shown in the picture below, the access token provided by account A is used by a member of
+			account C to bind Java application 1 to the database in account A. The token only
+			applies to Java application 1, it would not be possible to bind other Java applications
+			in account C to the database in account A. The access token provided by account B is
+			used by a member of account C to open a tunnel to the database in account B. All members
+			of account C can open tunnels to the database in account B if they are in possession of
+			the access token. </p>
+
+		<img class="image" id="loio322080db84734e9b8812ede13703b83c__image_upq_ngz_2y" src="loio1fadae0205eb494894eb24ac8741aee9_LowRes.png"/>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="470750b4042f4b47b133637c0c522a1c.html" title="You can give a Java application in another account permission to access a productive SAP HANA and SAP ASE database in your account.">Giving Applications in Other Accounts Permission to Access a Database</a></div>
+<div><a class="link" href="6e94fa2412ae42d2925edf8f940206aa.html" title="You can revoke the permission to access a productive SAP HANA and SAP ASE database in your account for applications in other accounts.">Revoking Database Access Permissions for Applications in Other Accounts</a></div>
+<div><a class="link" href="667d7a43e38843988516e46923129b32.html" title="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted.">Binding Applications to Databases in Other Accounts</a></div>
+<div><a class="link" href="b3133bcb38094c9890645d30d705b5a4.html" title="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account.">Giving Other Accounts Permission to Open a Database Tunnel</a></div>
+<div><a class="link" href="458c8d753494434c8940c22bef21a8a6.html" title="If you want to open a tunnel to a database that is owned by another account, you request permission from that account. If your request is approved, the account that owns the database in question provides you with an access token, a database user, and password. This allows you to open a tunnel from your account to the database in the other account.">Opening Tunnels to Databases in Other Accounts</a></div>
+<div><a class="link" href="a583f98202c44c408646f9885b45752a.html" title="You can revoke the permission to open database tunnels to a productive SAP HANA adatabase in your account for other accounts.">Revoking Tunnel Access to Databases for Other Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

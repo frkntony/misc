@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This tutorial describes how to extend the HelloWorld Web application so that it uses the SAP Cloud Platform document service for managing unstructured content in your application."/>
+<meta name="description" content="This tutorial describes how to extend the HelloWorld Web application so that it uses the SAP Cloud Platform document service for managing unstructured content in your application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Sample Application (HANA XS)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6e91a65dc22e49c9ad21f03fa7563c4e">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Creating a Sample Application (HANA XS)</h1>
+<div class="body taskbody"><p class="shortdesc">This tutorial describes how to extend the HelloWorld Web application so that it uses the
+		SAP Cloud Platform document service for managing unstructured content in your
+		application.</p>
+<div class="section prereq p" id="loio6e91a65dc22e49c9ad21f03fa7563c4e__prereq_N10016_N10013_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio6e91a65dc22e49c9ad21f03fa7563c4e__ul_jfn_nh3_4n"><li class="li">You have downloaded and configured the SAP Cloud Platform Studio. For more information,
+					see <a class="xref" href="b0e351ada628458cb8906f55bcac4755.html">Installing SAP HANA Tools for Eclipse</a>.</li>
+<li class="li">You have created a repository in the document (<span class="ph sap-technical-name sap-technical-name">ecm</span>)
+					service for your account. For more information, see <a class="xref" href="7dc8d3aea9a240ee90d67d948211a28d.html">Repositories (Java)</a>.</li>
+<li class="li">You have created a HelloWorld Web application as described in <a class="xref" href="3762b229a4074fc59ac6a9ee7404f8c9.html">Creating an SAP HANA XS Application</a>.</li>
+</ul>
+
+		</div>
+<div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio6e91a65dc22e49c9ad21f03fa7563c4e__steps_ogn_nh3_4n"><li class="li step stepexpand" id="loio6e91a65dc22e49c9ad21f03fa7563c4e__step_N10128_N10036_N10013_N10001"><span class="ph cmd">To create a session you have to provide a destination containing the repository
+					URL first.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Store the following text in a file named <span class="ph filepath">ecm.xshttpdest</span> and replace
+					the host value placeholder
+						<span class="ph sap-technical-name sap-technical-name">&lt;account&gt;</span> with the name of
+					your account.</span><div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+description = "Document Service";
+host = "ecm-&lt;account&gt;.hanatrial.ondemand.com";
+port = 8443;
+pathPrefix = "/s/json";
+useProxy = false;
+authType = none;
+useSSL = true;
+timeout = 300;
+</pre></div>
+
+				</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Assign the default truststore to the destination. For more information, see
+						<cite class="cite">Assigning Trust Stores to HTTP Destinations</cite> linked below.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Create a new JavaScript file and name it <span class="ph filepath">ecm.xsjs</span>.</span><ol type="a" class="ol substeps" id="loio6e91a65dc22e49c9ad21f03fa7563c4e__substeps_dd4_jj3_4n"><li class="li substep substepexpand"><span class="ph cmd">In the <span class="ph uicontrol">Project Explorer</span> view, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">XS JavaScript file</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and choose <span class="ph uicontrol">Next</span>.</span></li>
+<li class="li substep substepexpand"><span class="ph cmd">Enter the file name. In this example, it is called
+								<span class="ph filepath">ecm</span>.</span></li>
+<li class="li substep substepexpand"><span class="ph cmd">Add the following code to the script.</span><div class="itemgroup info">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">
+
+var service = $.import("sap.bc.cmis", "cmis");
+
+// prepare page
+var body = "&lt;html&gt;&lt;body&gt;";
+
+// create session
+var session = service.cmis.createHANAXSECMSession({
+	destination : $.net.http.readDestination("&lt;mypackage&gt;", "ecm"),
+}, {
+	repositoryName : "com.foo.MyRepository",
+	repositoryKey : "my_super_secret_key_123"
+});
+// For <var class="keyword varname">&lt;repositoryName&gt;</var> and <var class="keyword varname">&lt;repositoryKey&gt;</var> use the values that you have chosen when creating the repository.
+// For <var class="keyword varname">&lt;mypackage&gt;</var> use the package name of your application, for example, "my_account.my_hana_instance.packages_to_mydestination_file".
+
+var rootFolder = null;
+
+session.init().then(function(repInfo) {
+	body += "&lt;h3&gt;You are now connected to the Repository with Id " + repInfo.repositoryId + "&lt;/h3&gt;";
+
+	return session.getRootFolder();
+}).then(function(root) {
+	rootFolder = root;
+
+	// create a new folder
+
+	return rootFolder.createFolder({
+		"cmis:objectTypeId" : "cmis:folder",
+		"cmis:name" : "SapHANANeo"
+	});
+}).ensure(function() {
+	// create new file in root folder
+
+	var str = "Hello World!";
+
+	var content = new ArrayBuffer(str.length);
+	var contentView = new Uint8Array(content);
+	var i = 0;
+	var l = str.length;
+	for (i = 0; i &lt; l; i++) {
+		contentView[i] = str.charCodeAt(i);
+	}
+
+	return rootFolder.createDocument({
+		"cmis:objectTypeId" : "cmis:document",
+		"cmis:name" : "HelloWorld.txt",
+	}, {
+		filename : "HelloWorld.txt",
+		mimeType : "text/plain",
+		stream : content
+	}, "none");
+}).ensure(
+		function() {
+			// Display the root folder's children objects
+
+			body += "The root folder of the repository with id " + rootFolder.getId()
+					+ " contains the following objects:&lt;ul&gt;";
+
+			var childrenHandler = function(child) {
+				body += "&lt;li&gt;" + child.getName();
+
+				if (child.isFolder()) {
+					body += " createdBy: " + child.getCreatedBy() + "&lt;/li&gt;";
+				} else if (child.isDocument()) {
+					body += " createdBy: " + child.getCreatedBy() + " filesize: " + child.getContentStreamLength()
+							+ " bytes&lt;/li&gt;";
+				}
+			};
+
+			return rootFolder.getChildren().each(childrenHandler).then(function() {
+				body += "&lt;/ul&gt;";
+			});
+		}).then(function() {
+	body += "&lt;/body&gt;&lt;/html&gt;";
+
+	$.response.contentType = "text/html";
+	$.response.setBody(body);
+}).otherwise(function(error) {
+	$.response.contentType = "text/html";
+	$.response.setBody("&lt;html&gt;&lt;body&gt;Error: " + error.name + "&lt;br&gt;" + error.message + "&lt;/body&gt;&lt;/html&gt;");
+});
+</pre></div>
+
+							<p class="p">During execution, this script executes the following steps:</p>
+
+							<div class="p">
+								<ul class="ul" id="loio6e91a65dc22e49c9ad21f03fa7563c4e__ul_szp_5j3_4n"><li class="li">It connects to a repository.</li>
+<li class="li">It creates a subfolder.</li>
+<li class="li">It creates a document.</li>
+<li class="li">It displays the children of the root folder.</li>
+</ul>
+
+							</div>
+
+						</div></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/opencmis.html" target="_blank" alt="http://chemistry.apache.org/java/opencmis.html" title="http://chemistry.apache.org/java/opencmis.html">http://chemistry.apache.org/java/opencmis.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/" target="_blank" alt="http://chemistry.apache.org/" title="http://chemistry.apache.org/">http://chemistry.apache.org/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/developing/guide.html" target="_blank" alt="http://chemistry.apache.org/java/developing/guide.html" title="http://chemistry.apache.org/java/developing/guide.html">http://chemistry.apache.org/java/developing/guide.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/0.11.0/maven/apidocs/" target="_blank" alt="http://chemistry.apache.org/java/0.11.0/maven/apidocs/" title="http://chemistry.apache.org/java/0.11.0/maven/apidocs/">http://chemistry.apache.org/java/0.11.0/maven/apidocs/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/examples/index.html" target="_blank" alt="http://chemistry.apache.org/java/examples/index.html" title="http://chemistry.apache.org/java/examples/index.html">http://chemistry.apache.org/java/examples/index.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="link" href="0cb7e601bac244f0820dfc4b286d120a.html">Assigning Trust Stores to HTTP Destinations</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You use the cockpit or the console client to revoke a cross-account permission."/>
+<meta name="description" content="You use the cockpit or the console client to revoke a cross-account permission."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Revoking Cross-Account Permissions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio732612bb5cd5439aa3d99d302ad1bb32">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Revoking Cross-Account Permissions</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You use the cockpit or the console client to revoke a cross-account
+		permission.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loio732612bb5cd5439aa3d99d302ad1bb32__ul_nw5_4b3_fy">
+					<li class="li">You have the administrator role in the account that owns the database.</li>
+
+					<li class="li">You have given an account permission to use a database that is owned by
+						another account. The account providing the permission and the account
+						receiving the permission are part of the same global account. See <a class="xref" href="d848edea0e4f4136922d7edcb47a7b7a.html" title="You use the cockpit or the console client to create a new cross-account permission, allowing an account to use a database that is owned by another account.">Adding New Cross-Account Permissions</a>.</li>
+
+					<li class="li">(For the console command only) You have set up the console client. See <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a> and <a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><div class="li step p">
+				<span class="ph cmd">Choose one of the following options:</span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio732612bb5cd5439aa3d99d302ad1bb32__choicetable_lc3_zfv_fx">
+<thead><tr><th valign="bottom" align="left" id="d4797397e65-option">To revoke a cross-account permission...</th>
+<th valign="bottom" align="left" id="d4797397e65-desc">Do the following</th></tr></thead>
+<tbody>
+					
+					<tr class="strow chrow">
+						<td valign="top" headers="d4797397e65-option" id="d4797397e78" class="stentry choption" width="25%"><strong>
+							<p class="p">Using the Cockpit</p>
+
+						</strong></td>
+
+						<td valign="top" headers="d4797397e65-desc d4797397e78" class="stentry chdesc" width="75%">
+							<ol class="ol" type="a" id="loio732612bb5cd5439aa3d99d302ad1bb32__ol_mc3_zfv_fx">
+								<li class="li">Log on to the cockpit with the administrator role and select the account that owns the
+									database for which you would like to revoke permissions.</li>
+
+								<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area. </li>
+
+								<li class="li">Choose the required database.</li>
+
+								<li class="li">In the navigation area, choose <span class="ph uicontrol">Cross-Account
+										Permissions</span>.</li>
+
+								<li class="li">Choose the <span class="ph uicontrol">Delete</span> icon next to the account that you want to
+									revoke the permission for. <div class="note caution"><span class="cautiontitle">Caution</span> Choosing the
+											<span class="ph uicontrol">Delete</span> icon will revoke all
+										cross-account permissions for this account. To change the
+										type of permission for an account, from Tunnel to Binding
+										for example, see <a class="xref" href="44d0d8ebfbc74d08b3f30f7e88d9a974.html" title="You use the cockpit to change the type of an existing cross-account permission.">Changing Cross-Account Permission Types</a>.</div>
+</li>
+
+								<li class="li">In the dialogue box, choose <span class="ph uicontrol">OK</span>.</li>
+
+							</ol>
+
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d4797397e65-option" id="d4797397e142" class="stentry choption" width="25%"><strong>
+							<p class="p">Using the Console Client</p>
+
+						</strong></td>
+
+						<td valign="top" headers="d4797397e65-desc d4797397e142" class="stentry chdesc" width="75%"><div class="p">Open the command window in the
+									<span class="ph filepath">&lt;SDK&gt;/tools</span> folder and enter the
+								following
+									command:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo revoke-db-access --account &lt;account_ID&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --id &lt;database_ID&gt; 
+--to-account &lt;to-account_name&gt; --permissions &lt;permission_type&gt;</pre></div>
+<div class="note note"><span class="notetitle">Note</span> For
+									an example, see <a class="xref" href="a0265c4b575843e9904056c8a1cda28d.html" title="This command revokes the database access permissions given to another account.">revoke-db-access</a>.</div>
+</div>
+.</td>
+
+					</tr>
+
+				</tbody></table></div>
+
+			</div>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have revoked the permission to access a database for another account.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="44d0d8ebfbc74d08b3f30f7e88d9a974.html" title="You use the cockpit to change the type of an existing cross-account permission.">Changing Cross-Account Permission Types</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

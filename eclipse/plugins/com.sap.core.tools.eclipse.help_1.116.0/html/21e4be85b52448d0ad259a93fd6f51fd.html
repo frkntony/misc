@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command lists all current database access permissions for databases in other accounts."/>
+<meta name="description" content="This command lists all current database access permissions for databases in other accounts."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>list-db-tunnel-access-grants</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio21e4be85b52448d0ad259a93fd6f51fd">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">list-db-tunnel-access-grants</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command lists all current database access permissions for databases in other
+		accounts.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-db-tunnel-access-grants -h &lt;host&gt; -u &lt;user&gt; -a &lt;my account&gt;</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> The list does not include access permissions that have been revoked.</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio21e4be85b52448d0ad259a93fd6f51fd__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d1523926e44">Optional</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d1523926e44 "><span class="keyword parmname">-i</span>, <span class="keyword parmname">--id</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d1523926e44 ">(Optional) Database ID<p class="p">Lists only the access permissions for the specified
+										database</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-db-tunnel-access-grants -a myaccount -h hanatrial.ondemand.com -u mymail@example.com -i mydb</pre></div>
+
+			<p class="p">The table below shows the currently active database tunnel access permissions:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio21e4be85b52448d0ad259a93fd6f51fd__table_m32_n2t_hq" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: </span></caption>
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d1523926e102">Database ID</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d1523926e105">Granted To</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d1523926e108">Access Token</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d1523926e102 ">myownhana</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d1523926e105 ">acmecorp</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d1523926e108 ">31t0dpim6rtxa00wx5483vqe7in8i3c1phv759w9oqrutf638l</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d1523926e102 ">myotherhana</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d1523926e105 ">acmetest</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d1523926e108 ">vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="616309ea0ce64065813d1400a70de402.html" title="This command revokes database access that has been given to another account.">revoke-db-tunnel-access</a></div>
+<div><a class="link" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a></div>
+<div><a class="link" href="6efad73a5cfa41b486348b6758a6a391.html" title="You can allow other accounts to open a tunnel to a productive SAP ASE or SAP HANA database in your account.">Giving Other Accounts Permission to Open a Database Tunnel</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

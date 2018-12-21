@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Trusted Certificate Authorities for Outbound SSL Connections</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob106362a8607444db7d2c6c9acdd4668">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Trusted Certificate Authorities for Outbound SSL Connections</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"/>
+
+		<div class="section">
+			<p class="p">SAP JVM, used by <span class="ph pname">SAP Cloud Platform</span>, trusts the below-listed certificate authorities
+				(CAs) by default. This means that the external HTTPS services which use X.509 server
+				certificates (which are issued by those CAs), are trusted by default on <span class="ph pname">SAP Cloud Platform</span> and no trust needs to be configured manually. </p>
+
+			<p class="p">For SSL connections to services which use different certificate issuers, you need to
+				configure trust to use the keystore service of the platform. For more information,
+				see <a class="xref" href="38144cd12fcc44249e7b2c4584f46045.html">Tutorial: Using the Keystore Service for Client Side HTTPS Connections</a>.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Properties</div><div type="Properties">
+			
+			<p class="p">The following CAs are available in SAP JVM 7.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob106362a8607444db7d2c6c9acdd4668__table_fbf_fp5_kn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d8444057e56">Certificate Alias</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d8444057e59">Certificate Name</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d8444057e62">Certificate SHA1</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">baltimorecybertrustca</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Baltimore CyberTrust Root</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">D4:DE:20:D0:5E:66:FC:53:FE:1A:50:88:2C:78:DB:28:52:CA:E4:74</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">digicerthighassuranceevrootca</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">DigiCert High Assurance EV Root CA</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">5F:B7:EE:06:33:E2:59:DB:AD:0C:4C:9A:E6:D3:8F:1A:61:C7:DC:25</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">entrust2048</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Entrust.net Certification Authority (2048) </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">50:30:06:09:1D:97:D4:F5:AE:39:F7:CB:E7:92:7D:7D:65:2D:34:31</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">entrustpersonalserverca</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Entrust.net Client Certification Authority </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">DA:79:C1:71:11:50:C2:34:39:AA:2B:0B:0C:62:FD:55:B2:F9:F5:80
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">entrustserverca</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Entrust.net Secure Server Certification Authority </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">99:A6:9B:E6:1A:FE:88:6B:4D:2B:82:00:7C:B8:54:FC:31:7E:15:39
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">equifax_secure_certificate_authority</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Equifax Secure Certificate Authority </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">gte_global_root</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">GTE CyberTrust Global Root </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">97:81:79:50:D8:1C:96:70:CC:34:D8:09:CF:79:44:31:36:7E:F4:74
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">sappassportca</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">SAP Passport CA </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">8D:71:8C:B5:F4:21:9D:5D:39:0C:79:04:8A:EA:21:85:54:37:F4:57
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">tc_trust_center_ssl_ca_1</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">TC TrustCenter SSL CA I </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">19:84:90:0F:64:21:0B:CD:C2:64:D3:77:9C:B8:E6:4E:CA:07:B2:AB
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">tc_trust_class_2_ii</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">TC TrustCenter Class 2 CA II </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">AE:50:83:ED:7C:F4:5C:BC:8F:61:C6:21:FE:68:5D:79:42:21:15:6E
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">tc_trust_class_2_l1_ca_xi</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">TC TrustCenter Class 2 L1 CA XI </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">4C:37:58:79:7A:AE:43:74:25:FC:D8:D9:CA:7D:1A:B4:64:0D:CE:37
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">tctrustcenterclass1</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">TC TrustCenter Class 1 CA</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">72:0F:C1:5D:DC:27:D4:56:D0:98:FA:BF:3C:DD:78:D3:1E:F5:A8:DA </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">tctrustcenterclass2</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">TC TrustCenter Class 2 CA </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">83:8E:30:F7:7F:DD:14:AA:38:5E:D1:45:00:9C:0E:22:36:49:4F:AA </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">telekomonlinepass</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Deutsche Telekom Root CA 1 </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">9E:6C:EB:17:91:85:A2:9E:C6:06:0C:A5:3E:19:74:AF:94:AF:59:D4 </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">thawteserverbasic</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Thawte Server CA </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">23:E5:94:94:51:95:F2:41:48:03:B4:D5:64:D2:A3:A3:F5:D8:8B:8C </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass1_g1</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 1 Public Primary Certification Authority</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">90:AE:A2:69:85:FF:14:80:4C:43:49:52:EC:E9:60:84:77:AF:55:6F </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass1_g2</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 1 Public Primary Certification Authority - G2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">27:3E:E1:24:57:FD:C4:F9:0C:55:E8:2B:56:16:7F:62:F5:32:E5:47 </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass1_g3</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 1 Public Primary Certification Authority - G3</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">20:42:85:DC:F7:EB:76:41:95:57:8E:13:6B:D4:B7:D1:E9:8E:46:A5 </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass2_g1</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 2 Public Primary Certification Authority</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">67:82:AA:E0:ED:EE:E2:1A:58:39:D3:C0:CD:14:68:0A:4F:60:14:2A </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass2_g2</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 2 Public Primary Certification Authority - G2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">B3:EA:C4:47:76:C9:C8:1C:EA:F2:9D:95:B6:CC:A0:08:1B:67:EC:9D </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass2_g3</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 2 Public Primary Certification Authority - G3</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">61:EF:43:D7:7F:CA:D4:61:51:BC:98:E0:C3:59:12:AF:9F:EB:63:11 </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass3_g1</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 3 Public Primary Certification Authority</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">74:2C:31:92:E6:07:E4:24:EB:45:49:54:2B:E1:BB:C5:3E:61:74:E2
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass3_g2</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 3 Public Primary Certification Authority - G2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">85:37:1C:A6:E5:50:14:3D:CE:28:03:47:1B:DE:3A:09:E8:F8:77:0F
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass3_g3</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 3 Public Primary Certification Authority - G3</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">13:2D:0D:45:53:4B:69:97:CD:B2:D5:C3:39:E2:55:76:60:9B:5C:C6
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass4_g2</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 4 Public Primary Certification Authority - G2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">0B:77:BE:BB:CB:7A:A2:47:05:DE:CC:0F:BD:6A:02:FC:7A:BD:9B:52
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass4_g3</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 4 Public Primary Certification Authority - G3</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">C8:EC:8C:87:92:69:CB:4B:AB:39:E9:8D:7E:57:67:F3:14:95:73:9D
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">workplaceca</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">mySAP.com Workplace CA (dsa) </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">A1:7D:8B:51:8A:8F:BB:DE:A5:00:C8:1E:96:12:26:16:32:4A:34:C0
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">thawteprimaryrootcag2</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">Thawte Primary Root CA - G2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">AA:DB:BC:22:23:8F:C4:01:A1:27:BB:38:DD:F4:1D:DB:08:9E:F0:12</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e56 "><span class="keyword parmname">verisignclass3_g4</span></td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e59 ">VeriSign Class 3 Public Primary Certification Authority -
+								G4</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d8444057e62 ">22:D5:D8:DF:8F:02:31:D1:8D:F7:9D:B7:CF:8A:2D:64:C9:3F:6C:3A
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="3f1247537c1a4f069235ee63633659c5.html">Server Certificate Authentication</a></div>
+<div><a class="link" href="2b20c8648f5144398282c955fc851313.html">Using Certificates Signed by Trusted Certificate Authority</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

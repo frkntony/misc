@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Using platform domains, you can configure the application network availability or authentication policy. You can achieve that by configuring the appropriate platform domain which will change the URL on which your application will be accessible."/>
+<meta name="description" content="Using platform domains, you can configure the application network availability or authentication policy. You can achieve that by configuring the appropriate platform domain which will change the URL on which your application will be accessible."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Platform Domains</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loioa32d4cd65be344439d9ed752f182e609">
+	<h1 class="title topictitle1">Platform Domains</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Using platform domains, you can configure the application network availability or
+		authentication policy. You can achieve that by configuring the appropriate platform domain
+		which will change the URL on which your application will be accessible.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have installed and configured <span class="ph pname">SAP Cloud Platform</span> console client. For more
+				information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">The available platform domains are: <ul class="ul" id="loioa32d4cd65be344439d9ed752f182e609__ul_fqt_nyd_4p">
+					<li class="li"><span class="ph uicontrol">hana.ondemand.com</span> - any application is accessible on this default
+						domain after being deployed on <span class="ph pname">SAP Cloud Platform</span></li>
+
+					<li class="li"><span class="ph uicontrol">cert.hana.ondemand.com</span> - enables client certificate
+						authentication</li>
+
+					<li class="li"><span class="ph uicontrol">svc.hana.ondemand.com</span> - provides access within the
+						same landscape; for internal communication and not open on the Internet or
+						other networks</li>
+
+				</ul>
+</div>
+
+			<div class="p">You can configure the platform domains using the <span class="keyword cmdname">application-domains</span> group
+				of console client commands:<ul class="ul" id="loioa32d4cd65be344439d9ed752f182e609__ul_jgc_4qs_fq">
+					<li class="li"><a class="xref" href="a32d4cd65be344439d9ed752f182e609.html#loio1c374b6349ab423eab16ab69d11b87d9">Add a Platform Domain</a></li>
+
+					<li class="li"><a class="xref" href="a32d4cd65be344439d9ed752f182e609.html#loio3142a5fb32724e2fa284a3f46eb13247">Check Configured Domains</a></li>
+
+					<li class="li"><a class="xref" href="a32d4cd65be344439d9ed752f182e609.html#loioa18bdb1fd07249288f8c287b3d29f62d">Remove Platform Domains</a></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+
+<div class="topic task nested1" lang="en-US" id="loio1c374b6349ab423eab16ab69d11b87d9">
+	<h2 class="title topictitle2">Add a Platform Domain</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio1c374b6349ab423eab16ab69d11b87d9__steps_u5v_sgz_4p"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing
+						<span class="keyword cmdname">neo.bat/neo.sh</span>(<span class="ph filepath">&lt;SDK installation
+						folder&gt;/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Configure the platform domain you have chosen by executing the
+						<kbd class="ph userinput">add-platform-domain</kbd> command. </span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo add-platform-domain --account myacc --application myapp --user myuser --host hana.ondemand.com --platform-domain cert.hana.ondemand.com</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">As a result, the specified application will be accessible on
+						<span class="ph filepath">cert.hana.ondemand.com</span> and on the default
+						<span class="ph filepath">hana.ondemand.com</span> domain.</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio3142a5fb32724e2fa284a3f46eb13247">
+	<h2 class="title topictitle2">Check Configured Domains</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio3142a5fb32724e2fa284a3f46eb13247__steps_lpr_jns_fq"><li class="li step stepexpand">
+				<span class="ph cmd">To make sure the new platform domain is configured, execute the
+						<span class="keyword cmdname">list-application-domains</span> command:</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-domains --account myacc --application myapp --user myuser --host hana.ondemand.com</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Check if the returned list of domains contains the platform domain you
+					set.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loioa18bdb1fd07249288f8c287b3d29f62d">
+	<h2 class="title topictitle2">Remove Platform Domains</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loioa18bdb1fd07249288f8c287b3d29f62d__steps_yrv_rns_fq"><li class="li step stepexpand">
+				<span class="ph cmd">When you no longer want the application to be accessible on the configured
+					platform domain, remove it by executing the
+						<kbd class="ph userinput">remove-platform-domain</kbd> command: </span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo remove-platform-domain --account myacc --application myapp --user myuser --host hana.ondemand.com --platform-domain cert.hana.ondemand.com</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Repeat the step for each platform domain you want to remove.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7afd450f4dec43dd94542f196c32df37.html" title="Adds a platform domain (under hana.ondemand.com) on which the application will be accessed.">add-platform-domain</a></div>
+<div><a class="link" href="51f8bd8586554b65b8bd0476f5bbf2c0.html" title="Lists all domain names on which an application can be accessed.">list-application-domains</a></div>
+<div><a class="link" href="96c6d247f64c4fbb849bb80640a146d9.html" title="Removes a platform domain (under hana.ondemand.com) as an access point for an application.">remove-platform-domain</a></div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

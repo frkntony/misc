@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.dwb.tools.core.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.dwb.repository.core.feature" version="2.3.39"/>
+      <import feature="com.sap.ide.platform.feature" version="1.5.0"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.tools.core"
+         download-size="109"
+         install-size="231"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.watt.bridge.ui"
+         download-size="69"
+         install-size="133"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.hdbreptask.ui"
+         download-size="8"
+         install-size="10"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

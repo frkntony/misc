@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Using the console client, you can create accounts and subscribe them to applications to test how applications can be provided to multiple consumers."/>
+<meta name="description" content="Using the console client, you can create accounts and subscribe them to applications to test how applications can be provided to multiple consumers."/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Providing Subscriptions to Provider Applications for Testing</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loiob0930320e5f946a3a47692be3cebb468">
+	<h1 class="title topictitle1">Providing Subscriptions to Provider Applications for Testing</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Using the console client, you can create accounts and subscribe them to applications to
+		test how applications can be provided to multiple consumers.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loiob0930320e5f946a3a47692be3cebb468__ul_nzd_ffq_cl">
+				<li class="li">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</li>
+
+				<li class="li">You have developed and deployed an application that will be used by multiple
+					consumers. For more information, see <a class="xref" href="54a76156cd114e5d928642b8dde47b91.html" title="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL.">Multitenant Applications</a>.</li>
+
+				<li class="li">You have a customer or partner account. For more information, see <a class="xref" href="e4986153bb571014a2ddc2fdd682ee90.html" title="This section provides an overview of account types available on SAP Cloud Platform.">Account Types</a>.</li>
+
+				<li class="li">You are a member of both accounts - the one where the multitenant application is deployed
+					and the one that you want to subscribe to the application.</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+<div class="topic task nested1" lang="en-US" id="loio1911f82d783349c49b801fc429bd962f">
+	<h2 class="title topictitle2">Subscribing an Account to an Application</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Using the console client, you can subscribe an account to an application.</p>
+
+		
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<div class="note note"><span class="notetitle">Note</span> You can subscribe an account to an application that is running in
+				another account only if both accounts (provider and consumer account) belong to the
+				same landscape.</div>
+
+		</div>
+		
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio1911f82d783349c49b801fc429bd962f__steps_kj3_dbj_gl"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing
+						<span class="ph filepath">neo.bat/sh (&lt;SDK installation
+					folder&gt;/tools)</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create an account for a given consumer. </span>
+				<div class="itemgroup info">
+					<p class="p">Execute <kbd class="ph userinput">neo create-account -a &lt;account&gt; -u &lt;user name or
+							email&gt; -h &lt;landscape host&gt; -n &lt;display name of the new
+							account&gt; </kbd></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Subscribe the account you created to the application.</span>
+				<div class="itemgroup info">
+					<p class="p">Execute <kbd class="ph userinput">neo subscribe -a &lt;account&gt; -b
+							&lt;account:application&gt; -u &lt;user name or email&gt; -h
+							&lt;landscape host&gt; </kbd></p>
+
+					<p class="p">Note that you must specify the parameter <span class="keyword parmname">-b</span> in the
+						format &lt;account name&gt;:&lt;application&gt;.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Access the application through the dedicated URL, for example
+						<kbd class="ph userinput">https://&lt;application name&gt;&lt;provider
+						account&gt;-&lt;consumer account&gt;.&lt;landscape
+					host&gt;</kbd>.</span>
+				<div class="itemgroup info">
+					<p class="p">You can see the list of subscriptions and the corresponding application URLs
+						to access them in the <span class="ph uicontrol">Subscriptions</span> pane in the
+						cockpit.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) You can also check the list of your test accounts and subscriptions
+					as follows: </span>
+				
+<div class="table-wrapper"><table border="1" frame="border" rules="rows" cellpadding="4" cellspacing="0" summary="" class="simpletable choicetable choicetableborder" id="loio1911f82d783349c49b801fc429bd962f__choicetable_op2_pfq_cl">
+<thead><tr><th id="d8387303e167-option" valign="bottom" align="left">Option</th>
+<th id="d8387303e167-desc" valign="bottom" align="left">Description</th></tr></thead>
+<tbody>
+					<tr class="strow chrow">
+						<td valign="top" headers="d8387303e167-option" id="d8387303e171" class="stentry choption"><strong>List all applications to which a given account is subscribed </strong></td>
+
+						<td valign="top" headers="d8387303e167-desc d8387303e171" class="stentry chdesc">Execute <kbd class="ph userinput">neo list-subscribed-applications -a
+								&lt;account&gt; -u &lt;user name or email&gt; -h &lt;landscape
+								host&gt;</kbd></td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d8387303e167-option" id="d8387303e182" class="stentry choption"><strong>List accounts you have created </strong></td>
+
+						<td valign="top" headers="d8387303e167-desc d8387303e182" class="stentry chdesc">Execute <kbd class="ph userinput">neo list-accounts -a &lt;account&gt; -u &lt;user
+								name or email&gt; -h &lt;landscape host&gt;</kbd>
+						</td>
+
+					</tr>
+
+					<tr class="strow chrow">
+						<td valign="top" headers="d8387303e167-option" id="d8387303e194" class="stentry choption"><strong>List all accounts subscribed to a given application </strong></td>
+
+						<td valign="top" headers="d8387303e167-desc d8387303e194" class="stentry chdesc">Execute <kbd class="ph userinput">neo list-subscribed-accounts -a &lt;account&gt;
+								-b &lt;application&gt; -u &lt;user name or email&gt; -h
+								&lt;landscape host&gt;</kbd></td>
+
+					</tr>
+
+				</tbody></table></div>
+
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="cc4f1ceddacb4b16844fd3f3885b73dd.html" title="You can manage subscriptions to Java and HTML5 applications.">Managing Subscriptions</a></div>
+<div><a class="link" href="05f96cf62cec4e58b78514655b070a8e.html" title="Creates a new account with an automatically generated unique ID as account name and the specified display name and assigns the user as an account owner. The user is authorized against the existing account passed as --account parameter. Optionally, you can clone an existing account configuration to save time and effort.">create-account</a></div>
+<div><a class="link" href="2abad162138e41bc843c7de93e162d28.html" title="Lists all accounts that a customer has. Authorization is performed against the account passed as --account parameter.">list-accounts</a></div>
+<div><a class="link" href="4c6203d2a0cd470eb72b48c100b26cd2.html" title="Subscribes the account of the consumer to a provider Java application. Once the command is executed successfully, the subscription is visible in the Subscriptions panel of the cockpit in the consumer account.">subscribe</a></div>
+<div><a class="link" href="034244c2a3dd4e069258df638c9f5d70.html" title="Lists all accounts subscribed to a given Java application.">list-subscribed-accounts</a></div>
+<div><a class="link" href="67d5c6f1141a4c298886b150b2d8a232.html" title="Lists all Java applications to which a given account is subscribed">list-subscribed-applications</a></div>
+</div>
+</div>
+</div>
+<div class="topic task nested1" lang="en-US" id="loio69cf27df2dc74392bdf7a7b4310d31fd">
+	<h2 class="title topictitle2">Cleaning Up Your Environment</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="loio69cf27df2dc74392bdf7a7b4310d31fd__steps_rh2_kcj_gl"><li class="li step stepexpand">
+				<span class="ph cmd">Unsubscribe the account of the consumer from the application. </span>
+				<div class="itemgroup info">
+					<p class="p">Execute <kbd class="ph userinput">neo unsubscribe -a &lt;account&gt; -b &lt;application&gt;
+							-u &lt;user name or email&gt;</kbd>
+					</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Delete the account of the consumer.</span>
+				<div class="itemgroup info">
+					<p class="p">Execute <kbd class="ph userinput">neo delete-account -a &lt;account&gt; -h &lt;landscape
+							host&gt; -u &lt;user name or email&gt; </kbd>
+					</p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="cc4f1ceddacb4b16844fd3f3885b73dd.html" title="You can manage subscriptions to Java and HTML5 applications.">Managing Subscriptions</a></div>
+<div><a class="link" href="8bd95529c8ae4ccf883095c5f43e38e1.html" title="Deletes a particular account. Only the user who has created the account is allowed to delete it.">delete-account</a></div>
+<div><a class="link" href="862d00e98d364543a180e42b06114110.html" title="Removes the subscription to a provider Java application from a consumer account.">unsubscribe</a></div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Register clients, manage access tokens, configure scopes and perform other OAuth configuration tasks."/>
+<meta name="description" content="Register clients, manage access tokens, configure scopes and perform other OAuth configuration tasks."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring OAuth 2.0</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loio7e658b3e4cea4a79b035d0f1d2798c1f">
+	<h1 class="title topictitle1">Configuring OAuth 2.0</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Register clients, manage access tokens, configure scopes and perform other OAuth
+		configuration tasks.</p>
+
+		<p class="p"><span class="ph emphasis emphasis">Prerequisites</span></p>
+
+		<ul class="ul" id="loio7e658b3e4cea4a79b035d0f1d2798c1f__ul_lg5_ngk_tl">
+			<li class="li">You have an account with administrator role in <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a>.</li>
+
+			<li class="li">You have developed an OAuth-protected application (resource server). See <a class="xref" href="b7b589334d444293a2a91e0ef4234136.html" title="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform.">Protecting Applications with OAuth 2.0</a>.</li>
+
+			<li class="li">You have deployed the application on <span class="ph pname">SAP Cloud Platform</span>. See <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>.</li>
+
+		</ul>
+
+		<div class="section"><div class="section_title">Contents:</div><div type="Contents:">
+			
+			<ul class="ul" id="loio7e658b3e4cea4a79b035d0f1d2798c1f__ul_nlm_lp2_rn">
+				<li class="li"><a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio61d8095aa39547c7b30d9aeda771497f" title="To authorize a device to access an OAuth-protected application, you need to register it as a client.">Registering an OAuth Client</a></li>
+
+				<li class="li"><a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio6604c6627270419583398f4df6997f98" title="Define scopes for your OAuth-protected application to fine-grain the access rights to it.">Defining OAuth Scopes</a></li>
+
+				<li class="li"><a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loiof5eac83ceb4d4d72b64424f518f878fd" title="With revoking access tokens, you can immediately reject access rights you have previously granted. You may wish to revoke an access token if you believe the token is be stolen, for example.">Revoking OAuth Access Tokens</a></li>
+
+				<li class="li"><a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio3225447dbcc8442794efab7c4b0d0abe" title="Use a QR code for easier copying of the OAuth authorization code on mobile devices.">Using a QR Code for Mobile Access</a></li>
+
+				<li class="li"><a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio9ff990bdc95c4efc9925bb45dc9e12b5" title="You can customize the lookandfeel of the authorization page displayed to end users with your corporate branding. This will make it easier for them to recognize your organization.">Customizing Corporate Branding</a></li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+<div class="topic task nested1" lang="en-US" id="loio61d8095aa39547c7b30d9aeda771497f">
+	<h2 class="title topictitle2">Registering an OAuth Client</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To authorize a device to access an OAuth-protected application, you need to register it
+		as a client.</p>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">OAuth</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section, go to the <span class="ph uicontrol">Clients</span> tab.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Register new Client</span>.</span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loio61d8095aa39547c7b30d9aeda771497f__image_lkc_cyw_ll" src="loio70f7a3f878ac4708bd823c2334635e22_LowRes.png" alt="OAuth Clients" title="OAuth Clients"/></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the client data as required (see the table below).</span>
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="table-wrapper"><table summary="" id="loio61d8095aa39547c7b30d9aeda771497f__simpletable_sx2_wgc_ml" border="1" class="simpletable"><tr class="sthead">
+								<th valign="bottom" align="left" id="d5777149e198" class="stentry">Field</th>
+
+								<th valign="bottom" align="left" id="d5777149e201" class="stentry">Description</th>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Name</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">
+									<p class="p">The client name. </p>
+
+								</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Description</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">A free-text description of the client.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Subscription</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">The application for which you are registering this client.
+									To be able to register for a particular application, this
+									account must be subscribed to it. For more information, see
+										<a class="xref" href="cc4f1ceddacb4b16844fd3f3885b73dd.html" title="You can manage subscriptions to Java and HTML5 applications.">Managing Subscriptions</a></td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">ID</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">Required. The ID of the client authorized to access the
+									resource server running on <span class="ph pname">SAP Cloud Platform</span>. If you
+									already have a client with a defined ID at the client device,
+									enter its value here. Otherwise, you can choose
+										<span class="ph uicontrol">Generate ID</span> and
+										<span class="ph uicontrol">Secret</span> to use a system-generated ID,
+									or enter a custom value. In that case, you must provide that
+									value to the user of the client device.<div class="note note"><span class="notetitle">Note</span> The client ID must
+										be globally unique within the entire <span class="ph pname">SAP Cloud Platform</span>.</div>
+</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Confidential</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">If you mark this box, the client ID will be protected with
+									a password. You will need to supply the password here, and
+									provide it to the client.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Secret</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry"><p class="p">A secret (password) that allows the authorization server
+										to authenticate before the client on behalf of the resource
+										owner (user). </p>
+ It will also be needed by the
+									client.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Redirect URI</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">
+									<p class="p">The application URI to which the authorization server will
+										connect the client with the authorization code. </p>
+
+								</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Token Lifetime </span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">
+									<p class="p">The token lifetime.This value applies to the access token and
+										authorization code. </p>
+
+								</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Refresh Token Lifetime</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">The refresh token lifetime.</td>
+
+							</tr>
+<tr class="strow">
+								<td valign="top" headers="d5777149e198" class="stentry"><span class="ph uicontrol">Translations</span></td>
+
+								<td valign="top" headers="d5777149e201" class="stentry">Optionally, you can provide translations of the client name
+									and description for localization purposes. Choose the
+										<span class="ph uicontrol">Translations</span> button and enter the
+									required language translation there.</td>
+
+							</tr>
+</table></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the new client.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>The device with the defined ID will be recognized as a registered client.</div>
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio6604c6627270419583398f4df6997f98">
+	<h2 class="title topictitle2">Defining OAuth Scopes</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Define scopes for your OAuth-protected application to fine-grain the access rights to
+		it. </p>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Applications</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Applications</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section, select the OAuth-protected application.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">For the application, go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> OAuth Scopes</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">New Scope</span>.</span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loio6604c6627270419583398f4df6997f98__image_pyy_fyw_ll" src="loio53815b45688448c29f89bb1d89326141_LowRes.png" alt="OAuth Scopes" title="OAuth Scopes"/></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter the scope ID and description.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optionally, if you want to provide localization for different languages, choose
+						<span class="ph uicontrol">Translations</span> and enter the required data.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the new scope.</span>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic concept nested1" lang="en-US" id="loiof5eac83ceb4d4d72b64424f518f878fd">
+	<h2 class="title topictitle2">Revoking OAuth Access Tokens</h2>
+
+	
+	<div class="body conbody"><p class="shortdesc">With revoking access tokens, you can immediately reject access rights you have
+		previously granted. You may wish to revoke an access token if you believe the token is be
+		stolen, for example.</p>
+
+		<p class="p">You may wish to revoke an access token if you believe the token is be stolen, for
+			example. With revoking access tokens, you can immediately reject access rights you have
+			previously granted.</p>
+
+		<div class="p">There are two UIs for revoking access tokens:<ul class="ul" id="loiof5eac83ceb4d4d72b64424f518f878fd__ul_hs1_yzd_dn">
+				<li class="li">The Cockpit - an administrator user may use the Cockpit to revoke tokens on
+					behalf of different end users</li>
+
+				<li class="li">The end user UI - an end user may access its tokens (and no other user's) and
+					revoke the required using that UI</li>
+
+			</ul>
+</div>
+
+		<div class="p">Using the Cockpit (for administrators):<ol class="ol" id="loiof5eac83ceb4d4d72b64424f518f878fd__ol_bkr_433_lm">
+				<li class="li">In your Web browser, open the Cockpit.</li>
+
+				<li class="li">Go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Authorizations</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Token</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</li>
+
+				<li class="li">Search for access tokens either by client ID or by user ID.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Revoke</span> for the required tokens.</li>
+
+			</ol>
+</div>
+
+		<p class="p"><img class="image" id="loiof5eac83ceb4d4d72b64424f518f878fd__image_f35_ryw_cn" src="loio8bc06d3f69d94598a557212d1eb208a1_LowRes.png"/></p>
+
+		<div class="p">Using the End User UI:<ol class="ol" id="loiof5eac83ceb4d4d72b64424f518f878fd__ol_rn1_412_dn">
+				<li class="li">In the Cockpit, choose the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">OAuth</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section, and go to the <span class="ph uicontrol">Branding</span> tab.</li>
+
+				<li class="li">Click the <span class="ph uicontrol">End User UI</span> link.You are now opening the end
+					user UI in a new browser window. You can see all access tokens issued for the
+					current user.</li>
+
+				<li class="li">Choose the <span class="ph uicontrol">Revoke</span> button for the tokens to revoke.</li>
+
+			</ol>
+</div>
+
+		<p class="p"><img class="image" id="loiof5eac83ceb4d4d72b64424f518f878fd__image_nwf_rb2_dn" src="loio9b38434a4cf044da9114b093448c1d3c_LowRes.png"/></p>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio3225447dbcc8442794efab7c4b0d0abe">
+	<h2 class="title topictitle2">Using a QR Code for Mobile Access</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Use a QR code for easier copying of the OAuth authorization code on mobile
+		devices.</p>
+
+		<div class="section context"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Context</h3></div>
+			<p class="p">When your account is configured for trust with a corporate identity provider (IdP), it is
+				often impossible to connect to the IdP directly using a personal mobile device. The
+				corporate IdP is often part of a protected corporate network, which does not allow
+				personal devices to access it. To facilitate OAuth authentication on mobile devices,
+				you can use the end user UI's QR code generation option. It provides as a scannable
+				QR code the authorization code sent by the OAuth authorization server.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In the Cockpit, choose the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">OAuth</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Branding</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Click the <span class="ph uicontrol">End User UI</span> link.You are now opening the end
+					user UI in a new browser window.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Code</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the client from the list of registered clients for this user.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the required scopes.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Generate QR Code</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Use your mobile device to scan this QR code (prerequisite: you have QR code
+					scanning software installed), and copy it to your device's clipboard.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Paste the code from the clipboard to your mobile application (prerequisite:
+					your mobile application allows you to paste the authorization code from the
+					clipboard and will send in this case the access token request directly to the
+					OAuth authorization server).</span>
+				<div class="itemgroup info">
+					<p class="p"><img class="image" id="loio3225447dbcc8442794efab7c4b0d0abe__image_o5j_k22_dn" src="loio418798215ceb4b9c9f884f5b561de4de_LowRes.png"/></p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+</div>
+<div class="topic task nested1" lang="en-US" id="loio9ff990bdc95c4efc9925bb45dc9e12b5">
+	<h2 class="title topictitle2">Customizing Corporate Branding</h2>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can customize the lookandfeel of the authorization page displayed to end users with
+		your corporate branding. This will make it easier for them to recognize your
+		organization.</p>
+
+		<div class="ol steps tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">OAuth</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Branding</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Custom theme</span> and specify the required colors.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Upload your custom icon.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the settings.</span>
+			<div class="itemgroup info">
+					<p class="p"><img class="image" id="loio9ff990bdc95c4efc9925bb45dc9e12b5__image_slm_xxb_55" src="loio86cfd598717d4c56b41d1179cafa39ac_LowRes.png"/></p>
+
+				</div>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Results</h3></div>The authorization page that end users see contains the company logo and colors you
+			specify. The following image shows an example of a customized authorization
+					page.<p class="p"><img class="image" id="loio9ff990bdc95c4efc9925bb45dc9e12b5__image_y4f_b1c_55" src="loioaf68bbf5385b4cd195c58e5812c0030e_LowRes.png"/></p>
+</div>
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

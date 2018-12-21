@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The hot-update command enables a developer to redeploy and update the binaries of an application started on one process faster than the normal deploy and restart. Use it to apply and activate your changes during development and not for updating productive applications."/>
+<meta name="description" content="The hot-update command enables a developer to redeploy and update the binaries of an application started on one process faster than the normal deploy and restart. Use it to apply and activate your changes during development and not for updating productive applications."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>hot-update</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7ae6493455844b4ab993c1a1b69595fa">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">hot-update</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The hot-update command enables a developer to redeploy and update the binaries of an
+		application started on one process faster than the normal deploy and restart. Use it to
+		apply and activate your changes during development and not for updating productive
+		applications. </p>
+
+		<div class="section">There are three options for hot-update specified with the
+				<span class="ph uicontrol">--strategy</span> parameter:<ul class="ul" id="loio7ae6493455844b4ab993c1a1b69595fa__ul_hh1_32l_fn">
+				<li class="li">replace-binaries - redeploys and updates the application binaries</li>
+
+				<li class="li">restart-runtime - redeploys and updates the application binaries and restarts
+					the application process</li>
+
+				<li class="li">reprovision-runtime - cleans up the file system, reprovisions the runtime and
+					redeploys and updates the application binaries</li>
+
+			</ul>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hot-update --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --source &lt;file_location&gt; --user &lt;e-mail_or_user&gt; --strategy &lt;update_strategy&gt;
+  </pre></div>
+<div class="p"><span class="ph emphasis emphasis">Limitations:</span><ul class="ul" id="loio7ae6493455844b4ab993c1a1b69595fa__ul_y1x_3t2_fn">
+					<li class="li">Works only if there is a single running process of the application.</li>
+
+					<li class="li">You cannot change deploy parameters and context path of the
+						application.</li>
+
+				</ul>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<p class="p">To list all parameters available for this command, execute <kbd class="ph userinput">neo help
+					hot-update</kbd> in the command line.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7ae6493455844b4ab993c1a1b69595fa__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d5632199e69">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">Your email, SAP ID or user name.<p class="p"><span class="keyword cmdname">Type</span>: string </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">-s, --source</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">A comma-separated list of file locations, pointing to WAR files, or folders containing
+										them.<p class="p"><span class="keyword cmdname">Type</span>: file location</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e69 "><span class="keyword parmname">--strategy </span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e69 ">Defines how the update will be performed. <div class="p"><span class="keyword cmdname">Acceptable values:</span><ul class="ul" id="loio7ae6493455844b4ab993c1a1b69595fa__ul_b1r_42l_fn">
+										<li class="li"><kbd class="ph userinput">replace-binaries </kbd></li>
+
+										<li class="li"><kbd class="ph userinput">restart-runtime</kbd></li>
+
+										<li class="li"><kbd class="ph userinput">reprovision-runtime</kbd></li>
+
+									</ul>
+</div>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7ae6493455844b4ab993c1a1b69595fa__table_hbv_n53_jl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d5632199e232">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e232 "><span class="keyword parmname">--connections</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e232 ">
+								<p class="p">Number of connections used to deploy the content</p>
+
+								<p class="p"><span class="keyword cmdname">Default</span>: <span class="ph uicontrol">2</span></p>
+
+								<p class="p"><span class="keyword cmdname">Acceptable values</span>:
+									<kbd class="ph userinput">1-6</kbd></p>
+
+								<p class="p"><span class="keyword cmdname">Type</span>: integer </p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e232 ">
+								<p class="p"><span class="keyword parmname">--delta</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e232 ">
+								<p class="p">Uploads only the changes between the provided source and the
+									deployed content. New content will be added; missing content
+									will be deleted. Recommended for development use to speed up the
+									deployment.</p>
+
+								<p class="p"><span class="keyword cmdname">Acceptable values</span>: None</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d5632199e232 ">
+								<span class="keyword parmname">-y</span>,<span class="keyword parmname">--synchronous</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d5632199e232 ">Waits for the operation to complete.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hot-update --host us1.hana.ondemand.com --account myacc --application myapp --source samples/deploy_war/example.war --user mymail@example.com --strategy replace-binaries</pre></div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To connect your application to a REST service, configure routing to an HTTP destination in the application descriptor file."/>
+<meta name="description" content="To connect your application to a REST service, configure routing to an HTTP destination in the application descriptor file."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Accessing REST Services</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod6c8347494ce4b48864dfabb42d0d207">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Accessing REST Services</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">To connect your application to a REST service, configure routing to an HTTP destination in the application descriptor file.</p>
+
+		<p class="p">A route defines which requests to the application are forwarded to the destination. Routes are matched with the path from a request. All requests
+			with paths that start with the path from the route are forwarded to the destination.</p>
+
+		<p class="p">If you define multiple routes in the application descriptor file, the route for the first matching path is selected.</p>
+
+		<p class="p">The HTTP destination must be created in the account where the application is running. For more information on HTTP destinations, see <a class="xref" href="1e110da0ddd8453aaf5aed2485d84f25.html">Creating HTTP Destinations</a> and <a class="xref" href="bec79c93f82d407faa333554f8c8647d.html" title="If an HTML5 application requires connectivity to one or more back-end systems, destinations must be created or assigned.">Assigning Destinations for HTML5 Applications</a>.</p>
+
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+...
+"routes": [
+           {
+              "path": "&lt;application path to be forwarded&gt;", 
+              "target": {
+                   "type": "destination",
+                   "name": "&lt;name of the destination&gt;"
+              },
+             "description": "&lt;description&gt;"
+           }
+          ]
+...
+</pre></div>
+
+		<div class="note sap-example example"><span class="exampletitle">Example</span> With this configuration, all requests with paths starting with <span class="ph sap-technical-name sap-technical-name">/gateway</span> are forwarded to the
+				<span class="ph sap-technical-name sap-technical-name">gateway</span>
+				destination.<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">
+...
+"routes": [
+           {
+              "path": "/gateway", 
+              "target": {
+                  "type": "destination",
+                  "name": "gateway"
+              },
+             "description": "Gateway System"
+           }
+          ]
+...
+</pre></div>
+<p class="p">The
+				browser sends a request to your HTML5 application to the path <span class="ph sap-technical-name sap-technical-name">/gateway/resource</span> (1). This
+				request is forwarded by the HTML5 application to the service behind the destination <span class="ph sap-technical-name sap-technical-name">gateway</span>
+				(2). The path is shortened to <span class="ph sap-technical-name sap-technical-name">/resource</span>. The response returned by the service is then routed
+				back through the HTML5 application so that the browser receives the response (3).</p>
+<div class="fig fignone" id="loiod6c8347494ce4b48864dfabb42d0d207__fig_p24_gqm_tw"><div class="figcontainer">
+				<img class="image" id="loiod6c8347494ce4b48864dfabb42d0d207__image_nxf_gqm_tw" src="loio21e028316d2a4b999c641e9ba96c076f_LowRes.png"/>
+			</div></div>
+</div>
+
+		<div class="section"><div class="section_title">Destination Properties</div><div type="Destination Properties">
+			
+			<p class="p">In addition to the application-specific setup in the application descriptor, you can configure the behavior of routes at the destination level.
+				For information on how to set destination properties, see <a class="xref" href="1e110da0ddd8453aaf5aed2485d84f25.html#loio1e110da0ddd8453aaf5aed2485d84f25__step_additional_dest_properties">You can enter additional properties (step
+				9)</a>.</p>
+
+			<div class="p">You can set the following properties:
+<div class="table-wrapper tablenoborder"><table summary="" id="loiod6c8347494ce4b48864dfabb42d0d207__table_ecs_4vx_sw" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="20%"/><col width="15%"/><col width="10%"/><col width="10%"/><col width="20%"/><col width="25%"/></colgroup>
+
+						
+						
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="20%" id="d9888163e103">
+									<p class="p">Property</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="15%" id="d9888163e109">
+									<p class="p">Type/Unit</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="10%" id="d9888163e115">
+									<p class="p">Default</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="10%" id="d9888163e121">
+									<p class="p">Maximum</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="20%" id="d9888163e127">
+									<p class="p">Recommended Value</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="25%" id="d9888163e134">
+									<p class="p">Description</p>
+
+								</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="20%" headers="d9888163e103 ">
+									<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.ConnectionTimeoutInSeconds</span></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="15%" headers="d9888163e109 ">
+									<p class="p">Integer/seconds</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="10%" headers="d9888163e115 ">
+									<p class="p">10</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="10%" headers="d9888163e121 ">
+									<p class="p">120</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="20%" headers="d9888163e127 ">
+									<p class="p">Default</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d9888163e134 ">
+									<p class="p">The period of time in which the HTML5 application expects a confirmation when it initiates a new TCP connection.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="20%" headers="d9888163e103 ">
+									<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.SocketReadTimeoutInSeconds</span></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="15%" headers="d9888163e109 ">
+									<p class="p">Integer/seconds</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="10%" headers="d9888163e115 ">
+									<p class="p">30</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="10%" headers="d9888163e121 ">
+									<p class="p">300</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="20%" headers="d9888163e127 ">
+									<p class="p">Default</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d9888163e134 ">
+									<p class="p">The period of time the HTML5 application waits for the REST service to start streaming the response.</p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="20%" headers="d9888163e103 ">
+									<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.HandleRedirects</span></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="15%" headers="d9888163e109 ">
+									<p class="p">Boolean </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="10%" headers="d9888163e115 ">
+									<p class="p"><span class="ph sap-technical-name sap-technical-name">true</span></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="10%" headers="d9888163e121 ">
+									<p class="p">--</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="20%" headers="d9888163e127 ">
+									<p class="p"><span class="ph sap-technical-name sap-technical-name">false</span></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="25%" headers="d9888163e134 ">
+									<p class="p">When set to <span class="ph sap-technical-name sap-technical-name">true</span> the HTML5 application internally calls the target URL of a redirecting HTTP
+										response (HTTP 30X status code). Then, the browser will only see this second response.</p>
+
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Timeout Handling</div><div type="Timeout Handling">
+			
+			<p class="p">A request to a REST service can time out when the network or backend is overloaded or unreachable. Different timeouts apply for
+				initially establishing the TCP connection (<span class="ph sap-technical-name sap-technical-name">HTML5.ConnectionTimeoutInSeconds</span>) and reading a
+				response to an HTTP request from the socket (<span class="ph sap-technical-name sap-technical-name">HTML5.SocketReadTimeoutInSeconds</span>). When a
+				timeout occurs, the HTML5 application returns a gateway timeout response (<samp class="ph systemoutput">HTTP status code 504</samp>) to the
+				client.</p>
+
+			<p class="p">While some long-running requests may require to increase the socket timeout, we do not recommend that you change the default values.
+				Too high timeouts may impact the overall performance of the application by blocking other requests in the browser or blocking back-end
+				resources.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Redirect Handling</div><div type="Redirect Handling">
+			
+			<p class="p">By default all HTML5 applications follow HTTP redirects of REST services internally. This means whenever your REST service responds with a
+					<span class="ph sap-technical-name sap-technical-name">301</span>, <span class="ph sap-technical-name sap-technical-name">302</span>,
+					<span class="ph sap-technical-name sap-technical-name">303</span>, or <span class="ph sap-technical-name sap-technical-name">307</span> HTTP status code, a new request is
+				issued to the redirect target. Only the response to this second request reaches the browser of the end user. To change this behavior,
+				set the <span class="ph sap-technical-name sap-technical-name">HTML5.HandleRedirects</span> destination property to
+					<span class="ph sap-technical-name sap-technical-name">false</span>. As a consequence, the 30X responses given above are directly sent back without
+				following the redirect.</p>
+
+			<p class="p">We recommend that you set this property to <span class="ph sap-technical-name sap-technical-name">false</span>. This helps improve the performance of your HTML5
+				application because the browser stores redirects and thus avoids round trips. If you use relative links, the automatic handling of
+				redirects might break your HTML5 application on the browser side. However, certain service types may not run with a value of
+					<span class="ph sap-technical-name sap-technical-name">false</span>.</p>
+
+			<div class="note sap-example example"><span class="exampletitle">Example</span> 
+				<div class="p">Prerequisites:<ul class="ul" id="loiod6c8347494ce4b48864dfabb42d0d207__ul_n4s_312_tw">
+						<li class="li">
+							<p class="p">Your application descriptor contains a route that forwards requests starting with the path
+									<span class="ph filepath">/gateway</span>, to the destination named <span class="ph sap-technical-name sap-technical-name">gateway</span> as in the
+								example above.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">The service redirects requests from <span class="ph filepath">/resource</span> to the path
+									<span class="ph filepath">./servicePath/resource</span>.</p>
+
+						</li>
+
+					</ul>
+</div>
+
+				<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.HandleRedirects</span> is set to <span class="ph sap-technical-name sap-technical-name">true:</span></p>
+
+				<p class="p">When the browser requests the path <span class="ph sap-technical-name sap-technical-name">/gateway/resource</span> (1), the HTML5 application forwards it to the
+					path <span class="ph sap-technical-name sap-technical-name">/resource</span> of the service (2). As the service responds with a redirect (3), the HTML5
+					application sends another request to the new path <span class="ph sap-technical-name sap-technical-name">/servicePath/resource</span> (4). This second
+					response contains the required resource and is forwarded back to the browser (5).</p>
+
+				<div class="fig fignone" id="loiod6c8347494ce4b48864dfabb42d0d207__fig_m2k_rfz_sw"><div class="figcontainer">
+					<img class="image" id="loiod6c8347494ce4b48864dfabb42d0d207__image_yfk_1gz_sw" src="loio89ad7eed478b492f82325c8191947e50_LowRes.png"/>
+				</div></div>
+
+				<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.HandleRedirects</span> is set to <span class="ph sap-technical-name sap-technical-name">false:</span></p>
+
+				<p class="p">For the same request to the path <span class="ph sap-technical-name sap-technical-name">/gateway/resources </span>(1), the HTML5 application again forwards the
+					request to the path <span class="ph sap-technical-name sap-technical-name">/resources</span> of the service (2). Now the redirect is directly forwarded
+					back to the browser (3). In this case it is the browser that sends another request to the path
+						<span class="ph sap-technical-name sap-technical-name">/gateway/servicePath/resource</span> (4), which the HTML5 application forwards to the
+					service path <span class="ph sap-technical-name sap-technical-name">/servicePath/resource</span> (5). The requested resource is then forwarded back to
+					the browser (6).</p>
+
+				<div class="fig fignone" id="loiod6c8347494ce4b48864dfabb42d0d207__fig_vt5_kqv_kx"><div class="figcontainer">
+					<img class="image" id="loiod6c8347494ce4b48864dfabb42d0d207__image_i5x_xxf_tw" src="loio817a3fd4539c4d639f841550eccd323f_LowRes.png"/>
+				</div></div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Deprecated Properties</div><div type="Deprecated Properties">
+			
+			<p class="p">The following destination properties have been deprecated and replaced by new properties. If the new and the old properties are both set, the
+				new property overrules the old one.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiod6c8347494ce4b48864dfabb42d0d207__table_v3p_5xx_sw" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d9888163e442">
+								<p class="p">Old Property</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d9888163e448">
+								<p class="p">Type/Unit</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d9888163e454">
+								<p class="p">Values</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d9888163e460">
+								<p class="p">Replaced by New Property</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d9888163e442 ">
+								<p class="p"><span class="ph sap-technical-name sap-technical-name">ConnectionTimeout</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9888163e448 ">
+								<p class="p">Integer/milliseconds</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9888163e454 ">
+								<p class="p">Default: <span class="ph sap-technical-name sap-technical-name">10000</span> (10 seconds)</p>
+
+								<p class="p">Max. value: <span class="ph sap-technical-name sap-technical-name">120000</span> (120 seconds)</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9888163e460 ">
+								<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.ConnectionTimeoutInSeconds</span></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d9888163e442 ">
+								<p class="p"><span class="ph sap-technical-name sap-technical-name">ClientReadTimeout</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9888163e448 ">
+								<p class="p">Integer/milliseconds</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9888163e454 ">
+								<p class="p">Default: <span class="ph sap-technical-name sap-technical-name">30000</span> (30 seconds)</p>
+
+								<p class="p">Max. value: <span class="ph sap-technical-name sap-technical-name">300000</span> (300 seconds)</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d9888163e460 ">
+								<p class="p"><span class="ph sap-technical-name sap-technical-name">HTML5.SocketReadTimeoutInSeconds</span></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Security Considerations</div><div type="Security Considerations">
+			
+			<p class="p">When accessing a REST service from an HTML5 application, a new connection is initiated by the HTML5 application to the URL that is
+				defined in the HTTP destination.</p>
+
+			<p class="p">To prevent that security-relevant headers or cookies are returned from the REST service to the client, only whitelisted headers are
+				returned. While some headers are whitelisted per default, additional headers can be whitelisted in the application descriptor file.
+				For more information about how to whitelist additional headers, see <a class="xref" href="df89d9cd06a84905a3a4747f102c5b2c.html" title="For security reasons not all HTTP headers are forwarded from the application to a backend or from the backend to the application.">Header Whitelisting</a>.</p>
+
+			<p class="p">Cookies that are retrieved from a REST service response are stored by the HTML5 application in an HTTP session that is bound to the
+				client request. The cookies are not returned to the client. If a subsequent request is initiated to the same REST service, the cookies
+				are added to the request by the application. Only those cookies are added that are valid for the request in the sense of correct
+				domain and expiration date. When the client session is terminated, all associated cookies are removed from the HTML5.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="bec79c93f82d407faa333554f8c8647d.html" title="If an HTML5 application requires connectivity to one or more back-end systems, destinations must be created or assigned.">Assigning Destinations for HTML5 Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

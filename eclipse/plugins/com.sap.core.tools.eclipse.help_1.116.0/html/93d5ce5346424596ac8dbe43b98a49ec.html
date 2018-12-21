@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You create the resource file containing theSAP SuccessFactors HCM role definitions."/>
+<meta name="description" content="You create the resource file containing theSAP SuccessFactors HCM role definitions."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Create the Resource File with Role Definitions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio93d5ce5346424596ac8dbe43b98a49ec">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Create the Resource File with Role Definitions </h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You create the resource file containing the<span class="ph pname">SAP SuccessFactors</span> HCM role
+		definitions.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p">
+				<ul class="ul" id="loio93d5ce5346424596ac8dbe43b98a49ec__ul_p3m_t2p_nv">
+					<li class="li">
+						<p class="p">The corresponding<span class="ph pname">SAP SuccessFactors</span> HCM
+							Suite roles exist in the <span class="ph pname">SAP SuccessFactors</span>
+							system.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">You have admin access to the <span class="ph pname">SAP SuccessFactors</span> OData
+							API and have a valid account with user name and password. For more
+							information, see <a class="xref" href="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?4006ecf7444e4bc4aaa18c2364519126.html" target="_blank" alt="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?4006ecf7444e4bc4aaa18c2364519126.html" title="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?4006ecf7444e4bc4aaa18c2364519126.html">http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?4006ecf7444e4bc4aaa18c2364519126.html</a>.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To create the resource file with the role definitions required for your application, you use
+				the <span class="ph pname">SAP SuccessFactors</span> OData API to
+				query the permissions defined for this role, and create a
+					<span class="ph filepath">roles.json</span> file containing the role definitions. You use
+				HTTP Basic Authentication for the OData API call.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Call the OData API to query the permissions defined for the required role using the
+					following URL:</span>
+				<div class="itemgroup info">
+					<p class="p"><kbd class="ph userinput">https://<var class="keyword varname">&lt;SAP_SuccessFactors_host_name&gt;</var>/odata/v2/RBPRole?$filter=roleName
+							eq
+							'<var class="keyword varname">&lt;role_name&gt;</var>'&amp;$expand=permissions&amp;$format=json</kbd></p>
+
+				</div>
+				<div class="itemgroup info">Where:<ul class="ul" id="loio93d5ce5346424596ac8dbe43b98a49ec__ul_lsx_tqp_nv">
+						<li class="li">
+							<p class="p"><var class="keyword varname">&lt;host_name&gt;</var> is the fully qualified domain name of the OData API host
+								depending on the data center hosting your SuccessFactors instance.
+								For more information about the OData API endpoints, see <a class="xref" href="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?03e1fc3791684367a6a76a614a2916de.html" target="_blank" alt="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?03e1fc3791684367a6a76a614a2916de.html" title="http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?03e1fc3791684367a6a76a614a2916de.html">http://help.sap.com/saphelpiis_cloud4hr/EN/SF_HCMS_OData_API_User_en/frameset.htm?03e1fc3791684367a6a76a614a2916de.html</a>.</p>
+
+						</li>
+
+						<li class="li"><var class="keyword varname">&lt;role_name&gt;</var> is the name of the role as defined in the <span class="ph pname">SAP SuccessFactors</span>
+							system.</li>
+
+					</ul>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<div class="p">The response is a JSON object containing the following properties for each of
+						the  permissions defined for the specified role:
+<div class="table-wrapper tablenoborder"><table summary="" id="loio93d5ce5346424596ac8dbe43b98a49ec__table_pjd_1yh_v4" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25.380710659898476%"/><col width="25.380710659898476%"/><col width="49.23857868020305%"/></colgroup>
+
+								
+								
+								
+								<thead class="thead" align="left">
+									<tr class="row">
+										<th class="entry" valign="top" width="25.380710659898476%" id="d6923408e129">Property</th>
+
+										<th class="entry" valign="top" width="25.380710659898476%" id="d6923408e132">Include in <span class="ph filepath">roles.json</span></th>
+
+										<th class="entry" valign="top" width="49.23857868020304%" id="d6923408e137">Description</th>
+
+									</tr>
+
+								</thead>
+
+								<tbody class="tbody">
+									<tr class="row">
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e129 ">permissionID</td>
+
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e132 ">No</td>
+
+										<td class="entry" valign="top" width="49.23857868020304%" headers="d6923408e137 ">(Key)Permission Id, the sequence id in permission
+											table</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e129 ">permissionType</td>
+
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e132 ">Yes</td>
+
+										<td class="entry" valign="top" width="49.23857868020304%" headers="d6923408e137 ">Permission_Type column</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e129 ">permissionStringValue</td>
+
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e132 ">Yes</td>
+
+										<td class="entry" valign="top" width="49.23857868020304%" headers="d6923408e137 ">Permission_string_value column</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e129 ">permissionLongValue</td>
+
+										<td class="entry" valign="top" width="25.380710659898476%" headers="d6923408e132 ">Yes</td>
+
+										<td class="entry" valign="top" width="49.23857868020304%" headers="d6923408e137 ">Permission_long_value column</td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+</div>
+</div>
+
+					<p class="p"><span class="ph emphasis emphasis">Example response</span></p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+	"d": {
+		"__metadata": {
+			"uri": "https://localhost:443/odata/v2/RBPRole(82L)",
+			"type": "SFOData.RBPRole"
+		},
+		"roleId": "82",
+		"roleDesc": "Testing role permissions",
+		"lastModifiedBy": "admin",
+		"lastModifiedDate": "\/Date(1404299328000)\/",
+		"roleName": "Test Role Permissions",
+		"userType": "null",
+		"permissions": {
+			"results": [{
+				"__metadata": {
+					"uri": "https://localhost:443/odata/v2/RBPBasicPermission(60L)",
+					"type": "SFOData.RBPBasicPermission"
+				},
+				"permissionId": "60",
+				"permissionType": "user_admin",
+				"permissionStringValue": "change_info_user_admin",
+				"permissionLongValue": "-1"
+				
+			},
+			{
+				"__metadata": {
+					"uri": "https://localhost:443/odata/v2/RBPBasicPermission(4L)",
+					"type": "SFOData.RBPBasicPermission"
+				},
+				"permissionId": "4",
+				"permissionStringValue": "detail_report",
+				"permissionLongValue": "-1",
+				"permissionType": "report"
+				}]
+]
+		}
+	}
+}
+</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Create a <span class="ph filepath">roles.json</span> file using the following properties. To list all
+					the avalable permissions in your <span class="ph pname">SAP SuccessFactors</span> system, use
+					this OData API call:
+							<kbd class="ph userinput">https://<var class="keyword varname">&lt;SAP_SuccessFactors_host_name&gt;</var>/odata/v2/RBPBasicPermission?$format=json</kbd>.
+					There you can find the properties that you need to create the
+						<span class="ph filepath">roles.json</span> file.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						
+<div class="table-wrapper tablenoborder"><table summary="" id="loio93d5ce5346424596ac8dbe43b98a49ec__table_cbj_l2q_nv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="34.013605442176875%"/><col width="65.98639455782313%"/></colgroup>
+
+								
+								
+								<thead class="thead" align="left">
+									<tr class="row">
+										<th class="entry" valign="top" width="34.01360544217687%" id="d6923408e243">Property</th>
+
+										<th class="entry" valign="top" width="65.98639455782312%" id="d6923408e246">Description</th>
+
+									</tr>
+
+								</thead>
+
+								<tbody class="tbody">
+									<tr class="row">
+										<td class="entry" valign="top" width="34.01360544217687%" headers="d6923408e243 "><span class="keyword parmname">roleName</span></td>
+
+										<td class="entry" valign="top" width="65.98639455782312%" headers="d6923408e246 ">Name of the role as defined in the response to the
+											OData API call</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="34.01360544217687%" headers="d6923408e243 "><span class="keyword parmname">roleDesc</span></td>
+
+										<td class="entry" valign="top" width="65.98639455782312%" headers="d6923408e246 ">Role description as defined in the response to the
+											OData API call</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="34.01360544217687%" headers="d6923408e243 "><span class="keyword parmname">permissionType</span></td>
+
+										<td class="entry" valign="top" width="65.98639455782312%" headers="d6923408e246 ">Value of the <span class="keyword parmname">permissionType</span>
+											property as defined in the response to the OData API
+											call</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="34.01360544217687%" headers="d6923408e243 "><span class="keyword parmname">permissionStringValue</span></td>
+
+										<td class="entry" valign="top" width="65.98639455782312%" headers="d6923408e246 ">Value of the
+												<span class="keyword parmname">permissionStringValue</span> property
+											as defined in the response to the OData API call</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="34.01360544217687%" headers="d6923408e243 "><span class="keyword parmname">permissionLongValue</span></td>
+
+										<td class="entry" valign="top" width="65.98639455782312%" headers="d6923408e246 ">Value of the <span class="keyword parmname">permissionLongValue</span>
+											property as defined in the response to the OData API
+											call </td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+</div>
+
+					</div>
+
+				</div>
+				<div class="itemgroup stepxmp">
+					<p class="p"><span class="ph emphasis emphasis">Target <span class="ph filepath">roles.json</span> file</span></p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">[{
+	         "roleDesc": "My role description",
+	         "roleName": "My Application Role Name",
+	         "permissions": [{
+		         "permissionStringValue": "change_info_user_admin",
+		         "permissionLongValue": "-1",
+		         "permissionType": "user_admin"
+	         },
+	         {
+		         "permissionStringValue": "detail_report",
+		         "permissionLongValue": "-1",
+		         "permissionType": "report"
+	}]
+}]
+</pre></div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save the file locally.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have created the role definition resource file.</div>
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">Import the role definition resource file in the <span class="ph pname">SAP SuccessFactors</span> system connected to
+				your extension account. For more information, see <a class="xref" href="f0ed89f98d894f9591d9bad20c68cf5f.html" title="To complete the authorization configuration of your extension application, you import the application-specific roles into to the SAP SuccessFactors company instance connected to your extension account.">Import the Extension Application Roles in the SAP SuccessFactors System</a>.</p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

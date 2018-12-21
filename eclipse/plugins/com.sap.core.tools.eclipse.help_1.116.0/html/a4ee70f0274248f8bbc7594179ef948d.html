@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Setting Up Trust</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa4ee70f0274248f8bbc7594179ef948d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Setting Up Trust</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Content</div><div type="Content">
+			
+			<p class="p"><a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html#loioa4ee70f0274248f8bbc7594179ef948d__configure_trust">Configure trust in the
+						<span class="ph pname">Cloud connector</span></a></p>
+
+			<p class="p"><a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html#loioa4ee70f0274248f8bbc7594179ef948d__configure_on_premise">Configure
+					on-premise for principal propagation</a></p>
+
+			<p class="p"><a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html#loioa4ee70f0274248f8bbc7594179ef948d__trust_cloud_apps">Trust cloud applications
+					in the <span class="ph pname">Cloud connector</span></a></p>
+
+			<p class="p"><a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html#loioa4ee70f0274248f8bbc7594179ef948d__section_TrustStore">Trust Store</a></p>
+
+			<p class="p"><a class="xref" href="a4ee70f0274248f8bbc7594179ef948d.html#loioa4ee70f0274248f8bbc7594179ef948d__trust_use_cases">Tasks</a></p>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section" id="loioa4ee70f0274248f8bbc7594179ef948d__configure_trust"><div class="section_title">Configure Trust in the Cloud Connector</div><div type="Configure Trust in the Cloud Connector">
+			
+			<p class="p">The purpose of the trust configuration is the support of principal propagation: Forwarding the
+				logged on identity in the cloud to the internal system, which means logging on with
+				a user that matches this identity without the need of providing the password. By
+				default, your <span class="ph pname">Cloud connector</span> is not
+				trusting any entity that is issuing tokens for principal propagation. Therefore, the
+				list of trusted identity providers is empty in the beginning. If you decide to make
+				use of the principal propagation feature, you need to establish trust to at least
+				one identiy provider. Currently, SAML2 identity providers are supported. Trust to
+				one or more SAML2 IDPs can be configured per account. After you've configured trust
+				in the cockpit for your account, for example, to your own company's identity
+				provider(s), you can synchronize this list to your <span class="ph pname">Cloud connector</span>.</p>
+
+			<p class="p">Starting with <span class="ph pname">Cloud connector</span>
+				<kbd class="ph userinput">2.4</kbd>, you can also trust HANA instances and Java applications
+				to act like identity providers.</p>
+
+			<p class="p"><img class="image" id="loioa4ee70f0274248f8bbc7594179ef948d__image_grh_tk3_zm" width="1400px" src="loio8f23a34616094875a9b423b76f10e8a1_HiRes.png" alt="Trust Configuration" title="Trust Configuration"/></p>
+
+			<p class="p">By pressing the <span class="ph uicontrol">Synchronize</span> button, the list of existing identity
+				providers will be stored locally in your <span class="ph pname">Cloud connector</span>. </p>
+
+			<p class="p">When selecting the entry, you can see the following details about it, in case the
+				trusted entity reflects a SAML2 identity provider:</p>
+
+			<ul class="ul" id="loioa4ee70f0274248f8bbc7594179ef948d__ul_vyn_qj3_zm">
+				<li class="li"><span class="keyword parmname">Name</span>: the name associated with the identity provider.</li>
+
+				<li class="li"><span class="keyword parmname">State</span>: denotes whether the entry shall be trusted for principal
+					propagation.</li>
+
+				<li class="li"><span class="keyword parmname">Description</span>: descriptive information about this entry.</li>
+
+				<li class="li"><span class="keyword parmname">Certificate</span>: The certificate associated with the entry. The <span class="ph pname">Cloud connector</span>
+					runtime will use this certificate for verifying that the assertion used for
+					principal propagation has been issued by a trusted entity.</li>
+
+			</ul>
+
+			<p class="p">Choose the icon <span class="ph uicontrol">Show Certificate Information</span> to display detail
+				information for the corresponding entry.</p>
+
+			<p class="p">For each of the entries you can decide, whether to trust it for the principal propagation use
+				case by choosing <span class="ph uicontrol">Edit</span> and (de)selecting the
+					<span class="ph uicontrol">Trusted</span> checkbox for the respective entry. This will be
+				stored locally.</p>
+
+		</div></div>
+
+		<div class="section" id="loioa4ee70f0274248f8bbc7594179ef948d__configure_on_premise"><div class="section_title">Configure On-Premise for Principal Propagation</div><div type="Configure On-Premise for Principal Propagation">
+			
+			<p class="p">The following procedure helps you to set up principal propagation from <span class="ph pname">SAP Cloud Platform</span> to your internal system that shall be used in a hybrid scenario.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<div class="p">As a prerequisite for principal propagation for RFC, the following cloud
+					application runtime versions are required: <ul class="ul" id="loioa4ee70f0274248f8bbc7594179ef948d__ul_ght_s55_tn">
+						<li class="li">for Java Web: <kbd class="ph userinput">1.51.8</kbd> or higher</li>
+
+						<li class="li">for Java EE 6 Web Profile: <kbd class="ph userinput">2.31.11</kbd> or higher</li>
+
+					</ul>
+</div>
+
+				<p class="p"/>
+
+			</div>
+
+			<ol class="ol" id="loioa4ee70f0274248f8bbc7594179ef948d__ol_djs_lh3_xm">
+				<li class="li">Set up trust to an entity, which is issuing an assertion for the logged on user.
+					This is described in the section above.</li>
+
+				<li class="li">Set up the system identity for the <span class="ph pname">Cloud connector</span>.
+						<ul class="ul" id="loioa4ee70f0274248f8bbc7594179ef948d__ul_kqd_v55_tn">
+						<li class="li">In the case of HTTPS communication, you need to import a system
+							certificate into your <span class="ph pname">Cloud connector</span>. </li>
+
+						<li class="li">In the case of RFC communication, you need to import SNC PSE into your
+								<span class="ph pname">Cloud connector</span>.</li>
+
+					</ul>
+</li>
+
+				<li class="li">Configure the target system in a way that it trusts the <span class="ph pname">Cloud connector</span>.
+					There are two levels of trust: <ol class="ol" type="a" id="loioa4ee70f0274248f8bbc7594179ef948d__ol_gz1_fq5_rn">
+						<li class="li">First, you need to allow the <span class="ph pname">Cloud connector</span> to identify itself with its system certificate (for the HTTPS case),
+							or with the SNC PSE (for the RFC case).</li>
+
+						<li class="li">Then, you need to allow this identity to propagate the user accordingly:
+								<ul class="ul" id="loioa4ee70f0274248f8bbc7594179ef948d__ul_myn_jq5_rn">
+								<li class="li">In the case of HTTPS, the <span class="ph pname">Cloud connector</span> will forward the true identity in a short-living
+										<span class="keyword cmdname">X.509</span> certificate in an HTTP header named
+										<kbd class="ph userinput">SSL_CLIENT_CERT</kbd>. The system needs to
+									use this certificate for logging on the real user. The SSL
+									handshake, however, is performed through the system
+									certificate.</li>
+
+								<li class="li">In the case of RFC, the <span class="ph pname">Cloud connector</span> will forward the true identity as part of the RFC
+									protocol.</li>
+
+							</ul>
+</li>
+
+					</ol>
+</li>
+
+				<li class="li">Configure the user mapping in the target system. The <span class="keyword cmdname">X.509</span>
+					certificate contains information about the cloud user in its subject. Use this
+					information in order to map the identity to the appropriate user in this system.
+					This is independent from the communication protocol.</li>
+
+			</ol>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span>  If you have the following scenario:
+						<em class="ph i">Application1-&gt;AppToAppSS0-&gt;Application2-&gt;Principal
+						Propagation-&gt;On premise Backend System</em> you have to mark
+						<span class="ph uicontrol">Application2</span> as trusted by the <span class="ph pname">Cloud connector</span> in
+					the <span class="ph uicontrol">Trust Configurations</span> tab.</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loioa4ee70f0274248f8bbc7594179ef948d__trust_cloud_apps"><div class="section_title">Trust Cloud Applications in the Cloud Connector</div><div type="Trust Cloud Applications in the Cloud Connector">
+			
+			<p class="p">By default, all applications within an account are allowed to use the <span class="ph pname">Cloud connector</span>
+				associated with the account they run in. However, this behavior might not be
+				desired. For some applications this is acceptable, as they need to interact with
+				on-premise resources. Others, for which it is not transparent whether they try to
+				receive some on-premise data, might turn out to be malicious. For such cases, the
+				application whitelist is useful.</p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioa4ee70f0274248f8bbc7594179ef948d__image_pnj_srb_b5" width="1400px" src="loio298d9cba8fae4f39b50085a38d1ddfb1_HiRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+			<p class="p">As long as there is no entry in this list, all applications will be allowed to use the <span class="ph pname">Cloud connector</span>. If one
+				or more entries appear in the whitelist, then only these applications will be
+				allowed to connect to the exposed systems in the <span class="ph pname">Cloud connector</span>.</p>
+
+			<ul class="ul" id="loioa4ee70f0274248f8bbc7594179ef948d__ul_nbm_s2w_5n">
+				<li class="li">To add one or more applications, press the <span class="ph uicontrol">Add</span> icon. Enter a
+					comma-separated list in the dialog's input field and then press
+						<span class="ph uicontrol">Save</span>.</li>
+
+				<li class="li">To edit an existing entry, press <span class="ph uicontrol">Edit</span>. Choose
+						<span class="ph uicontrol">Save</span> after editing the value. </li>
+
+				<li class="li">To remove an application from the list, select the entry and choose
+						<span class="ph uicontrol">Delete</span>. To delete all entries, choose
+						<span class="ph uicontrol">Delete All</span>. </li>
+
+			</ul>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> In order to allow subscribed applications, you need to add it to the whitelist in the
+					format <kbd class="ph userinput">&lt;providerAccount&gt;:&lt;applicationName&gt;</kbd>. </div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loioa4ee70f0274248f8bbc7594179ef948d__section_TrustStore"><div class="section_title">Trust Store</div><div type="Trust Store">
+			
+			<p class="p">By default, the <span class="ph pname">Cloud connector</span> trusts
+				every on-premise system when connecting to it via HTTPS. As this may be an
+				undesirable behavior from a security perspective, you can configure a trust store
+				that acts as a whitelist of trusted on-premise systems, represented by their
+				respective public keys. You can configure the trust store by choosing
+					<span class="ph uicontrol">Configuration</span> from the main menu. Go to tab <span class="ph uicontrol">On
+					Premise</span>, section <span class="ph uicontrol">Trust Store</span>:</p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioa4ee70f0274248f8bbc7594179ef948d__image_hvg_qqb_b5" width="1400px" src="loio264c704223af42ed8bfa81e8eedc8e4f_HiRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+			<div class="p">An empty trust store does not impose any restrictions on the trusted on-premise systems. This
+				behavior ensures downward compatibility so that the <span class="ph pname">Cloud connector</span> behaves
+				as it did before introducing the configurable trust store. While an empty trust
+				store acts like a blacklist, it transforms into a whitelist as soon as you add the
+				first public key.<div class="note note"><span class="notetitle">Note</span> You hve to provide the public keys in
+						<span class="keyword parmname">.der</span> or <span class="keyword parmname">.cer</span> format.</div>
+</div>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section" id="loioa4ee70f0274248f8bbc7594179ef948d__trust_use_cases"><div class="section_title">Tasks</div><div type="Tasks">
+			
+			<p class="p">To learn more about the different types of configuring and supporting principal
+				propagation for a particular AS ABAP, see:</p>
+
+			<ul class="ul" id="loioa4ee70f0274248f8bbc7594179ef948d__ul_gts_ms5_rn">
+				<li class="li"><a class="xref" href="d0c4d5675d4f4bc78a5b7a7b8687c841.html">Configuring a CA Certificate for Principal Propagation</a></li>
+
+				<li class="li"><a class="xref" href="a8bb87a72d094e0d981d2b1f67df7bc3.html">Configuring Principal Propagation to an ABAP System for HTTPS</a></li>
+
+				<li class="li"><a class="xref" href="33a2f37b0f1e4b6d869ab85c8427db1b.html">Configuring Principal Propagation to an ABAP System for RFC</a></li>
+
+				<li class="li"><a class="xref" href="58803a25e5894d759e0df1c5513b41ed.html">Configuring Subject Pattern for Principal Propagation</a></li>
+
+				<li class="li"><a class="xref" href="de5bbf9a92ce402cb0e21952c37b146d.html" title="Configuration steps for Java SLS support.">Configuring a Secure Login Server for the Cloud Connector</a></li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d4d3e1e9b2dd44318b49a4812cd51383.html">Principal Propagation</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

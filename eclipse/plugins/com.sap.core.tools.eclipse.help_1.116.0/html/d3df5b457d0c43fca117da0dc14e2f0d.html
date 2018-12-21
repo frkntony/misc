@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can register a tenant for Identity Authentication service as an identity provider for your account."/>
+<meta name="description" content="You can register a tenant for Identity Authentication service as an identity provider for your account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>ID Federation with an Identity Authentication Tenant</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod3df5b457d0c43fca117da0dc14e2f0d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">ID Federation with an <span class="ph pname">Identity
+                            Authentication</span> Tenant</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can register a tenant for <span class="ph pname">Identity Authentication</span> service as an identity
+		provider for your account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loiod3df5b457d0c43fca117da0dc14e2f0d__ul_bsw_lyp_gq">
+				<li class="li">You have defined service provider settings for the <span class="ph pname">SAP Cloud Platform</span> account. See
+						<a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodcdfe339f94947bc96508daa686cc56d">Configure SAP Cloud Platform as a Local Service Provider</a>.</li>
+
+				<li class="li">You have chosen a custom local provider configuration type for this account
+					(using  <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Cockpit</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Local Service Provider</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Configuration Type</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Custom</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>)</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p"><span class="ph pname">Identity Authentication</span> service provides
+				identity management for <span class="ph pname">SAP Cloud Platform</span> applications.
+				You can register a tenant for <span class="ph pname">Identity Authentication</span> service as an
+				identity provider for the applications in your <span class="ph pname">SAP Cloud Platform</span> account.</p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> If you add a tenant for <span class="ph pname">Identity Authentication</span> service
+					already configured for trust with the same service provider name, the existing
+					trust configuration on the tenant for <span class="ph pname">Identity Authentication</span>  service
+					side will be updated. If you add a tenant for <span class="ph pname">Identity Authentication</span> configured
+					for trust with <span class="ph pname">SAP Cloud Platform</span> with a
+					different service provider name, a new trust configuration will be created on
+					the tenant for <span class="ph pname">Identity Authentication</span> service
+					side.</div>
+
+				<div class="note note"><span class="notetitle">Note</span> When you remove a tenant for <span class="ph pname">Identity Authentication</span> service as
+					trusted identity provider, the relevant service provider configuration in the
+						<span class="ph pname">Identity Authentication</span>
+					tenant is preserved.</div>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">In your Web browser, log on to the cockpit, and select an account. See <a class="xref" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a>.</span>
+				<div class="itemgroup info">
+					<p class="p">Make sure that you have selected the relevant global account to be able to
+						select the right account.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Security</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Trust</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> section.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the <span class="ph uicontrol">Application Identity Provider</span> tab page. Proceed here
+					depending on one of the following cases:</span>
+				<ul class="ul choices" id="loiod3df5b457d0c43fca117da0dc14e2f0d__choices_frk_rg2_hq">
+					<li class="li choice">
+						<p class="p">You have a tenant for <span class="ph pname">Identity Authentication</span>
+							service registered for your current SAP customer user (s-user). You want
+							to add the tenant as an identity provider.</p>
+
+						<ol class="ol" type="a" id="loiod3df5b457d0c43fca117da0dc14e2f0d__ol_qhj_bh2_hq">
+							<li class="li">Click <span class="ph uicontrol">Add Identity Authentication Tenant</span>.</li>
+
+							<li class="li">Choose the required <span class="ph pname">Identity
+                            Authentication</span> tenant and save the changes.<p class="p"><img class="image" id="loiod3df5b457d0c43fca117da0dc14e2f0d__image_umt_ch2_hq" src="loioadb298c6ccd249faaf20042be66f0c17_LowRes.png"/></p>
+</li>
+
+						</ol>
+
+						<p class="p">In this case, the trust will be established automatically upon registration on both the
+								<span class="ph pname">SAP Cloud Platform</span>
+							and the tenant for <span class="ph pname">Identity Authentication</span>
+							service side. See <a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?31af7da133874e199a7df1d42905241b.html" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?31af7da133874e199a7df1d42905241b.html" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?31af7da133874e199a7df1d42905241b.html">Getting Started with <span class="ph pname">Identity Authentication</span></a></p>
+
+					</li>
+
+					<li class="li choice">
+						<p class="p">You want to add a tenant for <span class="ph pname">Identity Authentication</span>
+							service not related to your SAP user. </p>
+
+						<p class="p">In this case, you need to register the tenant for <span class="ph pname">Identity Authentication</span>
+							service as any other type of identity provider. This means you need to
+							set up trust settings on both the <span class="ph pname">SAP Cloud Platform</span>
+							and the <span class="ph pname">Identity Authentication</span>
+							tenant side. See <a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?1b607aace12240cf84904a04e5713c58.html#loio1b607aace12240cf84904a04e5713c58" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?1b607aace12240cf84904a04e5713c58.html#loio1b607aace12240cf84904a04e5713c58" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?1b607aace12240cf84904a04e5713c58.html#loio1b607aace12240cf84904a04e5713c58">Integration</a>.</p>
+
+					</li>
+
+				</ul>
+
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>The tenant for <span class="ph pname">Identity Authentication</span>
+			appears in the list of SAML identity providers. You can now administrate further the
+				<span class="ph pname">Identity Authentication</span> tenant by
+			opening <span class="ph pname">Identity
+                            Authentication</span>
+			Admin Console (hover over the registered tenant for <span class="ph pname">Identity Authentication</span> and click
+				<span class="ph uicontrol">Identity Authentication Admin Console</span>). You can manage the
+			registered tenant for <span class="ph pname">Identity Authentication</span> as any other
+			registered identity provider.<div class="note note"><span class="notetitle">Note</span> It will take about 2 minutes for the trust
+				configuration with the tenant for <span class="ph pname">Identity Authentication</span> to become
+				active.</div>
+<div class="note note"><span class="notetitle">Note</span> Each <span class="ph pname">SAP Cloud Platform</span> account is a
+				separate service provider in the tenant for <span class="ph pname">Identity Authentication</span> .</div>
+<div class="note tip"><span class="tiptitle">Tip</span> If you need each of your <span class="ph pname">SAP Cloud Platform</span> applications
+				to be represented by its own service provider, you must create and use a separate
+				account for each application. See <a class="xref" href="d60337b3631540c6aea5908f6248bbcd.html" title="You can create accounts and use a copy function to copy settings from other accounts.">Creating Accounts</a>.</div>
+</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm"><span class="ph pname">SAP Cloud Platform Identity
+                                Authentication Service</span></a></div>
+<div><a class="link" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a></div>
+<div><a class="link" href="http://scn.sap.com/docs/DOC-69941" target="_blank" alt="http://scn.sap.com/docs/DOC-69941" title="http://scn.sap.com/docs/DOC-69941"><span class="ph pname">Identity Authentication</span>
+				Onboarding Kit for <span class="ph pname">SAP Cloud Platform</span> Customers and
+				Partners (SAP Community Network)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

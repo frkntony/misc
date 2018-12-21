@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.foundation.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ide.support.feature" version="1.8.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.platform" version="4.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.draw2d" version="3.9.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common.ui" version="2.7.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore" version="2.8.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.databinding" version="1.2.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore.edit" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.edit" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.edit.ui" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.equinox.p2.core.feature" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.equinox.p2.extras.feature" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.equinox.p2.user.ui" version="2.2.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.gef" version="3.9.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.zest" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views.log" version="1.0.300" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.trace" version="1.0.1" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.xs.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.devsupport.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.models.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.navigator"
+         download-size="470"
+         install-size="992"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.datamodel"
+         download-size="142"
+         install-size="294"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.jdbc"
+         download-size="1043"
+         install-size="1176"
+         version="2.3.39"
+         unpack="false"/>
+
+    <plugin
+         id="com.sap.ndb.studio.jdbc.macosx.x86_64"
+         os="macosx"
+         arch="x86_64"
+         download-size="839"
+         install-size="3121"
+         version="2.3.39"
+         fragment="true"/>
+ 
+   <plugin
+         id="com.sap.ndb.studio.jdbc.linux.x86_64"
+         os="linux"
+         arch="x86_64"
+         download-size="925"
+         install-size="2522"
+         version="2.3.39"
+         fragment="true"/>
+
+   <plugin
+         id="com.sap.ndb.studio.jdbc.ui"
+         download-size="89"
+         install-size="170"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.jdbc.win32.x86"
+         os="win32"
+         arch="x86"
+         download-size="344"
+         install-size="1096"
+         version="2.3.39"
+         fragment="true"/>
+
+   <plugin
+         id="com.sap.ndb.studio.jdbc.win32.x86_64"
+         os="win32"
+         arch="x86_64"
+         download-size="388"
+         install-size="1051"
+         version="2.3.39"
+         fragment="true"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sapcontrol"
+         download-size="85"
+         install-size="289"
+         version="2.3.39"
+         unpack="false"/>
+
+  
+
+   <plugin
+         id="com.sap.ndb.studio.images"
+         download-size="268"
+         install-size="340"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.ui"
+         download-size="492"
+         install-size="994"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.admin.model"
+         download-size="887"
+         install-size="2072"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sql.parser"
+         download-size="13352"
+         install-size="37594"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.service.common"
+         download-size="168"
+         install-size="366"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.service.common.interfaces"
+         download-size="85"
+         install-size="140"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.foundation"
+         download-size="10"
+         install-size="14"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.http"
+         download-size="102"
+         install-size="195"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.tools.common"
+         download-size="97"
+         install-size="182"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.comlog"
+         download-size="56"
+         install-size="101"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dwb.core"
+         download-size="61"
+         install-size="107"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.parser.rnd"
+         download-size="120"
+         install-size="242"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can use LDAP (Lightweight Directory Access Protocol) to configure Cloud connector authentication."/>
+<meta name="description" content="You can use LDAP (Lightweight Directory Access Protocol) to configure Cloud connector authentication."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using LDAP for Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio120ceecfd84145a181ac160d588a7a3d">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using LDAP for Authentication</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can use LDAP (Lightweight Directory Access Protocol) to configure <span class="ph pname">Cloud connector</span>
+		authentication.</p>
+
+		<div class="section" id="loio120ceecfd84145a181ac160d588a7a3d__section_N10014_N10011_N10001"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p"/>
+
+			<p class="p">After installation, the <span class="ph pname">Cloud connector</span> uses
+				file-based user management. Initially there is one
+					<span class="ph uicontrol">Administrator</span> user with the password
+					<kbd class="ph userinput">manage</kbd>, which needs to be changed on the first logon. As
+				an alternative to this file-based user management, the <span class="ph pname">Cloud connector</span> also
+				supports LDAP-based user management. If you have an LDAP server in your landscape,
+				you can configure the <span class="ph pname">Cloud connector</span> to use
+				the users available on that LDAP server. All users that are in a group named
+					<span class="keyword parmname">admin</span> or <span class="keyword parmname">sccadmin</span> will have the
+				necessary authorization for administrating the <span class="ph pname">Cloud connector</span>. This
+				group membership is checked by the <span class="ph pname">Cloud connector</span>. </p>
+
+		</div></div>
+
+		<div class="section" id="loio120ceecfd84145a181ac160d588a7a3d__section_6026F1BDC11D4C7DBEE3D00FF0359849"><div class="section_title">Setting LDAP Authentication</div><div type="Setting LDAP Authentication">
+			
+			<div class="p">
+				<ol class="ol" id="loio120ceecfd84145a181ac160d588a7a3d__ol_tws_jjv_5j">
+					<li class="li">Choose <span class="ph uicontrol">Configuration</span> from the main menu and go to tab
+							<span class="ph uicontrol">User Interface</span>.  </li>
+
+					<li class="li">In section <span class="ph uicontrol">Authentication</span>, choose <span class="ph uicontrol">Switch to
+							LDAP</span>. <p class="p"><img class="image" id="loio120ceecfd84145a181ac160d588a7a3d__image_ofs_ymn_fs" width="1400px" src="loioc11223ffd9761014862fe32b4c071040_LowRes.png"/></p>
+</li>
+
+					<li class="li">If you want to save intermediate adoptions of the LDAP configuration, choose
+							<span class="ph uicontrol">Save Draft</span>.</li>
+
+					<li class="li">Usually, the LDAP server lists users in an LDAP node and user groups in
+						another node. In this case, you can use the following template for LDAP
+						configuration. The template can be copied into the configuration text area
+						by choosing the rightmost button immediately below the text area. The
+						template looks like
+						this:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+userPattern="uid={0},ou=people,dc=mycompany,dc=com"
+roleBase="ou=groups,dc=mycompany,dc=com"
+roleName="cn"
+roleSearch="(uniqueMember={0})"
+</pre></div>
+
+					</li>
+
+					<li class="li">Change the <span class="ph uicontrol">ou</span> and <span class="ph uicontrol">dc</span> fields in
+							<span class="keyword cmdname">userPattern</span> and <span class="keyword cmdname">roleBase</span>,
+						according to the configuration on your LDAP server, or use some other LDAP
+						query. </li>
+
+					<li class="li">Provide the LDAP server's host and port (port <kbd class="ph userinput">389</kbd> is
+						used by default) in the <span class="ph uicontrol">Host</span> field. If you want to
+						use the secure protocol variant LDAPS based on TLS, select the
+							<span class="ph uicontrol">Secure</span> checkbox to do so.</li>
+
+					<li class="li">Provide a failover LDAP server's host and port (port
+							<kbd class="ph userinput">389</kbd> is used by default) in the
+							<span class="ph uicontrol">Alternate Host</span> field. If you want to use the
+						secure protocol variant LDAPS based on TLS, select the
+							<span class="ph uicontrol">Secure</span> checkbox to do so. </li>
+
+					<li class="li">Optional: You can provide a service user and its password in the fields
+							<span class="ph uicontrol">User Name</span> and
+						<span class="ph uicontrol">Password</span>.</li>
+
+					<li class="li">Optionally, you can override the role to check for permissions in <span class="ph uicontrol">User
+							Role</span>. If not provided, <span class="ph pname">Cloud connector</span>
+						will check permissions for the default role <span class="keyword parmname">sccadmin</span>.
+						After finishing the configuration, choose <span class="ph uicontrol">Activate</span>.
+						Immediately after activating the LDAP configuration, a restart of the local
+						server is enforced which invalidates the current browser session. You need
+						to refresh the browser and to perform a new logon to the <span class="ph pname">Cloud connector</span>, this time with the credentials configured at the LDAP server. If you
+						want to use the secure protocol variant LDAPS based on TLS, select the
+							<span class="ph uicontrol">Secure</span> checkbox to do so. </li>
+
+					<li class="li">To switch back to file-based user management, choose the <span class="ph uicontrol">Switch</span> icon
+						in section <span class="ph uicontrol">Authentication</span> again.</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p">For more information about how to set up LDAP authentication, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html" target="_blank" alt="http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html" title="http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html">tomcat.apache.org/tomcat-7.0-doc/realm-howto.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+			<div class="note note" id="loio120ceecfd84145a181ac160d588a7a3d__note_N10110_N10077_N10013_N10001"><span class="notetitle">Note</span> When using LDAP together with a high availability
+				setup with master and shadow, the configuration option
+					<span class="keyword cmdname">userPattern</span> cannot be used. Instead a working combination of
+					<span class="keyword cmdname">userSearch</span>, <span class="keyword cmdname">userSubtree</span> and
+					<span class="keyword cmdname">userBase</span> needs to be used.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> If an LDAP configuration is wrong, you will probably not be able to logon to the <span class="ph pname">Cloud connector</span> again.
+				In this case, you need to adjust the <span class="ph pname">Cloud connector</span>
+				configuration to use the file-based user store again without the administration UI.
+				For more information, see the next section.</div>
+
+			<p class="p">The same operation is possible on the shadow instance in a high availability setup (choose
+					<span class="ph uicontrol">Shadow</span> from the main menu of the shadow instance and go
+				to tab <span class="ph uicontrol">Authentication</span>):</p>
+
+			<p class="p"/>
+
+			<p class="p"><img class="image" id="loio120ceecfd84145a181ac160d588a7a3d__image_ohm_4jc_b5" src="loiofdcc67d9bbcd47c8b8d44abf934b76b2_HiRes.png"/></p>
+
+			
+		</div></div>
+
+		<div class="section" id="loio120ceecfd84145a181ac160d588a7a3d__section_N10119_N10013_N10001"><div class="section_title">Switching Cloud Connector Back to File-Based User Store without Administation UI</div><div type="Switching Cloud Connector Back to File-Based User Store without Administation UI">
+			
+			<p class="p">In case your LDAP settings do not work as expected, you can use the useFileUserStore tool,
+				provided with <span class="ph pname">Cloud connector</span> version
+				2.8.0 and higher, to revert back to the file based user store:</p>
+
+			<div class="p">
+				<ol class="ol" id="loio120ceecfd84145a181ac160d588a7a3d__ol_esr_3d4_dw">
+					<li class="li">Change to the installation directory of the <span class="ph pname">Cloud connector</span>. To adjust the userstore, execute the following command:<ul class="ul" id="loio120ceecfd84145a181ac160d588a7a3d__ul_oxn_ld4_dw">
+							<li class="li">
+								<p class="p">Microsoft Windows: <samp class="ph codeph">useFileUserStore</samp>
+								</p>
+
+							</li>
+
+							<li class="li">Linux, Mac OS: <samp class="ph codeph">./useFileUserStore.sh</samp>
+							</li>
+
+						</ul>
+</li>
+
+					<li class="li">The tool will inform you about the successful modification of the user
+						store. </li>
+
+					<li class="li">To activate the file based user store, you need to restart the <span class="ph pname">Cloud connector</span>. </li>
+
+				</ol>
+
+			</div>
+
+			<p class="p">For older versions you need to manually edit the configuration files as described
+				below. </p>
+
+			<p class="p">Depending on your operating system, the configuration file is located at: </p>
+
+			<ul class="ul" id="loio120ceecfd84145a181ac160d588a7a3d__ul_zrh_thf_vm">
+				<li class="li"><span class="ph emphasis emphasis">Microsoft Windows OS</span>:
+						<span class="ph filepath">&lt;install_dir&gt;\config_master\org.eclipse.gemini.web.tomcat\default-server.xml</span></li>
+
+				<li class="li"><span class="ph emphasis emphasis">Linux OS</span>:
+						<span class="ph filepath">/opt/sap/scc/config_master/org.eclipse.gemini.web.tomcat/default-server.xml</span></li>
+
+				<li class="li"><span class="ph emphasis emphasis">Mac OS X</span>:
+						<span class="ph filepath">/opt/sap/scc/config_master/org.eclipse.gemini.web.tomcat/default-server.xml</span></li>
+
+			</ul>
+
+			<ol class="ol" id="loio120ceecfd84145a181ac160d588a7a3d__ol_x55_wnh_sj">
+				<li class="li">To revert to file-based user management, replace the <span class="keyword parmname">Realm</span> section with
+					the following:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;Realm className="org.apache.catalina.realm.LockOutRealm"&gt;
+  &lt;Realm className="org.apache.catalina.realm.CombinedRealm"&gt;
+    &lt;Realm X509UsernameRetrieverClassName="com.sap.scc.tomcat.utils.SccX509SubjectDnRetriever" className="org.apache.catalina.realm.UserDatabaseRealm" digest="SHA-256" resourceName="UserDatabase"/&gt;
+    &lt;Realm X509UsernameRetrieverClassName="com.sap.scc.tomcat.utils.SccX509SubjectDnRetriever" className="org.apache.catalina.realm.UserDatabaseRealm" digest="SHA-1" resourceName="UserDatabase"/&gt;
+   &lt;/Realm&gt;
+&lt;/Realm&gt;</pre></div>
+
+				</li>
+
+				<li class="li">To restart the <span class="ph pname">Cloud connector</span> service, proceed as described below depending on your operating system:<ul class="ul" id="loio120ceecfd84145a181ac160d588a7a3d__ul_jlw_13f_vm">
+						<li class="li"><span class="ph emphasis emphasis">Microsoft Windows OS</span>: Open the Windows
+								<span class="ph uicontrol">Services</span> console and restart the
+								<span class="keyword cmdname">cloud connector</span> service.</li>
+
+						<li class="li"><span class="ph emphasis emphasis">Linux OS</span>: Execute command: <span class="keyword parmname">service
+								scc_daemon restart</span></li>
+
+						<li class="li"><span class="ph emphasis emphasis">Mac OS X</span>: Not applicable because no daemon exists;
+							it is only a "developer version".</li>
+
+					</ul>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

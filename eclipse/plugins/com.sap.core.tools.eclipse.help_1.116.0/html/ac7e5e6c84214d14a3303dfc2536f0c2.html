@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Provisioning a MobiLink Server in Your Account</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioac7e5e6c84214d14a3303dfc2536f0c2">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Provisioning a MobiLink Server in Your Account</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loioac7e5e6c84214d14a3303dfc2536f0c2__ul_h55_f53_gs">
+				<li class="li">You have received the needed licences and have enabled the Remote Data Sync
+					service for your account. For more information, see <a class="xref" href="cdc9600ec42a47ea90f8997906e959a0.html">Getting Access to the Remote Data Sync Service</a>. </li>
+
+				<li class="li">You have installed and configured the console client. For more information, see
+						<a class="xref" href="8900b22376f84c609ee9baf5bf67130a.html" title="You execute a console client command by entering neo &lt;command name&gt; with the appropriate parameters. To list all parameters available for the respective command, execute neo help &lt;command name&gt;.">Using the Console Client</a>.</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">To use the Remote Data Sync service, a MobiLink server must be started and bound to the SAP
+				HANA database of your account. This can be done by the following steps (they are
+				described in detail in the procedure below): </p>
+
+			<ol class="ol" id="loioac7e5e6c84214d14a3303dfc2536f0c2__ol_cn1_1v3_gs">
+				<li class="li">Deploy the MobiLink server on a compute unit of your account using the console
+					client. </li>
+
+				<li class="li">Bind the MobiLink server to your SAP HANA database to connect the MobiLink
+					server to the database. </li>
+
+				<li class="li">Start the MobiLink server within the console client.</li>
+
+			</ol>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">To provision a MobiLink server in your account, you need a free compute unit of your quota.
+					The Remote Data Sync service license includes an additional compute unit for the
+					MobiLink server. </p>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Deploy the MobiLink server on a compute unit of your account using the
+						<span class="keyword cmdname">deploy</span> command. You can configure the MobiLink server to
+					be started with customized server options (see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://dcx.sap.com/index.html#sa160/en/mlserver/ml-syncserver.html" target="_blank" alt="http://dcx.sap.com/index.html#sa160/en/mlserver/ml-syncserver.html" title="http://dcx.sap.com/index.html#sa160/en/mlserver/ml-syncserver.html">MobiLink Server Options<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>). You can do
+					this either during deployment using the <span class="keyword parmname">--ev</span> parameter, or
+					later on using the <span class="keyword cmdname">set-application-property</span> command. You can
+					also specify the compute unit by using the <span class="keyword parmname">--size</span> parameter
+					of the <span class="keyword cmdname">deploy</span> command. </span>
+				<div class="itemgroup stepresult">
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo.bat deploy -h &lt;landscape_host&gt; -a &lt;account&gt; -b &lt;mobilink_service_instance&gt; -u &lt;user_name&gt; -s EMPTY_SITE --runtime mobilink</pre></div>
+
+					</div>
+
+					<ul class="ul" id="loioac7e5e6c84214d14a3303dfc2536f0c2__ul_z3l_wvp_3r">
+						<li class="li">Exemplary MobiLink options configuration during development and starting MobiLink server
+							on a premium compute unit:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo.bat deploy -h hana.ondemand.com -a myaccount -b mymlinstance -u p1234567890 -s EMPTY_SITE --runtime mobilink --ev ML_ARGS="-zf -v" --size prem</pre></div>
+</li>
+
+						<li class="li">Exemplary MobiLink options configuration after deployment. <p class="p">NOTE: You need to first have
+								a MobiLink server deployed before you can set application properties
+								via the command below. Also, if your MobiLink server has been
+								already started, you'll need to restart the server in order for the
+								changes to take effect. All previously set environment variables
+								will be overriden.
+							</p>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo.bat set-application-property -h hana.ondemand.com -a myaccount -b mymlinstance -u p1234567890 --ev ML_ARGS="-zf -v"</pre></div>
+</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Bind the MobiLink server to your SAP HANA database. This is needed to connect the MobiLink
+					server to the database.  </span>
+				<div class="itemgroup stepresult">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p"><span class="ph emphasis emphasis">Prerequisite</span>: You have created a SAP HANA database
+							user dedicated to the MobiLink server instance. For more information,
+							see <a class="xref" href="a55b836f126b461a9999b56f3cd867d5.html" title="As an account administrator on SAP Cloud Platform, you are able to create your own SAP HANA database user and, following this, set up user accounts in SAP HANA for the members of your development team.">Guidelines for Creating Database Users</a>. </p>
+
+						<p class="p"><span class="ph emphasis emphasis">Hint</span>: In case your SAP HANA instance is configured to create database
+							users with a temporary password (the user is forced to reset it on first
+							logon), you need to do it before creating the binding.</p>
+
+					</div>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo.bat bind-hana-dbms -h &lt;landscape_host&gt; -a &lt;account&gt; -b &lt;mobilink_service_instance&gt; -u &lt;user_name&gt; -i &lt;hana_instance_name&gt; --db-user &lt;db_user_name&gt; --db-password &lt;db_user_password&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Start your MobiLink server:</span>
+				<div class="itemgroup stepresult">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo.bat start -h &lt;landscape_host&gt; -a &lt;account&gt; -b &lt;mobilink_service_instance&gt; -u &lt;user_name&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Test the state of your MobiLink server.</span>
+				<ul class="ul choices" id="loioac7e5e6c84214d14a3303dfc2536f0c2__choices_l1h_pwp_3r">
+					<li class="li choice">If the application VM is in <span class="keyword parmname">Started</span> state, your
+						server is up and running.</li>
+
+					<li class="li choice">If the application VM remains in <span class="keyword parmname">App Server Timeout</span> state and does
+						not manage to start, check the logs of the MobiLink server. See <a class="xref" href="c05a3ae1b5bd4204bc482ce8496db66c.html">Accessing MobiLink Server Logs</a>.<div class="note note"><span class="notetitle">Note</span> 
+							<p class="p">In case you find the log message below, your binding step is missed
+								or unsuccessfully executed: </p>
+
+							<p class="p"><span class="keyword cmdname">Persistence binding is missing! Please check your binding
+									configuration. In case of further issues, contact support
+									team.</span>
+							</p>
+
+						</div>
+</li>
+
+				</ul>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">You can stop or undeploy your MobiLink server. For more information, see <a class="xref" href="b5bfcbf682684129b142606e1d4ca5cb.html" title="Use this command to stop your deployed and started application or application process.">stop</a> or <a class="xref" href="7e09b85c9710481884e5bc3609a38bb0.html" title="Undeploying an application removes it from SAP Cloud Platform. To undeploy an application, you have to stop it first.">undeploy</a>.</span>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p"><a class="xref" href="920d7738db534786986d7919170855e3.html">Developing Client-Initiated Synchronization</a></p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

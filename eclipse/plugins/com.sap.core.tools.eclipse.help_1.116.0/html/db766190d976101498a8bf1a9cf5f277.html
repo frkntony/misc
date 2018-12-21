@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Profiling Applications Locally</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodb766190d976101498a8bf1a9cf5f277">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Profiling Applications Locally</h1>
+<div class="body conbody"><div class="section" id="loiodb766190d976101498a8bf1a9cf5f277__section_6FFD362969644FAAA34D0C8A5303F82C"><div class="section_title">Overview</div><div type="Overview"> 
+		 
+		<p class="p">After you have created a Web application and verified that it is functionally correct, you may
+				want to inspect its runtime behavior by profiling the application. This helps you
+				to: </p>
+
+			<ul class="ul" id="loiodb766190d976101498a8bf1a9cf5f277__ul_iqc_zvk_hm">
+				<li class="li">Check and optimize memory usage</li>
+
+				<li class="li">Identify frequently called operations (bottlenecks and hotspots)</li>
+
+				<li class="li">Identify slow performance</li>
+
+			</ul>
+ 
+	 </div></div>
+<div class="section" id="loiodb766190d976101498a8bf1a9cf5f277__section_10A9137E26384B649BFCEE47BB0B20AA"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		 
+		<ul class="ul"><li class="li">You have developed and deployed a Web application using the Eclipse IDE. For more information,
+					see <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>. </li>
+<li class="li">You have installed SAP JVM as the runtime for the local server. For more information, see <a class="xref" href="7613eaad711e1014839a8273b0e91070.html">Setting Up SAP JVM in Eclipse IDE</a>
+				</li>
+</ul>
+ 
+	 </div></div>
+<div class="section" id="loiodb766190d976101498a8bf1a9cf5f277__section_01BE1106BEE04D29847A6C9CE032AB08"><div class="section_title">Procedure</div><div type="Procedure"> 
+		 
+		<ol class="ol"><li class="li">Run your Web application on a local server.</li>
+
+				<li class="li">From the server context menu, choose <span class="ph uicontrol">Profile</span>. Cases:<ul class="ul" id="loiodb766190d976101498a8bf1a9cf5f277__ul_wkz_4wk_hm">
+						<li class="li">If your server has been stopped, it will be switched to mode
+								<span class="keyword parmname">[Profiling]</span>.</li>
+
+						<li class="li">If your server has been running, it will be restarted and switched to
+							mode <span class="keyword parmname">[Profiling]</span>. </li>
+
+					</ul>
+<div class="note note"><span class="notetitle">Note</span> Since profiling only works with SAP JVM, if another VM is used, going
+						to <span class="ph uicontrol">Profile</span> will result in opening a dialog that
+						suggests two options - editing the configuration or canceling the
+						operation.</div>
+</li>
+
+				<li class="li">The <span class="ph uicontrol">Profiling</span> perspective is opened. </li>
+<li class="li">Choose the type of analysis to perform. <p class="p"><img class="image" height="600" src="loiobb3aaca5d97610149c7e81741a58ab9e_LowRes.png" width="650"/>
+					</p>
+
+				</li>
+</ol>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<ul class="ul" id="loiodb766190d976101498a8bf1a9cf5f277__ul_lps_5gr_jm">
+					<li class="li">If the server is in profile mode, and you choose <span class="ph uicontrol">Restart in
+							Profile</span> from the context menu, the profile session will be
+						restarted in <span class="keyword parmname">[Profiling]</span> state.</li>
+
+					<li class="li">If the server is in profile mode, and you choose
+							<span class="ph uicontrol">Restart</span> or <span class="ph uicontrol">Restart in
+							Debug</span> from the context menu, the profile session will be
+						disconnected and the server will be restarted.</li>
+
+				</ul>
+
+			</div>
+ 
+	 </div></div>
+<div class="section" id="loiodb766190d976101498a8bf1a9cf5f277__section_ACCBDA9DE6AB412191CDCEA83F2060C2"><div class="section_title">Result</div><div type="Result"> 
+		 
+		<p class="p">You have successfully started a profiling run of a
+		  locally deployed Web application. You can now trigger your work load, create
+		  snapshots of the profiling data and analyze the profiling results. 
+		</p>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+			
+			<p class="p">When you have finished with your profiling session, you can stop it either by disconnecting
+				the profiling session from the <span class="ph uicontrol">Profile</span> view or by restarting
+				the server.</p>
+
+		</div></div>
+<div class="section" id="loiodb766190d976101498a8bf1a9cf5f277__section_B531C3E4E0034FD0BA8F7808589073AC"><div class="section_title">Related Information</div><div type="Related Information"> 
+		 
+		<p class="p">Refer to the SAP JVM Profiler documentation for details about the available analysis options.
+				The documentation is available as part of the SAP JVM Profiler plugin in the Eclipse
+				IDE and can be found via <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Help</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Help Contents</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAP JVM Profiler</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</p>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

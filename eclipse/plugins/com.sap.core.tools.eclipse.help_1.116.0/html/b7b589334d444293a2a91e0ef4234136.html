@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform."/>
+<meta name="description" content="SAP Cloud Platform supports the OAuth 2.0 protocol as a reliable way to protect application resources. The current document describes the specifics of implementing an OAuth-protected application (resource server) for SAP Cloud Platform."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Protecting Applications with OAuth 2.0</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob7b589334d444293a2a91e0ef4234136">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Protecting Applications with OAuth 2.0</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> supports the OAuth 2.0 protocol as a reliable way to protect
+		application resources. The current document describes the specifics of implementing an
+		OAuth-protected application (resource server) for <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+		<p class="p"> </p>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p"><span class="ph emphasis emphasis">OAuth 2.0</span></p>
+
+			<p class="p">OAuth has taken off as a standard way and a best practice for applications and websites to
+				handle authorization. OAuth defines an open protocol for allowing secure API
+				authorization of desktop, mobile and web applications through a simple and standard
+				method.</p>
+
+			<div class="p">OAuth is based on granting access without explicit credentials sharing. OAuth:<ul class="ul" id="loiob7b589334d444293a2a91e0ef4234136__ul_kdc_xnb_ml">
+					<li class="li">Avoids storing credentials at the third-party location</li>
+
+					<li class="li">Limits the access permissions granted to third parties</li>
+
+					<li class="li">Enables easy access right revocation without the need to change credentials</li>
+
+				</ul>
+</div>
+
+			<p class="p">In this way, OAuth mitigates some of the common concerns with authorization scenarios.</p>
+
+			<div class="p">The following table shows the roles defined by OAuth, and their respective entities in <span class="ph pname">SAP Cloud Platform</span>:<div class="table-wrapper"><table summary="" id="loiob7b589334d444293a2a91e0ef4234136__simpletable_wm3_p4b_ml" border="1" class="simpletable"><tr class="sthead">
+						<th valign="bottom" align="left" id="d8746468e63" class="stentry" width="33.333333333333336%">Role</th>
+
+						<th valign="bottom" align="left" id="d8746468e66" class="stentry" width="33.333333333333336%">Entity in <span class="ph pname">SAP Cloud Platform</span></th>
+
+						<th valign="bottom" align="left" id="d8746468e71" class="stentry" width="33.333333333333336%">Description</th>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e63" class="stentry">Resource owner</td>
+
+						<td valign="top" headers="d8746468e66" class="stentry">User</td>
+
+						<td valign="top" headers="d8746468e71" class="stentry">An entity that holds protected assets. This entity is capable of
+							granting access to those assets under its control.</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e63" class="stentry">Resource server</td>
+
+						<td valign="top" headers="d8746468e66" class="stentry">Application</td>
+
+						<td valign="top" headers="d8746468e71" class="stentry">The server that hosts the resource owner's protected assets.
+						</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e63" class="stentry">Client</td>
+
+						<td valign="top" headers="d8746468e66" class="stentry">Third-party application</td>
+
+						<td valign="top" headers="d8746468e71" class="stentry">The third party entity that needs to access the protected assets on
+							behalf of the resource owner.</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e63" class="stentry">Authorization server</td>
+
+						<td valign="top" headers="d8746468e66" class="stentry"><span class="ph pname">SAP Cloud Platform</span> infrastructure</td>
+
+						<td valign="top" headers="d8746468e71" class="stentry">The server that manages the authentication and authorization of the
+							different entities involved.</td>
+
+					</tr>
+</table></div>
+
+			</div>
+
+			<p class="p">For more information, see the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://oauth.net/2/" target="_blank" alt="http://oauth.net/2/" title="http://oauth.net/2/">OAuth 2.0 Specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Using OAuth in SAP Cloud Platform</div><div type="Using OAuth in SAP Cloud Platform">
+			
+		<span class="ph emphasis emphasis">Protecting Resources Declaratively</span><p class="p">If you want to implement a
+				login based on credentials in the form of an OAuth token, you can do that by using
+				OAuth as a login method in your application web.xml. For example:</p>
+<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;login-config&gt;
+  &lt;auth-method&gt;OAUTH&lt;/auth-method&gt;
+&lt;/login-config&gt;
+&lt;security-constraint&gt;
+  &lt;web-resource-collection&gt;
+    &lt;web-resource-name&gt;Protected Area&lt;/web-resource-name&gt;
+    &lt;url-pattern&gt;/rest/get-photos&lt;/url-pattern&gt;
+  &lt;/web-resource-collection&gt;
+  &lt;auth-constraint&gt;
+    &lt;!-- Role Everyone will not be assignable --&gt;
+    &lt;role-name&gt;Everyone&lt;/role-name&gt;
+    &lt;/auth-constraint&gt;
+&lt;/security-constraint&gt;
+&lt;security-role&gt;
+  &lt;description&gt;All <span class="ph pname">SAP Cloud Platform</span> users&lt;/description&gt;
+  &lt;role-name&gt;Everyone&lt;/role-name&gt;
+&lt;/security-role&gt;</pre></div>
+
+			</div>
+<p class="p">For more information, see <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loioe637f62abb571014857cb0232adc43a7" title="Enable user authentication for access to your applications.">Enabling Authentication</a></p>
+<p class="p"><span class="ph emphasis emphasis">Working with User
+					Attributes</span></p>
+<p class="p">In your protected application you can acquire the
+				user ID and attributes as described in <a class="xref" href="9e2e0d7e91cc44e79901a756bf7b2d88.html" title="You can access user attributes using the User Management Java API (com.sap.security.um.user). It can be used to get and create users or to read and update their information.">Working with User Profile
+					Attributes</a>.</p>
+<div class="p">There are two additional user attributes you can use to
+				retrieve token specific information: <ul class="ul" id="loiob7b589334d444293a2a91e0ef4234136__ul_a4x_rj1_q4">
+					<li class="li"><span class="keyword parmname">com.sap.security.oauth2.clientId</span> - holds information
+						about the OAuth client ID</li>
+
+					<li class="li"><span class="keyword parmname">com.sap.security.oauth2.grantedScopes</span> - holds
+						information about the granted scopes.</li>
+
+				</ul>
+</div>
+<p class="p"><span class="ph emphasis emphasis">Handling Sessions</span></p>
+<p class="p">The Java EE specification
+				requires session support on the client side. Sessions are maintained with a cookie
+				which the client receives during the authentication and then passes it along to the
+				server on every request. The OAuth specification, however, does not necessarily
+				require the client to support such a session mechanism. That is, the support of
+				cookies is not mandatory. On every request, the client passes along to the server
+				only the token instead of passing cookies. Using the OAuth login module described in
+				the Protecting Resources Declaratively section, you can implement a user login based
+				on an access token. The login, however, occurs on every request, and thus it implies
+				the risk of creating too many sessions in the Web container.</p>
+<p class="p">To use requests
+				that do not hold a Web container session, use a filter with the proper
+				configuration, as described in the following example:</p>
+<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;filter&gt;
+    &lt;display-name&gt;OAuth scope definition for viewing a photo album&lt;/display-name&gt;
+    &lt;filter-name&gt;OAuthViewPhotosScopeFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;
+      com.sap.cloud.security.oauth2.OAuthAuthorizationFilter
+    &lt;/filter-class&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;scope&lt;/param-name&gt;
+    &lt;param-value&gt;view-photos_upload-photos&lt;/param-value&gt;
+  &lt;/init-param&gt;
+      &lt;init-param&gt;
+    &lt;param-name&gt;no-session&lt;/param-name&gt;
+    &lt;param-value&gt;false&lt;/param-value&gt;
+  &lt;/init-param&gt;
+&lt;/filter&gt;</pre></div>
+
+			</div>
+<p class="p"><span class="ph emphasis emphasis">Checking Scopes Declaratively</span></p>
+<div class="p">One of the ways to
+				enforce scope checks for resources is to declare the resource protection in the
+				web.xml. This is done by specifying the following elements: <div class="table-wrapper"><table summary="" id="loiob7b589334d444293a2a91e0ef4234136__simpletable_mqx_rj1_q4" border="1" class="simpletable"><tr class="sthead">
+						<th valign="bottom" align="left" id="d8746468e213" class="stentry" width="50%">Element</th>
+
+						<th valign="bottom" align="left" id="d8746468e216" class="stentry" width="50%">Description</th>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e213" class="stentry">Servlet filter class</td>
+
+						<td valign="top" headers="d8746468e216" class="stentry">Enter as value
+								<kbd class="ph userinput">com.sap.cloud.security.oauth2.OAuthAuthorizationFilter</kbd>.
+							See <a class="xref" href="https://help.hana.ondemand.com/javadoc/com/sap/cloud/security/oauth2/OAuthAuthorizationFilter.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/com/sap/cloud/security/oauth2/OAuthAuthorizationFilter.html" title="https://help.hana.ondemand.com/javadoc/com/sap/cloud/security/oauth2/OAuthAuthorizationFilter.html">OAuthAuthorizationFilter</a>.<p class="p">On request it checks if the
+								request contains a valid OAuth token to access the resources mapped
+								to the configured scope.</p>
+</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e213" class="stentry">Protected resources</td>
+
+						<td valign="top" headers="d8746468e216" class="stentry">Could be given as URL pattern or servlet.</td>
+
+					</tr>
+<tr class="strow">
+						<td valign="top" headers="d8746468e213" class="stentry">Initial parameters</td>
+
+						<td valign="top" headers="d8746468e216" class="stentry">With these, you specify the scope, user principal and HTTP
+								method:<ul class="ul" id="loiob7b589334d444293a2a91e0ef4234136__ul_utx_rj1_q4">
+								<li class="li"><span class="keyword parmname">scope</span></li>
+
+								<li class="li"><span class="keyword parmname">http-method</span></li>
+
+								<li class="li"><span class="keyword parmname">user-principal</span> - if set to "yes", you will
+									get the user ID</li>
+
+								<li class="li"><span class="keyword parmname">no-session</span> - if you set this to "true", the
+									session will be destroyed when you finish using the filter. This
+									means that each time the filter is used, a new session will be
+									created. Default value: false. </li>
+
+							</ul>
+</td>
+
+					</tr>
+</table></div>
+</div>
+<p class="p">The following example shows a sample web.xml for defining and
+				configuring OAuth resource protection for the application.</p>
+<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;filter&gt;
+    &lt;display-name&gt;OAuth scope definition for viewing a photo album&lt;/display-name&gt;
+    &lt;filter-name&gt;OAuthViewPhotosScopeFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;
+      com.sap.cloud.security.oauth2.OAuthAuthorizationFilter
+    &lt;/filter-class&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;scope&lt;/param-name&gt;
+    &lt;param-value&gt;view-photos&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;http-method&lt;/param-name&gt;
+    &lt;param-value&gt;get post&lt;/param-value&gt;
+  &lt;/init-param&gt;
+&lt;/filter&gt;
+
+				</pre></div>
+
+			</div>
+<p class="p"><span class="ph emphasis emphasis">Declaring resource-to-scope Filter Mapping</span></p>
+<div class="p">In this
+				code snippet you can observe how the <samp class="ph codeph">PhotoAlbumServlet</samp> is mapped to
+				the previously specified OAuth scope filter:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;filter-mapping&gt;
+  &lt;filter-name&gt;OAuthViewPhotosScopeFilter&lt;/filter-name&gt;
+  &lt;servlet-name&gt;PhotoAlbumServlet&lt;/servlet-name&gt;
+&lt;/filter-mapping&gt;</pre></div>
+</div>
+<div class="p">If
+				you would like to use URL pattern instead, simply specify the pattern that should
+				apply here:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;filter-mapping&gt;
+  &lt;filter-name&gt;OAuthViewPhotosScopeFilter&lt;/filter-name&gt;
+  &lt;url-pattern&gt;/photos/*.jpg&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;</pre></div>
+</div>
+<p class="p">In
+				the second case, all files with the *<span class="ph filepath">.jpg</span> extension that are
+				served from the <span class="ph filepath">/photos</span> directory will be protected by the
+				OAuth filter. </p>
+<p class="p">For more information regarding possible mappings, see the
+					<samp class="ph codeph">filter-mapping</samp> element specification. </p>
+</div></div>
+
+		<div class="section"><div class="section_title">Protecting Resources Programmatically</div><div type="Protecting Resources Programmatically">
+			
+			<p class="p">Alternatively to the declarative approach with the <samp class="ph codeph">web.xml</samp>
+				(described above), you can use the OAUTH login module programmatically. For more
+				information, see <a class="xref" href="e637f62abb571014857cb0232adc43a7.html#loio778d8987e7714376977c190f6df379ad">Programmatic Authentication</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Creating Protected Resource Requests</div><div type="Creating Protected Resource Requests">
+			
+			<p class="p">When a resource protected by OAuth is requested, your application must pass the access token
+				using the HTTP "Authorization" request header field. The value of this header must
+				be the token type and access token value. The currently supported token type is
+				"bearer". </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Possible Responses to Requests for Protected Resources</div><div type="Possible Responses to Requests for Protected Resources">
+			
+			<p class="p">When the protected resource access check is performed the filter calls the API and
+				the API calls the authorization server to check the validity of the access token and
+				retrieve token’s scopes. </p>
+
+			<div class="p">In the table below the result handling between the authorization server and resource server,
+				resource server and the API, and resource server and filter is presented.
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob7b589334d444293a2a91e0ef4234136__table_jkp_xwb_ml" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: Responses to requests for protected resources</span></caption>
+<colgroup><col width="16.666666666666664%"/><col width="16.666666666666664%"/><col width="16.666666666666664%"/><col width="16.666666666666664%"/><col width="16.83168316831683%"/><col width="16.5016501650165%"/></colgroup>
+
+						
+						
+						
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d8746468e372">Authorization server to resource
+									server</th>
+
+								<th class="entry" colspan="2" valign="top" id="d8746468e375">Resource server to the API</th>
+
+								<th class="entry" colspan="2" valign="top" id="d8746468e378">Resource server to the
+									filter</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><span class="ph emphasis emphasis">Code</span></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><span class="ph emphasis emphasis">Description</span></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><span class="ph emphasis emphasis">Return value / Exception</span></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><span class="ph emphasis emphasis">Description</span></td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><span class="ph emphasis emphasis">Code</span></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "><span class="ph emphasis emphasis">Description</span></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">200</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">access_token</samp> is valid</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><samp class="ph codeph">True</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p">attribute "<samp class="ph codeph">user_id</samp>" in the request </p>
+
+									<p class="p">attribute "<samp class="ph codeph">client_id</samp>" in the request </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "> </td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 ">Access is allowed.<p class="p">attribute "<samp class="ph codeph">client_id</samp>"
+										in the request</p>
+<p class="p"> attribute "<samp class="ph codeph">user_id</samp>"
+										in the request</p>
+If <samp class="ph codeph">user-principal=true</samp>
+										-&gt;<samp class="ph codeph"> request.getUserPrincipal(). getName()</samp>
+									returns <samp class="ph codeph">user_id </samp></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">200</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 ">
+									<p class="p"><samp class="ph codeph">access_token</samp> is valid </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><samp class="ph codeph">False</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p">attribute "<samp class="ph codeph">reason</samp>" in the request describing
+										the reason for the result </p>
+
+									<p class="p"><samp class="ph codeph">reason = "access_forbidden"</samp>
+									</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><samp class="ph codeph">403</samp></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 ">Access is forbidden</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">400</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 ">
+									<p class="p"><samp class="ph codeph">access_token</samp> parameter is null, empty
+										string, missing or it is given more than once </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><samp class="ph codeph">False</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">Attribute "<samp class="ph codeph">reason</samp>" in the request describing
+									the reason for the result <p class="p"><samp class="ph codeph">reason =
+											"missing_access_token</samp></p>
+</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 ">
+									<p class="p"><samp class="ph codeph">access_token</samp> does not exist</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><samp class="ph codeph">False</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">Attribute "<samp class="ph codeph">reason</samp>" in the request describing
+									the reason for the result <p class="p"><samp class="ph codeph">reason =
+											"missing_access_token</samp></p>
+</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 ">
+									<p class="p">
+										<samp class="ph codeph">access_token</samp> has expired</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><samp class="ph codeph">False</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">Attribute "<samp class="ph codeph">reason</samp>" in the request describing
+									the reason for the result <p class="p"><samp class="ph codeph">reason =
+											"missing_access_token</samp></p>
+</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 ">
+									<p class="p"><samp class="ph codeph">access_token</samp> is not issued for the current
+										subscription </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 "><samp class="ph codeph">False</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">Attribute "<samp class="ph codeph">reason</samp>" in the request describing
+									the reason for the result <p class="p"><samp class="ph codeph">reason =
+											"missing_access_token</samp></p>
+</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><samp class="ph codeph">401</samp></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "><samp class="ph codeph">500</samp></td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 ">
+									<p class="p">Unexpected error (no connection to the database) </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p"><samp class="ph codeph">OAuthSystemException</samp>
+									</p>
+
+									<p class="p">(extends <samp class="ph codeph">Exception</samp>) </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p">Inherit message from the original exception </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "><samp class="ph codeph">500</samp></td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "> </td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "> </td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p"><samp class="ph codeph">OAuthSystemException</samp>
+									</p>
+
+									<p class="p">(extends <samp class="ph codeph">Exception</samp>) </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p">HTTP request to the authorization server fails </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "> </td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "> </td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e372 "> </td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p"><samp class="ph codeph">OAuthSystemException</samp>
+									</p>
+
+									<p class="p">(extends <samp class="ph codeph">Exception</samp>) </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.666666666666664%" headers="d8746468e375 ">
+									<p class="p">OAuth destination is not found or can’t get destination HTTP
+										client </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="16.83168316831683%" headers="d8746468e378 "> </td>
+
+								<td class="entry" valign="top" width="16.5016501650165%" headers="d8746468e378 "> </td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Next Steps</div><div type="Next Steps">
+			
+			<ol class="ol" id="loiob7b589334d444293a2a91e0ef4234136__ol_nwr_hfh_np">
+				<li class="li">You can now deploy the application on <span class="ph pname">SAP Cloud Platform</span>. For more
+					information, see <a class="xref" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a>
+				</li>
+
+				<li class="li">After you deploy, you need to configure clients and scopes for the application.
+					For more information, see <a class="xref" href="7e658b3e4cea4a79b035d0f1d2798c1f.html#loio7e658b3e4cea4a79b035d0f1d2798c1f" title="Register clients, manage access tokens, configure scopes and perform other OAuth configuration tasks.">Configuring OAuth 2.0</a>.</li>
+
+			</ol>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Destinations to external resources lead to services or applications that are not part of the current MTA."/>
+<meta name="description" content="Destinations to external resources lead to services or applications that are not part of the current MTA."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Destinations to External Resources</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio39fe8fa20d1747b49b84e1d395fd1f9b">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Destinations to External Resources</h1>
+
+  
+	<div class="body conbody"><p class="shortdesc">Destinations to external resources lead to services or applications that are not part
+    of the current MTA. </p>
+
+		<div class="section" id="loio39fe8fa20d1747b49b84e1d395fd1f9b__section_trt_jpj_yy"><div class="section_title">Account-Level Destinations</div><div type="Account-Level Destinations">
+      
+      <p class="p">When you want to describe account-level destinations to external resources, the modelling
+        is as a module of type <span class="keyword parmname">com.sap.hcp.destination</span>. In this type of
+        destination relations, first you declare that a module requires the dependency using a
+          <span class="keyword parmname">requires</span> element, and then you provide the dependency details as
+        module type parameters. The account level destination has a lifecycle that is independent
+        from the applications that use it. Note that if you need your Java application to have more
+        than one destination, you have to model each account-level destination in a separate module,
+        and in the java module requires each of them.</p>
+
+      <div class="note note"><span class="notetitle">Note</span>  If you deploy a destination with a name that already exists in the account, the old
+        destination is overwritten, which might break existing dependencies.</div>
+
+      <p class="p"> See the following example: </p>
+
+      <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">modules:
+  - name: nwl
+    type: com.sap.java
+    requires:
+      - name: examplewebsite-connect
+    parameters:
+      name: networkinglunch
+      ...
+ 
+  - name: examplewebsite-connect
+    type: com.sap.hcp.destination
+    parameters:
+      name: ExampleWebsite
+      type: HTTP
+      description: Connection to ExampleWebsite
+      url: http://www.examplewebsite.com
+      proxy-type: Internet
+      authentication: BasicAuthentication
+      user: John
+      password: Abcd1234</pre></div>
+
+    </div></div>
+
+    <div class="section" id="loio39fe8fa20d1747b49b84e1d395fd1f9b__section_q2j_xxj_gz"><div class="section_title">Application-Level Destinations</div><div type="Application-Level Destinations"><div class="sectiondiv">
+        <p class="p">Application-level  destinations to external resources are
+          modeled as items within the <span class="keyword parmname">destinations</span> parameter of the
+            <span class="keyword parmname">com.sap.java</span> module type. This means that the lifecycle of such a
+          destination is bound to the lifecycle of the corresponding application. See the following
+          example: </p>
+
+        <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">modules:
+  - name: abc
+    type: com.sap.java
+    parameters:
+      name: networking
+      ...
+      destinations:
+        - name: ExampleDestination
+          type: MAIL
+          user: John
+          password: abcd1234
+        - name: ExampleDestination_02
+          type: HTTP
+          url: http://www.examplewebsite02.com
+          proxy-type: Internet
+          authentication: NoAuthentication
+         </pre></div>
+
+        <p class="p"><span class="ph emphasis emphasis">Result:</span> The <span class="keyword parmname">networking</span> Java application is
+          deployed and then the MAIL destination <span class="keyword parmname">ExampleDestination</span> as well as
+          the HTTP destination <span class="keyword parmname">ExampleDestination_02</span> are created.</p>
+
+      </div><p class="p">Alternatively, application-level destinations can be modeled as a
+          <span class="ph sap-technical-name sap-technical-name">requires</span> dependency to untyped resources. For
+        more information, see <a class="xref" href="0fa478c35b0847ad94b5ee5dfac5bd97.html" title="An untyped resource is an unclassified resource type that is used to group properties that are specified only once, so that they can be referred by multiple destinations using the MTA references mechanism. Untyped resources do not have a lifecycle.">MTA Untyped Resources Usage For Destinations</a>.</p>
+<div class="sectiondiv">
+        <p class="p"><span class="ph emphasis emphasis">Destination Elements used in Extension Descriptors</span></p>
+
+        <p class="p">In case some of the destinations parameters are security-sensitive, for example user
+          credentials, we recommended that you specify all destination parameters in an extension
+          descriptor to ensure their secure handling. This means that the
+            <span class="keyword parmname">destinations</span> parameter in the <span class="keyword parmname">mtad.yaml</span> needs
+          to be empty for this approach to function, as described in the following example:</p>
+
+        <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">modules:
+  - name: abc
+    type: com.sap.java
+    parameters:
+      name: networking  
+      ...
+      destinations: </pre></div>
+
+        <p class="p">The below example for an accompanying extension descriptor contains the
+            <span class="keyword parmname">destinations</span> parameters:</p>
+
+        <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">modules:
+  - name: abc
+    parameters:
+      destinations:
+        - name: ExampleWebsite
+          type: HTTP
+          description: Connection to ExampleWebsite
+          url: http://www.examplewebsite.com
+          proxy-type: Internet
+          authentication: BasicAuthentication
+          user: John
+          password: abcd1234</pre></div>
+
+      </div></div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

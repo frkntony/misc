@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To monitor whether your deployed application is up and running, you can register an availability check and JMX checks for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. You can also generate a report of metrics that shows performance statistics of the CPU, DB, and response times."/>
+<meta name="description" content="To monitor whether your deployed application is up and running, you can register an availability check and JMX checks for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. You can also generate a report of metrics that shows performance statistics of the CPU, DB, and response times."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Monitoring Java Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7613a394711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Monitoring Java Applications</h1>
+
+	<div class="body refbody"><p class="shortdesc">To monitor whether your deployed application is up and running, you can register an
+		availability check and JMX checks for it and configure email recipients who will receive
+		notification if the application goes down. For the email recipients configuration, you use
+		the <span class="ph pname">SAP Cloud Platform</span> console client. You can also generate a report of
+		metrics that shows performance statistics of the CPU, DB, and response times.</p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_lby_srn_wr" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="100%"/></colgroup>
+
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="100%" id="d5159031e29">Content</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="100%" headers="d5159031e29 ">
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__video">Introductory Video</a></p>
+
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__monitoring">Default Monitoring
+									Metrics</a></p>
+
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__jmx_checks">JMX Checks for Custom
+									Metrics</a></p>
+
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__availability_checks">Availability Checks</a></p>
+
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__alert_recipients">Alert Recipients Commands</a></p>
+
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__monitoring_service">Monitoring Service</a></p>
+
+							<p class="p"><a class="xref" href="7613a394711e1014839a8273b0e91070.html#loio7613a394711e1014839a8273b0e91070__performance_statistics">Performance Statistics Service (beta)</a></p>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__video"><div class="section_title">Introductory Video</div><div type="Introductory Video">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_lfy_bj5_4y" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e98">
+								<p class="p">Monitoring Overview</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e98 ">
+								<ul class="ul" id="loio7613a394711e1014839a8273b0e91070__ul_sv3_fj5_4y">
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://video.sap.com/media/t/1_b950cag8" target="_blank" alt="https://video.sap.com/media/t/1_b950cag8" title="https://video.sap.com/media/t/1_b950cag8">Watch the video on
+												SAP Media Share<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+									</li>
+
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://youtu.be/qw8kdeEsi-s" target="_blank" alt="https://youtu.be/qw8kdeEsi-s" title="https://youtu.be/qw8kdeEsi-s">Watch the
+												video on YouTube<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+									</li>
+
+								</ul>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__monitoring"><div class="section_title">Default Monitoring Metrics</div><div type="Default Monitoring Metrics">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_p4f_qrn_wr" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e148">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e148 ">
+								<p class="p"><a class="xref" href="82cbd81b4d2447c5b1e90333c977a7c0.html" title="In the cockpit, you can view the current metrics of a selected process to check the runtime behavior of your applications. You can also view the metrics history of an application or a process to examine the performance trends of your application over different intervals of time or investigate the reasons that have led to problems with it.">Viewing Monitoring Metrics of Java Applications</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__jmx_checks"><div class="section_title">JMX Checks for Custom Metrics</div><div type="JMX Checks for Custom Metrics">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_mmt_bp2_rq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e187">
+								<p class="p">Concept</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e187 ">
+								<p class="p"><a class="xref" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e207">
+								<p class="p">Configuration</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e207 ">
+								<p class="p"><a class="xref" href="21d734fa88f44298a8a9cb1f759f8fb9.html" title="This topic shows how you can configure a JMX check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring a JMX Check to Monitor Your Application</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e227">
+								<p class="p">JMX Console</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e227 ">
+								<p class="p"><a class="xref" href="83dd8e41199e4b1c80044f8b6698d3c7.html" title="The JMX console available in the cockpit enables you to monitor and manage the performance of the JVM and your Java applications running on the platform.">Using the JMX Console</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e247">
+								<p class="p">JMX Checks Commands</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e247 ">
+								<p class="p"><a class="xref" href="c6fedee0a1394991a913ec94fb654826.html" title="Lists JMX checks.">list-jmx-checks</a></p>
+
+								<p class="p"><a class="xref" href="298a207f33c4484b9894b7c4e2900566.html" title="Creates a JMX check.">create-jmx-check</a></p>
+
+								<p class="p"><a class="xref" href="75a0058e5c304243be91e4d2b7b04611.html" title="Deletes the specified JMX check or all JMX checks.">delete-jmx-check</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__availability_checks"><div class="section_title">Availability Checks</div><div type="Availability Checks">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_cfv_nm2_rq" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e302">
+								<p class="p">Concept</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e302 ">
+								<p class="p"><a class="xref" href="173dd2ca9c834df8bb79fa46c3ae8c00.html">Availability Checks</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e320">
+								<p class="p">Cockpit</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e320 ">
+								<p class="p"><a class="xref" href="fd1b85b336ff4c1b8b2f160fd51656ee.html" title="In the cockpit, you can configure availability checks for the applications deployed in your account. If you have configured an availability check on account level, you can override it by creating one on application level. You can manage the checks on account level from the console client only.">Configuring Availability Checks for Java Applications from the Cockpit</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e340">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e340 ">
+								<p class="p"><a class="xref" href="6537f99f89c047c6ad16d49eb3f97a11.html" title="This topic shows how you can configure an availability check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring Availability Checks for Java Applications from the Console Client</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e360">
+								<p class="p">Commands</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e360 ">
+								<p class="p"><a class="xref" href="d37bcfc3460e497cad80338192833fc5.html" title="Lists the availability checks.">list-availability-check</a></p>
+
+								<p class="p"><a class="xref" href="83d45827519b413bb98c4e2aaf9b3752.html" title="Creates an availability check.">create-availability-check</a></p>
+
+								<p class="p"><a class="xref" href="2a387e4e5faa4e35939ba472b33cb74a.html" title="Deletes an availability check.">delete-availability-check</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__alert_recipients"><div class="section_title">Alert Recipients Commands</div><div type="Alert Recipients Commands">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_t22_nrn_wr" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e416">
+								<p class="p">Console Client</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e416 ">
+								<p class="p"><a class="xref" href="f326f9df2f5246bbb1878b01cfdbc0ba.html" title="Lists alert recipients.">list-alert-recipients</a></p>
+
+								<p class="p"><a class="xref" href="6dae74f3792446b7be65f5d8187c2425.html" title="Sets alert recipients.">set-alert-recipients</a></p>
+
+								<p class="p"><a class="xref" href="0f2b2cda9d844939bad3cbda32c167d8.html" title="Clears alert recipients.">clear-alert-recipients</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__monitoring_service"><div class="section_title">Monitoring Service</div><div type="Monitoring Service">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_rw4_d1s_cv" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e471">
+								<p class="p">Concept</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e471 ">
+								<p class="p"><a class="xref" href="2dacf6f12dd047efad9bc8929ff1759d.html" title="You can use the monitoring service to receive the metrics of your Java applications running on SAP Cloud Platform.">Monitoring Service</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e494">
+								<p class="p">JSON Response</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e494 ">
+								<p class="p"><a class="xref" href="a8cf72ccc97b4e498ee2c09e69700e3d.html" title="You retrieve Java application metrics in a JSON format by performing a REST API request defined by the monitoring API.">Structure of a Monitoring Service Response</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e514">
+								<p class="p">Sample Scenarios</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e514 ">
+								<ul class="ul" id="loio7613a394711e1014839a8273b0e91070__ul_tnt_p1s_cv">
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=https://scn.sap.com/community/developer-center/cloud-platform/blog/2015/12/08/elastic-scaling-on-hcp--how-to-create-a-simple-automatic-application-scaler-on-hcp" target="_blank" alt="https://scn.sap.com/community/developer-center/cloud-platform/blog/2015/12/08/elastic-scaling-on-hcp--how-to-create-a-simple-automatic-application-scaler-on-hcp" title="https://scn.sap.com/community/developer-center/cloud-platform/blog/2015/12/08/elastic-scaling-on-hcp--how-to-create-a-simple-automatic-application-scaler-on-hcp">Elastic Scaling on SAP Cloud
+												Platform: How to Create a Simple Automatic
+												Application Scaler on SAP Cloud Platform<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+									</li>
+
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/01/22/use-the-monitoring-service-to-retrieve-metrics-from-different-hcp-applications" target="_blank" alt="http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/01/22/use-the-monitoring-service-to-retrieve-metrics-from-different-hcp-applications" title="http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/01/22/use-the-monitoring-service-to-retrieve-metrics-from-different-hcp-applications">Use the Monitoring Service to
+												Retrieve Metrics from Different SAP Cloud Platform
+												Applications<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+									</li>
+
+									<li class="li">
+										<p class="p"><a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/03/09/use-the-monitoring-service-for-critical-notifications-and-self-healing-of-hcp-java-applications" target="_blank" alt="http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/03/09/use-the-monitoring-service-for-critical-notifications-and-self-healing-of-hcp-java-applications" title="http://scn.sap.com/community/developer-center/cloud-platform/blog/2016/03/09/use-the-monitoring-service-for-critical-notifications-and-self-healing-of-hcp-java-applications">Use the Monitoring Service for
+												Critical Notifications and Self-Healing of SAP Cloud
+												Platform Java Applications<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+									</li>
+
+								</ul>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e553">
+								<p class="p">Tutorials</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e553 ">
+								<ul class="ul" id="loio7613a394711e1014839a8273b0e91070__ul_nbj_gbt_jw">
+									<li class="li">
+										<p class="p"><a class="xref" href="e4aec18cf61747a7afd531a3cfef590c.html" title="This tutorial describes the configuration of a custom application that retrieves the metrics of Java applications running on SAP Cloud Platform.">Tutorial: Implementing a Dashboard Application</a></p>
+
+									</li>
+
+									<li class="li">
+										<p class="p"><a class="xref" href="9c74305e78fa4d8181ba13cbde55d5cf.html" title="This tutorial will help you configure an example notification scenario. The scenario includes a custom application that notifies you of critical metrics via e-mail or SMS. The application also performs actions to fix issues based on these critical metrics.">Tutorial: Implementing a Notification Application</a></p>
+
+									</li>
+
+								</ul>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio7613a394711e1014839a8273b0e91070__performance_statistics"><div class="section_title">Performance Statistics Service (Beta)</div><div type="Performance Statistics Service (Beta)">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio7613a394711e1014839a8273b0e91070__table_of2_g4f_mr" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="16.666666666666668%"/><col width="83.33333333333333%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e612">
+								<p class="p">Concept</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e612 ">
+								<p class="p"><a class="xref" href="03963928a1e64b15a25553318679822f.html" title="Performance statistics enable you to monitor the resources used by your applications and to investigate the causes of performance issues.">Performance Statistics Service (Beta)</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e631">
+								<p class="p">Performance Statistics Report</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e631 ">
+								<p class="p"><a class="xref" href="55a814a71a9a49d08b8bedfb2da7a545.html" title="You can see the report's metrics in a viewer, or you can download them as a JSON file.">Metrics of a Performance Statistics Report</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<th class="entry background_blue" valign="top" width="16.666666666666664%" id="d5159031e650">
+								<p class="p">Configuration</p>
+
+							</th>
+
+							<td class="entry" valign="top" width="83.33333333333334%" headers="d5159031e650 ">
+								<p class="p"><a class="xref" href="94a180e3ffb84abd823c25385832c121.html" title="You collect performance statistics to monitor the resources used by your applications and to investigate the causes of performance issues.">Enabling Performance Statistics Collection</a></p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="c2be87607f4e4016ad30d4bad4c08ea1.html" title="To monitor whether your deployed SAP HANA XS application is up and running, you can register an availability check for it and configure email recipients who will receive notification if the application goes down. For the email recipients configuration, you use the SAP Cloud Platform console client. Furthermore, you can just view the metrics of a database system of any type.">Monitoring Database Systems</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

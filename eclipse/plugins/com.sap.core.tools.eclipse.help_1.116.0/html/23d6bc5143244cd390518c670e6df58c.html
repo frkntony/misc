@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This guide describes how you install SAP Lumira Server on your SAP HANA instance for your SAP Cloud Platform account, and how you configure it."/>
+<meta name="description" content="This guide describes how you install SAP Lumira Server on your SAP HANA instance for your SAP Cloud Platform account, and how you configure it."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Installing and Configuring SAP Lumira Server on SAP Cloud Platform</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio23d6bc5143244cd390518c670e6df58c">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Installing and Configuring SAP Lumira Server on SAP Cloud Platform</h1>
+<p class="shortdesc">This guide describes how you install <span class="ph pname">SAP Lumira Server</span> on your <span class="ph pname">SAP
+			HANA</span> instance for your <span class="ph pname">SAP Cloud Platform</span> account, and how
+		you configure it.</p>
+<div class="topic concept nested1" id="concept_mkr_wxc_qs"><h2 class="title topictitle2">Overview</h2>
+<div class="body conbody"><div class="section">
+				<p class="p"><span class="ph pname">SAP Lumira Server</span> is a solution that combines and visualizes data
+					from multiple sources, thus allowing analysts and decision makers to use various
+					visualizations to analyze data and collaborate with colleagues. You can use
+						<span class="ph pname">SAP Lumira Server</span> to analyze data stored in <span class="ph pname">SAP
+						HANA</span> database running on <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+				<div class="p">
+					<div class="note remember"><span class="remembertitle">Remember</span> 
+						<p class="p">SAP Cloud Platform allows you to install and update SAP Lumira
+							Server in an automated manner on top of SAP HANA instances within your
+							account. After installing, you are responsible for configuring your SAP
+							Lumira Server, creating visualizations and monitoring the availability.
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+<div class="section">
+				<p class="p">To use the SAP Lumira Server on SAP Cloud Platform, you first need to
+					install the components in SAP Cloud Platform cockpit and then to configure
+					the server.</p>
+
+				<div class="p">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">If you wish to monitor the availability of individual visualizations,
+							please follow the description on how to configure availability check for
+							XS applications from the cockpit. See<a class="xref" href="a6663f02b4f9467f921b21f364abda48.html">Configuring Availability Checks for SAP HANA XS Applications from the Cockpit</a>. </p>
+
+					</div>
+
+				</div>
+
+			</div>
+</div>
+</div>
+<div class="topic task nested1" id="task_j4w_31d_qs"><h2 class="title topictitle2">Installing SAP Lumira Server on SAP Cloud Platform</h2>
+<div class="body taskbody"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ul class="ul steps-unordered" id="task_j4w_31d_qs__steps-unordered_xf2_rkf_ts"><li class="li step"><span class="ph cmd">You need to have a valid license for SAP Lumira Server to be able to
+						request this feature to be enabled for your account at SAP Cloud Platform
+						Platform. </span></li>
+<li class="li step"><span class="ph cmd">Request SAP Lumira Server to be enabled for your account by creating a ticket in SAP
+						support component BC-NEO-PERS. To request support for other issues or
+						requests related to SAP Lumira Server, check the components described in SAP
+						Note <a href="http://help.sap.com/disclaimer?site=https://service.sap.com/sap/support/notes/1888290" target="_blank">1888290 <img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</span></li>
+</ul>
+<div class="section postreq"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Next Steps</h3></div>
+				<p class="p">Configure <span class="ph pname">SAP Lumira Server</span>.</p>
+
+			</div></div>
+</div>
+<div class="topic task nested1" id="task_v13_n1d_qs"><h2 class="title topictitle2">Configuring SAP Lumira Server</h2>
+<div class="body taskbody"><div class="abstract">After you install SAP Lumira Server on SAP Cloud Platform, implement some of
+			the configuration steps described in <a class="xref" href="http://help.sap.com/businessobject/product_guides/vi01/en/lumS127_install_en.pdf" target="_blank" download="">SAP Lumira Server Installation Guide</a>. Namely,
+			these are as follows (each step below refers to a relevant section in the <cite class="cite">SAP
+				Lumira Server Installation Guide</cite>):</div>
+<div class="tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_v13_n1d_qs__steps_wqx_lxm_wr"><li class="li step"><span class="ph cmd">(For SAP HANA SP9 or later only) Assign catalog privileges to roles as
+						described in section <span class="ph emphasis emphasis">6.5</span>. </span></li>
+<li class="li step"><span class="ph cmd">Continue with all other configuration steps as described consecutively in
+						sections <span class="ph emphasis emphasis">6.6</span> through <span class="ph emphasis emphasis">7.3</span>.</span></li>
+<li class="li step"><span class="ph cmd">Optionally, if you want to enable further features of <span class="ph pname">SAP Lumira
+							Server</span>, such as chart extensions or currency conversion, you
+						perform all other configuration steps from section <span class="ph emphasis emphasis">8</span>
+						through the end of the guide.</span></li>
+<li class="li step"><span class="ph cmd">After configuring your SAP Lumira Server at SAP Cloud Platform,
+						disable the XS jobs as described in section 6.1 of the <cite class="cite">SAP Lumira
+							Server Installation Guide</cite>. This is necessary to prevent serious
+						performance impact due to overload of HANA _SYS_XS.JOB_LOG and unnecessary
+						back-up requests for your HANA system. This may lead to slower performance
+						of the Related Visualizations feature in SAP Lumira Server, as they will be
+						generated on the fly. </span></li>
+</ol>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/lumira" target="_blank">SAP Lumira documentation</a></div>
+<div><a class="link" href="http://help.sap.com/businessobject/product_guides/vi01/en/lumS127_user_en.pdf " target="_blank">SAP Lumira User Guide</a></div>
+</div>
+</div></div>
+<div class="topic task nested1" id="task_p14_dlf_ts"><h2 class="title topictitle2">Updating SAP Lumira Server</h2>
+<div class="body taskbody"><div class="tasklabel"><h3 class="sectiontitle tasklabel">Procedure</h3></div><ol class="ol steps" id="task_p14_dlf_ts__steps_xbs_xnf_ts"><li class="li step stepexpand"><span class="ph cmd">Open the SAP Cloud Platform cockpit.</span></li>
+<li class="li step stepexpand"><span class="ph cmd">Choose the <span class="ph uicontrol">Check for Updates</span> link. </span><div class="itemgroup info">
+						<p class="p">If there are updates available for SAP Lumira Server, you will see them
+							listed with details.</p>
+
+						<div class="p">
+							<div class="note note"><span class="notetitle">Note</span> 
+								<p class="p">For SAP Lumira Server updates, you usually have to update the
+										<span class="ph uicontrol">Universal Analytics Functional</span>
+									library and <span class="ph uicontrol">SAP Lumira Server</span>. Check
+									relevant SAP Notes for additional info.</p>
+
+							</div>
+
+						</div>
+
+					</div></li>
+<li class="li step stepexpand"><span class="ph cmd">Choose the required update and install it on your SAP HANA instance.</span></li>
+</ol>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

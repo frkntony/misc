@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Besides providing a user, some connect methods have an additional parameter to provide the IDs of additional principals to the document service."/>
+<meta name="description" content="Besides providing a user, some connect methods have an additional parameter to provide the IDs of additional principals to the document service."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connecting While Providing Additional Principals</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiobd36e70d050c4d75abdb22dd9b4bd186">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connecting While Providing Additional Principals</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Besides providing a user, some connect methods have an additional parameter to provide
+		the IDs of additional principals to the document service.</p>
+
+		<p class="p">If additional principals are provided, the user not only has his or her own permissions
+			to access objects but in addition gets the access rights of these principles. If, for
+			example, the user him or herself has no right to access a specific document but one of
+			the additionally provided principals is allowed to read the content, then the user can
+			also access the content in the context of this connection.</p>
+
+		<p class="p">With this concept an application could also use roles (or even groups) in the ACLs by
+			setting ACEs indicating these roles or groups. Then the roles of the current user can be
+			evaluated during his connection calls and he is granted access rights according to his
+			role (or group) membership.</p>
+
+		<p class="p">It is very important to keep in mind that the additional principals are also opaque
+			strings for the document service. This leaves it up to the application to decide what
+			kind of information it sends as additional principals, including identifiers only known
+			by the application itself. On the other hand, the application must ensure that there is
+			no user with an ID similar to the additional principals, which the application uses in
+			its ACLs because such a user might unintentionally get too many access rights.</p>
+
+		<div class="note sap-example example"><span class="exampletitle">Example</span> 
+			<p class="p">This example shows how to assign write and read permissions for two kinds of users: Authors
+				and readers. Authors should have write access to documents and readers should only
+				have read access to the documents. The application defines two roles, one for
+				authors called <span class="ph sap-technical-name sap-technical-name">author-role</span> and one for
+				readers called <span class="ph sap-technical-name sap-technical-name">reader-role</span>.</p>
+
+			<p class="p">For more information about securing applications and using roles, see <cite class="cite">Securing
+					Applications</cite>.</p>
+
+			<p class="p">To set up permissions for authors and readers as described in our example, set the
+				appropriate ACEs at the documents. The following code snippet shows how to set these
+				permissions for a single document:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+    	Session session = ..;
+    	Document document = ..;
+    
+    	String authorRole = "author-role";
+    	String readerRole = "reader-role";
+
+    	// list of ACEs which should be added
+    	List&lt;Ace&gt; addAcl = new ArrayList&lt;Ace&gt;();
+
+    	// build and add ACE for user authors
+    	List&lt;String&gt; permissionsAuthor = new ArrayList&lt;String&gt;();
+    		permissionsAuthor.add("cmis:write");
+    	Ace aceAuthor = session.getObjectFactory().createAce(authorRole, 
+    		permissionsAuthor);
+    	addAcl.add(aceAuthor);
+
+    	// build and add ACE for user U2
+    	List&lt;String&gt; permissionsReader = new ArrayList&lt;String&gt;();
+    	permissionsReader.add("cmis:read");
+    	Ace aceReader = session.getObjectFactory().createAce(readerRole, 
+    		permissionsReader);
+    	addAcl.add(aceReader);
+
+    	// we remove all ACEs currently set
+    	List&lt;Ace&gt; removeAcl = document.getAcl().getAces();
+
+    	// add and remove the ACEs at the folder
+    	document.applyAcl(addAcl, removeAcl, AclPropagation.OBJECTONLY);
+
+</pre></div>
+
+			<p class="p">The next code snippet shows how the author and reader roles are automatically
+				determined for the users and propagated to the document service to provide the users
+				the access rights they need.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+    	import com.sap.security.um.service.UserManagementAccessor;
+    	import com.sap.security.um.user.User;
+    	import com.sap.security.um.user.UserProvider; 
+    	…
+
+    	String authorRole = "author-role";
+    	String readerRole = "reader-role";
+      
+    	// fetch current user and its roles
+    	UserProvider userProvider = UserManagementAccessor.getUserProvider();
+    	User currentUser = userProvider.getCurrentUser();
+    	Set&lt;String&gt; roles = currentUser.getRoles();
+      
+    	// add author or reader role
+    	List&lt;String&gt; additionalPrincipals = new ArrayList&lt;String&gt;();
+      
+    	if (roles != null &amp;&amp; roles.contains(authorRole)){
+    		additionalPrincipals.add(authorRole);
+    	}
+      	else if (roles != null &amp;&amp; roles.contains(readerRole)){
+    		additionalPrincipals.add(readerRole);
+    	}
+
+    	// connect with additional role
+    	String uniqueRepositoryName = ..;
+    	String key = ..;
+    
+    	Session session = EcmFactory.connectForUser(uniqueRepositoryName, key, null,
+    		currentUser.getName(), null, additionalPrincipals);
+
+</pre></div>
+
+			<p class="p">As long as the user's session is active, his or her permission to access the
+				documents is determined by the user's role assignment. That is, authors can change
+				documents and readers are only allowed to read them.</p>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e80af38cbb57101495e2cd74c44af674.html">Securing Java Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

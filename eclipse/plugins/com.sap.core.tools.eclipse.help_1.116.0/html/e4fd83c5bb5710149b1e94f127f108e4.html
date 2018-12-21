@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Logs in the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe4fd83c5bb5710149b1e94f127f108e4">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Using Logs in the Console Client</h1>
+<div class="body conbody"><div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_F41A7446A0A040609ADFCDBEBB1E4C93"><div class="section_title">Context</div><div type="Context"> 
+		 
+		<p class="p">After you have deployed and started an application on <span class="ph pname">SAP Cloud Platform</span>,
+				you can manage some of its logging configurations using <span class="ph pname">SAP Cloud Platform</span>
+				console client. For easier troubleshooting, you can use the commands from the
+					<span class="keyword parmname">logging</span> group to: </p>
+ 
+		<ul class="ul"><li class="li">List available log files; </li>
+<li class="li">Download a log file; </li>
+<li class="li">List available loggers; </li>
+<li class="li">Change the log level of a particular logger or several loggers at once;</li>
+
+				<li class="li">Reset the log levels of your loggers to their initial state. </li>
+</ul>
+
+			<p class="p">Persistence for loggers is enabled on both local and cloud level. Logger level settings are
+				kept and restored on a server restart, so you do not need to set them over
+				again.</p>
+ 
+	 </div></div>
+<div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_23FB499679564377B22408ACCF1D7E9C"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		
+			<ul class="ul" id="loioe4fd83c5bb5710149b1e94f127f108e4__ul_bwh_z5j_mj">
+				<li class="li">
+					<p class="p">You have created and deployed a Web application which uses logging functionality on
+							<span class="ph pname">SAP Cloud Platform</span>. For more information, see <a class="xref" href="e6e8ccd3bb571014b6afdc54744eef4d.html">Logging in Applications</a>. </p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You have downloaded and set up the <span class="ph pname">SAP Cloud Platform</span> console client. For more
+						information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>
+					</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">You are assigned a <span class="ph uicontrol">Developer</span> or
+							<span class="ph uicontrol">Administrator</span> role. For more information about
+						the roles, see <a class="xref" href="a1ab5c4cc117455392cd0a512c7f890d.html" title="SAP Cloud Platform delivers predefined roles supporting the typical tasks performed by users when interacting with the platform.">Account Member Roles</a>.</p>
+
+				</li>
+
+			</ul>
+ 
+	 </div></div>
+<div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_7845972600BE4EB18D81DE66766AB47C"><div class="section_title">Procedure</div><div type="Procedure"> 
+		 
+		<ol class="ol"><li class="li">Open
+			 the Command Prompt. 
+		  </li>
+<li class="li"> Navigate to the <span class="ph uicontrol">bin</span> folder of the SDK location. </li>
+<li class="li">Enter <kbd class="ph userinput">neo help</kbd> to display all the commands of the console client or
+						<kbd class="ph userinput">neo help &lt;command_name&gt;</kbd> to display the help
+					information for a command. </li>
+</ol>
+ 
+		<p class="p">For more information about argument values usage,
+		  see 
+		  <a class="xref" href="76132306711e1014839a8273b0e91070.html">Console Client</a>.
+		  
+		</p>
+ 
+	 </div></div>
+
+		<div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_N1009E_N10013_N10001"><div class="section_title">Listing Available Log Files</div><div type="Listing Available Log Files">
+			
+			<p class="p">You can list all log files of your application sorted by date in a table format,
+				starting with the latest modified. </p>
+
+			<p class="p">To do that, execute the following command: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-logs --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;email_or_user&gt; --host &lt;landscape_host&gt;</pre></div>
+
+		</div></div>
+
+		<div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_N100B7_N10013_N10001"><div class="section_title">Downloading Log Files</div><div type="Downloading Log Files">
+			
+			<p class="p">To download a particular log file, execute the following command: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo get-log --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;e-mail_or_user&gt; --host &lt;landscape_host&gt; --directory &lt;local_folder_of_the_file&gt; --file &lt;file_name&gt; </pre></div>
+
+			<p class="p">You can also use the <span class="keyword parmname">--overwrite</span> command argument so that in
+				case a file with the same name already exists, it will be overwritten. If a file
+				with the same name already exists and you do not explicitly include
+					<span class="keyword parmname">--overwrite</span>, you will be notified and asked if you want to
+				overwrite it. </p>
+
+			<p class="p">If the directory you have specified in the command line does not exist, it will be
+				created. </p>
+
+		</div></div>
+
+		<div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_N100DD_N10013_N10001"><div class="section_title">Listing Loggers</div><div type="Listing Loggers">
+			
+			<p class="p">To list available loggers and their log levels, execute the following command: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-loggers --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;email_or_user&gt; --host &lt;landscape_host&gt;</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> You can only list loggers when an application is running. Loggers are not listed if the
+				relevant application code has not been executed.</div>
+
+		</div></div>
+
+		<div class="section" id="loioe4fd83c5bb5710149b1e94f127f108e4__section_N100EF_N10013_N10001"><div class="section_title">Setting Log Levels</div><div type="Setting Log Levels">
+			
+			<p class="p">To set a log level for a single logger or for multiple loggers, execute the following
+				command:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-log-level --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;email_or_user&gt; --host &lt;landscape_host&gt; --loggers &lt;logger_name1&gt;,&lt;logger_name2&gt;,... --level &lt;log_level&gt; </pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<ul class="ul" id="loioe4fd83c5bb5710149b1e94f127f108e4__ul_uh5_5rz_t4">
+					<li class="li">You can only set log levels when an application is running.</li>
+
+					<li class="li">If you set a new log level for a parent logger, such as
+							<kbd class="ph userinput">com.sap.core.js.admin.operations</kbd>, the child
+						loggers, for example,
+							<kbd class="ph userinput">com.sap.core.js.admin.operations.AdminOperations</kbd>
+						and
+							<kbd class="ph userinput">com.sap.core.js.admin.operations.internal.ErrorQueueHandler</kbd>,
+						automatically inherit the same log level. Override this mechanism, if
+						necessary, by explicitly assigning a new log level to the child
+						loggers.</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Resetting Log Levels</div><div type="Resetting Log Levels">
+			
+			<p class="p">To reset all logger levels of your application to the their initial state, execute
+				the following command:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">reset-log-levels --account &lt;account_name&gt; --application &lt;application_name&gt; --user &lt;email_or_user&gt; --host &lt;landscape_host&gt;</pre></div>
+
+			<div class="note note"><span class="notetitle">Note</span>  In order for the changes to take effect, restart your running application.</div>
+
+		</div></div>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p"><span class="ph emphasis emphasis">Setting Log Levels</span></p>
+
+			<p class="p">You can deploy a WAR file on <span class="ph pname">SAP Cloud Platform</span> and then change its loggers
+				level to INFO.</p>
+
+			<ol class="ol" id="loioe4fd83c5bb5710149b1e94f127f108e4__ol_x3h_tvj_mj">
+				<li class="li">Deploy the <span class="ph filepath">example.war</span> file on <span class="ph pname">SAP Cloud Platform</span>,
+					using the <span class="ph filepath">example_war.properties</span> file.</li>
+
+				<li class="li">Then execute the following command:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-log-level --account myaccount --application myapplication --user p1234567890 --host hanatrial.ondemand.com --loggers com.mycompany.superapp.ui.Utils --level INFO</pre></div>
+
+				</li>
+
+				<li class="li">Request the example application in the browser and then download and open the
+						<span class="ph uicontrol">ljs_trace.log</span> file. </li>
+
+			</ol>
+
+			<p class="p">As a result, a new info message is logged indicating that the logger level has been
+				changed successfully. </p>
+
+		</div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d35f392ff9504c8793df5feee18054ca.html" title="This command downloads a particular log file.">get-log</a></div>
+<div><a class="link" href="1f6a77c98a1e45118021d57996cfb9df.html" title="This command lists all log files of your application sorted by date in a table format, starting with the latest modified.">list-logs</a></div>
+<div><a class="link" href="9033ddcb45ef4a1c8ba0b505110d10c2.html" title="This command lists all available loggers with their log levels for your application.">list-loggers</a></div>
+<div><a class="link" href="1b495d7580c7404db42c9da996b50a93.html" title="This command sets a log level for one or multiple loggers.">set-log-level</a></div>
+<div><a class="link" href="b14bd37cc60c49429c3690edc7bae5e6.html" title="This command resets all logger levels to their initial state.">reset-log-levels</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

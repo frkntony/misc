@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ide.platform.feature"
+      label="%featureName"
+      version="1.35.0"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.ide.platform.common.ui"
+         download-size="142"
+         install-size="289"
+         version="1.35.0"
+         unpack="false"/>
+
+</feature>

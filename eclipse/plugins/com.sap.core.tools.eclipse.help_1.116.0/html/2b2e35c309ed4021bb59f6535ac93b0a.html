@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The SAP Cloud Platform Feedback Service (Feedback Service) provides developers, customers, and partners with the option to collect end user feedback for their applications. In addition, the Feedback Service provides predefined analytics on the collected feedback data - feedback rating distribution and detailed text analysis of user sentiment (positive, negative, or neutral)."/>
+<meta name="description" content="The SAP Cloud Platform Feedback Service (Feedback Service) provides developers, customers, and partners with the option to collect end user feedback for their applications. In addition, the Feedback Service provides predefined analytics on the collected feedback data - feedback rating distribution and detailed text analysis of user sentiment (positive, negative, or neutral)."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Feedback Service (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2b2e35c309ed4021bb59f6535ac93b0a">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1"><span class="ph pname">Feedback Service</span> (Beta)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The <span class="ph pname">SAP Cloud Platform Feedback Service</span> (<span class="ph pname">Feedback Service</span>) provides developers,
+		customers, and partners with the option to collect end user feedback for their applications.
+		In addition, the <span class="ph pname">Feedback Service</span> provides predefined analytics on the collected feedback
+		data - feedback rating distribution and detailed text analysis of user sentiment (positive,
+		negative, or neutral).</p>
+
+		<div class="note note"><span class="notetitle">Note</span> 
+			<p class="p">The <span class="ph pname">Feedback Service</span> is a beta functionality that is available on the <span class="ph pname">SAP Cloud Platform</span>
+				trial landscape for developer accounts.</p>
+
+		</div>
+
+		<p class="p">To use the <span class="ph pname">Feedback Service</span>, you must enable it from the <span class="ph pname">SAP Cloud Platform</span> cockpit
+			for your account. For more information, see <cite class="cite">Accessing Services</cite> in the
+				<cite class="cite">Related Information</cite> section.</p>
+
+		<p class="p">The <span class="ph pname">Feedback Service</span> has three components:</p>
+
+		<ul class="ul" id="loio2b2e35c309ed4021bb59f6535ac93b0a__ul_acl_fwf_wl">
+			<li class="li"><span class="ph pname">Feedback Service</span> client API that collects feedback data</li>
+
+			<li class="li"><span class="ph uicontrol">Administration</span> - the <span class="ph pname">Feedback Service</span> user interface (UI) for
+				administering feedback collection and feedback quota</li>
+
+			<li class="li"><span class="ph uicontrol">Analysis</span> - the <span class="ph pname">Feedback Service</span> UI for analyzing and exporting
+				collected feedback data</li>
+
+		</ul>
+
+		<p class="p">The <span class="ph uicontrol">Analysis</span> UI leverages the SAP HANA analytics and text analysis
+			capabilities. Feedback data is stored in the SAP HANA DB.</p>
+
+		<div class="p">To be able to operate in <span class="ph uicontrol">Administration</span> and
+				<span class="ph uicontrol">Analysis</span>, you need the following roles assigned to your user:
+				<ul class="ul" id="loio2b2e35c309ed4021bb59f6535ac93b0a__ul_g5c_r24_bm">
+				<li class="li">FeedbackAdministrator</li>
+
+				<li class="li">FeedbackAnalyst</li>
+
+			</ul>
+</div>
+
+		<p class="p">As an account owner, the roles are automatically assigned to your user once you have enabled
+			the <span class="ph pname">Feedback Service</span>. If you want to allow other SAP ID users to access the
+				<span class="ph uicontrol">Analysis</span> and <span class="ph uicontrol">Administration</span> UIs, you
+			need to assign the roles manually. For more information about assigning the required
+			roles, see <a class="xref" href="9995d98e0cce4d4d9a010e63bdf48bf9.html">Consuming the Feedback Service</a>.</p>
+
+		<p class="p">In the <span class="ph uicontrol">Administration</span> UI, the administrator adds the applications for
+			which feedback is to be collected. As a result, the developer can use the client API to
+			consume the <span class="ph pname">Feedback Service</span>.</p>
+
+		<p class="p">Once the <span class="ph pname">Feedback Service</span> is consumed by the application and feedback data is collected, the
+			feedback analyst can explore feedback text analysis in the
+				<span class="ph uicontrol">Analysis</span> UI. As a result, a developer can use end user
+			feedback to improve the performance and appearance of the specific application.</p>
+
+		<div class="section"><div class="section_title">Architecture</div><div type="Architecture">
+			
+			<p class="p">The <span class="ph pname">Feedback Service</span> is operated by <span class="ph pname">SAP Cloud Platform</span> and leverages the in-memory
+				technology of the SAP HANA DB.</p>
+
+			<p class="p"><img class="image" id="loio2b2e35c309ed4021bb59f6535ac93b0a__image_ynr_bpv_bm" src="loio4d20c4102da544edbb665dd46e3a09cb_HiRes.png" alt="Feedback Service Landscape" title="Feedback Service Landscape"/></p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="9995d98e0cce4d4d9a010e63bdf48bf9.html">Consuming the Feedback Service</a></div>
+<div><a class="link" href="d31882e270da412b93c29176f549a56a.html">Getting Feedback for Applications</a></div>
+<div><a class="link" href="a32d3d532e2d4dceaaca4ebab68df037.html" title="The cockpit provides an overview of all the platform services that you can access and use for creating or extending applications. Services are grouped by service category.">Services in the Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The rolling-update command performs update of an application without downtime in one go."/>
+<meta name="description" content="The rolling-update command performs update of an application without downtime in one go."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>rolling-update</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">rolling-update</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">The rolling-update command performs update of an application without downtime in one
+		go.</p>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<div class="p">
+				<ul class="ul" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69__ul_k2c_zgc_55">
+					<li class="li">
+						<p class="p">You have at least one application process that is not in use, see your
+							compute unit quota.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">The command can be used with compatible application changes only.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section">The rolling-update command performs the following steps:<ol class="ol" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69__ol_b24_k1d_vm">
+				<li class="li">Deploys a new version of the application.</li>
+
+				<li class="li">Starts a new application process.</li>
+
+				<li class="li">Disables new connection requests for one of the old application processes.</li>
+
+				<li class="li">Waits for the given timeout.</li>
+
+				<li class="li">Stops the disabled application process.</li>
+
+				<li class="li">Repeats steps 2 to 5 for all remaining old application processes.</li>
+
+			</ol>
+<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo rolling-update --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; 
+--source &lt;file_location&gt; --user &lt;e-mail_or_user&gt;
+  </pre></div>
+</div>
+
+		<div class="section" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69__section_N10015_N10012_N10001"><div class="section_title">Parameters</div><div type="Parameters">To list all parameters
+			available for this command, execute <kbd class="ph userinput">neo help rolling-update</kbd> in
+			the command line.
+<div class="table-wrapper tablenoborder"><table summary="" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d2837711e85">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e85 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e85 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e85 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e85 ">Application name <p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e85 "><span class="keyword parmname">-s, --source</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e85 ">A comma-separated list of file locations, pointing to WAR files,
+								or folders containing them<p class="p">If you want to deploy more than one
+									application on one and the same application process, put all WAR
+									files in the same folder and execute the deployment with this
+									source, or specify them as a comma-separated
+										list.</p>
+<p class="p"><span class="keyword cmdname">Type</span>: file
+								location</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e85 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e85 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e85 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e85 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e85 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e85 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+<div class="table-wrapper tablenoborder"><table summary="" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69__table_ivf_cz5_ll" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d2837711e222">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--compression</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">Enable or disable gzip response compression
+										<p class="p"><span class="keyword cmdname">Default</span>:
+									<span class="ph uicontrol">off</span></p>
+Possible values:
+									<span class="ph uicontrol">on</span> (allow compression), <span class="ph uicontrol">off
+								</span>(disable compression), <span class="ph uicontrol">force</span>
+								(forces compression for all responses) or an<span class="ph uicontrol">
+									integer</span> (which enables compression and specifies the
+								compression-min-size value in bytes). <p class="p">For more information, see
+										<a class="xref" href="390594a7ee9e4a51b5f5eb6af61d8bdc.html" title="Usage of gzip response compression can optimize the response time and improve interaction with an application as it reduces the traffic between the Web server and browsers. Enabling compression configures the server to return zipped content for the specified MIME type and size of the response.">Enabling and Configuring Gzip Response Compression</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--compressible-mime-type </span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">A comma separated list of MIME types for which compression will
+								be used <p class="p"><span class="keyword cmdname">Default</span>: <span class="ph uicontrol">text/html,
+										text/xml,
+										text/plain</span></p>
+<p class="p"><span class="keyword cmdname">Condition:</span>
+									applicable if compression is enabled</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--compression-min-size</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">Responses bigger than this value get compressed
+										<p class="p"><span class="keyword cmdname">Condition:</span> applicable if compression
+									is enabled</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--connections</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">The number of connections used to deploy an application. Use it
+								to speed up deployment of application archives bigger than 5 MB in
+								slow networks. Choose the optimal number of connections depending on
+								the overall network speed to the cloud.
+										<p class="p"><span class="keyword cmdname">Default</span>:
+										<span class="ph uicontrol">2</span></p>
+<p class="p"><span class="keyword cmdname">Acceptable
+										values</span>:
+										<kbd class="ph userinput">1-6</kbd></p>
+<p class="p"><span class="keyword cmdname">Type</span>:
+									integer </p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 ">
+								<p class="p"><span class="keyword parmname">--ev</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">Environment variables for configuring the environment in which
+								the application runs.<p class="p">Sets one environment variable by removing
+									the previously set value; can be used multiple times in one
+									execution.</p>
+<p class="p"><span class="keyword cmdname">Type</span>: --ev
+									&lt;KEY1&gt;=&lt;VALUE1&gt; --ev &lt;KEY2&gt;=&lt;VALUE2&gt; ,
+									where a key-value pair specifies one environment
+									variable</p>
+<p class="p">If you provide a key without any value (--ev
+									&lt;KEY1&gt;=), the <span class="keyword parmname">–ev</span> parameter is
+									ignored.</p>
+<p class="p">For a value that contains spaces, use quotation
+									marks.</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">-j, --java-version</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">JRE version<p class="p"><span class="keyword cmdname">Default</span>: depends on the <span class="ph pname">SAP Cloud Platform</span>
+									SDK</p>
+<p class="p"><span class="keyword cmdname">Type</span>: the version number of the JRE
+									7. </p>
+<p class="p">For more information, see <a class="xref" href="ee71c1a4aea84558accb2524785b21bc.html" title="You can choose the Java Runtime Environment (JRE) version used for an application.">Choosing JRE Version</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--timeout</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">Timeout before stopping the old application processes (in
+										seconds)<p class="p"><span class="keyword cmdname">Default</span>: 60
+								seconds</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">-V, --vm-arguments</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">System properties (-D&lt;name&gt;=&lt;value&gt;) separated with
+								space that will be used when starting the application
+									process.<p class="p">Memory settings of your compute units. You can set
+									the following memory parameters: -Xms, -Xmx, -XX:PermSize,
+									-XX:MaxPermSize.</p>
+<p class="p">We recommend that you use the default
+									memory settings. Change them only if necessary and note that
+									this may impact the application performance or its ability to
+									start.</p>
+<p class="p">For more information, see <a class="xref" href="b82d3929218a42558146c58d2f68121e.html" title="Using SAP Cloud Platform console client, you can configure the JRE by specifying custom VM arguments.">Configuring VM Arguments</a>
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">-z, --size</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">Compute Unit size:<p class="p">lite, pro, prem, prem-plus</p>
+<p class="p">The compute
+									unit size defines the default memory settings.</p>
+<p class="p">For more
+									information, see <a class="xref" href="7612fbaf711e1014839a8273b0e91070.html">Compute Units</a></p>
+<p class="p"><span class="keyword cmdname">Default</span>:<span class="ph uicontrol">
+										lite</span></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--runtime-version</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 "><span class="ph pname">SAP Cloud Platform</span> runtime version on which the application
+								will be started and will run on the same version after a restart.
+								Otherwise, by default, the application is started on the latest
+								minor version (of the same major version) which is backward
+								compatible and includes the latest corrections (including security
+								patches), enhancements, and updates. Note that choosing this option
+								does not affect already started application processes. <p class="p">You can
+									view the recommended versions by executing the
+										<span class="ph uicontrol">list-runtime-versions</span> command.
+									</p>
+<div class="note note"><span class="notetitle">Note</span> If you choose your runtime version, consider its
+									expiration date and plan updating to a new version regularly.
+									</div>
+<p class="p">For more information, see <a class="xref" href="13afe5ca6e38485d8e6523f610c0ed29.html" title="Applications deployed on SAP Cloud Platform are always started on the latest version of the application runtime container. This version contains all released fixes, critical patches and enhancements and is respectively the recommended option for applications. In some special cases, you can choose the version of the runtime container your application uses by specifying it with the parameter --runtime-version when deploying your application. To change this version, you need to redeploy the application without specifying this parameter.">Choosing Application Runtime Version</a>
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d2837711e222 "><span class="keyword parmname">--uri-encoding</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d2837711e222 ">Specifies the character encoding used to decode the URI bytes on
+								application request.<p class="p"><span class="keyword cmdname">Default</span>:
+										<span class="ph uicontrol">ISO-8859-1</span></p>
+<p class="p">For more
+									information, see the encoding sets supported by <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/6/docs/technotes/guides/intl/encoding.doc.html" target="_blank" alt="http://docs.oracle.com/javase/6/docs/technotes/guides/intl/encoding.doc.html" title="http://docs.oracle.com/javase/6/docs/technotes/guides/intl/encoding.doc.html">Java SE 6 <img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> and <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/7/docs/technotes/guides/intl/encoding.doc.html" target="_blank" alt="http://docs.oracle.com/javase/7/docs/technotes/guides/intl/encoding.doc.html" title="http://docs.oracle.com/javase/7/docs/technotes/guides/intl/encoding.doc.html">Java SE 7<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div></div>
+
+		<div class="section" id="loio3f5d41207b6a4d0b9ad2e46dc6f27e69__section_N1014A_N10012_N10001"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo rolling-update --host us1.hana.ondemand.com --account myacc --application myapp --source samples/deploy_war/example.war 
+--user mymail@example.com --timeout 5</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="a10f6c2071b443698eb7dfc411d0ed6d.html" title="The platform allows you to update an application in a manner in which the application remains operable all the time and your users do not experience downtime.">Updating Applications with Zero Downtime</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.modeler.reuse.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.models.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+ <plugin
+         id="com.sap.ndb.studio.model.data"
+         download-size="449"
+         install-size="1064"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.search.model"
+         download-size="29"
+         install-size="52"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.view.model"
+         download-size="272"
+         install-size="668"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.models"
+         download-size="501"
+         install-size="3568"
+         version="2.3.39"
+         unpack="false"/>
+
+
+</feature>

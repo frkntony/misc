@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="A sample use case for the translation workflow of SAP Translation Hub is the translation of an HTML5 application that you create in SAP Web IDE."/>
+<meta name="description" content="A sample use case for the translation workflow of SAP Translation Hub is the translation of an HTML5 application that you create in SAP Web IDE."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Sample Scenario for Translation Workflow</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7a81a01fc0e24379b54059bf03826b1c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Sample Scenario for Translation Workflow </h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">A sample use case for the translation workflow of SAP Translation Hub is the translation
+		of an HTML5 application that you create in SAP Web IDE.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="p"><ul class="ul" id="loio7a81a01fc0e24379b54059bf03826b1c__ul_j4n_l5z_jt">
+					<li class="li">You have a developer account on SAP Cloud Platform.</li>
+
+					<li class="li">You have enabled <span class="ph uicontrol">SAP Translation Hub</span> in the service
+						catalog on SAP Cloud Platform.</li>
+
+					<li class="li">You are using one of the browsers listed in <a class="xref" href="https://help.hana.ondemand.com/webide/frameset.htm?51321a804b1a4935b0ab7255447f5f84.html" target="_blank" alt="https://help.hana.ondemand.com/webide/frameset.htm?51321a804b1a4935b0ab7255447f5f84.html" title="https://help.hana.ondemand.com/webide/frameset.htm?51321a804b1a4935b0ab7255447f5f84.html">Opening SAP Web IDE</a>.</li>
+
+				</ul>
+For more information, see <cite class="cite">Consuming the SAP Translation Hub
+					Services</cite> in the <cite class="cite">Related Information</cite> section.</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">This section contains the main steps required to translate the texts that you create for an
+				HTML5 application in SAP Web IDE on SAP Cloud Platform.<div class="note note"><span class="notetitle">Note</span> 
+					<div class="p">For details about the individual steps, especially the steps required to deploy your app on
+						SAP Cloud Platform and to manage the Git repository on SAP Cloud Platform
+						platform, see the following: <ul class="ul" id="loio7a81a01fc0e24379b54059bf03826b1c__ul_ljv_gcs_vw">
+							<li class="li">
+								<p class="p">Video on YouTube: <a class="extlink" href="http://help.sap.com/disclaimer?site=https://youtu.be/b4xXp8nRFJE?list=PLWV533hWWvDnK4wJUWj2iUBruW4ODYMdr" target="_blank" alt="https://youtu.be/b4xXp8nRFJE?list=PLWV533hWWvDnK4wJUWj2iUBruW4ODYMdr" title="https://youtu.be/b4xXp8nRFJE?list=PLWV533hWWvDnK4wJUWj2iUBruW4ODYMdr">https://youtu.be/ytoP_4uBllw<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+							</li>
+
+							<li class="li">
+								<p class="p">Tutorial on SAP Community: <a class="extlink" href="http://help.sap.com/disclaimer?site=https://blogs.sap.com/2016/04/29/tutorial-overview-translate-an-html5-app-with-sap-translation-hub/" target="_blank" alt="https://blogs.sap.com/2016/04/29/tutorial-overview-translate-an-html5-app-with-sap-translation-hub/" title="https://blogs.sap.com/2016/04/29/tutorial-overview-translate-an-html5-app-with-sap-translation-hub/">Tutorial Overview: Translate an HTML5 App
+										with SAP Translation Hub<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+
+							</li>
+
+						</ul>
+</div>
+
+					</div>
+</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">On SAP Cloud Platform, create an HTML5 application using SAP Web IDE.</span>
+				<div class="itemgroup info">During the development process, you can use SAP Translation Hub in the SAP Web IDE code
+					editor to propose texts in English. For more information, see <a class="xref" href="https://help.hana.ondemand.com/webide/frameset.htm?0f9bee125bd44f9786f1d7907ddc992a.html" target="_blank" alt="https://help.hana.ondemand.com/webide/frameset.htm?0f9bee125bd44f9786f1d7907ddc992a.html" title="https://help.hana.ondemand.com/webide/frameset.htm?0f9bee125bd44f9786f1d7907ddc992a.html">Using the Translation Hub - Experimental</a>.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Save your HTML5 project, and commit and push your changes to the Git repository.</span>
+				<div class="itemgroup info">
+					<p class="p">If you use the SAP Cloud Platform Git repository, note the steps
+						required to deploy your application to SAP Cloud Platform and to
+						connect your project to the SAP Cloud Platform Git repository.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Call the <span class="ph uicontrol">SAP Translation Hub</span> UI, and create a translation project
+					for the required source properties file in your HTML5 application.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose the translation project for the required source properties file in your HTML5
+					application, and choose <span class="ph uicontrol">Get Translations</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To see the translated properties files in SAP Web IDE, pull the changes from your Git
+					repository.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>There is a properties file for each of the target languages that you entered in the
+			translation project for your HTML5 application. The properties files are stored in the
+			same project in the Git repository as the rest of the project files.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="9ce1acde6ee04f08a06239a881f42b54.html" title="SAP Translation Hub comprises a set of Web services that applications can consume to translate texts using a multilingual text repository and machine translation.">Consuming the SAP Translation Hub Services</a></div>
+<div><a class="link" href="da544d140f39451eae992d1b1246f98b.html" title="SAP Translation Hub supports the translation of short texts in different scenarios.">Translation Workflow with SAP Translation Hub</a></div>
+<div><a class="link" href="56702a8f43ed496ab346582259afd5c8.html" title="SAP Translation Hub uses translation projects to manage the translation workflow of properties files used in HTML5 applications.">Creating Translation Projects for Properties Files in SAP HCP Git Repository</a></div>
+<div><a class="link" href="f07744c92b574cb5b333711f0c4344f9.html" title="You use translation projects to translate properties files, which are stored in a Git repository, as part of the translation workflow of SAP Translation Hub.">Translating Properties Files</a></div>
+<div><a class="link" href="deca2b46a8444612a7e07212f8990426.html" title="You can use the SAP Translation Hub UI to add or change translations created by SAP Translation Hub during the translation workflow.">Updating Translations in Properties Files</a></div>
+<div><a class="link" href="https://help.hana.ondemand.com/webide/frameset.htm" target="_blank" alt="https://help.hana.ondemand.com/webide/frameset.htm" title="https://help.hana.ondemand.com/webide/frameset.htm">SAP Cloud Platform, Web IDE</a></div>
+<div><a class="link" href="https://help.hana.ondemand.com/webide/frameset.htm?463b52bd34de4549ad05f6282ada02d6.html" target="_blank" alt="https://help.hana.ondemand.com/webide/frameset.htm?463b52bd34de4549ad05f6282ada02d6.html" title="https://help.hana.ondemand.com/webide/frameset.htm?463b52bd34de4549ad05f6282ada02d6.html">Deploying Applications to SAP Cloud Platform</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

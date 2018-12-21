@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Use the cockpit to create an SAP HANA database enabled for multitenant database container support (beta) on an SAP HANA database management system in your account."/>
+<meta name="description" content="Use the cockpit to create an SAP HANA database enabled for multitenant database container support (beta) on an SAP HANA database management system in your account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating SAP HANA MDC Databases</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio46af2934d19343ca8250ce288d27ea41">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating SAP HANA MDC Databases</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Use the cockpit to create an SAP HANA database
+		enabled
+		for multitenant database container
+		support
+		(beta) on an SAP HANA database management system in your account.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The procedure below describes how to create a database at the account level.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio46af2934d19343ca8250ce288d27ea41__steps_tsv_2xb_gr"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit and select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				<div class="itemgroup stepresult">All databases available in the selected account are listed with their
+					ID, type, version, and related database system.<div class="note tip"><span class="tiptitle">Tip</span> To view the
+						details of a database, for example, its state and the number of existing
+						bindings, select a database in the list and click the link on its name. On
+						the overview of the database, you can perform further actions, for example,
+						delete the database.</div>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To create a database, choose <span class="ph uicontrol">New</span> on the
+						<span class="ph uicontrol">Databases &amp; Schemas</span> page.</span>
+				<div class="itemgroup stepresult">The <span class="ph uicontrol">New Database/Schema</span> screen is
+					displayed.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Specify a <span class="ph uicontrol">Database ID</span>.</span>
+				<div class="itemgroup info">A database ID is freely definable, but must start with a letter and include
+					lowercase letters ('a' - 'z') and numbers ('0' - '9') only. Remember that the
+					physical database name is not the same as the database ID.<p class="p"/>
+</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select a <span class="ph uicontrol">Database System</span> from the dropdown box. The list shows the
+					IDs of all database systems deployed in your account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Specify the SYSTEM user password to access the database.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(For accounts on the trial landscape only) Turn on the <span class="ph uicontrol">Configure User for
+						SHINE</span> switch to create a user for the SAP HANA Interactive
+					Education (SHINE) demo application.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> For more information on SHINE, see <a class="xref" href="396c2d7a319747caac332a38f76cfc76.html" title="You can enable the SAP HANA Interactive Education (SHINE) demo application for a new or existing SAP HANA MDC database in your trial account.">Enabling SAP HANA Interactive Education (SHINE)</a>.</div>
+
+				</div>
+				<ol type="a" class="ol substeps" id="loio46af2934d19343ca8250ce288d27ea41__substeps_vl2_vff_cy">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">SHINE User Name</span> field, provide a user
+							name for the SHINE user.</span>
+						<div class="itemgroup info">
+							<div class="note note"><span class="notetitle">Note</span> The user name can only contain uppercase and lowercase letters
+								('a' - 'z', 'A' - 'Z'), numbers ('0' - '9'), and underscores ('_').
+							</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Provide a password for the SHINE user in the <span class="ph uicontrol">SHINE User
+								Password</span> field and repeat the password in the
+								<span class="ph uicontrol">Repeat Password</span> field.</span>
+						<div class="itemgroup info">
+							<div class="note note"><span class="notetitle">Note</span> The password must contain at least one uppercase and one lowercase
+								letter ('a' - 'z', 'A' - 'Z') and one number ('0' - '9'). It can
+								also contain special characters (except ", ' and \). </div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Configure the parameters.  </span>
+				
+				
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">The number of databases you can create is limited. You receive an error message once the
+							maximum number of databases is reached. For more information on tenant
+							database limits, see <a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>. </p>
+
+					</div>
+
+				</div>
+				
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>The
+				<span class="ph uicontrol">Events</span> page is displayed. It shows the progress of the
+			database creation. Wait until the tenant database is in state
+				<span class="ph uicontrol">Started</span>.</div>
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">You can perform further actions for the newly created database, for example,
+				configure, or delete it. Proceed as follows:</p>
+
+			<ul class="ul" id="loio46af2934d19343ca8250ce288d27ea41__ul_hzn_1jk_g5">
+				<li class="li">To create bindings for the database, choose <span class="ph uicontrol">Data Source
+						Bindings</span> in the navigation area.</li>
+
+				<li class="li">To monitor the progress of the database creation in detail, choose
+						<span class="ph uicontrol">Events</span> in the navigation area.</li>
+
+				
+				<li class="li">To delete a database, first delete all existing bindings to the database. In the
+					overview of the database, choose the <span class="ph uicontrol">Delete</span> button. It is
+					only enabled if a database does not have any bindings.</li>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e47748b5bb571014afedc70595804f3e.html" title="A web-based administration interface provides access to a number of functions for configuring and managing cloud applications, services, and accounts.">Cockpit</a></div>
+<div><a class="link" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a></div>
+<div><a class="link" href="369214b650b941b9b4bc48fdc6ec8097.html" title="The persistence service provides a set of console client commands for managing databases. These allow you to create databases with specific properties, bind and unbind databases, delete databases, and display information about databases.">Database Commands</a></div>
+<div><a class="link" href="920f2440fad245da93604c2623f0426a.html" title="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform.">Overview of Database Systems and Databases</a></div>
+<div><a class="link" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></div>
+<div><a class="link" href="216cef2158cc419fade9a8247d5008fa.html" title="Bind databases to your applications running on SAP Cloud Platform.">Binding Databases</a></div>
+<div><a class="link" href="f64390e250cc4dcf8d9046192957d26a.html" title="This command creates a SAP HANA database with the specified ID and settings, on a SAP HANA database system enabled for multitenant database containers.">create-db-hana</a></div>
+<div><a class="link" href="628ae80589f247f59b227e63f9b0d02e.html" title="This command deletes the SAP HANA database with the specified ID on a SAP HANA database system enabled for multitenant database container support.">delete-db-hana</a></div>
+<div><a class="link" href="a1c73b15d03d4e2fa05d43f0080ec316.html" title="This command changes the properties for a SAP HANA database enabled for multitenant database container support.">set-db-properties-hana</a></div>
+<div><a class="link" href="bf6020d733d84a19bbae2ae018783ced.html" title="This command starts the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">start-db-hana</a></div>
+<div><a class="link" href="a4b1a6abc13f45d58c9a156b81487d8a.html" title="This step-by-step tutorial shows how you can create a database on an SAP HANA database system from a selected account in the SAP Cloud Platform cockpit.">Creating an SAP HANA Database from the Cockpit</a></div>
+<div><a class="link" href="ee6ae2938cf54c46bd8996745dbc033c.html" title="This step-by-step tutorial shows how you create a database in an SAP HANA database system with multitenant database container support enabled, using SAP Cloud Platform Console Client commands.">Creating an SAP HANA Database Using Console Client</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

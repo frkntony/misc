@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If your database system is corrupt, you can perform a point-in-time restore by creating a service request in the cockpit."/>
+<meta name="description" content="If your database system is corrupt, you can perform a point-in-time restore by creating a service request in the cockpit."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Restoring Database Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiofc379ef5efaf493cb619806f8a315cd5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Restoring Database Systems</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">If your database system is corrupt, you can perform a point-in-time restore by creating
+		a service request in the cockpit. </p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit with the administrator role and select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Service Requests</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">New Service Request</span> on the <span class="ph uicontrol">Service
+						Requests</span> page and do the following:</span>
+				<ol type="a" class="ol substeps" id="loiofc379ef5efaf493cb619806f8a315cd5__substeps_jpk_mcx_ww">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Choose <span class="ph uicontrol">Database System</span>. </span>
+						<div class="itemgroup info">
+							<div class="p">
+								<div class="note caution"><span class="cautiontitle">Caution</span> If you restore a database system, all databases
+									within this system will be restored. If you want to restore a
+									single database only, see <a class="xref" href="f4ad65ddc06444a3a3641b2da2767a96.html" title="If your database is corrupt, you can perform a point-in-time restore by creating a service request in the cockpit.">Restoring Databases</a>.</div>
+
+							</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Select the <span class="ph uicontrol">Database System</span> you want to restore from the dropdown
+							box.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Use the <span class="ph uicontrol">Restore To</span> field to specify a specific point in time to
+							which you want to restore the database system.</span>
+						<div class="itemgroup info">
+							<div class="p">
+								<div class="note caution"><span class="cautiontitle">Caution</span> You will lose all data stored in the databases in the database system
+									between the time you specify in the <span class="ph uicontrol">New Service
+										Request</span> screen and the time at which you create
+									the service request. If you create a restore request at 3pm to
+									restore your database system to 9am on the same day for example,
+									all data stored between 9am and 3pm will be lost.</div>
+
+							</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+						<div class="itemgroup stepresult">A template for opening an incident in the SAP Support Portal is displayed. </div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Select the text in the template between the two dashed lines and copy it to your
+							clipboard.</span>
+						<div class="itemgroup info">
+							<div class="note tip"><span class="tiptitle">Tip</span> Navigate to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Service Requests</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and choose the <span class="ph uicontrol">Display</span> icon
+								next to your request to find the template for opening a ticket at
+								any time. </div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Choose <span class="ph uicontrol">Close</span>.</span>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Log on to the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://support.sap.com/incident" target="_blank" alt="https://support.sap.com/incident" title="https://support.sap.com/incident">SAP Support Portal<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> with your S-user ID and password and create a new
+					incident by choosing <span class="ph uicontrol">Report an Incident</span>.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> You need the authorization to create an incident. Contact <a class="extlink" href="http://help.sap.com/disclaimer?site=https://launchpad.support.sap.com/#/importantcontacts" target="_blank" alt="https://launchpad.support.sap.com/#/importantcontacts" title="https://launchpad.support.sap.com/#/importantcontacts">a user administrator in your company <img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> to request
+						this authorization.</div>
+
+				</div>
+				<div class="itemgroup stepresult">The SAP Incident Wizard screen is displayed. </div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Carefully go through the steps in the SAP Incident Wizard to create an incident and provide
+					your details where required.</span>
+				<div class="itemgroup info">
+					<div class="note tip"><span class="tiptitle">Tip</span> You can find a detailed step-by-step instruction for creating an incident in
+						the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://support.sap.com/support-programs-services/about/help-index/report-incidents.html" target="_blank" alt="https://support.sap.com/support-programs-services/about/help-index/report-incidents.html" title="https://support.sap.com/support-programs-services/about/help-index/report-incidents.html">Report an Incident - Help<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Once you have reached the <span class="ph uicontrol">Enter Incident</span> view, enter the following
+					data: </span>
+				<ol type="a" class="ol substeps" id="loiofc379ef5efaf493cb619806f8a315cd5__substeps_vdl_4ww_ww">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">Classification</span> panel, enter the component for
+							persistency.</span>
+						<div class="itemgroup info">
+							<div class="note note"><span class="notetitle">Note</span> For a complete list of <span class="ph pname">SAP Cloud Platform</span> components, see
+									<a href="http://help.sap.com/disclaimer?site=https://launchpad.support.sap.com/#/notes/1888290" target="_blank">1888290 <img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</div>
+
+						</div>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">In the <span class="ph uicontrol">Problem Details</span> panel, enter the title <kbd class="ph userinput">Database
+								System Restore Request</kbd> in the <span class="ph uicontrol">Short
+								Text</span> field.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Paste the template text you copied to your clipboard into the <span class="ph uicontrol">Long
+								Text</span> field.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Choose <span class="ph uicontrol">Send Incident</span>.</span>
+					</li>
+
+				</ol>
+
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have created a request for restoring a database system and sent the request to SAP
+			Support for processing. As soon as your database system is restored, the state of your
+			request will be set to <span class="ph uicontrol">Finished</span> in the cockpit and the incident
+			you created will be set to <span class="ph uicontrol">Completed</span>. You can see the state of
+			your request in the cockpit by navigating to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Service Requests</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. The state is displayed next to your service request. In the meantime,
+			SAP Support might contact you in case they need further clarification. You will be
+			notified by e-mail if you need to take any further action.<div class="note note"><span class="notetitle">Note</span> Your database system is
+				available for use for all users immediately after the restore has been
+				successful.</div>
+<div class="note note"><span class="notetitle">Note</span> To cancel your restore request, go to <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Service Request</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, choose your restore request and select the
+					<span class="ph uicontrol">Delete</span> icon. Note that your request can only be cancelled
+				if it has the state <span class="ph uicontrol">New</span>. </div>
+</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=https://support.sap.com/support-programs-services/about/help-index/report-incidents.html" target="_blank" alt="https://support.sap.com/support-programs-services/about/help-index/report-incidents.html" title="https://support.sap.com/support-programs-services/about/help-index/report-incidents.html">Report an Incident - Help<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

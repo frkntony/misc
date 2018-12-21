@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In many ways the document service behaves like a relational database, where each document and folder is one entry."/>
+<meta name="description" content="In many ways the document service behaves like a relational database, where each document and folder is one entry."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Performance Tips (HANA XS)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio652ce63c3f0445bdae9456d9791982d6">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Performance Tips (HANA XS)</h1>
+<div class="body conbody"><p class="shortdesc">In many ways the document service behaves like a relational database, where each
+		document and folder is one entry.</p>
+<p class="p">Therefore. most of the performance tips for databases also apply to the document service, for
+			example:</p>
+<div class="p">
+			<ul class="ul" id="loio652ce63c3f0445bdae9456d9791982d6__ul_a5j_xx2_wn"><li class="li">Use selective queries and do not fetch too many objects.</li>
+<li class="li">Do not filter objects in the application if this is possible in the document service.</li>
+<li class="li">Try to reduce the amount of information you request for the objects, for example, only
+					request the ACLs or the allowed actions if you really need them. Furthermore,
+					try to reduce the set of properties that you query to just those your
+					application really depends on.</li>
+</ul>
+
+		</div>
+<p class="p">To help you improve the performance of your application that uses the document service,
+			we provide the following tips.</p>
+<div class="note note"><span class="notetitle">Note</span> These are only recommendations, and may not be suitable in every case. There may be
+			situations where you cannot and should not apply them.</div>
+<div class="section"><div class="section_title">Keep the Number of Repositories Small</div><div type="Keep the Number of Repositories Small">
+			
+			<p class="p">Documents and folders are stored in the document service in different repositories. Creating a
+				large number of repositories entails significant CPU usage and requires a
+				considerable amount of storage, even if no documents are stored.</p>
+
+			<div class="note sap-recommendation recommendation"><span class="recommendationtitle">Recommendation</span> 
+				<p class="p">We recommend that you keep the total number of repositories to a minimum. Avoid, for example,
+					creating a separate repository for every each, especially if the users do not
+					have large amounts of data to store. In such a situation, create just one
+					repository instead and store the user data in several separate folders.</p>
+
+			</div>
+
+			<p class="p">As a rule of thumb, if an application uses more than 10 repositories and if the
+				amount of data in these repositories is small, consider using folders instead of
+				repositories. If each repository contains a large set of data (more than 100 GB),
+				using many repositories is not a problem.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Prevent getChildren Calls on Large Folders</div><div type="Prevent getChildren Calls on Large Folders">
+			
+			<p class="p">If folders contain many children, performance might be impaired when you navigate to one of
+				these folders using a <span class="ph sap-technical-name sap-technical-name">getChildren</span> call. If
+				you navigate to a folder to analyze its data, for example, using the CMIS Workbench,
+				this analysis becomes complicated. In contrast, fetching a child in a folder with
+				many children by using its object ID or its path is not a problem.</p>
+
+			<p class="p">It is difficult too define what qualifies as a "large" folder. If you send only one
+					<span class="ph sap-technical-name sap-technical-name">getChildren</span> call per hour, then a
+				thousand or more children would be totally acceptable, but if you send many calls
+				per second, then even 100 children might impair performance. In any case, the load
+				caused by calling this method increases linearly with the number of children.</p>
+
+			<p class="p">Instead of having one folder with many children, you might consider subdividing the children
+				into different subfolders or even a subfolder hierarchy. Another alternative to
+				using the <span class="ph sap-technical-name sap-technical-name">getChildren</span> call is to use the
+				query method with the <span class="ph sap-technical-name sap-technical-name">IN_FOLDER</span> predicate
+				together with additional restrictions to limit the number of matching results.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Do Not Use Large Skip Counts</div><div type="Do Not Use Large Skip Counts">
+			
+			<p class="p">Several CMIS methods have a skip count parameter, for example, the
+					<span class="ph sap-technical-name sap-technical-name">getChildren</span> or the
+					<span class="ph sap-technical-name sap-technical-name">query</span> method. Using large skip counts
+				produces a significant load because a huge number of matching result objects is
+				found and skipped before the final result set can be collected. To prevent the need
+				for large skip counts, try to reduce the number of matching results by subdividing
+				the children into different subfolders or by using a more selective query.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Avoid Using a Sort Criterion (for example, getChildren, query)</div><div type="Avoid Using a Sort Criterion (for example, getChildren, query)">
+			
+			<p class="p">Only use a sort criterion if you really need it, because it might reduce performance
+				significantly (see also <cite class="cite">Paging with maxItems and skipCount (for example, for
+					getChildren, query)</cite> in the <cite class="cite">Frequently Asked Questions</cite>.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Do Not Request All Properties of an Object</div><div type="Do Not Request All Properties of an Object">
+			
+			<p class="p">In the operational context (see the
+					<span class="ph sap-technical-name sap-technical-name">OperationalContext.java</span> class), you can
+				define the properties that are to be returned together with the selected objects. Do
+				not query all properties because this might be time consuming and it increases the
+				amount of data transferred over the network. In particular, requesting the
+					<span class="ph sap-technical-name sap-technical-name">cmis:path</span> property can be inefficient
+				because it has to be computed for each call. The general rule is to reduce the
+				amount of data you fetch from the document service;  this also applies to other
+				information you might request together with the objects, such as the ACLs or allowed
+				actions.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Access Using the Object ID Rather Than the Path</div><div type="Access Using the Object ID Rather Than the Path">
+			
+			<p class="p">It is much faster to access an object using its ID than using its path.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Prevent Use of getFolderTree, getDescendants, and IN_TREE on Large Hierarchies</div><div type="Prevent Use of getFolderTree, getDescendants, and IN_TREE on Large Hierarchies">
+			
+			<p class="p">Using the <span class="ph sap-technical-name sap-technical-name">getFolderTree</span> or
+					<span class="ph sap-technical-name sap-technical-name">getDescendants</span> method on large
+				hierarchies is very inefficient. The same is true for the folder predicate
+					<span class="ph sap-technical-name sap-technical-name">IN_TREE</span> that you can use in the
+				statement of the query method. All these methods are slow for large hierarchies even
+				if the final result set is small.</p>
+
+			<p class="p">The reason for the performance problems with these methods is that all the descendant folders
+				of the start folder have to be loaded from the database into the server where the
+				document service is running. This results in many calls to the database and many
+				objects are transferred over the network. Finally, a very complex query with all the
+				IDs of the folders in the hierarchy has to be created and sent to the database to
+				get the final result.</p>
+
+			<p class="p">For the query method, the size of  the searchable folder hierarchy is already restricted to a
+				maximum of 1000. For larger hierarchies an exception is thrown. Be aware that even a
+				hierarchy of 1000 folders is quite large and results in a heavy load on the system
+				as well as bad performance for the request. </p>
+
+		</div></div>
+<div class="section"><div class="section_title">Reuse OpenCmis Session Objects</div><div type="Reuse OpenCmis Session Objects">
+			
+			<p class="p">When applications use the document service they fetch a session object using one of the
+				connect methods. Creating a session is quite an expensive operation, which should be
+				reused and shared if possible. A session object is thread safe and allows parallel
+				method calls.</p>
+
+			<p class="p">Usually, a session is bound to a user. To reduce the number of sessions that are created,
+				fetch the session only for the first request of the user and store it in the user's
+				HTTP session. Then the session can be reused in subsequent requests of this
+				user.</p>
+
+			<p class="p">If an application uses a service user to connect the session to the document service,
+				we recommend that you store this session in a central place and reuse it for all
+				subsequent requests.</p>
+
+			<p class="p">When you share a session object, observe the following tips:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio652ce63c3f0445bdae9456d9791982d6__ul_j24_q2f_pn"><li class="li">A session object has an internal cache, for example, for already fetched objects. To make
+						sure that you fetch the latest version of specific objects, clear the cache
+						from time to time.</li>
+<li class="li">If a session is used for a very long time, problems might occur that result in exceptions
+						(for example, network connection problems). A possible solution is to
+						replace the failing session with a new one. However, do not replace a
+						session if an <span class="ph sap-technical-name sap-technical-name">ObjectNotFound</span>
+						exception is thrown because you tried to fetch a non-existent document or
+						folder. This also applies to similar situations where the exception is part
+						of the normal method behavior.</li>
+<li class="li">Do not use a single session object for a large number of requests because
+						due to session stickiness all these requests are send to the same server.
+						Rather use a pool of about 50 to 100 session objects to distribute the
+						requests over different servers on which the document service is
+						running.</li>
+</ul>
+
+			</div>
+
+		</div></div>
+<div class="section"><div class="section_title">Search Hints</div><div type="Search Hints">
+			
+			<div class="p">You can indicate hints for queries. The general syntax is:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">hint:&lt;hintname&gt;[,&lt;hintname&gt;]*:&lt;cmis query&gt;</pre></div>
+</div>
+
+			<div class="p">The following hints are currently available:<ul class="ul" id="loio652ce63c3f0445bdae9456d9791982d6__ul_rhz_1c2_ts"><li class="li"><samp class="ph codeph">ignoreOwner</samp>: Usually, documents are returned for which the
+						current user is the owner OR is present in an ACE. The
+							<samp class="ph codeph">ignoreOwner</samp> setting returns only documents for which
+						the current user has an ACE; ownership is ignored in this case. This
+						improves the speed of the query because the owner check is omitted. This is
+						useful if the owner is present in an ACE anyway.</li>
+<li class="li"><samp class="ph codeph">noPath</samp>: Does not return the path property even if it is
+						requested. This improves the speed of queries on folders, because paths do
+						not have to be computed internally.</li>
+</ul>
+</div>
+
+			<div class="p">
+				<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">hint:ignoreOwner,noPath:SELECT * FROM cmis:folder</pre></div>
+
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint ">hint:ignoreOwner:SELECT * FROM cmis:document</pre></div>
+
+				</div>
+
+			</div>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=https://chemistry.apache.org/java/0.11.0/maven/apidocs/" target="_blank" alt="https://chemistry.apache.org/java/0.11.0/maven/apidocs/" title="https://chemistry.apache.org/java/0.11.0/maven/apidocs/">Apache Chemistry OperationContext Class<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="link" href="2c7b02b76ee944a8a3bbfbb6d48c65b0.html">Frequently Asked Questions (HANA XS)</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

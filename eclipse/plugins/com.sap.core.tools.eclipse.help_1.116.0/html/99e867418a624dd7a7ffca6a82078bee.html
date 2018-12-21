@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command removes an extension application from the list of authorized assertion consumer services for the SAP SuccessFactors system associated with the specified account."/>
+<meta name="description" content="This command removes an extension application from the list of authorized assertion consumer services for the SAP SuccessFactors system associated with the specified account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>hcmcloud-disable-application-access (Beta)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio99e867418a624dd7a7ffca6a82078bee">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">hcmcloud-disable-application-access (Beta)</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command removes an extension application from the list of authorized assertion
+		consumer services for the SAP SuccessFactors system associated with the specified
+		account.</p>
+
+		<div class="section">
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			</div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-disable-application-access --application <var class="keyword varname">&lt;extension_application&gt;</var> --application-type <var class="keyword varname">&lt;extension_application_type&gt;</var> --account <var class="keyword varname">&lt;extension_account_name&gt;</var> --user <var class="keyword varname">&lt;e-mail_or_user&gt;</var> --host <var class="keyword varname">&lt;landscape_host&gt;</var> </pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+		</div></div>
+
+		<div class="section" id="loio99e867418a624dd7a7ffca6a82078bee__section_N1001E_N10012_N10001">To list all parameters available for this command,
+			execute <kbd class="ph userinput">neo help hcmcloud-disable-application-access</kbd> in the
+			command line. 
+<div class="table-wrapper tablenoborder"><table summary="" id="loio99e867418a624dd7a7ffca6a82078bee__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d7260115e79">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7260115e79 "><span class="keyword parmname">-b</span>,
+								<span class="keyword parmname">--application</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7260115e79 ">The name of the extension application for which you are deleting the connection.
+									Cases:<ul class="ul" id="loio99e867418a624dd7a7ffca6a82078bee__ul_qys_prm_ht">
+									<li class="li">
+										<p class="p">Use <samp class="ph codeph">--application
+												<var class="keyword varname">&lt;my_extension_application&gt;</var></samp>
+											if the application is running in your account</p>
+
+									</li>
+
+									<li class="li">
+										<p class="p">Use <samp class="ph codeph">--application
+												<var class="keyword varname">&lt;provider_account&gt;</var>:<var class="keyword varname">&lt;extension_application&gt;</var></samp>
+											if the application is running in another account and
+											your extension account is subscribed to the
+											application</p>
+
+									</li>
+
+								</ul>
+<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30 characters;
+									lowercase letters and numbers, starting with a
+								letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7260115e79 "><span class="keyword parmname">--application-type</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7260115e79 ">
+								<p class="p">The type of the extension application for which you are deleting
+									the connection</p>
+
+								<p class="p"><span class="keyword cmdname">Accepted values</span>: <kbd class="ph userinput">java</kbd>,
+										<kbd class="ph userinput">html5</kbd></p>
+
+								<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7260115e79 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7260115e79 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7260115e79 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7260115e79 ">Use the respective landscape host for your account type.
+										<p class="p"><span class="keyword cmdname">Type</span>: URL. For acceptable values see
+										<a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html" title="https://help.hana.ondemand.com/help/frameset.htm?350356d1dc314d3199dca15bd2ab9b0e.html">Landscape Hosts</a>.</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7260115e79 "><span class="keyword parmname">-p</span>, <span class="keyword parmname">--password</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7260115e79 ">To protect your password, enter it only when prompted by the
+								console client and not explicitly as a parameter in the properties
+								file or the command line.<p class="p"><span class="keyword cmdname">Type</span>: string
+								</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d7260115e79 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d7260115e79 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="p">To remove a Java extension application from the list of authorized assertion consumer services
+				for the SAP SuccessFactors system associated with an account located in the United
+				States (US East),
+				execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo  hcmcloud-disable-application-access --application <var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var>  --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+The
+				command removes the entry for the application from the list of the authorized
+				service provider assertion consumer services for the SuccessFactors system
+				associated with the specified account. If entry for the extension application does
+				not exist the command will fail.</div>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

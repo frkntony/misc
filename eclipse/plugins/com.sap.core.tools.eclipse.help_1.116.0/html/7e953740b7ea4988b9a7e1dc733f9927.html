@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>XS Destination Properties</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7e953740b7ea4988b9a7e1dc733f9927">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">XS Destination Properties</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc"/>
+
+		<div class="section">
+			<p class="p"/>
+
+			<div class="table-wrapper"><table summary="" id="loio7e953740b7ea4988b9a7e1dc733f9927__simpletable_rdt_lx4_nm" border="1" class="simpletable"><tr class="sthead">
+					<th valign="bottom" align="left" id="d5853722e23" class="stentry" width="33.333333333333336%">XS Property</th>
+
+					<th valign="bottom" align="left" id="d5853722e26" class="stentry" width="33.333333333333336%">Description</th>
+
+					<th valign="bottom" align="left" id="d5853722e29" class="stentry" width="33.333333333333336%">Value</th>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">host</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It enables you to specify the host name of the HTTP destination providing the service
+						or data you want your SAP HANA XS application to access.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry">URL (string)</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">port</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It enables you to specify the port number to use for connections to the HTTP
+						destination hosting the service or data you want your SAP HANA XS
+						application to access.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry">
+						<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_twf_fy4_nm">
+							<li class="li">For Internet connection:  <kbd class="ph userinput">80</kbd>, <kbd class="ph userinput">443</kbd></li>
+
+							<li class="li">For on-demand to on-premise connection: <kbd class="ph userinput">1080</kbd></li>
+
+							<li class="li">For service-to-service connection: <kbd class="ph userinput">8443</kbd></li>
+
+						</ul>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">pathPrefix</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It enables you to specify a text element to add to the start of the URL used for
+						connections to the service specified in the HTTP destination
+						configuration.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry"><kbd class="ph userinput">"...";</kbd>  (string)</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">useProxy</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It enables you to specify whether a proxy server must be used to resolve the host name
+						specified in the HTTP destination configuration file. <p class="p">Depends on the
+							authentication type and the landscape on which you deploy your SAP HANA
+							XS application.</p>
+</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry">
+						<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_lbn_ky4_nm">
+							<li class="li">For  <span class="ph uicontrol">hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_v3q_py4_nm">
+									<li class="li">Internet: <kbd class="ph userinput">true</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">true</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">true</kbd></li>
+
+								</ul>
+</li>
+
+							<li class="li">For  <span class="ph uicontrol">us1.hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_x3f_5y4_nm">
+									<li class="li">Internet: <kbd class="ph userinput">true</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">true</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">false</kbd></li>
+
+								</ul>
+</li>
+
+							<li class="li">For <span class="ph uicontrol">ap1.hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_rgc_whl_vp">
+									<li class="li">Internet: <kbd class="ph userinput">false</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">true</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">false</kbd></li>
+
+								</ul>
+</li>
+
+						</ul>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">proxyHost</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">Depending on the authentication type and the landscape on which you deploy your SAP
+						HANA XS application.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry">
+						<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_vcd_wy4_nm">
+							<li class="li">For  <span class="ph uicontrol">hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_kdd_wy4_nm">
+									<li class="li">Internet: <kbd class="ph userinput">proxy</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">localhost</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">proxy</kbd></li>
+
+								</ul>
+</li>
+
+							<li class="li">For  <span class="ph uicontrol">us1.hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_a2d_wy4_nm">
+									<li class="li">Internet: <kbd class="ph userinput">proxy</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">localhost</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">N/A</kbd></li>
+
+								</ul>
+</li>
+
+							<li class="li">For <span class="ph uicontrol">ap1.hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_shb_13l_vp">
+									<li class="li">Internet: <kbd class="ph userinput">N/A</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">localhost</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">N/A</kbd></li>
+
+								</ul>
+</li>
+
+						</ul>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">proxyPort</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">Depending on the authentication type and the landscape on which you deploy your SAP
+						HANA XS application.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry">
+						<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_bz3_wy4_nm">
+							<li class="li">For  <span class="ph uicontrol">hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_cz3_wy4_nm">
+									<li class="li">Internet: <kbd class="ph userinput">8080</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">20003</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">8080</kbd></li>
+
+								</ul>
+</li>
+
+							<li class="li">For  <span class="ph uicontrol">us1.hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_qz3_wy4_nm">
+									<li class="li">Internet: <kbd class="ph userinput">8080</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">20003</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">N/A</kbd></li>
+
+								</ul>
+</li>
+
+							<li class="li">For <span class="ph uicontrol">ap1.hana.ondemand.com</span>:<ul class="ul" id="loio7e953740b7ea4988b9a7e1dc733f9927__ul_nkt_c3l_vp">
+									<li class="li">Internet: <kbd class="ph userinput">N/A</kbd></li>
+
+									<li class="li">On-premise: <kbd class="ph userinput">20003</kbd></li>
+
+									<li class="li">Service-to-service: <kbd class="ph userinput">N/A</kbd></li>
+
+								</ul>
+</li>
+
+						</ul>
+
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">authType</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It enables you to specify the authentication method that must be used
+						for connection requests for the service located at the HTTP destination
+						specified in the configuration.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry"><kbd class="ph userinput">none</kbd>, <kbd class="ph userinput">basic</kbd>,
+							<kbd class="ph userinput">AssertionTicket</kbd>, <kbd class="ph userinput">SAML Assertion
+							Propagation</kbd>
+					</td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">useSSL</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It is of type Boolean and enables you to specify whether the outbound connection
+						between SAP HANA XS and the HTTP destination is secured with the Secure
+						Sockets Layer (SSL) protocol (HTTPS).</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry"><kbd class="ph userinput">true</kbd>, <kbd class="ph userinput">false</kbd></td>
+
+				</tr>
+<tr class="strow">
+					<td valign="top" headers="d5853722e23" class="stentry"><span class="keyword parmname">timeout</span></td>
+
+					<td valign="top" headers="d5853722e26" class="stentry">It enables you to specify for how long (in milliseconds) an application tries to
+						connect to the remote host specified in the HTTP destination
+						configuration.</td>
+
+					<td valign="top" headers="d5853722e29" class="stentry"><kbd class="ph userinput">-1</kbd> (default) <p class="p">In the connectivity tutorials:
+								<kbd class="ph userinput">3000</kbd></p>
+</td>
+
+				</tr>
+</table></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Related Information</div><div type="Related Information">
+			
+			<p class="p"><a class="xref" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_en.pdf" target="_blank" download="" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_en.pdf">SAP HANA Developer Guide</a> → section "3.7.3 HTTP
+				Destination Configuration Syntax"</p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

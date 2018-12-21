@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Troubleshooting Guide</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe4adb4e89ab442c68aa68c8a3c84fb1f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Troubleshooting Guide</h1>
+
+	<div class="body conbody">
+		<div class="section"><div class="section_title">Rules with an EventObject fact and one or more other facts (Player or GenericFact) in WHEN part cause endless loops.</div><div type="Rules with an EventObject fact and one or more other facts (Player or GenericFact) in WHEN part cause endless loops.">
+			
+			<div class="p">Understanding why such rule sets result in loops requires a deeper understanding of the <span class="ph pname">gamification service</span>
+					itself:<ul class="ul" id="loioe4adb4e89ab442c68aa68c8a3c84fb1f__ul_c42_qw3_dy">
+					<li class="li">Rules with fact-based conditions are triggered on changes of the respective
+						fact or facts. For example, insert, update or retract fact.</li>
+
+					<li class="li"><samp class="ph codeph">handleEvent</samp> inserts a fact of type
+							<samp class="ph codeph">EventObject</samp> and fires all rules. For example the THEN
+						parts of all rules that satisfy a fact-based condition involving
+							<samp class="ph codeph">EventObject</samp> will be executed.</li>
+
+					<li class="li">THEN execution may involve the modification of facts (insert, update,
+						delete), which in turn may trigger further rules. For example, insert a new
+							<samp class="ph codeph">GenericFact</samp> or update an existing fact
+							(<samp class="ph codeph">Player</samp> or <samp class="ph codeph">GenericFact</samp>). Rule
+						execution runs until there are no more rules to fire.</li>
+
+					<li class="li">Endless loops occur if there are circles in the rule execution graph, for
+						example, one rule calling another and vice versa. The <span class="ph pname">gamification service</span> loop detection will detect such loops at runtime and stop the engine
+						until the problems are resolved.</li>
+
+					<li class="li">The <samp class="ph codeph">EventObject</samp> inserted by <samp class="ph codeph">handleEvent</samp> is
+						per default retracted automatically after all rules have fired. Thus, if the
+						WHEN part includes <samp class="ph codeph">EventObject</samp> conditions and further fact
+						conditions, for example, Player(), the rule will trigger again if one of the
+						respective facts changed and the overall condition is still true.</li>
+
+					<li class="li">This can cause an endless loop. For example: Rule 1 WHEN includes
+							<samp class="ph codeph">EventObject</samp> and queries for corresponding player
+							(<samp class="ph codeph">Player(playerid==$playerid)</samp>). Rule 2 WHEN expects
+							<samp class="ph codeph">Player</samp> change only (<samp class="ph codeph">Player()</samp>) in WHEN.
+						If both, Rule 1 and Rule 2, include an update(<samp class="ph codeph">$player</samp>) in
+						the THEN part, this will result in an endless loop.</li>
+
+				</ul>
+</div>
+
+			<div class="p">Mitigation strategy<ul class="ul" id="loioe4adb4e89ab442c68aa68c8a3c84fb1f__ul_njw_1dj_dy">
+					<li class="li">Use <samp class="ph codeph">update(fact)</samp> with care. Think if it is needed and check
+						for rules that could trigger accidently. </li>
+
+					<li class="li">Minimize the number of update calls in the THEN part. Example: Only call update($player) if
+						player achievement data has changed and you want other rules to retrigger,
+						e.g. rules checking for mission completion. This will also significantly
+						improve performance since unnecessary rule executions are avoided.</li>
+
+					<li class="li">Consider using predefined fact query methods in the THEN part if sufficient.
+						For example:<ul class="ul" id="loioe4adb4e89ab442c68aa68c8a3c84fb1f__ul_g5z_ldj_dy">
+							<li class="li"><samp class="ph codeph">engine.getGenericFactByKey($playerid);</samp></li>
+
+							<li class="li"><samp class="ph codeph">engine.getPlayerById($playerid);</samp></li>
+
+						</ul>
+</li>
+
+					<li class="li">Example for accessing <samp class="ph codeph">GenericFact</samp> in THEN;<ul class="ul" id="loioe4adb4e89ab442c68aa68c8a3c84fb1f__ul_m4c_rdj_dy">
+							<li class="li"><samp class="ph codeph">DefaultFactHandle playerFactHandle =
+									engine.getGenericFactByKey($playerid);</samp></li>
+
+							<li class="li"><samp class="ph codeph">String data =
+									((GenericFact)playerFactHandle.getObject()).getData().get('playerid');</samp></li>
+
+						</ul>
+</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Class cast exceptions when working with number-based conditions on EventObject key/value data.</div><div type="Class cast exceptions when working with number-based conditions on EventObject key/value data.">
+			
+			<p class="p">Both, key and value are interpreted as Strings. Thus, an explicit type conversion is
+				required if you want to compare them with numbers. This type conversion is done
+				using the standard Java approach for the different numeric types, for
+					example,<samp class="ph codeph"> Integer.parseInt(value)</samp> or
+					<samp class="ph codeph">Double.parseDoube(value)</samp>.</p>
+
+			<div class="p">Example:<ul class="ul" id="loioe4adb4e89ab442c68aa68c8a3c84fb1f__ul_snp_12j_dy">
+					<li class="li">WHEN: <samp class="ph codeph">$event : EventObject(type=='solvedProblem',
+							Integer.parseInt(data['processTime']) &lt; 20,
+							$playerid:playerid)</samp> from entry-point eventstream</li>
+
+					<li class="li">Event (via
+						Terminal):<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">[
+{"method":"handleEvent", "params":[{"type":"solvedProblem","playerid":"D053659","data":{"relevance":"critical","processTime":15}}]}
+]
+</pre></div>
+</li>
+
+					<li class="li">Binding variables for further use:<p class="p"><samp class="ph codeph">$event :
+								EventObject(type=='solvedProblem',
+								$pt:Integer.parseInt(data['processTime']))</samp> from entry-point
+							eventstream</p>
+
+					</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ef8fe67f1c8f4fc38739c2bfb363784a.html" title="The SAP Cloud Platform, gamification service allows you to write rules to reach the best flexibility for the targeted game concept. Additionally you can write rules in one of the multiple graphical (form based) editors in the gamification workbench.">Rules Language</a></div>
+<div><a class="link" href="http://help.sap.com/disclaimer?site=http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html" target="_blank" alt="http://help.sap.com/disclaimer?site=http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html" title="http://help.sap.com/disclaimer?site=http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html">http://help.sap.com/disclaimer?site=http://docs.jboss.org/drools/release/5.6.0.Final/drools-expert-docs/html/ch05.html</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

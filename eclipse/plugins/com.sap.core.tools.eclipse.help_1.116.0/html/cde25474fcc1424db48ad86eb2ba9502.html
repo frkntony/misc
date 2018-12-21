@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Before configuring SAP Cloud Platform custom domains, you need to make some preliminary steps and fulfil a number of prerequisites."/>
+<meta name="description" content="Before configuring SAP Cloud Platform custom domains, you need to make some preliminary steps and fulfil a number of prerequisites."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Prerequisites</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocde25474fcc1424db48ad86eb2ba9502">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Prerequisites</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Before configuring <span class="ph pname">SAP Cloud Platform</span> custom domains, you need to make some
+		preliminary steps and fulfil a number of prerequisites.</p>
+
+		<div class="section"><div class="section_title">1. Buy a custom domain quota</div><div type="1. Buy a custom domain quota">
+			
+			<p class="p">You need to have a quota for domains configured for your account. One domain corresponds to
+				one SSL host that you can use. For more information, see <a class="xref" href="a71a081b39e343e097046bf487f57af3.html" title="A customer account allows you to host productive, business-critical applications with 24x7 support.">Purchasing a Customer Account</a>.</p>
+
+			<div class="p">The following two steps involve external service providers - domain name registrar
+				and certificate authority.<div class="note note"><span class="notetitle">Note</span> The domain name and the server certificate for this
+					domain are issued by external authorities and owned by the customer. </div>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">2. Choose and buy the domain names to be used by your applications</div><div type="2. Choose and buy the domain names to be used by your applications">
+			
+			<p class="p">You need to come up with a list of custom domains and applications that you want to be served
+				through them. For example, you may decide to have three custom domains:
+					<kbd class="ph userinput">test.myshop.com</kbd>,
+					<kbd class="ph userinput">preview.myshop.com</kbd>, <kbd class="ph userinput">www.myshop.com</kbd>
+				- for test, preview and productive versions of your <span class="ph pname">SAP Cloud Platform</span>
+				application.</p>
+
+			<p class="p">The domain names are owned by the customer, not by <span class="ph pname">SAP Cloud Platform</span>. Therefore, you
+				will need to buy the custom domain names that you have chosen from a registrar
+				selling domain names.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">3. Choose a CA to issue the certificate for your domain</div><div type="3. Choose a CA to issue the certificate for your domain"><p class="p">To ensure your
+				domain is trusted and all your application data is protected, you have to get an
+				appropriate SSL certificate from a Certificate Authority (CA). To sign and issue
+				this certificate, you need a certificate signing request (CSR), which you will
+				create in the following procedure. Note that we do not support uploading of existing
+				certificates that are not generated using our <span class="keyword cmdname">generate-csr</span>
+				command.</p>
+<p class="p">Before buying a certificate from a provider, you need to decide on
+				the number and type of domains you want to be protected by this certificate. One
+				certificate can be valid for a number of domains.</p>
+<div class="p">There are various types of
+				domains, the basic ones being: <ul class="ul" id="loiocde25474fcc1424db48ad86eb2ba9502__ul_qzz_whd_4n">
+					<li class="li">Single domain - protects one domain (for example,
+							<kbd class="ph userinput">www.myshop.com</kbd>)</li>
+
+					<li class="li">Single domain with unlimited subdomains (wildcard) - secures a domain with
+						unlimited subdomains (for example, <kbd class="ph userinput">*.myshop.com</kbd> -
+						this covers any subdomains of <kbd class="ph userinput">myshop.com</kbd> - for
+						example, <kbd class="ph userinput">test.myshop.com</kbd>;
+							<kbd class="ph userinput">preview.myshop.com</kbd>,
+							<kbd class="ph userinput">www.myshop.com</kbd>, etc.). <div class="note caution"><span class="cautiontitle">Caution</span> Choosing the wildcard subdomain certificate ensures protection of all
+							subdomains in your custom domain (<kbd class="ph userinput">*.myshop.com</kbd>),
+							but not the domain itself (<kbd class="ph userinput">myshop.com</kbd> cannot be
+							used).</div>
+</li>
+
+					<li class="li">Multiple domain - secures multiple domain names with a single certificate.
+						This type allows you to use any number of different domain names or common
+						names. For example, one certificate can support:
+							<kbd class="ph userinput">www.myshop.com</kbd>,
+							<kbd class="ph userinput">*.test.myshop.com</kbd>,
+							<kbd class="ph userinput">*.myshop.eu</kbd>,
+						<kbd class="ph userinput">www.myshop.de</kbd>.</li>
+
+				</ul>
+</div>
+<div class="note note"><span class="notetitle">Note</span> Choose as specific domain names as possible. Also, host all domains
+				in the certificate in one single place (<span class="ph pname">SAP Cloud Platform</span>).</div>
+<div class="note caution"><span class="cautiontitle">Caution</span> The CSR is valid only for the landscape host on which it was
+				generated and cannot be moved and downloaded. The host represents a regional data
+				center: <span class="ph uicontrol">hana.ondemand.com</span> for Europe;
+					<span class="ph uicontrol">us1.hana.ondemand.com</span> for the United States;
+					<span class="ph uicontrol">ap1.hana.ondemand.com</span> for Asia-Pacific.</div>
+The
+			certificate has to be in Privacy-enhanced Electronic Mail (PEM) format (128 or 256 bits)
+			with private key (2048-4096 bits).</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio77cf0e6cd32e496c9cc8eeac4bedde94" title="To make sure your domain is trusted and all application data is protected, you need to first set up secure SSL communication. The next step will then be to make your application accessible via the custom domain and route traffic to it.">Configuring Custom Domains</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

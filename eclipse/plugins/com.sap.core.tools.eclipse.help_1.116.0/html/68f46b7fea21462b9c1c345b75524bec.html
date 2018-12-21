@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Availability Checks</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="copy68f46b7fea21462b9c1c345b75524bec">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Availability Checks</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="copy68f46b7fea21462b9c1c345b75524bec__section_D0D9977F46E04BADAE010461469E14D4">
+			<p class="p">The availability check is one per Java or SAP HANA XS application and is executed every
+				minute. You can configure an availability check for an application either from the
+				cockpit or from the console client. If your application is not available or its
+				response time is too high, you will receive an e-mail notification. If you stop the
+				application by yourself, you will not receive a notification as in this case
+				alerting is suppressed and enabled once again when you start the application.
+				However, this is not valid for productive SAP HANA databases as you cannot stop
+				them. In this case, the availability check will start running at the moment you
+				create it and will not stop until you delete it. E-mail alert is triggered if the
+				application is not in state OK for two consecutive checks. There are five types of
+				notifications: </p>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="copy68f46b7fea21462b9c1c345b75524bec__table_N10030_N1002D_N10021_N10013_N10001" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="NaN%" id="d4468579e34">Notification </th>
+
+								<th class="entry" valign="top" width="NaN%" id="d4468579e37">Description </th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e34 ">CRITICAL </td>
+
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e37 ">Your application is not available or the
+									response time is above the CRITICAL threshold. </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e34 ">WARNING </td>
+
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e37 ">The response time of your application is above
+									the WARNING threshold. </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e34 ">OK </td>
+
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e37 ">Your application has recovered from
+									CRITICAL/WARNING state. </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e34 ">UNSTABLE </td>
+
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e37 ">Your application does not behave consistently.
+									For example, the response time is OK upon check n, then is
+									CRITICAL upon check n+1, then is again OK on check n+2, and so
+									on. </td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e34 ">STABLE </td>
+
+								<td class="entry" valign="top" width="NaN%" headers="d4468579e37 ">Your application behaves consistently again.
+								</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p">You may also set your availability check for Java applications on account level using a
+				relative URL. This means that each application started in your account will
+				immediately receive an availability check requesting
+					<span class="ph filepath">application_url/configured_relative_url</span>. This option is
+				useful in case you start multiple instances of the same application (applications
+				with the same relative health check URL) in your account and allows you to configure
+				this check only once for all of them. You can configure availability checks on
+				account level only from the console client. If there is a check configured on
+				account level and a check configured on application level, the one on the
+				application level has higher priority. For example, if you have in your account ten
+				applications with the <span class="ph filepath">/health_check</span> relative URL and one
+				multitenant application with the <span class="ph filepath">/myapp/health_check</span> relative
+				URL, you can configure an availability check on account level for all applications
+				and one availability check for the multitenant application to override the one on
+				account level.</p>
+
+		</div>
+
+		<div class="section" id="copy68f46b7fea21462b9c1c345b75524bec__section_N10022_N10013_N10001"><div class="section_title">Limitations</div><div type="Limitations">
+			
+			<p class="p">Availability monitoring in <span class="ph pname">SAP Cloud Platform</span> is done by running HTTP GET
+				requests against URL provided by the application operator. The http/https ping is
+				not parsing the response body, but it is relying only on the HTTP response code. </p>
+
+			<p class="p">Currently there are two limitations that need to be considered when designing your
+				availability URL: </p>
+
+			<ul class="ul" id="copy68f46b7fea21462b9c1c345b75524bec__ul_jsy_kjh_lj">
+				<li class="li">The monitoring infrastructure does not support authorization for the checks. This means that
+					you cannot pass user and password or client certificate when configuring the
+					availability check. Therefore, you must design the availability URL without
+					authentication or authorization. This will make sure that your application can
+					be accessed in any case, the correct response code is returned (for example 200,
+					404, 500 and so on) and the response time is only from your application. If your
+					application responds with 302, the ping will follow the redirect.<div class="p">
+						<div class="note caution"><span class="cautiontitle">Caution</span> If you design the availability URL as a protected resource, the check
+							will consider 401 and 403 response codes as 200 OK. Note that these
+							response codes may come from <span class="ph pname">Identity Authentication</span>
+							and not from your application, in case of an authenticated
+							application.</div>
+
+					</div>
+<p class="p">Currently, the response codes accepted by the 'http/https ping' are
+							<span class="ph emphasis emphasis">200</span>, <span class="ph emphasis emphasis">302</span>,
+							<span class="ph emphasis emphasis">401</span> and <span class="ph emphasis emphasis">403</span>. This is done to
+						cover all the different types of URLs that can be monitored. You need to
+						make sure that if something does not work as expected, your application is
+						not returning some of the above 4 codes as you will not get an alert. </p>
+
+				</li>
+
+				<li class="li">The monitoring infrastructure supports only one availability check per Java or SAP HANA XS
+					application. This means that if you have multiple web applications deployed
+					together as one application in your account or application with multiple end
+					points you want to check, you need to design one common availability URL to be
+					able to monitor them all together. If one of the applications fails, you will
+					get an alert and then you will have to check which one exactly is failing by
+					opening the availability URL. <div class="note sap-recommendation recommendation" id="copy68f46b7fea21462b9c1c345b75524bec__sap-recommendation_N100DF_N100DC_N100AB_N10097_N10011_N10001"><span class="recommendationtitle">Recommendation</span> We
+						recommend that the response is a simple, plain HTML, just stating which web
+						application is OK and which is not. It depends on the implementation of the
+						availability URL whether it will just inform that a web application is
+						available or it will also check whether it is working as expected. If you
+						plan to develop and operate multiple applications in your account, it is a
+						good idea to have identical availability URLs for the different applications
+						(for example /availability). This will allow you to configure the
+						availability check only once on account level.</div>
+</li>
+
+			</ul>
+
+			<p class="p">Sample output of application which is OK: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">HTTP RETURN CODE 200 OK
+Purchasing - OK
+
+Sales - OK
+
+Registration - OK
+
+IDP - OK
+
+</pre></div>
+
+			<p class="p">Sample output of application that has problems: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">HTTP RETURN CODE 500 INTERNAL SERVER ERROR
+Purchasing - OK
+
+Sales - no connectivity to backend
+
+Registration - OK
+
+IDP - OK
+
+</pre></div>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> Note that the availability URL designed according to the above
+				recommendations is unprotected and can be accessed by everyone. We recommend not
+				putting sensitive information about your application there (for example error stack
+				traces).</div>
+
+		</div></div>
+
+	</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="fd1b85b336ff4c1b8b2f160fd51656ee.html" title="In the cockpit, you can configure availability checks for the applications deployed in your account. If you have configured an availability check on account level, you can override it by creating one on application level. You can manage the checks on account level from the console client only.">Configuring Availability Checks for Java Applications from the Cockpit</a></div>
+<div><a class="link" href="6537f99f89c047c6ad16d49eb3f97a11.html" title="This topic shows how you can configure an availability check for your application and subscribe recipients to receive alert e-mail notifications when your application is down or responds slowly.">Configuring Availability Checks for Java Applications from the Console Client</a></div>
+<div><a class="link" href="a6663f02b4f9467f921b21f364abda48.html" title="In the cockpit, you can configure availability checks for the SAP HANA XS applications running on your productive SAP HANA database system.">Configuring Availability Checks for SAP HANA XS Applications from the Cockpit</a></div>
+<div><a class="link" href="951d9b8728384e4f80ad3ddfa4d18267.html" title="In the console client you can configure an availability check for your SAP HANA XS application and subscribe recipients to receive alert e-mail notifications when it is down or responds slowly.">Configuring Availability Checks for SAP HANA XS Applications from the Console Client</a></div>
+<div><a class="link" href="ef5c05a713154945b347f87b54446c2b.html" title="Registering JMX checks allows alerting on any metric that is based on JMX MBean attribute.">JMX Checks</a></div>
+</div>
+
+<div class="linklist linklist">Availability Checks Commands<br/>
+
+<div><a class="link" href="d37bcfc3460e497cad80338192833fc5.html" title="Lists the availability checks.">list-availability-check</a></div>
+<div><a class="link" href="83d45827519b413bb98c4e2aaf9b3752.html" title="Creates an availability check.">create-availability-check</a></div>
+<div><a class="link" href="2a387e4e5faa4e35939ba472b33cb74a.html" title="Deletes an availability check.">delete-availability-check</a></div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

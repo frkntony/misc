@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To declare a class as an entity and define how that entity maps to the relevant database table, you can either decorate the Java object with metadata using Java annotations or denote it as an entity in the XML descriptor."/>
+<meta name="description" content="To declare a class as an entity and define how that entity maps to the relevant database table, you can either decorate the Java object with metadata using Java annotations or denote it as an entity in the XML descriptor."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Entity Classes</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe64e0e1cbb571014bd7b881f4531ac38">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Entity Classes</h1>
+
+	<div class="body conbody"><p class="shortdesc">To declare a class as an entity and define how that entity maps to the relevant
+		database table, you can either decorate the Java object with metadata using Java annotations
+		or denote it as an entity in the XML descriptor.</p>
+<p class="p">The Dali Java Persistence Tools provided as part of the Eclipse IDE for Java EE Developers allow
+			you to use a JPA diagram editor to create, edit, and display entities and their
+			relationships (your application’s data model) in a graphical environment.</p>
+<div class="example"><h2 class="exampletitle">Example</h2> 
+		<p class="p">The tutorial <cite class="cite">Adding Application-Managed Persistence with JPA (Java Web SDK)</cite>
+				defines the entity class <span class="keyword apiname">Person</span>, as shown below: </p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.persistence;
+import javax.persistence.*;
+@Entity
+@Table(name = "T_PERSON")
+@NamedQuery(name = "AllPersons", query = "select p from Person p")
+public class Person {
+
+	@Id
+	@GeneratedValue
+	private long id;
+	@Basic
+	private String FirstName;
+	@Basic
+	private String LastName;
+
+</pre></div>
+ 
+		<ul class="ul"><li class="li">The <kbd class="ph userinput">Person</kbd> class has been annoted as an entity: @Entity. </li>
+<li class="li">The @Table annotation maps the entity to the database table <kbd class="ph userinput">T_PERSON</kbd>. </li>
+<li class="li">The @NamedQuery annotation indicates that a static query has been created in the metadata. The
+					name element of @NamedQuery gives the name of the query that will be used with
+					the <span class="keyword apiname">createNamedQuery()</span> method, while the query element
+					specifies the actual query. </li>
+<li class="li">The
+			 definition of the field serving as the unique identifier of the entity has been
+			 annotated with @Id, indicating it is the primary key in the database. Its value
+			 is generated automatically (@GeneratedValue). 
+		  </li>
+</ul>
+ 
+	 </div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e4aeacd2bb5710148ee99255136d96a5.html" title="This step-by-step tutorial shows how you can use JPA to apply application-managed persistence in a simple Java EE web application that manages a list of persons.">Adding Application-Managed Persistence with JPA (Java Web SDK)</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.eclipse.org/webtools/dali/docs/dali_user_guide_2.2.pdf" target="_blank" alt="http://www.eclipse.org/webtools/dali/docs/dali_user_guide_2.2.pdf" title="http://www.eclipse.org/webtools/dali/docs/dali_user_guide_2.2.pdf">Dali Java Persistence Tools User Guide<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

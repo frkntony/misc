@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You register a home page tile for the extension application in the extended SAP SuccessFactors system so that you can access the application directly from the SAP SuccessFactors Employee Central (EC) home page."/>
+<meta name="description" content="You register a home page tile for the extension application in the extended SAP SuccessFactors system so that you can access the application directly from the SAP SuccessFactors Employee Central (EC) home page."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Register a Home Page Tile for the Extension Application</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6648ccfa8a654454b3f43631817c69ef">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Register a Home Page Tile for the Extension Application</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You register a home page tile for the extension application in the extended <span class="ph pname">SAP SuccessFactors</span> system so that you can
+		access the application directly from the <span class="ph pname">SAP SuccessFactors</span> Employee Central (EC) home
+		page.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			<div class="p">
+				<ul class="ul" id="loio6648ccfa8a654454b3f43631817c69ef__ul_vkv_h3j_lt">
+					<li class="li">You have deployed and started the extension application for which you are
+						registering the home page tile</li>
+
+					<li class="li">
+						<p class="p">You have registered the extension application as an authorized assertion
+							consumer service. For more information, see <a class="xref" href="47c4bfff70e94491a82353ddc66eb9a1.html" title="Register the extension application as an authorized assertion consumer service to configure its access to the SAP SuccessFactors system through the SAP SuccessFactors identity provider (IdP).">Register the Extension Application as an Authorized Assertion Consumer Service</a></p>
+
+					</li>
+
+					<li class="li"> You have the home page tile provided as part of the application interface <p class="p">You develop
+							the content of the tile as a dedicated HTML page inside the application
+							and size it according to the desired tile size. You describe the tiles
+							in a <span class="ph filepath">tiles.json</span> descriptor and package them in a
+								<span class="ph filepath">ZIP</span> archive. For more information about the
+							structure of the <span class="ph filepath">tiles.json</span> descriptor, see <a class="xref" href="872d124e75094aa5a782fb5703d88eb3.html" title="The tiles.json descriptor contains the definition of the home page tiles for the extension application.">tiles.json</a>.</p>
+</li>
+
+					<li class="li">You have created the <span class="ph filepath">tiles.json</span> descriptor. </li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>The <span class="ph pname">SAP SuccessFactors</span> EC home page
+			provides a framework that allows different modules to provide access to their
+			functionality using tiles. For the extension applications hosted in the <span class="ph pname">SAP Cloud Platform</span> extension
+			account, <span class="ph pname">SAP Cloud Platform</span>
+			allows you to register home page tiles in the extended <span class="ph pname">SAP SuccessFactors</span> system. To do so you
+			use the <span class="keyword cmdname">hcmcloud-register-home-page-tiles</span> console client command.
+			Both Java and HTML5 extension applications are supported.</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio6648ccfa8a654454b3f43631817c69ef__steps_b5d_h2k_lt"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Register the <span class="ph pname">SAP SuccessFactors</span> EC home
+					page tiles in the <span class="ph pname">SAP SuccessFactors</span> company
+					instance linked to the specified <span class="ph pname">SAP Cloud Platform</span> account.
+					In the console client command line, execute:
+						<kbd class="ph userinput">hcmcloud-register-home-page-tiles</kbd>, as follows:</span>
+				<ul class="ul choices" id="loio6648ccfa8a654454b3f43631817c69ef__choices_ln1_fdw_3t">
+					<li class="li choice">For an application deployed in your account, specify the name of your
+						extension application for the <span class="keyword parmname">application</span>
+							parameter.<div class="p">For example, to register a home page tile for a Java extension application
+							running in your account in the US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-register-home-page-tiles --application <var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com --location <var class="keyword varname">&lt;path to the tiles.json file&gt;</var></pre></div>
+</div>
+
+					</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of the extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For
+							example, to register a home page tile for a Java extension application
+							to which your account in the US East data center is subscribed,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-register-home-page-tiles --application <var class="keyword varname">&lt;application_provider_account:my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> -- host us1.hana.ondemand.com --location <var class="keyword varname">&lt;path to the tiles.json file&gt;</var></pre></div>
+</div>
+</li>
+
+				</ul>
+
+				<div class="itemgroup info">
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> The size of the tile descriptor file must not exceed 100 KB.</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) List the extension application home page tiles registered in the <span class="ph pname">SAP SuccessFactors</span> company
+					instance associated with the extension account. In the console client command
+					line, execute <kbd class="ph userinput">hcmcloud-get-registered-home-page-tiles</kbd>, as
+					follows:</span>
+				<ul class="ul choices" id="loio6648ccfa8a654454b3f43631817c69ef__choices_kgf_32m_ht">
+					<li class="li choice">For an application deployed in your account, specify the name of your
+						extension application for the <span class="keyword parmname">application</span> parameter.
+							<div class="p">For example, to list the tiles registered for a Java extension application deployed in
+							your account in the US East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-get-registered-home-page-tiles --application <var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_acc&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of the extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For
+							example, to list the tiles registered for a Java extension application
+							to which your account in the US East data center is subscribed, execute:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-get-registered-home-page-tiles --application <var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+				</ul>
+
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">If you do not specify the <span class="keyword parmname">application</span> parameter, the command returns
+							all the tiles registered in the <span class="ph pname">SAP SuccessFactors</span> EC home
+							page of the <span class="ph pname">SAP SuccessFactors</span> company
+							instance linked to the extension account.</p>
+
+						<p class="p">There is no lifecycle dependency between the tiles and the application,
+							so the application may not be started or may not be deployed
+							anymore.</p>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) If your scenario requires it, unregister the <span class="ph pname">SAP SuccessFactors</span> EC home page
+					tiles registered for the extension application. In the console client command
+					line, execute <kbd class="ph userinput">hcmcloud-unregister-home-page-tiles</kbd>, as
+					follows:</span>
+				<ul class="ul choices" id="loio6648ccfa8a654454b3f43631817c69ef__choices_wkl_llw_3t">
+					<li class="li choice">For an application deployed in your account, specify the name of your extension
+						application for the <span class="keyword parmname">application</span> parameter. <div class="p">For
+							example, to unregister the <span class="ph pname">SAP SuccessFactors</span> EC home
+							page tiles for a Java application deployed in your account in the US
+							East data center,
+							execute:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-unregister-home-page-tiles --application <var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_acc&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+</li>
+
+					<li class="li choice">For an application to which your account is subscribed, specify the application
+						provider account and the name of your extension application for the
+							<span class="keyword parmname">application</span> parameter in the following format:
+							<var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var>.<div class="p">For
+							example, to unregister the <span class="ph pname">SAP SuccessFactors</span> EC home
+							page tiles for a Java application to which your account in the US East
+							data center is subscribed, execute:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-unregister-home-page-tiles --application <var class="keyword varname">&lt;application_provider_account&gt;</var>:<var class="keyword varname">&lt;my_application&gt;</var> --application-type java --account <var class="keyword varname">&lt;my_extension_account&gt;</var> --user <var class="keyword varname">&lt;my_email@example.com&gt;</var> --host us1.hana.ondemand.com</pre></div>
+</div>
+
+					</li>
+
+				</ul>
+
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">There is no lifecycle dependency between the tiles and the application,
+							so the application may not be started or may not be deployed
+							anymore.</p>
+
+					</div>
+
+				</div>
+			</li>
+</ol>
+
+		
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

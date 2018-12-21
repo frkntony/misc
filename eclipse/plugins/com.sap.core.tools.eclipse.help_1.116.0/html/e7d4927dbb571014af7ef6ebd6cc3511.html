@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Access Control (HTTP)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe7d4927dbb571014af7ef6ebd6cc3511">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Configuring Access Control (HTTP)</h1>
+<div class="body conbody">
+		<div class="section" id="loioe7d4927dbb571014af7ef6ebd6cc3511__section_DC31A30EA6A5460C89F2836B11BBEBC8"><div class="section_title">Exposing Intranet Systems</div><div type="Exposing Intranet Systems">
+			
+			<p class="p">To allow your on-demand applications to access a certain back-end system on the intranet, you
+				need to insert an extra line into the <span class="ph pname">Cloud connector</span> access
+				control management. </p>
+
+			<ol class="ol" id="loioe7d4927dbb571014af7ef6ebd6cc3511__ol_hy3_54d_2s">
+				<li class="li">Choose <span class="ph uicontrol">Cloud To On Premise</span> from your <span class="ph uicontrol">Account</span>
+					menu.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Add</span>. A wizard will open and ask for the required values.</li>
+
+				<li class="li"><span class="ph uicontrol">Back-end Type</span>: Select the description that best matches the addressed
+					back-end system. This is important mainly for metering information: tunnel
+					connections to any kind of SAP system are free of charge, while using the tunnel
+					for connecting to a non-SAP system costs a fee. Furthermore, it will define,
+					which steps the wizard will offer and which values are possible. When you are
+					done, choose <span class="ph uicontrol">Next</span>.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_edf_2kb_b5" width="1400px" src="loio756de88279474ddeb72ed518d5b11dd6_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li"><span class="ph uicontrol">Protocol</span>: This field allows you to decide whether the <span class="ph pname">Cloud connector</span>
+					should use <kbd class="ph userinput">HTTP</kbd> or <kbd class="ph userinput">HTTPS</kbd> for the
+					connection to the back-end system. Note that this is completely independent from
+					the setting on cloud side. Thus, even if the HTTP destination on cloud side
+					specifies "<span class="keyword cmdname">http://</span>" in its URL, you can select
+						<kbd class="ph userinput">HTTPS</kbd>. This way, you are ensured that the entire
+					connection from the on-demand application to the actual back-end system
+					(provided through the SSL tunnel) is SSL-encrypted. The only prerequisite is
+					that the back-end system supports HTTPS on that port. For more information, see
+						<a class="xref" href="3f974eae3cba4dafa274ec59f69daba6.html">Initial Configuration (HTTP)</a>.<ul class="ul" id="loioe7d4927dbb571014af7ef6ebd6cc3511__ul_gnf_hpd_2s">
+						<li class="li">If you specify HTTPS and there is a "system certificate" imported in the
+								<span class="ph pname">Cloud connector</span>, the latter attempts to use that certificate for performing a
+							client-certificate-based login to the back-end system.</li>
+
+						<li class="li">If there is no system certificate imported, the <span class="ph pname">Cloud connector</span> opens an HTTPS connection without client certificate. </li>
+
+					</ul>
+<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_rrc_xkb_b5" width="1400px" src="loiodb8736bf204748f9976362078bf43cc5_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li"><span class="ph uicontrol">Internal Host</span> and <span class="ph uicontrol">Internal Port</span> specify the
+					actual host and port under which the target system can be reached within the
+					intranet. It needs to be an existing network address that can be resolved on the
+					intranet and has network visibility for the <span class="ph pname">Cloud connector</span>
+					without any proxy. <span class="ph pname">Cloud connector</span>
+					will try to forward the request to the network address specified by the internal
+					host and port, so this address needs to be real.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_mqj_dlb_b5" width="1400px" src="loio6a19f0ad2e5c4b948dcfa8548111ccd2_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li"><span class="ph uicontrol">Virtual Host</span> specifies the host name exactly as it is specified as
+					the URL property in the HTTP destination configuration in <span class="ph pname">SAP Cloud Platform</span>. The virtual host can be a fake name and does not need to exist. The
+						<span class="ph uicontrol">Virtual Port</span> allows you to distinguish between
+					different entry points of your back-end system, for example,
+						<kbd class="ph userinput">HTTP</kbd>/<kbd class="ph userinput">80</kbd> and
+						<kbd class="ph userinput">HTTPS</kbd>/<kbd class="ph userinput">443</kbd>, and have different
+					sets of access control settings for them. For example, some non-critical
+					resources may be accessed by HTTP, while some other critical resources are to be
+					called using HTTPS only. The fields will be pre-populated with the values of the
+						<span class="ph uicontrol">Internal Host</span> and <span class="ph uicontrol">Internal
+						Port</span>. In case you don't modify them, you will need to provide
+					your internal host and port also in the cloud side destination configuration or
+					in the URL used for your favorite HTTP client.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_ivz_llb_b5" width="1400px" src="loio5720bc99dba64fc68d904da03658a1c2_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li"><span class="ph uicontrol">Principal Type</span> defines what kind of principal is used when
+					configuring a destination on the cloud side using this system mapping with
+					authentication type <kbd class="ph userinput">Principal Propagation</kbd>. Regardless of
+					what you choose, you need to make sure that the general configuration for the
+					principal type has been done to make it work correctly. For destinations using
+					different authentication types, this setting is ignored. If you choose
+						<kbd class="ph userinput">None</kbd> as principal type, it is not possible to use
+					principal propagation to this system.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_twf_rlb_b5" width="1400px" src="loio8a6488cab09741ef925cf8f00211a570_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li">You can enter an optional description at this stage. The respective description
+					will be shown as a rich tooltip when the mouse hovers over the entries of the
+					virtual host column (table <span class="ph uicontrol">Mapping Virtual to Internal
+						System</span>).<p class="p"/>
+<p class="p"><img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_pkw_bqc_b5" width="1400px" src="loioe38fd87732cd493ba52acad3a325cdc5_LowRes.png"/></p>
+<p class="p"/>
+</li>
+
+				<li class="li">The summary shows information about the system to be stored and when saving the host
+					mapping, you can trigger a ping from the <span class="ph pname">Cloud connector</span> to
+					the internal host, using the <span class="ph uicontrol">Check availability of internal
+						host</span> check box. This allows you to make sure the <span class="ph pname">Cloud connector</span> can
+					indeed access the internal system, and allows you to catch basic things, such as
+					spelling mistakes or firewall problems between the <span class="ph pname">Cloud connector</span> and
+					the internal host. If the ping to the internal host is successful, the <span class="ph pname">Cloud connector</span>
+					saves the mapping without any remark. If it fails, a warning will pop up, that
+					the host is not reachable. Details for the reason are available in the log
+					files. You can execute such a check at any time later for all selected systems
+					in the <span class="ph uicontrol">Access Control</span> overview.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_bnt_xlb_b5" width="1400px" src="loiod0f250ebb4cb4a2bb98f142faf183cbc_LowRes.png"/>
+					</div></div>
+<p class="p"/>
+</li>
+
+				<li class="li">Optional: You can later edit such a system mapping (via <span class="ph uicontrol">Edit</span>) to make
+					the <span class="ph pname">Cloud connector</span>
+					route the requests for <kbd class="ph userinput">sales-system.cloud:443</kbd> to a
+					different back-end system. This can be useful if the system is currently down
+					and there is a back-up system that can serve these requests in the meantime.
+					However, you cannot edit the virtual name of this system mapping. If you want to
+					use a different fictional host name in your on-demand application, you will need
+					to delete the mapping and create a new one.<p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+						<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_wms_xqc_b5" width="1400px" src="loio96ae914c47094a698a993a8139dd56a5_LowRes.png"/>
+					</div></div>
+</li>
+
+			</ol>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section" id="loioe7d4927dbb571014af7ef6ebd6cc3511__section_8634A6789CDB46A887F45E16E4C0AAAC"><div class="section_title">Limiting the Accessible Services for HTTP(S)</div><div type="Limiting the Accessible Services for HTTP(S)">
+			
+			<p class="p">In addition to allowing access to a particular host and port, you also need to specify which
+				URL paths (<span class="ph uicontrol">Resources</span>) are allowed to be invoked on that host.
+				The <span class="ph pname">Cloud connector</span>
+				uses very strict white-lists for its access control, so only those URLs for which
+				you explicitly granted access are allowed. All other HTTP(S) requests are denied by
+				the <span class="ph pname">Cloud connector</span>. </p>
+
+			<p class="p">To define the permitted URLs (<span class="ph uicontrol">Resources</span>) for a particular back-end
+				system, choose the line corresponding to that back-end system and choose
+					<span class="ph uicontrol">Add</span> in section <span class="ph uicontrol">Resources Accessible
+					On...</span> below. A dialog appears prompting you to enter the specific
+				URL path that you want to allow to be invoked. </p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_wq5_rnb_b5" width="1400px" src="loio3a753ce3565c465091319a0d574e3748_LowRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+			<p class="p">The <span class="ph pname">Cloud connector</span> checks
+				that the path part of the URL (up to but not including a possible question mark
+					(<kbd class="ph userinput">?</kbd>) that may denote the start of optional CGI-style query
+				parameters) is exactly as specified in the configuration. If it is not, the request
+				is denied. If you select option <span class="ph uicontrol">Path and all sub-paths</span>, the
+					<span class="ph pname">Cloud connector</span>
+				allows all requests for which the URL path (not considering any query parameters)
+				begins with the specified string. </p>
+
+			<p class="p"> The <span class="ph uicontrol">Enabled</span> checkbox allows you to specify, whether that
+				resource shall initially be enabled or disabled. (See the following section for an
+				explanation of enabled/disabled resources.) </p>
+
+		</div></div>
+
+		<div class="section" id="loioe7d4927dbb571014af7ef6ebd6cc3511__section_D6B4081ECAB445929FD428AB62424178"><div class="section_title">Enabling/Disabling Resources On-the-Fly</div><div type="Enabling/Disabling Resources On-the-Fly">
+			
+			<p class="p"> </p>
+
+			<p class="p">In some cases, it is useful for testing purposes to temporarily disable certain
+				resources without having to delete them from the configuration. This allows you to
+				easily re-provide access to these resources at a later point of time without having
+				to type in everything once again. </p>
+
+			<ul class="ul">
+				<li class="li">
+					<p class="p">To disable a resource, select it and choose the
+							<span class="ph uicontrol">Disable</span> button: </p>
+
+					<p class="p">The status icon turns red, and from now on, the <span class="ph pname">Cloud connector</span>
+						will deny all requests coming in for this resource. </p>
+
+					<p class="p"><img class="image" id="loioe7d4927dbb571014af7ef6ebd6cc3511__image_f5s_vn5_wq" width="1400px" src="loio76125b1d711e1014839a8273b0e91070_LowRes.png"/></p>
+
+				</li>
+
+				<li class="li">To enable the resource again, select it and choose the <span class="ph uicontrol">Enable</span> button. </li>
+
+				<li class="li">It is also possible to mark multiple lines and then to disable/enable all of them in one go
+					by clicking the <span class="ph uicontrol">Enable/Disable</span> icons in the top row. </li>
+
+			</ul>
+
+			<p class="p"> </p>
+
+			<p class="p"><kbd class="ph userinput">Examples: </kbd></p>
+
+			<ul class="ul">
+				<li class="li"><span class="ph uicontrol">/production/accounting</span> and <span class="ph uicontrol">Path only
+						(sub-paths are excluded)</span> are selected. Only requests of the form
+						<span class="keyword parmname">GET /production/accounting</span> or <span class="keyword parmname">GET
+						/production/accounting?name1=value1&amp;name2=value2...</span> are
+					allowed. (<span class="keyword parmname">GET</span> can also be replaced by
+						<span class="keyword parmname">POST</span>, <span class="keyword parmname">PUT</span>,
+						<span class="keyword parmname">DELETE</span>, and so on.) </li>
+
+				<li class="li">
+					<span class="ph uicontrol">/production/accounting</span> and <span class="ph uicontrol">Path and all
+						sub-paths</span> are selected. All requests of the form <span class="keyword parmname">GET
+						/production/accounting-plus-some-more-stuff-here?name1=value1...</span>
+					are allowed. </li>
+
+				<li class="li"><span class="ph uicontrol">/</span> and <span class="ph uicontrol">Path and all sub-paths</span> are
+					selected. All requests to this server are allowed. </li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="b7d257b070b042e19a60df01e02d191f.html">Configuring Domain Mappings for Cookies</a></div>
+<div><a class="link" href="e76f9e75bb571014a7218bcd30a8771b.html">Consuming Back-End Systems (Java Web or Java EE 6 Web Profile)</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

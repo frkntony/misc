@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can update a property of an application running on SAP Cloud Platform without redeploying it."/>
+<meta name="description" content="You can update a property of an application running on SAP Cloud Platform without redeploying it."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating Application Properties</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocadb1dd3cda3464b8a5315a08cbb0566">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Updating Application Properties</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You can update a property of an application running on <span class="ph pname">SAP Cloud Platform</span> without
+		redeploying it.</p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Application properties are configured during deployment with a set of deploy parameters in the
+				SAP HANA Cloud Platrform console client. If you want to change any of these
+				properties (Java version, runtime version, compression, VM arguments, compute unit
+				size, URI encoding, minumum and maximum application processes) without the need to
+				redeploy the application binaries, use the
+					<span class="keyword cmdname">set-application-property</span> command. Execute the command
+				separately for each property that you want to set. </p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh
+					(&lt;SDK installation folder&gt;/tools).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Execute <span class="keyword cmdname">set-application-property</span> specifying the new value of one
+					property that you want to change. For example, to change the compute unit size
+					to premium, execute:</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-application-property myapp.properties --compute-unit prem</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">For the change to take effect, restart your application using the
+						<span class="keyword cmdname">restart</span> command. </span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="113e95746d63472a801ba8339a67b021.html" title="Use this command to change the value of a single property of a deployed application without the need to redeploy it. Execute the command separately for each property that you want to set. For the changes to take effect, restart the application.">set-application-property</a></div>
+<div><a class="link" href="937db4fa204c456f9b7820f83bc87118.html" title="Deploying an application publishes it to SAP Cloud Platform. Use the optional parameters to make some specific configurations of the deployed application.">deploy</a></div>
+<div><a class="link" href="7c0f7a18a4564e0e8b6f997d230285ff.html" title="Use this command to restart your application or a single application process. The effect of the restart command is the same as executing the stop command first and when the application is stopped, starting it with the start command.">restart</a></div>
+<div><a class="link" href="abded969628240259d486c4b29b3948c.html" title="The cockpit allows you to deploy Java applications as WAR files and supports a number of deployment options for configuring the application.">Deploying on the Cloud with the Cockpit</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This step-by-step tutorial shows how you can send an e-mail from a simple Web application using an e-mail provider that is accessible on the Internet. As an example, it uses Gmail."/>
+<meta name="description" content="This step-by-step tutorial shows how you can send an e-mail from a simple Web application using an e-mail provider that is accessible on the Internet. As an example, it uses Gmail."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Tutorial: Sending E-Mails</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe70a574cbb57101494a781920e3c9d64">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Tutorial: Sending E-Mails</h1>
+
+	<div class="body conbody"><p class="shortdesc">This step-by-step tutorial shows how you can send an e-mail from a simple Web
+		application using an e-mail provider that is accessible on the Internet. As an example, it
+		uses Gmail. </p>
+
+		<div class="p">
+			<div class="note note"><span class="notetitle">Note</span> SAP does not act as e-mail provider. To use this service, please cooperate with an
+				external e-mail provider of your choice.</div>
+
+		</div>
+<div class="section" id="loioe70a574cbb57101494a781920e3c9d64__section_A23089DB2E76462F9752B328DC6B4733">
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe70a574cbb57101494a781920e3c9d64__table_nwy_mv3_ln" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="52.60663507109005%"/><col width="47.393364928909946%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="52.60663507109005%" id="d11783078e35">Steps</th>
+
+								<th class="entry" valign="top" width="47.393364928909946%" id="d11783078e38">Sample Application</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="52.60663507109005%" headers="d11783078e35 "><a class="xref" href="e70a574cbb57101494a781920e3c9d64.html#loioe70a574cbb57101494a781920e3c9d64__section_prereq">Prerequisites</a></td>
+
+								<td class="entry" rowspan="5" valign="top" width="47.393364928909946%" headers="d11783078e38 ">
+									<p class="p">The application is also available as a sample in the <span class="ph pname">SAP Cloud Platform</span> SDK:</p>
+
+									<p class="p">Sample name: <span class="ph filepath">mail</span></p>
+
+									<p class="p">Location: <span class="ph filepath">&lt;sdk&gt;/samples</span> folder</p>
+
+									<p class="p">More information: <a class="xref" href="937ce0d172bb101490cf767db0e91070.html" title="The sample applications allow you to explore the core functionality of SAP Cloud Platform and show how this functionality can be used to develop more complex Web applications. The samples are included in the SDK or presented as blogs in the SCN community.">Samples</a></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="52.60663507109005%" headers="d11783078e35 "><a class="xref" href="e70a574cbb57101494a781920e3c9d64.html#loioe70a574cbb57101494a781920e3c9d64__section_webProject">1. Create a Dynamic Web Project and Servlet</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="52.60663507109005%" headers="d11783078e35 "><a class="xref" href="e70a574cbb57101494a781920e3c9d64.html#loioe70a574cbb57101494a781920e3c9d64__section_servlet">2. Extend the Servlet</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="52.60663507109005%" headers="d11783078e35 "><a class="xref" href="e70a574cbb57101494a781920e3c9d64.html#loioe70a574cbb57101494a781920e3c9d64__section_testLocal">3. Test the Application Locally</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="52.60663507109005%" headers="d11783078e35 "><a class="xref" href="e70a574cbb57101494a781920e3c9d64.html#loioe70a574cbb57101494a781920e3c9d64__section_testCloud">4. Test the Application in the Cloud</a></td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div>
+<div class="section" id="loioe70a574cbb57101494a781920e3c9d64__section_prereq"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have installed the <span class="ph pname">SAP Cloud Platform</span> Tools and created a <span class="ph pname">SAP HANA Cloud</span> server runtime environment as
+				described in <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>. </p>
+
+		</div></div>
+
+		<div class="section" id="loioe70a574cbb57101494a781920e3c9d64__section_webProject"><div class="section_title">1. Create a Dynamic Web Project and Servlet</div><div type="1. Create a Dynamic Web Project and Servlet">
+			
+			<p class="p">To develop applications for the <span class="ph pname">SAP Cloud Platform</span>, you require
+				a dynamic Web project and servlet. </p>
+
+			<ol class="ol" id="loioe70a574cbb57101494a781920e3c9d64__ol_ywg_tm4_lj">
+				<li class="li">From the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol"> New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">In the <span class="ph uicontrol">Project name</span> field, enter
+						<kbd class="ph userinput">mail</kbd>.</li>
+
+				<li class="li">In the <span class="ph uicontrol">Target Runtime</span> pane, select the runtime you want to use to
+					deploy the application. In this tutorial, you use <kbd class="ph userinput">Java
+						Web</kbd>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Configuration</span> area, leave the default configuration  and
+					choose <span class="ph uicontrol">Finish</span>.</li>
+
+				<li class="li">To add a servlet to the project you have just created, select the
+						<span class="ph filepath">mail</span> node in the <span class="ph uicontrol">Project
+						Explorer</span> view.</li>
+
+				<li class="li">From the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+				<li class="li">Enter the Java package <kbd class="ph userinput">com.sap.cloud.sample.mail</kbd> and the
+					class name <kbd class="ph userinput">MailServlet</kbd>.</li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span> to generate the servlet.</li>
+
+			</ol>
+
+		</div></div>
+<div class="section" id="loioe70a574cbb57101494a781920e3c9d64__section_servlet"><div class="section_title">2. Extend the Servlet</div><div type="2. Extend the Servlet">
+			
+			<div class="p">You add code to create a simple Web UI for composing and sending an e-mail message.
+				The code includes the following methods: <ul class="ul" id="loioe70a574cbb57101494a781920e3c9d64__ul_y1y_p44_lj">
+					<li class="li"><span class="keyword apiname">doGet()</span>: Creates an HTML form for entering e-mail
+						details.</li>
+
+					<li class="li"><span class="keyword apiname">doPost()</span>: Uses the mail session resource to create and
+						send a <span class="keyword apiname">MimeMessage</span> object. It confirms that an e-mail has
+						been sent.</li>
+
+				</ul>
+</div>
+
+			<ol class="ol">
+				<li class="li">In the <span class="ph uicontrol">Project Explorer</span> view, expand the
+						<span class="ph filepath">mail/Java Resources/src/com.sap.cloud.sample.mail</span> node. </li>
+
+				<li class="li">Select <span class="ph filepath">MailServlet.java</span>, and from the context menu choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Open With</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Editor</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">In the opened editor, replace the entire servlet class with the following content:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.mail;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.annotation.Resource;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Servlet implementing a mail example which shows how to use the <span class="ph pname">connectivity
+                            service</span> APIs to send e-mail.
+ * The example provides a simple UI to compose an e-mail message and send it. The post method uses
+ * the <span class="ph pname">connectivity
+                            service</span> and the javax.mail API to send the e-mail.
+ */
+public class MailServlet extends HttpServlet {
+
+    @Resource(name = "mail/Session") 
+    private Session mailSession; 
+
+    private static final long serialVersionUID = 1L;
+    private static final Logger LOGGER = LoggerFactory.getLogger(MailServlet.class);
+
+    /** {@inheritDoc} */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Show input form to user
+        response.setHeader("Content-Type", "text/html");
+        PrintWriter writer = response.getWriter();
+        writer.write("&lt;!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" "
+                + "\"http://www.w3.org/TR/html4/loose.dtd\"&gt;");
+        writer.write("&lt;html&gt;&lt;head&gt;&lt;title&gt;Mail Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;");
+        writer.write("&lt;form action='' method='post'&gt;");
+        writer.write("&lt;table style='width: 100%'&gt;");
+        writer.write("&lt;tr&gt;");
+        writer.write("&lt;td width='100px'&gt;&lt;label&gt;From:&lt;/label&gt;&lt;/td&gt;");
+        writer.write("&lt;td&gt;&lt;input type='text' size='50' value='' name='fromaddress'&gt;&lt;/td&gt;");
+        writer.write("&lt;/tr&gt;");
+        writer.write("&lt;tr&gt;");
+        writer.write("&lt;td&gt;&lt;label&gt;To:&lt;/label&gt;&lt;/td&gt;");
+        writer.write("&lt;td&gt;&lt;input type='text' size='50' value='' name='toaddress'&gt;&lt;/td&gt;");
+        writer.write("&lt;/tr&gt;");
+        writer.write("&lt;tr&gt;");
+        writer.write("&lt;td&gt;&lt;label&gt;Subject:&lt;/label&gt;&lt;/td&gt;");
+        writer.write("&lt;td&gt;&lt;textarea rows='1' cols='100' name='subjecttext'&gt;Subject&lt;/textarea&gt;&lt;/td&gt;");
+        writer.write("&lt;/tr&gt;");
+        writer.write("&lt;tr&gt;");
+        writer.write("&lt;td&gt;&lt;label&gt;Mail:&lt;/label&gt;&lt;/td&gt;");
+        writer.write("&lt;td&gt;&lt;textarea rows='7' cols='100' name='mailtext'&gt;Mail Text&lt;/textarea&gt;&lt;/td&gt;");
+        writer.write("&lt;/tr&gt;");
+        writer.write("&lt;tr&gt;");
+        writer.write("&lt;tr&gt;");
+        writer.write("&lt;td&gt;&lt;input type='submit' value='Send Mail'&gt;&lt;/td&gt;");
+        writer.write("&lt;/tr&gt;");
+        writer.write("&lt;/table&gt;");
+        writer.write("&lt;/form&gt;");
+        writer.write("&lt;/body&gt;&lt;/html&gt;");
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+        Transport transport = null;
+        try {
+            // Parse form parameters
+            String from = request.getParameter("fromaddress");
+            String to = request.getParameter("toaddress");
+            String subjectText = request.getParameter("subjecttext");
+            String mailText = request.getParameter("mailtext");
+            if (from.isEmpty() || to.isEmpty()) {
+                throw new RuntimeException("Form parameters From and To may not be empty!");
+            }
+
+            // Construct message from parameters
+            MimeMessage mimeMessage = new MimeMessage(mailSession);
+            InternetAddress[] fromAddress = InternetAddress.parse(from);
+            InternetAddress[] toAddresses = InternetAddress.parse(to);
+            mimeMessage.setFrom(fromAddress[0]);
+            mimeMessage.setRecipients(RecipientType.TO, toAddresses);
+            mimeMessage.setSubject(subjectText, "UTF-8");
+            MimeMultipart multiPart = new MimeMultipart("alternative");
+            MimeBodyPart part = new MimeBodyPart();
+            part.setText(mailText, "utf-8", "plain");
+            multiPart.addBodyPart(part);
+            mimeMessage.setContent(multiPart);
+
+            // Send mail
+            transport = mailSession.getTransport();
+            transport.connect();
+            transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
+
+            // Confirm mail sending
+            response.getWriter().println(
+                    "E-mail was sent (in local scenario stored in '&lt;local-server&gt;/work/mailservice'"
+                            + " - in cloud scenario using configured mail session).");
+        } catch (Exception e) {
+            LOGGER.error("Mail operation failed", e);
+            throw new ServletException(e);
+        } finally {
+            // Close transport layer
+            if (transport != null) {
+                try {
+                    transport.close();
+                } catch (MessagingException e) {
+                    throw new ServletException(e);
+                }
+            }
+        }
+    }
+}
+</pre></div>
+
+				</li>
+
+				<li class="li">Save the class. </li>
+
+			</ol>
+
+		</div></div>
+<div class="section" id="loioe70a574cbb57101494a781920e3c9d64__section_testLocal"><div class="section_title">3. Test the Application Locally</div><div type="3. Test the Application Locally">
+			
+			<p class="p">Test your code using the local file system before configuring your mail destination
+				and testing the application in the cloud. </p>
+
+			<ol class="ol" id="loioe70a574cbb57101494a781920e3c9d64__ol_lth_hmd_yj">
+				<li class="li">To test your application on the local server, select the servlet and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run As</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run on Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">Make sure that the <span class="ph uicontrol">Manually define a new server</span> radio button is
+					selected and select <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">SAP</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Web Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li">Choose <span class="ph uicontrol">Finish</span>. A sender screen appears, allowing you to compose and
+					send an e-mail. The sent e-mail is stored in the
+						<span class="ph filepath">work/mailservice</span> directory contained in the root of
+					your <span class="ph pname">SAP Cloud Platform</span>
+					local runtime server. </li>
+
+			</ol>
+
+			<div class="note note" id="loioe70a574cbb57101494a781920e3c9d64__note_N1019F_N10162_N10013_N10001"><span class="notetitle">Note</span> To send the e-mail through a real e-mail
+				server, you can configure a destination as described in the next section, but using
+				the local server runtime. Remember that once you have configured a destination for
+				local testing, messages are no longer sent to the local file system. </div>
+
+		</div></div>
+
+		<div class="section" id="loioe70a574cbb57101494a781920e3c9d64__section_testCloud"><div class="section_title">4. Test the Application in the Cloud</div><div type="4. Test the Application in the Cloud">
+			
+			<p class="p">Create a mail destination that contains the SMTP settings of your e-mail provider.
+				The name of the mail destination must match the name used in the resource reference
+				in the <span class="ph filepath">web.xml</span> descriptor.</p>
+
+			<div class="p">
+				<ol class="ol" id="loioe70a574cbb57101494a781920e3c9d64__ol_kqt_wnd_yj">
+					<li class="li">In the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Other</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Select the server type <span class="ph uicontrol">SAP Cloud Platform</span> and choose
+							<span class="ph uicontrol">Next</span>. </li>
+
+					<li class="li">In the <span class="ph uicontrol">SAP Cloud Platform Application</span> dialog box, enter the name of
+						your application, account, user, and password and choose
+							<span class="ph uicontrol">Finish</span>. The new server is listed in the
+							<span class="ph uicontrol">Servers</span> view. </li>
+
+					<li class="li">Double-click the server and switch to the
+							<span class="ph uicontrol">Connectivity</span> tab.</li>
+
+					<li class="li">In the <span class="ph uicontrol">All Destinations</span> section, choose the <img class="image" id="loioe70a574cbb57101494a781920e3c9d64__image_qtm_k12_yj" src="loioafc6f121bb571014a739e9d96266d5ff_LowRes.png" alt="Connectivity_add_destination.png" title="Connectivity_add_destination.png"/>
+						<span class="ph uicontrol">New Destination</span> button. </li>
+
+					<li class="li">In the <span class="ph uicontrol">New Destination</span> dialog box, enter the name
+							<kbd class="ph userinput">Session</kbd> and type <kbd class="ph userinput">Mail</kbd> and
+						choose <span class="ph uicontrol">OK</span>.<p class="p"><img class="image" id="loioe70a574cbb57101494a781920e3c9d64__image_mlq_pyd_yj" src="loio7a8170736f9543b5a5f5d03bf9163deb_LowRes.png" alt="New Mail Destination" title="New Mail Destination"/></p>
+</li>
+
+					<li class="li">Configure the destination by adding the properties for port 587
+						(SMTP+STARTTLS) or 465 (SMTPS). To do this, choose the <span class="ph uicontrol">Add
+							Property</span> button in the <span class="ph uicontrol">Properties</span>
+							section:<ul class="ul" id="loioe70a574cbb57101494a781920e3c9d64__ul_v2q_44c_hk">
+							<li class="li">To use port 587 (SMTP+STARTTLS), add the following properties:
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe70a574cbb57101494a781920e3c9d64__table_itb_gkx_hk" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+										
+										
+										<thead class="thead" align="left">
+											<tr class="row">
+												<th class="entry" valign="top" width="50%" id="d11783078e474">Property</th>
+
+												<th class="entry" valign="top" width="50%" id="d11783078e477">Value</th>
+
+											</tr>
+
+										</thead>
+
+										<tbody class="tbody">
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.transport.protocol</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">smtp</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.smtp.host</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">smtp.gmail.com</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.smtp.auth</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">true</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.smtp.starttls.enable</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">true</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.smtp.port</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">587</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.user</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">&lt;gmail account name&gt;</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50%" headers="d11783078e474 ">mail.password</td>
+
+												<td class="entry" valign="top" width="50%" headers="d11783078e477 ">&lt;gmail account password&gt;</td>
+
+											</tr>
+
+										</tbody>
+
+									</table>
+</div>
+<p class="p">The configured destination for port 587 is shown
+									below:</p>
+<p class="p"><img class="image" id="loioe70a574cbb57101494a781920e3c9d64__image_t3q_xqc_hk" src="loio6097535dcfb84fc286f4b2151f1ae87f_LowRes.png" alt="Mail Destination Properties" title="Mail Destination Properties"/></p>
+</li>
+
+							<li class="li">For port 465 (SMTPS), use the following properties:
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe70a574cbb57101494a781920e3c9d64__table_jtw_3rc_hk" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50.73891625615763%"/><col width="49.261083743842356%"/></colgroup>
+
+										
+										
+										<thead class="thead" align="left">
+											<tr class="row">
+												<th class="entry" valign="top" width="50.73891625615763%" id="d11783078e569">Property</th>
+
+												<th class="entry" valign="top" width="49.26108374384236%" id="d11783078e572">Value</th>
+
+											</tr>
+
+										</thead>
+
+										<tbody class="tbody">
+											<tr class="row">
+												<td class="entry" valign="top" width="50.73891625615763%" headers="d11783078e569 ">mail.transport.protocol</td>
+
+												<td class="entry" valign="top" width="49.26108374384236%" headers="d11783078e572 ">smtps</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50.73891625615763%" headers="d11783078e569 ">mail.smtps.host</td>
+
+												<td class="entry" valign="top" width="49.26108374384236%" headers="d11783078e572 ">smtp.gmail.com</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50.73891625615763%" headers="d11783078e569 ">mail.smtps.auth</td>
+
+												<td class="entry" valign="top" width="49.26108374384236%" headers="d11783078e572 ">true</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50.73891625615763%" headers="d11783078e569 ">mail.smtps.port</td>
+
+												<td class="entry" valign="top" width="49.26108374384236%" headers="d11783078e572 ">465</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50.73891625615763%" headers="d11783078e569 ">mail.user</td>
+
+												<td class="entry" valign="top" width="49.26108374384236%" headers="d11783078e572 ">&lt;gmail account name&gt;</td>
+
+											</tr>
+
+											<tr class="row">
+												<td class="entry" valign="top" width="50.73891625615763%" headers="d11783078e569 ">mail.password</td>
+
+												<td class="entry" valign="top" width="49.26108374384236%" headers="d11783078e572 ">&lt;gmail account password&gt;</td>
+
+											</tr>
+
+										</tbody>
+
+									</table>
+</div>
+</li>
+
+						</ul>
+</li>
+
+					<li class="li">Save the destination to upload it to the cloud. The settings take effect
+						when the application is next started.</li>
+
+					<li class="li">In the <span class="ph uicontrol">Project Explorer</span> view, select
+							<span class="ph filepath">MailServlet.java</span> and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Run</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run As</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Run on Server</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Make sure that the <span class="ph uicontrol">Choose an existing server</span> radio
+						button is selected and select the server you have just defined. </li>
+
+					<li class="li">Choose <span class="ph uicontrol">Finish</span> to deploy to the cloud. You should now
+						see the sender screen, where you can compose and send an e-mail </li>
+
+				</ol>
+
+			</div>
+
+		</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

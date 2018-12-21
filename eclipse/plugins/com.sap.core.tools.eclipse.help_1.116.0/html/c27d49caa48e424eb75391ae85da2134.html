@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can use an XML view as a template that is transformed by an XML preprocessor on the source level, that is, the XML DOM, before an SAPUI5 control tree is created from that XML source."/>
+<meta name="description" content="You can use an XML view as a template that is transformed by an XML preprocessor on the source level, that is, the XML DOM, before an SAPUI5 control tree is created from that XML source."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Preprocessing Instructions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc27d49caa48e424eb75391ae85da2134">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Preprocessing Instructions</h1>
+<div class="body conbody"><p class="shortdesc">You can use an XML view as a template that is transformed by an XML preprocessor on the
+		source level, that is, the <samp class="ph codeph">XML DOM</samp>, before an <span class="ph"><span class="ph pname">SAPUI5</span></span> control tree is created
+		from that XML source. </p>
+<div class="section">
+			<p class="p">See the example and introduction in the topic <a class="xref" href="5ee619fc1370463ea674ee04b65ed83b.html">XML Templating in SAPUI5</a>.</p>
+
+		</div>
+<div class="section">
+			<p class="p">In the example, the models available to the preprocessor are initially as follows.
+				Note how a model name can be seen as a variable with a value that consists of two
+				pieces: a model instance and a binding context's path.</p>
+
+			<p class="p"><samp class="ph codeph">meta = oMetaModel, "/dataServices/schema/0/entityType/0"</samp></p>
+
+			<p class="p">You can base conditions on the available variables. XML attributes that represent an
+				available binding are replaced automatically. The
+					<samp class="ph codeph">&lt;template:with&gt;</samp> instruction can be used to change a
+				variable's value or to add a variable with a new name. Likewise, the
+					<samp class="ph codeph">&lt;template:repeat&gt;</samp> instruction deals with its loop variable.
+				When a fragment is inlined, the current variable assignment is propagated into the
+				fragment's content and so on. Preprocessing instructions are inserted in XML syntax
+				and assigned to the XML namespace
+					<samp class="ph codeph">http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1</samp>,
+				which is referred to by the namespace prefix template in the code samples.</p>
+
+		</div>
+</div>
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer">__________________________________________________ </div>
+	<a class="copyright" href="copyright.html">Copyright</a> | <a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the cockpit, you can create document service repositories for your accounts."/>
+<meta name="description" content="In the cockpit, you can create document service repositories for your accounts."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Creating a Repository (Cockpit)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio6a79939e98354243b708d35a6d9203d3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Creating a Repository (Cockpit)</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the cockpit, you can create document service repositories for your
+		accounts.</p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on with a user (who is an account member) to the <span class="ph pname">SAP Cloud Platform</span>
+					cockpit.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Repositories</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Document Repositories</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To create a new repository, choose <span class="ph uicontrol">New Repository</span>, and
+					enter the following data.</span>
+				<div class="itemgroup info">
+					<div class="p">
+						
+<div class="table-wrapper tablenoborder"><table summary="" id="loio6a79939e98354243b708d35a6d9203d3__table_rhr_z4g_3r" class="table" width="90%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="20%"/><col width="80%"/></colgroup>
+
+								
+								
+								<thead class="thead" align="left">
+									<tr class="row">
+										<th class="entry" valign="top" width="20%" id="d4503453e70">Field</th>
+
+										<th class="entry" valign="top" width="80%" id="d4503453e73">Entry</th>
+
+									</tr>
+
+								</thead>
+
+								<tbody class="tbody">
+									<tr class="row">
+										<td class="entry" valign="top" width="20%" headers="d4503453e70 ">Name</td>
+
+										<td class="entry" valign="top" width="80%" headers="d4503453e73 ">Mandatory. Enter a unique name consisting of digits,
+											letters, or special characters. The name is restricted
+											to 100 characters.</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20%" headers="d4503453e70 ">Display Name</td>
+
+										<td class="entry" valign="top" width="80%" headers="d4503453e73 ">Optional. Enter a display name that is shown instead of the name in the repository
+											list of the account. The name is restricted to 200
+											characters. You cannot change this name later
+											on.</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20%" headers="d4503453e70 ">Description</td>
+
+										<td class="entry" valign="top" width="80%" headers="d4503453e73 ">Optional. Enter a descriptive text for the repository. The name is restricted to
+											500 characters. You cannot change the description later
+											on.</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20%" headers="d4503453e70 ">Virus Scan </td>
+
+										<td class="entry" valign="top" width="80%" headers="d4503453e73 ">Select this checkbox to activate the virus scan.<p class="p">When you create a repository,
+												you can activate a virus scanner for write accesses.
+												The virus scanner scans files during uploads. If it
+												finds a virus, write access is denied and an error
+												message is displayed. Note that the time for
+												uploading a file is prolonged by the time needed to
+												scan the file for viruses.</p>
+</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20%" headers="d4503453e70 ">Repository Key</td>
+
+										<td class="entry" valign="top" width="80%" headers="d4503453e73 ">Enter a repository key consisting of at least 10 characters but without special characters. This key is used to access the repository
+												metadata.<p class="p">You cannot recover this key. Therefore, you must be sure to remember it.</p>
+<p class="p">You can,
+												however, create a new key using the console client command <a class="xref" href="5434b2d2eaa34d0e8e0addc52f39343d.html" title="If you have forgotten the repository key, use this command to request a new repository key.">reset-ecm-key</a>.</p>
+</td>
+
+									</tr>
+
+									<tr class="row">
+										<td class="entry" valign="top" width="20%" headers="d4503453e70 ">Confirm Repository Key</td>
+
+										<td class="entry" valign="top" width="80%" headers="d4503453e73 ">Reenter the repository key.</td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+</div>
+
+<div class="linklist linklist"><strong>Alternative Ways to Create Repositories</strong><br/>
+
+<div><a class="link" href="08bfeb0e20a04276a2b5a939d58566bd.html" title="You can create a repository with the createRepository(repositoryOptions) method of the EcmService (document service).">Creating a Repository Programmatically (Java)</a></div>
+<div><a class="link" href="acf1b72fd1b646ef90f23983690d52df.html" title="Creates a new repository in the specified account.">create-ecm-repository</a></div></div>
+
+<div class="linklist linklist"><strong>Connecting Your Repository to an Application</strong><br/>
+
+<div><a class="link" href="e62cd24abb571014b73792d85402f104.html">Creating a Sample Application (Java)</a></div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel."/>
+<meta name="description" content="You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the cloud. To do this, you require the connection details you obtained when you opened the database tunnel."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Connecting to the Remote SAP ASE Database</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio107ffdb907334d97be99fdcb7aad8961">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Connecting to the Remote SAP ASE Database</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You use the Eclipse Data Tools Platform (DTP) to connect to the SAP ASE database in the
+		cloud. To do this, you require the connection details you obtained when you opened the
+		database tunnel.</p>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio107ffdb907334d97be99fdcb7aad8961__steps_m2b_25w_gn"><li class="li step stepexpand">
+				<span class="ph cmd">In Eclipse, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Show View</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Data Source Explorer</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the <span class="ph uicontrol">Database Connections</span> node and from the
+					context menu choose <span class="ph uicontrol">New...</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the connection profile type <span class="ph uicontrol">Sybase ASE</span></span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter a connection name, for example, <kbd class="ph userinput">New Sybase ASE</kbd>,
+					and choose <span class="ph uicontrol">Next</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To define a driver, choose <img class="image" id="loio107ffdb907334d97be99fdcb7aad8961__image_rvc_3rd_lw" src="loioe39b9abd157a4ed79e42fd9692266e94_LowRes.png" alt="New Driver Definition" title="New Driver Definition"/><span class="ph uicontrol">New Driver Definition</span>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">As the driver template, select <span class="ph uicontrol">Sybase JDBC Driver for Sybase ASE
+						15.x</span> and enter a driver name, for example, <kbd class="ph userinput">Sybase
+						JDBC Driver for Sybase ASE 15.x</kbd>.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">On the <span class="ph uicontrol">JAR List</span> tab, select the
+						<span class="ph uicontrol">jconn3.jar</span> driver file.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Edit JAR/Zip…</span> and choose the
+						<span class="ph uicontrol">neo-java-web-sdk-2.&lt;version&gt;/repository/.archive/lib/jconn4-&lt;version&gt;.jar</span>
+					file.</span>
+				<div class="itemgroup info">
+					<div class="note note"><span class="notetitle">Note</span> 
+						<p class="p">Make sure you use the latest version of the SDK for Java Web Tomcat 7 runtime. You can
+							download the SDK from the <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">tools page</a>.</p>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">On the <span class="ph uicontrol">Properties</span> tab, change the value for the
+						<span class="ph uicontrol">Driver Class</span> property from
+					com.sybase.jdbc3.jdbc.SybDriver to
+						<kbd class="ph userinput">com.sybase.jdbc4.jdbc.SybDriver</kbd> and choose
+						<span class="ph uicontrol">Ok</span>.</span>
+				<div class="itemgroup info">
+					<p class="p">Use the value from the current SDK version.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">On the <span class="ph uicontrol">Connection</span> tab, enter the required data for the
+					connection:</span>
+				<div class="itemgroup info">
+					<ul class="ul" id="loio107ffdb907334d97be99fdcb7aad8961__ul_oc3_k2j_xs">
+						<li class="li">
+							<p class="p">Host: localhost</p>
+
+							<p class="p">Provide the database host name from the tunnel response.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Port: 30015</p>
+
+							<p class="p">Provide the database port from the JDBC URL in the tunnel
+								response.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Database name: Provide the database name from the tunnel
+								response.</p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">User name: Provide the database user that you defined when you
+								created the database. </p>
+
+						</li>
+
+						<li class="li">
+							<p class="p">Password: Provide the password of the database user. </p>
+
+						</li>
+
+					</ul>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">On the <span class="ph uicontrol">Other Properties</span> tab, enter two parameters and their
+					values:</span>
+				<ol type="a" class="ol substeps" id="loio107ffdb907334d97be99fdcb7aad8961__substeps_jh3_2td_lw">
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Enter the following parameter and set it to true:
+								<kbd class="ph userinput">SSL_TRUST_ALL_CERTS=true</kbd>.</span>
+					</li>
+
+					<li class="li substep substepexpand">
+						<span class="ph cmd">Check the value of the parameter <span class="keyword parmname">ENABLE_SSL</span> in the
+							tunnel response.</span>
+						<div class="itemgroup info">
+							<p class="p"><img class="image" id="loio107ffdb907334d97be99fdcb7aad8961__image_pqb_ltd_lw" src="loioa90f885222cf48e58d8da6cd93a0261c_LowRes.png"/></p>
+
+							<p class="p">If the value is set to true, enter the following on the
+									<span class="ph uicontrol">Other Properties</span> tab:
+									<kbd class="ph userinput">ENABLE_SSL=true</kbd>. If the value is set to
+								false or if the parameter does not appear at all in the tunnel
+								response, enter <kbd class="ph userinput">ENABLE_SSL=false</kbd>.</p>
+
+							<div class="p">
+								<div class="fig fignone" id="loio107ffdb907334d97be99fdcb7aad8961__fig_uvb_zgd_lw"><div class="figcontainer">
+									<img class="image" id="loio107ffdb907334d97be99fdcb7aad8961__image_gfr_tgd_lw" src="loio8940e3aacc524100b31ad00009905e45_LowRes.png"/>
+								</div></div>
+
+							</div>
+
+						</div>
+					</li>
+
+				</ol>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Test the connection.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Finish</span>. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">You are now connected to a remote SAP ASE database.</span>
+			</li>
+</ol>
+
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p">The new database connection is now shown in the <span class="ph uicontrol">Data Source
+					Explorer</span> view in the database list.</p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

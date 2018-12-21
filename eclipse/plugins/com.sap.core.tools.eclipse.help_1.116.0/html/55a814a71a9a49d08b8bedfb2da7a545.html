@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can see the report's metrics in a viewer, or you can download them as a JSON file."/>
+<meta name="description" content="You can see the report's metrics in a viewer, or you can download them as a JSON file."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Metrics of a Performance Statistics Report</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio55a814a71a9a49d08b8bedfb2da7a545">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Metrics of a Performance Statistics Report</h1>
+
+	
+    
+    <div class="body conbody"><p class="shortdesc">You can see the report's metrics in a viewer, or you can download them as a JSON
+		file.</p>
+
+        <div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available on <span class="ph pname">SAP Cloud Platform</span> for developer accounts. For more
+                                information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+        
+<div class="table-wrapper tablenoborder"><table summary="" id="loio55a814a71a9a49d08b8bedfb2da7a545__table_vhs_rm1_zm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+                
+                
+                
+                <thead class="thead" align="left">
+                    <tr class="row">
+                        <th class="entry" valign="top" width="33.33333333333333%" id="d3730189e51">Metric Displayed in Viewer</th>
+
+                        <th class="entry" valign="top" width="33.33333333333333%" id="d3730189e54">Respective Metric in JSON File</th>
+
+                        <th class="entry" valign="top" width="33.33333333333333%" id="d3730189e57">Value</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody class="tbody">
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">URL</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">action</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">The requested URL</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Start Time</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">startTime</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Time in miliseconds from January 1, 1970 until the start of the
+                            request</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Memory (bytes)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">allocMem</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Memory in bytes allocated to the thread processing the HTTP
+                            request</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">CPU (ms)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">cpuTime</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">CPU time in milliseconds used by the thread processing the HTTP
+                            request</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Request Body (bytes)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">sentBytes</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Request's size; it is set to <span class="keyword">-1</span> if it is
+                            unknown.</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Response (bytes)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">receivedBytes</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Size of the response in bytes</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Response (ms)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">respTime</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Response time in milliseconds</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">DB Calls (count)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">dbCalls</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Number of DB calls by the thread processing the HTTP request<div class="note note"><span class="notetitle">Note</span> 
+                                <p class="p">This metric is not supported for <span class="keyword">Java Web Tomcat
+                                        7</span> and <span class="keyword">Java Web Tomcat 8</span>
+                                    application runtime container.</p>
+
+                            </div>
+</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">DB Calls (bytes)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">dbIO</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">IO in bytes from DB calls by the thread processing the HTTP request<div class="note note"><span class="notetitle">Note</span> 
+                                <p class="p">This metric is not supported for <span class="keyword">Java Web Tomcat
+                                        7</span> and <span class="keyword">Java Web Tomcat 8</span>
+                                    application runtime container.</p>
+
+                            </div>
+</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">DB Calls (ms)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">dbTime</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Time spent in the DB in nanoseconds (in JSON file) or in milliseconds
+                            (in viewer).<div class="note note"><span class="notetitle">Note</span> 
+                                <p class="p">This metric is not supported for <span class="keyword">Java Web Tomcat
+                                        7</span> and <span class="keyword">Java Web Tomcat 8</span>
+                                    application runtime container.</p>
+
+                            </div>
+</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">External Calls (ms)</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">extTime</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Time in milliseconds of the calls from the application to systems
+                            that are not part of <span class="ph pname">SAP Cloud Platform</span></td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">ID</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">transId</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">The SAP-PASSPORT ID if available. If not, it is set to n.a.</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">User</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">userId</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">The user who initiated the HTTP request. If there is no
+                            authentication, it is set to n.a.</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Not displayed</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">actionType</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Not supported yet</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Not displayed</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">addInfo</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Not supported yet</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Not displayed</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">externalCalls</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Number of calls from the application to systems that are not part of
+                            <span class="ph pname">SAP Cloud Platform</span></td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Not displayed</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">externalRecords</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Detailed information about each external call such as time,
+                            connection ID, destination URL, and additional information.</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Not displayed</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">serviceType</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Not supported yet</td>
+
+                    </tr>
+
+                    <tr class="row">
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e51 ">Not displayed</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e54 ">sessionSize</td>
+
+                        <td class="entry" valign="top" width="33.33333333333333%" headers="d3730189e57 ">Not supported yet</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+</div>
+
+        <div class="example"><h2 class="exampletitle">Example</h2>
+            <p class="p">The JSON file may look like the following:</p>
+
+            <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-json">{
+    "name": "AllRecords",
+    "children": [{
+        "name": "0",
+        "children": [{
+            "name": "action",
+            "value": "https://myappmyaccount.hana.ondemand.com/test"
+        }, {
+            "name": "actionType",
+            "value": "0"
+        }, {
+            "name": "addInfo",
+            "value": ""
+        }, {
+            "name": "allocMem",
+            "value": "126656"
+        }, {
+            "name": "cpuTime",
+            "value": "10"
+        }, {
+            "name": "dbCalls",
+            "value": "0"
+        }, {
+            "name": "dbIO",
+            "value": "0"
+        }, {
+            "name": "dbTime",
+            "value": "0"
+        }, {
+            "name": "extTime",
+            "value": "0"
+        }, {
+            "name": "externalCalls",
+            "value": "0"
+        }, {
+            "name": "externalRecords",
+            "children":[{
+                     "name":"0",
+                     "children":[{
+                           "name":"addInfo",
+                           "value":"HttpDestination details: Name: google-destination;Authentication: 
+                                    NoAuthentication;ProxyType: Internet"
+                        }, {
+                           "name":"callTime",
+                           "value":"106"
+                        }, {
+                           "name":"connectionCounter",
+                           "value":"1"
+                        }, {
+                           "name":"connectionId",
+                           "value":"a7b8c385-fc04-4187-98fd-eb6b61c098ff"
+                        }, {
+                           "name":"destination",
+                           "value":"http://google.com"
+                        }, {
+                           "name":"receivedBytes",
+                           "value":"-1"
+                        }, {
+                           "name":"sentBytes",
+                           "value":"-1"
+                        }, {
+                           "name":"systemId",
+                           "value":"myapp:5a351d8b2d914cf54d7d16f6315084e78ba00086"
+                        }, {
+                           "name":"type",
+                           "value":"HTTP"
+                     }]
+            }]
+        }, {
+            "name": "receivedBytes",
+            "value": "2707"
+        }, {
+            "name": "respTime",
+            "value": "832"
+        }, {
+            "name": "sentBytes",
+            "value": "-1"
+        }, {
+            "name": "serviceType",
+            "value": "0"
+        }, {
+            "name": "sessionSize",
+            "value": "0"
+        }, {
+            "name": "startTime",
+            "value": "1362992177712",
+        }, {
+            "name": "transId",
+            "value": "n.a."
+        }, {
+            "name": "userId",
+            "value": "n.a."
+        }]
+    }, {
+        "name": "1",
+        "children": [{
+            "name": "action",
+            "value": "https://myappmyaccount.hana.ondemand.com/test"
+        }, {
+            "name": "actionType",
+            "value": "0"
+        }, {
+            "name": "addInfo",
+            "value": ""
+        }, {
+            "name": "allocMem",
+            "value": "71936"
+        }, {
+            "name": "cpuTime",
+            "value": "10"
+        }, {
+            "name": "dbCalls",
+            "value": "0"
+        }, {
+            "name": "dbIO",
+            "value": "0"
+        }, {
+            "name": "dbTime",
+            "value": "0"
+        }, {
+            "name": "extTime",
+            "value": "0"
+        }, {
+            "name": "externalCalls",
+            "value": "0"
+        }, {
+            "name": "externalRecords",
+        }, {
+            "name": "receivedBytes",
+            "value": "2707"
+        }, {
+            "name": "respTime",
+            "value": "371"
+        }, {
+            "name": "sentBytes",
+            "value": "24"
+        }, {
+            "name": "serviceType",
+            "value": "0"
+        }, {
+            "name": "sessionSize",
+            "value": "0"
+        }, {
+            "name": "startTime",
+            "value": "1362992181217"
+        }, {
+            "name": "transId",
+            "value": "n.a."
+        }, {
+            "name": "userId",
+            "value": "n.a."
+        }]
+    }]
+}</pre></div>
+
+            <div class="note tip"><span class="tiptitle">Tip</span> For better readability of the results, you can use any formatter or
+                prettifier for the JSON.</div>
+
+        </div>
+
+    </div>
+
+    <div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="03963928a1e64b15a25553318679822f.html" title="Performance statistics enable you to monitor the resources used by your applications and to investigate the causes of performance issues.">Performance Statistics Service (Beta)</a></div>
+<div><a class="link" href="94a180e3ffb84abd823c25385832c121.html" title="You collect performance statistics to monitor the resources used by your applications and to investigate the causes of performance issues.">Enabling Performance Statistics Collection</a></div>
+<div><a class="link" href="0009b930ede54f388c88592a6828abc3.html" title="Java Web Apache Tomcat 7 (Java Web Tomcat 7) is the next simplified edition of Java Web application runtime container providing optimized performance particularly in the area of startup time and memory footprint.">Java Web Tomcat 7</a></div>
+<div><a class="link" href="fd6b72f17a11478e87fefe3f6ad2e30d.html" title="Java Web Apache Tomcat 8 (Java Web Tomcat 8) is the next edition of the Java Web application runtime container that has all characteristics and features of its predecessor Java Web Tomcat 7.">Java Web Tomcat 8</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

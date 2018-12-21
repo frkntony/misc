@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Checking the Availability of a Destination (Cockpit)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio87a1094923944b9692b8b671dd87d8a1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Checking the Availability of a Destination (Cockpit)</h1>
+
+	
+	<div class="body"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have logged into the cockpit and opened the <span class="ph uicontrol">Destinations</span>
+				editor.</p>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<div class="p">You can use the <span class="ph uicontrol">Check Connection</span> button in the
+					<span class="ph uicontrol">Destinations</span> editor of the cockpit to verify if the
+					<span class="ph uicontrol">URL</span> configured for a HTTP Destination is reachable and if
+				the connection to the specified system is possible. <div class="note note"><span class="notetitle">Note</span> This check is available
+					with <em class="ph i"><span class="ph pname">Cloud connector</span>
+						version 2.7.1 or higher</em>. </div>
+</div>
+
+			<p class="p">For each destination, the check button is available in the destination detail view
+				and in the destination overview list (icon <span class="ph uicontrol">Check availability of
+					destination connection</span> in section
+				<span class="ph uicontrol">Actions</span>).</p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> The check does not guarantee that a backend is operational. It only verifies
+					if a connection to the backend is possible. </div>
+
+			</div>
+
+			<p class="p">This check is supported only for destinations with <span class="ph uicontrol">Proxy Type</span>
+				<kbd class="ph userinput">Internet</kbd> and <kbd class="ph userinput">OnPremise</kbd>:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio87a1094923944b9692b8b671dd87d8a1__ul_dxp_q2w_w5">
+					<li class="li">For <span class="ph uicontrol">Internet</span> destinations: <ul class="ul" id="loio87a1094923944b9692b8b671dd87d8a1__ul_zmv_y2w_w5">
+							<li class="li">If the check receives a <strong class="ph b">HTTP status code above or equal to 500</strong> from the targeted
+								URL, the check is considered failed. </li>
+
+							<li class="li">Every HTTP status code below 500 is treated as successful. </li>
+
+						</ul>
+</li>
+
+				</ul>
+
+			</div>
+
+			<div class="p">
+				<ul class="ul" id="loio87a1094923944b9692b8b671dd87d8a1__ul_jgf_x2w_w5">
+					<li class="li">For <span class="ph uicontrol">OnPremise</span> destinations: <ul class="ul" id="loio87a1094923944b9692b8b671dd87d8a1__ul_wkr_1fw_w5">
+							<li class="li">If the targeted backend is reached and returns a <strong class="ph b">HTTP status code below 500</strong> the
+								check is considered successful. </li>
+
+						</ul>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Error Messages for OnPremise Destinations</div><div type="Error Messages for OnPremise Destinations">
+			
+			<p class="p"/>
+
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio87a1094923944b9692b8b671dd87d8a1__table_hf4_wmd_x5" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+						
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="33.33333333333333%" id="d6322374e152">
+									<p class="p">Error Message</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="33.33333333333333%" id="d6322374e158">
+									<p class="p">Reason</p>
+
+								</th>
+
+								<th class="entry" valign="top" width="33.33333333333333%" id="d6322374e164">Action</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e152 ">
+									<p class="p"><em class="ph i">Backend status could not be determined.</em></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e158 ">
+									<div class="p">
+										<ul class="ul">
+											<li class="li">The <span class="ph pname">Cloud connector</span>
+												version is less than 2.7.1.</li>
+
+											<li class="li">The <span class="ph pname">Cloud connector</span>
+												is not connected to the account.</li>
+
+											<li class="li">The backend returns a HTTP status code above or
+												equal to 500 (server error).</li>
+
+											<li class="li">The  <span class="ph pname">Cloud connector</span> is not configured properly.</li>
+
+										</ul>
+
+									</div>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e164 ">
+									<ul class="ul" id="loio87a1094923944b9692b8b671dd87d8a1__ul_xms_lk4_tv">
+										<li class="li">
+											<p class="p">Upgrade the <span class="ph pname">Cloud connector</span> to version 2.7.1 or higher.</p>
+
+										</li>
+
+										<li class="li">Connect the <span class="ph pname">Cloud connector</span> to the corresponding account.</li>
+
+										<li class="li">Check the server status (availability) of the backend
+											system.</li>
+
+										<li class="li">Check the basic <span class="ph pname">Cloud connector</span> configuration steps:<p class="p"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html">Initial Configuration</a></p>
+<p class="p"><a class="xref" href="de297ca9f7d04a8b83fea261f3fc3806.html">Configuring the Cloud Connector for HTTP</a></p>
+<p class="p"><a class="xref" href="04acd29726494b86b05ba0d60984ae6f.html">Configuring the Cloud Connector for RFC</a></p>
+</li>
+
+									</ul>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e152 ">
+									<p class="p"><em class="ph i">Backend is not available in the list of defined system mappings in <span class="ph pname">Cloud connector</span>.</em></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e158 ">
+									<p class="p">The  <span class="ph pname">Cloud connector</span> is
+										not configured properly.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e164 ">Check the basic <span class="ph pname">Cloud connector</span> configuration steps: <p class="p"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html">Initial Configuration</a></p>
+<p class="p"><a class="xref" href="de297ca9f7d04a8b83fea261f3fc3806.html">Configuring the Cloud Connector for HTTP</a></p>
+<p class="p"><a class="xref" href="04acd29726494b86b05ba0d60984ae6f.html">Configuring the Cloud Connector for RFC</a></p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e152 ">
+									<p class="p"><em class="ph i">Resource is not accessible in <span class="ph pname">Cloud connector</span> or backend is not reachable.</em></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e158 ">
+									<p class="p">The  <span class="ph pname">Cloud connector</span> is
+										not configured properly. </p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e164 ">Check the basic <span class="ph pname">Cloud connector</span> configuration steps: <p class="p"><a class="xref" href="db9170a7d97610148537d5a84bf79ba2.html">Initial Configuration</a></p>
+<p class="p"><a class="xref" href="de297ca9f7d04a8b83fea261f3fc3806.html">Configuring the Cloud Connector for HTTP</a></p>
+<p class="p"><a class="xref" href="04acd29726494b86b05ba0d60984ae6f.html">Configuring the Cloud Connector for RFC</a></p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e152 ">
+									<p class="p"><em class="ph i">Backend is not reachable from <span class="ph pname">Cloud connector</span>.</em></p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e158 ">
+									<p class="p"><span class="ph pname">Cloud connector</span>
+										configuration is ok but the backend is not reachable.</p>
+
+								</td>
+
+								<td class="entry" valign="top" width="33.33333333333333%" headers="d6322374e164 ">Check the backend (server) availability.</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<p class="p"/>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

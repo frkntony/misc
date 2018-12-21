@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The persistence service provides relational database storage for applications that are hosted on SAP Cloud Platform. This section introduces the key concepts of the persistence service and shows how you can use JPA and JDBC to manage relational data in your applications."/>
+<meta name="description" content="The persistence service provides relational database storage for applications that are hosted on SAP Cloud Platform. This section introduces the key concepts of the persistence service and shows how you can use JPA and JDBC to manage relational data in your applications."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Consuming the Persistence Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe785eb94bb571014bd1cd00f04acc641">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Consuming the Persistence Service</h1>
+
+	
+		<div class="body conbody"><p class="shortdesc">The persistence service provides relational database storage for applications that are
+		hosted on <span class="ph pname">SAP Cloud Platform</span>. This section introduces the key concepts
+		of the persistence service and shows how you can use JPA and JDBC to manage relational data
+		in your applications.</p>
+
+		<div class="p">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe785eb94bb571014bd1cd00f04acc641__table_wkh_rfk_24" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="23.980815347721823%"/><col width="76.01918465227818%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="23.980815347721823%" id="d11913433e33">Topic</th>
+
+							<th class="entry" valign="top" width="76.01918465227818%" id="d11913433e36">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="e4a34c43bb5710148321eb413bb59734.html" title="The tutorials provide an introduction to object-relational persistence using JPA 2.0, with EclipseLink as the persistence provider, and relational persistence using JDBC. JPA is considered the standard approach for developing applications for the SAP Cloud Platform, with container-managed persistence representing the model most commonly adopted by Web applications.">Tutorials</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Familiarize yourself with the JPA and JDBC technologies on <span class="ph pname">SAP Cloud Platform</span> by completing the tutorials.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="26805cc32a864b2d85af6d987a86a7b3.html" title="You can manage the database systems available in your account on SAP Cloud Platform.">Administering Database Systems</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Find out how to administer database systems.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Find out how to administer your applications' databases.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Find out how to administer your applications' database schemas.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="e7a837f4bb5710149251a99bcf22430b.html" title="JPA offers two main types of persistence, container-managed persistence and application-managed persistence, which differ in terms of the management and life cycle of the entity manager.">Programming with JPA</a><p class="p"><a class="xref" href="e79cfef4bb57101494cde44e48426511.html" title="Although JPA is suited for most application development scenarios and is the recommended approach on SAP Cloud Platform, there might be cases where the low-level control provided by JDBC is more appropriate.">Programming with Plain JDBC</a></p>
+<p class="p"><a class="xref" href="937ca0a472bb101490cf767db0e91070.html" title="The SAP HANA database allows tables to be created with row-based storage or column-based storage. By default, tables are created with row-based storage, but you can change the type of table storage you have applied, if necessary.">Creating SAP HANA Column-Store Tables</a></p>
+</td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Particular aspects about working with JPA and JDBC that were
+								introduced in the tutorials are explained in more detail.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="e820e184bb5710149196a0f47db853cd.html" title="The SQL trace provides a log of selected SQL statements with details about when a statement was executed and its duration, allowing you to identify inefficient SQL statements used in your applications and investigate performance issues. SQL trace records are integrated in the standard trace log files written at runtime.">Investigating Performance Issues Using the SQL Trace</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Activate the SQL trace to include SQL details in the standard
+								trace files. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="76134b64711e1014839a8273b0e91070.html" title="EclipseLink provides weaving as a means of enhancing JPA entities and classes for performance optimization. At present, SAP Cloud Platform supports static weaving only. Static weaving occurs at compile time and is available in both the Java Web and Java EE 6 Web Profile environments.">EclipseLink Weaving</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Enable static weaving in Eclipse.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="2a795b95e44c42d08c446893a07921db.html" title="Database instances in the cloud are protected by a firewall, in other words, they are not directly accessible. Access to remote database instances is therefore only possible through a database tunnel, which provides a secure connection from your local machine and bypasses the firewall.">Accessing Databases Remotely</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Access your database schema and tables in the cloud.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="bdf459ef3e1d4bf099705db9b8792140.html" title="If an application uses the default data source and runs locally on Apache Derby, provided as standard for local development, it can be tested on the local runtime without any further configuration. To use explicitly named data sources or a different database, you need to configure the connection.properties file appropriately.">Testing on the Local Runtime</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Check the configuration requirements for local testing.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="23.980815347721823%" headers="d11913433e33 "><a class="xref" href="e79118d4bb571014b7f5f236e083f336.html" title="Answers to some of the most commonly asked questions about the persistence service.">Frequently Asked Questions</a></td>
+
+							<td class="entry" valign="top" width="76.01918465227818%" headers="d11913433e36 ">Frequently asked questions about the persistence service</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+ 
+	 </div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e7b3c275bb571014a910b3fb4329cf09.html" title="Store data using in-memory and relational data persistence made available to your applications that run on SAP Cloud Platform by the persistence service. This ensures data availability and resiliency. In addition to managing and providing access to databases, the persistence service also performs other tasks such as backup, recovery and load balancing.">Persistence Service</a></div>
+<div><a class="link" href="920f2440fad245da93604c2623f0426a.html" title="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform.">Overview of Database Systems and Databases</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

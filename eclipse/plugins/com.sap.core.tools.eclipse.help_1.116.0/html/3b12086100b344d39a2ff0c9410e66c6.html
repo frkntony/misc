@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Accessible Resources</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3b12086100b344d39a2ff0c9410e66c6">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Accessible Resources</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">After installing a new <span class="ph pname">Cloud connector</span> in a
+			network, no systems or resources of the network have been exposed to the cloud yet. You
+			have to configure each system and resource that shall be used by applications of the
+			connected cloud account. To do this, choose <span class="ph uicontrol">Cloud To On Premise</span>
+			from your account menu and go to tab <span class="ph uicontrol">Access Control</span>: </p>
+
+		<p class="p"><img class="image" id="loio3b12086100b344d39a2ff0c9410e66c6__image_ihx_bwc_sn" width="1400px" src="loiocd562f20eb124d918cd33db28e3d5ca6_HiRes.png"/></p>
+
+		<p class="p">Thereby, any type of system that can be called via one of the supported protocols
+			(currently: HTTP and RFC), i.e. both SAP and non-SAP systems are supported. As an
+			example, a convenient way to access an ABAP system in a cloud application is to do this
+			via <a class="xref" href="http://help.sap.com/nwgateway" target="_blank" alt="http://help.sap.com/nwgateway" title="http://help.sap.com/nwgateway">SAP
+				NetWeaver Gateway</a>, as it allows consumption of ABAP content via HTTP and open
+			standards. </p>
+
+		<ul class="ul" id="loio3b12086100b344d39a2ff0c9410e66c6__ul_nmq_5wc_sn">
+			<li class="li">Detailed documentation on how HTTP resources are configured can be found here: <a class="xref" href="e7d4927dbb571014af7ef6ebd6cc3511.html">Configuring Access Control (HTTP)</a></li>
+
+			<li class="li">Detailed documentation on how RFC resources are configured can be found here: <a class="xref" href="ca5868997e48468395cf0ca4882f5783.html">Configuring Access Control (RFC)</a></li>
+
+		</ul>
+
+		<p class="p">We recommend that you narrow the access only to those backend services and resources that
+			are explicitly needed by the cloud applications. Instead of configuring, for example, a
+			system and granting access to all its resources, we recommend that you only grant access
+			to the concrete resources which are needed by the cloud application. For example, define
+			access to an HTTP service by specifying the service URL root path and allowing access to
+			all its sub-paths.</p>
+
+		<p class="p">When configuring an on-premise system, it is possible to define a virtual host and port
+			for the specified system, as shown in the screenshot below. The virtual host name and
+			port represent the fully-qualified domain name of the related system in the cloud. We
+			recommend that you use the virtual host name/port mapping in order to prevent from
+			leaking information about the physical machine name and port of an on-premise system and
+			thus – of your internal network infrastructure getting published to the cloud. </p>
+
+		<p class="p"/>
+
+		<p class="p"><img class="image" id="loio3b12086100b344d39a2ff0c9410e66c6__image_gfb_hxc_sn" src="loio44c68df85c3e4f3d9393b75ce54c9594_HiRes.png"/></p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

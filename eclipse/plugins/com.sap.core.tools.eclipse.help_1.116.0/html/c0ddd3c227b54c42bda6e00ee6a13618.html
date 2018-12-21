@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Multi-Target Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc0ddd3c227b54c42bda6e00ee6a13618">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Multi-Target Applications</h1>
+
+	<div class="body conbody">
+		<p class="p">Complex business applications are composed of multiple parts developed with focus on
+			micro-service design principles, API-management, usage of the OData protocol, increased
+			usage of application modules developed with different languages, IDEs, and build
+			methodologies. Thus, development, deployment, and configuration of separate elements
+			introduce a variety of lifecycle and orchestration challenges. To address these
+			challenges, SAP introduces the multi-target application (MTA) concept. It addresses the
+			complexity of continuous deployment by employing a formal target-independent application
+			model. </p>
+
+		<p class="p">An MTA comprises of multiple modules created with different technologies, deployed to different
+			target runtimes, but having a common lifecycle. Initially, developers describe the
+			modules of the application, the interdependencies to other modules, MTAs and services,
+			and required and exposed interfaces. Afterward, an MTA-aware application lifecycle
+			management framework validates, orchestrates, and automates the deployment of the MTA. </p>
+
+		<p class="p">You can use MTAs, for example, to transport applications  or to deploy
+			solutions on the <span class="ph pname">SAP Cloud Platform</span> using the cockpit.</p>
+
+		<p class="p">By using the YAML data serialization language, an MTA is described by a deployment descriptor
+			containing the
+			following:</p>
+
+		<ul class="ul" id="loioc0ddd3c227b54c42bda6e00ee6a13618__ul_i42_pqh_kw">
+			<li class="li">modules, which represent applications or content deployed on the platform</li>
+
+			<li class="li">resources, which are not part of an MTA, but are required by the modules at runtime
+				or at deployment time</li>
+
+			<li class="li">dependencies between modules and resources</li>
+
+		</ul>
+
+		<p class="p">The MTA deployment descriptor (<span class="ph filepath">mtad.yaml</span>) and module binaries are packaged
+			in a single archive (MTA archive). There could be more than one module of the same type
+			in an MTA archive.</p>
+
+		<p class="p">For more information about the Multi Target Application model, see the <a class="xref" href="http://help.sap.com/disclaimer?site=http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html" target="_blank" alt="http://help.sap.com/disclaimer?site=http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html" title="http://help.sap.com/disclaimer?site=http://go.sap.com/documents/2016/06/e2f618e4-757c-0010-82c7-eda71af511fa.html">Multi-Target Application Model</a> specification.</p>
+
+		<p class="p">Read the following sections for more details about which parts of the MTA specification are
+			currently supported in <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+		<ul class="ul" id="loioc0ddd3c227b54c42bda6e00ee6a13618__ul_a1q_dcd_bx">
+			<li class="li">
+				<p class="p"><a class="xref" href="fa6d21a5858f41f7bf8b4a5b4dad5140.html">MTA Deployment Descriptors and Module Types</a></p>
+
+			</li>
+
+			<li class="li">
+				<p class="p"><a class="xref" href="199e709818c443a88b3c31edfcf5db45.html">MTA Archive Structure</a></p>
+
+			</li>
+
+			<li class="li">
+				<p class="p"><a class="xref" href="8e51e1d16b0d4e0eba7f8233494db31f.html">МТА Extension Descriptors (Beta)</a></p>
+
+			</li>
+
+		</ul>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="29e1c4cbf2fc4067b8af1e454a232d3c.html" title="In the context of SAP Cloud Platform, a solution is comprised of various application types and configurations, designed to serve a certain scenario or task flow.">Solutions</a></div>
+<div><a class="link" href="f598f69a9be347029b7e5e7205fc7d1f.html" title="You can enable transport of SAP Cloud Platform applications using the enhanced Change and Transport System (CTS+) tool.">Change Management with CTS+</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

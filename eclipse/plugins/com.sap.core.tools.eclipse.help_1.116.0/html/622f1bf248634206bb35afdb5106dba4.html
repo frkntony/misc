@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Principal Propagation Using HTTP Proxy</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio622f1bf248634206bb35afdb5106dba4">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Principal Propagation Using HTTP Proxy</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">The HTTP Proxy can forward the identity of an on-demand user to the <span class="ph pname">Cloud connector</span>, and
+				from there – to the back-end of the relevant on-premise system. In this way,
+				on-demand users will no longer need to provide their identity every time they make
+				connections to on-premise systems via one and the same <span class="ph pname">Cloud connector</span>. To
+				propagate the logged-in user, an application must use the
+					<span class="keyword apiname">AuthenticationHeaderProvider</span> API to generate a header, which
+				then embeds in the HTTP request to the on-premise system.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Restrictions</div><div type="Restrictions">
+			
+			<ul class="ul" id="loio622f1bf248634206bb35afdb5106dba4__ul_cxp_wsy_jp">
+				<li class="li">IDPs used by applications protected by SAML2 have to be denoted as trustworthy for the
+						<span class="ph pname">Cloud connector</span>.</li>
+
+				<li class="li">Non-SAML2 protected applications have to be denoted themselves as trustworthy for the <span class="ph pname">Cloud connector</span>.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p"/>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+String proxyHost = System.getenv("HC_OP_HTTP_PROXY_HOST");
+int proxyPort = Integer.parseInt(System.getenv("HC_OP_HTTP_PROXY_PORT"));
+String account = System.getenv("HC_ACCOUNT");
+ 
+// setup the on-premise HTTP proxy
+HttpClient httpClient = new DefaultHttpClient();
+httpClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, new HttpHost(proxyHost, proxyPort));
+ 
+
+// look up the connectivity authentication header provider resource called "authHeaderProvider" (must be defined in web.xml)
+Context ctx = new InitialContext();
+AuthenticationHeaderProvider authHeaderProvider = (AuthenticationHeaderProvider) ctx.lookup("java:comp/env/authHeaderProvider");
+
+// get header for principal propagation
+AuthenticationHeader principalPropagationHeader = authHeaderProvider.getPrincipalPropagationHeader();
+ 
+//insert the necessary headers in the request
+HttpGet request = new HttpGet("http://virtualhost:1234");
+request.addHeader(principalPropagationHeader.getName(), principalPropagationHeader.getValue());
+request.addHeader("SAP-Connectivity-ConsumerAccount", account);
+ 
+// execute the request
+HttpResponse response = httpClient.execute(request);
+
+</pre></div>
+
+			<p class="p"/>
+
+			<div class="note note"><span class="notetitle">Note</span> You can also apply dependency injection by using the @Resource annotation.</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="df6c1ffd39f0451594d737cf7638ce00.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the authentication header provider via a JNDI lookup.">AuthenticationHeaderProvider API</a></div>
+<div><a class="link" href="d872cfb4801c4b54896816df4b75c75d.html">HTTP Proxy for On-Premise Connectivity</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

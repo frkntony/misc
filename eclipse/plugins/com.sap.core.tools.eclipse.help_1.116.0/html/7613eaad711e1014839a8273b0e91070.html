@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Setting Up SAP JVM in Eclipse IDE</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7613eaad711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Setting Up SAP JVM in Eclipse IDE</h1>
+<div class="body">
+		<div class="section" id="loio7613eaad711e1014839a8273b0e91070__section_E058FA28D878411AAA41784C98F96326"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">Once you have installed your SAP JVM, you can set it as a default JRE for your local
+				runtime. Follow the steps below. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have downloaded and installed SAP JVM, version <kbd class="ph userinput">7.1.011</kbd> or
+				higher.</p>
+
+		</div></div>
+</div>
+
+	<div class="topic concept nested1" id="concept_lwf_4mj_gy">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Set Up SAP JVM</div><div type="Set Up SAP JVM">
+				
+				<ol class="ol" id="concept_lwf_4mj_gy__ol_enq_5mj_gy">
+					<li class="li">In the Eclipse IDE main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Window</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Preferences</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Java</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Installed JREs</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+					<li class="li">Choose the <span class="ph uicontrol">Add</span> button.<p class="p"><kbd class="ph userinput">Standard
+								VM</kbd> is selected as the default JRE type. </p>
+</li>
+
+					<li class="li">Choose <span class="ph uicontrol">Next</span>.</li>
+
+					<li class="li">For the <span class="ph uicontrol">JRE home</span> field, choose the
+							<span class="ph uicontrol">Directory...</span> button and browse to the SAP JVM
+						folder within the folder to which you previously extracted the archive.</li>
+
+					<li class="li">Choose <span class="ph uicontrol">Finish</span>.</li>
+
+					<li class="li"> In the <span class="ph uicontrol">Preferences</span> window, choose
+							<span class="ph uicontrol">OK</span>. </li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Use SAP JVM as default in Eclipse IDE</div><div type="Use SAP JVM as default in Eclipse IDE">
+				
+				<p class="p">You can set SAP JVM as default or assign it to a specific <span class="ph pname">SAP Cloud Platform</span>
+					runtime.</p>
+
+				<ul class="ul" id="concept_lwf_4mj_gy__ul_p4t_zmj_gy">
+					<li class="li">
+						<p class="p">To use SAP JVM as default for your Eclipse IDE, follow the steps:</p>
+
+						<ol class="ol" id="concept_lwf_4mj_gy__ol_q4t_zmj_gy">
+							<li class="li">Open again the <span class="ph uicontrol">Preferences</span> window.</li>
+
+							<li class="li">Select <kbd class="ph userinput">sapjvm&lt;n&gt;</kbd> as default.</li>
+
+							<li class="li">Choose <span class="ph uicontrol">OK</span>.</li>
+
+						</ol>
+
+					</li>
+
+					<li class="li">
+						<p class="p">To use SAP JVM for launching local servers only, follow the steps:</p>
+
+						<ol class="ol" id="concept_lwf_4mj_gy__ol_r4t_zmj_gy">
+							<li class="li">Double-click on the local server you have created (<kbd class="ph userinput">Java
+									Web Server</kbd>, <kbd class="ph userinput">Java Web Tomcat 7
+									Server</kbd>, <kbd class="ph userinput">Java Web Tomcat 8
+									Server</kbd>, or <kbd class="ph userinput">Java EE 6 Web Profile
+									Server</kbd>).</li>
+
+							<li class="li">Open the <span class="ph uicontrol">Overview</span> tab and choose
+									<span class="ph uicontrol">Open launch configuration</span>.</li>
+
+							<li class="li">Select the <span class="ph uicontrol">JRE</span> tab.</li>
+
+							<li class="li">Choose the <span class="ph uicontrol">Alternative JRE</span> option.</li>
+
+							<li class="li">From the dropdown menu, select the SAP JVM version you have just
+								added.</li>
+
+							<li class="li">Choose <span class="ph uicontrol">OK</span>.</li>
+
+						</ol>
+
+					</li>
+
+				</ul>
+
+			</div></div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="76137f42711e1014839a8273b0e91070.html">(Optional) Installing SAP JVM</a></div>
+<div><a class="link" href="7614327c711e1014839a8273b0e91070.html">Updating SAP JVM</a></div>
+</div>
+</div>
+	</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

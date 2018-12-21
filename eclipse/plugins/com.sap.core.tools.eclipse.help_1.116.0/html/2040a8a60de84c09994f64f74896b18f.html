@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications."/>
+<meta name="description" content="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Administering Database Schemas</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2040a8a60de84c09994f64f74896b18f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Administering Database Schemas</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Each application deployed on <span class="ph pname">SAP Cloud Platform</span> can be assigned one
+		or more database schemas. A schema is associated with a particular account and is available
+		solely to applications within this account. A schema can be bound to multiple
+		applications.</p>
+
+		<p class="p">In a typical life cycle, a schema is created, bound, unbound, and deleted.</p>
+
+		<div class="section"><div class="section_title">Creation</div><div type="Creation">
+			
+			<p class="p">You can create schemas explicitly with a freely definable name and assign them
+				certain properties, such as a specific database type. The schema is independent of
+				any application and has to be explicitly bound. </p>
+
+			<p class="p">Schemas can also be created automatically for applications. If you have not explicitly bound a
+				schema to an application when it is deployed and started for the first time, a
+				schema is created and bound implicitly. This is the fallback behavior on <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<p class="p">Note that a schema ID is unique within an account. When a schema is created
+				automatically, an ID is also created based on a combination of the account and
+				application names and the suffix <span class="ph filepath">web</span>. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Binding</div><div type="Binding">
+			
+			<p class="p">Schemas can be bound to applications based on an explicitly named data source or
+				using the default data source. The main differences are as follows: </p>
+
+			<div class="p">
+				<ul class="ul" id="loio2040a8a60de84c09994f64f74896b18f__ul_opm_jxr_tk">
+					<li class="li">Explicitly named data source<p class="p">When you bind the schema to an application,
+							you specify a data source name. This establishes a named binding between
+							the schema and application and allows the schema to be addressed by the
+							application. The data source name is equivalent to the name used for the
+							JNDI lookup. </p>
+<p class="p">Named bindings allow an application to be bound to
+							more than one schema and, in turn, to use more than one database at the
+							same time. The databases can be distinguished by the binding
+						names.</p>
+</li>
+
+					<li class="li">Default data source<p class="p">The schema is bound to the application without an
+							explicitly specified data source name and is consequently associated
+							with the default data source. It can be addressed by the application by
+							any name. An application bound to the default data source cannot be
+							bound to any additional schemas. This applies when a schema was
+							automatically created and bound. </p>
+<p class="p">The use of the default data
+							source is a convenient option for applications that require only one
+							database. </p>
+</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">You can share a schema between applications by binding the same schema to more than
+				one application. Bear in mind the following when binding schemas to
+				applications:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio2040a8a60de84c09994f64f74896b18f__ul_unp_txr_tk">
+					<li class="li">An application’s bindings are based on either named data sources or the
+						default data source. An application cannot use a combination of the two
+						types of bindings. </li>
+
+					<li class="li">When named data sources are used, binding names must be unique per
+						application.</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">In the overview below, applications 1 and 2 have been explicitly bound to the
+				associated schemas, while application 3 uses a schema that was automatically created
+				and bound:</p>
+
+			<p class="p"><img class="image" id="loio2040a8a60de84c09994f64f74896b18f__image_k1n_nwv_5k" src="loioa75e1532bd8a435a921e1eac50959354_LowRes.png" alt="Schemas" title="Schemas"/></p>
+
+			<p class="p">Note that applications can also use schemas belonging to other accounts if they are
+				explicitly granted access permission.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Unbinding</div><div type="Unbinding">
+			
+			<p class="p">Unbind a schema from an application if the application no longer needs it. It can
+				still be used by other applications to which it is still bound. Before a schema can
+				be deleted, it has to be unbound from all applications. Schemas can only be deleted
+				if they no longer have any bindings.</p>
+
+			<p class="p">If an application is undeployed but was not unbound from the schema beforehand, the
+				schema will still be listed as bound to the application and will therefore still be
+				bound if the application is redeployed. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Deletion</div><div type="Deletion">
+			
+			<p class="p">You should drop a schema when it is no longer required or if you want to redeploy an
+				application from scratch. </p>
+
+			<p class="p">Before deleting a schema, you should explicitly remove any bindings that still exist
+				between the schema and an application. You can also remove all bindings by enforcing
+				the deletion of the schema. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">JNDI Lookup</div><div type="JNDI Lookup">
+			
+			<p class="p"> When using explicitly named data sources to create bindings between schemas and applications,
+				make sure that the data source names are the same as the JNDI names used in the
+				applications.</p>
+
+			<p class="p">Data sources are defined as resources in the <span class="ph filepath">web.xml</span> file, or as
+				JTA or non-JTA data sources in the <span class="ph filepath">persistence.xml</span> file in the
+				normal manner. Data sources can be referenced in the application code using a
+					<samp class="ph codeph">context.lookup</samp> or annotations (<samp class="ph codeph">@Resource</samp>,
+					<samp class="ph codeph">@PersistenceUnit</samp>, <samp class="ph codeph">@PersistenceContext</samp>). </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Java EE 6 Web Profile Runtime Environment</div><div type="Java EE 6 Web Profile Runtime Environment">
+			
+			<p class="p">When using explicitly named data sources in the Java EE 6 Web Profile runtime environment, you
+				need to create two additional bindings: </p>
+
+			<div class="p">
+				<ul class="ul" id="loio2040a8a60de84c09994f64f74896b18f__ul_p4l_2zr_tk">
+					<li class="li">A binding between the application and schema using a data source named
+							<span class="ph filepath">jdbc/defaultManagedDataSource</span></li>
+
+					<li class="li">A binding between the application and schema using a data source named
+							<span class="ph filepath">jdbc/defaultUnmanagedDataSource</span></li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7d8402ab04ae4e47bd7c11cdff309e4f.html" title="You create schemas for a selected account. Schemas have properties, such as a database type and database version, and are identified by an ID that is unique within the account. The schema is independent of any application.">Creating Schemas</a></div>
+<div><a class="link" href="5936fbafb1384df49dd9bba7cd71219d.html" title="To use a schema, you bind it to an application. Bindings are identified by a data source name, which must be unique per application. You can bind the same schema to multiple applications, and the same application to multiple schemas.">Binding Schemas</a></div>
+<div><a class="link" href="d531b2dd49904927a0327c9479edd2b7.html" title="Database schemas contain a database property, which determines on which database an application will run. Each account has a default database system.">Changing the Default Database System</a></div>
+<div><a class="link" href="7e5b0443011d4b46bac953d729eadd2c.html" title="The schema management scenarios outline the steps involved for the most typical use cases of schemas. To manipulate schemas, the scenarios use the console client together with the schema commands provided by the persistence service. The scenarios can also be performed from the cockpit in a similar manner.">Example Scenarios</a></div>
+<div><a class="link" href="75c8c6c129f2495682efb6f472791232.html" title="Schemas can normally only be used by applications within the same account. You can, however, allow applications belonging to other accounts controlled access to your account’s schemas. The other account might be one of your own accounts or a third-party account.">Accessing Schemas Across Accounts</a></div>
+<div><a class="link" href="da0bc050f8d449a78f500379eae6383a.html" title="The persistence service provides a set of console client commands for managing schemas. These allow you to create schemas with specific properties, bind and unbind schemas, delete schemas, and display information about schemas.">Schema Commands</a></div>
+<div><a class="link" href="73e8d4c514f14a399c25711dd43f6975.html" title="To test an application on the local server, you need to define any data sources the application uses as connection properties for the local database. This step is not necessary if the application uses the default data source.">Configuring Data Sources As Connection Properties</a></div>
+<div><a class="link" href="6cc1db5f30214321833fc8ca77e4ee8f.html" title="You can create databases, bind them to applications running on SAP Cloud Platform, and delete them.">Administering Databases</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

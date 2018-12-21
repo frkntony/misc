@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Answers to some of the most commonly asked questions about the persistence service."/>
+<meta name="description" content="Answers to some of the most commonly asked questions about the persistence service."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Frequently Asked Questions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe79118d4bb571014b7f5f236e083f336">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Frequently Asked Questions</h1>
+
+	<div class="body refbody"><p class="shortdesc">Answers to some of the most commonly asked questions about the persistence
+		service.</p>
+
+		<div class="section" id="loioe79118d4bb571014b7f5f236e083f336__section_2D71C3DCBFB74D3EA7EE20FFD07C90FC"><div class="section_title">Which database platforms are available in the cloud?</div><div type="Which database platforms are available in the cloud?">
+			
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> offers SAP ASE and
+				SAP HANA databases. For more information, see <a class="xref" href="920f2440fad245da93604c2623f0426a.html" title="SAP Cloud Platform account administrators can create databases on database management systems in their account. Developers can bind databases to applications running on SAP Cloud Platform.">Overview of Database Systems and Databases</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loioe79118d4bb571014b7f5f236e083f336__section_482D74BC95A04F038DF26AB86742A0A4"><div class="section_title">Does the persistence service provide access to a NoSQL database?</div><div type="Does the persistence service provide access to a NoSQL database?">
+			
+			<p class="p">The persistence service currently provides access to a relational database only. </p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">How can I monitor my database?</div><div type="How can I monitor my database?">See <a class="xref" href="b02814df3acf42d3b41c18c99ad35c27.html" title="In the cockpit, you can view the current metrics of a selected database system to get information about its health state. You can also view the metrics history of a productive database to examine the performance trends of your database over different intervals of time or investigate the reasons that have led to problems with it. You can view the metrics for all types of databases.">Viewing Monitoring Metrics of a Database System</a>.</div></div>
+
+		<div class="section"><div class="section_title">How can I restart database systems?</div><div type="How can I restart database systems?">
+			
+			<p class="p">See <a class="xref" href="10a8b11bdd9c4a84a26e00ec98b54e97.html" title="If your databases are not working properly, you can try to solve the issues by restarting the corresponding SAP HANA or SAP ASE database system. The restart is done for the whole database system.">Restarting Database Systems</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">How can I update database systems?</div><div type="How can I update database systems?">See <a class="xref" href="93f9728df6c842d1aed4bcab3ecd44c1.html" title="Learn about the activities that you need to perform to update your SAP HANA database systems.">Updating Database Systems</a>.</div></div>
+
+		<div class="section" id="loioe79118d4bb571014b7f5f236e083f336__section_C259DB09B9914D9083C339F5AC68B67E"><div class="section_title">How often does a backup occur? How much data can I lose in the worst case?</div><div type="How often does a backup occur? How much data can I lose in the worst case?">
+			
+			<p class="p">For productive databases, a full data backup is done once a day. Log backup is
+				triggered at least every 30 minutes. The corresponding data or log backups are
+				replicated to a secondary location every two hours. Backups are kept (complete data
+				and log) on a primary location for the last two backups and on a secondary location
+				for the last 14 days. Backups are deleted afterwards. Recovery is therefore only
+				possible within a time frame of 14 days. Restoring the system from files on a
+				secondary location might take some time depending on the availability. For more
+				information, see <a class="xref" href="fc379ef5efaf493cb619806f8a315cd5.html" title="If your database system is corrupt, you can perform a point-in-time restore by creating a service request in the cockpit.">Restoring Database Systems</a> and <a class="xref" href="f4ad65ddc06444a3a3641b2da2767a96.html" title="If your database is corrupt, you can perform a point-in-time restore by creating a service request in the cockpit.">Restoring Databases</a>. </p>
+
+			<p class="p">SAP offers to back up and recover shared and dedicated database systems only as a
+				whole.</p>
+
+			<p class="p">For new database offerings such as SAP ASE and SAP HANA databases with multitenant
+				database container (MDC) support (beta), you can operate several databases in the
+				same database system and recover them individually. Thus, when binding applications
+				to databases, you can achieve a fine grained control of the backup and recovery.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Are backup and restore functionalities available as self-services?</div><div type="Are backup and restore functionalities available as self-services?">
+			
+			<p class="p">No. Backup and restore activities are currently handled by SAP Operations. </p>
+
+		</div></div>
+
+		<div class="section" id="loioe79118d4bb571014b7f5f236e083f336__section_D183F6BAC45C44BABE114E7F227EF1D5"><div class="section_title">I am using JPA with EclipseLink and have denoted a property of type String with @Lob. Why is a VARCHAR column of limited length created in the database?</div><div type="I am using JPA with EclipseLink and have denoted a property of type String with @Lob. Why is a VARCHAR column of limited length created in the database?">
+			
+			<p class="p">Due to the EclipsLink <a class="extlink" href="http://help.sap.com/disclaimer?site=https://bugs.eclipse.org/bugs/show_bug.cgi?id=317597" target="_blank" alt="https://bugs.eclipse.org/bugs/show_bug.cgi?id=317597" title="https://bugs.eclipse.org/bugs/show_bug.cgi?id=317597">bug
+					317597<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>, the @Lob annotation is ignored when the corresponding table
+				column is created in the database. To enforce the creation of a CLOB column, you
+				have to additionally specify @Column(length=4001) for the property concerned. In
+				fact, any value may be chosen as long as it is at least 4001 for SAP MaxDB or 2001
+				for the SAP HANA database. </p>
+
+		</div></div>
+
+		<div class="section" id="loioe79118d4bb571014b7f5f236e083f336__section_CE772C72A59F461083E2BDCDEDB4DD81"><div class="section_title">I tested my app locally with the Apache Derby database, so why do I run into SQL exceptions when deploying it in the cloud?</div><div type="I tested my app locally with the Apache Derby database, so why do I run into SQL exceptions when deploying it in the cloud?">
+			
+			<p class="p">Different database systems use different system tables and reserved words. As an
+				application developer, make sure that the application does not use any of these
+				reserved words for its own table and column names. </p>
+
+			<div class="p">JPA does also not shield the application from this. If, for example, your entity
+				class contains an attribute named "date", this will clash with the reserved word
+				DATE on SAP MaxDB and cause schema creation to fail upon deployment. In such a case,
+				the attribute should either be renamed to something else, or be mapped to another
+				column name in the database. This can be done using the @Column annotation like
+				this: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Column(name="THEDATE")
+private String date;
+</pre></div>
+
+			</div>
+
+			<p class="p">Tips: </p>
+
+			<ul class="ul">
+				<li class="li">
+					<p class="p">Check the root cause in the application log. (A link to the log is provided
+						in the application overview in the cockpit. For more information, see <a class="xref" href="2555df65182c4b09a25e56fa3b57b0a8.html" title="You can view the logs and change the log settings of any applications deployed in your account. The cockpit provides the following types of logs: default trace logs, HTTP access logs, and garbage collection logs.">Using Logs in the Cockpit</a>.) </p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">For a complete list of reserved words, refer to the relevant database
+						documentation (<a class="extlink" href="http://help.sap.com/disclaimer?site=http://maxdb.sap.com/doc/7_8/10/5701a7bbd847fc83e76373b1c609b8/frameset.htm" target="_blank" alt="http://maxdb.sap.com/doc/7_8/10/5701a7bbd847fc83e76373b1c609b8/frameset.htm" title="http://maxdb.sap.com/doc/7_8/10/5701a7bbd847fc83e76373b1c609b8/frameset.htm">SAP MaxDB SQL Reference Manual<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>, <a class="extlink" href="http://help.sap.com/disclaimer?site=http://db.apache.org/derby/manuals/index.html#docs_10.5" target="_blank" alt="http://db.apache.org/derby/manuals/index.html#docs_10.5" title="http://db.apache.org/derby/manuals/index.html#docs_10.5">Apache Derby Documentation<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>). </p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

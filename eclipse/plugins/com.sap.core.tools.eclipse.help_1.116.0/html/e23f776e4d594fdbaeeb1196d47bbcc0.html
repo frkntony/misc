@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Prerequisites</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe23f776e4d594fdbaeeb1196d47bbcc0">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Prerequisites</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__section_N10017_N10011_N10001">
+			<p class="p">The listed prerequisites below need to be fulfilled for successful installation of the <span class="ph pname">Cloud connector</span>
+				2.x.</p>
+
+		</div>
+
+		<div class="section" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__section_N10024_N10011_N10001"><div class="section_title">Connectivity Restrictions</div><div type="Connectivity Restrictions">
+			
+			<p class="p">For general information about <span class="ph pname">SAP Cloud Platform</span> restrictions,
+				see <a class="xref" href="e6ddaefcbb571014b70fa01fc6a3f818.html">Product Prerequisites and Restrictions</a>.</p>
+
+			<p class="p">For specific information about all connectivity restrictions, see <a class="xref" href="e54cc8fbbb571014beb5caaf6aa31280.html">SAP Cloud Platform Connectivity</a> → section "Restrictions".</p>
+
+		</div></div>
+
+		<div class="section" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__section_N10039_N10011_N10001"><div class="section_title">Hardware</div><div type="Hardware">
+			
+			<p class="p">Hardware prerequisites, physical or virtual machine: </p>
+
+			<ul class="ul" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__ul_wnv_4qv_5j">
+				<li class="li"><span class="ph uicontrol">Memory</span>: mininum 1 GB RAM, 4 GB recommended </li>
+
+				<li class="li"><span class="ph uicontrol">Hard disk space</span>: minimum 1 GB, recommended 20 GB </li>
+
+				<li class="li"><span class="ph uicontrol">CPU</span>: minimum single core 3 GHz, dual core 2 GHz
+					recommended, x86-64 architecture compatible </li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__section_N10068_N10011_N10001"><div class="section_title">Software</div><div type="Software">
+			
+			<ul class="ul" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__ul_rmv_4qv_5j">
+				<li class="li">You have downloaded the <span class="ph pname">Cloud connector</span>
+					installation archive from <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">SAP
+						Development Tools for Eclipse</a>.</li>
+
+				<li class="li">A JDK 7 or 8 needs to be installed. Due to problems with expired root CA certificates
+					contained in older patch levels of JDK <span class="ph emphasis emphasis">7</span>, we recommend that
+					you install the most recent patch level. An up-to-date SAP JVM can be downloaded
+					from the <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">SAP Development Tools for Eclipse</a> page as well.</li>
+
+			</ul>
+
+			<div class="note caution"><span class="cautiontitle">Caution</span> Do not use <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tomcat.apache.org/tomcat-7.0-doc/apr.html" target="_blank" alt="http://tomcat.apache.org/tomcat-7.0-doc/apr.html" title="http://tomcat.apache.org/tomcat-7.0-doc/apr.html">Apache
+					Portable Runtime (APR)<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> on the system on which you use the <span class="ph pname">Cloud connector</span>. If you
+				cannot avoid this restriction and want to use APR at your own risk, you need to
+				manually adopt the <span class="keyword cmdname">default-server.xml</span> configuration file in
+				directory
+					<span class="ph filepath">&lt;scc_installation_folder&gt;/config_master/org.eclipse.gemini.web.tomcat</span>.
+				To do so, follow the documentation of the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support" target="_blank" alt="http://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support" title="http://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">HTTPS port configuration<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> for APR.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Supported JDKs</div><div type="Supported JDKs">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__table_xwn_h55_rp" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e145">JDK</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e148">Version</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e151"><span class="ph pname">Cloud Connector</span>
+								Version</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" rowspan="2" valign="top" width="33.33333333333333%" headers="d10705513e145 ">SAP JVM 64-bit (recommended)<p class="p"/>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e148 ">7</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e151 ">2.x</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e148 ">
+								<p class="p">8</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e151 ">2.7.2 and higher</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="2" valign="top" width="33.33333333333333%" headers="d10705513e145 ">Oracle JDK 64-bit<p class="p"/>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e148 ">7</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e151 ">2.x</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e148 ">
+								<p class="p">8</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e151 ">
+								<p class="p">2.7.2 and higher</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Network</div><div type="Network">
+			
+			<p class="p">You need to have Internet connection at least to the following hosts (depending on
+				the data center), to which you can connect your <span class="ph pname">Cloud connector</span>:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__table_alp_ztm_fp" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e242">Data Center (Landscape host)</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e245">Hosts</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e248">IP Addresses</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">Europe<p class="p">(<kbd class="ph userinput">hana.ondemand.com</kbd>)</p>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">155.56.210.83</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">155.56.210.43</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">155.56.210.84</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">United States
+										East<p class="p">(<kbd class="ph userinput">us1.hana.ondemand.com</kbd>)</p>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.us1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">65.221.12.40</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.us1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">65.221.12.241</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.us1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">65.221.12.41</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">United States
+										West<p class="p">(<kbd class="ph userinput">us2.hana.ondemand.com</kbd>)</p>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.us2.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">64.95.110.215</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.us2.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">64.95.110.211</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.us2.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">64.95.110.214</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">Asia-Pacific
+										(Australia)<p class="p">(<kbd class="ph userinput">ap1.hana.ondemand.com</kbd>)</p>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.ap1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">210.80.140.247</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.ap1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">210.80.140.227</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.ap1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">210.80.140.246</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">China
+										<p class="p">(<kbd class="ph userinput">cn1.hana.ondemand.com</kbd>)</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.cn1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">157.133.192.140</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.cn1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">157.133.192.132</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.cn1.hana.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">157.133.192.141</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">Japan<p class="p">(<kbd class="ph userinput">jp1.hana.ondemand.com</kbd> )
+								</p>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.jp1.hana.ondemand.com </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">157.133.150.140</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.jp1.hana.ondemand.com </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">157.133.150.132</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.jp1.hana.ondemand.com </td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">157.133.150.141</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" rowspan="3" valign="top" width="33.33333333333333%" headers="d10705513e242 ">Trial (Europe
+										only)<p class="p">(<kbd class="ph userinput">hanatrial.ondemand.com</kbd>)</p>
+</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitynotification.hanatrial.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">155.56.219.26</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitycertsigning.hanatrial.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">155.56.219.22</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e245 ">connectivitytunnel.hanatrial.ondemand.com</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e248 "><span class="keyword parmname">155.56.219.27</span></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"/>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">If you install the <span class="ph pname">Cloud connector</span>
+						in a network segment that is isolated from the backend systems, you need to
+						make sure that the exposed hosts and ports are still reachable and open them
+						in the firewall protecting them:</p>
+
+					<div class="p">
+						<ul class="ul">
+							<li class="li">for HTTP, these are the ports you chose for the HTTP/S server. </li>
+
+							<li class="li">for LDAP, it is the port of the LDAP server.</li>
+
+							<li class="li">in case of RFC it depends on whether you use a SAProuter or not and
+								whether load balancing is used: <ul class="ul" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__ul_vf5_csc_5y">
+									<li class="li">if you use a SAProuter, it is typically setup in a way that
+										it is visible already in the network of the <span class="ph pname">Cloud connector</span> and the corresponding <em class="ph i">routtab</em> is exposing all the
+										systems that shall be used. </li>
+
+									<li class="li">without SAProuter, the application server hosts and the
+										corresponding gateway ports (33##, 48##) need to be opened
+										and when using load balancing for the connection, the
+										message server host and port needs to be opened in
+										addition.</li>
+
+								</ul>
+</li>
+
+						</ul>
+
+					</div>
+
+					<p class="p">For more information about the used ABAP server ports, see also: <a class="xref" href="http://help.sap.com/saphelp_nw75/helpdata/en/4e/c26cdc58e968b9e10000000a42189e/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_nw75/helpdata/en/4e/c26cdc58e968b9e10000000a42189e/frameset.htm" title="http://help.sap.com/saphelp_nw75/helpdata/en/4e/c26cdc58e968b9e10000000a42189e/frameset.htm">Ports of SAP NetWeaver Application Server
+							ABAP</a>.</p>
+
+				</div>
+
+			</div>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Product Availability Matrix</div><div type="Product Availability Matrix">
+			
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe23f776e4d594fdbaeeb1196d47bbcc0__table_gfv_spt_fm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e603">Operating System Version</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e606">Architecture</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d10705513e609"><span class="ph pname">Cloud Connector</span>
+								Version</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">Windows 7, Windows Server 2008 R2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">x86_64</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">2.x</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">
+								<p class="p">SUSE Linux Enterprise Server 11, Redhat Enterprise Linux 6</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">x86_64</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">2.x</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">Mac OS X 10.7 (Lion), Mac OS X 10.8 (Mountain Lion)</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">x86_64</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">2.x</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">Windows 8.1, Windows Server 2012, Windows Server 2012 R2</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">x86_64</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">2.5.1 and higher</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">SUSE Linux Enterprise Server 12, Redhat Enterprise Linux
+								7</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">x86_64</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">2.5.1 and higher</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">Mac OS X 10.9 (Mavericks), Mac OS X 10.10 (Yosemite)</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">x86_64</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">2.5.1 and higher</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">
+								<p class="p">Windows 10 </p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">
+								<p class="p">x86_64</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">
+								<p class="p"> 2.7.2 and higher </p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e603 ">
+								<p class="p">Mac OS X 10.11 (El Capitan)</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e606 ">
+								<p class="p">x86_64</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d10705513e609 ">
+								<p class="p">2.8.1 and higher</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="204aaad4270245f3baa0c57c8ab1dd60.html">Installation on Microsoft Windows OS</a></div>
+<div><a class="link" href="f069840fa34c4196a5858be33a2734ea.html">Installation on Linux OS</a></div>
+<div><a class="link" href="6c3eec1350e04d4fab801263e26ad939.html">Installation on Mac OS X</a></div>
+<div><a class="link" href="e7ea82a4bb571014a4ceb61cb7e3d31f.html">Recommendations for Secure Setup</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

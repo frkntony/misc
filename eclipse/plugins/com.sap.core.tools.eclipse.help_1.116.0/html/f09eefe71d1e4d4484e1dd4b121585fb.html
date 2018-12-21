@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Initial Configuration (RFC)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof09eefe71d1e4d4484e1dd4b121585fb">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Initial Configuration (RFC)</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loiof09eefe71d1e4d4484e1dd4b121585fb__section_N1001A_N10011_N10001"><div class="section_title">SNC Configuration for Mutual Authentication</div><div type="SNC Configuration for Mutual Authentication">
+			
+			<p class="p">To set up a mutual authentication between <span class="ph pname">Cloud connector</span> and an
+				ABAP back-end system (connected via RFC), you can configure SNC for the <span class="ph pname">Cloud connector</span>. It
+				will then use the associated PSE for all RFC SNC requests. This means that the SNC
+				identity, represented by this PSE needs to:</p>
+
+			<ul class="ul" id="loiof09eefe71d1e4d4484e1dd4b121585fb__ul_rgd_gzx_hk">
+				<li class="li">Be trusted by all back-end systems to which the <span class="ph pname">Cloud connector</span> is
+					supposed to connect;</li>
+
+				<li class="li">Play the role of a trusted external system by adding the SNC name of the <span class="ph pname">Cloud connector</span> to
+					the SNCSYSACL table. You can find more details in the SNC configuration
+					documentation for the release of your ABAP system.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">You have configured your ABAP system(s) for SNC. For detailed
+			information on configuring SNC for an ABAP system, see also <a class="xref" href="http://help.sap.com/saphelp_nw75/helpdata/en/0d/482bb8013243f1b6e2439091e3022f/content.htm" target="_blank" alt="http://help.sap.com/saphelp_nw75/helpdata/en/0d/482bb8013243f1b6e2439091e3022f/content.htm" title="http://help.sap.com/saphelp_nw75/helpdata/en/0d/482bb8013243f1b6e2439091e3022f/content.htm">Configuring SNC on AS ABAP</a>. In order to establish trust for
+			Principal Propagation, follow the steps described in  <a class="xref" href="33a2f37b0f1e4b6d869ab85c8427db1b.html">Configuring Principal Propagation to an ABAP System for RFC</a>.<p class="p"/>
+</div></div>
+
+		<div class="section" id="loiof09eefe71d1e4d4484e1dd4b121585fb__section_N10034_N10011_N10001"><div class="section_title">Configuration Steps</div><div type="Configuration Steps">
+			
+			<div class="p">
+				<ol class="ol">
+					<li class="li">Logon to the <span class="ph pname">Cloud connector</span></li>
+
+					<li class="li">Choose <span class="ph uicontrol">Configuration</span> from the main menu and go to tab <span class="ph uicontrol">On
+							Premise</span>, section <span class="ph uicontrol">SNC</span>.</li>
+
+					<li class="li">Enter the corresponding values in the fields <span class="ph uicontrol">Library Name</span>,
+							<span class="ph uicontrol">My Name</span> and <span class="ph uicontrol">Quality of
+							Protection</span></li>
+
+					<li class="li">Press <span class="ph uicontrol">Save</span>.<p class="p"><strong class="ph b">Example:</strong></p>
+<p class="p"><img class="image" id="loiof09eefe71d1e4d4484e1dd4b121585fb__image_qbv_21y_hk" width="1400px" src="loio08f7cad9c25743d08089b92cf8d7a154_HiRes.png" alt="RFC - SNC configuration" title="RFC - SNC configuration"/></p>
+<div class="p">
+							<ul class="ul" id="loiof09eefe71d1e4d4484e1dd4b121585fb__ul_w3g_1tv_wt">
+								<li class="li"><span class="ph uicontrol">Library Name</span>: Provides the location of
+									the SNC library you are using for the <span class="ph pname">Cloud connector</span>. <div class="note note"><span class="notetitle">Note</span> Bear in mind that you must use one and the same
+										security product on both sides of the
+									communication.</div>
+</li>
+
+								<li class="li"><span class="ph uicontrol">My Name</span>: The SNC name that identifies the
+										<span class="ph pname">Cloud connector</span>. It represents a valid scheme for the SNC implementation that
+									is used.</li>
+
+								<li class="li"><span class="ph uicontrol">Quality of Protection</span>: Determines the level of protection that
+									you require for the connectivity to the ABAP systems.</li>
+
+							</ul>
+
+						</div>
+</li>
+
+				</ol>
+
+			</div>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> When using <span class="ph emphasis emphasis">CommonCryptoLibrary</span> as SNC implementation,
+					note <a href="http://help.sap.com/disclaimer?site=https://launchpad.support.sap.com/#/notes/1525059" target="_blank">1525059 <img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> will help you to configure the PSE to be
+					associated with the user running the <span class="ph pname">Cloud connector</span>
+					process.</div>
+
+			</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="33a2f37b0f1e4b6d869ab85c8427db1b.html">Configuring Principal Propagation to an ABAP System for RFC</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

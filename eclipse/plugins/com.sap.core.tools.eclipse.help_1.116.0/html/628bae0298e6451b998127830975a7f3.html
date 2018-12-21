@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Invoking ABAP Function Modules via RFC Protocol</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio628bae0298e6451b998127830975a7f3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Invoking ABAP Function Modules via RFC Protocol</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loio628bae0298e6451b998127830975a7f3__section_N1001A_N10011_N10001x"><div class="section_title">Installation Prerequisites</div><div type="Installation Prerequisites">
+			
+			<ul class="ul" id="loio628bae0298e6451b998127830975a7f3__ul_jpy_fyw_jk">
+				<li class="li"> To provide connectivity tunnel via RFC destinations, your <span class="ph pname">Cloud connector</span>
+					version needs to be at least <kbd class="ph userinput">1.3.0</kbd>.</li>
+
+				<li class="li"> To develop a JCo application, your SDK version needs to be <kbd class="ph userinput">1.29.18</kbd>
+						(<span class="ph uicontrol">SDK Java Web</span>), or <kbd class="ph userinput">2.11.6</kbd>
+						(<span class="ph uicontrol">SDK for Java EE 6 Web Profile</span>). Also, your SDK local
+					runtime needs to be hosted by a 64-bit JVM. SDKs of Tomcat 7 and Tomcat 8
+					runtime support JCo from the very beginning.<p class="p">On Windows platforms, you need to
+						install <span class="ph uicontrol">Microsoft Visual C++ 2010 Redistributable Package
+							(x64)</span>. To download this package, go to <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.microsoft.com/en-us/download/details.aspx?id=14632" target="_blank" alt="http://www.microsoft.com/en-us/download/details.aspx?id=14632" title="http://www.microsoft.com/en-us/download/details.aspx?id=14632">http://www.microsoft.com/en-us/download/details.aspx?id=14632<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section" id="loio628bae0298e6451b998127830975a7f3__section_N1001A_N10011_N10001"><div class="section_title">Consuming Connectivity via RFC</div><div type="Consuming Connectivity via RFC">
+			
+			<p class="p">You can call a service from a fenced customer network using a simple application which
+				consumes a simple on-premise remote-enabled function module. </p>
+
+			<p class="p">The invocation of function modules via RFC is offered via the JCo API like the one available
+				in SAP NetWeaver Application Server Java since version 7.10, and in JCo standalone
+				3.0. If you are an experienced JCo developer, you can easily develop a Web
+				application using JCo: you simply consume the APIs like you do in other Java
+				environments. Restrictions that apply in the cloud environment are mentioned in the
+					<span class="ph emphasis emphasis">Restrictions</span> section below.</p>
+
+			<p class="p"/>
+
+			<p class="p">To see a sample Web application, see <a class="xref" href="0a238b915b3a48adb950e5807654226c.html">Tutorial: Invoking ABAP Function Modules in On-Premise ABAP Systems</a>. </p>
+
+		</div></div>
+
+		<div class="section" id="loio628bae0298e6451b998127830975a7f3__section_N10027_N10011_N10001"><div class="section_title">Configuring Connectivity via RFC</div><div type="Configuring Connectivity via RFC">
+			
+			<p class="p"/>
+
+			<ul class="ul" id="loio628bae0298e6451b998127830975a7f3__ul_n5p_h3y_1k">
+				<li class="li">Configuring applications to use RFC destinations. <p class="p">For more information, see <a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a> and <a class="xref" href="e184daba118b46679c6968567bacc98e.html">RFC Destinations</a>.</p>
+</li>
+
+				<li class="li">Configuring connectivity between a back-end system and an on-demand application. You need to
+					install the <span class="ph pname">Cloud connector</span> in
+					your internal network and then configure it to expose a remote-enabled function
+					module in an on-premise ABAP system. <p class="p">For more information, see <a class="xref" href="04acd29726494b86b05ba0d60984ae6f.html">Configuring the Cloud Connector for RFC</a>.</p>
+</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loio628bae0298e6451b998127830975a7f3__section_N1004B_N10011_N10001"><div class="section_title">Restrictions</div><div type="Restrictions">
+			
+			<ul class="ul" id="loio628bae0298e6451b998127830975a7f3__ul_zzc_43y_1k">
+				<li class="li"><span class="ph uicontrol">JCoServer</span> functionality cannot be used within <span class="ph pname">SAP Cloud Platform</span>.</li>
+
+				<li class="li">Environment embedding, such as offered by JCo standalone 3.0, is not possible. This is,
+					however, similar to SAP NetWeaver AS Java.</li>
+
+				<li class="li">Currently, a stateful sequence of function module invocations needs to occur in a single
+					HTTP request/response cycle.</li>
+
+				<li class="li">Initially, only a logon with user/password credentials is supported.</li>
+
+				<li class="li">Provider/subscription model for applications is not fully supported. If you still want to
+					use it, you need to make sure that destinations are named differently in all
+					accounts.</li>
+
+				<li class="li">The supported set of configuration properties is restricted. For more
+					information, see <a class="xref" href="e184daba118b46679c6968567bacc98e.html">RFC Destinations</a>.</li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d917276b236f45f9960442bebf262dab.html">SAP Java Connector API</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

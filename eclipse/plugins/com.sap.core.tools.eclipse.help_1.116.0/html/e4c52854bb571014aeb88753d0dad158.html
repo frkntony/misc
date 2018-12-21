@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This step-by-step tutorial shows how you can use JDBC to persist data in a simple Java EE web application that manages a list of persons."/>
+<meta name="description" content="This step-by-step tutorial shows how you can use JDBC to persist data in a simple Java EE web application that manages a list of persons."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Adding Persistence with JDBC (Java Web SDK)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe4c52854bb571014aeb88753d0dad158">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Adding Persistence with JDBC (Java Web SDK)</h1>
+
+	<div class="body conbody"><p class="shortdesc">This step-by-step tutorial shows how you can use JDBC to persist data in a simple Java
+		EE web application that manages a list of persons.</p>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_2B655567553A4612B06B8BC0DA715A30">
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loioe4c52854bb571014aeb88753d0dad158__table_oh4_3m3_ln" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" valign="top" width="50%" id="d11020635e30">Steps</th>
+
+								<th class="entry" valign="top" width="50%" id="d11020635e33">Sample Application</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_prereq">Prerequisites</a></td>
+
+								<td class="entry" rowspan="10" valign="middle" width="50%" headers="d11020635e33 ">
+									<p class="p">The application is also available as a sample in the SDK for
+										Java Web:</p>
+
+									<p class="p">Sample name: <span class="ph filepath">persistence-with-jdbc</span></p>
+
+									<p class="p">Location: <span class="ph filepath">&lt;sdk&gt;/samples</span> folder</p>
+
+									<p class="p">More information: <a class="xref" href="937ce0d172bb101490cf767db0e91070.html" title="The sample applications allow you to explore the core functionality of SAP Cloud Platform and show how this functionality can be used to develop more complex Web applications. The samples are included in the SDK or presented as blogs in the SCN community.">Samples</a></p>
+
+								</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_webProject">1. Create a Dynamic Web Project and Servlet</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_personEntity">2. Create the Person Entity</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_personDAO">3. Create the Person DAO</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_jdbcPrep">4. Prepare the Web Application Project for JDBC</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_servlet">5. Extend the Servlet to Use Persistence</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_testLocal">6. Test the Web Application on the Local Server</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_deployCloud">7. Deploy Applications Using Persistence on the Cloud from Eclipse IDE</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_configureAppsCockpit">8. Configure Applications Using the Cockpit</a></td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d11020635e30 "><a class="xref" href="e4c52854bb571014aeb88753d0dad158.html#loioe4c52854bb571014aeb88753d0dad158__section_startAppsEclipse">9. Start Applications Using Eclipse</a></td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> The tutorial is based on the <span class="ph emphasis emphasis">SDK for Java Web</span>.</div>
+
+			</div>
+
+		</div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_prereq"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<div class="p">
+				<ul class="ul" id="loioe4c52854bb571014aeb88753d0dad158__ul_rdk_5hs_lx">
+					<li class="li">You have downloaded and set up your Eclipse IDE, <span class="ph pname">SAP Cloud Platform</span>
+						Tools for Java, and SDK. For more information, see <a class="xref" href="e815ca4cbb5710148376c549fd74c0db.html">Setting Up the Development Environment</a>.<div class="note note"><span class="notetitle">Note</span> You need to install the <span class="ph emphasis emphasis">SDK for Java
+								Web</span>.</div>
+</li>
+
+					<li class="li">You have created a database. If you use an account on the trial landscape, you need to
+						create a HANA MDC tenant database.For more information, see <a class="xref" href="533384eda57e428f98a43815e6a11119.html" title="Use the cockpit to create databases on database management systems in your account and assign properties like database size.">Creating Databases</a>. </li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_webProject"><div class="section_title">1. Create a Dynamic Web Project and Servlet</div><div type="1. Create a Dynamic Web Project and Servlet">
+			
+			<p class="p">Create a dynamic web project and add a servlet, which you extend in step 4.</p>
+
+			<ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__ol_7605AA2F5D654FD49F4BC7461E344355">
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_24776E8F9B054AE0BF045EEAD81DB1C5">From the Eclipse main menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Dynamic Web Project</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_3D1294C2E1AC417FBDE37D91FD76C846">Enter the <span class="ph uicontrol">Project
+						name</span>
+					<kbd class="ph userinput">persistence-with-jdbc</kbd>. </li>
+
+				<li class="li">In the <span class="ph uicontrol">Target Runtime</span> pane, select <span class="ph uicontrol">Java
+						Web</span> as the runtime you want to use to deploy the
+					application.</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_33DE8136E3864029B79BF33C1473631A">Leave the default values for the other
+					project settings and choose <span class="ph uicontrol">Next</span>. </li>
+
+				<li class="li">On the <span class="ph uicontrol">Java</span> screen, leave the default settings and choose
+						<span class="ph uicontrol">Next</span>.</li>
+
+				<li class="li">In the <span class="ph uicontrol">Web Module</span> configuration settings, select the
+						<span class="ph uicontrol">Generate web.xml deployment descriptor</span> checkbox and
+					choose <span class="ph uicontrol">Finish</span>. </li>
+
+				<li class="li">To add a servlet to the project you have just created, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">File</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Web</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Servlet</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> from the Eclipse main menu.</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_CAC37E64C0584B11AF0309F04A7878A2">Enter the Java package
+						<kbd class="ph userinput">com.sap.cloud.sample.persistence</kbd> and the class name
+						<kbd class="ph userinput">PersistenceWithJDBCServlet</kbd>. Choose
+						<span class="ph uicontrol">Finish</span> to generate the servlet.</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_personEntity"><div class="section_title">2. Create the Person Entity</div><div type="2. Create the Person Entity">
+			
+			<p class="p">Create an entity class named <kbd class="ph userinput">Person</kbd> with basic attributes.</p>
+
+			<ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__ol_9A805A0ECF2F47DE9F76CC39E9324B0B">
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_01E6CFF223234B3CA5D803D2B3CC72DC">In the <span class="ph uicontrol">Project
+						Explorer</span> view, select the <span class="ph filepath">persistence-with-jdbc/Java
+						Resources/src/com.sap.cloud.sample.persistence</span> node. </li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_09FC1CB85CCB48548682095CE206795D">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Class</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, check that the package entered is
+						<kbd class="ph userinput">com.sap.cloud.sample.persistence</kbd>, enter the class
+					name <kbd class="ph userinput">Person</kbd>, and choose <span class="ph uicontrol">Finish</span>. </li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_8915C4985D2348AB992B58B0337C771E">Open the file in the text editor and
+					insert the following content:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.persistence;
+
+/**
+ * Class holding information on a person.
+ */
+public class Person {
+    private String id;
+    private String firstName;
+    private String lastName;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String newId) {
+        this.id = newId;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String newFirstName) {
+        this.firstName = newFirstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String newLastName) {
+        this.lastName = newLastName;
+    }
+}
+</pre></div>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_BD69965D7C02420DA66549796DAEF27C">Save the class. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_personDAO"><div class="section_title">3. Create the Person DAO</div><div type="3. Create the Person DAO">
+			
+			<p class="p">Create a DAO class, <kbd class="ph userinput">PersonDAO</kbd>, in which you encapsulate the
+				access to the persistence layer.</p>
+
+			<ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__ol_43D60D4C0A6C42D4B4F241D71D2CC195">
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_3F068F70E0D7482F8058DDCFED2D3579">In the <span class="ph uicontrol">Project
+						Explorer</span> view, select the <span class="ph filepath"/> node. </li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_736EC8BA3BBA4F0BA8321A1F5BEA75FD">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">New</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Class</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, check that the package entered is
+						persistence-with-jdbc/Java
+						Resources/src/com.sap.cloud.sample.persistence<kbd class="ph userinput">com.sap.cloud.sample.persistence</kbd>, enter the class
+					name <kbd class="ph userinput">PersonDAO</kbd>, and choose <span class="ph uicontrol">Finish</span>. </li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_FC207BDD93AE44C8810CC2C62729CBD6">Open the file in the text editor and
+					insert the following content:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.persistence;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import javax.sql.DataSource;
+
+/**
+ * Data access object encapsulating all JDBC operations for a person.
+ */
+public class PersonDAO {
+    private DataSource dataSource;
+
+    /**
+     * Create new data access object with data source.
+     */
+    public PersonDAO(DataSource newDataSource) throws SQLException {
+        setDataSource(newDataSource);
+    }
+
+    /**
+     * Get data source which is used for the database operations.
+     */
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    /**
+     * Set data source to be used for the database operations.
+     */
+    public void setDataSource(DataSource newDataSource) throws SQLException {
+        this.dataSource = newDataSource;
+        checkTable();
+    }
+
+    /**
+     * Add a person to the table.
+     */
+    public void addPerson(Person person) throws SQLException {
+        Connection connection = dataSource.getConnection();
+
+        try {
+            PreparedStatement pstmt = connection
+                    .prepareStatement("INSERT INTO PERSONS (ID, FIRSTNAME, LASTNAME) VALUES (?, ?, ?)");
+            pstmt.setString(1, UUID.randomUUID().toString());
+            pstmt.setString(2, person.getFirstName());
+            pstmt.setString(3, person.getLastName());
+            pstmt.executeUpdate();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
+
+    /**
+     * Get all persons from the table.
+     */
+    public List&lt;Person&gt; selectAllPersons() throws SQLException {
+        Connection connection = dataSource.getConnection();
+        try {
+            PreparedStatement pstmt = connection
+                    .prepareStatement("SELECT ID, FIRSTNAME, LASTNAME FROM PERSONS");
+            ResultSet rs = pstmt.executeQuery();
+            ArrayList&lt;Person&gt; list = new ArrayList&lt;Person&gt;();
+            while (rs.next()) {
+                Person p = new Person();
+                p.setId(rs.getString(1));
+                p.setFirstName(rs.getString(2));
+                p.setLastName(rs.getString(3));
+                list.add(p);
+            }
+            return list;
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
+
+    /**
+     * Check if the person table already exists and create it if not.
+     */
+    private void checkTable() throws SQLException {
+        Connection connection = null;
+
+        try {
+            connection = dataSource.getConnection();
+            if (!existsTable(connection)) {
+                createTable(connection);
+            }
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
+
+    /**
+     * Check if the person table already exists.
+     */
+    private boolean existsTable(Connection conn) throws SQLException {
+        DatabaseMetaData meta = conn.getMetaData();
+        ResultSet rs = meta.getTables(null, null, "PERSONS", null);
+        while (rs.next()) {
+            String name = rs.getString("TABLE_NAME");
+            if (name.equals("PERSONS")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Create the person table.
+     */
+    private void createTable(Connection connection) throws SQLException {
+        PreparedStatement pstmt = connection
+                .prepareStatement("CREATE TABLE PERSONS "
+                        + "(ID VARCHAR(255) PRIMARY KEY, "
+                        + "FIRSTNAME VARCHAR (255),"
+                        + "LASTNAME VARCHAR (255))");
+        pstmt.executeUpdate();
+    }
+}
+</pre></div>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_2B27C6834AFF442FB4564530D6C87C81">Save the class. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_jdbcPrep"><div class="section_title">4. Prepare the Web Application Project for JDBC</div><div type="4. Prepare the Web Application Project for JDBC">
+			
+			<ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__ol_59E87CDBBE9641F3B6EAC2B9D57EEC17">
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_E2DED910AC504DF6911FFE58B1E1DB51">Add the XSS Protection Library to the
+					web application project: <ol class="ol" type="a" id="loioe4c52854bb571014aeb88753d0dad158__ol_DDEDB45D9E524F5DABF89BD6A0A48C13">
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_BE549B4CCEE54DF78745B162D74DFE6D">In the <span class="ph uicontrol">persistence-with-jdbc/JavaProject
+								Explorer</span> view, select the
+								<span class="ph filepath">persistence-with-jdbc/WebContent/WEB-INF/lib</span>
+							node. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_5241F7C5F4AA464499B5EA24BC57CDFF">From the context menu, choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Import</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">General </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">File System </span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and then choose <span class="ph uicontrol">Next</span>. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_11A9F3FDC2044750AFEDDD0DA5140DC2">Browse to the local directory
+							where you downloaded and unpacked the <span class="ph pname">SAP Cloud Platform</span> SDK, select the
+								<span class="ph filepath">repository/plugins</span> directory, and choose
+								<span class="ph uicontrol">OK</span>. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_19141C6485AD42B09AE755038AD05C1B"/>
+
+					</ol>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_60D2D988B07A402A99C47C23B4A85B67">Adapt the Java build path order: <ol class="ol" type="a" id="loioe4c52854bb571014aeb88753d0dad158__ol_34BD8C286B2F4A2486D2572487223DEC">
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_484A502DC4BE4D38AF572CF337E3FDC9"> In the <span class="ph uicontrol">Project
+								Explorer</span> view, select the
+								<span class="ph filepath">persistence-with-jdbc</span> node, and from the
+							context menu choose <span class="ph uicontrol">Properties</span>. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_C23C46B708F945A9A940C135FDCEBB16">Select <span class="ph uicontrol">Java Build
+								Path</span> and switch to the <span class="ph uicontrol">Order and
+								Export</span> tab. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_54D82B126DB74B969796EEA894F63EC4">Select <span class="ph sap-technical-name sap-technical-name">Web
+								App Libraries</span>.</li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_7DD7381270A54121BF0AAD667E500715">Choose
+								<span class="ph uicontrol">OK</span>. </li>
+
+					</ol>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_30D8B0EC2F4F4745A42DF7CF2AD8B20E">Add the resource reference description
+					to <span class="ph filepath">web.xml</span>: <ol class="ol" type="a" id="loioe4c52854bb571014aeb88753d0dad158__ol_2D76854F6B7144F8ACEAEA2ADBACD2E3">
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_EEF0AF50D74046AE9133AD2B826784AC">In the <span class="ph uicontrol">Project
+								Explorer</span> view, expand the
+								<span class="ph filepath">persistence-with-jdbc/WebContent/WEB-INF</span> node. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_FDCFDDEA908B488E91BA69A24F962BC4">Select
+								<span class="ph filepath">web.xml</span>, and from the context menu choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Open With</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Text Editor </span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_5E553D5998DE409498969741D41279F8">Insert the following content after the
+								<samp class="ph codeph">&lt;servlet-mapping&gt;</samp> or
+								<samp class="ph codeph">&lt;welcome-file-list&gt;</samp> element:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;jdbc/DefaultDB&lt;/res-ref-name&gt;
+    &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;
+</pre></div>
+
+						</li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_152FC182984045DF9A6A4F74F3E881E8">Save the file. </li>
+
+					</ol>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_C905AFF2648A45A4A72DB3CC8197C7FE">Optionally modify the servlet
+					deployment descriptor information: <ol class="ol" type="a" id="loioe4c52854bb571014aeb88753d0dad158__ol_1B6605ED9D754F25B60F83036BE3A5EE">
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_C6885AC2C1204D74AFDC401E041444C5">Open the
+								<span class="ph filepath">web.xml</span> file as in the previous step. </li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_DDEAADA50574424190E24A1EA4CB23E9">Replace the URL pattern
+							"/PersistenceWithJDBCServlet" that was generated for the servlet with
+							"/" as shown below: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;PersistenceWithJDBCServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</pre></div>
+<div class="note note"><span class="notetitle">Note</span> 
+								<p class="p">If your servlet version is 3.0 or higher, you just need to change
+									the <span class="keyword">WebServlet</span> annotation in the
+										<span class="keyword apiname">PersistenceWithJDBCServlet.java</span> class to
+									be as the following: <span class="keyword apiname">@WebServlet("/")</span>.</p>
+
+							</div>
+
+						</li>
+
+						<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_5E75EEC9A70047C09A7305403CCC9BEE">Save the file. </li>
+
+					</ol>
+
+					<div class="note note" id="loioe4c52854bb571014aeb88753d0dad158__note_N10256_N10239_N10184_N1017C_N10012_N10001"><span class="notetitle">Note</span> An application's URL
+						path contains the context root followed by the optional URL pattern
+						("/&lt;URL pattern&gt;"). The servlet URL pattern that is automatically
+						generated by Eclipse uses the servlet’s class name as part of the pattern.
+						Since the cockpit only displays the context root, this means that you cannot
+						directly open the application in the cockpit without adding the servlet
+						name. To call the application by only the context root, use "/" as the URL
+						mapping, then you will no longer have to correct the URL in the browser.
+					</div>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_servlet"><div class="section_title">5. Extend the Servlet to Use Persistence</div><div type="5. Extend the Servlet to Use Persistence">
+			
+			<p class="p">Extend the servlet to use the persistence functionality. The servlet adds
+					<kbd class="ph userinput">Person</kbd> entity objects to the database, retrieves their
+				details, and displays them on the screen.</p>
+
+			<ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__ol_1EB6B6D02D334F6090D86A2200320883">
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_37E040B2D11E48CC8394B2D88B5A88F9">In the <span class="ph uicontrol">Project
+						Explorer</span> view, expand the
+						<span class="ph filepath">persistence-with-jdbc/src/com.sap.cloud.sample.persistence</span>
+					node.</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_1AF43F40C2EE47ECA288C818FB6BEE28"> Select
+						<span class="ph filepath">PersistenceWithJDBCServlet.java</span>, and from the context
+					menu choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Open With </span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Java Editor</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. </li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_47435F3CD91E4EDA8567D21CF3587A2F">In the opened editor, replace the entire servlet
+					class with the following content: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.sample.persistence;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sap.security.core.server.csi.IXSSEncoder;
+import com.sap.security.core.server.csi.XSSEncoder;
+
+/**
+ * Servlet implementing a simple JDBC based persistence sample application for
+ * <span class="ph pname">SAP Cloud Platform</span>.
+ */
+public class PersistenceWithJDBCServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(PersistenceWithJDBCServlet.class);
+
+	private PersonDAO personDAO;
+
+	/** {@inheritDoc} */
+	@Override
+	public void init() throws ServletException {
+		try {
+			InitialContext ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx
+					.lookup("java:comp/env/jdbc/DefaultDB");
+			personDAO = new PersonDAO(ds);
+		} catch (SQLException e) {
+			throw new ServletException(e);
+		} catch (NamingException e) {
+			throw new ServletException(e);
+		}
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().println("&lt;p&gt;Persistence with JDBC!&lt;/p&gt;");
+		try {
+			appendPersonTable(response);
+			appendAddForm(response);
+		} catch (Exception e) {
+			response.getWriter().println(
+					"Persistence operation failed with reason: "
+							+ e.getMessage());
+			LOGGER.error("Persistence operation failed", e);
+		}
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		try {
+			doAdd(request);
+			doGet(request, response);
+		} catch (Exception e) {
+			response.getWriter().println(
+					"Persistence operation failed with reason: "
+							+ e.getMessage());
+			LOGGER.error("Persistence operation failed", e);
+		}
+	}
+
+	private void appendPersonTable(HttpServletResponse response)
+                  throws SQLException, IOException {
+            // Append table that lists all persons
+            List&lt;Person&gt; resultList = personDAO.selectAllPersons();
+
+            response.getWriter().println(
+                        "&lt;p&gt;&lt;table border=\"1\"&gt;&lt;tr&gt;&lt;th colspan=\"3\"&gt;"
+                        + resultList.size() + " entries in the Database&lt;/th&gt;&lt;/tr&gt;" +
+                        (resultList.isEmpty()
+                        ? "&lt;tr&gt;&lt;td colspan=\"3\"&gt;Database is empty&lt;/td&gt;&lt;/tr&gt;"
+                        : "&lt;tr&gt;&lt;th&gt;First Name&lt;/th&gt;&lt;th&gt;Last Name&lt;/th&gt;&lt;th&gt;Id&lt;/th&gt;&lt;/tr&gt;"));
+
+            IXSSEncoder xssEncoder = XSSEncoder.getInstance();
+            for (Person p : resultList) {
+                  response.getWriter().println(
+                              "&lt;tr&gt;&lt;td&gt;" + xssEncoder.encodeHTML(p.getFirstName())
+                                          + "&lt;/td&gt;&lt;td&gt;"
+                                          + xssEncoder.encodeHTML(p.getLastName())
+                                          + "&lt;/td&gt;&lt;td&gt;" + p.getId() + "&lt;/td&gt;&lt;/tr&gt;");
+            }
+            response.getWriter().println("&lt;/table&gt;&lt;/p&gt;");
+     }
+
+
+	private void appendAddForm(HttpServletResponse response) throws IOException {
+		// Append form through which new persons can be added
+		response.getWriter()
+				.println(
+						"&lt;p&gt;&lt;form action=\"\" method=\"post\"&gt;"
+								+ "First name:&lt;input type=\"text\" name=\"FirstName\"&gt;"
+								+ "&amp;nbsp;Last name:&lt;input type=\"text\" name=\"LastName\"&gt;"
+								+ "&amp;nbsp;&lt;input type=\"submit\" value=\"Add Person\"&gt;"
+								+ "&lt;/form&gt;&lt;/p&gt;");
+	}
+
+	private void doAdd(HttpServletRequest request) throws ServletException,
+			IOException, SQLException {
+		// Extract name of person to be added from request
+		String firstName = request.getParameter("FirstName");
+		String lastName = request.getParameter("LastName");
+
+		// Add person if name is not null/empty
+		if (firstName != null &amp;&amp; lastName != null
+				&amp;&amp; !firstName.trim().isEmpty() &amp;&amp; !lastName.trim().isEmpty()) {
+			Person person = new Person();
+			person.setFirstName(firstName.trim());
+			person.setLastName(lastName.trim());
+			personDAO.addPerson(person);
+		}
+	}
+}
+</pre></div>
+
+					<p class="p"> </p>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_48ADC4346D4C4C93AC539B626CB934F2">Save the servlet. The project should
+					compile without any errors. </li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_testLocal"><div class="section_title">6. Test the Web Application on the Local Server</div><div type="6. Test the Web Application on the Local Server">
+			
+			<ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__ol_290BDBDB25BA43668D06F0F20F443220">
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_469084574A964D899134B13993F70711"> To test your web application on the
+					local server, follow the steps for deploying a web application locally as
+					described in <a class="xref" href="0f16c9db4a9c407abb1b4987c0afe714.html" title="Follow the steps below to deploy your application on a local SAP Cloud Platform server.">Deploying Locally from Eclipse IDE</a>. You should
+					see the following output: <p class="p"><img class="image" id="loioe4c52854bb571014aeb88753d0dad158__image_fky_5zf_nj" src="loio8798e48b15f04d478aa1847b9b4369ea_LowRes.png" alt="Empty Database JDBC" title="Empty Database JDBC"/></p>
+
+				</li>
+
+				<li class="li" id="loioe4c52854bb571014aeb88753d0dad158__li_47BEFA98BEF54367A3CE1F9EE28EF73A">Enter a first name (for example,
+						<kbd class="ph userinput">John</kbd>) and a last name (for example,
+						<kbd class="ph userinput">Smith</kbd>) and choose <span class="ph uicontrol">Add Person</span>.
+							<p class="p"><kbd class="ph userinput">John Smith</kbd> is added to the database as shown
+						below: </p>
+
+					<p class="p"><img class="image" id="loioe4c52854bb571014aeb88753d0dad158__image_tg2_1zf_nj" src="loio77c6a78433594170ae3980a18a22434e_LowRes.png" alt="New Database Entry JDBC" title="New Database Entry JDBC"/></p>
+
+					<p class="p">If you add more names to the database, they will also be listed in the table
+						displayed. </p>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_deployCloud"><div class="section_title">7. Deploy Applications Using Persistence on the Cloud from Eclipse IDE</div><div type="7. Deploy Applications Using Persistence on the Cloud from Eclipse IDE"><div class="sectiondiv">
+            <p class="p">To test your web application in the cloud, define a server in Eclipse. Use the
+                cockpit to create a default binding for your application. Add the application to the
+                new server and start it. This will the deploy the application on the cloud, and you
+                should see the same output as when the application was tested on the local server. </p>
+
+            <p class="p"><span class="ph emphasis emphasis">Prerequisites</span>
+            </p>
+
+            <ul class="ul" id="loioe4c52854bb571014aeb88753d0dad158__d12745e22">
+                <li class="li">You have set up your runtime environment in the Eclipse IDE. For more
+                    information, see <a class="xref" href="7613f000711e1014839a8273b0e91070.html">Setting Up the Runtime Environment</a>.</li>
+
+                <li class="li">You have developed or imported a Java Web application in Eclipse IDE. For more,
+                    information, see <a class="xref" href="ac36e1fc0f634c0caa99916b3bd6b446.html">Developing Java Applications</a> or <a class="xref" href="e8001e24bb571014946684289214ba84.html" title="To get a sample application up and running, import it as an Eclipse project into your Eclipse IDE and then deploy it on the local runtime and SAP Cloud Platform.">Importing Samples as Eclipse Projects</a></li>
+
+            </ul>
+
+            <ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__d12745e36">
+                <li class="li">Switch to the <span class="ph uicontrol">Servers</span> view in the Eclipse IDE.</li>
+
+                <li class="li">Open the context menu and define a server with the following settings:<ul class="ul" id="loioe4c52854bb571014aeb88753d0dad158__d12745e46">
+                        <li class="li">Select the server type <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">SAP</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">SAP Cloud Platform</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>.</li>
+
+                        <li class="li">Use the landscape host depending on your account type and choose
+                                <span class="ph uicontrol">Next</span>. For more information, see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a>.</li>
+
+                        <li class="li">Specify your application name (only lowercase Latin letters and digits
+                            are allowed).<div class="note note"><span class="notetitle">Note</span> The application name should be unique enough so that
+                                your deployed application can be easily identified.</div>
+</li>
+
+                        <li class="li">Select a runtime. If you leave the <kbd class="ph userinput">Automatic</kbd>
+                            option, the server will load the target runtime of your
+                            application.</li>
+
+                        <li class="li">Enter your account name, e-mail or user name, and password and choose
+                                <span class="ph uicontrol">Next</span>.<p class="p"><img class="image" id="loioe4c52854bb571014aeb88753d0dad158__d12745e85" src="loio4ae68d0e00944b488bf05b9370b32669_HiRes.png"/></p>
+<div class="note note"><span class="notetitle">Note</span> 
+                                <ul class="ul" id="loioe4c52854bb571014aeb88753d0dad158__d12745e88">
+                                    <li class="li">If you have previously entered an account and user name for
+                                        your landscape host, these names will be prompted to you in
+                                        dropdown lists.</li>
+
+                                    <li class="li">A dropdown list will be displayed as well for previously
+                                        entered landscapes hosts.</li>
+
+                                    <li class="li">If you select the <span class="ph uicontrol">Save password</span> box,
+                                        the entered password for a given user name will be
+                                        remembered and kept in the secure store.</li>
+
+                                </ul>
+
+                            </div>
+</li>
+
+                        <li class="li">Do not select your application on the <span class="ph uicontrol">Add and
+                                Remove</span> screen.<div class="note note"><span class="notetitle">Note</span> Adding an application would
+                                automatically start this application with the effect that it would
+                                fail because no data source binding exists. You will add an
+                                application in a later step.</div>
+</li>
+
+                        <li class="li">Choose <span class="ph uicontrol">Finish</span>.</li>
+
+                    </ul>
+</li>
+
+                <li class="li">On the <span class="ph uicontrol">Servers</span> view, open the context menu for the server
+                    you just created and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Show In</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Cockpit</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. The cockpit opens inside Eclipse.</li>
+
+            </ol>
+
+        </div></div></div>
+
+			<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_configureAppsCockpit"><div class="section_title">8. Configure Applications Using the Cockpit</div><div type="8. Configure Applications Using the Cockpit"><div class="sectiondiv">
+            <div class="p">
+                <ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__d12771e16">
+                    <li class="li">In the cockpit, select an account and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Databases &amp; Schemas</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</li>
+
+                    <li class="li">Select the database that you want to create a binding for. </li>
+
+                    <li class="li">Choose <span class="ph uicontrol">Data Source Bindings</span> in the navigation
+                            area.<div class="note note"><span class="notetitle">Note</span> For more information on Data Source Bindings, see <a class="xref" href="216cef2158cc419fade9a8247d5008fa.html" title="Bind databases to your applications running on SAP Cloud Platform.">Binding Databases</a>.</div>
+</li>
+
+                    <li class="li"> Define a binding (&lt;DEFAULT&gt;) for the application and select a
+                        database ID. Choose <span class="ph uicontrol">Save</span>.<p class="p">This creates a default
+                            binding for the application. You can use an existing database or create
+                            a new one.</p>
+</li>
+
+                </ol>
+
+            </div>
+
+        </div></div></div>
+
+		<div class="section" id="loioe4c52854bb571014aeb88753d0dad158__section_startAppsEclipse"><div class="section_title">9. Start Applications Using Eclipse</div><div type="9. Start Applications Using Eclipse">
+			<div class="sectiondiv">
+            <ol class="ol" id="loioe4c52854bb571014aeb88753d0dad158__d12787e14">
+                <li class="li">On the <span class="ph uicontrol">Servers</span> view in Eclipse, open the context menu for
+                    the server and choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Add and Remove...</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">&lt;application name&gt;</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. To add the application to the server, add the application to the
+                    panel on the right side. Choose <span class="ph uicontrol">Finish</span>.</li>
+
+                <li class="li">Start the server. This will deploy the application and start it on the <span class="ph pname">SAP Cloud Platform</span>.<p class="p">You can access the application by clicking the application URL
+                        on the application overview page in the cockpit.</p>
+</li>
+
+            </ol>
+
+            <div class="note note"><span class="notetitle">Note</span> 
+                <p class="p">You cannot deploy multiple applications on the same application process.
+                    Deployment of a second application on the same application process overwrites
+                    any previous deployments. If you want to deploy several applications, deploy
+                    each of them on a separate application process. </p>
+
+            </div>
+
+        </div></div></div>
+
+	</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

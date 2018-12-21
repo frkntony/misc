@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Data Isolation (HANA XS)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4d66976ef1b84aabbeb524fdc40af5d5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Data Isolation (HANA XS)</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<div class="section" id="loio4d66976ef1b84aabbeb524fdc40af5d5__section_6D16C1227CA44259BDEB001A8EAA6634"><div class="section_title">User Management</div><div type="User Management">
+			
+			<p class="p">The service treats user names as opaque strings that are defined by the application.
+				All actions in the document service are executed in the context of this named user
+				or the currently logged-in user. That is, the service sets the
+					<span class="keyword parmname">cmis:createdBy</span> and <span class="keyword parmname">cmis:lastModifiedBy</span>
+				properties to the provided user name. The service also uses this user name to
+				evaluate access control lists (ACLs). For more information, see the CMIS
+				specification. The document service is not connected to a user management system
+				and, therefore, does not perform any user authentication.</p>
+
+		</div></div>
+<div class="section" id="loio4d66976ef1b84aabbeb524fdc40af5d5__section_A565742B94FC470995EE6EF7C798F750"><div class="section_title">Repository Naming and Data Isolation</div><div type="Repository Naming and Data Isolation">
+			
+			<p class="p">Repositories are identified either by their unique name or by their ID. The unique
+				name is a human-readable name that should be constructed with Java package-name
+				semantics, for example,
+					<span class="ph sap-technical-name sap-technical-name">com.foo.MySpecialRepository</span>, to avoid
+				name conflicts. Repositories in the document service are secured by a key provided
+				by the application. When a repository is created, a key must be supplied. Any
+				further attempts to connect to this repository only succeed if the key provided by
+				the connecting application matches the key that was used to create the repository.
+				Therefore this key must be stored in a secure manner. It is, however, up to the
+				application to decide whether to share this key with other applications from the
+				same account to implement data-sharing scenarios.</p>
+
+			<p class="p">Multiple applications can access the same repository. However, applications can only
+				connect to the same repository using the unique name assigned to this repository if
+				they are deployed within the same account as the application that created the
+				repository. In contrast, applications that are deployed in a different account
+				cannot access this repository. A consequence of having repositories isolated within
+				an account is that data cannot be shared across different accounts.</p>
+
+		</div></div>
+<div class="section" id="loio4d66976ef1b84aabbeb524fdc40af5d5__section_N10062_N10013_N10001"><div class="section_title">Example of Account Isolation</div><div type="Example of Account Isolation">
+			
+			<p class="p">Repository ABC is created when Application<sub class="ph sub">1</sub> is deployed in
+					Account<sub class="ph sub">1</sub>. Application<sub class="ph sub">2</sub> is located in the same
+					Account<sub class="ph sub">1</sub> as Application<sub class="ph sub">1</sub>; therefore,
+					Application<sub class="ph sub">2</sub> can also access the same repository using its unique
+				name ABC. Application<sub class="ph sub">3</sub> is deployed in Account<sub class="ph sub">2</sub>.
+					Application<sub class="ph sub">3</sub> calls a repository that has the same unique name ABC as
+				the other repository that belongs to Account<sub class="ph sub">1</sub>. However,
+					Application<sub class="ph sub">3</sub> cannot access the ABC repository that belongs to
+					Account<sub class="ph sub">1</sub> using the identical unique name, because the repositories
+				are isolated within the account. Therefore, Application<sub class="ph sub">3</sub> in
+					Account<sub class="ph sub">2</sub> connects to another ABC repository that belongs to
+					Account<sub class="ph sub">2</sub>. In summary, a repository can only be accessed by
+				applications that are deployed in the same account as the application that created
+				the repository.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Multitenancy</div><div type="Multitenancy">
+			
+			<p class="p">The document service supports multitenancy and isolates data between tenants. Each
+				application consuming the document service creates a repository and provides a
+				unique name and a secret key. The document service creates the repository internally
+				in the context of the tenant using the application. While the repository name
+				uniquely identifies the repository, an internal ID is created for the application
+				for each tenant. This ID identifies the storage area containing all the data for the
+				tenant in this repository. To access the content of the different tenant
+				repositories, a destination for each tenant is required. The destination host name
+				contains the tenant alias ecm-<var class="keyword varname">&lt;tenantAlias&gt;</var>…. If the tenant alias
+				is, for example, <span class="ph sap-technical-name sap-technical-name">development</span>, the host name
+				starts with <span class="ph sap-technical-name sap-technical-name">ecm-development</span>….</p>
+
+		</div></div>
+</div>
+<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oasis-open.org/cmis/CMIS/v1.1/cs01/CMIS-v1.1-cs01.pdf" target="_blank" alt="http://docs.oasis-open.org/cmis/CMIS/v1.1/cs01/CMIS-v1.1-cs01.pdf" title="http://docs.oasis-open.org/cmis/CMIS/v1.1/cs01/CMIS-v1.1-cs01.pdf">Content Management Interoperability Services (CMIS) Version 1.1<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

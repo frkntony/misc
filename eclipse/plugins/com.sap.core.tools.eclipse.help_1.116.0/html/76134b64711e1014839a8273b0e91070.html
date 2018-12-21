@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="EclipseLink provides weaving as a means of enhancing JPA entities and classes for performance optimization. At present, SAP Cloud Platform supports static weaving only. Static weaving occurs at compile time and is available in both the Java Web and Java EE 6 Web Profile environments."/>
+<meta name="description" content="EclipseLink provides weaving as a means of enhancing JPA entities and classes for performance optimization. At present, SAP Cloud Platform supports static weaving only. Static weaving occurs at compile time and is available in both the Java Web and Java EE 6 Web Profile environments."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>EclipseLink Weaving</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio76134b64711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">EclipseLink Weaving</h1>
+
+	<div class="body conbody"><p class="shortdesc">EclipseLink provides weaving as a means of enhancing JPA entities and classes for
+		performance optimization. At present, <span class="ph pname">SAP Cloud Platform</span> supports static
+		weaving only. Static weaving occurs at compile time and is available in both the Java Web
+		and Java EE 6 Web Profile environments.</p>
+<div class="section" id="loio76134b64711e1014839a8273b0e91070__section_0615C438305047D29492380B79B331CF"> 
+		<p class="p">Note that dynamic weaving is currently not supported on <span class="ph pname">SAP Cloud Platform</span>. </p>
+ 
+	 </div>
+<div class="section" id="loio76134b64711e1014839a8273b0e91070__section_D5D10883B6EE4EC5BC79A337F474844E"><div class="section_title">Prerequisites</div><div type="Prerequisites"> 
+		 
+		<p class="p">For static weaving to work, the entity classes have to be listed in the
+					<span class="ph filepath">persistence.xml</span> file. </p>
+ 
+	 </div></div>
+<div class="section" id="loio76134b64711e1014839a8273b0e91070__section_321E517AC0BF48289D0F705DF6CA3595"><div class="section_title">EclipseLink Library</div><div type="EclipseLink Library"> 
+		 
+		<div class="p">To use the EclipseLink weaving options in your web applications, you need to add the
+				EclipseLink library to the classpath: <ul class="ul" id="loio76134b64711e1014839a8273b0e91070__ul_5F1B0A8A559043179718BC695850613E">
+					<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_BF3F4FF2208649048A819B0867175D75">Java Web SDK<p class="p">The EclipseLink
+							library has already been added to the
+								<span class="ph filepath">WebContent/WEB-INF/lib</span> folder, since it is
+							required for the JPA persistence scenario. </p>
+
+					</li>
+
+					<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_C3AEEE32CF2C45CABAD3698553C75B82">Java EE 6 Web Profile SDK<p class="p">The
+							EclipseLink library is already part of the Java EE 6 Web Profile SDK,
+							allowing you to run JPA scenarios without any additional steps. To use
+							the weaving options, however, you need to add the EclipseLink library to
+							the classpath, as described below. </p>
+
+					</li>
+
+				</ul>
+
+			</div>
+ 
+	 </div></div>
+<div class="section" id="loio76134b64711e1014839a8273b0e91070__section_FA28F38145334C41B7E94A0B5ED9DDE5"><div class="section_title">Java EE 6 Web Profile SDK: Adding the EclipseLink Library to the Classpath</div><div type="Java EE 6 Web Profile SDK: Adding the EclipseLink Library to the Classpath"> 
+		 
+		<ol class="ol"><li class="li" id="loio76134b64711e1014839a8273b0e91070__li_4FC22068F73E4159A6512A7826AEE665">In the Eclipse IDE in the <span class="ph uicontrol">Project
+						Explorer</span> view, select the web application and from the context
+					menu choose <span class="ph uicontrol">Properties</span>. </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_F1581AD6443F4FB691CC34A6459CEF65">In the tree, select <span class="ph uicontrol">JPA</span>. </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_EA9BA2B18D3148F6AD809FCB449EABCE">In the <span class="ph uicontrol">Platform</span> section, select
+					the correct EclipseLink version from the dropdown list. It should match the
+					version available in the SDK. </li>
+<li class="li">In the <span class="ph uicontrol">JPA implementation</span> section, select the type <kbd class="ph userinput">User
+						Library</kbd> from the dropdown list. </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_5D50BFB7158B4411986178BF110B76EC">To the right of the user library list box that is now
+					visible, choose <span class="ph uicontrol">Download library</span>. </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_2D11ED85E14C43948671FDDC147DC56F">In the dialog box, select the correct version of the
+					EclipseLink library (currently <kbd class="ph userinput">EclipseLink 2.5.2</kbd>) and
+					choose <span class="ph uicontrol">Next</span>. </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_5BB24B2149414B4DB8DAC8ADA9CDF355">Accept the EclipseLink license and choose
+						<span class="ph uicontrol">Finish</span>. </li>
+<li class="li">The new user library now appears in the list
+			 box. Make sure that the checkbox is selected. 
+		  </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_A84B46A0F9CA41E286FE9D8D434F91C2">Deselect the <span class="ph uicontrol">Include libraries with this
+						application</span> checkbox just below the user library box and choose
+						<span class="ph uicontrol">OK</span>. </li>
+</ol>
+ 
+	 </div></div>
+<div class="section" id="loio76134b64711e1014839a8273b0e91070__section_2F0255F47B51405B920E619BBA8C918E"><div class="section_title">Enabling Static Weaving in Eclipse</div><div type="Enabling Static Weaving in Eclipse"> 
+		 
+		<ol class="ol" id="loio76134b64711e1014839a8273b0e91070__ol_7A2962C68019471B9F85DC8BED739AE4"><li class="li" id="loio76134b64711e1014839a8273b0e91070__li_D5696944E27B4F4B869E1CEA7405F5FC">In the Eclipse IDE in the <span class="ph uicontrol">Project
+						Explorer</span> view, select the web application and from the context
+					menu choose <span class="ph uicontrol">Properties</span>. </li>
+<li class="li">In the tree, select 
+			 <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">JPA 
+				</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">EclipseLink</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>. 
+		  </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_A92FAE5636174609BBA4BCC6342E3BF5">In the <span class="ph uicontrol">Static weaving</span> section,
+					select the <span class="ph uicontrol">Weave classes on build</span> checkbox. </li>
+<li class="li" id="loio76134b64711e1014839a8273b0e91070__li_3006C665B46E4953B9E13B9B8DB71336">Leave the default values for the source classes, target
+					classes, and persistence XML root. You might need to adapt them if you have a
+					non-standard web application project layout. Choose <span class="ph uicontrol">OK</span> to
+					complete the step. <div class="note note" id="loio76134b64711e1014839a8273b0e91070__note_N100E9_N100E1_N100BA_N100B2_N10013_N10001"><span class="notetitle">Note</span>  If
+						you change the target class settings, make sure you deploy these classes.
+					</div>
+
+				</li>
+</ol>
+ 
+		<p class="p">Your web application project will be rebuilt so that the JPA entity class files contain weaving
+				information. This will also occur on each (incremental) project build. The woven
+				entity classes will be used whenever you publish the web application to the
+				cloud.</p>
+ 
+	 </div></div>
+<div class="section" id="loio76134b64711e1014839a8273b0e91070__section_4E306C3AF85A4B979CD6820B2DF49C0B"><div class="section_title">More Information</div><div type="More Information"> 
+		 
+		<p class="p">For information about using an ant task or the
+		  command line to perform static weaving, see the 
+		  <a class="extlink" href="http://help.sap.com/disclaimer?site=http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Performance/Weaving/Static_Weaving" target="_blank" alt="http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Performance/Weaving/Static_Weaving" title="http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Performance/Weaving/Static_Weaving">EclipseLink User Guide<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. 
+		</p>
+ 
+	 </div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

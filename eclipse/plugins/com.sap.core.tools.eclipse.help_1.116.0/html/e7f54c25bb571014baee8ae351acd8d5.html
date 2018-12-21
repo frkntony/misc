@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The SDK contains everything you need to work with SAP Cloud Platform, including a local server runtime and a set of command line tools."/>
+<meta name="description" content="The SDK contains everything you need to work with SAP Cloud Platform, including a local server runtime and a set of command line tools."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>SDK</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe7f54c25bb571014baee8ae351acd8d5">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">SDK</h1>
+
+	<div class="body conbody"><p class="shortdesc">The SDK contains everything you need to work with <span class="ph pname">SAP Cloud Platform</span>, including a local server runtime and a set of command line tools. </p>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have the SDK installed. See <a class="xref" href="7613843c711e1014839a8273b0e91070.html">Installing the SDK</a>.</p>
+
+		</div></div>
+<div class="section" id="loioe7f54c25bb571014baee8ae351acd8d5__section_11D9DDCC4DA64D1F8CC1E3904DE3E6E3">
+			<p class="p">The location of the SDK is the folder you have chosen when you downloaded and
+				unzipped it.</p>
+ 
+		<p class="p">An overview of the structure and content of the SDK is shown in the table below. The folders
+				and files are located directly below the common root directory in the order given: </p>
+ 
+		<div class="table-wrapper"><table summary="" id="loioe7f54c25bb571014baee8ae351acd8d5__simpletable_0E9A3FF873A94FC4BDF649C16F4DF507" border="1" class="simpletable"><tr class="sthead"><th valign="bottom" align="left" id="d12121346e39" class="stentry">Folder/File</th>
+<th valign="bottom" align="left" id="d12121346e41" class="stentry">Description</th>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">api</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">The platform API containing the SAP and third-party API JARs required to compile Web
+						applications for <span class="ph pname">SAP Cloud Platform</span> (for more
+						information about the platform API, see the "Supported APIs" section further
+						below). </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">javadoc</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">Javadoc for the SAP platform APIs (also available as online documentation via the
+							<span class="ph uicontrol">API Documentation</span> link in the title bar of the
+							<span class="ph pname">SAP Cloud Platform</span> Documentation Center). Javadoc
+						for the third-party APIs is cross-referenced from the online documentation. </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">repository</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">The P2 repository from which the local server runtime
+				is created. 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">samples</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">Samples demonstrating how to develop for <span class="ph pname">SAP Cloud Platform</span>. The
+						samples can be imported as Eclipse or Maven projects.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">server</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">Initially not present, but created once you install a
+				local server runtime. 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">tools</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">Command line tools required for interacting with the
+				cloud runtime (for example, to deploy and start applications) and the local
+				server runtime (for example, to install and start the local server). 
+			 </td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">licenses.txt</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">Licenses of third-party components contained in the <span class="ph pname">SAP Cloud Platform</span>
+						SDK.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">readme.txt</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">Brief introduction to the SDK, its content, and how to
+				set it up.</td>
+</tr>
+<tr class="strow"><td valign="top" headers="d12121346e39" class="stentry"><span class="ph filepath">sdk.version</span></td>
+<td valign="top" headers="d12121346e41" class="stentry">SDK version information for use by other tools
+				interacting with the SDK.</td>
+</tr>
+</table></div>
+ 
+	 </div>
+<div class="section" id="loioe7f54c25bb571014baee8ae351acd8d5__section_4E18236B50684A48A52CFEF5C004CD98"><div class="section_title">Local Server Runtime</div><div type="Local Server Runtime"> 
+		 
+		<p class="p">The cloud server runtime consists of the application server, the platform API, and the cloud
+				implementations of the provided services (connectivity, persistence, document, and
+				identity). The SDK, on the other hand, contains a local server runtime that consists
+				of the same application server, the same platform API, but local implementations of
+				the provided services. These are designed to emulate the cloud server runtime as
+				closely as possible to support the local development and test process.</p>
+ 
+	 </div></div>
+<div class="section" id="loioe7f54c25bb571014baee8ae351acd8d5__section_E95A3B9EA3364F41B4A647E67F95A25A"><div class="section_title">Supported APIs</div><div type="Supported APIs"> 
+		 
+		<p class="p">The SDK contains the API for <span class="ph pname">SAP Cloud Platform</span>. All Web applications
+				intended for deployment in the cloud should be compiled against this platform API.
+				The platform API is used by the <span class="ph pname">SAP Cloud Platform</span> Tools for
+				Java to set the compile-time classpath. </p>
+ 
+		<p class="p">All JARs contained in the platform API are considered part of the provided scope and must
+				therefore be used for compilation. This means that they must not be packaged with
+				the application, since they are provided and wired at runtime in the <span class="ph pname">SAP Cloud Platform</span> runtime, irrespective of whether you run your application
+				locally for development and test purposes or centrally in the cloud. </p>
+ 
+		<div class="p">When you develop applications to run on the <span class="ph pname">SAP Cloud Platform</span>, you should
+				be aware of which APIs are supported and provisioned by the runtime environment of
+				the platform: <ul class="ul" id="loioe7f54c25bb571014baee8ae351acd8d5__ul_05481D9ABA7448169535126216DACECB">
+					<li class="li" id="loioe7f54c25bb571014baee8ae351acd8d5__li_622FC3DB605840C9AC20C6ED2BC77D99">Third-party APIs: These include
+						Java EE standard APIs (standards based and backwards compatible as defined
+						in the Java EE Specification) and other APIs released by third parties. </li>
+
+					<li class="li">
+						<p class="p">SAP APIs: The platform APIs provided by the <span class="ph pname">SAP Cloud Platform</span> services. </p>
+
+					</li>
+
+				</ul>
+
+			</div>
+ 
+	 </div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="937ce0d172bb101490cf767db0e91070.html" title="The sample applications allow you to explore the core functionality of SAP Cloud Platform and show how this functionality can be used to develop more complex Web applications. The samples are included in the SDK or presented as blogs in the SCN community.">Samples</a></div>
+<div><a class="link" href="76132306711e1014839a8273b0e91070.html">Console Client</a></div>
+<div><a class="link" href="4570e92cd29e419dbeee4caa1ef90701.html" title="This document contains references to API documentation to be used for development with SAP Cloud Platform.">API Documentation</a></div>
+<div><a class="link" href="e836a95cbb571014b3c4c422837fcde4.html">Supported Java APIs</a></div>
+<div><a class="link" href="937c833b72bb101490cf767db0e91070.html" title="The console client allows you to install a server runtime in a local folder and use it to deploy your application.">Deploying Locally with the Console Client</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

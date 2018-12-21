@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The SAP JVM Profiler helps you analyze resource-related problems in your Java application regardless of whether the JVM is running locally or on the cloud."/>
+<meta name="description" content="The SAP JVM Profiler helps you analyze resource-related problems in your Java application regardless of whether the JVM is running locally or on the cloud."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Profiling Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio8967d195af3c4c249cfeef80736ea21e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Profiling Applications</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The SAP JVM Profiler helps you analyze resource-related problems in your Java
+		application regardless of whether the JVM is running locally or on the cloud.</p>
+
+		<div class="p">Typically, you first profile the application locally. Then you may continue and profile
+			it also on the cloud. The basic procedure is the following:<ol class="ol" id="loio8967d195af3c4c249cfeef80736ea21e__ul_qjl_qxd_hm">
+				<li class="li">Attach the SAP JVM Profiler to the JVM to be analyzed.</li>
+
+				<li class="li">Analyze the retrieved profiling data in statistics and graphs.</li>
+
+			</ol>
+</div>
+
+		<div class="section"><div class="section_title">Features</div><div type="Features">
+			
+			<p class="p"/>
+
+			<p class="p">SAP JVM Profiler provides the following traces: </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio8967d195af3c4c249cfeef80736ea21e__table_sfr_k5d_hm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="14.285714285714286%"/><col width="28.571428571428573%"/><col width="57.142857142857146%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_vsj_45d_hm" src="loio3a6b8f5ca03849e0b860fb9ec167d6ef_LowRes.png" alt="Allocation Trace" title="Allocation Trace"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Allocation Trace</span></td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the number, size and type of the allocated objects and the
+								methods allocating them.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_xc5_55d_hm" src="loioeb933c4c50604081887baa266650cc0b_LowRes.png" alt="Performance Hotspot" title="Performance Hotspot"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Performance Hotspot Trace</span></td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the most time-consuming methods and execution paths
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_gvk_1vd_hm" src="loio79b8d24c03e44d20a7174eec91e39196_LowRes.png" alt="Garbage Collection" title="Garbage Collection"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Garbage Collection Trace</span>
+							</td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows all details about the processed garbage collections
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_scy_2vd_hm" src="loio2e3067151a0b4299a4a9ed8856c79152_LowRes.png" alt="Method Parameter" title="Method Parameter"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Method Parameter Trace</span>
+							</td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the values of a selected method parameters </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_fkf_kvd_hm" src="loio7dcc2399572d40f992082a23aa565f1c_LowRes.png" alt="Synchronization Trace" title="Synchronization Trace"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Synchronization Trace</span>
+							</td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the most contended locks and the threads waiting for or
+								holding them </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_t3v_tvd_hm" src="loio659beb48419b4d969f025da6e9864515_LowRes.png" alt="File IO Trace" title="File IO Trace"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">File I/O Trace</span>
+							</td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the number of bytes transferred from or to files and the
+								methods transferring them </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_xdm_vvd_hm" src="loio3b44cabc885e4568a8db88e8bbac58b1_LowRes.png" alt="Network IO Trace" title="Network IO Trace"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Network I/O Trace </span></td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the number of bytes transferred from or to the network and
+								the methods transferring them </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p">Additionally, the following operations are supported: </p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio8967d195af3c4c249cfeef80736ea21e__table_s2k_wvd_hm" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="14.285714285714286%"/><col width="28.571428571428573%"/><col width="57.142857142857146%"/></colgroup>
+
+					
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_lmg_gxd_hm" src="loio9ada3e7553174b09bd34ad604b17b942_LowRes.png" alt="Heap Dump" title="Heap Dump"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Heap Dump</span></td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows a complete snapshot of the Java Heap </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="14.285714285714285%"><img class="image" id="loio8967d195af3c4c249cfeef80736ea21e__image_pzm_kxd_hm" src="loio3c21a267891a41259cd98101e955e24e_LowRes.png" alt="Class Statistic" title="Class Statistic"/></td>
+
+							<td class="entry" valign="top" width="28.57142857142857%"><span class="ph emphasis emphasis">Class Statistic</span>
+							</td>
+
+							<td class="entry" valign="top" width="57.14285714285714%">Shows the classes, the number and size of their objects currently
+								residing in the Java Heap generations</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tasks</div><div type="Tasks">
+			
+			<p class="p"><a class="xref" href="db766190d976101498a8bf1a9cf5f277.html">Profiling Applications Locally</a></p>
+
+			<p class="p"><a class="xref" href="088e6ee6e994492d968c327119519810.html" title="After you have created a Web application and verified that it is functionally correct, you may want to inspect its runtime behavior by profiling the application on the cloud. It is best if you first profile the Web application locally.">Profiling Applications on the Cloud</a></p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="6ac5536ea4e143bd84e39b6fb8a140b0.html" title="After you have created a Web application and tested it locally, you may want to inspect its runtime behavior and state by debugging the application in SAP Cloud Platform. The local and the cloud scenarios are analogical.">Debugging Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

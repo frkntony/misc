@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Getting Access to the Remote Data Sync Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocdc9600ec42a47ea90f8997906e959a0">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Getting Access to the Remote Data Sync Service</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p"/>
+
+			<ul class="ul">
+				<li class="li">You have an account in a productive <span class="ph pname">SAP Cloud Platform</span> landscape (e.g.
+						<kbd class="ph userinput">hana.ondemand.com</kbd>,
+						<kbd class="ph userinput">us1.hana.ondemand.com</kbd>,
+						<kbd class="ph userinput">ap1.hana.ondemand.com</kbd>,
+						<kbd class="ph userinput">eu2.hana.ondemand.com</kbd>). </li>
+
+				<li class="li">Your <span class="ph pname">SAP Cloud Platform</span> account has an SAP HANA instance associated to it.
+					The Remote Data Sync service is currently only supported with SAP HANA database
+					as target database in the cloud. </li>
+
+				<li class="li">On the edge side, you need to install <kbd class="ph userinput">SAP SQL Anywhere Remote
+						Database Client</kbd> version 16. You can get a free <a class="extlink" href="http://help.sap.com/disclaimer?site=https://global.sap.com/campaign/ne/sybase/sql_anywhere_16_download_program/index.epx?kNtBzmUK9zU" target="_blank" alt="https://global.sap.com/campaign/ne/sybase/sql_anywhere_16_download_program/index.epx?kNtBzmUK9zU" title="https://global.sap.com/campaign/ne/sybase/sql_anywhere_16_download_program/index.epx?kNtBzmUK9zU">Developer Edition<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>. See also the existing production
+					packages: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://store.businessobjects.com/DRHM/store?Action=DisplayCategoryProductListPage&amp;SiteID=bobjamer&amp;Locale=en_US&amp;ThemeID=29254600&amp;Env=BASE&amp;parentCategoryID=67887400&amp;categoryID=67891800&amp;resid=VQGCSwrR-gAAAJ0tYHoAAAHD&amp;rests=1426162251644" target="_blank" alt="http://store.businessobjects.com/DRHM/store?Action=DisplayCategoryProductListPage&amp;SiteID=bobjamer&amp;Locale=en_US&amp;ThemeID=29254600&amp;Env=BASE&amp;parentCategoryID=67887400&amp;categoryID=67891800&amp;resid=VQGCSwrR-gAAAJ0tYHoAAAHD&amp;rests=1426162251644" title="http://store.businessobjects.com/DRHM/store?Action=DisplayCategoryProductListPage&amp;SiteID=bobjamer&amp;Locale=en_US&amp;ThemeID=29254600&amp;Env=BASE&amp;parentCategoryID=67887400&amp;categoryID=67891800&amp;resid=VQGCSwrR-gAAAJ0tYHoAAAHD&amp;rests=1426162251644">Overview<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>
+				</li>
+
+			</ul>
+
+			<p class="p"/>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<div class="p">The procedure below helps you to make the Remote Data Sync service available in your <span class="ph pname">SAP Cloud Platform</span> account. As the service is not available for your <span class="ph pname">SAP Cloud Platform</span> account by default, you need to first fulfill the prerequisites above and
+				then follow the procedure described below to request the Remote Data Sync service
+				for your account. <div class="note note"><span class="notetitle">Note</span> Before you start working with the service, you might want to
+					check its sizing requirements in order to choose the optimal hardware features
+					for fluent run of your applications. For more information, see <a class="xref" href="04c7bd5566914ddc93d7b7710f76dd58.html" title="This page provides sizing information for applications using the Remote Data Sync service.">Performance and Scalability of
+						the MobiLink Server</a>.</div>
+</div>
+
+			<p class="p"> To get access to the Remote Data Sync service, you need to extend your standard <span class="ph pname">SAP Cloud Platform</span>
+				license with an a-la-carte license for Remote Data Sync in one of two flavors: </p>
+
+			<div class="p">
+				<ol class="ol" id="loiocdc9600ec42a47ea90f8997906e959a0__ol_zsk_lnw_gt">
+					<li class="li">Remote Data Sync, Standard: MobiLink server on 2 Cores / 4GB RAM (Price list material
+						number: 8003943 )</li>
+
+					<li class="li">Remote Data Sync, Premium: MobiLink sever on 4 Cores / 8 GB RAM (Price list material
+						number: 8003944 )</li>
+
+				</ol>
+
+			</div>
+
+			<p class="p"/>
+
+		</div>
+		<div class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Next Steps</h2></div>
+			<p class="p"><a class="xref" href="ac7e5e6c84214d14a3303dfc2536f0c2.html">Provisioning a MobiLink Server in Your Account</a></p>
+
+		</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

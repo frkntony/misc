@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To manage documents in the SAP Cloud Platform document service, you need to connect an application to a repository of the document service."/>
+<meta name="description" content="To manage documents in the SAP Cloud Platform document service, you need to connect an application to a repository of the document service."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Repositories (HANA XS)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioc2afba2ab7634c62877863b382212173">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Repositories (HANA XS)</h1>
+<div class="body conbody"><p class="shortdesc">To manage documents in the SAP Cloud Platform document service, you need to connect
+		an application to a repository of the document service.</p>
+<p class="p">A repository is the document store for your application. It has a unique name with which it can
+			later be accessed, and it is secured using a key provided by the application. Only
+			applications that provide this key are allowed to connect to this repository.
+			Repositories can be created using the
+				<span class="keyword cmdname">createRepository(repositoryOptions)</span> method of the
+				<span class="ph sap-technical-name sap-technical-name">EcmService</span>.</p>
+<div class="p">You can manage repositories in several ways:<ul class="ul" id="loioc2afba2ab7634c62877863b382212173__ul_oc3_gs3_lq"><li class="li">In the cockpit, see <a class="xref" href="07216f1852914f919cc5158a69dfd789.html">Managing Repositories in the Cockpit</a>.</li>
+<li class="li">Programmatically, see <a class="xref" href="b42526e18a004c46811c9fdf7baf5bc0.html">Managing a Repository Programmatically (HANA XS)</a>.</li>
+<li class="li">Using console client commands, see <a class="xref" href="269aa860ed074550ada99cd89780c5cf.html">Managing a Repository with Console Client Commands</a>.</li>
+</ul>
+</div>
+<div class="p">
+			<div class="note note"><span class="notetitle">Note</span> As a repository has a certain storage footprint in the back end, the total amount
+				of repositories for each account is limited to 100. When you create repositories,
+				for example, for testing, make sure that these repositories are deleted after a test
+				is finished to avoid reaching the limit. Should your use case require more than 100
+				repositories per account, please create a support ticket.</div>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">Due to the tenant isolation in SAP Cloud Platform, the document service cockpit cannot access or view repostories you create
+					in <span class="ph pname">SAP Mobile Documents</span> or vice versa.</p>
+
+			</div>
+
+		</div>
+</div>
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

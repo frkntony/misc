@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Troubleshooting</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe7df7f15bb571014ae24bca245319880">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Troubleshooting</h1>
+<div class="body conbody"><div class="section" id="loioe7df7f15bb571014ae24bca245319880__section_70C6BDEFCD5F433799D25E9E81A25B42"><div class="section_title">Overview</div><div type="Overview"> 
+		 
+		<p class="p">This page provides you with details on how to monitor the state of your open tunnel connections
+				in the <span class="ph pname">Cloud connector</span>. You can also view different types of logs and traces that can help you
+				troubleshoot connection problems. </p>
+ 
+		<p class="p">To find a solution for a particular problem or an error you have encountered, you can refer to
+				the <span class="ph pname">Cloud connector</span>
+				troubleshooting pages. For more information, see <a class="xref" href="e5580c5dbb5710149e53c6013301a9f2.html">Connectivity Support</a>. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe7df7f15bb571014ae24bca245319880__section_E39F4F24008144EE82A5AF143487BBA4"><div class="section_title">Monitoring</div><div type="Monitoring"> 
+		 
+		<p class="p">It is possible to view the list of all currently connected applications. To do that, choose
+				your <span class="ph uicontrol">Account</span> from the left menu and go to section
+					<span class="ph uicontrol">Cloud Connections</span>:</p>
+
+			<p class="p"/>
+
+			<p class="p"><img class="image" id="loioe7df7f15bb571014ae24bca245319880__image_qvx_23z_tl" src="loio18a381149f1347c69d94a8077b6462c2_HiRes.png" alt="Monitor_Connections" title="Monitor_Connections"/></p>
+
+			<p class="p">The information available covers: </p>
+
+			<ul class="ul" id="loioe7df7f15bb571014ae24bca245319880__ul_h22_ffz_tl">
+				<li class="li"><span class="ph uicontrol">Application name</span>: The name of the application, as also shown in the
+					cockpit, for your account</li>
+
+				<li class="li"><span class="ph uicontrol">Connections</span>: The number of currently existing connections
+					to the application</li>
+
+				<li class="li"><span class="ph uicontrol">Connected Since</span>: The earliest start time of a connection
+					to this application</li>
+
+				<li class="li"><span class="ph uicontrol">Peer Labels</span>: The name of the application processes, as also shown for
+					this application in the  cockpit, for your account.</li>
+
+			</ul>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">Logs</div><div type="Logs">
+			
+			<p class="p">On the <span class="ph uicontrol">Logs</span> tab page, you can find some log files that can help you
+				troubleshoot problems with the internal operation of the <span class="ph pname">Cloud connector</span>. These
+				logs are intended primarily for SAP Support. They cover both internal <span class="ph pname">Cloud connector</span>
+				operations and details about the communication between the local and the remote (<span class="ph pname">SAP Cloud Platform</span>) tunnel endpoint.</p>
+
+		</div></div>
+
+		<div class="section" id="loioe7df7f15bb571014ae24bca245319880__section_Logs"><div class="section_title">Log and Trace Settings</div><div type="Log and Trace Settings">
+			
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioe7df7f15bb571014ae24bca245319880__image_lrz_wll_gy" src="loiof567ff2a0b924ce3b9b0d9e7d8bf5ccb_LowRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+			<p class="p">If you encounter problems during your business process, which seem to be caused by
+				some trouble in the communication between your cloud application and the on-premise
+				system, choose <span class="ph uicontrol">Log and Trace Files </span> from your
+					<span class="ph uicontrol">Account</span> menu and activate the respective traces by
+				clicking the <span class="ph uicontrol">Edit</span> button.</p>
+
+			<div class="p">
+				<ul class="ul" id="loioe7df7f15bb571014ae24bca245319880__ul_jnf_wml_gy">
+					<li class="li"><span class="ph uicontrol">Cloud Connector Loggers</span> adjusts the levels for Java
+						loggers directly related to <span class="ph pname">Cloud connector</span>
+						functionality. </li>
+
+					<li class="li"><span class="ph uicontrol">Other Loggers</span> adjusts the log level for all other
+						Java loggers available in the runtime (which is very rarely needed). You
+						only need to change the level when requested by SAP Support. It will produce
+						a lot of trace entries. </li>
+
+					<li class="li"><span class="ph uicontrol">CPIC Trace Level</span> allows you to set the level between
+						0 and 3 and provides traces for the CPIC-based RFC communication with ABAP
+						systems. </li>
+
+					<li class="li">When the <span class="ph uicontrol">Payload Trace</span> is activated for an account,
+						all the HTTP and RFC traffic crossing the tunnel for that account going
+						through this <span class="ph pname">Cloud connector</span>, is traced in files with names <span class="keyword cmdname">traffic_trace_&lt;account
+							id&gt;_on_&lt;landscapehost&gt;.trc</span>.  </li>
+
+				</ul>
+
+			</div>
+
+			<p class="p"/>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> 
+					<p class="p">Use payload and CPIC tracing on Level 3 carefully and only when requested to
+						do so for support reasons. In particular, the trace may write sensitive
+						information (such as payload data of HTTP/RFC requests and responses) to the
+						trace files, and thus, present a potential security risk. For this reason
+						the <span class="ph pname">Cloud connector</span>
+						(effective version <span class="ph emphasis emphasis">2.2</span>) supports an implementation of a
+						"four-eyes principle" for activating the trace levels that dump the network
+						traffic into a trace file. When this four-eyes principle is in place, two
+						users are required for the activation of a trace level that would record
+						traffic data. </p>
+
+					<p class="p">For more information about setting this extra security measure, see <a class="xref" href="4c8f678d84b94dfe9af539d040259837.html">Securing the Activation of Traffic Traces</a>.</p>
+
+				</div>
+
+			</div>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Log and Trace Files</div><div type="Log and Trace Files">
+			
+			<p class="p">In this section, you can view all existing trace files and delete the ones that are
+				no longer needed.</p>
+
+			<p class="p"><img class="image" id="loioe7df7f15bb571014ae24bca245319880__image_wsx_md3_zm" width="1400px" src="loio19e50e0babbc4dd4b74c43b5e3c97dfd_HiRes.png" alt="Log and Trace Files" title="Log and Trace Files"/></p>
+
+			<p class="p">To prevent your browser from being overloaded when files of several megabytes or even
+				gigabytes are loaded simultaneously, the <span class="ph pname">Cloud connector</span> loads
+				only one page into memory and you can display the trace file one page at a time by
+				clicking the <span class="ph uicontrol">View</span> icon. Use the paginator buttons to scroll
+				forward/backward by one page (angle bracket), or jump to the beginning or the end of
+				the file (page numbers on the left and the right). </p>
+
+			<p class="p">Via the <span class="ph uicontrol">Download</span>/<span class="ph uicontrol">Download All</span> icons you can
+				create a ZIP archive containing one particular trace file or all trace files and
+				download it to your local file system for convenient analysis of larger trace
+				files.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> Trace files currently in use by the <span class="ph pname">Cloud connector</span> cannot
+				be deleted from the UI. Linux OS allows them to be deleted from the command line,
+				but we recommend that you do not use this option to avoid inconsistencies in the
+				internal trace management of the <span class="ph pname">Cloud connector</span>.</div>
+
+			<p class="p">Once a problem has been identified, you can turn off the trace again by editing the trace and
+				log settings accordingly. </p>
+
+			<p class="p">On this screen, you can use the <span class="ph uicontrol">Refresh</span> button to update the displayed
+				information (this option is also available on all other screens). For example, you
+				can use this button because more trace files might have been written since you last
+				updated the display.</p>
+
+			<p class="p"><img class="image" id="loioe7df7f15bb571014ae24bca245319880__image_lsn_yly_1n" src="loio96d913a73fdf4607a4cd8e5073c8044e_HiRes.png" alt="Refresh Button" title="Refresh Button"/></p>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="5dd739823b824b539eee47b7860a00be.html" title="If you have questions or encounter an issue while working with SAP Cloud Platform, you can address them as described below.">Get Support</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

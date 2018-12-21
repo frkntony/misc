@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This section gives a very brief introduction to querying. The OpenCMIS Client API is a Java client-side library with many capabilities, for example, paging results. For more information, consult the OpenCMIS Javadoc and the examples on the Apache Chemistry Web site."/>
+<meta name="description" content="This section gives a very brief introduction to querying. The OpenCMIS Client API is a Java client-side library with many capabilities, for example, paging results. For more information, consult the OpenCMIS Javadoc and the examples on the Apache Chemistry Web site."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Querying Properties</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob1003e4572564b16a9d108413addbc86">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Querying Properties</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">This section gives a very brief introduction to querying. The OpenCMIS Client API is a
+		Java client-side library with many capabilities, for example, paging results. For more
+		information, consult the OpenCMIS Javadoc and the examples on the Apache Chemistry Web
+		site.</p>
+
+		<div class="section context" id="loiob1003e4572564b16a9d108413addbc86__context_N10015_N10012_N10001"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The following procedure focuses on a use case where you have created a second folder and some more documents. The repository then looks
+				like this:</p>
+
+			<div class="fig fignone" id="loiob1003e4572564b16a9d108413addbc86__fig_hh2_jqq_js"><div class="figcontainer">
+				<img class="image" id="loiob1003e4572564b16a9d108413addbc86__image_wmd_zlm_pj" src="loiob4df8eb6d00e47768a6d71a9e34446f6_LowRes.png" alt="HANACloud_DocuServ_QueryingProp" title="HANACloud_DocuServ_QueryingProp"/>
+			</div></div>
+
+			<p class="p">The <span class="ph sap-technical-name sap-technical-name">Hello Document</span> and <span class="ph sap-technical-name sap-technical-name">Hi Document</span> documents have the
+				tags <span class="keyword apiname">Hello</span> and <span class="keyword apiname">Tutorial</span>, the <span class="ph sap-technical-name sap-technical-name">Loren Ipsum</span> document has
+				no tags.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand" id="loiob1003e4572564b16a9d108413addbc86__step_N10030_N1002D_N10012_N10001">
+				<span class="ph cmd">Use the CMIS query to search documents in the system based on their properties.</span>
+				<div class="itemgroup info">
+					<div class="note note" id="loiob1003e4572564b16a9d108413addbc86__note_N1004A_N10047_N1003F_N1003C_N10012_N10001"><span class="notetitle">Note</span> The CMIS query language CMISSQL is
+						similar to SQL.</div>
+
+				</div>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">SELECT cmis:name, cmis:objectId, cmis:createdBy, sap:owner FROM cmis:document WHERE cmis:createdBy='john'</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">This query returns the following result set:
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob1003e4572564b16a9d108413addbc86__table_tbb_wpq_js" class="table" width="90%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+							
+							
+							
+							
+							<thead class="thead" align="left">
+								<tr class="row">
+									<th class="entry" valign="top" width="25%" id="d8417797e82">cmis:createdBy</th>
+
+									<th class="entry" valign="top" width="25%" id="d8417797e85">cmis:name</th>
+
+									<th class="entry" valign="top" width="25%" id="d8417797e88">sap:owner</th>
+
+									<th class="entry" valign="top" width="25%" id="d8417797e91">cmis:objectId</th>
+
+								</tr>
+
+							</thead>
+
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="25%" headers="d8417797e82 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e85 ">
+										<p class="p">Lorem Ipsum Document</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e88 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e91 ">
+										<p class="p">&lt;ID&gt;</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="25%" headers="d8417797e82 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e85 ">
+										<p class="p">Hi Document</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e88 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e91 ">
+										<p class="p">&lt;ID&gt;</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="25%" headers="d8417797e82 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e85 ">
+										<p class="p">Hello Document</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e88 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="25%" headers="d8417797e91 ">
+										<p class="p">&lt;ID&gt;</p>
+
+									</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+</div>
+			</li>
+<li class="li step stepexpand" id="loiob1003e4572564b16a9d108413addbc86__step_N1009D_N1002D_N10012_N10001">
+				<span class="ph cmd">Query all documents with the tag <span class="keyword apiname">Hello</span>.</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">SELECT cmis:name, cmis:objectId, cmis:createdBy, sap:tags, sap:owner FROM cmis:document WHERE ANY sap:tags IN ('Hello')</pre></div>
+
+				</div>
+				<div class="itemgroup info">
+					<div class="note note" id="loiob1003e4572564b16a9d108413addbc86__note_N100D4_N100D1_N100BA_N1003C_N10012_N10001"><span class="notetitle">Note</span> In this case, the workbench displays
+						only the first value of multi-valued properties.</div>
+
+					
+<div class="table-wrapper tablenoborder"><table summary="" id="loiob1003e4572564b16a9d108413addbc86__table_kyl_cqq_js" class="table" width="90%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/></colgroup>
+
+							
+							
+							
+							
+							
+							<thead class="thead" align="left">
+								<tr class="row">
+									<th class="entry" valign="top" width="20%" id="d8417797e222">cmis:createdBy</th>
+
+									<th class="entry" valign="top" width="20%" id="d8417797e225">cmis:name</th>
+
+									<th class="entry" valign="top" width="20%" id="d8417797e228">sap:owner</th>
+
+									<th class="entry" valign="top" width="20%" id="d8417797e231">sap:tags</th>
+
+									<th class="entry" valign="top" width="20%" id="d8417797e234">cmis:objectId</th>
+
+								</tr>
+
+							</thead>
+
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="20%" headers="d8417797e222 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e225 ">
+										<p class="p">Hello Document</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e228 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e231 ">
+										<p class="p">Hello</p>
+
+										<p class="p">Tutorial</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e234 ">
+										<p class="p">&lt;ID&gt;</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="20%" headers="d8417797e222 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e225 ">
+										<p class="p">Hi Document</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e228 ">
+										<p class="p">john</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e231 ">
+										<p class="p">Hello</p>
+
+										<p class="p">Tutorial</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%" headers="d8417797e234 ">
+										<p class="p">&lt;ID&gt;</p>
+
+									</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand" id="loiob1003e4572564b16a9d108413addbc86__step_N10108_N1002D_N10012_N10001">
+				<span class="ph cmd">Execute the query with the following code:</span>
+				<div class="itemgroup stepxmp">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">String query = "SELECT cmis:name, cmis:objectId, cmis:createdBy, " +
+ 	"sap:tags, sap:owner FROM cmis:document WHERE ANY sap:tags " +
+"IN ('Hello')";
+
+ItemIterable&lt;QueryResult&gt; results = session.query(query, false););
+
+System.out.println("Name | Object-Id  | Author | Tags");
+System.out.println("---------------------------------");
+for (QueryResult result : results) {
+    String name = result.getPropertyValueByQueryName("cmis:name");
+    String id =result.getPropertyValueByQueryName("cmis:objectId");
+    String author = 
+        result.getPropertyValueByQueryName("cmis:objectId");
+    List&lt;String&gt; tags =
+        result.getPropertyMultivalueByQueryName("sap:tags");
+
+    System.out.println(name + " | " + id + " | " + author + " | " 
+        + tags);
+}
+</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">This query produces the following output:<p class="p"><samp class="ph systemoutput">Name | Object-Id | Author
+							| Tags --------------------------------- Hello-Document |
+							7L8S0XYG9dh7O1gGgkiA9gWl3gSIzYkYpYds6vnxA-M | john | [Hello, Tutorial]
+							Hi-Document | 3ovtYi1sqWyUmXW3-zGg30OT-e2U12qiD_o-kf595YA | john |
+							[Hello, Tutorial]</samp></p>
+</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/0.13.0/maven/apidocs/" target="_blank" alt="http://chemistry.apache.org/java/0.13.0/maven/apidocs/" title="http://chemistry.apache.org/java/0.13.0/maven/apidocs/">http://chemistry.apache.org/java/0.13.0/maven/apidocs/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/java/examples/index.html" target="_blank" alt="http://chemistry.apache.org/java/examples/index.html" title="http://chemistry.apache.org/java/examples/index.html">http://chemistry.apache.org/java/examples/index.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

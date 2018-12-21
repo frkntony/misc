@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="By default, the Cloud connector comes with a self-signed default certificate, which is used to encrypt the communication between the browser-based user interface and the Cloud connector itself. For security reasons, however, you should replace this certificate with your own one so that the browser accepts the certificate without security warnings."/>
+<meta name="description" content="By default, the Cloud connector comes with a self-signed default certificate, which is used to encrypt the communication between the browser-based user interface and the Cloud connector itself. For security reasons, however, you should replace this certificate with your own one so that the browser accepts the certificate without security warnings."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Exchanging UI Certificates in the Administration UI</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiob70bf164a6e6498b8bf1f459554609f5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Exchanging UI Certificates in the Administration UI</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">By default, the <span class="ph pname">Cloud connector</span> comes with a
+		self-signed default certificate, which is used to encrypt the communication between the
+		browser-based user interface and the <span class="ph pname">Cloud connector</span> itself. For
+		security reasons, however, you should replace this certificate with your own one so that the
+		browser accepts the certificate without security warnings.</p>
+</div>
+
+	<div class="topic concept nested1" id="concept_jhp_ydl_cs">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Master Instance</div><div type="Master Instance">
+				
+				<ol class="ol" id="concept_jhp_ydl_cs__ol_vc5_12l_cs">
+					<li class="li">Choose <span class="ph uicontrol">Configuration</span> in the main menu and go to tab <span class="ph uicontrol">User
+							Interface</span>.</li>
+
+					<li class="li">In the <span class="ph uicontrol">UI Certificate</span> section, start a certificate signing request
+						procedure by choosing the icon <span class="ph uicontrol">Generate a Certificate Signing
+							Request</span>. </li>
+
+					<li class="li">In the pop-up <span class="ph uicontrol">Generate CSR</span>, specify a subject fitting to your host
+						name.</li>
+
+					<li class="li">Press <span class="ph uicontrol">Generate</span>.<p class="p"><img class="image" id="concept_jhp_ydl_cs__image_sjf_1fl_cs" src="loio0430eef54fe14a5fa7e82f958b1e3771_HiRes.png"/></p>
+
+					</li>
+
+					<li class="li">You are prompted to save the signing request in a file. The content of the file is the
+						signing request in PEM format. <p class="p">The signing request needs to be provided
+							to a Certificate Authority (CA) - either one within your company or
+							another one you trust. The CA will sign the request and the returned
+							response should be stored in a file. </p>
+</li>
+
+					<li class="li">To import the signing response, choose the <span class="ph uicontrol">Upload</span> icon. Press
+							<span class="ph uicontrol">Browse</span> to locate the file and then choose the
+							<span class="ph uicontrol">Import</span> button.  </li>
+
+					<li class="li">Review the certificate details displayed. </li>
+
+					<li class="li">Restart the <span class="ph pname">Cloud connector</span>
+						to activate the new certificate.</li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Shadow Instance</div><div type="Shadow Instance">
+				
+				<p class="p">The same operation is possible on the shadow instance in a high availability setup.</p>
+
+				<p class="p"/>
+
+			</div></div>
+
+		</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

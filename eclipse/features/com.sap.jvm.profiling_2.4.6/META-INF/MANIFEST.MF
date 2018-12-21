@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.4
+Created-By: 8.1.1827 (SAP AG)
+
+Name: feature_de.properties
+SHA-256-Digest: Ai4+X2T2Wq2eBClQwXOUnyMuY3vEsbssJA4hTzEROIw=
+
+Name: feature.xml
+SHA-256-Digest: 6uVaYGAmgtcFVwSKYZkkQyKeBY7fbKbOZd2E7dRaFPQ=
+
+Name: feature.properties
+SHA-256-Digest: CoAQICJqGCvNseCsnm3MlT9fuD6zn4YyRBLK+/nncC4=
+

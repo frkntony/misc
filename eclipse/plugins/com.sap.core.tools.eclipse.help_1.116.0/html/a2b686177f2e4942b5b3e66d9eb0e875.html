@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can extend the scope ofSAP SuccessFactors HCM Suite using SAP Cloud Platform extension applications."/>
+<meta name="description" content="You can extend the scope ofSAP SuccessFactors HCM Suite using SAP Cloud Platform extension applications."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Extending SAP SuccessFactors</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioa2b686177f2e4942b5b3e66d9eb0e875">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Extending <span class="ph pname">SAP SuccessFactors</span></h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can extend the scope of<span class="ph pname">SAP SuccessFactors</span> HCM Suite using <span class="ph pname">SAP Cloud Platform</span> extension
+		applications.</p>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span>, extension package
+				for <span class="ph pname">SAP SuccessFactors</span> allows you
+				to extend your <span class="ph pname">SAP SuccessFactors</span>
+				scope with applications running on the platform. The extension package makes it
+				quick and easy for companies to adapt and integrate SuccessFactors cloud
+				applications to their existing business processes, thus helping them maintain
+				competitive advantage, engage their workforce and improve their bottom line.</p>
+
+			<p class="p">The extension package for <span class="ph pname">SAP SuccessFactors</span>
+				delivers the in-memory computing speed of <span class="ph pname">SAP Cloud Platform</span> and includes
+				capabilities from the <span class="ph pname">SAP SuccessFactors</span> metadata framework
+				(MDF) and <span class="ph pname">SAP Cloud Platform</span>
+				for extension development. This combination of technologies makes it easier for
+					<span class="ph pname">SAP SuccessFactors</span> customers,
+				partners, and developers to extend cloud or on-premises applications, build entirely
+				new cloud applications, and enable new processes that meet unique business needs.
+				Therefore, you can use the <span class="ph pname">SAP Cloud Platform</span>, extension
+				package for both internal custom development based on the provided <span class="ph pname">SAP SuccessFactors</span> APIs and for
+				running certified extension applications provided by SAP partner companies.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Extensibility layers</div><div type="Extensibility layers">
+			
+			<p class="p">With <span class="ph pname">SAP SuccessFactors</span>, you have the
+				following extensibility layers:</p>
+
+			<div class="p">
+				<ul class="ul" id="loioa2b686177f2e4942b5b3e66d9eb0e875__ul_irn_j51_s4">
+					<li class="li"><span class="ph emphasis emphasis">Application Data Model</span><p class="p">This layer allows you to extend delivered
+							objects by configuring labels, required fields, pick lists, and adding
+							customer fields and so on.</p>
+</li>
+
+					<li class="li"><span class="ph emphasis emphasis">MDF</span><p class="p">This extensibility layer allows you to extend <span class="ph pname">SAP SuccessFactors</span>
+							applications from within the application or <span class="ph pname">SAP Cloud Platform</span>.
+							You extend the applications using configuration and rules engine UI. You
+							use delivered objects to create extensions and logic. The extensions you
+							create are tightly coupled with EC entities and theres is no duplication
+							of data. They can be consumed both from within EC and <span class="ph pname">SAP Cloud Platform</span>.</p>
+</li>
+
+					<li class="li"><span class="ph emphasis emphasis"><span class="ph pname">SAP Cloud Platform</span></span><p class="p">The platform provides a complete Java-based
+							development and hosting environment. It allows you to create new
+							applications, recreate your custom applications, and easily extend
+							existing applications. You can leverage MDF custom objects and share
+							them across extensions, accessing them using OData APIs.</p>
+</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p"><img class="image" id="loioa2b686177f2e4942b5b3e66d9eb0e875__image_bcm_yy1_s4" src="loioe29df4a898b943bf8d10d543a55b29d5_HiRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Integration between MDF and SAP Cloud Platform</div><div type="Integration between MDF and SAP Cloud Platform">
+			
+			<p class="p">Using MDF, you can develop custom objects, automatically expose them to <span class="ph pname">SAP Cloud Platform</span>, and enable them for social media and mobile apps. This allows you to
+				quickly define the data layer inside the SuccessFactors HCM suite. You can then
+				access that data layer and build on top of it by defining complex application logic
+				and creating a feature-rich user interface in <span class="ph pname">SAP Cloud Platform</span>.</p>
+
+			<p class="p">With MDF you can create the precise functionality needed to your company's unique business
+				requirements. You can easily maintain and update the functionality as needed
+				throughout the application lifecycle. You can also integrate changes into your
+				existing business processes, since every MDF object comes ready with an OData API
+				that can both read and write data.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Standard extension destinations</div><div type="Standard extension destinations">
+			
+			<p class="p">Developers can leverage the following HTTP connectivity destinations pointing to
+				SuccessFactors:</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loioa2b686177f2e4942b5b3e66d9eb0e875__table_yrw_5pb_gs" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: Destinations</span></caption>
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d7592560e160">
+								<p class="p">Name</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d7592560e166">
+								<p class="p">Protocol</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d7592560e172">Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7592560e160 ">
+								<p class="p"><span class="keyword parmname">sap_hcmcloud_core_odata</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7592560e166 ">
+								<p class="p">OData</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7592560e172 ">OData API of SuccessFactors HCM Suite, exposing both standard and
+								custom business objects. This is the default API to be used for
+								interactive extension applications. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7592560e160 ">
+								<p class="p"><span class="keyword parmname">sap_hcmcloud_core_soap</span></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7592560e166 ">
+								<p class="p">SOAP</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d7592560e172 ">Provides connectivity to the SF API of SuccessFactors HCM Suite. It is mostly used for
+								system-to-system mass replication of data. <div class="p">
+									<div class="note note"><span class="notetitle">Note</span> 
+										<p class="p">You create the destination manually. You use the
+												<span class="ph filepath">ConnectivityConfiguration API</span>
+											for accessing the destination configuration. For more
+											information, see <a class="xref" href="4da3b13c88ce4220bbd56a4361799668.html" title="All connectivity API packages are visible by default from all Web applications. Applications can consume the connectivity configuration via a JNDI lookup.">ConnectivityConfiguration API</a></p>
+
+									</div>
+
+								</div>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Supported APIs</div><div type="Supported APIs">
+			
+			<p class="p">You can find a list and implementation details of the APIs supported by
+				SuccessFactors HCM Suite on SAP Help Portal, at <a class="xref" href="http://help.sap.com/hr_api/" target="_blank" alt="http://help.sap.com/hr_api/" title="http://help.sap.com/hr_api/">http://help.sap.com/hr_api/</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Extension Application Installation</div><div type="Extension Application Installation">
+			
+			<div class="p"><span class="ph pname">SAP Cloud Platform</span> provides the following options for deploying and configuring SAP
+				SuccessFactors extension application. The preferred option depends on your
+					scenario.<ul class="ul" id="loioa2b686177f2e4942b5b3e66d9eb0e875__ul_dlq_kft_1x">
+					<li class="li">
+						<p class="p">Deploying and configuring an extension application using the <span class="ph pname">SAP Cloud Platform</span> cockpit (preferable for productive scenarios).</p>
+
+						<p class="p">For more information, see <a class="xref" href="29e1c4cbf2fc4067b8af1e454a232d3c.html" title="In the context of SAP Cloud Platform, a solution is comprised of various application types and configurations, designed to serve a certain scenario or task flow.">Solutions</a>.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Deploying and configuring an extension application using console client
+							commands (preferable for development scenarios).</p>
+
+						<p class="p">For more information, see <a class="xref" href="fd92f749a9374f9190d716171f9bfd42.html" title="As an implementation partner, you install and configure the extension applications that you want to make available for customers.">Installing and Configuring Extension Applications (Beta)</a>.</p>
+
+					</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://service.sap.com/%7Esapidb/012002523100013621492014E" target="_blank" alt="http://service.sap.com/%7Esapidb/012002523100013621492014E" title="http://service.sap.com/%7Esapidb/012002523100013621492014E"><span class="ph pname">SAP Cloud Platform</span>, Extension Package for SuccessFactors (Implementation
+				Guide)<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></div>
+<div><a class="link" href="e4f1d97cbb571014a247d10f9f9a685d.html">Destinations</a></div>
+<div><a class="link" href="fd92f749a9374f9190d716171f9bfd42.html" title="As an implementation partner, you install and configure the extension applications that you want to make available for customers.">Installing and Configuring Extension Applications (Beta)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

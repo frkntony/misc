@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This page shows lists of commands for different tasks and database types."/>
+<meta name="description" content="This page shows lists of commands for different tasks and database types."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Console Client Commands</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="">
+<div id="wrapper"><div id="container">
+<div class="nested0" id="loio2daf54f4701c476c8215a399685188d1">
+	<h1 class="title topictitle1">Console Client Commands</h1>
+
+	<p class="shortdesc">This page shows lists of commands for different tasks and database types. </p>
+
+<div class="topic reference nested1" lang="en-US" id="loiocf6f51ba4aa5427db0097e3f8d413317">
+	<h2 class="title topictitle2">List and Display</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiocf6f51ba4aa5427db0097e3f8d413317__table_wvn_x4q_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d2097407e48">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e54">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e60">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e66">
+								<p class="p">Commands for SAP HANA schemas</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Listing databases for a specific account </p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p"><a class="xref" href="f94d5a21f99049f5985a9ecfd73e8f46.html" title="This command lists all databases for the specified account.">list-dbs</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p"><a class="xref" href="f94d5a21f99049f5985a9ecfd73e8f46.html" title="This command lists all databases for the specified account.">list-dbs</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">-</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Listing database systems for a specific account</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p"><a class="xref" href="1ea177113f694bfab1529214d307edda.html" title="This command lists the dedicated and shared database management systems available for the specified account with the following details: database system (for dedicated databases), database type, and database version.">list-dbms</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p"><a class="xref" href="1ea177113f694bfab1529214d307edda.html" title="This command lists the dedicated and shared database management systems available for the specified account with the following details: database system (for dedicated databases), database type, and database version.">list-dbms</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Listing schemas and databases bound to an application</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p"><a class="xref" href="9fe84fe6f68b41bb9bc2ed04e91283d2.html" title="This command lists all schemas and productive database instances bound to an application.">list-application-datasources</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p"><a class="xref" href="9fe84fe6f68b41bb9bc2ed04e91283d2.html" title="This command lists all schemas and productive database instances bound to an application.">list-application-datasources</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">
+								<p class="p"><a class="xref" href="9fe84fe6f68b41bb9bc2ed04e91283d2.html" title="This command lists all schemas and productive database instances bound to an application.">list-application-datasources</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Listing all database access permissions given to another account
+									in the same global account</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p"><a class="xref" href="28a621871d5b49ddb03fd7748e6c49f9.html" title="This command lists the permissions that other accounts have for accessing databases in the specified account.">list-db-access-permissions</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p"><a class="xref" href="28a621871d5b49ddb03fd7748e6c49f9.html" title="This command lists the permissions that other accounts have for accessing databases in the specified account.">list-db-access-permissions</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Listing all database access permissions given to another account
+									with the <a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a>
+									command</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p"><a class="xref" href="371711d0c46347429a6aa69147e892fc.html" title="This command lists all current schema access grants for a specified account.">list-schema-access-grants</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p"><a class="xref" href="371711d0c46347429a6aa69147e892fc.html" title="This command lists all current schema access grants for a specified account.">list-schema-access-grants</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Displaying database information</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p"><a class="xref" href="064d3013cf584a3b8be59d396e027929.html" title="This command displays detailed information about the selected database. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-db-info</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p"><a class="xref" href="064d3013cf584a3b8be59d396e027929.html" title="This command displays detailed information about the selected database. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-db-info</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e48 ">
+								<p class="p">Displaying schema information</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e54 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e60 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e66 ">
+								<p class="p"><a class="xref" href="0a8638de7a2f4f1e8c8610df6e349e86.html" title="This command displays detailed information about the selected schema. This includes the assigned database type, the database version, and a list of bindings with the application and data source names.">display-schema-info</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio0aefbc0ea2474c14a2831a742fcb45d6">
+	<h2 class="title topictitle2">Create</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio0aefbc0ea2474c14a2831a742fcb45d6__table_ycd_zpq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d2097407e377">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e383">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e389">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e395">
+								<p class="p">Commands for SAP HANA schemas</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e377 ">
+								<p class="p">Creating databases</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e383 ">
+								<p class="p"><a class="xref" href="01a21776a8dc498397b8435fd185c574.html" title="This command creates an ASE database with the specified ID and settings on an ASE database system.">create-db-ase</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e389 ">
+								<p class="p"><a class="xref" href="f64390e250cc4dcf8d9046192957d26a.html" title="This command creates a SAP HANA database with the specified ID and settings, on a SAP HANA database system enabled for multitenant database containers.">create-db-hana</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e395 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e377 ">
+								<p class="p">Creating schemas</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e383 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e389 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e395 ">
+								<p class="p"><a class="xref" href="05ebe394ab3f491380209e4df3713662.html" title="This command creates a HANA database or schema with the specified ID on a shared or dedicated database.">create-schema</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e377 ">
+								<p class="p">Creating a database user</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e383 ">
+								<p class="p"><a class="xref" href="487b85d51994405d8198f8690c0be504.html" title="This command creates a user for an ASE database.">create-db-user-ase</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e389 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e395 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio90a56398eec34b82872cdae90b86ece8">
+	<h2 class="title topictitle2">Set Database Properties</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio90a56398eec34b82872cdae90b86ece8__table_erf_5qq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e540">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e546">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e552">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e540 ">
+								<p class="p">Setting database properties</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e546 ">
+								<p class="p"><a class="xref" href="5b6f21011d074043a8e1c697e0129678.html" title="This command changes the properties for an ASE database.">set-db-properties-ase</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e552 ">
+								<p class="p"><a class="xref" href="a1c73b15d03d4e2fa05d43f0080ec316.html" title="This command changes the properties for a SAP HANA database enabled for multitenant database container support.">set-db-properties-hana</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio31e785811d424221b5c3c8df36e20a1a">
+	<h2 class="title topictitle2">Start, Stop, and Restart</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio31e785811d424221b5c3c8df36e20a1a__table_gr4_bvq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d2097407e624">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="50%" id="d2097407e630">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2097407e624 ">
+								<p class="p">Starting databases</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2097407e630 ">
+								<p class="p"><a class="xref" href="bf6020d733d84a19bbae2ae018783ced.html" title="This command starts the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">start-db-hana</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2097407e624 ">
+								<p class="p">Stopping databases</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2097407e630 ">
+								<p class="p"><a class="xref" href="c76fc39276dd47dc8d9c6d8bbfc6834a.html" title="This command stops the specified SAP HANA database on a SAP HANA database system enabled for multitenant database container support.">stop-db-hana</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d2097407e624 ">
+								<p class="p">Restarting database systems</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%" headers="d2097407e630 ">
+								<p class="p"><a class="xref" href="6b5dea07d9fe42b5b8e355f33a208bb0.html" title="Restarts an SAP HANA database or an SAP HANA service.">restart-hana</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio413d8d793a4741e98670f26b17e48724">
+	<h2 class="title topictitle2">Open a Database Tunnel</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio413d8d793a4741e98670f26b17e48724__table_ybt_ytq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e734">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e740">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e746">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e734 ">
+								<p class="p">Opening a database tunnel</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e740 ">
+								<p class="p"><a class="xref" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e746 ">
+								<p class="p"><a class="xref" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio24f2e1cbbefd4621b1a4baeca7aa83dc">
+	<h2 class="title topictitle2">Bind and Unbind</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio24f2e1cbbefd4621b1a4baeca7aa83dc__table_xx2_wrq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d2097407e822">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e828">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e834">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e840">
+								<p class="p">Commands for SAP HANA schemas</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e822 ">
+								<p class="p">Binding databases</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e828 ">
+								<p class="p"><a class="xref" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e834 ">
+								<p class="p"><a class="xref" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e840 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e822 ">
+								<p class="p">Unbinding databases</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e828 ">
+								<p class="p"><a class="xref" href="46e24bb9d5ef4c2cb5cfdde8ed751e28.html" title="This command unbinds a database from a Java application for a particular data source.">unbind-db</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e834 ">
+								<p class="p"><a class="xref" href="46e24bb9d5ef4c2cb5cfdde8ed751e28.html" title="This command unbinds a database from a Java application for a particular data source.">unbind-db</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e840 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e822 ">
+								<p class="p">Binding schemas</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e828 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e834 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e840 ">
+								<p class="p"><a class="xref" href="ce689b2f0d4c434cb820f945a0a3ae18.html" title="This command binds a schema to a Java application via a data source. If a data source name is not specified, the schema will be automatically bound to the default data source of the application.">bind-schema</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e822 ">
+								<p class="p">Unbinding schemas</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e828 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e834 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e840 ">
+								<p class="p"><a class="xref" href="41e70ab3109a44fd836cfaa460a6598e.html" title="This command unbinds a schema from an application for a particular data source.">unbind-schema</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loiof1c692150b9742e384a035a569cd674a">
+	<h2 class="title topictitle2">Delete</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiof1c692150b9742e384a035a569cd674a__table_l43_zqq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d2097407e1024">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e1030">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e1036">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="25%" id="d2097407e1042">
+								<p class="p">Commands for SAP HANA schemas</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e1024 ">
+								<p class="p">Deleting databases</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1030 ">
+								<p class="p"><a class="xref" href="9f0785db4cbf4712a6ecfae5b3ae1055.html" title="This command deletes the ASE database with the specified ID.">delete-db-ase</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1036 ">
+								<p class="p"><a class="xref" href="628ae80589f247f59b227e63f9b0d02e.html" title="This command deletes the SAP HANA database with the specified ID on a SAP HANA database system enabled for multitenant database container support.">delete-db-hana</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1042 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e1024 ">
+								<p class="p">Deleting schemas</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1030 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1036 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1042 ">
+								<p class="p"><a class="xref" href="82a99117f07d4147b4041e645eb1e6b7.html" title="This command deletes the specified schema, including all data it contains. A schema cannot be deleted if it is still bound to an application. To enforce the deletion, use the force parameter but bear in mind that this will also delete all bindings that still exist.">delete-schema</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d2097407e1024 ">
+								<p class="p">Deleting a database user</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1030 ">
+								<p class="p"><a class="xref" href="b280fa0fcc974ba5a65c83b7a265341e.html" title="This command deletes a user from an ASE database.">delete-db-user-ase</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1036 ">
+								<p class="p">-</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d2097407e1042 ">
+								<p class="p">-</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio0d3c0b2c6ff949c1942dacf29654778e">
+	<h2 class="title topictitle2">Manage Access to Databases for Other Accounts</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio0d3c0b2c6ff949c1942dacf29654778e__table_uct_jrq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e1188">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e1194">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e1200">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1188 ">
+								<p class="p">Giving another account in the same global account access to a
+									database </p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1194 ">
+								<p class="p"><a class="xref" href="e7d72bf3da2e45cfb135b2feed3a58d0.html" title="This command gives another account permission to access a database. The account providing the permission and the account receiving the permission must be part of the same global account.">grant-db-access</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1200 ">
+								<p class="p"><a class="xref" href="e7d72bf3da2e45cfb135b2feed3a58d0.html" title="This command gives another account permission to access a database. The account providing the permission and the account receiving the permission must be part of the same global account.">grant-db-access</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1188 ">
+								<p class="p">Listing all database access permissions given to another account
+									in the same global account</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1194 ">
+								<p class="p"><a class="xref" href="28a621871d5b49ddb03fd7748e6c49f9.html" title="This command lists the permissions that other accounts have for accessing databases in the specified account.">list-db-access-permissions</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1200 ">
+								<p class="p"><a class="xref" href="28a621871d5b49ddb03fd7748e6c49f9.html" title="This command lists the permissions that other accounts have for accessing databases in the specified account.">list-db-access-permissions</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1188 ">
+								<p class="p">Revoking database access for another account in the same global
+									account </p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1194 ">
+								<p class="p"><a class="xref" href="a0265c4b575843e9904056c8a1cda28d.html" title="This command revokes the database access permissions given to another account.">revoke-db-access</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1200 ">
+								<p class="p"><a class="xref" href="a0265c4b575843e9904056c8a1cda28d.html" title="This command revokes the database access permissions given to another account.">revoke-db-access</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1188 ">
+								<p class="p">Giving any other account access to a database </p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1194 ">
+								<p class="p"><a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1200 ">
+								<p class="p"><a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1188 ">
+								<p class="p">Listing all database access permissions given to another account
+									with the <a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a>
+									command</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1194 ">
+								<p class="p"><a class="xref" href="371711d0c46347429a6aa69147e892fc.html" title="This command lists all current schema access grants for a specified account.">list-schema-access-grants</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1200 ">
+								<p class="p"><a class="xref" href="371711d0c46347429a6aa69147e892fc.html" title="This command lists all current schema access grants for a specified account.">list-schema-access-grants</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1188 ">
+								<p class="p">Revoking database access given to another account with the <a class="xref" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a> command</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1194 ">
+								<p class="p"><a class="xref" href="a92c08adc7b54370a309c140fa174d54.html" title="This command revokes the schema access granted to an application in another account.">revoke-schema-access</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1200 ">
+								<p class="p"><a class="xref" href="a92c08adc7b54370a309c140fa174d54.html" title="This command revokes the schema access granted to an application in another account.">revoke-schema-access</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="topic reference nested1" lang="en-US" id="loio45159c7df6924ccf8b72e0e4d97b1204">
+	<h2 class="title topictitle2">Manage Tunnel Access to Databases for Other Accounts</h2>
+
+	<div class="body refbody">
+		<div class="section">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio45159c7df6924ccf8b72e0e4d97b1204__table_cfy_ktq_sy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e1444">
+								<p class="p">Task</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e1450">
+								<p class="p">Commands for SAP ASE databases</p>
+
+							</th>
+
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2097407e1456">
+								<p class="p">Commands for SAP HANA databases</p>
+
+							</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1444 ">
+								<p class="p">Giving another account permission to open a database tunnel</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1450 ">
+								<p class="p"><a class="xref" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1456 ">
+								<p class="p"><a class="xref" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1444 ">
+								<p class="p">Listing all tunnel permissions given to other accounts</p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1450 ">
+								<p class="p"><a class="xref" href="21e4be85b52448d0ad259a93fd6f51fd.html" title="This command lists all current database access permissions for databases in other accounts.">list-db-tunnel-access-grants</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1456 ">
+								<p class="p"><a class="xref" href="21e4be85b52448d0ad259a93fd6f51fd.html" title="This command lists all current database access permissions for databases in other accounts.">list-db-tunnel-access-grants</a></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1444 ">
+								<p class="p">Revoking tunnel access given to other accounts </p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1450 ">
+								<p class="p"><a class="xref" href="616309ea0ce64065813d1400a70de402.html" title="This command revokes database access that has been given to another account.">revoke-db-tunnel-access</a></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="33.33333333333333%" headers="d2097407e1456 ">
+								<p class="p"><a class="xref" href="616309ea0ce64065813d1400a70de402.html" title="This command revokes database access that has been given to another account.">revoke-db-tunnel-access</a></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+	</div>
+
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

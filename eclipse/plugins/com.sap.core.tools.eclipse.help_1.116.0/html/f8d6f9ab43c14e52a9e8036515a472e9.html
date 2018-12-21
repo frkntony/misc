@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Find quick answers to the most common questions about the Cloud connector."/>
+<meta name="description" content="Find quick answers to the most common questions about the Cloud connector."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Cloud Connector: Frequently Asked Questions</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof8d6f9ab43c14e52a9e8036515a472e9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1"><span class="ph pname">Cloud Connector</span>:
+		Frequently Asked Questions </h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Find quick answers to the most common questions about the <span class="ph pname">Cloud connector</span>.</p>
+
+		<p class="p"/>
+
+		<div class="section collapsible"><div class="section_title">Technical Issues</div><div type="Technical Issues"><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__direction"><span class="ph emphasis emphasis">Is the <span class="ph pname">Cloud connector</span>
+						used to send data from on-premise systems to <span class="ph pname">SAP Cloud Platform</span> or
+						the other way around?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">The connection is opened from on-premise to the Cloud, but is then used in the
+					other direction. </p>
+
+				<p class="p">This concept was created because an on-premise system is, in contrast to a Cloud
+					system, normally located behind a restrictive firewall and its services aren’t
+					accessible thru the Internet. It is a widely used pattern often referred to as
+						<em class="ph i">reverse invoke proxy</em>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__encrypted"><span class="ph emphasis emphasis">Is the connection between the <span class="ph pname">SAP Cloud Platform</span> and
+						the <span class="ph pname">Cloud connector</span>
+						encrypted?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Yes, TLS encryption is used by default for the tunnel between <span class="ph pname">SAP Cloud Platform</span> and
+						<span class="ph pname">Cloud connector</span>. </p>
+
+				<p class="p">If used properly, TLS is a highly secure protocol, it is the industry standard
+					for encrypted communication and also, for example, as a secure channel in HTTPS. </p>
+
+				<p class="p">Keep your <span class="ph pname">Cloud connector</span>
+					installation updated and we will make sure that no weak or deprecated ciphers
+					are used for TLS. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__oldest"><span class="ph emphasis emphasis">What is the oldest version of SAP Business Suite which is
+						compatible with the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">The <span class="ph pname">Cloud connector</span> can connect a SAP Business Suite system version 4.6C and newer. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__jre"><span class="ph emphasis emphasis">What JRE versions are supported to run <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<div class="p">
+					
+<div class="table-wrapper tablenoborder"><table summary="" id="loiof8d6f9ab43c14e52a9e8036515a472e9__table_qw5_svd_py" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/></colgroup>
+
+							
+							
+							
+							
+							
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="20%">
+										<p class="p"/>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p"/>
+
+									</td>
+
+									<td class="entry" colspan="3" valign="top">
+										<p class="p">Supported JRE Version</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="20%">
+										<p class="p"/>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p"/>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">6</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">7</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">8</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" rowspan="3" valign="top" width="20%">
+										<p class="p"><span class="ph pname">Cloud Connector</span> Version</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p"> &lt; 2.7.2 </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">No</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="20%">
+										<p class="p">= 2.7.2 </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes</p>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="20%">
+										<p class="p">&gt;= 2.8 </p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">No</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="20%">
+										<p class="p">Yes</p>
+
+									</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+
+				</div>
+
+				<p class="p"/>
+
+				<p class="p">We recommend to always use the latest supported JRE version. </p>
+
+				<div class="p">
+					<div class="note note"><span class="notetitle">Note</span> Please be aware that the <span class="ph pname">Cloud connector</span>
+						version 2.8 and above may have problems with ciphers in Google Chrome, if
+						you use the JVM 7. For more information read <a class="extlink" href="http://help.sap.com/disclaimer?site=https://blogs.sap.com/2015/09/09/cloud-connector-and-errsslweakserverephemeraldhkey-with-chrome/" target="_blank" alt="https://blogs.sap.com/2015/09/09/cloud-connector-and-errsslweakserverephemeraldhkey-with-chrome/" title="https://blogs.sap.com/2015/09/09/cloud-connector-and-errsslweakserverephemeraldhkey-with-chrome/">this SCN Article<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>.</div>
+
+				</div>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__userstore"><span class="ph emphasis emphasis">Which configuration in the <span class="ph pname">SAP Cloud Platform</span>
+						destinations do I need to handle the user management access to the Cloud
+						User Store of the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Please check <a class="xref" href="933034aeb00d489eaf21d50bbb12fed5.html">Configuring User Store in the Cloud Connector</a>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__hci"><span class="ph emphasis emphasis">Is the <span class="ph pname">Cloud connector</span>
+						sufficient to connect the <span class="ph pname">SAP Cloud Platform</span> to an
+						SAP ABAP backend or is HCI needed?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">It depends on the scenario: For pure point-to-point connectivity to call
+					on-premise functionality like BAPIs, RFCs, OData services etc. exposed via
+					on-premise systems, the <span class="ph pname">Cloud connector</span>
+					could suffice. </p>
+
+				<p class="p">However, if an advanced functionality is required for e.g. n-to-n connectivity as
+					an integration hub, HANA Cloud Integration – Process Integration (HCI-PI) would
+					be the suitable solution. HCI could then make use of <span class="ph pname">Cloud connector</span> as
+					a communication channel. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__bandwidth"><span class="ph emphasis emphasis">How much bandwidth does the <span class="ph pname">Cloud connector</span>
+						consume?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">This highly depends on the application, which is using the <span class="ph pname">Cloud connector</span>
+					tunnel. If the tunnel isn’t currently used, but still connected, a few bytes per
+					minute will be used in order to keep the connection alive. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__response"><span class="ph emphasis emphasis">What happens to a response in case of a connection
+						failure while a request is processed?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">The response will be lost. The <span class="ph pname">Cloud connector</span>
+					only provides tunneling, it does not store and forward data in case of network
+					issues. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__where"><span class="ph emphasis emphasis">Where should I install the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">For productive instances, we recommend installing the <span class="ph pname">Cloud connector</span> on
+					a single purpose machine. This is relevant for security. Find more information
+					in our <a class="extlink" href="http://help.sap.com/disclaimer?site=https://archive.sap.com/documents/docs/DOC-60903" target="_blank" alt="https://archive.sap.com/documents/docs/DOC-60903" title="https://archive.sap.com/documents/docs/DOC-60903">Security Whitepaper<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__servers"><span class="ph emphasis emphasis">How many servers do I need to deploy the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">In theory, you need only one server, but we recommend at least 3 servers with the
+					following purposes: </p>
+
+				<div class="p">
+					<ul class="ul" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ul_hw1_4wd_py">
+						<li class="li">Development </li>
+
+						<li class="li">Production Master </li>
+
+						<li class="li">Production Shadow </li>
+
+					</ul>
+
+				</div>
+
+				<div class="p">
+					<div class="note note"><span class="notetitle">Note</span> Production Master and Shadow should NOT run as VM inside the same physical
+						machine. This would remove the essential redundancy, which is needed to
+						guarantee high availability. Additionally, a QA (Quality Assurance) instance
+						is a useful extension. In the case of Disaster Recovery, you will need 2
+						others instances (Master and Shadow). </div>
+
+				</div>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__hardware"><span class="ph emphasis emphasis">What are the hardware requirements to deploy the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">You can find hardware requirements and recommendations here: <a class="xref" href="e23f776e4d594fdbaeeb1196d47bbcc0.html">Prerequisites</a>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__push"><span class="ph emphasis emphasis">Can I send push messages from an on-premise system to the
+							<span class="ph pname">SAP Cloud Platform</span> through the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, this is not supported by the <span class="ph pname">Cloud connector</span>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ntlm"><span class="ph emphasis emphasis">Is NTLM supported for authorization against the proxy
+						server?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, the <span class="ph pname">Cloud connector</span>
+					currently supports <em class="ph i">Basic Authentication</em> only. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__os"><span class="ph emphasis emphasis">What Operating Systems are supported by the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">We currently support: </p>
+
+				<div class="p">
+					<ul class="ul" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ul_kh2_cxd_py">
+						<li class="li">Windows (7, 8.1 and 10) </li>
+
+						<li class="li">Windows Server (2008 R2, 2012 and 2012 R2) </li>
+
+						<li class="li">SUSE Linux Enterprise Server (11 and 12) </li>
+
+						<li class="li">Redhat Enterprise Linux (6 and 7) </li>
+
+					</ul>
+
+				</div>
+
+				<p class="p">Additionally, the portable variant of the <span class="ph pname">Cloud connector</span> is
+					available for Mac OS X (10.7, 10.8, 10.9, 10.10, and 10.11), but there is no
+					installer variant for any Mac OS X (or macOS) version that could be used in
+					productive scenarios. </p>
+
+				<p class="p">Find all hardware and software requirements here: <a class="xref" href="e23f776e4d594fdbaeeb1196d47bbcc0.html">Prerequisites</a>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__arch"><span class="ph emphasis emphasis">What processor architectures are supported by the <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">We currently support 64bit operating systems only running on an x86-64 Processor
+					(also known as x64, x86_64 or AMD64). </p>
+
+				<p class="p">Find all hardware and software requirements here: <a class="xref" href="e23f776e4d594fdbaeeb1196d47bbcc0.html">Prerequisites</a>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__noabap"><span class="ph emphasis emphasis">Can I use the <span class="ph pname">Cloud connector</span>
+						without an ABAP backend?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Yes, you should be able to connect almost every system, which supports the HTTP
+					Protocol, to the <span class="ph pname">SAP Cloud Platform</span>. E.g.:
+					The Apache HTTP Server, Apache Tomcat, Microsoft IIS or Nginx. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+</div></div>
+
+		<div class="section collapsible"><div class="section_title">Administration</div><div type="Administration"><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__logs"><span class="ph emphasis emphasis">Do we have Audit Logs for changes in the <span class="ph pname">Cloud connector</span>? </span></p>
+
+				<p class="p"/>
+
+				<p class="p">Yes, find more details here: <a class="xref" href="2264c7002f844fe4833186a1d168de66.html">Audit Logging in the Cloud Connector</a>.</p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__split"><span class="ph emphasis emphasis">Is it possible to split
+					authorization?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, currently there is only one role which allows complete administration of the
+						<span class="ph pname">Cloud connector</span>.</p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__accounts"><span class="ph emphasis emphasis">Can I configure multiple administrative
+						accounts?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Yes, to enable this, you have to configure an LDAP server. Configuring LDAP is
+					described here: <a class="xref" href="120ceecfd84145a181ac160d588a7a3d.html" title="You can use LDAP (Lightweight Directory Access Protocol) to configure Cloud connector authentication.">Using LDAP for Authentication</a>.</p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__reset"><span class="ph emphasis emphasis">How can I reset the <span class="ph pname">Cloud connector</span>'s administrator password when not using LDAP for
+						authentication?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Visit <a class="xref" href="https://tools.hana.ondemand.com/#cloud" target="_blank" alt="https://tools.hana.ondemand.com/#cloud" title="https://tools.hana.ondemand.com/#cloud">https://tools.hana.ondemand.com/#cloud</a> to download
+					the portable version of the <span class="ph pname">Cloud connector</span> and
+					extract the <em class="ph i">users.xml</em> file in the <em class="ph i">config</em> directory to the
+						<em class="ph i">config</em> directory of your <span class="ph pname">Cloud connector</span>
+					installation, then restart the <span class="ph pname">Cloud connector</span>. </p>
+
+				<p class="p">Now the password and username are set back to the default values. </p>
+
+				<p class="p">Alternatively, you could edit the configuration file manually, but we highly
+					recommend using the solution provided above, because it’s failsafe. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__backup"><span class="ph emphasis emphasis">How to create a backup of the <span class="ph pname">Cloud connector</span>
+						configuration?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">There are three folders containing all relevant configuration information in the
+					installation directory of your <span class="ph pname">Cloud connector</span>
+					installation: </p>
+
+				<div class="p">
+					<ul class="ul" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ul_zmn_3yd_py">
+						<li class="li">config </li>
+
+						<li class="li">config_master </li>
+
+						<li class="li">scc_config </li>
+
+					</ul>
+
+				</div>
+
+				<p class="p">To create a backup we recommend packaging these 3 folders into an archive file. </p>
+
+				<p class="p">As the layout of the configuration files may change between different <span class="ph pname">Cloud connector</span>
+					versions, it is not recommended to restore a configuration backup of a <span class="ph pname">Cloud connector</span> 2.x
+					installation into a 2.y installation. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__complete"><span class="ph emphasis emphasis">Can I create a backup of the complete
+						installation?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Yes, you can create an archive file of the installation directory to create a
+					full backup, but please note the following before you restore: </p>
+
+				<div class="p">
+					<ul class="ul" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ul_x5j_nyd_py">
+						<li class="li">If you restore the backup on a different host, the UI certificate won’t
+							be valid anymore. </li>
+
+						<li class="li">Before you restore the backup you should perform a “normal” installation
+							and then replace the files. This will register the <span class="ph pname">Cloud connector</span> at your operating systems package manager. </li>
+
+					</ul>
+
+				</div>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__id"><span class="ph emphasis emphasis">Why do we need a User ID during
+					configuration?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">This user needs to be allowed to open the tunnel and have the certificates
+					generated that are used for mutual trust later on. </p>
+
+				<p class="p">The user is not part of the certificate identifying the <span class="ph pname">Cloud connector</span>. </p>
+
+				<p class="p">The only remnants are in both <span class="ph pname">Cloud connector</span> UI
+					and <span class="ph pname">SAP Cloud Platform</span>
+					cockpit, the username is still displayed as the one who did the initial
+					configuration (even though the user may have left the company). </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__tunnel"><span class="ph emphasis emphasis">What happens to a <span class="ph pname">Cloud connector</span>
+						connection if the user who created the tunnel leaves the
+					company?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">This does not affect the tunnel, even if you restart the <span class="ph pname">Cloud connector</span>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__major"><span class="ph emphasis emphasis">What do changes in major or minor version numbers
+						mean?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">The semantics of <span class="ph pname">Cloud connector</span>
+					versions are explained in detail <a class="extlink" href="http://help.sap.com/disclaimer?site=https://blogs.sap.com/2015/10/07/sap-hana-cloud-connector-support-information/" target="_blank" alt="https://blogs.sap.com/2015/10/07/sap-hana-cloud-connector-support-information/" title="https://blogs.sap.com/2015/10/07/sap-hana-cloud-connector-support-information/">here<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a>. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__support"><span class="ph emphasis emphasis">How long does SAP provide support for distinct <span class="ph pname">Cloud connector</span>
+						versions?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Each <span class="ph pname">Cloud connector</span>
+					version will be supported for 12 months, which means it is guaranteed that the
+					cloud side stays compatible with those versions. </p>
+
+				<p class="p">After that time frame, compatibility is no longer guaranteed and interoperability
+					could be dropped. Furthermore, after an additional 3 month, the next feature
+					release that will be published after that period will no longer support an
+					upgrade from the deprecated version as a starting release. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__difference"><span class="ph emphasis emphasis">What is the difference between “Account Name” and
+						“Account User”?</span></p>
+
+				<p class="p"/>
+
+				<p class="p"><span class="ph pname">SAP Cloud Platform</span>
+					customers can purchase accounts and deploy applications into these accounts. </p>
+
+				<p class="p">Additionally, there are users: they have a password and are able to log into the
+					cockpit and manage all accounts they have permission for. </p>
+
+				<div class="p">
+					<ul class="ul" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ul_afj_czd_py">
+						<li class="li">A single account can be managed by multiple users e.g. if your company
+							has several administrators. </li>
+
+						<li class="li">A single user can manage multiple accounts e.g. if you have multiple
+							applications and want them (for isolation reasons) to be split over
+							multiple accounts. </li>
+
+					</ul>
+
+				</div>
+
+				<p class="p">How you can find your account name: </p>
+
+				<div class="p">
+					<ol class="ol" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ol_bfj_czd_py">
+						<li class="li">Open the <span class="ph pname">SAP Cloud Platform</span>
+							cockpit. </li>
+
+						<li class="li">Login with your account user. </li>
+
+						<li class="li">You’ll see the account name in the top left section of the screen (see
+							screenshot below). </li>
+
+					</ol>
+
+				</div>
+
+				<p class="p">For trial users, this is typically your username followed by the suffix
+					“trial”:</p>
+
+				<p class="p"/>
+
+				<div class="fig fignone" id="loiof8d6f9ab43c14e52a9e8036515a472e9__fig_cfj_czd_py"><div class="figcontainer">
+					<img class="image" id="loiof8d6f9ab43c14e52a9e8036515a472e9__image_dfj_czd_py" src="loiode53f036be3646fea987f7aa3f1bcb7c_LowRes.png"/>
+				</div></div>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+</div></div>
+
+		<div class="section collapsible"><div class="section_title">Roadmap (Feature Requests)</div><div type="Roadmap (Feature Requests)"><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__cf"><span class="ph emphasis emphasis">Does the <span class="ph pname">Cloud connector</span>
+						work with <span class="ph pname">SAP Cloud Platform</span> Cloud
+						Foundry?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">The <span class="ph pname">Cloud connector</span> is not yet supported in <span class="ph pname">SAP Cloud Platform</span> Cloud
+					Foundry. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__multiple"><span class="ph emphasis emphasis">How do I bind multiple <span class="ph pname">Cloud connector</span>s to one <span class="ph pname">SAP Cloud Platform</span>
+						account?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">As of <span class="ph pname">Cloud connector</span>
+					version 2.9, it’s possible to connect multiple <span class="ph pname">Cloud connector</span>s to
+					a single account thus allowing to address multiple separate corporate network
+					segments. </p>
+
+				<p class="p">Those <span class="ph pname">Cloud connector</span>s
+					are distinguishable via their location ID, which then needs to be provided in
+					the destination configuration on cloud side. </p>
+
+				<div class="p">
+					<div class="note note"><span class="notetitle">Note</span> Location IDs that have been provided in previous versions of the <span class="ph pname">Cloud connector</span>
+						will be dropped during an upgrade to ensure that running scenarios are not
+						disturbed.</div>
+
+				</div>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__websocket"><span class="ph emphasis emphasis">Is WebSocket communication through the <span class="ph pname">Cloud connector</span>
+						supported?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, currently not. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__traffic"><span class="ph emphasis emphasis">Is there any plan to add traffic management
+						functionality in <span class="ph pname">Cloud connector</span>?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, currently not planned. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__protocol"><span class="ph emphasis emphasis">Can I use the <span class="ph pname">Cloud connector</span>
+						for any protocol?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, we currently support HTTP and RFC protocol (access control) only. </p>
+
+				<p class="p">Additionally, you can use the <span class="ph pname">Cloud connector</span> as
+					a JDBC or ODBC proxy to access the HANA DB instance of your <span class="ph pname">SAP Cloud Platform</span> account
+					(service channel). </p>
+
+				<p class="p">This is sometimes referred to as the “HANA Protocol”. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible" id="channel">
+				<p class="p subsectiontitle"><span class="ph emphasis emphasis">Can I check the communication of the service
+						channel?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">No, the audit log only logs access from <span class="ph pname">SAP Cloud Platform</span> to
+					on-premise, nothing else. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+</div></div>
+
+		<div class="section collapsible" id="loiof8d6f9ab43c14e52a9e8036515a472e9__troubleshooting"><div class="section_title">Troubleshooting</div><div type="Troubleshooting"><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__fix"><span class="ph emphasis emphasis">How do I fix the “Could not open Service Manager” error
+						message?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">Most likely, you see this error message because of missing administrator
+					privileges. </p>
+
+				<p class="p">Fix: Right-click the shortcut and select <em class="ph i">Run as administrator</em> (see
+					screenshot below). </p>
+
+				<p class="p">If you don’t have administrator privileges on your machine you can use the
+					portable variant of the <span class="ph pname">Cloud connector</span>. </p>
+
+				<div class="p">
+					<div class="note note"><span class="notetitle">Note</span> The portable variants of the <span class="ph pname">Cloud connector</span>
+						are meant for non-productive scenarios only.</div>
+
+				</div>
+
+				<p class="p"/>
+
+				<div class="fig fignone" id="loiof8d6f9ab43c14e52a9e8036515a472e9__fig_gjj_xtd_py"><div class="figcontainer">
+					<img class="image" id="loiof8d6f9ab43c14e52a9e8036515a472e9__image_hjj_xtd_py" src="loio10e3b44266da4cc191d97d968ff80b0d_LowRes.png"/>
+				</div></div>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__set"><span class="ph emphasis emphasis">How do I set JAVA_HOME and PATH
+					correctly?</span></p>
+
+				<p class="p"/>
+
+				<p class="p">JAVA_HOME must point to the installation directory of your JRE while PATH must
+					contain the <em class="ph i">bin</em> folder inside the installation directory of your JRE. </p>
+
+				<p class="p">This is in particulary relevant for the portable versions. </p>
+
+				<p class="p">The installers will detect JVMs also in other places. </p>
+
+				<p class="p"/>
+
+			</div><p class="p"/>
+<div class="sectiondiv subsection collapsible">
+				<p class="p subsectiontitle" id="loiof8d6f9ab43c14e52a9e8036515a472e9__ui">When I try to open the <span class="ph pname">Cloud connector</span> UI,
+					Google Chrome opens a <em class="ph i">Save as</em> Dialog, Firefox displays some cryptic signs
+					and Internet Explorer shows a blank page, how do I fix this?</p>
+
+				<p class="p"/>
+
+				<p class="p">This happens when you try to access the <span class="ph pname">Cloud connector</span>
+					over HTTP instead of HTTPS, which is the default behavior of most browsers, if
+					you don’t specify a protocol. </p>
+
+				<p class="p">Adding “https://” to the beginning of your URL should fix the problem. For
+					localhost, you can use this URL string:
+						<span class="ph filepath">https://localhost:8443/</span>. </p>
+
+				<p class="p"/>
+
+			</div></div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

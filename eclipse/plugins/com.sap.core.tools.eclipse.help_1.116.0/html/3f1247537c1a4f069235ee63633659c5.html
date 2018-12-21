@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Server Certificate Authentication</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3f1247537c1a4f069235ee63633659c5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Server Certificate Authentication</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section" id="loio3f1247537c1a4f069235ee63633659c5__section_N10017_N10011_N10001"><div class="section_title">Context</div><div type="Context">
+			
+			<p class="p">The server certificate authentication is applicable for all client authentication
+				types, described below. </p>
+
+		</div></div>
+
+		<div class="section" id="loio3f1247537c1a4f069235ee63633659c5__section_N10024_N10011_N10001"><div class="section_title">Properties</div><div type="Properties">
+			
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio3f1247537c1a4f069235ee63633659c5__table_server_ca" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="66.66666666666667%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="33.33333333333333%" id="d2816286e45">Property</th>
+
+							<th class="entry" valign="top" width="66.66666666666666%" id="d2816286e48">Description</th>
+
+						</tr>
+
+						</thead>
+
+					<tbody class="tbody">
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d2816286e45 "><span class="keyword parmname">TrustStoreLocation</span>
+						<ol class="ol" id="loio3f1247537c1a4f069235ee63633659c5__ul_crp_2wf_pj">
+							<li class="li">When used in local environment</li>
+
+							<li class="li">When used in cloud environment</li>
+
+						</ol>
+</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d2816286e48 ">
+						<p class="p">Path to the JKS file which contains trusted certificates (Certificate Authorities) for
+							authentication against a remote client. </p>
+
+						<ol class="ol" id="loio3f1247537c1a4f069235ee63633659c5__ul_rrp_2wf_pj">
+							<li class="li">The relative path to the JKS file. The root path is the server's
+								location on the file system. </li>
+
+							<li class="li">The name of the JKS file. </li>
+
+						</ol>
+
+						<p class="p">
+						</p>
+
+						<div class="note note" id="loio3f1247537c1a4f069235ee63633659c5__note_N101F6_N101DD_N101C7_N101B7_N101A5_N10013_N10001"><span class="notetitle">Note</span> The default
+							JDK truststore is appended to the truststore defined in the destination
+							configuration. As a result, the destination simultaneously uses both
+							truststores. If the <span class="keyword parmname">TrustStoreLocation</span> property is
+							not specified, the JDK truststore is used as a default truststore for
+							the destination. </div>
+
+					</td>
+
+				</tr>
+
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d2816286e45 "><span class="keyword parmname">TrustStorePassword</span>
+					</td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d2816286e48 ">Password for the JKS trust store file. This property is mandatory in case
+							<span class="keyword parmname">TrustStoreLocation</span> is used. </td>
+
+				</tr>
+
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d2816286e45 "><span class="keyword parmname">TrustAll</span></td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d2816286e48 ">If this property is set to <kbd class="ph userinput">TRUE</kbd> in the
+						destination, the server certificate will not be checked for SSL connections.
+						It is intended for test scenarios only, and should not be used in production
+						(since the SSL server certificate is not checked, the server is not
+						authenticated). The possible values are <kbd class="ph userinput">TRUE</kbd> or
+							<kbd class="ph userinput">FALSE</kbd>; the default value is
+							<kbd class="ph userinput">FALSE</kbd> (that is, if the property is not present at
+						all). <p class="p">In case <span class="keyword parmname">TrustAll</span> =
+							<kbd class="ph userinput">TRUE</kbd>, the <span class="keyword parmname">TrustStoreLocation</span>
+							property is ignored so you can omit it. </p>
+
+						<p class="p">In case <var class="keyword varname">&lt;TrustAll&gt;</var> = <kbd class="ph userinput">FALSE</kbd>, the
+								<var class="keyword varname">&lt;TrustStoreLocation&gt;</var> property is mandatory to be
+							used. </p>
+</td>
+
+				</tr>
+
+				<tr class="row">
+					<td class="entry" valign="top" width="33.33333333333333%" headers="d2816286e45 "><span class="keyword parmname">HostnameVerifier</span></td>
+
+					<td class="entry" valign="top" width="66.66666666666666%" headers="d2816286e48 ">
+						<p class="p">Optional property. It has two values: <kbd class="ph userinput">Strict</kbd> and
+								<kbd class="ph userinput">BrowserCompatible</kbd>. This property specifies
+							how the server hostname matches the names stored inside the server's
+							X.509 certificate. This verifying process is only applied if TLS or SSL
+							protocols are used and is not applied if the
+								<span class="keyword parmname">TrustAll</span> property is specified. The default
+							value (used if no value is explicitly specified) is
+								<kbd class="ph userinput">Strict</kbd>. </p>
+
+						<ul class="ul" id="loio3f1247537c1a4f069235ee63633659c5__ul_srp_2wf_pj">
+							<li class="li">
+								<p class="p"><span class="keyword parmname">Strict HostnameVerifier</span> works in the same
+									way as Oracle Java 1.4, Oracle Java 5, and Oracle Java 6-rc. It
+									is also similar to Microsoft Internet Explorer 6. This
+									implementation appears to be compliant with RFC 2818 for dealing
+									with wildcards. A wildcard such as "*.foo.com" matches only
+									subdomains at the same level, for example "a.foo.com". It does
+									not match deeper subdomains such as "a.b.foo.com". </p>
+
+							</li>
+
+							<li class="li">
+								<p class="p"><span class="keyword parmname">BrowserCompatible HostnameVerifier</span> works in
+									the same way as Curl and Mozilla Firefox. The hostname must
+									match either the first common name (CN) or any of the
+									subject-alts. A wildcard can occur in the CN and in any of the
+									subject-alts. </p>
+
+							</li>
+
+						</ul>
+
+						<p class="p">The only difference between <kbd class="ph userinput">BrowserCompatible</kbd> and
+								<kbd class="ph userinput">Strict</kbd> is that a wildcard (such as
+							".foo.com") with <kbd class="ph userinput">BrowserCompatible</kbd> matches all
+							subdomains, including "a.b.foo.com". </p>
+
+						<p class="p">For more information about these Java classes, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/conn/ssl/package-summary.html" target="_blank" alt="http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/conn/ssl/package-summary.html" title="http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/conn/ssl/package-summary.html">Package org.apache.http.conn.ssl<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+						<p class="p">
+						</p>
+
+						<p class="p">In case <var class="keyword varname">&lt;TrustAll&gt;</var> = <kbd class="ph userinput">TRUE</kbd>, the
+								<var class="keyword varname">&lt;HostnameVerifier&gt;</var> property is ignored so you can
+							omit it. </p>
+
+					</td>
+
+				</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			<p class="p"/>
+
+			<div class="note note" id="loio3f1247537c1a4f069235ee63633659c5__note_N102C2_N101A5_N10013_N10001"><span class="notetitle">Note</span> You can upload <span class="ph uicontrol">TrustStore</span> JKS
+				files using the same command for uploading destination configuration property file -
+				you only need to specify the JKS file instead of the destination configuration file. </div>
+
+			<div class="note note"><span class="notetitle">Note</span> Connections to remote services which require Java Cryptography Extension (JCE)
+				unlimited strength jurisdiction policy are not supported. </div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Configuration</div><div type="Configuration">
+			
+			<ul class="ul" id="loio3f1247537c1a4f069235ee63633659c5__ul_ncw_s5l_m4">
+				<li class="li"><a class="xref" href="60735ad11d8a488c83537cdcfb257135.html">Configuring Destinations from the Cockpit</a></li>
+
+				<li class="li"><a class="xref" href="e520383cbb571014858bc5d52295f433.html">Configuring Destinations from the Eclipse IDE</a></li>
+
+				<li class="li"><a class="xref" href="e51558bbbb571014bfc89325eaf075c0.html">Configuring Destinations from the Console Client</a></li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="9018a9e54b3c48d98aa63538d47bdcd6.html">Client Authentication Types for HTTP Destinations</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

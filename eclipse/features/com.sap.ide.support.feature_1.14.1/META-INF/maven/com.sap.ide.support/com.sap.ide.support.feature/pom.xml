@@ -1,0 +1,61 @@
+<project
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>com.sap.ide.support.feature</artifactId>
+  <version>1.14.1</version>
+  <name>com.sap.ide.support.feature</name>
+  <packaging>eclipse-feature</packaging>
+
+  <parent>
+    <artifactId>parent</artifactId>
+    <groupId>com.sap.ide.support</groupId>
+    <version>1.14.1</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <properties>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho.extras</groupId>
+        <artifactId>tycho-source-feature-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <includeBinaryFeature>false</includeBinaryFeature>
+          <excludes>
+            <plugin id="com.sap.ide.support.launcher.linux"/>
+            <plugin id="com.sap.ide.support.launcher.macosx"/>
+            <plugin id="com.sap.ide.support.launcher.win32"/>
+            <plugin id="com.sap.ide.support.doc.user"/>
+          </excludes>
+    		</configuration>
+        <executions>
+          <execution>
+            <id>source-feature</id>
+            <phase>package</phase>
+            <goals>
+              <goal>source-feature</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <executions>
+          <execution>
+            <id>attached-p2-metadata</id>
+            <phase>package</phase>
+            <goals>
+              <goal>p2-metadata</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

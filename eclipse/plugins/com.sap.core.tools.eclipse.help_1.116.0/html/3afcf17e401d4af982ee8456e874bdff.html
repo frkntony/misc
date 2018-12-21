@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Destinations to internal applications are destinations of type HTTP that point to a Java application that is a part of the current MTA. These destinations require more complex MTA modeling where MTA placeholders and MTA references are used."/>
+<meta name="description" content="Destinations to internal applications are destinations of type HTTP that point to a Java application that is a part of the current MTA. These destinations require more complex MTA modeling where MTA placeholders and MTA references are used."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Destinations to Internal Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio3afcf17e401d4af982ee8456e874bdff">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Destinations to Internal Applications</h1>
+
+	
+
+			<div class="body conbody"><p class="shortdesc">Destinations to internal applications are destinations of type
+			<span class="keyword parmname">HTTP</span> that point to a Java application that is a part of the current
+		MTA. These destinations require more complex MTA modeling where MTA placeholders and MTA
+		references are used.</p>
+
+		<div class="section" id="loio3afcf17e401d4af982ee8456e874bdff__section_trt_jpj_yy"><div class="section_title">Account-Level Destinations</div><div type="Account-Level Destinations">
+			
+			<p class="p">Account-level destinations to internal Java applications within the same MTA are
+				modeled using MTA modules and two pairs of
+					<span class="ph sap-technical-name sap-technical-name">provides</span> and
+					<span class="ph sap-technical-name sap-technical-name">requires</span> dependencies, that is, one
+				between the providing application module and the destination module, and another one
+				between the destination module and the consuming application module.</p>
+
+			<ul class="ul" id="loio3afcf17e401d4af982ee8456e874bdff__ul_dng_ykk_gz">
+				<li class="li">
+					<p class="p">On the providing side, the service-providing application declares a
+							<span class="ph sap-technical-name sap-technical-name">provides</span> dependency containing
+						the <span class="ph sap-technical-name sap-technical-name">application-url</span> as a
+						property.</p>
+
+				</li>
+
+				<li class="li">The destination itself is represented by a
+						<span class="ph sap-technical-name sap-technical-name">com.sap.hcp.destination</span>. It has a
+						<span class="ph sap-technical-name sap-technical-name">requires</span> dependency linked to the
+					above <span class="ph sap-technical-name sap-technical-name">provides</span> dependency
+						<span class="ph sap-technical-name sap-technical-name">application-url</span>.</li>
+
+				<li class="li">On the consuming side, the service-consuming application declares a
+						<span class="ph sap-technical-name sap-technical-name">requires</span> dependency to the above
+					module.</li>
+
+			</ul>
+
+			<p class="p">To support destinations to internal applications, <span class="keyword parmname">placeholders</span>
+				and <span class="keyword parmname">references</span> are used. For more information, see <a class="xref" href="d2be03c69ddd4cffb74f7e4765305d47.html" title="Placeholders are strings that are resolved depending on the scope in which they are used. They have the syntax ${&lt;name&gt;}.">MTA Placeholders Usage</a> and <a class="xref" href="d0750b6261334d2697433693d67ae769.html" title="References are used in conjunction with required dependencies to refer properties provided by a linked provided dependency.">MTA References Usage</a>.</p>
+
+			<p class="p">In the following example, the HTML5 application
+					<span class="ph sap-technical-name sap-technical-name">networkingui</span> (module
+					<span class="ph sap-technical-name sap-technical-name">abc-ui</span>) uses the account-level
+				destination <span class="ph sap-technical-name sap-technical-name">NetworkingLunchBackend</span> (module
+					<span class="ph sap-technical-name sap-technical-name">abc-destination</span>), which represents a
+				connection to the backend Java application
+					<span class="ph sap-technical-name sap-technical-name">networking</span> (module
+					<span class="ph sap-technical-name sap-technical-name">abc</span>).</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+  - name: abc
+    type: com.sap.java
+    provides:
+      - name: abc
+        properties:
+          application-url: ${default-url}
+    parameters:
+      name: networkinglunch
+      ...
+
+  - name: abc-destination
+    type: com.sap.hcp.destination
+    requires:
+      - name: abc
+    parameters:
+      name: NetworkingLunchBackend
+      type: HTTP
+      url: ~{abc/application-url}
+      proxy-type: Internet
+      authentication: AppToAppSSO
+
+  - name: abc-ui
+    type: com.sap.hcp.html5
+    requires:
+      - name: abc-destination
+    parameters:
+      name: networkingui
+</pre></div>
+
+			<p class="p"><span class="ph emphasis emphasis">Result</span>: The Java application
+					<span class="keyword parmname">networkinglunch</span> is deployed, then the account level
+				destination <span class="keyword parmname">NetworkingLunchBackend</span> of type HTTP is created and
+				finally the HTML5 application <span class="keyword parmname">networkinglunchui</span> is deployed. </p>
+
+			<p class="p">If the destination is assigned to the HTML5 application, the application will
+				communicate with the Java back-end system through the destination. For more
+				information, see <a class="xref" href="bec79c93f82d407faa333554f8c8647d.html" title="If an HTML5 application requires connectivity to one or more back-end systems, destinations must be created or assigned.">Assigning Destinations for HTML5 Applications</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio3afcf17e401d4af982ee8456e874bdff__section_ard_d4k_gz"><div class="section_title">Application-Level Destinations</div><div type="Application-Level Destinations">
+			
+			<div class="p">Application-level  destinations to internal applications
+				within the same MTA are modeled by a pair of
+					<span class="ph sap-technical-name sap-technical-name">provides</span> and
+					<span class="ph sap-technical-name sap-technical-name">requires</span> dependencies between the
+				respective application modules. <ul class="ul" id="loio3afcf17e401d4af982ee8456e874bdff__ul_lry_34k_gz">
+					<li class="li">
+						<p class="p">On the providing side, the service-providing application declares a
+								<span class="ph sap-technical-name sap-technical-name">provides</span> dependency
+							containing the <span class="ph sap-technical-name sap-technical-name">application-url </span>
+							as a property. </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">On the consuming side, the service-consuming application declares a
+								<span class="ph sap-technical-name sap-technical-name">requires</span> dependency linked
+							to the above <span class="ph sap-technical-name sap-technical-name">provides</span>
+							dependency <span class="ph sap-technical-name sap-technical-name">application-url
+							</span>.</p>
+
+					</li>
+
+				</ul>
+</div>
+
+			<p class="p">If the same application needs to declare destinations to multiple other internal
+				applications, it has to use multiple
+					<span class="ph sap-technical-name sap-technical-name">requires</span> dependencies. See the
+				following example: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+  - name: abc
+    type: com.sap.java
+    provides:
+      - name: abc
+        properties:
+          application-url: ${default-url}
+    parameters:
+      name: javaapp1
+      ...
+  - name: abc-ui
+    type: com.sap.java
+    requires:
+      - name: abc
+    parameters:
+      name: javaapp2
+      ...
+      destinations:
+        - name: JavaApp1Backend
+          type: HTTP
+          url: ~{abc/application-url}
+          proxy-type: Internet
+          authentication: AppToAppSSO
+</pre></div>
+
+			<p class="p"><span class="ph emphasis emphasis">Result</span>: The Java application <span class="keyword parmname">javaapp1</span> is
+				deployed and then the Java application <span class="keyword parmname">javaapp2</span> is deployed
+				with application level destination <span class="keyword parmname">JavaApp1Backend</span> that points
+				to <span class="keyword parmname">javaapp1</span>. </p>
+
+		</div></div>
+
+		<div class="section">
+			<p class="p">You can use a natural syntax on the consuming side of a destination by placing the
+				destination paranmeters directly on the module level and using the reference syntax
+					<span class="keyword parmname">~{abc/url}</span> to refer to the URL property provided by the
+				provides dependency <span class="keyword parmname">abc</span>.</p>
+
+		</div>
+
+	</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

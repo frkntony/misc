@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command lists all schemas and productive database instances bound to an application."/>
+<meta name="description" content="This command lists all schemas and productive database instances bound to an application."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>list-application-datasources</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio9fe84fe6f68b41bb9bc2ed04e91283d2">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">list-application-datasources</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command lists all schemas and productive database instances bound to an
+		application.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-datasources -a &lt;account_name&gt; -b &lt;application&gt; -h &lt;landscape_host&gt; -u &lt;e-mail_or_user&gt; </pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio9fe84fe6f68b41bb9bc2ed04e91283d2__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d7472007e41">Required</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7472007e41 "><span class="keyword parmname">-a</span>,
+									<span class="keyword parmname">--account</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7472007e41 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+										characters; lowercase letters and numbers, starting with a
+										letter)</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7472007e41 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+								</td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7472007e41 ">Application name<p class="p">
+										<span class="keyword cmdname">Type</span>: string (up to 30 characters;
+										lowercase letters and numbers, starting with a
+									letters)</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7472007e41 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7472007e41 ">Use the respective landscape host for your account type.
+											<p class="p"><span class="keyword cmdname">Type</span>: URL, for acceptable values
+										see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7472007e41 "><span class="keyword parmname">-p</span>,
+									<span class="keyword parmname">--password</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7472007e41 ">To protect your password, enter it only when prompted by the
+									console client and not explicitly as a parameter in the
+									properties file or the command line.<p class="p"><span class="keyword cmdname">Type</span>:
+										string </p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d7472007e41 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d7472007e41 ">Use your e-mail, SAP ID, or user
+											name<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-datasources -a myaccount -b myapp -h hana.ondemand.com -u mymail@example.com</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="ce689b2f0d4c434cb820f945a0a3ae18.html" title="This command binds a schema to a Java application via a data source. If a data source name is not specified, the schema will be automatically bound to the default data source of the application.">bind-schema</a></div>
+<div><a class="link" href="41e70ab3109a44fd836cfaa460a6598e.html" title="This command unbinds a schema from an application for a particular data source.">unbind-schema</a></div>
+<div><a class="link" href="affa7822cef0400698c05d4f12f2e71f.html" title="This command binds a Java application to a productive SAP HANA database via a data source.">bind-hana-dbms</a></div>
+<div><a class="link" href="de4022e60c2d4875a4e75f8ffe0bc6a0.html" title="This command unbinds a productive SAP HANA database system from a Java application for a particular data source.">unbind-hana-dbms</a></div>
+<div><a class="link" href="7e5b0443011d4b46bac953d729eadd2c.html" title="The schema management scenarios outline the steps involved for the most typical use cases of schemas. To manipulate schemas, the scenarios use the console client together with the schema commands provided by the persistence service. The scenarios can also be performed from the cockpit in a similar manner.">Example Scenarios</a></div>
+<div><a class="link" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

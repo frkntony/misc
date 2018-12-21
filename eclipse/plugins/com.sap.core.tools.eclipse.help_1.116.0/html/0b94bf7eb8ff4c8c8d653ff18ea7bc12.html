@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Using YaaS together with SAP Cloud Platform you develop business services that are consumed in your cloud applications."/>
+<meta name="description" content="Using YaaS together with SAP Cloud Platform you develop business services that are consumed in your cloud applications."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Business Services for YaaS</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0b94bf7eb8ff4c8c8d653ff18ea7bc12">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Business Services for YaaS</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">Using YaaS together with <span class="ph pname">SAP Cloud Platform</span> you develop business services that are
+		consumed in your cloud applications.</p>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">With YaaS you can develop business services, publish and sell them through the YaaS Market,
+				and consume them in your cloud applications. The core design principle behind YaaS
+				is a microservice architecture, which enables you to build a flexible and scalable
+				platform. A microservice architecture is another method of bundling components into
+				services. The approach is to develop a single application as a suite of small
+				services, each running in its own process and communicating with lightweight
+				mechanisms, often an HTTP resource API. These services are built around business
+				capabilities and are independently deployable by fully automated deployment
+				machinery.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Business Services and Builder Modules</div><div type="Business Services and Builder Modules">
+			
+			<p class="p">In YaaS, you develop the following component types when providing new services or consuming
+				existing ones:</p>
+
+			<ul class="ul" id="loio0b94bf7eb8ff4c8c8d653ff18ea7bc12__ul_ipn_w5k_h5">
+				<li class="li">
+					<p class="p">Business services</p>
+
+					<p class="p">A business service is simply a microservice that provides a specific business functionality,
+						such as products, loyalty, or orders. A set of business services is grouped
+						into a package that gets published on the YaaS Market.</p>
+
+					<p class="p">A business service is a Web application with a RESTful API that exposes the resources and
+						functions of the service. The service implementation should follow the
+						guidelines for microservices so that the service has a clearly defined
+						scope, is highly scalable, resilient against failures, and self-contained.
+						We recommend using the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://devportal.yaas.io/tools/servicesdk/index.html" target="_blank" alt="https://devportal.yaas.io/tools/servicesdk/index.html" title="https://devportal.yaas.io/tools/servicesdk/index.html">YaaS Service SDK<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a> to create new business
+						services, as it provides a lightweight framework that helps with the API
+						definition and implementation of the service. The SDK uses RAML (RESTful API
+						Modeling Language) as an API modeling language and provides code generators
+						to create the JAX-RS compliant Java API classes and Java implementation
+						stubs. It further provides helper classes to get, for example, the YaaS
+						tenant and other YaaS relevant information that is propagated from YaaS to
+						the business service.</p>
+
+				</li>
+
+			</ul>
+
+			<ul class="ul" id="loio0b94bf7eb8ff4c8c8d653ff18ea7bc12__ul_cb3_y5k_h5">
+				<li class="li">
+					<p class="p">Builder modules </p>
+
+					<p class="p">A builder module is a user interface in the YaaS Builder application, in which the
+						backoffice functionality of a business service is managed; for example, an
+						administration UI for a service published in YaaS.</p>
+
+					<p class="p">Builder modules are the backoffice clients of YaaS. They allow users to manage the service
+						data from the user interface. Typically, a builder module is an HTML5
+						application calling the service APIs. As such, it is very easy to deploy it
+						as a Java Web Tomcat 7 application on <span class="ph pname">SAP Cloud Platform</span>: create a
+						builder module according to the tutorial on <a class="extlink" href="http://help.sap.com/disclaimer?site=https://devportal.yaas.io/gettingstarted/createabuildermodule/index.html" target="_blank" alt="https://devportal.yaas.io/gettingstarted/createabuildermodule/index.html" title="https://devportal.yaas.io/gettingstarted/createabuildermodule/index.html">YaaS Dev Portal<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>, add Cross-origin resource
+						sharing (CORS) configuration to the <samp class="ph codeph">web.xml</samp>, and build a
+						WAR file.</p>
+
+				</li>
+
+			</ul>
+
+			<ul class="ul" id="loio0b94bf7eb8ff4c8c8d653ff18ea7bc12__ul_ckc_z5k_h5">
+				<li class="li">
+					<p class="p">Applications</p>
+
+					<p class="p">An application is able to consume the business services to which it is subscribed.
+						Subscribing to existing packages is possible via the YaaS Market.</p>
+
+				</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">YaaS and SAP Cloud Platform</div><div type="YaaS and SAP Cloud Platform">
+			
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio0b94bf7eb8ff4c8c8d653ff18ea7bc12__table_yzm_c1f_cv" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%">
+								<p class="p"><img class="image" id="loio0b94bf7eb8ff4c8c8d653ff18ea7bc12__image_ysr_fky_z5" src="loio2e84be4305bb44e4848b9e909264353d_LowRes.jpg"/></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="50%">
+								<p class="p">This is where Yaas and <span class="ph pname">SAP Cloud Platform</span> stand in the whole
+									picture.</p>
+
+								<p class="p">As a <span class="ph emphasis emphasis">User</span>, you need an account and have to be part of an
+									Organization. Within the <span class="ph emphasis emphasis">Organization</span>,
+									there are Dev Teams and Projects. In the <span class="ph emphasis emphasis">Dev
+										Teams</span> you develop services and builder modules.
+									In the <span class="ph emphasis emphasis">Projects</span>, you consume these
+									services.</p>
+
+								<p class="p">When you are member of a Project, you can manage projects and
+									subscribe to packages.</p>
+
+								<p class="p">The <span class="ph emphasis emphasis">Package</span> stands in the middle of the
+									whole picture. It connects the YaaS components, the Yaas Market
+									and the <span class="ph pname">SAP Cloud Platform</span> components. All available
+									published packages are listed in the <a class="extlink" href="http://help.sap.com/disclaimer?site=https://market.yaas.io/commercial/" target="_blank" alt="https://market.yaas.io/commercial/" title="https://market.yaas.io/commercial/">YaaS Market<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+								<p class="p">The <span class="ph emphasis emphasis">Services</span> are the building blocks of YaaS. They are small,
+									isolated applications that are responsible for one single piece
+									of functionality.</p>
+
+								<p class="p">The <span class="ph emphasis emphasis">Service SDK</span> is a tool that facilitates
+									the development of the business services. It also provides some
+									YaaS-specific utilities, for example, retrieving the tenant ID
+									propagated by an application to the used business services.</p>
+
+								<p class="p">After creating a service, you create a <span class="ph emphasis emphasis">Builder
+										Module</span> for that service. This enables you to have
+									a user interface (UI) to manage your service from a business
+									perspective. </p>
+
+								<p class="p">The <span class="ph emphasis emphasis">Builder SDK</span> helps you create this UI.
+									This is a command-line interface that runs the Builder in
+									developer mode. This mode implements a builder module faster and
+									more efficiently.</p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example Business Service: Wishlist Service</div><div type="Example Business Service: Wishlist Service">
+			
+			<p class="p">To try out an example business service, follow the steps in the <a class="xref" href="4d678e6d86c7472eb19a77bdbfd74409.html" title="This tutorial shows you how to create a Wishlist business service.">Tutorial: Creating a Wishlist Service</a>.</p>
+
+			<p class="p">For example, once subscribed to the Wishlist package, you can use the wishlist
+				service API to create and manage wishlists. As a Dev Team member, you can develop
+				and register the Wishlist package.</p>
+
+			<p class="p">The Wishlist package contains the services and the builder modules, and you can make them
+				available in the YaaS Market. Other users can subscribe to this package and use
+				these services and builder modules.</p>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

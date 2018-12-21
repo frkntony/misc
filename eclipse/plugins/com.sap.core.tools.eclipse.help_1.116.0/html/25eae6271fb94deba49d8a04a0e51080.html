@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Learn how to install new SAP HANA components."/>
+<meta name="description" content="Learn how to install new SAP HANA components."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Installing SAP HANA Components</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio25eae6271fb94deba49d8a04a0e51080">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Installing SAP HANA Components</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">Learn how to install new SAP HANA components.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">Basic authentication must be enabled for SAP HANA Application Lifecycle Management to
+				be able to install SAP HANA XS-based components. You can check and enable basic
+				authentication using the SAP HANA XS Administration Tool. Navigate to the
+					<span class="ph filepath">sap/hana/xs/lm</span> package and add <span class="ph uicontrol">Basic</span>
+				in the <span class="ph uicontrol">Authentication</span> section.</p>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You can install the following types of SAP HANA components:</p>
+
+			<ul class="ul" id="loio25eae6271fb94deba49d8a04a0e51080__ul_uhg_xtf_kr">
+				<li class="li">SAP HANA platform components, which are installed on the SAP HANA
+					database
+					system on operating system level</li>
+
+				<li class="li">SAP HANA XS applications, which are deployed on the SAP HANA
+					database
+					system</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">You can install only SAP HANA components, which are enabled in your account.</p>
+
+			</div>
+
+			<div class="note restriction"><span class="restrictiontitle">Restriction</span> 
+				<p class="p">Installation of SAP HANA XS-based components on SAP HANA
+					database
+					systems, which are configured to support
+					SAP HANA
+					multitenant database
+					containers,
+					is currently not supported. </p>
+
+				<p class="p">Installation of SAP HANA XS-based components is supported on SAP HANA
+					database
+					systems with version SPS09 or higher.</p>
+
+			</div>
+
+			<div class="note sap-recommendation recommendation"><span class="recommendationtitle">Recommendation</span> 
+				<p class="p">We recommend always using the latest available version.</p>
+
+			</div>
+
+			<p class="p">Please expect a temporary downtime for the SAP HANA database or SAP HANA XS Engine
+				when installing some SAP HANA components. You might not be able to work with SAP
+				HANA studio, SAP HANA Web-based Development Workbench, and cockpit UIs that depend
+				on SAP HANA XS.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Log on to the cockpit with the administrator role on the productive landscape
+					and select an account.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Persistence</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Database Systems</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> in the navigation area.</span>
+				<div class="itemgroup info">
+					<p class="p">All database systems available in the  account are listed with their
+            details, including the database type, version, memory size, state, and the number of
+            associated databases.</p>
+
+					<div class="note tip"><span class="tiptitle">Tip</span> To view the details of a database, for example, its state and
+						the number of existing bindings, select a database in the list and click the
+						link on its name. On the overview of the database, you can perform further
+						actions, for example, delete the database.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To select the entry for the relevant database system in the list, click the
+					link on its name.</span>
+				<div class="itemgroup info">The overview of the database system shows details, including the database
+					version and state, and the number of associated databases.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To install an SAP HANA component for the selected productive
+					database
+					system, choose <span class="ph uicontrol">Install
+					components</span>.</span>
+				<div class="itemgroup info">All solutions which are available for the installation are listed.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select a solution to install.</span>
+				<div class="itemgroup info">If you have a license for the solution in your account, all SAP HANA
+					components, which are part of the solution, are listed.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select the target version for all listed components.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) Specify if you would like the installation process to stop and
+					prompt for confirmation before the SAP HANA components are installed and the
+					system downtime is started.</span>
+				<div class="itemgroup info">This option is selected by default. If you deselect it, the installation is
+					performed without any user interaction.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Continue/Install</span>.</span>
+				<div class="itemgroup info">The system begins preparing to install. The installation process will take
+					some time and is executed asynchronously. The installation dialog box remains on
+					the screen while the installation is in progress. It is safe to close the dialog
+					box and reopen it later.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(Optional) If you chose to be prompted for confirmation after preparation of
+					the installation, the installation process will stop and prompt for your
+					confirmation to start the installation.</span>
+				<div class="itemgroup info">While preparing the installation, the SAP HANA database
+					system
+					is not modified, so it is safe to cancel the installation
+					process.</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Install</span>.</span>
+				<div class="itemgroup info">The installation starts and takes about 20 minutes.</div>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>SAP HANA components are installed on your SAP HANA database system.<div class="note note"><span class="notetitle">Note</span> For more
+				information, see the SAP HANA Developer Guides listed below. Refer to the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://scn.sap.com/docs/DOC-28833" target="_blank" alt="http://scn.sap.com/docs/DOC-28833" title="http://scn.sap.com/docs/DOC-28833"><span class="ph pname">SAP Cloud Platform</span> Release Notes<img src="../images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a> to find out which HANA SPS is supported by
+				<span class="ph pname">SAP Cloud Platform</span>.</div>
+</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm" title="http://help.sap.com/saphelp_hanaplatform/helpdata/en/68/6f32f2da7947368f8a6906860bc19b/content.htm?frameset=/en/00/0ca1e3486640ef8b884cdf1a050fbb/frameset.htm">SAP HANA XS Administration Tools</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Studio_en.pdf">Developer Guide for SAP HANA Studio for the latest release of SAP
+				HANA</a></div>
+<div><a class="link" href="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf" target="_blank" alt="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf" title="http://help.sap.com/hana/SAP_HANA_Developer_Guide_for_SAP_HANA_Web_Workbench_en.pdf">Developer Guide for SAP HANA Web Workbench for the latest release of SAP
+				HANA</a></div>
+<div><a class="link" href="http://help.sap.com/hana_platform_earlier_releases" target="_blank" alt="http://help.sap.com/hana_platform_earlier_releases" title="http://help.sap.com/hana_platform_earlier_releases">Developer Guides for earlier releases of SAP HANA</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

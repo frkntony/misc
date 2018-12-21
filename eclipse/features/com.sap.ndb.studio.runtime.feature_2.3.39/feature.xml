@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.ndb.studio.runtime.feature"
+      label="%featureName_xtit"
+      version="2.3.39"
+      provider-name="%providerName"
+      plugin="com.sap.ndb.studio">
+
+   <description url="http://www.sap.com">
+      %description_xtol
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.foundation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.planviz.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.federation.feature" version="2.3.39" match="greaterOrEqual"/>
+      <import feature="com.sap.ndb.studio.hampton.feature" version="2.3.39" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.sap.ndb.studio.catalog"
+         download-size="212"
+         install-size="392"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sql"
+         download-size="1392"
+         install-size="2966"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.dataexplorer.core"
+         download-size="146"
+         install-size="282"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.dataexplorer.ui"
+         download-size="1017"
+         install-size="2027"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sqldesigner"
+         download-size="957"
+         install-size="1486"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.businessobjects.bimodeler.bigf"
+         download-size="371"
+         install-size="785"
+         version="2.3.39"/>
+
+   <plugin
+         id="com.sap.ndb.studio.dataexplorer"
+         download-size="298"
+         install-size="613"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.runtime"
+         download-size="12"
+         install-size="16"
+         version="2.3.39"
+         unpack="false"/>
+         
+   <plugin
+         id="com.sap.ndb.studio.joinviewer"
+         download-size="374"
+         install-size="727"
+         version="2.3.39"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.sql.reference.help"
+         download-size="4586"
+         install-size="16717"
+         version="1.6.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.ndb.studio.series.data.dev.help"
+         download-size="2530"
+         install-size="5065"
+         version="1.6.3"
+         unpack="false"/>	 
+		 
+   <plugin
+         id="com.sap.ndb.studio.debugger.common"
+         download-size="207"
+         install-size="414"
+         version="2.3.39"
+         unpack="false"/>
+		 
+	<plugin
+         id="com.sap.ndb.studio.hampton.clary"
+         download-size="112"
+         install-size="225"
+         version="2.3.39"
+         unpack="false"/>
+
+</feature>

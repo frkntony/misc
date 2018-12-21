@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Process Guidelines for Hybrid Scenarios</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiocfc2c6b1271147ef8bee6c6887945ebd">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Process Guidelines for Hybrid Scenarios</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">The following chapter provides process guidelines that help you to manage productive hybrid
+			scenarios, in which applications running on <span class="ph pname">SAP Cloud Platform</span> require access to
+			on-premise systems. </p>
+
+		<div class="section"><div class="section_title">Document Landscape of Hybrid Solution</div><div type="Document Landscape of Hybrid Solution">
+			
+			<p class="p">To have an overview of the cloud and on-premise landscape relevant for your hybrid scenario,
+				we recommend that you document the used cloud accounts, their connected <span class="ph pname">Cloud connector</span>s and
+				the used on-premise backend systems in landscape overview diagrams. Document the
+				account names, the purpose of the accounts (dev, test, prod), information of the
+					<span class="ph pname">Cloud connector</span>
+				machines (host, domains), the URLs of the <span class="ph pname">Cloud connector</span>s in the
+				landscape overview document, and possibly more details. </p>
+
+			<p class="p">An example of landscape overview documentation could look like this: </p>
+
+			<p class="p"><img class="image" id="loiocfc2c6b1271147ef8bee6c6887945ebd__image_w2p_qhd_vy" src="loio6648b099bb8a4a748867f9f56c1f48f1_LowRes.png"/></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Document Administrator Roles</div><div type="Document Administrator Roles">
+			
+			<p class="p">It is recommended to document which users have administrator access to the cloud accounts, to
+				the <span class="ph pname">Cloud connector</span>
+				operating system, and to the <span class="ph pname">Cloud connector</span>
+				Administration UI. </p>
+
+			<p class="p">An example of such administrator role documentation could look like following sample
+				table: </p>
+
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiocfc2c6b1271147ef8bee6c6887945ebd__table_vfx_zkk_sn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/><col width="20%"/></colgroup>
+
+					
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="20%" id="d9567028e83">Resource</th>
+
+							<th class="entry" valign="top" width="20%" id="d9567028e86">john@acme.com </th>
+
+							<th class="entry" valign="top" width="20%" id="d9567028e89">marry@acme.com </th>
+
+							<th class="entry" valign="top" width="20%" id="d9567028e92">pete@acme.com</th>
+
+							<th class="entry" valign="top" width="20%" id="d9567028e95">greg@acme.com</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 ">Cloud Account (CA) Dev1</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 "> </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 ">CA Dev2</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 "> </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 ">CA Test</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 ">X</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 ">CA Prod</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 ">X</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 "><span class="ph pname">Cloud connector</span> Dev1 +
+								Dev2</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 "> </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 "><span class="ph pname">Cloud connector</span>
+								Test</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 ">X</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 "><span class="ph pname">Cloud connector</span>
+								Prod</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 ">X</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 "><span class="ph pname">Cloud connector</span> Dev1 +
+								Dev2 file system</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 ">X</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 ">X</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 "><span class="ph pname">Cloud connector</span> Test
+								file system</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 ">X</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="20%" headers="d9567028e83 "><span class="ph pname">Cloud connector</span> Prod
+								file system</td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e86 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e89 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e92 "> </td>
+
+							<td class="entry" valign="top" width="20%" headers="d9567028e95 "> </td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Document Communication Channels</div><div type="Document Communication Channels">
+			
+			<p class="p">It is recommended to create and document separate email distribution lists for both the cloud
+				account administrators and the <span class="ph pname">Cloud connector</span>
+				administrators. </p>
+
+			<p class="p">An example of the documented communication channels could look like this: </p>
+
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiocfc2c6b1271147ef8bee6c6887945ebd__table_gks_qlk_sn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="50%" id="d9567028e300">Landscape</th>
+
+							<th class="entry" valign="top" width="50%" id="d9567028e303">Distribution List</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d9567028e300 ">Cloud Account Administrators</td>
+
+							<td class="entry" valign="top" width="50%" headers="d9567028e303 ">DL ACME HCP Account Admins</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="50%" headers="d9567028e300 "><span class="ph pname">Cloud Connector</span>
+								Administrators</td>
+
+							<td class="entry" valign="top" width="50%" headers="d9567028e303 ">DL ACME <span class="ph pname">Cloud Connector</span> Admins</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Define Project and Development Guidelines</div><div type="Define Project and Development Guidelines">
+			
+			<p class="p">It is recommended to define and document mandatory project and development guidelines for your
+					<span class="ph pname">SAP Cloud Platform</span>
+				projects. An example of such a guideline could look like the following: </p>
+
+			<p class="p">For every <span class="ph pname">SAP Cloud Platform</span> project of
+				your organization, the following requirements are mandatory:</p>
+
+			<ul class="ul" id="loiocfc2c6b1271147ef8bee6c6887945ebd__ul_xxp_wlk_sn">
+				<li class="li">Usage of Maven, Nexus, Git-&amp;-Gerrit for the application development</li>
+
+				<li class="li">Alignment with accountable manager in projects (name: Flora Miller)</li>
+
+				<li class="li">Alignment with accountable security officer in projects (name: Pete
+					Johnson)</li>
+
+				<li class="li">For externally developed source code a hand over to your organization is
+					required</li>
+
+				<li class="li">Fulfill the connection restrictions in a 3 system landscape, i.e. usage of
+					staged landscape for dev, test and prod, and e.g. dev landscape only connects to
+					dev systems, etc.</li>
+
+				<li class="li">Productive accounts do not use the same <span class="ph pname">Cloud connector</span>
+					like a dev or test account</li>
+
+			</ul>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Define Process of How to Set a Cloud Application Live</div><div type="Define Process of How to Set a Cloud Application Live">
+			
+			<p class="p">It is recommended to define and document the process of how to set a cloud application live
+				and how to configure needed connectivity for such an application. </p>
+
+			<p class="p">For example, the following processes could be seen as relevant and shall be defined
+				and document in more detail: </p>
+
+			<ol class="ol" id="loiocfc2c6b1271147ef8bee6c6887945ebd__ol_ag1_cmk_sn">
+				<li class="li">Transferring application to production: This process defines the steps which are necessary
+					for transferring an application to the productive status on the <span class="ph pname">SAP Cloud Platform</span>. </li>
+
+				<li class="li">Application Connectivity: This process defines the steps which are necessary to
+					add a connectivity destination to a deployed application for connections to
+					other resources in the test or productive landscape.</li>
+
+				<li class="li"><span class="ph pname">Cloud Connector</span>
+					Connectivity: This process defines the steps which are necessary to add an
+					on-premise resource to the <span class="ph pname">Cloud connector</span> in
+					the test or productive landscapes to make it available for the connected cloud
+					accounts.</li>
+
+				<li class="li">On-premise System Connectivity: This process defines the steps which are necessary to setup
+					a trust relationship between an on-premise system and the <span class="ph pname">Cloud connector</span> and
+					to configure user authentication and authorization in the on-premise system in
+					the test or productive landscapes.</li>
+
+				<li class="li">Application Authorization: This process defines the steps which are necessary to
+					request and assign an authorization which is available inside the SAP HANA Cloud
+					application to a user in the test or productive landscapes.</li>
+
+				<li class="li">Administrator Permissions: This process defines the steps which are necessary to
+					request and assign the administrator permissions in a cloud account to a user in
+					the test or productive landscape.</li>
+
+			</ol>
+
+			<p class="p"/>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

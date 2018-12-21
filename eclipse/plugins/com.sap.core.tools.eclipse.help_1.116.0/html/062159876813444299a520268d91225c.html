@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Controlling the Mission Life Cycle</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio062159876813444299a520268d91225c">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Controlling the Mission Life Cycle</h1>
+
+	<div class="body conbody">
+		<div class="p">Regarding the mission life cycle,there are two types of missions:<ul class="ul" id="loio062159876813444299a520268d91225c__ul_bps_sdq_zv">
+				<li class="li">
+					<p class="p">System Missions: the mission life cycle is fully controlled by the service
+						using API calls within rules.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">User-accepted Missions: the player actively decides whether to accept or
+						reject missions, while the remaining mission life cycle (unlocking or
+						completing a mission) is controlled by the service. In both cases the API
+						calls have to be executed within rules to ensure data consistency between
+						the engine and the backend.</p>
+
+				</li>
+
+			</ul>
+</div>
+
+		<div class="section"><div class="section_title">System Missions</div><div type="System Missions"><img class="image" id="loio062159876813444299a520268d91225c__image_hgn_qhq_zv" src="loio5fe63d64c2024e4cb360d675cea62110_HiRes.png"/><p class="p">All state transitions are triggered by calling the
+				respective API methods within rules, while the list of missions in a certain state
+				can be retrieved either by calling the API directly or within a rule.</p>
+<div class="p">Sample
+				rule for assigning a system mission as part of the <span class="ph uicontrol">user init</span>
+					rule:<ul class="ul" id="loio062159876813444299a520268d91225c__ul_ugk_c2q_zv">
+					<li class="li">
+						<p class="p">WHEN</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$event : EventObject(type=='initPlayerForApp', $playerid : playerid) from entry-point eventstream</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">THEN</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.assignMissionToPlayer($playerid, 'Troubleshooting', null);</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+<div class="p">Sample rule for completing a system mission:<ul class="ul" id="loio062159876813444299a520268d91225c__ul_ykx_32q_zv">
+					<li class="li">
+						<p class="p">WHEN</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">$p : Player($playerid : id) 
+eval(queryAPIv1.hasPlayerMission($playerid, 'Troubleshooting', false) == true) 
+eval(queryAPIv1.getScoreForPlayer($playerid, 'Critical Tickets', null, null).getAmount() &gt;= 5)
+</pre></div>
+
+						</div>
+
+					</li>
+
+					<li class="li">
+						<p class="p">THEN</p>
+
+						<div class="p">
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.completeMissionForPlayer($playerid, 'Troubleshooting', null);</pre></div>
+
+						</div>
+
+					</li>
+
+				</ul>
+</div>
+</div></div>
+
+		<div class="section"><div class="section_title">User-accepted Missions</div><div type="User-accepted Missions"><img class="image" id="loio062159876813444299a520268d91225c__image_sn5_13q_zv" src="loio03d7935d050547b7ba489bc6e026347a_HiRes.png"/><div class="p">Flow for accepted missions<ol class="ol" id="loio062159876813444299a520268d91225c__ol_sgn_42q_zv">
+					<li class="li">
+						<p class="p">System via rule: <span class="ph cmdtext">unlockMissionForPlayer</span> (allowing users to start
+							missions).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">User via API (User Endpoint): <span class="ph cmdtext">getAvailableMissionsForPlayer</span> (listing or
+							offering missions for the user to pick from).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">User via (User Endpoint): <span class="ph cmdtext">acceptMissionForPlayer</span> (accepting a specific
+							mission).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">(User progresses while having this set as active mission).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">System via rule: <span class="ph cmdtext">completeMissionForPlayer</span> (when all conditions are met,
+							the rule completes the mission).</p>
+
+					</li>
+
+				</ol>
+</div>
+<div class="p">Flow for rejected missions<ol class="ol" id="loio062159876813444299a520268d91225c__ol_pmn_bfq_zv">
+					<li class="li">
+						<p class="p">System via rule: <span class="ph cmdtext">unlockMissionForPlayer</span> (allowing users to start
+							missions).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">User via API (User Endpoint): <span class="ph cmdtext">getAvailableMissionsForPlayer</span> (offering
+							specific missions for the user to pick from).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">User via API (User Endpoint): <span class="ph cmdtext">rejectMissionForPlayer</span> (rejecting an
+							available mission).</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Mission is no longer available for the user and will not be offered again.</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">(Optional) User via API (User Endpoint): acceptMissionForPlayer so that rejected missions
+							become active again.</p>
+
+					</li>
+
+				</ol>
+</div>
+<div class="note note"><span class="notetitle">Note</span> Invoking the manual mission methods via the user endpoint currently
+				does not trigger any rules. If there is a rule that has to trigger when missions
+				become active for players it would require a separate event to trigger this
+				rule.</div>
+</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

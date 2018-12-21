@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Availability Checks Commands</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7613061a711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Availability Checks Commands</h1>
+<div class="body conbody"><div class="section" id="loio7613061a711e1014839a8273b0e91070__section_E30EA92E93864CE0A2910499966BAB5D"> 
+		<p class="p">This document contains the SAP Cloud Platform console client commands related to
+				availability checks and their parameters.</p>
+ 
+	 </div>
+<div class="section" id="loio7613061a711e1014839a8273b0e91070__section_0773DF1C86E74A3AA9EA98B58CCC103D"><div class="section_title">Listing Configured Availability Checks</div><div type="Listing Configured Availability Checks"><span class="keyword cmdname">list-availability-check</span>
+<div class="tablenoborder"><table summary="" id="loio7613061a711e1014839a8273b0e91070__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1763911e28">Required</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e28 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e28 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e28 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e28 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio7613061a711e1014839a8273b0e91070__table_ivf_cz5_ll" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1763911e63">Optional</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e63 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e63 ">Application name for Java applications or productive SAP HANA
+								instance database name and application name in the format
+								&lt;instance name&gt;:&lt;application name&gt; for SAP HANA XS applications<p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e63 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e63 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e63 "><span class="keyword parmname">-R</span>,
+								<span class="keyword parmname">--recursively</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e63 ">Lists availability checks recursively starting from the specified
+								level. For example, if only 'account' is passed as an argument, it
+								starts from the account level and then lists all checks configured
+								on application level.<p class="p"><span class="keyword cmdname">Default</span>: false
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p"> Example for listing availability checks recursively starting on account
+				level and listing the checks configured for Java and SAP HANA XS
+					applications:</p>
+<p class="p"><kbd class="ph userinput">neo list-availability-check -a myaccount -u
+					s1234567 --host hana.ondemand.com -R</kbd></p>
+<div class="p">Sample output:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+ SAP Cloud Platform Console Client
+
+
+
+Running list-availability-checks with the following parameters:
+
+	account    : myaccount
+	host       : https://hana.ondemand.com
+	recursively: true
+	SDK version: 1.2.3
+	user       : s1234567
+
+
+HANA XS Availability Checks
+
+Application availability checks
+
+	application : hanaxs:myhana
+	url         : /myhana.xsjs
+	warning     : 50 s
+	critical    : 60 s
+	technology  : HANA XS
+
+
+Java Availability Checks
+
+Account-level availability check
+
+	account     : test
+	url         : /example
+	warning     : 50
+	critical    : 60
+
+
+Application availability checks
+
+			application : demo
+			url         : /example
+			warning     : 6
+			critical    : 4
+			technology  : Java
+  </pre></div>
+
+			</div>
+</div></div>
+<div class="section" id="loio7613061a711e1014839a8273b0e91070__section_DE656EC4FE3348AEAC99302FC2AAB437"><div class="section_title">Creating an Availability Check</div><div type="Creating an Availability Check"><span class="keyword cmdname">create-availability-check</span>
+<div class="tablenoborder"><table summary="" id="loio7613061a711e1014839a8273b0e91070__table_dgc_m1l_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1763911e144">Required</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e144 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e144 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e144 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e144 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e144 "><span class="keyword parmname">-U</span>, <span class="keyword parmname">--url</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e144 ">Relative application URL<p class="p"><span class="keyword cmdname">Type</span>:
+								string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio7613061a711e1014839a8273b0e91070__table_uws_n1l_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1763911e192">Optional</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e192 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e192 ">Application name for Java applications or productive SAP HANA
+								instance database name and application name in the format
+								&lt;instance name&gt;:&lt;application name&gt; for SAP HANA XS applications<p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e192 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e192 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e192 "><span class="keyword parmname">-W</span>, <span class="keyword parmname">--warning</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e192 ">Threshold value or range of the response time in
+										seconds.<p class="p"><span class="keyword cmdname">Default</span>: 50
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e192 "><span class="keyword parmname">-C </span>, <span class="keyword parmname">--critical</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e192 ">Threshold value or range of the response time in
+										seconds.<p class="p"><span class="keyword cmdname">Default</span>: 60
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e192 "><span class="keyword parmname">-w</span>, <span class="keyword parmname">--overwrite</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e192 ">Should be used only if there is an existing alert that needs to
+								be updated. <p class="p"><span class="keyword cmdname">Default</span>: false
+										</p>
+<p class="p"><span class="keyword cmdname">Type</span>: boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p">Example for creating an availability check for application
+					<span class="ph emphasis emphasis">demo</span>: </p>
+<p class="p"><kbd class="ph userinput">neo create-availability-check -a
+					myaccount -b demo -u s1234567 -U /heartbeat -C 4 -W 6 --host
+					hana.ondemand.com</kbd></p>
+<p class="p">Example for creating an availability check
+				for myhana application:</p>
+<p class="p"><kbd class="ph userinput">neo create-availability-check -a myaccount
+					-b myhanainstance:myhana -u s1234567 -U /heartbeat.xsjs -C 4 -W 6 --host
+					hana.ondemand.com</kbd></p>
+</div></div>
+<div class="section" id="loio7613061a711e1014839a8273b0e91070__section_ADABD9C2107047A9ABFD49684FDE2308"><div class="section_title">Deleting an Availability Check</div><div type="Deleting an Availability Check"><span class="keyword cmdname">delete-availability-check</span>
+<div class="tablenoborder"><table summary="" id="loio7613061a711e1014839a8273b0e91070__table_khg_v3l_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1763911e310">Required</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e310 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e310 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+									characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e310 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e310 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table summary="" id="loio7613061a711e1014839a8273b0e91070__table_bcd_w3l_rl" class="table" frame="border" border="1" rules="all"><thead class="thead" align="left"><tr class="row"><th class="entry" colspan="2" valign="top" id="d1763911e345">Optional</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e345 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e345 ">Application name for Java applications or productive SAP HANA instance database name
+								and application name in the format &lt;instance
+								name&gt;:&lt;application name&gt; for SAP HANA XS applications<p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="200pt" headers="d1763911e345 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+<td class="entry" valign="top" width="500pt" headers="d1763911e345 ">Use the respective landscape host for your account type. <p class="p"><span class="keyword cmdname">Type</span>:
+									URL. For acceptable values see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="p">Example:</p>
+<p class="p"><kbd class="ph userinput">neo delete-availability-check -a myaccount -b demo
+					-u s1234567 --host hana.ondemand.com</kbd>
+			</p>
+</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+		<div id="custom-footerSpacer">__________________________________________________ </div>
+		<a class="copyright" target="_blank" href="copyright.html">Copyright</a>
+		|
+		<a class="disclaimer" target="_blank" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+	</div>
+</body>
+</html>

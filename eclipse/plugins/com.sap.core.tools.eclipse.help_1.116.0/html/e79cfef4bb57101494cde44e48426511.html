@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="Although JPA is suited for most application development scenarios and is the recommended approach on SAP Cloud Platform, there might be cases where the low-level control provided by JDBC is more appropriate."/>
+<meta name="description" content="Although JPA is suited for most application development scenarios and is the recommended approach on SAP Cloud Platform, there might be cases where the low-level control provided by JDBC is more appropriate."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Programming with Plain JDBC</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe79cfef4bb57101494cde44e48426511">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Programming with Plain JDBC</h1>
+
+	<div class="body conbody"><p class="shortdesc">Although JPA is suited for most application development scenarios and is the recommended
+		approach on <span class="ph pname">SAP Cloud Platform</span>, there might be cases where the low-level
+		control provided by JDBC is more appropriate.</p>
+<div class="section" id="loioe79cfef4bb57101494cde44e48426511__section_B837CC4218414F33A23FD3338F919326">
+			<p class="p">Bear in mind that working with JDBC entails manually writing SQL statements to read
+				and write objects from and to the database. </p>
+
+		</div>
+
+		<div class="section" id="loioe79cfef4bb57101494cde44e48426511__section_N10050_N10013_N10001"><div class="section_title">JNDI Resource Reference</div><div type="JNDI Resource Reference">
+			
+			<p class="p">An application can use one or more data sources. A data source can be a default data source or
+				an explicitly named data source. Before a data source can be used, it needs to be
+				declared as a JNDI resource reference.</p>
+
+			<p class="p">You declare a JNDI resource reference to a JDBC data source in the
+					<span class="ph filepath">web.xml</span> deployment descriptor located in the
+					<span class="ph filepath">WebContent/WEB-INF</span> directory as shown below. Note that the
+				resource reference name is just an example: </p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;jdbc/DefaultDB&lt;/res-ref-name&gt;
+    &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;
+</pre></div>
+
+			<p class="p">The resource attributes denote the following: </p>
+
+			<ul class="ul" id="loioe79cfef4bb57101494cde44e48426511__ul_ayx_h4c_fk">
+				<li class="li">Name: The JNDI name of the resource. The Java EE Specification recommends that
+					the data source reference be declared in the jdbc subcontext
+						(<span class="ph filepath">jdbc/NAME</span>). </li>
+
+				<li class="li">Type: The type of resource that will be returned during the lookup. </li>
+
+			</ul>
+
+			<p class="p">The <samp class="ph codeph">&lt;resource-ref&gt;</samp> elements should be added after the
+					<samp class="ph codeph">&lt;servlet-mapping&gt;</samp> elements in the deployment
+				descriptor.</p>
+
+			<div class="p">If the application uses multiple data sources, you need to add a resource reference for each
+				data
+				source:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">&lt;resource-ref&gt;
+      &lt;res-ref-name&gt;jdbc/datasource1&lt;/res-ref-name&gt;
+      &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;
+&lt;resource-ref&gt;
+      &lt;res-ref-name&gt;jdbc/datasource2&lt;/res-ref-name&gt;
+      &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+&lt;/resource-ref&gt;</pre></div>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Data Source Lookup</div><div type="Data Source Lookup">
+			
+			<div class="p">You can obtain an initial JNDI context from Tomcat by creating a
+					<span class="keyword apiname">javax.naming.InitialContext</span> object, and then consume the data
+				source by looking up the naming environment through the
+					<span class="keyword apiname">InitialContext</span>, as follows:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+InitialContext ctx = new InitialContext();
+DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DefaultDB");
+</pre></div>
+</div>
+
+			<p class="p">Note that according to the Java EE Specification, the prefix
+					<span class="ph filepath">java:comp/env</span> should be added to the JNDI resource name (as
+				specified in <span class="ph filepath">web.xml</span>) to form the lookup name. For more
+				information about defining and referencing resources according to the Java EE
+				standard, see the <cite class="cite">Java EE Specification</cite>. </p>
+
+			<p class="p">If the application uses multiple data sources, the lookup is constructed in a similar
+				manner:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">InitialContext ctx = new InitialContext();
+DataSource ds1 = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource1");
+DataSource ds2 = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource2");</pre></div>
+
+		</div></div>
+
+		<div class="section" id="loioe79cfef4bb57101494cde44e48426511__section_N10036_N10013_N10001"><div class="section_title">Data Source Injection</div><div type="Data Source Injection">
+			
+			<div class="p">You can directly inject the data source using annotations as shown below:<ul class="ul" id="loioe79cfef4bb57101494cde44e48426511__ul_mnf_rhd_wk">
+					<li class="li">Default data source<div class="p">You do not need to declare the JNDI resource reference
+							in the <span class="ph filepath">web.xml</span> deployment descriptor nor in the
+							resource name, since the default data source will be provided
+							automatically:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Resource
+private javax.sql.DataSource ds;</pre></div>
+
+						</div>
+</li>
+
+					<li class="li">If the application uses explicitly named data sources, these must be declared in the
+							<span class="ph filepath">web.xml</span> file and injected as shown in the example
+						below:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">@Resource(name="jdbc/datasource1")
+    private javax.sql.DataSource ds1;
+
+@Resource(name="jdbc/datasource2")
+    private javax.sql.DataSource ds2;</pre></div>
+</li>
+
+				</ul>
+</div>
+
+		</div></div>
+<div class="section" id="loioe79cfef4bb57101494cde44e48426511__section_2F4125C829D8448E9A85A07400DE59D2"><div class="section_title">JDBC Connection</div><div type="JDBC Connection"> 
+		 
+		<div class="p">The data source that you have retrieved in the section above allows you to create a JDBC
+				connection to the database. You can use the resulting Connection object to
+				instantiate a Statement object and execute SQL statements, as shown in the example
+				below.
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">
+private static final String STMT_SELECT_ALL = "SELECT ID, FIRSTNAME, LASTNAME FROM " + TABLE_NAME;
+Connection conn = dataSource.getConnection();
+		try {
+        PreparedStatement pstmt = conn.prepareStatement(STMT_SELECT_ALL);
+        ResultSet rs = pstmt.executeQuery();
+  ...
+</pre></div>
+
+			</div>
+ 
+	 </div></div>
+<div class="section" id="loioe79cfef4bb57101494cde44e48426511__section_3134F8B86E2D4F17A171C1981DD87D42"><div class="section_title">Database Tables</div><div type="Database Tables"> 
+		 
+		<p class="p">You use plain SQL statements to create the tables
+		  you require. Since there is currently no tool support available, you have to
+		  manually maintain the table life cycles. The exact syntax to be used may differ
+		  depending on the underlying database. The Connection object provides metadata
+		  about the underlying database and its tables and fields, which can be accessed
+		  as shown in the code below: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">String database = conn.getMetaData().getDatabaseProductName();
+</pre></div>
+ 
+		<p class="p">To create a table in the Apache Derby database, you
+		  could use the following SQL statement executed with a PreparedStatement object:
+		  
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">
+private static final String STMT_CREATE_TABLE_DERBY = "CREATE TABLE "
+		+ TABLE_NAME + " (ID INTEGER GENERATED ALWAYS AS IDENTITY
+              PRIMARY KEY, " +  "FIRSTNAME VARCHAR (255), LASTNAME VARCHAR
+              (255))";
+
+PreparedStatement pstmt = conn.prepareStatement(STMT_CREATE_TABLE_DERBY);
+pstmt.executeUpdate();
+</pre></div>
+ 
+		<p class="p">Note that the equivalent statement for SAP MaxDB
+		  differs as follows: 
+		</p>
+ 
+		<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-sql">
+private static final String STMT_CREATE_TABLE_MAXDB = "CREATE TABLE "
+			+ TABLE_NAME + " (ID INTEGER DEFAULT SERIAL PRIMARY KEY, " +
+			"FIRSTNAME VARCHAR (255), LASTNAME VARCHAR (255))";
+</pre></div>
+ 
+	 </div></div>
+<div class="section" id="loioe79cfef4bb57101494cde44e48426511__section_40BF49691D004648A51F3728BAC85DBD"><div class="section_title">DAO Objects and SQL Statements</div><div type="DAO Objects and SQL Statements"> 
+		 
+		<p class="p">See the tutorial <cite class="cite">Adding Persistence Using JDBC</cite> for an example of how to execute
+				SQL statements and apply the Data Access Object (DAO) design pattern in your Web
+				application. </p>
+ 
+		<div class="note note" id="loioe79cfef4bb57101494cde44e48426511__note_N100E2_N100D2_N10013_N10001"><span class="notetitle">Note</span> Remember that the persistence service only supports
+				SAP MaxDB and the SAP HANA database in the cloud. If you use Apache Derby for local
+				development, bear in mind that the syntax of the SQL statements is not identical on
+				these databases. </div>
+ 
+	 </div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e4c52854bb571014aeb88753d0dad158.html" title="This step-by-step tutorial shows how you can use JDBC to persist data in a simple Java EE web application that manages a list of persons.">Adding Persistence with JDBC (Java Web SDK)</a></div>
+<div><a class="extlink" href="http://help.sap.com/disclaimer?site=https://jcp.org/aboutJava/communityprocess/final/jsr244/index.html" target="_blank" alt="https://jcp.org/aboutJava/communityprocess/final/jsr244/index.html" title="https://jcp.org/aboutJava/communityprocess/final/jsr244/index.html">Java EE Specification<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Trust between Cloud Connector and On-Premise Systems</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio0c48337629d3494888f7b9d06855ba6e">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Trust between <span class="ph pname">Cloud Connector</span> and On-Premise
+		Systems</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">For secure communication between the <span class="ph pname">Cloud connector</span> and the
+			used on-premise systems, it is recommended to use encrypted protocols, like HTTPS and
+			RFC over SNC, and to set up a trust relationship between the <span class="ph pname">Cloud connector</span> and the
+			on-premise systems by exchanging certificates.</p>
+
+		<p class="p">When using HTTPS as protocol, a trust relationship can be set-up by configuring the so-called
+			system certificate in the <span class="ph pname">Cloud connector</span>. A system
+			certificate is an <span class="keyword cmdname">X.509</span> certificate which represents the identity of
+			the <span class="ph pname">Cloud connector</span>
+			instance and is used as a client certificate in the HTTPS communication between the
+				<span class="ph pname">Cloud connector</span> and
+			the on-premise system. The used on-premise system should be configured to validate the
+			system certificate of the <span class="ph pname">Cloud connector</span> to ensure
+			that only calls from trusted <span class="ph pname">Cloud connector</span>s are
+			accepted. </p>
+
+		<p class="p">A detailed documentation on how to use and configure the system certificate for a <span class="ph pname">Cloud connector</span> can be
+			found here: <a class="xref" href="3f974eae3cba4dafa274ec59f69daba6.html">Initial Configuration (HTTP)</a>
+		</p>
+
+		<p class="p">Analogously, SNC can be configured for secure RFC communication to an ABAP backend, as
+			described here: <a class="xref" href="f09eefe71d1e4d4484e1dd4b121585fb.html">Initial Configuration (RFC)</a>
+		</p>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

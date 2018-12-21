@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You can share productive SAP HANA or SAP ASE databases that have been provisioned in an account with other accounts of your global account."/>
+<meta name="description" content="You can share productive SAP HANA or SAP ASE databases that have been provisioned in an account with other accounts of your global account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Sharing Databases in the Same Global Account</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio1cc5e1efb7f640329f419b53f21c0906">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Sharing Databases in the Same Global Account</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">You can share productive SAP HANA or SAP ASE databases that have been provisioned in
+		an account with other accounts of your global account. </p>
+
+		<div class="note note"><span class="notetitle">Note</span> The following explanations only apply to accounts that belong to the same
+			global account. If you want to share a database with an account that is not part of your
+			global account, see <a class="xref" href="322080db84734e9b8812ede13703b83c.html" title="You can share a productive SAP HANA or SAP ASE database that is owned by an account with other accounts.">Sharing Databases with Other Accounts</a>.</div>
+
+		<p class="p">You can give accounts controlled access to a database owned by another account by adding a
+			cross-account permission for the accounts requesting access. Depending on the type of
+			permission your provide, the owners of the accounts receiving the permission can <a class="xref" href="216cef2158cc419fade9a8247d5008fa.html" title="Bind databases to your applications running on SAP Cloud Platform.">bind their applications to the
+				database</a> and/or <a class="xref" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">open a
+				tunnel to the database</a> that is owned by another account. </p>
+
+		<div class="note note"><span class="notetitle">Note</span> Sharing databases in the same global account is only possible on the productive
+			landscape, not on the trial landscape. </div>
+
+		<p class="p">To give cross-account permissions to other accounts in your global account, you log on to the
+			account in which the database you want to share is provisioned. Then you use the <span class="ph pname">SAP Cloud Platform</span> cockpit or the console client to give permissions to other accounts.
+			Owners of the accounts receiving the permission will be able to see the database listed
+			in the cockpit and in the console client, and use it in accordance with the permissions
+			given. </p>
+
+		<p class="p">The table below lists the tasks and the person responsible for sharing databases with
+			other accounts in the same global account:</p>
+
+		
+<div class="table-wrapper tablenoborder"><table summary="" id="loio1cc5e1efb7f640329f419b53f21c0906__table_atv_xth_fy" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="33.333333333333336%"/><col width="33.333333333333336%"/><col width="33.333333333333336%"/></colgroup>
+
+				
+				
+				
+				<thead class="thead" align="left">
+					<tr class="row">
+						<th class="entry" valign="top" width="33.33333333333333%" id="d1227881e76">
+							<p class="p">Task</p>
+
+						</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d1227881e82">
+							<p class="p">Responsible</p>
+
+						</th>
+
+						<th class="entry" valign="top" width="33.33333333333333%" id="d1227881e88">
+							<p class="p">Commands used</p>
+
+						</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody class="tbody">
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e76 "><a class="xref" href="d848edea0e4f4136922d7edcb47a7b7a.html" title="You use the cockpit or the console client to create a new cross-account permission, allowing an account to use a database that is owned by another account.">Adding New Cross-Account Permissions</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e82 ">
+							<p class="p">Administrator in the account that owns the database  </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e88 "><a class="xref" href="e7d72bf3da2e45cfb135b2feed3a58d0.html" title="This command gives another account permission to access a database. The account providing the permission and the account receiving the permission must be part of the same global account.">grant-db-access</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e76 "><a class="xref" href="44d0d8ebfbc74d08b3f30f7e88d9a974.html" title="You use the cockpit to change the type of an existing cross-account permission.">Changing Cross-Account Permission Types</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e82 ">
+							<p class="p">Administrator in the account that owns the database  </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e88 "> </td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e76 "><a class="xref" href="732612bb5cd5439aa3d99d302ad1bb32.html" title="You use the cockpit or the console client to revoke a cross-account permission.">Revoking Cross-Account Permissions</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e82 ">
+							<p class="p">Administrator in the account that owns the database  </p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e88 "><a class="xref" href="a0265c4b575843e9904056c8a1cda28d.html" title="This command revokes the database access permissions given to another account.">revoke-db-access</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e76 "><a class="xref" href="907b1707dec64bd9bfcc85333ab4b65d.html" title="You use the cockpit or the console client to bind a Java application that you deployed in one account to a productive SAP HANA and SAP ASE database that is owned by another account.">Binding Applications to Databases in the Same Global Account</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e82 ">
+							<p class="p">Member of the account that has requested permission to use a database
+								owned by another account</p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e88 "><a class="xref" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></td>
+
+					</tr>
+
+					<tr class="row">
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e76 "><a class="xref" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e82 ">
+							<p class="p">Member of the account that has requested permission to use a database
+								owned by another account</p>
+
+						</td>
+
+						<td class="entry" valign="top" width="33.33333333333333%" headers="d1227881e88 "><a class="xref" href="9e3f90f2ead74229ac5c8848ed5bf292.html" title="This command opens a database tunnel to the database system associated with the specified schema or database.">open-db-tunnel</a></td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+</div>
+
+		<p class="p">The picture below shows an example scenario and is followed by an explanation. </p>
+
+		<img class="image" id="loio1cc5e1efb7f640329f419b53f21c0906__image_btv_xth_fy" src="loio4b0511bd861f458c92a00cff1e39d2f3_LowRes.png"/>
+		<p class="p">Account A, B, and C are all part of the same global account. An SAP HANA or SAP ASE database is
+			provisioned in all three accounts. Three Java applications have been deployed in account
+			C. Java application 3 is bound to the database in account C. To bind Java application 1
+			to the database in account A, a member of account A provides account C with a
+			cross-account permission for data source bindings. In addition, a member of account B
+			gives account C the permission to open a  tunnel to the database in account B. </p>
+
+		<p class="p">After the cross-account permissions have been given, members of account C can see the databases
+			owned by account A and B in the console client and in the cockpit. As shown in the
+			picture below, account C binds two of its Java applications to the database in Account
+			A. The cross-account permission for data source bindings provided to account C by
+			account A is not restricted to a single application. All members of account C can bind
+			multiple Java applications to the database in account A. Due to the cross-account
+			permission for opening database tunnels provided to account C by account B, all members
+			of account C can also open a tunnel to the database in account B.</p>
+
+		<img class="image" id="loio1cc5e1efb7f640329f419b53f21c0906__image_ctv_xth_fy" src="loio5686766f57024e8692d081be8f6b1b96_LowRes.png"/>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="9b7bb0f35d0c4b33868606448a48c13c.html" title="As an account member with the administrator role, you can add, change, and revoke cross-account permissions for accounts in your global account by using the cockpit or the console client.">Managing Cross-Account Permissions</a></div>
+<div><a class="link" href="907b1707dec64bd9bfcc85333ab4b65d.html" title="You use the cockpit or the console client to bind a Java application that you deployed in one account to a productive SAP HANA and SAP ASE database that is owned by another account.">Binding Applications to Databases in the Same Global Account</a></div>
+<div><a class="link" href="6930850a8f9a40489c01ed1aa381946d.html" title="A database tunnel allows you to connect to a remote database instance through a secure connection. To open a tunnel, use the open-db-tunnel command. When you open the tunnel, you will obtain the connection details required for the remote database instance, including a user and password.">Opening a Database Tunnel</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

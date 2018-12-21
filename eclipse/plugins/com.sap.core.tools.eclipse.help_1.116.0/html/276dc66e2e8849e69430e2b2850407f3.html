@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>LDAP Destinations</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio276dc66e2e8849e69430e2b2850407f3">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">LDAP Destinations</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p">LDAP destinations carry connectivity details for accessing systems over <em class="ph i">Lightweight
+				Directory Access Protocol</em> (LDAP) as specified in <a class="extlink" href="http://help.sap.com/disclaimer?site=https://www.ietf.org/rfc/rfc4511.txt" target="_blank" alt="https://www.ietf.org/rfc/rfc4511.txt" title="https://www.ietf.org/rfc/rfc4511.txt"> RFC
+				4511<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. In combination with the <span class="ph pname">SAP Cloud Platform cloud
+                                connector</span> they enable
+				<span class="ph pname">SAP Cloud Platform</span>
+			applications to access LDAP servers in an on-premise corporate network. LDAP
+			destinations are intended to be used with the Java <em class="ph i">JNDI/LDAP Service
+			Provider</em>.</p>
+
+		<p class="p">For more information on how to use the Java JNDI/LDAP Service Provider see: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html" target="_blank" alt="http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html" title="http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html">http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+		<p class="p">The following properties are predefined for LDAP destinations:</p>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+		<div class="p">
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loio276dc66e2e8849e69430e2b2850407f3__table_c4m_z5n_1z" class="table" frame="border" border="1" rules="all"><caption><span class="tablecap">Table 1: Predefined LDAP Destination Properties</span></caption>
+<colgroup><col width="25%"/><col width="25%"/><col width="25%"/><col width="25%"/></colgroup>
+
+					
+					
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="25%" id="d1746873e70">Name (UI)</th>
+
+							<th class="entry" valign="top" width="25%" id="d1746873e73">Name (internal)</th>
+
+							<th class="entry" valign="top" width="25%" id="d1746873e76">Description/Values </th>
+
+							<th class="entry" valign="top" width="25%" id="d1746873e79">Corresponding Java JNDI/LDAP service provider property</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1746873e70 ">Authentication </td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e73 ">ldap.authentication</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e76 ">Possible values: <em class="ph i">BasicAuthentication</em> or
+									<em class="ph i">NoAuthentication</em></td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e79 "><span class="keyword parmname">java.naming.security.authentication</span> with
+								value <kbd class="ph userinput">simple</kbd> in case of
+									<em class="ph i">BasicAuthentication</em> and value <kbd class="ph userinput">none</kbd>
+								in case of <em class="ph i">NoAuthentication</em>. </td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1746873e70 ">Password </td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e73 ">ldap.password</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e76 ">
+								<p class="p"/>
+
+							</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e79 "><span class="keyword parmname">java.naming.security.credentials</span></td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1746873e70 ">Proxy Type</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e73 ">ldap.proxyType</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e76 ">Possible values: <em class="ph i">Internet</em> or <em class="ph i">OnPremise</em></td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e79 ">In case proxy type is OnPremise, the resulting property is
+									<span class="keyword parmname">java.naming.ldap.factory.socket</span> with value
+									<kbd class="ph userinput">com.sap.core.connectivity.api.ldap.LdapOnPremiseSocketFactory</kbd>.</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1746873e70 ">URL </td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e73 ">ldap.url</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e76 ">URL to the LDAP server. Must be in form:
+									<em class="ph i">ldap://&lt;host&gt;:&lt;port&gt;</em>.<p class="p">Example:
+										<em class="ph i">ldap://ldapserver.examplecompany.com:389</em></p>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e79 ">
+								<p class="p"><span class="keyword parmname">java.naming.provider.url</span></p>
+
+							</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="25%" headers="d1746873e70 ">User </td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e73 ">ldap.user</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e76 ">Must be set in suitable form for the LDAP server. E.g. for
+								Microsoft Active Directory the value should be in the following
+								format: <em class="ph i">&lt;user_ name&gt;@&lt;domain_name&gt;</em>.<p class="p">Example:
+										<em class="ph i">serviceuser@examplecompany.com</em></p>
+</td>
+
+							<td class="entry" valign="top" width="25%" headers="d1746873e79 ">
+								<p class="p"><span class="keyword parmname">java.naming.security.credentials</span></p>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+
+		<p class="p"/>
+
+		<p class="p">As additional properties in an LDAP destination you can specify the properties defined by the
+			Java JNDI/LDAP Service Provider. For more details regarding these properties see
+				<em class="ph i">Environment Properties</em> at <a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html" target="_blank" alt="http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html" title="http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html">http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/jndi-ldap.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>l.</p>
+
+		<p class="p"/>
+
+		<p class="p"><span class="ph emphasis emphasis">Example: LDAP Destination</span></p>
+
+		<p class="p"/>
+
+		<div class="p">
+			<div class="note sap-samplecodeblock samplecode"><span class="samplecodetitle">Sample Code</span> 
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+package com.sap.cloud.example.ldap;
+
+　
+
+import java.io.IOException;
+
+import java.util.Properties;
+
+　
+
+import javax.annotation.Resource;
+
+import javax.naming.NamingEnumeration;
+
+import javax.naming.NamingException;
+
+import javax.naming.directory.DirContext;
+
+import javax.naming.directory.InitialDirContext;
+
+import javax.naming.directory.SearchControls;
+
+import javax.naming.directory.SearchResult;
+
+import javax.servlet.ServletException;
+
+import javax.servlet.annotation.WebServlet;
+
+import javax.servlet.http.HttpServlet;
+
+import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletResponse;
+
+　
+
+import com.sap.core.connectivity.api.configuration.ConnectivityConfiguration;
+
+import com.sap.core.connectivity.api.configuration.DestinationConfiguration;
+
+　
+
+/**
+
+ * Servlet that obtain LDAP destination, connect to the specified LDAP server and search for users.
+
+ */
+
+@WebServlet("/*")
+
+public class LdapExample extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    private static final String DESTINATION_NAME = "example-ldap-destination";
+
+　
+
+    private static final String LDAP_PATH_TO_USERS = "ou=users,dc=examplecompany,dc=com";
+
+    private static final String LDAP_FILTER_MATCHING_USERS = "(objectClass=person)";
+
+　
+
+    @Resource(name = "ConnectivityConfiguration")
+
+    private static ConnectivityConfiguration connectivityConfiguration;
+
+　
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        DestinationConfiguration destination = connectivityConfiguration.getConfiguration(DESTINATION_NAME);
+
+        Properties properties = new Properties();
+
+        properties.putAll(destination.getAllProperties());
+
+　
+
+        try {
+
+            DirContext context = new InitialDirContext(properties);
+
+            SearchControls controls = new SearchControls();
+
+            controls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+
+　
+
+            NamingEnumeration&lt;SearchResult&gt; result = context.search(LDAP_PATH_TO_USERS, LDAP_FILTER_MATCHING_USERS, controls);
+
+            response.getWriter().append("Found users:&lt;br/&gt;&lt;br/&gt;");
+
+            while (result.hasMore()) {
+
+                response.getWriter().append(result.next().toString()).append("&lt;br/&gt;&lt;br/&gt;");
+
+            }
+
+        } catch (NamingException e) {
+
+            throw new ServletException("Could not search LDAP for users", e);
+
+        }
+
+    }
+
+}
+</pre></div>
+
+			</div>
+
+		</div>
+
+		<p class="p"/>
+
+		<p class="p"/>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

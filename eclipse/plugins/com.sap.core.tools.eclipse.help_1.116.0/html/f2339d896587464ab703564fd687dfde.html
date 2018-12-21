@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring Kerberos in the Cloud Connector</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof2339d896587464ab703564fd687dfde">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring Kerberos in the <span class="ph pname">Cloud Connector</span></h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">The <span class="ph pname">Cloud connector</span> allows you
+				to propagate users authenticated in <span class="ph pname">SAP Cloud Platform</span> via Kerberos
+				against back-end systems. It uses the <span class="ph emphasis emphasis">Service For User and Constrained
+					Delegation</span> protocol extension of Kerberos.</p>
+
+			<p class="p"/>
+
+			<p class="p">We use Key Distribution Center (KDC) to exchange messages in order to retrieve
+				Kerberos tokens for a certain user and a back-end system. </p>
+
+			<p class="p">For more information, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://msdn.microsoft.com/en-us/library/cc246071.aspx" target="_blank" alt="http://msdn.microsoft.com/en-us/library/cc246071.aspx" title="http://msdn.microsoft.com/en-us/library/cc246071.aspx">Kerberos Protocol Extensions: Service for User
+					and Constrained Delegation Protocol<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiof2339d896587464ab703564fd687dfde__table_s45_nh1_5l" class="table" frame="void" border="0" rules="none">
+<colgroup><col width="32.467532467532465%"/><col width="67.53246753246754%"/></colgroup>
+
+					
+					
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry border_none" valign="top" width="32.467532467532465%">
+								<p class="p"><img class="image" id="loiof2339d896587464ab703564fd687dfde__image_hhj_rlm_hq" src="loiob001eb9997894523ab8a87a21d6e49d8_LowRes.png"/></p>
+
+							</td>
+
+							<td class="entry border_none" valign="top" width="67.53246753246754%">
+								<ol class="ol" id="loiof2339d896587464ab703564fd687dfde__ol_dgr_331_5l">
+									<li class="li">An <span class="ph pname">SAP Cloud Platform</span> application calls a back-end system via the <span class="ph pname">Cloud connector</span>.<p class="p"/>
+</li>
+
+									<li class="li">The <span class="ph pname">Cloud connector</span> calls the KDC to obtain a Kerberos token for the user
+										propagated from the <span class="ph pname">Cloud connector</span>.<p class="p"/>
+</li>
+
+									<li class="li">The obtained Kerberos token is sent as a credential to the
+										back-end system.</li>
+
+								</ol>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Configuration</span> from the main menu. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to tab <span class="ph uicontrol">On Premise</span>, section <span class="ph uicontrol">Kerberos</span> and
+					choose <span class="ph uicontrol">Edit</span>.</span>
+				<div class="itemgroup stepresult">
+					<p class="p"><img class="image" id="loiof2339d896587464ab703564fd687dfde__image_zyx_r5b_b5" width="1400px" src="loio0f22a4fd43aa4d23a3a4ebe3637e0da1_HiRes.png"/></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <var class="keyword varname field">&lt;KDC Hosts&gt;</var> field (press <span class="ph uicontrol">Add</span> to display the
+					field), enter the host name of your KDC in format
+						<kbd class="ph userinput">&lt;host&gt;:&lt;port&gt;</kbd>. The port is optional. If you do
+					not specify a port, the default one, 88, will be used. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <var class="keyword varname field">&lt;Realm Name&gt;</var> field, enter the name of your Kerberos realm.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Upload a KEYTAB file that contains the secret keys of your service user. The KEYTAB file
+					should contain the <kbd class="ph userinput">rc4-hmac</kbd> key for your user. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">User Name</span> field, enter the name of the service user to be
+					used for communication with the KDC. This service user should be allowed to
+					request Kerberos tokens for other users for the back-end systems that you are
+					going to access.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Save</span>.</span>
+			</li>
+</ol>
+
+		<div class="example"><h2 class="exampletitle">Example</h2>
+			<p class="p">You have a back-end system protected with SPNego authentication in your corporate
+				network. You want to call it from a cloud application while preserving the identity
+				of a cloud-authenticated user. </p>
+
+			<p class="p">For this purpose, you need to define the following:</p>
+
+			<ul class="ul" id="loiof2339d896587464ab703564fd687dfde__ul_mnl_yzl_hq">
+				<li class="li">A connectivity destination in <span class="ph pname">SAP Cloud Platform</span>, with
+						<span class="keyword cmdname">ProxyType</span> = <kbd class="ph userinput">OnPremise</kbd></li>
+
+				<li class="li">A system mapping made in the <span class="ph pname">Cloud connector</span>.
+					(Choose <span class="ph uicontrol">Cloud to On Premise</span> from your account menu, Go to
+					tab <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Access Control</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Add</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span>, and for <span class="ph uicontrol">Principal Type</span>, select
+						<kbd class="ph userinput">Kerberos</kbd>.)</li>
+
+				<li class="li">Kerberos configuration in the <span class="ph pname">Cloud connector</span>,
+					where the service user is allowed to delegate calls for your back-end host
+					service. See the <span class="ph uicontrol">Procedure</span> section above.</li>
+
+			</ul>
+
+			<p class="p"/>
+
+			<p class="p"><span class="ph emphasis emphasis">Result:</span></p>
+
+			<p class="p">When these configurations are provided, if you call a back-end system, the <span class="ph pname">Cloud connector</span> will
+				obtain an SPNego token from your KDC for the cloud-authenticated user. This token
+				will be sent along with the request to the back end, so that it can authenticate the
+				user and the identity to be preserved.</p>
+
+		</div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="http://help.sap.com/saphelp_nwsso20/helpdata/en/e3/d09588677442e79fa3f0deafc42e4a/content.htm?frameset=/en/67/2fd187a8fb4cf1be4cf3780b901731/frameset.htm" target="_blank" alt="http://help.sap.com/saphelp_nwsso20/helpdata/en/e3/d09588677442e79fa3f0deafc42e4a/content.htm?frameset=/en/67/2fd187a8fb4cf1be4cf3780b901731/frameset.htm" title="http://help.sap.com/saphelp_nwsso20/helpdata/en/e3/d09588677442e79fa3f0deafc42e4a/content.htm?frameset=/en/67/2fd187a8fb4cf1be4cf3780b901731/frameset.htm">Kerberos Configuration</a></div>
+<div><a class="link" href="a4ee70f0274248f8bbc7594179ef948d.html">Setting Up Trust</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

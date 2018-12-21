@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Destination Certificates (Cockpit)</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod3dfd5052fb14a15aad87ebcdb2f23e2">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using Destination Certificates (Cockpit)</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>You have logged into the cockpit and opened the <span class="ph uicontrol">Destinations</span>
+			editor. For more information, see <a class="xref" href="5b59fd315d10435fa596bd235eca7279.html">Accessing the Destinations Editor</a>.</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">This page explains how you can maintain truststore and keystore certificates in the
+					<span class="ph uicontrol">Destinations</span> editor. You can upload, add and delete
+				certificates for your connectivity destinations. Bear in mind that:</p>
+
+			<ul class="ul" id="loiod3dfd5052fb14a15aad87ebcdb2f23e2__ul_dvl_gqt_f4">
+				<li class="li">You can only use JKS, PFX and P12 files for destination key store, and JKS, CRT, CER, DER
+					for destination trust store. </li>
+
+				<li class="li">You can add certificates only for <span class="ph emphasis emphasis">HTTPS</span> destinations.
+					Truststore can be used for all authentication types. Keystore is available only
+					for <span class="keyword parmname">ClientCertificateAuthentication</span>. </li>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="topic concept nested1" id="concept_qmm_jqt_f4">
+		<h2 class="title topictitle2">Procedure</h2>
+
+		<div class="body conbody">
+			<div class="section"><div class="section_title">Uploading Certificates</div><div type="Uploading Certificates">
+				
+				<p class="p"/>
+
+				<ol class="ol" id="concept_qmm_jqt_f4__ol_drf_mqt_f4">
+					<li class="li">Choose the <span class="ph uicontrol">Certificates</span> button.</li>
+
+					<li class="li">Choose <span class="ph uicontrol">Upload Certificate</span>.</li>
+
+					<li class="li">Browse to the certificate file you need to upload. <p class="p">The certificate file is
+						added.</p>
+</li>
+
+				</ol>
+
+				<div class="note note"><span class="notetitle">Note</span> You can upload a certificate during creation or editing of a destination, by
+					clicking the <span class="ph uicontrol">Upload and Delete Certificates</span> link. </div>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Adding Certificates to Destinations</div><div type="Adding Certificates to Destinations">
+				
+				<ol class="ol" id="concept_qmm_jqt_f4__ol_dlq_wqt_f4">
+					<li class="li">Create a new destination, or open an existing one for editing.</li>
+
+					<li class="li">In the <span class="ph uicontrol">URL</span> field, enter an HTTPS address.</li>
+
+					<li class="li">You can use the default JDK truststore or select another one from the
+						dropdown menu. If the menu is empty, you can upload a certificate on the
+						fly. To omit this property, you can set
+						<span class="keyword parmname">TrustAll=true</span>.</li>
+
+					<li class="li">If you choose <span class="ph uicontrol">Authentication</span> =
+							<kbd class="ph userinput">ClientCertificateAuthentication</kbd>, you need to also
+						provide a keystore. </li>
+
+				</ol>
+
+			</div></div>
+
+			<div class="section"><div class="section_title">Deleting Certificates</div><div type="Deleting Certificates">
+				
+				<ol class="ol" id="concept_qmm_jqt_f4__ol_m1l_3rt_f4">
+					<li class="li">Choose the <span class="ph uicontrol">Certificates</span> button or click the
+							<span class="ph uicontrol">Upload and Delete Certificates</span> link.</li>
+
+					<li class="li">Select the certificate you want to remove and choose <span class="ph uicontrol">Delete
+							Selected</span>.</li>
+
+					<li class="li">Upload another certificate, or close the <span class="ph uicontrol">Certificates</span>
+						window.</li>
+
+				</ol>
+
+			</div></div>
+
+		</div>
+
+		<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="72696d6d06c0490394ac3069da600278.html">Creating Destinations (Cockpit)</a></div>
+<div><a class="link" href="a2550c3fcf2b430f94f99072677bf9ec.html">Importing Destinations (Cockpit)</a></div>
+<div><a class="link" href="fb6018c36e824788a465f1478d5feb13.html">Editing and Deleting Destinations (Cockpit)</a></div>
+</div>
+</div>
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

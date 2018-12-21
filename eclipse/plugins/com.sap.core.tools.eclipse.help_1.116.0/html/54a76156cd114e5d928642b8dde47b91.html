@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL."/>
+<meta name="description" content="With SAP Cloud Platform you can develop and run multitenant (tenant-aware) applications, that is, applications running on a shared compute unit that can be used by multiple consumers (tenants). Each consumer accesses the application through a dedicated URL."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Multitenant Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio54a76156cd114e5d928642b8dde47b91">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Multitenant Applications</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">With <span class="ph pname">SAP Cloud Platform</span> you can develop and run multitenant (tenant-aware)
+		applications, that is, applications running on a shared compute unit that can be used by
+		multiple consumers (tenants). Each consumer accesses the application through a dedicated
+		URL. </p>
+
+		<div class="p">You can read about the specifics of each platform service with regards to multitenancy in
+			the respective section below:<ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_rgl_t2s_4n">
+				<li class="li"><a class="xref" href="54a76156cd114e5d928642b8dde47b91.html#loio54a76156cd114e5d928642b8dde47b91__connectivity_service">Connectivity
+						Service</a></li>
+
+				<li class="li"><a class="xref" href="54a76156cd114e5d928642b8dde47b91.html#loio54a76156cd114e5d928642b8dde47b91__persistence_service">Persistence
+						Service</a></li>
+
+				<li class="li"><a class="xref" href="54a76156cd114e5d928642b8dde47b91.html#loio54a76156cd114e5d928642b8dde47b91__document_service">Document
+					Service</a></li>
+
+				<li class="li"><a class="xref" href="54a76156cd114e5d928642b8dde47b91.html#loio54a76156cd114e5d928642b8dde47b91__keystore_service">Keystore
+					Service</a></li>
+
+				<li class="li"><a class="xref" href="54a76156cd114e5d928642b8dde47b91.html#loio54a76156cd114e5d928642b8dde47b91__iam">Identity and Access
+						Management</a></li>
+
+			</ul>
+</div>
+
+		<div class="p">With tenant-aware applications, you can achieve the following: <ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_q2x_bv3_gl">
+				<li class="li">Isolate data</li>
+
+				<li class="li">Save resources by sharing them among tenants</li>
+
+				<li class="li">Perform updates efficiently, that is, in one step</li>
+
+			</ul>
+</div>
+
+		<div class="p">To be able to use a tenant-aware application, a consumer:<ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_b3k_nbk_jn">
+				<li class="li">Must have an account for <span class="ph pname">SAP Cloud Platform</span></li>
+
+				<li class="li">Must be subscribed to this application</li>
+
+				<li class="li">Receives a dedicated URL where to access the application</li>
+
+			</ul>
+
+		</div>
+
+		<p class="p"><img class="image" id="loio54a76156cd114e5d928642b8dde47b91__image_bpg_wv3_gl" src="loio757b953fa4004748ad1107d1f6b8b0f6_LowRes.png" alt="Tenant Runtime" title="Tenant Runtime"/></p>
+
+		<p class="p">A subscription means that there is a contract between an application provider and a
+			tenant who authorizes the tenant to use the provider's application. </p>
+
+		<p class="p">Currently, you can trigger the subscription via the console client for testing purposes.
+			For more information, see <a class="xref" href="b0930320e5f946a3a47692be3cebb468.html#loiob0930320e5f946a3a47692be3cebb468" title="Using the console client, you can create accounts and subscribe them to applications to test how applications can be provided to multiple consumers.">Providing Subscriptions to Provider Applications for Testing</a>.</p>
+
+		<p class="p">When an application is accessed via a consumer specific URL, the application environment is
+			able to identify the current consumer. The application developer can use the tenant
+			context API to retrieve and distinguish the tenant ID, which is the unique ID of the
+			consumer.  When developing tenant-aware applications, data isolation for different
+			consumers is essential. It can be achieved by distinguishing the requests based on the
+			tenant ID. There are also some specifics in the usage of different services when you
+			develop your multitenant application.</p>
+
+		<p class="p">For more information, see: </p>
+
+		<ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_rhb_2mv_rs">
+			<li class="li">
+				<p class="p"><a class="xref" href="a8f2255658ba4cbfb3ec3ab0f928f360.html">Tenant Context API</a></p>
+
+				<p class="p"><a class="xref" href="https://help.hana.ondemand.com/javadoc/index.html" target="_blank" alt="https://help.hana.ondemand.com/javadoc/index.html" title="https://help.hana.ondemand.com/javadoc/index.html">https://help.hana.ondemand.com/javadoc/index.html</a>
+					<span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">com.sap.cloud.account</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">TenantContext</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span></p>
+
+			</li>
+
+		</ul>
+
+		<div class="section"><div class="section_title">General Programming Guidelines</div><div type="General Programming Guidelines">
+			
+			<div class="p">When developing tenant-aware applications, keep in mind the following: <ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_ylx_bmf_kn">
+					<li class="li">Shared in-memory data such as Java static fields will be available to all
+						tenants</li>
+
+					<li class="li">Avoid any possibility that an application user can execute custom code in
+						the application JVM, as this may give them access to other tenants'
+						data</li>
+
+					<li class="li">Avoid any possibility that an application user can access a file system, as
+						this may give them access to other tenants' data.</li>
+
+				</ul>
+</div>
+
+		</div></div>
+
+		<div class="section" id="loio54a76156cd114e5d928642b8dde47b91__connectivity_service"><div class="section_title">Connectivity Service</div><div type="Connectivity Service">
+			
+			<p class="p">For more information, see <a class="xref" href="b92140a0c6b942e1a0f72e9fd1133fd9.html">Multitenancy in SAP Cloud Platform Connectivity</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio54a76156cd114e5d928642b8dde47b91__persistence_service"><div class="section_title">Persistence Service</div><div type="Persistence Service">
+			
+			<p class="p">Multitenant applications on <span class="ph pname">SAP Cloud Platform</span> have two approaches available to
+				separate the data of the different consumers:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_bcw_x34_xl">
+					<li class="li"><span class="ph emphasis emphasis">Use a discriminator column in each table storing tenant data</span><p class="p">With
+							this approach, a single database schema is shared between all
+							application consumers. The tenant ID can be used as a value in the
+							discriminator column. To ensure data separation in the application, each
+							SQL statement must include the tenant ID. </p>
+<p class="p">To apply data
+							separation with a discriminator column, you can use the multitenancy
+							annotations provided by EclipseLink JPA. For more information, see the
+							EclipseLink User Guide: <a class="extlink" href="http://help.sap.com/disclaimer?site=http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Single-Table_Multi-Tenancy" target="_blank" alt="http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Single-Table_Multi-Tenancy" title="http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Single-Table_Multi-Tenancy">http://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Single-Table_Multi-Tenancy<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+<div class="p">The
+							basic approach is as follows:<ul class="ul" id="loio54a76156cd114e5d928642b8dde47b91__ul_tr5_kl4_xl">
+								<li class="li">Annotate entities that are to be tenant-aware with the
+										<samp class="ph codeph">@Multitenant</samp> annotation.</li>
+
+								<li class="li">Define the discriminator column using the
+										<samp class="ph codeph">@TenantDiscriminatorColumn</samp> annotation. As
+									the length of the tenant ID on <span class="ph pname">SAP Cloud Platform</span> differs
+									from the default length for the discriminator column in
+									EclipseLink, it is important to set the correct length of 36
+									characters.</li>
+
+								<li class="li">Provide the tenant ID to the entity manager when accessing data
+									for a multitenant entity.</li>
+
+							</ul>
+</div>
+<p class="p"/>
+</li>
+
+					<li class="li"><span class="ph emphasis emphasis">Use a separate schema for each tenant </span><p class="p">With this
+							approach, you create a new schema for each tenant, bind it to the
+							application, and the application uses JNDI to dynamically look up the
+							data source. The multitenant application must then use the appropriate
+							data source when accessing tenant data. For more information, see <a class="xref" href="bb269c2b9ce94840a057015264d0b253.html" title="The data source is determined dynamically at runtime and does not need to be defined beforehand in the web.xml or persistence.xml file. This allows you to bind additional schemas to an application and obtain the corresponding data source, without having to modify the application code or redeploy the application.">Using Dynamic Data Source Lookup</a>. </p>
+</li>
+
+				</ul>
+
+			</div>
+
+		</div></div>
+
+		<div class="section" id="loio54a76156cd114e5d928642b8dde47b91__document_service"><div class="section_title">Document Service</div><div type="Document Service">
+			
+			<p class="p">The document service automatically separates the documents according to the current
+				consumer of the application. When an application connects to a document repository,
+				the document service client automatically propagates the current consumer of the
+				application to the document service. The document service uses this information to
+				separate the documents within the repository. If an application wants to connect to
+				the data of a dedicated consumer instead of the current consumer (for example in a
+				background process), the application can specify the tenant ID of the corresponding
+				consumer when connecting to the document repository. </p>
+
+			<p class="p">For more information, see <a class="xref" href="f639d68ff43347e6ac0453541b5daada.html">Data Isolation (Java)</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio54a76156cd114e5d928642b8dde47b91__keystore_service"><div class="section_title">Keystore Service</div><div type="Keystore Service">
+			
+			<p class="p">The Keystore Service provides a repository for cryptographic keys and certificates to
+				tenant-aware applications hosted on <span class="ph pname">SAP Cloud Platform</span>. Because the tenant
+				defines a specific configuration of an application, you can configure an application
+				to use different keys and certificates for different tenants.</p>
+
+			<p class="p">For more information about the Keystore Service, see <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a>.</p>
+
+		</div></div>
+
+		<div class="section" id="loio54a76156cd114e5d928642b8dde47b91__iam"><div class="section_title">Identity and Access Management</div><div type="Identity and Access Management">
+			
+			<p class="p">Access rights for tenant-aware application are usually maintained by the application consumer,
+				not by the application provider. An application provider may predefine roles in the
+					<span class="ph filepath">web.xml</span> when developing the application. By default,
+				predefined roles are shared with all application consumers, but could also be made
+				visible only to the provider account. Once a consumer is subscribed to this
+				application, shared predefined roles become visible in the cockpit of the
+				application consumer. Then, the application consumer can assign users to these roles
+				to give them access to the provider application. In addition, application consumer
+				accounts can add their own custom roles to the subscribed application. Custom roles
+				are visible only within the application consumer account where they are created.</p>
+
+			<p class="p">For more information about managing application roles, see <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a>.</p>
+
+			<p class="p">Trust configuration regarding authentication with SAML2.0 protocol is maintained by
+				the application consumer. </p>
+
+			<p class="p">For more information about configuring trust, see <a class="xref" href="dc618538d97610148155d97dcd123c24.html#loiodc618538d97610148155d97dcd123c24" title="You can delegate user authentication for your applications to your corporate identity provider. This is called identity federation. SAP Cloud Platform supports Security Assertion Markup Language (SAML) 2.0 for identity federation.">ID Federation with the Corporate Identity Provider</a>.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="39be2d25d25148cea4c11058f6a83d87.html">Multitenancy Tutorials</a></div>
+<div><a class="link" href="1b651b3aa5f54538a8f452f6fda0f5c3.html">Viewing the Default Trace</a></div>
+<div><a class="link" href="b0930320e5f946a3a47692be3cebb468.html#loiob0930320e5f946a3a47692be3cebb468" title="Using the console client, you can create accounts and subscribe them to applications to test how applications can be provided to multiple consumers.">Providing Subscriptions to Provider Applications for Testing</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

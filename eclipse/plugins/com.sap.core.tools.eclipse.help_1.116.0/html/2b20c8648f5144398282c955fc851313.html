@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using Certificates Signed by Trusted Certificate Authority</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio2b20c8648f5144398282c955fc851313">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using Certificates Signed by Trusted Certificate Authority</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section" id="loio2b20c8648f5144398282c955fc851313__section_N10017_N10011_N10001"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">Before starting the procedure, bear in mind that</p>
+
+			<ul class="ul" id="loio2b20c8648f5144398282c955fc851313__ul_l4j_ph5_2j">
+				<li class="li">The parameter values in the following section are simply examples.</li>
+
+				<li class="li">We recommend that you use a signed certificate by a trusted CA, because it is
+					more secure than a self-signed certificate.</li>
+
+				<li class="li">For your convenience, you can set the generated password as
+					environment variable, like in the command below, and then use
+						<span class="ph emphasis emphasis">$PASS</span> as a password: <p class="p"><kbd class="ph userinput">export PASS=`&lt;the
+							release-dependent command as given in the parent
+					page&gt;`</kbd></p>
+</li>
+
+				<li class="li">Keytool supports <kbd class="ph userinput">delete</kbd> and <kbd class="ph userinput">changealias</kbd>
+					commands. If the <span class="ph pname">Cloud connector</span> SSL
+					Certificate is changed on a running instance, we recommend that you prepare a
+					new certificate under a temporary alias. Once everything is ready, you change
+					the alias.</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section" id="loio2b20c8648f5144398282c955fc851313__section_N10042_N10011_N10001"><div class="section_title">Procedure</div><div type="Procedure">
+			
+			<p class="p">If you have a signed certificate produced by a trusted certificate authority (CA), go
+				directly to step 3.</p>
+
+			<ol class="ol" id="loio2b20c8648f5144398282c955fc851313__ol_z4v_xgr_qj">
+				<li class="li">Generate your key pair if you start fresh:<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">keytool -genkey -v -keyalg RSA -alias tomcat -keypass &lt;password&gt; -keystore ks.store -storepass &lt;password&gt; -dname "CN=SCC, OU=&lt;YourCompany&gt;, O=&lt;YourCompany&gt;"</pre></div>
+
+					</div>
+<p class="p">Alternatively, you may reuse an existing key store.</p>
+</li>
+
+				<li class="li">Create a local Certificate Signing Request (CSR): <div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">keytool -certreq -keyalg RSA -alias tomcat -keypass &lt;password&gt; -keystore ks.store -storepass &lt;password&gt; -file &lt;csr-file-name&gt;</pre></div>
+
+					</div>
+<p class="p">You now have a file called <span class="ph filepath">&lt;csr-file-name&gt;</span> that
+						you can submit to the Certificate Authority. In return, you get a
+						certificate.</p>
+
+				</li>
+
+				<li class="li">Import the certificate chain that you obtained from your trusted CA: <div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">keytool -import -alias root -keystore ks.store -storepass &lt;password&gt; -trustcacerts -file &lt;filename_of_the_certificate_chain&gt;</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">Import your new certificate: <div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">keytool -import -alias tomcat -keystore ks.store -storepass &lt;password&gt; -file &lt;your_certificate_filename&gt;</pre></div>
+
+					</div>
+
+				</li>
+
+			</ol>
+
+			<div class="p">The password is created at installation time and stored in the secure storage. Thus,
+				only applications with access can read the password. You can read password using
+				Java:
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+jar -xf /opt/sap/scc/dropins/scc/plugins/com.sap.scc.tomcat.utils*.jar  lib/libsapsecstore4j.so 
+java -cp /opt/sap/scc/dropins/scc/plugins/com.sap.scc.tomcat.utils*.jar -Djava.library.path=./lib/ com.sap.mw.scc.util.SecStoreAccess -show 
+</pre></div>
+
+			</div>
+
+			<p class="p">You might need to adapt the configuration if you want to use another key storage file or
+				change the current configuration (HTTPS port, authentication type, SSL protocol, and
+				so on). You can find the SSL configuration in the <span class="ph uicontrol">Connector</span>
+				section of the file, respectively : </p>
+
+			<ul class="ul" id="loio2b20c8648f5144398282c955fc851313__ul_wsn_xpq_2n">
+				<li class="li">Microsoft Windows OS:
+						<span class="ph filepath">&lt;install_dir&gt;\config_master\org.eclipse.gemini.web.tomcat\default-server.xml
+					</span></li>
+
+				<li class="li">Linux OS: <span class="ph filepath">
+						/opt/sap/scc/config_master/org.eclipse.gemini.web.tomcat/default-server.xml</span></li>
+
+			</ul>
+
+			<div class="note note" id="loio2b20c8648f5144398282c955fc851313__note_N102F1_N10280_N10013_N10001"><span class="notetitle">Note</span> We recommend that you do not modify the
+				configuration unless you have expertise in this area. </div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+    maxThreads="150" scheme="https" secure="true"
+    keystoreFile="config/ks.store" keystorePass="${jks.password}" keyPass="${jks.password}" keyAlias="tomcat"
+    truststoreFile="config/ks.store" truststorePass="${jks.password}"
+    clientAuth="want" sslProtocol="TLS"
+    compression="on" compressionMinSize="1024" noCompressionUserAgents="gozilla,traviata,*MSIE 6.*"
+    compressableMimeType="text/html,text/xml,text/plain,text/javascript,text/css,text/json,application/x-javascript,application/javascript,application/json"/&gt;
+</pre></div>
+
+			<p class="p">
+			</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Related Information</div><div type="Related Information">
+			
+			<p class="p">For more information about configuring SSL, see <a class="extlink" href="http://help.sap.com/disclaimer?site=http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html#SSL_and_Tomcat" target="_blank" alt="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html#SSL_and_Tomcat" title="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html#SSL_and_Tomcat">http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html#SSL_and_Tomcat<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>. </p>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

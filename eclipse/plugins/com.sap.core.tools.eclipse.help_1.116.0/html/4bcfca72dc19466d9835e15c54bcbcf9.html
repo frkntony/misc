@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The Update API can be used to update any player achievements. Multiple updated can be executed within on the consequences part."/>
+<meta name="description" content="The Update API can be used to update any player achievements. Multiple updated can be executed within on the consequences part."/>
+<meta name="DC.Coverage" content="Gamification service"/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating Player Achievements</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4bcfca72dc19466d9835e15c54bcbcf9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Updating Player Achievements</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The Update API can be used to update any player achievements. Multiple updated can be
+		executed within on the consequences part. </p>
+
+		<p class="p">Declaration of an update on a player achievement: </p>
+
+		<div class="p"><div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.&lt;QUERY_API_METHOD&gt;(&lt;PLAYER_ID&gt;, &lt;PARAMS&gt;);
+update(engine.getPlayerById(&lt;PLAYER_ID&gt;));
+</pre></div>
+The
+			player ID has to be declared in the trigger part. Once all updates are executed the
+			update method with the player ID has to be executed once.</div>
+
+		<p class="p"/>
+
+		<div class="p">Examples for player achievement update declaration:<ul class="ul" id="loio4bcfca72dc19466d9835e15c54bcbcf9__ul_kg1_tcz_4t">
+				<li class="li">
+					<p class="p">Increasing the “Experience Points” of the player by one.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.givePoints($playerid, 'Experience Points', 1, 'Task completed.');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Assign the mission “Troubleshooting” to the player.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.addMissionToPlayer($playerid, 'Troubleshooting');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Player completed the mission “Troubleshooting”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.completeMission($playerid, 'Troubleshooting');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+					</div>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Assign the badge “Champion Badge” to the player.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.addBadgeToPlayer($playerid, 'Champion Badge', '1. place');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+		<div class="p">Examples for multiple player achievement update declaration:<ul class="ul" id="loio4bcfca72dc19466d9835e15c54bcbcf9__ul_nxr_5cz_4t">
+				<li class="li">
+					<p class="p">Increasing the “Experience Points” of the player by one, complete mission
+						“Troubleshooting, and add badge “Champion Badge”.</p>
+
+					<div class="p">
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">updateAPIv1.givePoints($playerid, 'Experience Points', 1, 'Task completed.');
+updateAPIv1.completeMission ($playerid, 'Troubleshooting');
+updateAPIv1.addBadgeToPlayer($playerid, 'Champion Badge', '1. place');
+update(engine.getPlayerById($playerid));
+</pre></div>
+
+					</div>
+
+				</li>
+
+			</ul>
+</div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

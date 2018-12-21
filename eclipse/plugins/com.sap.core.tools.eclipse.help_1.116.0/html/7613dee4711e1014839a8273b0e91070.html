@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Coverage" content="Information Type"/>
+<meta name="DC.Coverage" content="Get started"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Setting Up the Console Client</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio7613dee4711e1014839a8273b0e91070">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Setting Up the Console Client</h1>
+<div class="body conbody">
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">You have downloaded and extracted the SDK. For more information, see <a class="xref" href="7613843c711e1014839a8273b0e91070.html">Installing the SDK</a>.</p>
+
+		</div></div>
+<div class="section" id="loio7613dee4711e1014839a8273b0e91070__section_7D2269378D8046A996B6657F6A4F3F9E"><div class="section_title">Context</div><div type="Context"> 
+		 
+		<p class="p"><span class="ph pname">SAP Cloud Platform</span> console client is part of the SDK. You can find it in the
+					<span class="ph filepath">tools</span> folder of your SDK installation. Before using the
+				tool, you need to configure it to work with the platform. </p>
+ 
+	 </div></div>
+<div class="section" id="loio7613dee4711e1014839a8273b0e91070__section_8DE5CE0C332A4C37BF794E0112EA77B3"><div class="section_title">Procedure</div><div type="Procedure"> 
+		 
+		<ol class="ol">
+				<li class="li">Open the command prompt.</li>
+<li class="li">Change the current directory to the <span class="ph filepath">&lt;SDK_installation_folder&gt;\tools</span>
+					location, which contains the <span class="ph uicontrol">neo.bat</span> and
+						<span class="ph uicontrol">neo.sh</span> files. For example:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">
+cd C:\HCP\SDK
+cd tools
+</pre></div>
+
+				</li>
+<li class="li">In case you use a proxy server, specify the proxy settings by using environment variables. You
+					can find sample proxy settings in the <span class="ph uicontrol">readme.txt</span> file in
+					the <span class="ph filepath">\tools</span> folder of your SDK location. <ul class="ul">
+						<li class="li"><span class="keyword cmdname">Microsoft Windows</span>
+							<div class="note note" id="loio7613dee4711e1014839a8273b0e91070__note_N1004E_N10048_N10045_N1003A_N1002E_N10021_N10013_N10001"><span class="notetitle">Note</span> 
+								<ul class="ul" id="loio7613dee4711e1014839a8273b0e91070__ul_z4m_hyd_yn">
+									<li class="li">For the new variables to be effective every time you open
+										the console, define them using <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol">Advanced System Settings</span> <img src="../images/navstep.gif" alt="Next navigation step" title="Next navigation step"/> <span class="ph uicontrol">Environment Variables</span> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span> and restart the console. </li>
+
+									<li class="li">For the new variables to be valid only for the currently
+										open console, define them in the console itself. </li>
+
+								</ul>
+
+							</div>
+For example, if your proxy host is <kbd class="ph userinput">proxy</kbd>
+							and proxy port is <kbd class="ph userinput">8080</kbd>, specify the following
+							environment variables: <div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">
+set HTTP_PROXY_HOST=proxy
+set HTTP_PROXY_PORT=8080
+set HTTPS_PROXY_HOST=proxy
+set HTTPS_PROXY_PORT=8080
+set HTTP_NON_PROXY_HOSTS="localhost"
+</pre></div>
+
+							<p class="p">If you need basic proxy authentication, enter your user name and
+								password: </p>
+
+							<div class="p">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">set HTTP_PROXY_USER=&lt;user_name&gt;
+set HTTP_PROXY_PASSWORD=&lt;password&gt;
+set HTTPS_PROXY_USER=&lt;user_name&gt;
+set HTTPS_PROXY_PASSWORD=&lt;password&gt;
+
+</pre></div>
+
+							</div>
+
+						</li>
+
+						<li class="li"><span class="keyword cmdname">Linux</span>, <span class="keyword cmdname">Mac OS X</span>, or other <span class="keyword cmdname">Unix</span>
+							based OS:
+							<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">
+export http_proxy=http://proxy:8080
+export https_proxy=https://proxy:8080
+export no_proxy="localhost"
+</pre></div>
+
+							If you need basic proxy authentication, enter your user name and
+							password: <div class="p">
+								<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">export http_proxy=http://user:password@proxy:8080
+export https_proxy=https://user:password@proxy:8080
+</pre></div>
+
+							</div>
+</li>
+
+					</ul>
+
+				</li>
+</ol>
+
+			<p class="p">For more information, see the <a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.youtube.com/watch?v=UHuSnBMimPA" target="_blank" alt="http://www.youtube.com/watch?v=UHuSnBMimPA" title="http://www.youtube.com/watch?v=UHuSnBMimPA">video
+					tutorial<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+ 
+	 </div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="76132306711e1014839a8273b0e91070.html">Console Client</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

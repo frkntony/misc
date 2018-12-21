@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To complete the authorization configuration of your extension application, you import the application-specific roles into to the SAP SuccessFactors company instance connected to your extension account."/>
+<meta name="description" content="To complete the authorization configuration of your extension application, you import the application-specific roles into to the SAP SuccessFactors company instance connected to your extension account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Import the Extension Application Roles in the SAP SuccessFactors System</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiof0ed89f98d894f9591d9bad20c68cf5f">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Import the Extension Application Roles in the <span class="ph pname">SAP SuccessFactors</span> System</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To complete the authorization configuration of your extension application, you import
+		the application-specific roles into to the <span class="ph pname">SAP SuccessFactors</span> company instance connected
+		to your extension account.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> 
+                        <p class="p">This is a beta feature available for  <span class="ph pname">SAP Cloud Platform</span> extension
+                                accounts. For more information about the beta features, see <a class="xref" href="43dfee6e1c174d978195197a8fb0a24a.html" title="SAP may offer and a customer may choose to accept access to functionality that is not generally available and is not validated and quality assured in accordance with SAP’s standard processes.">Using Beta Features in Accounts</a>.</p>
+
+                </div>
+
+			<ul class="ul" id="loiof0ed89f98d894f9591d9bad20c68cf5f__ul_kxh_d4z_cq">
+				<li class="li">You have created the resource file with the required role definitions. For more information,
+					see <a class="xref" href="93d5ce5346424596ac8dbe43b98a49ec.html" title="You create the resource file containing theSAP SuccessFactors HCM role definitions.">Create the Resource File with Role Definitions</a>.</li>
+
+				<li class="li">
+					<p class="p">You have downloaded and configured <span class="ph pname">SAP Cloud Platform</span> console client.
+						For more information, see <a class="xref" href="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" target="_blank" alt="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html" title="https://help.hana.ondemand.com/help/frameset.htm?7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Using the <span class="ph filepath">hcmcloud-import-roles</span> console client command, you import the
+				required role definitions in the <span class="ph pname">SAP SuccessFactors</span> company instance
+				connected to this account.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loiof0ed89f98d894f9591d9bad20c68cf5f__steps_qmh_1mz_cq"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Execute the following command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo hcmcloud-import-roles --account <var class="keyword varname">&lt;account_name&gt;</var> --user <var class="keyword varname">&lt;e-mail_or_user&gt;</var> --host <var class="keyword varname">&lt;landscape_host&gt;</var> --location <var class="keyword varname">&lt;path to the file containing role definitions&gt;</var></pre></div>
+
+					<div class="p">
+						<div class="note note"><span class="notetitle">Note</span> The size of the file containing the role definitions must not exceed
+							500 KB.</div>
+
+					</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter your password if requested.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press ENTER and the import of the role definitions starts.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have imported the application-specific roles in the SuccessFactors company instance
+			connected to your account. Now you need to assign users to these roles.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="d838fff69c8e4c1ab7e84ed2794f2b1e.html" title="To complete the authorization configuration for your extension application, you assign the extension application roles you have imported in the SAP SuccessFactors systems to the user to whom you want to grant access to your application.">Assign the Extension Application Roles to Users</a></div>
+<div><a class="link" href="d3dd77e6d8454bd2a9cbeb6c747c8135.html" title="This command imports SAP SuccessFactors HCM suite roles into the SAP SuccessFactors customer instance linked to an extension account.">hcmcloud-import-roles (Beta)</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

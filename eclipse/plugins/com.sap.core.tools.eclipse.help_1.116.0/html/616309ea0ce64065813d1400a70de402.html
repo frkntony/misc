@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command revokes database access that has been given to another account."/>
+<meta name="description" content="This command revokes database access that has been given to another account."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>revoke-db-tunnel-access</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio616309ea0ce64065813d1400a70de402">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">revoke-db-tunnel-access</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command revokes database access that has been given to another account.</p>
+
+		<div class="section">
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo revoke-db-tunnel-access -h &lt;host&gt; -u &lt;user&gt; -a &lt;my account&gt; --access-token &lt;token&gt;</pre></div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio616309ea0ce64065813d1400a70de402__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d4218555e41">Required</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d4218555e41 "><span class="keyword parmname">-- access-token</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d4218555e41 ">Access token that identifies the permission to access the
+											database<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d4218555e41 "><span class="keyword parmname">--silent</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d4218555e41 ">(optional) Suppresses the command line confirmation prompt<p class="p"><span class="keyword cmdname">Type</span>:
+										boolean</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio616309ea0ce64065813d1400a70de402__table_hbv_n53_jl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d4218555e91">Optional</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="50%" headers="d4218555e91 "><span class="keyword parmname">--output</span></td>
+
+								<td class="entry" valign="top" width="50%" headers="d4218555e91 ">Confirmation that the permission for opening the database tunnel from the other
+									account to the database was successfully
+											revoked<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo revoke-db-tunnel-access -h hanatrial.ondemand.com -u mymail@example.com -a myaccount --access-token 31t0dpim6rtxa00wx5483vqe7in8i3c1phv759w9oqrutf638l</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7791e70cdc434350bd40188ca49ab0f3.html" title="This command generates a token, which allows the members of another account to access a database using a database tunnel.">grant-db-tunnel-access</a></div>
+<div><a class="link" href="21e4be85b52448d0ad259a93fd6f51fd.html" title="This command lists all current database access permissions for databases in other accounts.">list-db-tunnel-access-grants</a></div>
+<div><a class="link" href="a583f98202c44c408646f9885b45752a.html" title="You can revoke the permission to open database tunnels to a productive SAP HANA adatabase in your account for other accounts.">Revoking Tunnel Access to Databases for Other Accounts</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

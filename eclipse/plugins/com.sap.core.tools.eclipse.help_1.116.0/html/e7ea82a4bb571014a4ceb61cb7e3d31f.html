@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Recommendations for Secure Setup</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Recommendations for Secure Setup</h1>
+<div class="body conbody"><div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_4031A6F74E6B49F7BF37E118C83AC6A2"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">The following guideline should be applied by customers who use <span class="ph pname">connectivity
+                            service</span>
+				and the <span class="ph pname">Cloud connector</span> to
+				guarantee the highest level of security. To assist the administrator with this task
+				the current security status is shown in the top left corner.</p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__image_gwc_bzq_b5" src="loio5f7b7fc1c7564f4bb50a0706fc4ef9fb_HiRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+			<p class="p"> </p>
+
+			<p class="p">The <span class="ph uicontrol">General Security Status</span> addresses security topics that are
+				account-independent. </p>
+
+			<div class="p">
+				<ul class="ul" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__ul_dq5_kw5_hw">
+					<li class="li">Choose any of the <span class="ph uicontrol">Actions</span> icons in the corresponding line to
+						navigate to the UI area that deals with that particular topic and view or
+						edit details.</li>
+
+					<li class="li">Navigation is not possible for the last item in the list, namely the <span class="ph uicontrol">Service
+							User</span>. </li>
+
+					<li class="li">The service user is specific to the Windows Operating System (see <a class="xref" href="204aaad4270245f3baa0c57c8ab1dd60.html">Installation on Microsoft Windows OS</a> for details) and is only
+						visible when running the <span class="ph pname">Cloud connector</span>
+						on Windows. It cannot be addressed through the UI. If the service user was
+						set up properly, check the check box. </li>
+
+				</ul>
+
+			</div>
+
+			<div class="p">The <span class="ph uicontrol">Account-Specific Security Status</span> lists security-related
+				information for each and every account. Both the account-specific and the general
+				security status are aggregated to obtain a summary of the security status that can
+				then be displayed as the icon of the button mentioned above. <div class="note note"><span class="notetitle">Note</span> The security
+					status is purely of an informational nature and merely serves as a reminder to
+					address security issues or as confirmation that your installation complies with
+					all recommended security settings.</div>
+</div>
+
+		</div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_D4D13AAA27974C84897D87319996AC65"><div class="section_title">Password Policy for the Cloud Connector Administration UI</div><div type="Password Policy for the Cloud Connector Administration UI"> 
+		 
+		<p class="p">Once installed, the <span class="ph pname">Cloud connector</span>
+				provides an initial user name and password and forces the user (Administrator) to
+				change the password upon initial login. The password should be changed from the
+				initial password to a specific one immediately after installation. </p>
+ 
+		<p class="p">The connector itself does not check the strength of the password. The <span class="ph pname">Cloud connector</span>
+				administrator must select a strong password that cannot be guessed easily. </p>
+ 
+		<div class="note note" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__note_N10031_N10021_N10013_N10001"><span class="notetitle">Note</span> To enforce your company's password policy, we recommend that you
+		  configure the Administration UI to use an LDAP server for authorizing access to
+		  the UI.
+		</div>
+
+	 </div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_1B269F204315446B9885046859490CE4"><div class="section_title">Restricting OS Level Access to Machines with Cloud Connector Installation</div><div type="Restricting OS Level Access to Machines with Cloud Connector Installation"> 
+		 
+		<p class="p">The <span class="ph pname">Cloud connector</span> is a
+				security critical component that handles the external access to systems of an
+				isolated network, comparable to a reverse proxy. We therefore recommend to restrict
+				the access to the operating system on which the <span class="ph pname">Cloud connector</span> is
+				installed to the minimal set of users who shall administrate the <span class="ph pname">Cloud connector</span>. This
+				will minimize the risk of unauthorized people getting access to credentials, such as
+				certificates stored in the secure storage of the <span class="ph pname">Cloud connector</span>. </p>
+
+			<p class="p">Following the same arguments, we recommend that you use the machine to operate the <span class="ph pname">Cloud connector</span> only
+				and no other systems.</p>
+ 
+	 </div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_C94B6BF6BCB94C9A9190B601D554BA3D"><div class="section_title">Cloud Connector Administrator Privileges</div><div type="Cloud Connector Administrator Privileges"> 
+		 
+		<p class="p">To log on to the <span class="ph pname">Cloud connector</span> administration UI, the "Administrator" user of the connector must not have an OS
+				user for the machine on which the connector is running. This allows the OS
+				administrator to be distinguished from the <span class="ph pname">Cloud connector</span>
+				administrator. To make an initial connection between the connector and a particular
+				SAP HANA Cloud account, an SAP HANA Cloud user with the needed permissions for the
+				related account is required. We recommend that you separate these roles/duties (that
+				means, you have separate users for <span class="ph pname">Cloud connector</span>
+				administrator and SAP HANA Cloud). </p>
+ 
+		<div class="note note" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__note_N10063_N10057_N10013_N10001"><span class="notetitle">Note</span> We recommend that only a small number of users be granted access to the machine as
+					<span class="ph uicontrol">root</span>. </div>
+ 
+	 </div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_F47A19D58D044F219871079D800EAB8D"><div class="section_title">Using Hard-Drive Encryption for Machines with Cloud Connector Installations</div><div type="Using Hard-Drive Encryption for Machines with Cloud Connector Installations"> 
+		 
+		<p class="p">This ensures that the <span class="ph pname">Cloud connector</span>
+				configuration data cannot be read by unauthorized users, even if they obtain access
+				to the hard drive. </p>
+ 
+	 </div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_022711EA5DD7412FA111972F77DFAFF9"><div class="section_title">Accessing the Cloud Connector Administration UI</div><div type="Accessing the Cloud Connector Administration UI">
+			
+			<p class="p">The <span class="ph pname">Cloud connector</span>
+				administration UI can be remotely accessed via HTTPS. The connector uses a standard
+				X.509 self-signed certificate as SSL server certificate. The certificate can be
+				exchanged by a customer-specific certificate that is trusted by the customer. For
+				more information, see <a class="xref" href="bcd5e113c9164ae8a443325692cd5b12.html">Recommended: Replacing the Default SSL Certificate</a>. </p>
+
+			<div class="p">We recommend that you limit the access to the administration UI to
+					<span class="ph uicontrol">localhost</span>. Thus, you can restrict the access to a browser
+				that is running on the same server as the <span class="ph pname">Cloud connector</span>.<div class="note note"><span class="notetitle">Note</span> Since browsers usually do not resolve <span class="ph uicontrol">localhost</span>
+					to the host name whereas the certificate usually is created under the host name,
+					you might get a certificate warning. In this case, just skip the warning
+					message.</div>
+</div>
+
+			<p class="p">Proceed as follows: </p>
+
+			<ol class="ol">
+				<li class="li">Open the <span class="ph uicontrol">default-server.xml</span> file of the Web container provided as
+					part of the <span class="ph pname">Cloud connector</span>:
+						<ul class="ul" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__ul_htk_5s1_dn">
+						<li class="li">Microsoft Windows OS:
+								<span class="ph filepath">&lt;install_dir&gt;\config_master\org.eclipse.gemini.web.tomcat\default-server.xml</span></li>
+
+						<li class="li">Linux OS/Mac OS X:
+								<span class="ph filepath">/opt/sap/scc/config_master/org.eclipse.gemini.web.tomcat/default-server.xml</span></li>
+
+					</ul>
+</li>
+
+				<li class="li">Modify the SSL <span class="ph uicontrol">Connector</span> configuration in the
+						<var class="keyword varname">&lt;Host&gt;</var> section, which makes the Web container
+					listen to the localhost only (that is, IP address
+						<kbd class="ph userinput">127.0.0.1</kbd>):
+						<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">
+&lt;Connector port="8443" address="127.0.0.1" protocol="HTTP/1.1" SSLEnabled="true"
+    maxThreads="150" scheme="https" secure="true"
+    keystoreFile="config/ks.store" keystorePass="${jks.password}"
+    truststoreFile="config/ks.store" truststorePass="${jks.password}"
+    keyPass="${jks.password}" keyAlias="tomcat"
+    clientAuth="want" sslProtocol="TLS" sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2"
+    ciphers="TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256"
+    compression="on" compressionMinSize="1024" noCompressionUserAgents="gozilla,traviata,*MSIE 6.*"
+    compressableMimeType="text/html,text/xml,text/plain,text/javascript,text/css,text/json,application/x-javascript,application/javascript,application/json"
+/&gt;
+</pre></div>
+<p class="p"/>
+<div class="note note"><span class="notetitle">Note</span> When
+						setting up a <span class="ph pname">Cloud connector</span>
+						in high availability mode, restricting UI access to
+							<span class="ph uicontrol">localhost</span> is not possible. Otherwise neither the
+						master could push configurations to the shadow nor could the shadow connect
+						to the master to check whether it is alive. </div>
+<div class="note caution"><span class="cautiontitle">Caution</span> With
+						regards to <span class="keyword apiname">ciphers</span> and
+							<span class="keyword apiname">sslEnabledProtocols</span>, make sure that these parameters
+						work correctly with the JCE you are using with your Java Virtual Machine. If
+						they don't, you will not be able to use the High Availability setup, or the
+						UI administration port may not start at all. If you need to modify the
+						ciphers we recommend to use the respective section of the settings UI (see
+							<em class="ph i">Selecting Encryption Ciphers</em> below).</div>
+
+				</li>
+
+			</ol>
+
+		</div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_93C51D867A5C472B90D6C343487647FD"><div class="section_title">Supported Protocols for On-Demand to On-Premise Connectivity</div><div type="Supported Protocols for On-Demand to On-Premise Connectivity"> 
+		 
+		<p class="p">Currently, HTTP, HTTPS and RFC are supported as the protocols between <span class="ph pname">SAP Cloud Platform</span> and
+				on-premise systems when the <span class="ph pname">Cloud connector</span> and the
+					<span class="ph pname">connectivity
+                            service</span>
+				are used. The whole route from the application virtual machine in the cloud to the
+					<span class="ph pname">Cloud connector</span>
+				is always SSL-encrypted. </p>
+ 
+		<p class="p">The route from the connector to the back-end system can be SSL-encrypted or SNC-encrypted. </p>
+ 
+		<p class="p">For more information, see <a class="xref" href="e7d4927dbb571014af7ef6ebd6cc3511.html">Configuring Access Control (HTTP)</a> and <a class="xref" href="ca5868997e48468395cf0ca4882f5783.html">Configuring Access Control (RFC)</a>. </p>
+ 
+	 </div></div>
+
+		<div class="section"><div class="section_title">Switching On Audit Log on Operating System Level</div><div type="Switching On Audit Log on Operating System Level">
+			
+			<p class="p">We recommend that you turn on the audit log on operating system level to monitor the
+				file operations.</p>
+
+		</div></div>
+<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__section_1547D9616881441682ED9C1313FB6DE0"><div class="section_title">Switching On Audit Log on Cloud Connector Level</div><div type="Switching On Audit Log on Cloud Connector Level"> 
+		 
+		<p class="p">The <span class="ph pname">Cloud connector</span> audit log
+				must remain switched on during the time it is used with productive systems (set it
+				to audit level "ALL"; the default one is "SECURITY"). The administrators responsible
+				for a running <span class="ph pname">Cloud connector</span> are
+				obliged to ensure that the audit log files are properly archived and do not get
+				lost, in order to conform to the local regulations. Additionally, audit logging
+				should be switched on in the connected back-end systems. </p>
+
+			<p class="p">Cloud connector administrators should not be authorized to modify files on operating system
+				(OS) level, and OS administrators should not have access to the <span class="ph pname">Cloud connector</span>
+				administration UI.</p>
+ 
+	 </div></div>
+
+		<div class="section" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__encryption_ciphers"><div class="section_title">Selecting Encryption Ciphers</div><div type="Selecting Encryption Ciphers">
+			
+			<p class="p">By default, all available encryption ciphers are supported for HTTPS connections to
+				the administration UI. However, some of them may not conform to your security
+				standards and hence should be excluded. To do so, choose
+					<span class="ph uicontrol">Configuration</span> from the main menu and go to tab
+					<span class="ph uicontrol">User Interface</span>, section <span class="ph uicontrol">Cipher
+					Suites</span>:</p>
+
+			<p class="p"/>
+
+			<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loioe7ea82a4bb571014a4ceb61cb7e3d31f__image_gtn_czb_b5" width="1400px" src="loioaf9abf65ee704b179eef90997206f437_LowRes.png"/>
+			</div></div>
+
+			<p class="p"/>
+
+			<p class="p">By default, all available ciphers are marked as selected. Choose the
+					<span class="ph uicontrol">Remove</span> icon to unselect those that do not meet your
+				security requirements and press <span class="ph uicontrol">Save</span>.</p>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> We recommend to revert to the default (all ciphers selected) whenever you plan
+					to switch to another JVM. As the set of supported ciphers may differ, there is a
+					chance that the selected ciphers may not be supported by the new JVM. In that
+					case the <span class="ph pname">Cloud connector</span>
+					will not start anymore, and you need to fix the issue manually adapting the file
+					default-server.xml (cp. attribute ciphers, see Accessing the <span class="ph pname">Cloud connector</span>
+					Administrator UI above). After a successful switch, the list of eligible ciphers
+					can be adjusted again.</div>
+
+			</div>
+
+			<p class="p"/>
+
+		</div></div>
+</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="dde01af51ddc49758dbbb03afcb075e5.html">Connectivity via Reverse Proxy</a></div>
+</div>
+</div></div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

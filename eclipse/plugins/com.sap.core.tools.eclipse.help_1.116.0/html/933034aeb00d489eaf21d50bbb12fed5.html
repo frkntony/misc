@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Configuring User Store in the Cloud Connector</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio933034aeb00d489eaf21d50bbb12fed5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Configuring User Store in the <span class="ph pname">Cloud Connector</span></h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc"/>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio933034aeb00d489eaf21d50bbb12fed5__ul_dht_kyb_lq">
+				<li class="li">You have configured your cloud application to use an on-premise user provider and to consume
+					users from LDAP via the <span class="ph pname">Cloud connector</span>. To
+					do this, execute the following
+					command:<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --host &lt;landscape host&gt; --account &lt;account name&gt; --application &lt;application name&gt; --source &lt;path to WAR file&gt; --user &lt;e-mail or user name&gt; --vm-arguments "-Dcom.sap.cloud.security.um.user_provider_name=onpremise -Dcom.sap.cloud.security.um.destination_name=onpremiseumconnector"</pre></div>
+</li>
+
+				<li class="li">You have created a connectivity destination (with the parameters below), to configure the
+					on-premise user provider:
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">Name=onpremiseumconnector
+Type=HTTP 
+URL= http://scc.scim:80/scim/v1
+Authentication=NoAuthentication
+CloudConnectorVersion=2
+ProxyType=OnPremise</pre></div>
+</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You can configure applications running on <span class="ph pname">SAP Cloud Platform</span> to use your corporate LDAP
+				server as a user store. This way, <span class="ph pname">SAP Cloud Platform</span> does not need to keep the
+				whole user database but requests the necessary information from the LDAP server. For
+				that purpose, Java applications running on <span class="ph pname">SAP Cloud Platform</span> can use the
+				on-premise system to check credentials, search for users, and retrieve their
+				details. In addition to the user information, the cloud application may request
+				information about the groups of which a specific user is a member. </p>
+
+			<p class="p">One way for a cloud Java application to define user authorizations is by checking the
+				user membership to specific groups in the on-premise user store. For that purpose,
+				the Java application uses the roles for the groups defined in <span class="ph pname">SAP Cloud Platform</span>. For more information, see <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a>. </p>
+
+			<p class="p">The corporate LDAP server that is used in the current configuration is configured in the
+					<span class="ph pname">Cloud connector</span>. </p>
+
+			<div class="note note"><span class="notetitle">Note</span> The configuration steps below are only applicable for Microsoft Active Directory
+				(AD).</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+				<span class="ph cmd">Choose <span class="ph uicontrol">Configuration</span> from the main menu. </span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Go to tab <span class="ph uicontrol">Cloud</span>, section <span class="ph uicontrol">Cloud User Store</span> and
+					choose <span class="ph uicontrol">Edit</span>.</span>
+				<div class="itemgroup stepresult">
+					<p class="p"><img class="image" id="loio933034aeb00d489eaf21d50bbb12fed5__image_pph_g1c_lq" width="1400px" src="loioef9f4083b7f04d059b1ac0cc9ddc78e1_HiRes.png"/></p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Select <span class="ph uicontrol">Secure</span> if you want to connect to the LDAP system
+					via SSL.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In the <span class="ph uicontrol">Hosts</span> field, you can manage the hosts (and ports)
+					of your LDAP server(s).</span>
+				<ul class="ul choices" id="loio933034aeb00d489eaf21d50bbb12fed5__choices_wkq_4zb_lq">
+					<li class="li choice">Choose the <span class="ph uicontrol">Add</span> icon to add as many hosts (and ports) as you
+						need.</li>
+
+					<li class="li choice">Choose <span class="ph uicontrol">Edit</span> to edit the selected host.</li>
+
+					<li class="li choice">Choose <span class="ph uicontrol">Delete</span> to delete the selected
+						hosts.</li>
+
+				</ul>
+
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">For <span class="ph uicontrol">User Name</span> and <span class="ph uicontrol">Password</span>, enter the
+					credentials of the service user that will be used to contact the LDAP system. </span>
+				<div class="itemgroup stepresult">
+					<div class="note note"><span class="notetitle">Note</span> The user name must be fully qualified, including the AD domain suffix. For
+						instance <kbd class="ph userinput">john.smith@mycompany.com</kbd>.</div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In <span class="ph uicontrol">User Path</span>, specify the LDAP subtree that contains the users.
+					button to add as many hosts (and ports) as you need.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">In <span class="ph uicontrol">Group Path</span>, specify the LDAP subtree that contains
+					the groups.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Choose <strong class="ph b">Save</strong>.</span>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="71fdf1c0aaf141d18dd5ae2b41c86da3.html">Using an SAP System as an On-Premise User Store</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

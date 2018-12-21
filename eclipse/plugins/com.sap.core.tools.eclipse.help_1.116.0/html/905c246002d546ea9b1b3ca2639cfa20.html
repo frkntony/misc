@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="You deploy the extension application in your extension account on SAP Cloud Platform so that you can run it and integrate it in SAP SuccessFactors."/>
+<meta name="description" content="You deploy the extension application in your extension account on SAP Cloud Platform so that you can run it and integrate it in SAP SuccessFactors."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Deploy the Extension Application on the Cloud</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio905c246002d546ea9b1b3ca2639cfa20">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Deploy the Extension Application on the Cloud</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">You deploy the extension application in your extension account on <span class="ph pname">SAP Cloud Platform</span> so that you can run
+		it and integrate it in <span class="ph pname">SAP SuccessFactors</span>.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<ul class="ul" id="loio905c246002d546ea9b1b3ca2639cfa20__ul_bgs_4ld_rn">
+				<li class="li">
+					<p class="p">You have the WAR file of the extension application you want to deploy. </p>
+
+				</li>
+
+				<li class="li">The WAR file contains the ZIP archive of the application site, as well as the
+							<span class="ph filepath"><var class="keyword varname">&lt;application_name&gt;</var>.spec.xml</span> file
+					describing the corresponding widgets. For an example of a site ZIP archive and
+					structure, see the <cite class="cite">Get the Source Code</cite> section in <span class="ph menucascade"><img src="../images/navstart.gif" alt="Start of the navigation path" title="Start of the navigation path"/> <span class="ph uicontrol"/> <img src="../images/navend.gif" alt="End of the navigation path" title="End of the navigation path"/></span><a class="extlink" href="http://help.sap.com/disclaimer?site=https://github.com/SAP/cloud-sfsf-benefits-ext" target="_blank" alt="https://github.com/SAP/cloud-sfsf-benefits-ext" title="https://github.com/SAP/cloud-sfsf-benefits-ext">https://github.com/SAP/cloud-sfsf-benefits-ext<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</li>
+
+				<li class="li">
+					<p class="p">You have downloaded and configured <span class="ph pname">SAP Cloud Platform</span>
+						console client. For more information, see <a class="xref" href="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/7613dee4711e1014839a8273b0e91070.html" target="_blank" alt="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/7613dee4711e1014839a8273b0e91070.html" title="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">You deploy the extension applications using the <span class="ph pname">SAP Cloud Platform</span> console
+				client. The applications are deployed in the customer account on the same production
+				landscape where the <span class="ph pname">SAP Cloud Platform</span>, portal
+				service is deployed. The production landscape is available on a regional basis,
+				where each region represents the location of a data center. When deploying
+				applications, bear in mind that a customer is associated with a particular region
+				and that this region is independent of your own location. You could be located in
+				the United States, for example, but operate your account in Europe (that is, use a
+				data center that is situated in Europe). For more information about the available
+				landscape hosts, see <a class="xref" href="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html" target="_blank" alt="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html" title="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html">Landscape Hosts</a>.</p>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio905c246002d546ea9b1b3ca2639cfa20__steps_qmh_1mz_cq"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing neo.bat/sh (SDK
+					installation folder/tools).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">To deploy the extension application, execute the following command:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo deploy --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt; --source &lt;WAR_file_location&gt; --user &lt;e-mail_or_user&gt;</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Enter your password if requested.</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Press ENTER and the deployment of your application will start. If the deployment fails,
+					check if you have defined the parameters correctly.</span>
+			</li>
+</ol>
+
+		<div class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div>You have deployed the extension application in your extension account on the <span class="ph pname">SAP Cloud Platform</span>.</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="https://uacp2.hana.ondemand.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e5dfbc6cbb5710149279f67fb43d4e5d.html#loioe5dfbc6cbb5710149279f67fb43d4e5d__deploying" target="_blank" alt="SAP Cloud Platform documentation" title="SAP Cloud Platform documentation">Deploying Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

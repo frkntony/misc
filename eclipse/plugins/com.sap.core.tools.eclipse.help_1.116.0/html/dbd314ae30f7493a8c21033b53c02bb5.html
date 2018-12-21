@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="In the event of unplanned downtime when there is no application process able to serve HTTP requests, a default error is shown to users. To prevent this, an operator can configure a custom downtime page using a downtime application, which takes over the HTTP traffic if an unplanned downtime occurs."/>
+<meta name="description" content="In the event of unplanned downtime when there is no application process able to serve HTTP requests, a default error is shown to users. To prevent this, an operator can configure a custom downtime page using a downtime application, which takes over the HTTP traffic if an unplanned downtime occurs."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Handling Unplanned Downtime</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodbd314ae30f7493a8c21033b53c02bb5">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">
+Handling Unplanned Downtime</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">In the event of unplanned downtime when there is no application process able to serve
+		HTTP requests, a default error is shown to users. To prevent this, an operator can configure
+		a custom downtime page using a downtime application, which takes over the HTTP traffic if an
+		unplanned downtime occurs.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<div class="note note"><span class="notetitle">Note</span> Not applicable to
+				<span class="ph uicontrol">hanatrial.ondemand.com</span>.</div>
+
+			<ul class="ul" id="loiodbd314ae30f7493a8c21033b53c02bb5__ul_h2h_htf_kn">
+				<li class="li">You have downloaded and configured the console client. We recommend that you use
+					the latest SDK. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a></li>
+
+				<li class="li">You have deployed and started your own downtime application in the same <span class="ph pname">SAP Cloud Platform</span> account as the application itself.</li>
+
+				<li class="li">The downtime application has to be developed in a way that it returns an HTTP
+					503 return code. That is especially important if availability checks are
+					configured for the original applications so that unplanned downtimes are
+					properly detected. </li>
+
+			</ul>
+
+		</div>
+
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loiodbd314ae30f7493a8c21033b53c02bb5__steps_kvy_z2t_mn"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command prompt and navigate to the folder containing
+						<span class="ph uicontrol">neo.bat/sh</span> (<span class="ph filepath">&lt;SDK installation
+						folder&gt;/tools</span>).</span>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Configure the downtime application by executing <kbd class="ph userinput">neo
+						set-downtime-app</kbd> in the command line. </span>
+				<div class="itemgroup stepresult">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo set-downtime-app --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt;  --user &lt;e-mail_or_user&gt; 
+--downtime-application &lt;downtime_application_name&gt;
+</pre></div>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">(optional) If the downtime page is no longer needed (for example, if the
+					original application has been undeployed), you can remove it by executing
+						<kbd class="ph userinput">clear-downtime-app</kbd> command.</span>
+				<div class="itemgroup stepresult">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo clear-downtime-app --host &lt;landscape_host&gt; --account &lt;account_name&gt; --application &lt;application_name&gt;  --user &lt;e-mail_or_user&gt;
+</pre></div>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="1672997f41f74cd79761291ff7ece0b5.html" title="This command configures a custom downtime page (downtime application) for an application. The downtime page is shown to the user in the event of unplanned downtime of the original application.">set-downtime-app</a></div>
+<div><a class="link" href="c9ae25ad31e14d0a9ec18f4d50304aaf.html" title="The command deregisters a previously configured downtime page for an application. After you execute the command, the default HTTP error will be shown to the user in the event of unplanned downtime.">clear-downtime-app</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

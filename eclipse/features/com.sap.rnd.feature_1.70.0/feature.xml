@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.rnd.feature"
+      label="%featureName"
+      version="1.70.0"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license>
+      %license
+   </license>
+
+   <plugin
+         id="com.sap.rnd.rndrt"
+         download-size="235"
+         install-size="439"
+         version="1.70.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.sap.rnd.ui"
+         download-size="94"
+         install-size="186"
+         version="1.70.0"
+         unpack="false"/>
+
+</feature>

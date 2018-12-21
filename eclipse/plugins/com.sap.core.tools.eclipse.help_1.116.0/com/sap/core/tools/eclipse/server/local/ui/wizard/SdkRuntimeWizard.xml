@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+
+<contexts>
+   <context  id="SDKRuntimeWizard" title="About Java Web">
+        <description>1.	In the <b>Name</b> field, enter a name for your runtime environment. The default is <b>Java Web</b>. 
+
+2. Specify a target definition:
+•	To create build environment from scratch, choose option <b>Use Java Web SDK from the following location</b>.  Either choose <b>Browse</b> to select the local SDK directory or manually type the full path to the directory. 
+•	To create build environment based on an already created definition, choose option <b>Choose existing target definition</b>. Click on the <b>Manage</b> link to reach the <b>Target Platform</b> preferences in the <b>Preferences</b> page.
+
+3. Choose <b>Finish</b>.
+</description>
+		<topic href="../com.sap.core.tools.eclipse.help/html/e815ca4cbb5710148376c549fd74c0db.html"  label="Installing Java Tools for Eclipse and SDK"/> 
+   </context>
+</contexts>

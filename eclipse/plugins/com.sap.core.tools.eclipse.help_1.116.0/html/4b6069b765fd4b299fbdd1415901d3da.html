@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Verbose Mode of the Console Commands Output</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio4b6069b765fd4b299fbdd1415901d3da">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Verbose Mode of the Console Commands Output</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<div class="section">
+			<p class="p">The console commands consist of: </p>
+
+			<ul class="ul" id="loio4b6069b765fd4b299fbdd1415901d3da__ul_rj4_wbf_mp">
+				<li class="li">Local code - executed inside a local JVM, which is started when the command is
+					started.</li>
+
+				<li class="li">Remote code - executed at back end (generally, the REST API that was called by
+					the local code), which is started in a separate JVM on the cloud.</li>
+
+			</ul>
+
+			<div class="note note"><span class="notetitle">Note</span> The trace level for remote code cannot be changed.</div>
+
+			<p class="p">For local code execution, a LOG4J library is used. It is easy to be configured and,
+				by default, there is a configuration file located inside the commands class path,
+				that is <span class="ph filepath">.../tools/lib/cmd</span>. </p>
+
+			<p class="p">For each command execution, two appenders are defined - one for the session and one
+				for the console. They both define different files for all messages that are logged
+				by the SAP infrastructure and by <span class="keyword parmname">apache.http</span>. By default, the
+				console commands output is written in a number of log files. However, you are
+				allowed to change the <span class="ph filepath">log4j.properties</span> file, and define
+				additional appenders or change the existing ones. If you want, for example, the full
+				output to be printed in the console (verbose mode), or you want to see details from
+				the execution of specific libraries (partially verbose mode), you need to adjust the
+				LOG4J configuration file. </p>
+
+			<p class="p">For more information on how to configure the LOG4J, see <a class="extlink" href="http://help.sap.com/disclaimer?site=https://logging.apache.org/" target="_blank" alt="https://logging.apache.org/" title="https://logging.apache.org/">https://logging.apache.org/<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a>.</p>
+
+			<p class="p">To adjust the level of a specific logger, you have to add
+					<samp class="ph codeph">log4j.logger.&lt;package&gt; = &lt;level&gt;</samp> in the code of the
+					<samp class="ph codeph">log4j.properties</samp> file.</p>
+
+			<p class="p">For more information about the different levels, see <a class="extlink" href="http://help.sap.com/disclaimer?site=https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/Level.html" target="_blank" alt="https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/Level.html" title="https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/Level.html">https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/Level.html<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></p>
+
+			<p class="p">In the file defined for the session, only loggers with level <samp class="ph codeph">ERROR</samp>
+				are logged. If you want, for example, to log debug information about the
+					<samp class="ph codeph">apache.http</samp> library, you have to change
+					<samp class="ph codeph">log4j.category.org.apache.http=ERROR, session</samp> to
+					<samp class="ph codeph">log4j.category.org.apache.http=DEBUG, session</samp>.</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">This example demonstrates how you can change the output of command execution so that
+				it is printed in the console instead of collecting the information within log files.
+				To do this, open your SDK folder and go to directory
+					<span class="ph filepath">/tools/lib/cmd</span>. Then, open the
+					<span class="ph filepath">log4j.properties</span> file and replace its content with the code
+				below. </p>
+
+			<div class="note tip"><span class="tiptitle">Tip</span> We recommend that you save the original content of the
+					<span class="ph filepath">log4j.properties</span> file. To switch back to the default
+				settings, just revert the changes you did in the
+					<span class="ph filepath">log4j.properties</span> file.</div>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint lang-prefs">##########
+# Log levels
+##########
+ 
+log4j.rootLogger=INFO, console
+ 
+log4j.additivity.rootLogger=false
+ 
+log4j.category.com.sap = INFO, console
+log4j.additivity.com.sap = false
+log4j.category.org.apache.http = INFO, console
+log4j.additivity.org.apache.http = false
+log4j.category.org.apache.http.wire = INFO, console
+log4j.additivity.org.apache.http.wire = false
+ 
+##########
+# System out console appender
+##########
+ 
+log4j.appender.console.Threshold=ALL
+ 
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.Target=System.out
+ 
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d %-5p [%t] %C: %m%n
+ 
+log4j.appender.console.filter.1=org.apache.log4j.varia.StringMatchFilter
+log4j.appender.console.filter.1.StringToMatch=&gt;&gt; Authorization: Basic
+log4j.appender.console.filter.1.AcceptOnMatch=false</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="b35e1e92ceb647daac49098b828dac92.html">Machine-Readable Command Output</a></div>
+<div><a class="link" href="e6e8ccd3bb571014b6afdc54744eef4d.html">Logging in Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

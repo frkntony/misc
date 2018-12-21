@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If you already have an existing on-premise system with a populated user store, you can configure SAP Cloud Platform applications to use that on-premise user store. This approach is similar to implementing identity federation with a corporate identity provider. In that way, applications do not need to keep the whole user database, but request the necessary information from the on-premise system."/>
+<meta name="description" content="If you already have an existing on-premise system with a populated user store, you can configure SAP Cloud Platform applications to use that on-premise user store. This approach is similar to implementing identity federation with a corporate identity provider. In that way, applications do not need to keep the whole user database, but request the necessary information from the on-premise system."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Using an On-Premise User Store</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio04cbd0f30d524612aa438ed0b0eed217">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Using an On-Premise User Store</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">If you already have an existing on-premise system with a populated user store, you can
+		configure <span class="ph pname">SAP Cloud Platform</span> applications to use that on-premise user store. This
+		approach is similar to implementing identity federation with a corporate identity provider.
+		In that way, applications do not need to keep the whole user database, but request the
+		necessary information from the on-premise system. </p>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">Applications can use the on-premise system to: </p>
+
+			<div class="p">
+				<ul class="ul" id="loio04cbd0f30d524612aa438ed0b0eed217__ul_rbf_11v_ds">
+					<li class="li">
+						<p class="p">check credentials </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">search for users</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">retrieve user details </p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">retrieve information about the groups a specific user is a member of. You can use this
+							information for user authorizations. See <a class="xref" href="db8175b9d976101484e6fa303b108acd.html" title="In SAP Cloud Platform, you can use Java EE roles to define access to the application resources.">Managing Roles</a>.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">You can use two types of on-premise user store:  </p>
+
+			<div class="p">
+				<ul class="ul" id="loio04cbd0f30d524612aa438ed0b0eed217__ul_tq2_n1v_ds">
+					<li class="li">
+						<p class="p">SAP Single Sign-On with a SAP NetWeaver Application Server for Java System - the
+							applications on <span class="ph pname">SAP Cloud Platform</span> connect to the SAP on-premise
+							system using Destination API (and, if necessary, SAP HANA Cloud
+							Connector), and make use of the user store there.</p>
+
+						<p class="p"><img class="image" id="loio04cbd0f30d524612aa438ed0b0eed217__image_a3g_j1b_2s" src="loio1307a454e82f4e4dac6d9ec398b003d0_LowRes.png"/></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">Microsoft Active Directory - this is an LDAP server that can serve as an on-premise user
+							store. The applications on <span class="ph pname">SAP Cloud Platform</span> connect to the LDAP
+							server using SAP HANA cloud connector, and make use of the user store
+							there.</p>
+
+						<p class="p"><img class="image" id="loio04cbd0f30d524612aa438ed0b0eed217__image_um2_pv1_2s" src="loio04478cb9fd93400c8ec57d3ed6f95ec1_LowRes.png"/></p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">Alternatively to the above scenarios, you can implement identity federation with a <span class="ph pname">Identity Authentication</span> tenant, where
+				the tenant is configured to use an on-premise user store. See:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio04cbd0f30d524612aa438ed0b0eed217__ul_uzg_kf1_gs">
+					<li class="li">
+						<p class="p"><a class="xref" href="d3df5b457d0c43fca117da0dc14e2f0d.html" title="You can register a tenant for Identity Authentication service as an identity provider for your account.">ID Federation with an Identity Authentication Tenant</a></p>
+
+					</li>
+
+					<li class="li">
+						<p class="p"><a class="xref" href="https://help.hana.ondemand.com/cloud_identity/frameset.htm?461d71c148594608b9c8b6d016e0a0c5.html" target="_blank" alt="https://help.hana.ondemand.com/cloud_identity/frameset.htm?461d71c148594608b9c8b6d016e0a0c5.html" title="https://help.hana.ondemand.com/cloud_identity/frameset.htm?461d71c148594608b9c8b6d016e0a0c5.html">(<span class="ph pname">Identity
+                            Authentication</span> documentation) Corporate User Store</a></p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="71fdf1c0aaf141d18dd5ae2b41c86da3.html">Using an SAP System as an On-Premise User Store</a></div>
+<div><a class="link" href="28a03e44bb2f49278e0fecc246726d5c.html" title="You can use Microsoft Active Directory as an on-premise LDAP server providing a user store for your SAP Cloud Platform applications.">Using Microsoft Active Directory as an On-Premise User Store</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="If you are an application operator and need to deploy a new version of a productive application or perform maintenance, you can choose among several approaches."/>
+<meta name="description" content="If you are an application operator and need to deploy a new version of a productive application or perform maintenance, you can choose among several approaches."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Updating Applications</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio87cfe1b6ed6d478098c1e8170e8302c1">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Updating Applications</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">If you are an application operator and need to deploy a new version of a productive
+		application or perform maintenance, you can choose among several approaches.</p>
+
+		<div class="section">
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> In all cases, first test your update in a non-productive environment. The newly deployed
+					version of the application overwrites the old one and you cannot revert to it
+					automatically. You have to redeploy the old version to revert the changes, if
+					necessary.</div>
+
+			</div>
+
+			<p class="p"><span class="ph pname">SAP Cloud Platform</span> provides the following approaches for updating an application:</p>
+
+		</div>
+
+		<div class="section"><div class="section_title">Zero Downtime</div><div type="Zero Downtime">
+			
+			<p class="p"><span class="ph emphasis emphasis">Description</span>: Rolling update with soft shutdown</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Use</span>: When your new application version is backward compatible
+				with the old version - that is, the new version of the application can work in
+				parallel with the already running old application version.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Steps</span>: Deploy a new version of the application and disable and enable
+				processes in a rolling manner. For an automated execution of the same procedure, use
+				the rolling-update command.</p>
+
+			<p class="p">See <a class="xref" href="a10f6c2071b443698eb7dfc411d0ed6d.html" title="The platform allows you to update an application in a manner in which the application remains operable all the time and your users do not experience downtime.">Updating Applications with Zero Downtime</a> and <a class="xref" href="3f5d41207b6a4d0b9ad2e46dc6f27e69.html" title="The rolling-update command performs update of an application without downtime in one go.">rolling-update</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Planned Downtime (Maintenance Mode)</div><div type="Planned Downtime (Maintenance Mode)">
+			
+			<p class="p"><span class="ph emphasis emphasis">Description</span>: Shows a custom maintenance page to end users. The
+				application is automatically disabled.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Use</span>: When the new version is backward incompatible - that is, running the
+				old and the new version in parallel may lead to inconsistent data or erroneous
+				output.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Steps</span>: Enable maintenance mode to redirect new connections to the
+				maintenance application. Deploy and start the new application version and then
+				disable maintenance mode. </p>
+
+			<p class="p">See <a class="xref" href="aa04f29a908f4db7b7666c12552ddd53.html" title="An operator can start and stop planned application downtime, during which a customized maintenance page for that application is shown to end users.">Using Maintenance Mode for Planned Downtimes</a></p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Soft Shutdown</div><div type="Soft Shutdown">
+			
+			<p class="p"><span class="ph emphasis emphasis">Description</span>: Supports zero downtime and planned downtime
+				scenarios. Disabled applications/processes stop accepting new connections from
+				users, but continue to serve already running connections.</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Use</span>: As part of the zero downtime scenario or to gracefully shut down
+				your application during a planned downtime (without maintenance mode).</p>
+
+			<p class="p"><span class="ph emphasis emphasis">Steps</span>: Disable the application (console client only) or individual
+				processes (console client or cockpit) in order to shut down the application or
+				processes gracefully. </p>
+
+			<p class="p">See <a class="xref" href="17e8e9622e63434a880f322f75db3e8e.html" title="Soft shutdown enables an operator to stop an application or application process in a way that no data is lost. Using soft shutdown gives sufficient time to finish serving end user requests or background jobs.">Soft Shutdown</a></p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="e5dfbc6cbb5710149279f67fb43d4e5d.html">Deploying and Updating Applications</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

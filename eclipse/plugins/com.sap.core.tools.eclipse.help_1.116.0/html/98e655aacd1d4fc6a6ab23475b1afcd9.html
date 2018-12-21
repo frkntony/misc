@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="SAP Cloud Platform allows account owners to make their SAP Cloud Platform applications accessible via a custom domain that is different from the default one (hana.ondemand.com) - for example www.myshop.com."/>
+<meta name="description" content="SAP Cloud Platform allows account owners to make their SAP Cloud Platform applications accessible via a custom domain that is different from the default one (hana.ondemand.com) - for example www.myshop.com."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Custom Domains</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio98e655aacd1d4fc6a6ab23475b1afcd9">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Custom Domains</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"><span class="ph pname">SAP Cloud Platform</span> allows account owners to make their <span class="ph pname">SAP Cloud Platform</span>
+		applications accessible via a custom domain that is different from the default one
+			(<span class="ph filepath">hana.ondemand.com</span>) - for example
+			<kbd class="ph userinput">www.myshop.com</kbd>. </p>
+
+		<div class="section"><div class="section_title">Prerequisites</div><div type="Prerequisites">
+			
+			<p class="p">To use a custom domain for your application, you need to fulfil a number of
+				preliminary steps.</p>
+
+			<p class="p">For more information, see <a class="xref" href="cde25474fcc1424db48ad86eb2ba9502.html" title="Before configuring SAP Cloud Platform custom domains, you need to make some preliminary steps and fulfil a number of prerequisites.">Prerequisites</a>.</p>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Scenario</div><div type="Scenario">
+			
+			<p class="p">After fulfilling the
+				prerequisite,
+				you can configure the custom domain on your own using <span class="ph pname">SAP Cloud Platform</span>
+				console client commands.</p>
+
+			<div class="p">First, set up secure SSL communication to ensure that your domain is trusted and all
+				application data is protected. Then, route the traffic to your application:<ol class="ol" id="loio98e655aacd1d4fc6a6ab23475b1afcd9__ol_tv2_yrv_wq">
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio70f4d19d3dbd434aa9aa165d53e2896c" title="You have to create an SSL host that will serve your custom domain. This host holds the mapping between your chosen custom domain and the application on SAP Cloud Platform as well as the SSL configuration for secure communication through this custom domain.">Create an SSL Host</a> - the host holds the
+						mapping between your chosen custom domain and the application on <span class="ph pname">SAP Cloud Platform</span> as well as the SSL configuration for secure communication
+						through this custom domain.</li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio55120d899d314e23ab8e33b4b388cea6" title="You need an SSL certificate to allow secure communication with your application. Once installed, the SSL certificate is used to identify the client/individual and to authenticate the owner of the site.">Upload a Certificate</a> - it will be used as a
+						server certificate on the SSL host.</li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio1d4248f3582a40cdb6f4a2439a55fb65" title="You need to bind the uploaded certificate to the created SSL host so that it can be used as SSL certificate for requests to this SSL host.">Bind the Certificate to the SSL Host</a>.</li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loiobf395cf25683491eabefadb4383ed7ff" title="To make your application on the SAP Cloud Platform accessible via the custom domain, you need to map the custom domain to the application URL.">Add the Custom Domain</a> - this maps the custom
+						domain to the application URL.</li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio004406e1c9a8441fb05a25f5f87d45b7" title="To route the traffic for your custom domain to your application on SAP Cloud Platform, you also need to configure it in the Domain Name System (DNS) that you use.">Configure DNS</a>-
+						you can create a CNAME mapping.</li>
+
+					<li class="li"><a class="xref" href="77cf0e6cd32e496c9cc8eeac4bedde94.html#loio6b671d39f46c41d1bbd89b7e698fe384" title="After you configure the custom domain, make sure that the setup is correct and your application is accessible on the new domain.">Configure Single
+							Sign-On</a> - if you have a custom trust configuration in your
+						account, you need to enable single logout..</li>
+
+				</ol>
+</div>
+
+			<p class="p">The configuration of custom domains has different setups related to the subscriptions of your
+				account. For more information about custom domains for applications that are part of
+				a subscription, see <a class="xref" href="b2b5dcc4fd9842388bb047d2922be48c.html" title="Configuration of custom domains has different setups related to the subscriptions of your account. Subscriptions represent applications that your account has purchased for use from an application provider.">Custom Domains for Multitenant Applications</a>. </p>
+
+		</div></div>
+
+	</div>
+
+<div class="related-links"> 
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

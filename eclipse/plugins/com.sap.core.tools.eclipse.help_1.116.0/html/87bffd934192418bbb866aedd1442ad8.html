@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Alerting</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio87bffd934192418bbb866aedd1442ad8">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Alerting</h1>
+
+	
+	<div class="body"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<p class="p">You can configure the <span class="ph pname">Cloud connector</span> to send out
+			Emails whenever critical situations occur that may prevent it from operating flawlessly
+			in the near or not so distant future. Choose <span class="ph uicontrol">Alerting</span> from the
+			top left navigation area to set up and tailor alerting to your needs.</p>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Email Configuration</div><div type="Email Configuration">
+			
+			<p class="p"/>
+
+			<p class="p">In this section you can specify the list of Email addresses to which alerts should be sent
+					(<span class="ph uicontrol">Send To</span>). </p>
+
+			<p class="p"/>
+
+			<div class="p"><div class="fig fignone"><div class="figcontainer"><img class="image" id="loio87bffd934192418bbb866aedd1442ad8__image_kvm_njk_xv" width="1400px" src="loio0c3698fc4c2242c492d4a4a1e860ccd6_LowRes.png"/></div></div>
+</div>
+
+			<p class="p"/>
+
+			<div class="p">
+				<div class="note note"><span class="notetitle">Note</span> You can assign Email addresses in compliance with RFC 2822. For instance, both
+					john.doe@company.com and John Doe &lt;j.doe@company.com&gt; are valid Email
+					addresses. </div>
+
+			</div>
+
+			<div class="p">
+				<ul class="ul" id="loio87bffd934192418bbb866aedd1442ad8__ul_tqw_nqk_xv">
+					<li class="li">Optionally, you can enter the sender's Email address (<span class="ph uicontrol">Sent
+							From</span>). </li>
+
+					<li class="li">Specification of the mail server (<span class="ph uicontrol">SMTP Server</span>) is
+						mandatory. </li>
+
+					<li class="li">The <span class="ph uicontrol">SMTP port</span> may be specified if necessary. For
+						details, contact your Email administrator or provider. </li>
+
+					<li class="li">The same goes for <span class="ph uicontrol">User</span> and
+							<span class="ph uicontrol">Password</span>. </li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">Press <span class="ph uicontrol">Save</span> to change the current Email configuration. </p>
+
+			<p class="p"/>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Observation Configuration</div><div type="Observation Configuration"><p class="p"/>
+In this section you can
+			configure the surveillance of pivotal resources and components of the <span class="ph pname">Cloud connector</span>: Emails
+			will be sent out as soon as any of the chosen components or resources is deemed to
+			malfunction, or is considered to be in a critical state. <p class="p"/>
+<div class="fig fignone"><div class="figcontainer">
+				<img class="image" id="loio87bffd934192418bbb866aedd1442ad8__image_isb_tv5_cy" width="1400px" src="loio778f439adfd745ea82d657b02977a065_LowRes.png"/>
+			</div></div>
+<p class="p"/>
+<div class="p">
+				<ul class="ul" id="loio87bffd934192418bbb866aedd1442ad8__ul_zvd_frk_xv">
+					<li class="li"><span class="ph uicontrol">High Availability</span> deals with issues that can occur in
+						the context of an active high availability set up, meaning a shadow system
+						is connected. Whenever a communication problem is detected in this context
+						an alert is produced. </li>
+
+					<li class="li"><span class="ph uicontrol">Tunnel Health</span> and <span class="ph uicontrol">Service Channels
+							Health</span> refer to the state of the respective connections.
+						Whenever such a connection is lost, an alert is triggered. </li>
+
+					<li class="li">An excessively high <span class="ph uicontrol">CPU</span> load over an extended period
+						of time adversely affects performance and may be an indicator of serious
+						issues that jeopardize the operability of the <span class="ph pname">Cloud connector</span>. The CPU load is monitored and an alert is triggered whenever the CPU
+						load exceeds and continues to exceed a given threshold percentage (default
+						is 90%) for more than a given period of time (default is 60 seconds). </li>
+
+					<li class="li">The <span class="ph pname">Cloud connector</span> does
+						not require nor consume large amounts of <span class="ph uicontrol">Disk</span> space.
+						However, running out of disk space remains an undesirable circumstance that
+						you should avoid. <div class="note note"><span class="notetitle">Note</span> We recommend to send out an alert if the disk space
+							falls below a critical value (default is 10 megabytes). </div>
+</li>
+
+					<li class="li">The <span class="ph pname">Cloud connector</span>
+						configuration contains various <span class="ph uicontrol">Certificates</span>. Whenever
+						one of those expires, scenarios might no longer work as expected so that it
+						is important to get notified in time about the expiration. The default
+						expiration warning time is 30 days.</li>
+
+				</ul>
+
+			</div>
+<p class="p">To configure the components to be monitored, proceed as follows:</p>
+<div class="p">
+				<ol class="ol" id="loio87bffd934192418bbb866aedd1442ad8__ol_zyb_mrk_xv">
+					<li class="li">Check the components or resources that you want to keep under surveillance.
+						The selected components and resources will be examined every 30 seconds by
+						default. </li>
+
+					<li class="li">If you wish to change the <span class="ph uicontrol">Health Check Interval</span> enter
+						the number of seconds of your choice into the respective field at the
+						bottom. </li>
+
+					<li class="li">Press <span class="ph uicontrol">Save</span> to change the current configuration. </li>
+
+				</ol>
+
+			</div>
+<p class="p"/>
+</div></div>
+
+		<div class="section"><div class="section_title">Alert Messages</div><div type="Alert Messages">
+			
+			<p class="p"/>
+
+			<p class="p">The <span class="ph pname">Cloud connector</span> does not
+				only send out alert messages via Email, it also lists them in this section. However,
+				the <span class="ph pname">Cloud connector</span>
+				does not dispatch the same alert repeatedly. Instead, an informational alert is
+				generated, sent out and listed, as soon as the respective and previously reported
+				issue has been resolved (i.e., cannot be detected anymore). </p>
+
+			<div class="p">You can remove alerts using <span class="ph uicontrol">Delete</span> or <span class="ph uicontrol">Delete
+				All</span>. <div class="note note"><span class="notetitle">Note</span> This is particularly sensible in the case of informational
+					alerts and alerts that have obviously been resolved. Deleting alerts that
+					pertain to issues that still occur is futile as they will reappear. </div>
+</div>
+
+			<p class="p"/>
+
+		</div></div>
+
+	</div>
+
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

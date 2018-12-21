@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="The SAP Cloud Platform Document service provides an on-demand content repository for unstructured or semi-structured content."/>
+<meta name="description" content="The SAP Cloud Platform Document service provides an on-demand content repository for unstructured or semi-structured content."/>
+<meta name="DC.Coverage" content="Services"/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Document Service</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loioe60b7e45bb57101487a881c7c5487778">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Document Service</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc">The <span class="ph pname">SAP Cloud Platform
+                                Document service</span> provides an on-demand content repository
+		for unstructured or semi-structured content.</p>
+
+		<div class="section" id="loioe60b7e45bb57101487a881c7c5487778__section_136E128308924D6399ABF5585D07AC80"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">Applications access it using the OASIS standard protocol Content Management Interoperability Services (CMIS). Java applications running on
+					<span class="ph pname">SAP Cloud Platform</span> can easily consume the document service using the
+				provided client library. A JavaScript client library is currently being developed. Since the document service is exposed using a
+				standard protocol, it can also be consumed by any other technology that supports the CMIS protocol.</p>
+
+		</div></div>
+
+		<div class="section" id="loioe60b7e45bb57101487a881c7c5487778__section_6313161209A54282A7B8C3D0BDF612E0"><div class="section_title">Features</div><div type="Features">
+			
+			<p class="p">The document service is an implementation of the CMIS standard and is the primary interface to a reliable and safe store for content on <span class="ph pname">SAP Cloud Platform</span>. </p>
+
+			<p class="p">Features of the document service include: </p>
+
+			<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_bp3_rvj_mj">
+				<li class="li">
+					<p class="p">The storage and retrieval of files, which the file system often handles on traditional platforms</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">The organization of files in a hierarchical folder structure</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">The association of metadata with the content and the ability to read and write metadata</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">A query interface based on this metadata using a query language similar to SQL</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Managing access control (access control lists)</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Versioning of content</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">A powerful Java API (Apache Chemistry OpenCMIS)</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Streaming support to also handle large files efficiently</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Files are always encrypted (AES-128) before they are stored in the document service.</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">A virus scanner can be activated to scan files for viruses during file uploads (write accesses). For performance reasons, read-only file
+						accesses are not scanned</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Access from applications running internally on <span class="ph pname">SAP Cloud Platform</span> or externally</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">The following figure illustrates the document service's architecture: </p>
+
+			<p class="p"><img class="image" id="loioe60b7e45bb57101487a881c7c5487778__image_zt2_zff_nm" src="loio52e73ebb7d3944758ad2c72ef90d3277_LowRes.png" alt="HANACloud_DocuServ_Architecture" title="HANACloud_DocuServ_Architecture"/></p>
+
+			<p class="p">The CMIS standard defines: </p>
+
+			<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_dp3_rvj_mj">
+				<li class="li">
+					<p class="p">A domain model and service bindings that can be used by applications to work with a content management repository</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">An abstraction layer for controlling diverse document management systems and repositories using Web protocols</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">CMIS provides a common data model covering typed files and folders with generic
+				properties that can be set or read. There is a set of services for adding and
+				retrieving documents (called objects). CMIS defines an access control system, a
+				checkout and version control facility, and the ability to define generic relations.
+				CMIS defines the following protocol bindings, which use WSDL with Simple Object
+				Access Protocol (SOAP) or Representational State Transfer (REST):</p>
+
+			<div class="p">
+				<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_ib3_njp_vl">
+					<li class="li">
+						<p class="p">The Atom Publishing (AtomPub) Protocol</p>
+
+					</li>
+
+					<li class="li">
+						<p class="p">The JavaScript Object Notation (JSON) format</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p class="p">The consumption of CMIS-enabled document repositories is easy using the Apache
+				Chemistry libraries. Apache Chemistry provides libraries for several platforms to
+				consume CMIS using Java, PHP, .Net, or Python. The subproject OpenCMIS, which
+				includes the CMIS Java implementation, also includes tools around CMIS, like the
+				CMIS Workbench, which is a desktop client for CMIS repositories for developers.</p>
+
+			<p class="p">Since the <span class="ph pname">SAP Cloud Platform
+                                Document service</span> API includes the OpenCMIS Java library,
+				applications can be built on <span class="ph pname">SAP Cloud Platform</span> that are independent of a
+				specific content repository.</p>
+
+		</div></div>
+
+		<div class="section" id="loioe60b7e45bb57101487a881c7c5487778__section_N1013E_N10013_N10001"><div class="section_title">Restrictions</div><div type="Restrictions">
+			
+			<p class="p">The SOAP (Web services) binding is not supported.</p>
+
+			<p class="p">The following features, which are defined in the OASIS CMIS standard, are supported with
+				restrictions:</p>
+
+			<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_pyk_cjb_jj">
+				<li class="li">
+					<p class="p">Versioning: Only major versions are supported</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Versioning: No support for check-in comments</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Query: Only metadata searches, no joins and no type aliases</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">The following CMIS features are not yet supported:</p>
+
+			<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_itb_jjb_jj">
+				<li class="li">
+					<p class="p">Multifiling</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Policies</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Relationships</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Change logs</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">There is a limit for the properties of a document:</p>
+
+			<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_ex5_kjb_jj">
+				<li class="li">For searchable properties, a maximum of 100 values with a maximum of 5,000 characters is
+					allowed. </li>
+
+				<li class="li">For non-searchable properties, a maximum of 1,000 values with a maximum of 50,000 characters
+					is allowed. </li>
+
+			</ul>
+
+			<p class="p">The document service can be utilized up to the following maximum limits:</p>
+
+			<ul class="ul" id="loioe60b7e45bb57101487a881c7c5487778__ul_hgt_gzt_vw">
+				<li class="li">
+					<p class="p">Maximum total of 5 million objects (documents or folders) per tenant repository</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Maximum total of 100 tenant repositories per account</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">Maximum duration of 60 seconds of a single CMISQL query</p>
+
+				</li>
+
+				<li class="li">
+					<p class="p">All requests are subject to concurrent rate control and spike limiting</p>
+
+				</li>
+
+			</ul>
+
+			<p class="p">If you expect to reach one or the other limitation, we recommend that you open a
+				support ticket on <span class="ph sap-technical-name sap-technical-name">BC-NEO-ECM-DS</span> and
+				describe your scenario.</p>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+</div>
+
+<div class="linklist linklist"><strong>Consuming the Document Service</strong><br/>
+
+<div><a class="link" href="e587c8d4bb57101494d980c9e41d0072.html" title="Use the SAP Cloud Platform Document service to store unstructured or semi-structured data in the context of your SAP Cloud Platform application.">Consuming the Document Service (Java)</a></div>
+<div><a class="link" href="c707d9ae9af54341908675d29e92d2f6.html" title="You can connect to the document service by treating it as an external service and the document service treats your HTML5 application as an external app that requests access.">Consuming the Document Service (HTML5 Applications)</a></div></div>
+
+<div class="linklist linklist"><strong>Managing the Document Service</strong><br/>
+
+<div><a class="link" href="07216f1852914f919cc5158a69dfd789.html" title="In the cockpit, you can create, edit, and delete a document service repository for your accounts. In addition, you can monitor the number and size of the tenant repositories of your document service repository.">Managing Repositories in the Cockpit</a></div>
+<div><a class="link" href="269aa860ed074550ada99cd89780c5cf.html" title="You can create and manage repositories for the document service with client commands.">Managing a Repository with Console Client Commands</a></div></div>
+
+<div class="linklist linklist"><strong>General Information on CMIS</strong><br/>
+
+<div><div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=cmis" target="_blank" alt="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=cmis" title="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=cmis">OASIS Page on CMIS<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+<div><div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://chemistry.apache.org/" target="_blank" alt="http://chemistry.apache.org/" title="http://chemistry.apache.org/">Apache Chemistry Page<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div>
+<div><div><a class="extlink" href="http://help.sap.com/disclaimer?site=http://docs.oasis-open.org/cmis/CMIS/v1.1" target="_blank" alt="http://docs.oasis-open.org/cmis/CMIS/v1.1" title="http://docs.oasis-open.org/cmis/CMIS/v1.1">OASIS Page with link to CMIS-v1.1pdf<img src="../images/3rd_link.png" class="link-external" alt="Information published on non-SAP site" title="Information published on non-SAP site" border="0"/></a></div>
+</div></div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

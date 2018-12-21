@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.sap.cloud.tools.eclipse.hana.feature"
+      label="%featureName"
+      version="1.35.0"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.sap.ndb.studio.appdev.feature"/>
+      <import feature="com.sap.cloud.tools.eclipse.prefs.feature"/>
+      
+      <!-- The rest is needed because of the reference to the preference store 
+      of org.eclipse.wst.server.ui.internal.ServerUIPlugin.-->
+      <import feature="org.eclipse.jdt"/>
+      <import feature="org.eclipse.pde"/>
+      <import feature="org.eclipse.jst.web_ui.feature"/>
+      <import feature="org.eclipse.wst.web_ui.feature"/>
+      <import feature="org.eclipse.jst.enterprise_ui.feature"/>
+      <import feature="org.eclipse.jst.server_ui.feature"/>
+      <import feature="org.eclipse.libra.facet.feature"/>
+      <import feature="org.eclipse.jpt.jpa.feature"/>
+      <import feature="org.eclipse.jpt.jpa.eclipselink.feature"/>
+      <import feature="org.eclipse.jpt.jpadiagrameditor.feature"/>
+      <import feature="org.eclipse.wst.xml_ui.feature"/>
+   </requires>
+
+   <plugin
+         id="com.sap.cloud.tools.eclipse.hana.tunnel"
+         download-size="4302"
+         install-size="4934"
+         version="1.35.0"
+         unpack="false"/>
+
+</feature>

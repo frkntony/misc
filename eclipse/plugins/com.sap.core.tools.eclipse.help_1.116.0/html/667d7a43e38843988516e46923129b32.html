@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted."/>
+<meta name="description" content="To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you use a remote access token that indicates that access to the database has been permitted."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Binding Applications to Databases in Other Accounts</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio667d7a43e38843988516e46923129b32">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Binding Applications to Databases in Other Accounts</h1>
+
+	
+	<div class="body taskbody"><p class="shortdesc">To bind applications to productive SAP HANA and SAP ASE databases in other accounts, you
+		use a remote access token that indicates that access to the database has been
+		permitted.</p>
+
+		<div class="section prereq p"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div>
+			<p class="p">You have set up the console client. For more information, see <a class="xref" href="7613dee4711e1014839a8273b0e91070.html">Setting Up the Console Client</a>.</p>
+
+			<p class="p"/>
+
+		</div>
+
+		<div class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Context</h2></div>
+			<p class="p">When you bind Java applications to the specified database in other accounts, you provide a
+				database user and password and an access token that you have received from the
+				database owner. You can use this token for as long as application bindings exist, or
+				until the permission is revoked.</p>
+
+			<div class="note note"><span class="notetitle">Note</span> 
+				<p class="p">The token is not transferrable to other applications in your account. The owner
+					account can revoke access to the database at any point in time.</p>
+
+			</div>
+
+			<p class="p">The following example data is used in the procedure below:</p>
+
+			<div class="p">
+				<ul class="ul" id="loio667d7a43e38843988516e46923129b32__ul_n5g_ccp_qm">
+					<li class="li">Account (database owner): <kbd class="ph userinput">owner</kbd></li>
+
+					<li class="li">Host: <kbd class="ph userinput">hana.ondemand.com</kbd></li>
+
+					<li class="li">Database: <kbd class="ph userinput">database1</kbd></li>
+
+					<li class="li">Account (receiving the permission): <kbd class="ph userinput">salescorp</kbd></li>
+
+					<li class="li">Application (receiving the permission): <kbd class="ph userinput">salesapp</kbd></li>
+
+					<li class="li">Data source: <kbd class="ph userinput">jdbc/dshana</kbd></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="ol steps tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps" id="loio667d7a43e38843988516e46923129b32__steps_etz_vng_rq"><li class="li step stepexpand">
+				<span class="ph cmd">Open the command window in the <span class="ph filepath">&lt;SDK&gt;/tools</span> folder and enter the
+					following command:</span>
+				<div class="itemgroup info">
+					
+<div class="table-wrapper tablenoborder"><table summary="" id="loio667d7a43e38843988516e46923129b32__table_mhx_n4m_mq" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="50%"/><col width="50%"/></colgroup>
+
+							
+							
+							<thead class="thead" align="left">
+								<tr class="row">
+									<th class="entry" valign="top" width="50%" id="d4377884e104">Database</th>
+
+									<th class="entry" valign="top" width="50%" id="d4377884e107">Command</th>
+
+								</tr>
+
+							</thead>
+
+							<tbody class="tbody">
+								<tr class="row">
+									<td class="entry" valign="top" width="50%" headers="d4377884e104 ">Productive SAP HANA
+										database
+										system</td>
+
+									<td class="entry" valign="top" width="50%" headers="d4377884e107 ">
+										<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-hana-dbms --account salescorp --application salesapp --host hana.ondemand.com --user salesuser --access-token vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z --db-user &lt;HANA_database_user&gt; --db-password &lt;database_user_password&gt;</pre></div>
+
+									</td>
+
+								</tr>
+
+								<tr class="row">
+									<td class="entry" valign="top" width="50%" headers="d4377884e104 ">
+										<p class="p">SAP HANA and SAP
+											ASE
+											database</p>
+
+									</td>
+
+									<td class="entry" valign="top" width="50%" headers="d4377884e107 ">
+										<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo bind-db --account salescorp --application salesapp --host hana.ondemand.com --user salesuser --access-token vm6431dhjcr2e3dbt0fk6jpzm2w7oo3q48yumf1c6uu8b9pt9z --db-user &lt;HANA_database_user&gt; --db-password &lt;database_user_password&gt;</pre></div>
+
+									</td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+</div>
+
+					<p class="p">Note that you use the <span class="keyword parmname">access-token</span> parameter instead of
+						the database ID parameter.</p>
+
+				</div>
+			</li>
+<li class="li step stepexpand">
+				<span class="ph cmd">Optional: Check that the database has been bound successfully:</span>
+				<div class="itemgroup info">
+					<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo list-application-datasources --account salescorp --application salesapp --host hana.ondemand.com --user salesuser</pre></div>
+
+				</div>
+				<div class="itemgroup stepresult">
+					<p class="p">You have bound your application to the database in the other account.</p>
+
+					<p class="p"> An unbind operation does not require an access token. </p>
+
+				</div>
+			</li>
+</ol>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="830e9ec114da4404bc68171772e8e707.html" title="This command gives an application in another account access to a schema based on a one-time access token. The access token is used to bind the schema to the application.">grant-schema-access</a></div>
+<div><a class="link" href="affa7822cef0400698c05d4f12f2e71f.html" title="This command binds a Java application to a productive SAP HANA database via a data source.">bind-hana-dbms</a></div>
+<div><a class="link" href="2a4e62e1c1f24090bda5679936a32429.html" title="This command binds a database to a Java application using a data source.">bind-db</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

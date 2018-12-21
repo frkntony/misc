@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command is used to upload a keystore by uploading the keystore file. You can upload keystores on account, application, and subscription levels."/>
+<meta name="description" content="This command is used to upload a keystore by uploading the keystore file. You can upload keystores on account, application, and subscription levels."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>upload-keystore</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiodea2506fb892403781e7720b0e292810">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">upload-keystore</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command is used to upload a keystore by uploading the keystore file. You can upload
+		keystores on account, application, and subscription levels.</p>
+
+		<div class="section" id="loiodea2506fb892403781e7720b0e292810__section_N10019_N10016_N10001"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<p class="p">To list all parameters available for this command, execute <kbd class="ph userinput">neo help
+					upload-keystore</kbd> in the command line.</p>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiodea2506fb892403781e7720b0e292810__table_k11_rwy_hl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d10546840e39">Required</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10546840e39 "><span class="keyword parmname">-a</span>, <span class="keyword parmname">--account</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10546840e39 ">Consumer account name<p class="p">The account for which you provide
+									username and password.</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string (up
+									to 30 characters; lowercase letters and numbers, starting with a
+									letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10546840e39 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10546840e39 ">Use the respective landscape host for your account
+										type.<p class="p"><span class="keyword cmdname">Type</span>: URL, for acceptable values
+									see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10546840e39 "><span class="keyword parmname">-l</span>,<span class="keyword parmname">--location</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10546840e39 ">Path to a keystore file to be uploaded from the local file
+								system. The file extension determines the keystore type. The
+								following extensions are supported: <span class="ph filepath">.jks</span>,
+									<span class="ph filepath">.jceks</span>, <span class="ph filepath">.p12</span>,
+									<span class="ph filepath">.pem</span>. For more information about the
+								keystore formats, see <a class="xref" href="3735938d1d1d4d04a0e976b9ad1799d5.html#loio3735938d1d1d4d04a0e976b9ad1799d5__section_N10027_N10017_N10001">Features</a><p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10546840e39 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10546840e39 ">Use your email, SAP ID or user name<p class="p"><span class="keyword cmdname">Type</span>:
+									string</p>
+</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiodea2506fb892403781e7720b0e292810__table_hbv_n53_jl" class="table" width="100%" style="table-layout:auto;" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" colspan="2" valign="top" id="d10546840e158">Optional</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10546840e158 "><span class="keyword parmname">-b</span>, <span class="keyword parmname">--application</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10546840e158 ">Application name<ul class="ul" id="loiodea2506fb892403781e7720b0e292810__ul_iq3_qrx_xl">
+									<li class="li">Use <span class="keyword parmname">--application
+											&lt;consumer_application_name&gt;</span> if the
+										application is running in your account.</li>
+
+									<li class="li">Use <span class="keyword parmname">--application
+											&lt;provider_account_name&gt;:&lt;provider_application_name&gt;</span>
+										if the application is running in another account.</li>
+
+								</ul>
+<p class="p">
+									<span class="keyword cmdname">Type</span>: string (up to 30 characters; lowercase
+									letters and numbers, starting with a letter)</p>
+</td>
+
+						</tr>
+
+						<tr class="row">
+							<td class="entry" valign="top" width="28.57142857142857%" headers="d10546840e158 "><span class="keyword parmname">-w</span>, <span class="keyword parmname">--overwrite</span>
+							</td>
+
+							<td class="entry" valign="top" width="71.42857142857143%" headers="d10546840e158 ">Overwrites a file with the same name if such already exists. If you do not explicitly
+								include the <span class="keyword parmname">--overwrite</span> argument, you will be
+								notified and asked if you want to overwrite the file.</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<p class="p">On Subscription Level</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-keystore --account &lt;consumer_account_name&gt; --application &lt;provider_account_name&gt;:&lt;provider_application_name&gt;
+--user &lt;e-mail_or_user&gt; --location C:\Keystores\KeyStore1.jks --host hana.ondemand.com</pre></div>
+
+			<p class="p">On Application Level</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-keystore --account &lt;consumer_account_name&gt; --application &lt;consumer_application_name&gt;
+--user &lt;e-mail_or_user&gt; --location C:\Keystores\KeyStore1.jks --host hana.ondemand.com</pre></div>
+
+			<p class="p">On Account Level</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo upload-keystore --account &lt;consumer_account_name&gt; --user &lt;e-mail_or_user&gt;
+--location C:\Keystores\KeyStore1.jks --host hana.ondemand.com</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="20b6fbde34b1438dbceb83e1c5e42411.html">Keystore Console Commands</a></div>
+<div><a class="link" href="3735938d1d1d4d04a0e976b9ad1799d5.html">Keys and Certificates</a></div>
+<div><a class="link" href="38144cd12fcc44249e7b2c4584f46045.html">Tutorial: Using the Keystore Service for Client Side HTTPS Connections</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

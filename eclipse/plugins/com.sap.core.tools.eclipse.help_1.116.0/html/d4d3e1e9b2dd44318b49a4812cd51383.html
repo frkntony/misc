@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>Principal Propagation</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loiod4d3e1e9b2dd44318b49a4812cd51383">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">Principal Propagation</h1>
+
+	
+	<div class="body conbody"><p class="shortdesc"/>
+
+		<p class="p"/>
+
+		<div class="section"><div class="section_title">Overview</div><div type="Overview">
+			
+			<p class="p">The <span class="ph pname">connectivity
+                            service</span>
+				provides a secure way of forwarding the identity of an on-demand user to the <span class="ph pname">Cloud connector</span>, and
+				from there to the back end of the relevant on-premise system. This process is called
+					<span class="ph emphasis emphasis">principal propagation</span>. It uses SAML tokens as the exchange
+				format for the user information. User mapping takes place in the back end and, in
+				this way, either the token is forwarded directly to the back end or an
+					<span class="keyword cmdname">X.509</span> certificate is generated, which is then used in the
+				back end.</p>
+
+			<div class="note restriction"><span class="restrictiontitle">Restriction</span> This authentication is only applicable if you want to connect to your
+				on-premise system via the <span class="ph pname">Cloud connector</span>.</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">How It Works</div><div type="How It Works">
+			
+			<p class="p"/>
+
+			
+<div class="table-wrapper tablenoborder"><table summary="" id="loiod4d3e1e9b2dd44318b49a4812cd51383__table_ph4_t5h_dn" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="31.84713375796178%"/><col width="68.15286624203821%"/></colgroup>
+
+					
+					
+					<thead class="thead" align="left">
+						<tr class="row">
+							<th class="entry" valign="top" width="31.84713375796178%" id="d9802676e63">Process in Steps</th>
+
+							<th class="entry" valign="top" width="68.15286624203821%" id="d9802676e66">Steps Description</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody class="tbody">
+						<tr class="row">
+							<td class="entry" valign="top" width="31.84713375796178%" headers="d9802676e63 ">
+								<p class="p"><img class="image" id="loiod4d3e1e9b2dd44318b49a4812cd51383__image_a2n_53d_vy" src="loio2b650b7486464781b0322c3e5068bbdf_LowRes.png"/></p>
+
+							</td>
+
+							<td class="entry" valign="top" width="68.15286624203821%" headers="d9802676e66 ">
+								<ol class="ol" id="loiod4d3e1e9b2dd44318b49a4812cd51383__ol_ccy_x5h_dn">
+									<li class="li">The user authenticates at the Web application front end via the IDP (Identity Provider)
+										using a standard SAML Web SSO profile. When the back-end
+										connection is established by the Web application, the
+										destination service (re)uses the received SAML assertion to
+										create the connection to the on-premise system
+										(BE1-BEm).<p class="p"/>
+</li>
+
+									<li class="li">The <span class="ph pname">Cloud connector</span>
+										validates the received SAML assertion for a second time,
+										extracts the attributes, and uses its STS (Security Token
+										Service) component to issue a new token (an
+											<span class="keyword cmdname">X.509</span> certificate) with the
+										same/similar attributes to assert the identity to the
+										back-end.<p class="p"/>
+</li>
+
+									<li class="li">The <span class="ph pname">Cloud connector</span> and
+										the Web application(s) share the same SP identity, that is,
+										the trust is only set up once in the IDP.</li>
+
+								</ol>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Using the PrincipalPropagation Property in Destinations</div><div type="Using the PrincipalPropagation Property in Destinations">
+			
+			<p class="p">You can create and configure connectivity destinations making use of the
+					<span class="ph uicontrol">PrincipalPropagation</span> property in the Eclipse IDE and in
+				the cockpit. Bear in mind that this property is only available for destination
+				configurations created in the cloud.</p>
+
+			<ul class="ul" id="loiod4d3e1e9b2dd44318b49a4812cd51383__ul_sng_vhg_dn">
+				<li class="li"><a class="xref" href="94dddf7d9e56401ba1719b7e836d8ee9.html">Creating and Deleting Destinations on the Cloud</a> (procedure and
+					examples)</li>
+
+				<li class="li"><a class="xref" href="72696d6d06c0490394ac3069da600278.html">Creating Destinations (Cockpit)</a> (procedure and
+					examples)</li>
+
+			</ul>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Tasks</div><div type="Tasks">
+			
+			<ul class="ul" id="loiod4d3e1e9b2dd44318b49a4812cd51383__ul_scx_f55_rn">
+				<li class="li"><a class="xref" href="a8bb87a72d094e0d981d2b1f67df7bc3.html">Configuring Principal Propagation to an ABAP System for HTTPS</a></li>
+
+				<li class="li"><a class="xref" href="33a2f37b0f1e4b6d869ab85c8427db1b.html">Configuring Principal Propagation to an ABAP System for RFC</a></li>
+
+				<li class="li"><a class="xref" href="58803a25e5894d759e0df1c5513b41ed.html">Configuring Subject Pattern for Principal Propagation</a></li>
+
+			</ul>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="a4ee70f0274248f8bbc7594179ef948d.html">Setting Up Trust</a></div>
+<div><a class="link" href="56dd01441ef443c488406940ce09da8b.html">Principal Propagation Authentication</a></div>
+<div><a class="link" href="4a467239658c437b9e2de6c9ddfd93fb.html" title="This is an optional procedure that you can perform to configure the options for the authentication methods you defined for your application.">Configuring Authentication for Your Application</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>

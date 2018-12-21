@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="abstract" content="This command creates a HANA database or schema with the specified ID on a shared or dedicated database."/>
+<meta name="description" content="This command creates a HANA database or schema with the specified ID on a shared or dedicated database."/>
+
+<link rel="stylesheet" type="text/css" href="../css/documentation.css"/>
+<title>create-schema</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+</head>
+<body class="" id="loio05ebe394ab3f491380209e4df3713662">
+<div id="wrapper"><div id="container">
+
+	<h1 class="title topictitle1">create-schema</h1>
+
+	
+	<div class="body refbody"><p class="shortdesc">This command creates a HANA
+		database
+		or schema with the specified ID on a shared or dedicated database.</p>
+
+		<div class="section">
+			<div class="note caution"><span class="cautiontitle">Caution</span> This command is not supported for productive SAP HANA database
+				systems. For more information about how to create schemas on productive SAP HANA
+				database systems, see <a class="xref" href="1742986c3cfa47099442aee0cf8df5e9.html" title="Java applications deployed on the SAP Cloud Platform can be assigned one or more database schemas. For developing Java applications on productive SAP HANA databases, custom logons allow you to control which schemas an application is able to access.">Binding SAP HANA Databases to Java Applications</a>. </div>
+
+		</div>
+
+		<div class="section">
+			<div class="p">
+				<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-schema --account &lt;account_name&gt; --host &lt;landscape_host&gt; --id &lt;schema_ID&gt; --user &lt;e-mail_or_user&gt; --dbtype &lt;database_type&gt;
+</pre></div>
+
+			</div>
+
+		</div>
+
+		<div class="section"><div class="section_title">Parameters</div><div type="Parameters">
+			
+			<div class="p">
+				
+<div class="table-wrapper tablenoborder"><table summary="" id="loio05ebe394ab3f491380209e4df3713662__table_k11_rwy_hl" class="table" frame="border" border="1" rules="all">
+<colgroup><col width="28.571428571428573%"/><col width="71.42857142857143%"/></colgroup>
+
+						
+						
+						<thead class="thead" align="left">
+							<tr class="row">
+								<th class="entry" colspan="2" valign="top" id="d197000e60">Required</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody class="tbody">
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">-a</span>,
+									<span class="keyword parmname">--account</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">Account name<p class="p"><span class="keyword cmdname">Type</span>: string (up to 30
+										characters; lowercase letters and numbers, starting with a
+										letter)</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">-d</span>,
+									<span class="keyword parmname">--dbtype</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">Creates the HANA
+									database
+									or schema on a shared database system. Syntax: 'type:version'.
+									Version is optional. <p class="p">Available database types: 'MaxDB',
+										'HANA', and 'HANAXS' (case-insensitive)</p>
+<p class="p">To see which
+										versions are available, execute the
+											<span class="keyword cmdname">list-dbms</span> command.
+											</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">--dbsystem</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">Creates the schema on a dedicated database system. To see the
+									available dedicated database systems, execute the
+										<span class="keyword cmdname">list-dbms</span>
+											command.<p class="p"><span class="keyword cmdname">Type</span>:
+										string</p>
+<div class="note caution"><span class="cautiontitle">Caution</span> The <span class="keyword cmdname">list-dbms</span> command
+										lists different database types, including productive SAP
+										HANA database systems. Do not use the
+											<span class="keyword cmdname">create-schema</span> command for productive
+										SAP HANA database systems. For more information about how to
+										create schemas on productive SAP HANA database systems, see
+											<a class="xref" href="1742986c3cfa47099442aee0cf8df5e9.html" title="Java applications deployed on the SAP Cloud Platform can be assigned one or more database schemas. For developing Java applications on productive SAP HANA databases, custom logons allow you to control which schemas an application is able to access.">Binding SAP HANA Databases to Java Applications</a>.
+									</div>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">-h</span>, <span class="keyword parmname">--host</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">Use the respective landscape host for your account type.
+											<p class="p"><span class="keyword cmdname">Type</span>: URL, for acceptable values
+										see <a class="xref" href="350356d1dc314d3199dca15bd2ab9b0e.html" title="Applications can be deployed on the productive landscape hana.ondemand.com or the trial landscape hanatrial.ondemand.com.">Landscape Hosts</a></p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">-i</span>, <span class="keyword parmname">--id</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">HANA
+									database
+									or schema
+										ID<p class="p">It
+										must start with a letter and can contain lowercase letters
+										('a' - 'z') and numbers ('0' - '9'). For schemas IDs,
+										uppercase letters ('A' - 'Z') and the special characters '.'
+										and '-' are also allowed.</p>
+<p class="p">The ID must be unique within
+										the account.</p>
+<p class="p">Note that the actual ID assigned in the
+										database will be different to this version.
+											</p>
+<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">-p</span>,
+									<span class="keyword parmname">--password</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">To protect your password, enter it only when prompted by the
+									console client and not explicitly as a parameter in the
+									properties file or the command line.<p class="p"><span class="keyword cmdname">Type</span>:
+										string </p>
+</td>
+
+							</tr>
+
+							<tr class="row">
+								<td class="entry" valign="top" width="28.57142857142857%" headers="d197000e60 "><span class="keyword parmname">-u</span>, <span class="keyword parmname">--user</span></td>
+
+								<td class="entry" valign="top" width="71.42857142857143%" headers="d197000e60 ">Use your e-mail, SAP ID, or user
+											name<p class="p"><span class="keyword cmdname">Type</span>: string</p>
+</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+</div>
+
+			</div>
+
+		</div></div>
+
+		<div class="section"><div class="section_title">Example</div><div type="Example">
+			
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint nocode">neo create-schema --account myaccount --host hanatrial.ondemand.com -i myschema --user mymail@example.com --dbtype hana</pre></div>
+
+		</div></div>
+
+	</div>
+
+	<div class="related-links"> 
+<div class="relinfo"><div class="relinfotitle ">Related Information</div>
+<div><a class="link" href="7e5b0443011d4b46bac953d729eadd2c.html" title="The schema management scenarios outline the steps involved for the most typical use cases of schemas. To manipulate schemas, the scenarios use the console client together with the schema commands provided by the persistence service. The scenarios can also be performed from the cockpit in a similar manner.">Example Scenarios</a></div>
+<div><a class="link" href="2040a8a60de84c09994f64f74896b18f.html" title="Each application deployed on SAP Cloud Platform can be assigned one or more database schemas. A schema is associated with a particular account and is available solely to applications within this account. A schema can be bound to multiple applications.">Administering Database Schemas</a></div>
+</div>
+</div>
+</div></div><div class="footer" id="custom-footer">
+	<div id="custom-footerSpacer"><hr width="350px" align="left"/></div>
+	<a class="copyright" href="copyright.html">Copyright</a><span class="separator"> | </span><a class="disclaimer" href="disclaimer.html">Important Disclaimers and Legal Information</a>
+</div>
+
+</body>
+</html>
